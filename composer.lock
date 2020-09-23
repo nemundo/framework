@@ -1,0 +1,124 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9a2e3b9189957f25c0084613b21adb06",
+    "packages": [
+        {
+            "name": "nemundo/core",
+            "version": "0.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nemundo/core.git",
+                "reference": "7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nemundo/core/zipball/7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e",
+                "reference": "7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nemundo\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Urs Lang",
+                    "email": "urs.lang@gmail.com"
+                }
+            ],
+            "description": "Core Function",
+            "time": "2020-08-11T17:35:48+00:00"
+        },
+        {
+            "name": "nemundo/db",
+            "version": "0.35",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nemundo/db.git",
+                "reference": "d418c3cd3ce9cd73e48bac3252c06bd684ca908e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nemundo/db/zipball/d418c3cd3ce9cd73e48bac3252c06bd684ca908e",
+                "reference": "d418c3cd3ce9cd73e48bac3252c06bd684ca908e",
+                "shasum": ""
+            },
+            "require": {
+                "nemundo/core": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nemundo\\Db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nemundo",
+                    "email": "urs.lang@gmail.com"
+                }
+            ],
+            "description": "Database Access",
+            "time": "2020-08-11T17:35:48+00:00"
+        },
+        {
+            "name": "nemundo/html",
+            "version": "0.45",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nemundo/html.git",
+                "reference": "da429779f521a39b0747b4845022c34902ee8af9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nemundo/html/zipball/da429779f521a39b0747b4845022c34902ee8af9",
+                "reference": "da429779f521a39b0747b4845022c34902ee8af9",
+                "shasum": ""
+            },
+            "require": {
+                "nemundo/core": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nemundo\\Html\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nemundo",
+                    "email": "urs.lang@gmail.com"
+                }
+            ],
+            "description": "Html Generator",
+            "time": "2020-07-28T09:59:41+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}

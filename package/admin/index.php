@@ -1,0 +1,15 @@
+<?php
+
+require 'config.php';
+
+
+$webUrl = new \Nemundo\Core\Type\Text\Text(\Nemundo\Web\WebConfig::$webUrl);
+$webUrl->replaceRight('/web/', '/admin/');
+\Nemundo\Web\WebConfig::$webUrl = $webUrl->getValue();
+
+\Nemundo\Admin\Controller\AdminController::addAdminSite(new \Nemundo\App\ModelDesigner\Site\ModelDesignerSite());
+\Nemundo\Admin\Controller\AdminController::addAdminSite(new \Nemundo\App\ClassDesigner\Site\ClassDesignerSite());
+
+\Nemundo\Admin\Template\AdminTemplate::$webController = new \Nemundo\Admin\Controller\AdminController();
+
+(new \Nemundo\Admin\Web\AdminWeb())->startWeb();

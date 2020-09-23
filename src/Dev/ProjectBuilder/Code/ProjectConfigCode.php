@@ -1,0 +1,44 @@
+<?php
+
+namespace Nemundo\Dev\ProjectBuilder\Code;
+
+
+use Nemundo\Dev\Code\PhpFile;
+
+class ProjectConfigCode extends AbstractProjectCode
+{
+
+    public function createCode()
+    {
+
+        $php = new PhpFile();
+        $php->filename = $this->path . 'config.php';
+        //$php->add('require __DIR__ . \'/lib/framework/autoload/autoload.php\';');
+        $php->add('require \'vendor/autoload.php\';');
+
+        /*
+        $php->add('$autoload = new Autoloader();');
+        $php->add('');
+        $php->add('$lib = new Library($autoload);');
+        $php->add('$lib->source = __DIR__ . \'/lib/framework/src/\';');
+        $php->add('$lib->namespace = \'Nemundo\';');
+        $php->add('');
+
+        $php->add('$lib = new Library($autoload);');
+        $php->add('$lib->source = __DIR__ . \'/src/\';');
+        $php->add('$lib->namespace = \'' . $this->prefixNamespace . '\';');
+        $php->add('');*/
+
+        $php->add('\Nemundo\Project\ProjectConfig::$projectPath = __DIR__ . DIRECTORY_SEPARATOR;');
+        $php->add('');
+        $php->add('$config = new \Nemundo\Project\Config\ProjectConfigReader();');
+        $php->add('$config->filename = __DIR__ . \'/config.ini\';');
+        $php->add('$config->readFile();');
+        $php->add('');
+
+        $php->saveFile();
+
+
+    }
+
+}
