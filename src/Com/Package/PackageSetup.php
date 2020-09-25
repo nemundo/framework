@@ -12,6 +12,15 @@ use Nemundo\Web\WebConfig;
 class PackageSetup extends AbstractBaseClass
 {
 
+    public $destinationPath;
+
+
+    public function __construct()
+    {
+        $this->destinationPath = WebConfig::$webPath;
+    }
+
+
     public function addPackage(AbstractPackage $package)
     {
 
@@ -27,7 +36,7 @@ class PackageSetup extends AbstractBaseClass
             ->getPath();
 
         $destinationPath = (new Path())
-            ->addPath(WebConfig::$webPath)
+            ->addPath($this->destinationPath)
             ->addPath('asset')
             ->addPath($package->packageName)
             ->getPath();

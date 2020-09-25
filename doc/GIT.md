@@ -8,12 +8,18 @@
 
 
 
-
-
 ### Save Credentials
 ```
 git config --global credential.helper store
 ```
+
+
+### Create Tag
+```
+git tag 0.1
+git push --tags
+```
+
 
 
 ### Delete History

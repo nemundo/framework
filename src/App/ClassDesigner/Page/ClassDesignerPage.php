@@ -76,7 +76,7 @@ class ClassDesignerPage extends AbstractTemplateDocument
                 $list[] = new SiteClassBuilderForm();
                 $list[] = new ParameterClassBuilderForm();
                 $list[] = new UsergroupClassBuilderForm();
-                $list[] = new CmsTypeClassBuilderForm();
+                //$list[] = new CmsTypeClassBuilderForm();
                 $list[] = new SchedulerClassBuilderForm();
                 $list[] = new ScriptClassBuilderForm();
                 $list[] = new ListBoxClassBuilderForm();

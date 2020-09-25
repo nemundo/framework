@@ -126,11 +126,28 @@ cronjob -e
 ```
 
 
+### Admin Setup
+```
+php bin/cmd.php admin-setup
+```
+
+
+
 ### Cache Path
 Im config.ini muss der Pfad definiert werden.
 ```
 cache_path=
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 

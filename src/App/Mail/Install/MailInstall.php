@@ -9,13 +9,13 @@ use Nemundo\App\Mail\Queue\MailQueueDeleteScript;
 use Nemundo\App\Mail\Scheduler\MailQueueScheduler;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Setup\ScriptSetup;
-use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
+use Nemundo\Project\Install\AbstractInstall;
 
-class MailInstall extends AbstractScript
+class MailInstall extends AbstractInstall
 {
 
-    public function run()
+    public function install()
     {
 
         $setup = new ApplicationSetup();

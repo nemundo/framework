@@ -12,15 +12,12 @@ use Nemundo\App\Scheduler\Install\SchedulerInstall;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Install\ScriptInstall;
 use Nemundo\App\Script\Setup\ScriptSetup;
-use Nemundo\App\Script\Type\AbstractScript;
-use Nemundo\Core\File\Directory;
-use Nemundo\Core\Log\LogConfig;
 use Nemundo\Db\Provider\MySql\Database\MySqlDatabase;
-use Nemundo\Dev\Job\DeleteTmpScript;
+use Nemundo\Dev\Script\AdminBuilderScript;
+use Nemundo\Dev\Script\DeleteTmpScript;
 use Nemundo\Project\Config\ProjectConfigBuilderScript;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
-use Nemundo\Project\ProjectConfig;
 use Nemundo\User\Install\UserInstall;
 use Nemundo\User\Setup\UsergroupSetup;
 
@@ -47,32 +44,17 @@ class ProjectInstall extends AbstractInstall
         (new ScriptInstall())->install();
         (new SchedulerInstall())->install();
         (new UserInstall())->install();
-        //(new SystemLogInstall())->run();
-        //(new WebLogInstall())->run();
-        (new MailInstall())->run();
+        (new MailInstall())->install();
         (new DbAdminInstall())->run();
-
 
         (new TmpPath())->createPath();
         (new LogPath())->createPath();
 
-        /*
-        $directory = new Directory();
-        $directory->path = ProjectConfig::$tmpPath;
-        $directory->createDirectory();
+        (new ScriptSetup())
+        ->addScript(new DeleteTmpScript())
+        ->addScript(new AdminBuilderScript())
+        ->addScript(new LogFileDeleteScript());
 
-        $directory = new Directory();
-        $directory->path = LogConfig::$logPath;
-        $directory->createDirectory();*/
-
-
-        $scriptSetup = new ScriptSetup();
-        //$scriptSetup->addScript(new MySqlDumpBackup());
-        $scriptSetup->addScript(new DeleteTmpScript());
-        $scriptSetup->addScript(new LogFileDeleteScript());
-
-        // $setup = new UsergroupSetup();
-        // $setup->addUsergroup(new SystemAdministratorUsergroup());
 
     }
 
