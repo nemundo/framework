@@ -22,7 +22,7 @@ class ProjectSetupCode extends AbstractProjectCode
 
         $function = new PhpFunction($phpClass);
         $function->functionName = 'run()';
-        $function->add('(new ProjectInstall())->run();');
+        $function->add('(new ProjectInstall())->install();');
 
         $phpClass->saveFile();
 

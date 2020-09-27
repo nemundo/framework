@@ -9,7 +9,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Apache\ApacheConfig;
 use Nemundo\App\Apache\Com\ApacheForm;
 use Nemundo\App\Apache\Parameter\FilenameParameter;
-use Nemundo\App\Apache\Site\ConfigDeleteSite;
+use Nemundo\App\Apache\Site\ConfigDeleteSiteOld;
 use Nemundo\App\Linux\Ssh\SftpUploadFile;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
@@ -51,7 +51,7 @@ class ApachePage extends AbstractTemplateDocument
             $row->addText((new Html(null))->importHtml( $sftp->getTextFileContent(ApacheConfig::$configPath . $filename))->getValue());
 
 
-            $site=clone(ConfigDeleteSite::$site);
+            $site=clone(ConfigDeleteSiteOld::$site);
             $site->addParameter(new FilenameParameter($filename));
             $row->addIconSite($site);
 
@@ -59,6 +59,7 @@ class ApachePage extends AbstractTemplateDocument
 
 
         $form = new ApacheForm($layout->col2);
+
 
 
         return parent::getContent();

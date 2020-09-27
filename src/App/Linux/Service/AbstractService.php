@@ -4,15 +4,39 @@
 namespace Nemundo\App\Linux\Service;
 
 
-use Nemundo\Core\Base\AbstractBase;
+use Nemundo\App\Linux\Ssh\AbstractSshCommand;
 
-abstract class AbstractService extends AbstractBase
+
+abstract class AbstractService extends AbstractSshCommand
 {
 
-    abstract public function start();
+    protected $serviceName;
 
-    abstract public function stop();
+    abstract protected function loadService();
 
-    abstract public function restart();
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadService();
+    }
+
+
+    public function start()
+    {
+        $this->runCommand('service ' . $this->serviceName . ' start');
+    }
+
+
+    public function stop()
+    {
+        $this->runCommand('service ' . $this->serviceName . ' stop');
+    }
+
+
+    public function restart()
+    {
+        $this->runCommand('service ' . $this->serviceName . ' restart');
+    }
+
 
 }

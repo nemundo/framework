@@ -6,6 +6,7 @@ namespace Nemundo\App\Linux\Ssh;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Dev\Linux\Ssh\SshConfig;
 use phpseclib\Net\SFTP;
 
 class SftpUploadFile extends AbstractSsh
@@ -31,6 +32,10 @@ class SftpUploadFile extends AbstractSsh
         $this->sftp = new SFTP($this->connection->host);
 
         if (!$this->sftp->isConnected()) {
+
+            if ($this->connection ==null) {
+                $this->connection=SshConfig::$sshConnction;
+            }
 
 
             /*

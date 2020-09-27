@@ -4,9 +4,7 @@ namespace Nemundo\App\Linux\Ssh;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
-use phpseclib\Crypt\RSA;
 use phpseclib\Net\SSH2;
 
 
@@ -27,24 +25,6 @@ abstract class AbstractSsh extends AbstractBaseClass
     public function __construct()
     {
 
-
-        //(new Debug())->write(__FILE__);
-        //(new Debug())->write(__DIR__);
-
-        //new \Net_SSH2()
-
-        //
-        //$ssh = new Net_SSH2($host);
-        //$ssh->login($login, $rsa);
-
-        /*$path= __DIR__ . DIRECTORY_SEPARATOR . 'phpseclib';
-        //(new Debug())->write($path);
-        set_include_path($path);
-
-        require_once __DIR__ . '/phpseclib/Net/SSH2.php';
-        require_once __DIR__ . '/phpseclib/Net/SFTP.php';
-        require_once __DIR__ . '/phpseclib/Crypt/RSA.php';*/
-
         $this->connection = new SshConnection();
 
     }
@@ -56,8 +36,8 @@ abstract class AbstractSsh extends AbstractBaseClass
     }
 
 
-
-    protected function checkVariable() {
+    protected function checkVariable()
+    {
 
 
         if ($this->connection->host == null) {
@@ -76,14 +56,10 @@ abstract class AbstractSsh extends AbstractBaseClass
     protected function connect()
     {
 
-      $this->checkVariable();
-
-
+        $this->checkVariable();
         $this->ssh = new SSH2($this->connection->host);  //, $this->connection->port);
 
         if (!$this->ssh->isConnected()) {
-
-
 
             /*
 

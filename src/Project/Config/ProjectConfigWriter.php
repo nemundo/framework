@@ -30,6 +30,19 @@ class ProjectConfigWriter extends AbstractBaseClass
 
         if (!$file->fileExists()) {
 
+
+
+
+            $config = new ProjectConfigBuilder();
+            $config->filename =$this->filename;
+            $config->mysqlHost=$mysqlHost;
+            $config->mysqlPort=$mysqlPort;
+            $config->mysqlUser=$mysqlUser;
+            $config->mysqlPassword=$mysqlPassword;
+            $config->mysqlDatabase=$mysqlDatabase;
+            $config->writeConfigFile();
+
+
             $writer = new ConfigWriter($this->filename);
             //$writer->filename = $this->filename;
             $writer->overwriteExistingFile = true;
@@ -37,37 +50,45 @@ class ProjectConfigWriter extends AbstractBaseClass
             $input = new ConsoleInput();
             $input->message = 'MySql Host';
             $input->defaultValue = 'localhost';
-            $writer->add('mysql_host', $input->getValue());
+            $config->mysqlHost= $input->getValue();
+            //$writer->add('mysql_host', $input->getValue());
 
             $input = new ConsoleInput();
             $input->message = 'MySql Port';
             $input->defaultValue = 3306;
-            $writer->add('mysql_port', $input->getValue());
+            $config->mysqlPort=$input->getValue();
+            //$writer->add('mysql_port', $input->getValue());
 
             $input = new ConsoleInput();
             $input->message = 'MySql User';
             $input->defaultValue = 'root';
-            $writer->add('mysql_user', $input->getValue());
+            $config->mysqlUser=$input->getValue();
+            //$writer->add('mysql_user', $input->getValue());
 
             $input = new ConsoleInput();
             $input->message = 'MySql Password';
-            $writer->add('mysql_password', $input->getValue());
+            $config->mysqlPassword=$input->getValue();
+            //$writer->add('mysql_password', $input->getValue());
 
             $input = new ConsoleInput();
             $input->message = 'MySql Database';
             $input->defaultValue = 'test_project';
-            $writer->add('mysql_database', $input->getValue());
+            $config->mysqlDatabase=$input->getValue();
+            //$writer->add('mysql_database', $input->getValue());
 
             $input = new ConsoleInput();
             $input->message = 'Web Url';
             $input->defaultValue = '/';
-            $writer->add('web_url', $input->getValue());
+            $config->webUrl=$input->getValue();
+            //$writer->add('web_url', $input->getValue());
 
             /*$input = new ConsoleInput();
             $input->message = 'Send Mail';
             $input->defaultValue = 'false';
             $writer->add('send_mail', $input->getValue());*/
 
+
+         /*
             $input = new ConsoleInput();
             $input->message = 'Smtp Host';
             $writer->add('smtp_host', $input->getValue());
@@ -102,7 +123,10 @@ class ProjectConfigWriter extends AbstractBaseClass
             $input->defaultValue = 'development';
             $writer->add('staging_enviroment', $input->getValue());
 
-            $writer->writeFile();
+            $writer->writeFile();*/
+
+            $config->writeConfigFile();
+
 
         }
 

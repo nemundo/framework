@@ -29,7 +29,10 @@ class ApacheConfigBuilder extends AbstractBase
         $line->addValue('</Directory>');
         $line->addValue('</VirtualHost>');
 
-        return $line->getText();
+        //return $line->getText();
+        return $line->getTextWithSeperator("\r\n");
+
+        //\r\n
 
 
     }

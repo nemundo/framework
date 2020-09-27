@@ -1,14 +1,16 @@
 <?php
 
+
 namespace Nemundo\App\Linux\Ssh;
 
 
-// SshCommand
-class LinuxCommand extends AbstractSsh
+use Nemundo\App\Linux\Ssh\AbstractSsh;
+
+abstract class AbstractSshCommand extends AbstractSsh
 {
 
 
-    public function runCommand($command)
+    protected function runCommand($command)
     {
 
 

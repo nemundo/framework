@@ -16,7 +16,7 @@ class ApacheSite extends AbstractSite
         $this->title='Apache';
         $this->url='apache';
 
-        new ConfigDeleteSite($this);
+        new ConfigDeleteSiteOld($this);
 
     }
 

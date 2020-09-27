@@ -84,7 +84,7 @@ apache2ctl configtest
 
 ```
 sudo passwd root
-sudo nano /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
 sudo systemctl restart sshd
 ```
 

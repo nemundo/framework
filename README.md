@@ -1,6 +1,5 @@
 # Nemundo Framework
 
-
 ### Installation
 ```
 composer require nemundo/framework
@@ -16,10 +15,15 @@ composer require nemundo/framework
 ```
 
 ###Run Composer Update
-```  
-  composer update
+```
+composer update
 ```
 
+### Config Setup with Argument
+```
+php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig();"
+(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig('/srv/web/project/', 'localhost', 3306, 'root', 'password', 'db1');
+```
 
 ### Project Intallation
 ```
@@ -35,7 +39,6 @@ php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Admin\Install\Admin
 ```
 bin/setup.php
 ```
-
 
 ### Dependency
 
@@ -71,12 +74,10 @@ composer require phpseclib/phpseclib
 php bin\cmd.php admin-user-enable
 ```
 
-
 ### Password Reset
 ```
 php bin\cmd.php user-password-reset
 ```
-
 
 ### Dev Installation
 ```

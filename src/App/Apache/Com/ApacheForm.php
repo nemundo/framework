@@ -6,6 +6,7 @@ namespace Nemundo\App\Apache\Com;
 
 use Nemundo\App\Apache\Builder\ApacheConfigBuilder;
 use Nemundo\App\Linux\Ssh\SftpUploadFile;
+use Nemundo\App\Linux\Ssh\SshConnection;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
@@ -13,6 +14,11 @@ use Paranautik\Ssh\ParanautikTestSshConnection;
 
 class ApacheForm extends BootstrapForm
 {
+
+    /**
+     * @var SshConnection
+     */
+    public $connection;
 
     /**
      * @var BootstrapTextBox
@@ -51,7 +57,7 @@ class ApacheForm extends BootstrapForm
         (new Debug())->write($content);
 
         $sftp = new SftpUploadFile();
-        $sftp->connection = new ParanautikTestSshConnection();
+        $sftp->connection =$this->connection;
         $sftp->destinationFilename = '/etc/apache2/sites-enabled/' . $this->serverName->getValue() . '.conf';
         $sftp->content = $content;
         $sftp->uploadFile();
@@ -60,19 +66,6 @@ class ApacheForm extends BootstrapForm
         exit;
 
 
-        /*
-
-        $sftp = new \Net_SFTP('www.domain.tld');
-        if (!$sftp->login('username', 'password')) {
-            exit('Login Failed');
-        }
-
-// puts a three-byte file named filename.remote on the SFTP server
-        $sftp->put('filename.remote', 'xxx');
-// puts an x-byte file named filename.remote on the SFTP server,
-// where x is the size of filename.local
-        $sftp->put('filename.remote', 'filename.local', SFTP::SOURCE_LOCAL_FILE);
-*/
 
 
     }

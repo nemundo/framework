@@ -12,6 +12,19 @@ QUIT;
 
 
 
+```
+mysql -e "CREATE DATABASE dbname2;GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'localhost' IDENTIFIED BY 'password';FLUSH PRIVILEGES;"
+```
+
+
+
+
+
+
+
+
+
+
 mysql -u root -e "create database somedb"
 
 

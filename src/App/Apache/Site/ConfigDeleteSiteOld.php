@@ -11,11 +11,11 @@ use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Web\Url\UrlReferer;
 use Paranautik\Ssh\ParanautikTestSshConnection;
 
-class ConfigDeleteSite extends AbstractDeleteIconSite
+class ConfigDeleteSiteOld extends AbstractDeleteIconSite
 {
 
     /**
-     * @var ConfigDeleteSite
+     * @var ConfigDeleteSiteOld
      */
     public static $site;
 
@@ -23,7 +23,7 @@ class ConfigDeleteSite extends AbstractDeleteIconSite
     {
 
         parent::loadSite();
-        ConfigDeleteSite::$site = $this;
+        ConfigDeleteSiteOld::$site = $this;
 
     }
 
@@ -34,7 +34,7 @@ class ConfigDeleteSite extends AbstractDeleteIconSite
         $filename = ApacheConfig::$configPath . (new FilenameParameter())->getValue();
 
         $sftp = new SftpUploadFile();
-        $sftp->connection = new ParanautikTestSshConnection();
+        //$sftp->connection = new ParanautikTestSshConnection();
         $sftp->deleteFilename($filename);
 
         (new UrlReferer())->redirect();
