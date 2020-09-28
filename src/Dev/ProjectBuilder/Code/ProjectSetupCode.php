@@ -1,0 +1,31 @@
+<?php
+
+namespace Nemundo\Dev\ProjectBuilder\Code;
+
+
+use Nemundo\Dev\Code\PhpClass;
+use Nemundo\Dev\Code\PhpFunction;
+
+class ProjectSetupCode extends AbstractProjectCode
+{
+
+    public function createCode()
+    {
+
+        $phpClass = new PhpClass();
+        $phpClass->path = $this->path;
+        $phpClass->namespace = $this->prefixNamespace . '\\Setup';
+        $phpClass->className = $this->prefixNamespace . 'Setup';
+        $phpClass->extendsFromClass = 'AbstractScript';
+        $phpClass->addUseClass('Nemundo\App\Script\Type\AbstractScript');
+        $phpClass->addUseClass('Nemundo\Project\Install\ProjectInstall');
+
+        $function = new PhpFunction($phpClass);
+        $function->functionName = 'run()';
+        $function->add('(new ProjectInstall())->install();');
+
+        $phpClass->saveFile();
+
+    }
+
+}
