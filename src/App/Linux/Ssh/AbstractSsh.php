@@ -5,6 +5,7 @@ namespace Nemundo\App\Linux\Ssh;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogMessage;
+use phpseclib\Crypt\RSA;
 use phpseclib\Net\SSH2;
 
 
@@ -61,23 +62,24 @@ abstract class AbstractSsh extends AbstractBaseClass
 
         if (!$this->ssh->isConnected()) {
 
-            /*
 
-            $rsa = new RSA();
-            $rsa->loadKey($this->connection->rsaKey);
+            if ($this->connection->rsaKey !== null) {
 
-            if (!$this->ssh->login($this->connection->user, $rsa)) {
-                (new LogMessage())->writeError('SSH Login fehlgeschlagen');
-                return false;
-            }*/
+                $rsa = new RSA();
+                $rsa->loadKey($this->connection->rsaKey);
+                if (!$this->ssh->login($this->connection->user, $rsa)) {
+                    (new LogMessage())->writeError('SSH Login fehlgeschlagen');
+                    return false;
+                }
 
-            if (!$this->ssh->login($this->connection->user, $this->connection->password)) {
-                (new LogMessage())->writeError('SSH Login fehlgeschlagen');
-                return false;
+            } else {
+
+                if (!$this->ssh->login($this->connection->user, $this->connection->password)) {
+                    (new LogMessage())->writeError('SSH Login fehlgeschlagen');
+                    return false;
+                }
+
             }
-
-            //$this->ssh->write('sudo su\n');
-
 
         }
 

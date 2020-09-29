@@ -12,6 +12,8 @@ use Nemundo\Core\TextFile\Reader\TextFileReader;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 
+// LogFile
+// move nach App
 class LogFileSite extends AbstractSite
 {
 

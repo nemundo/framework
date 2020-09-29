@@ -36,7 +36,6 @@ class ProjectBuilderScript extends AbstractBase
         $builder->createProject();
 
         $install = new AdminPackageInstall($projectPath);
-        //$install->projectPath = $projectPath;
         $install->install();
 
     }

@@ -7,6 +7,7 @@ namespace Nemundo\App\Linux\Ssh;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Dev\Linux\Ssh\SshConfig;
+use phpseclib\Crypt\RSA;
 use phpseclib\Net\SFTP;
 
 class SftpUploadFile extends AbstractSsh
@@ -33,23 +34,28 @@ class SftpUploadFile extends AbstractSsh
 
         if (!$this->sftp->isConnected()) {
 
-            if ($this->connection ==null) {
-                $this->connection=SshConfig::$sshConnction;
+            if ($this->connection == null) {
+                $this->connection = SshConfig::$sshConnction;
             }
 
 
-            /*
-            $rsa = new RSA();  // new \Crypt_RSA();
-            $rsa->loadKey($this->connection->rsaKey);
+            if ($this->connection->rsaKey !== null) {
 
-            if (!$this->sftp->login($this->connection->user, $rsa)) {
-                (new LogMessage())->writeError('SSH Login fehlgeschlagen');
-                return false;
-            }*/
+                $rsa = new RSA();  // new RSA();  // new \Crypt_RSA();
+                $rsa->loadKey($this->connection->rsaKey);
 
-            if (!$this->sftp->login($this->connection->user, $this->connection->password)) {
-                (new LogMessage())->writeError('SSH Login fehlgeschlagen');
-                return false;
+                if (!$this->sftp->login($this->connection->user, $rsa)) {
+                    (new LogMessage())->writeError('SSH Login fehlgeschlagen');
+                    return false;
+                }
+
+            } else {
+
+                if (!$this->sftp->login($this->connection->user, $this->connection->password)) {
+                    (new LogMessage())->writeError('SSH Login fehlgeschlagen');
+                    return false;
+                }
+
             }
 
         }
@@ -61,25 +67,16 @@ class SftpUploadFile extends AbstractSsh
     public function getFileList($path)
     {
 
-
         $this->connect();
 
-
-        // print_r($sftp->nlist()); // == $sftp->nlist('.')
-
-        $list = [];  //  $this->sftp->nlist($path);
-
+        $list = [];
         foreach ($this->sftp->nlist($path) as $filename) {
-
             if (($filename !== '.') && ($filename !== '..')) {
                 $list[] = $filename;
             }
-
         }
 
-
         return $list;
-
 
     }
 
@@ -87,19 +84,20 @@ class SftpUploadFile extends AbstractSsh
     public function getTextFileContent($filename)
     {
 
+        $this->connect();
         $content = $this->sftp->get($filename);
         return $content;
 
     }
 
 
-    public function deleteFilename($filename) {
+    public function deleteFilename($filename)
+    {
 
         $this->connect();
         $this->sftp->delete($filename);
 
     }
-
 
 
     public function uploadFile()

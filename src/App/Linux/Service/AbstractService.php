@@ -23,19 +23,19 @@ abstract class AbstractService extends AbstractSshCommand
 
     public function start()
     {
-        $this->runCommand('service ' . $this->serviceName . ' start');
+        $this->runCommand('sudo service ' . $this->serviceName . ' start');
     }
 
 
     public function stop()
     {
-        $this->runCommand('service ' . $this->serviceName . ' stop');
+        $this->runCommand('sudo service ' . $this->serviceName . ' stop');
     }
 
 
     public function restart()
     {
-        $this->runCommand('service ' . $this->serviceName . ' restart');
+        $this->runCommand('sudo service ' . $this->serviceName . ' restart');
     }
 
 

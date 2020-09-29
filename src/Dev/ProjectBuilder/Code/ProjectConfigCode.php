@@ -13,21 +13,9 @@ class ProjectConfigCode extends AbstractProjectCode
 
         $php = new PhpFile();
         $php->filename = $this->path . 'config.php';
-        //$php->add('require __DIR__ . \'/lib/framework/autoload/autoload.php\';');
+
+        $php->add('error_reporting(E_ALL);');
         $php->add('require \'vendor/autoload.php\';');
-
-        /*
-        $php->add('$autoload = new Autoloader();');
-        $php->add('');
-        $php->add('$lib = new Library($autoload);');
-        $php->add('$lib->source = __DIR__ . \'/lib/framework/src/\';');
-        $php->add('$lib->namespace = \'Nemundo\';');
-        $php->add('');
-
-        $php->add('$lib = new Library($autoload);');
-        $php->add('$lib->source = __DIR__ . \'/src/\';');
-        $php->add('$lib->namespace = \'' . $this->prefixNamespace . '\';');
-        $php->add('');*/
 
         $php->add('\Nemundo\Project\ProjectConfig::$projectPath = __DIR__ . DIRECTORY_SEPARATOR;');
         $php->add('');
@@ -37,7 +25,6 @@ class ProjectConfigCode extends AbstractProjectCode
         $php->add('');
 
         $php->saveFile();
-
 
     }
 

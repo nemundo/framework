@@ -27,18 +27,28 @@ apt install php7.0-mysql
 apt install php7.0-xml
 apt install php7.0-mbstring
 apt install php7.0-zip
+
+
+--> evtl, das noch
+sudo apt-get install php-gd
+
 ```
 
 
 # Silent Installation
 ```
-sudo apt update;sudo apt upgrade -y;sudo apt install -y curl apache2 mariadb-server php libapache2-mod-php php-mysql php-xml php-mbstring php-zip php-curl;timedatectl set-timezone Europe/Zurich;sudo a2enmod rewrite;sudo systemctl restart apache2;sudo snap install --classic certbot
+sudo apt update;sudo apt upgrade -y;sudo apt install -y curl apache2 mariadb-server php libapache2-mod-php php-mysql php-xml php-mbstring php-zip php-gd php-curl;timedatectl set-timezone Europe/Zurich;sudo a2enmod rewrite;sudo systemctl restart apache2;sudo snap install --classic certbot
 ```
 
+# PHP
+```
+sudo vi /etc/php/7.2/apache2/php.ini
+```
 
-
-
-
+```
+upload_max_filesize = 40M
+post_max_size = 40M
+```
 
 
 
