@@ -11,7 +11,7 @@ use Nemundo\Admin\AppDesigner\Parameter\AppParameter;
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class AppDeleteSite extends AbstractIconSite
 {

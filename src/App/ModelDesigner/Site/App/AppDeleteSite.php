@@ -6,7 +6,7 @@ namespace Nemundo\App\ModelDesigner\Site\App;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class AppDeleteSite extends AbstractDeleteIconSite
 {

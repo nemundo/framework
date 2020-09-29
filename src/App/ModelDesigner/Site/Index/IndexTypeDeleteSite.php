@@ -11,7 +11,7 @@ use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class IndexTypeDeleteSite extends AbstractDeleteIconSite
 {

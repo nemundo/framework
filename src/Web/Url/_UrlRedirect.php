@@ -7,7 +7,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogConfig;
 
 
-class UrlRedirect extends AbstractBaseClass
+class _UrlRedirect extends AbstractBaseClass
 {
 
     public function redirect($url)

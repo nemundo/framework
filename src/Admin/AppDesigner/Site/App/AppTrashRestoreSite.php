@@ -7,7 +7,7 @@ use Nemundo\Admin\AppDesigner\Connection\AppDesignerConnection;
 use Nemundo\Admin\AppDesigner\Data\App\AppUpdate;
 use Nemundo\Admin\AppDesigner\Parameter\AppParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class AppTrashRestoreSite extends AbstractSite
 {

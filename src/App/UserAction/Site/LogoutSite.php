@@ -4,7 +4,7 @@ namespace Nemundo\App\UserAction\Site;
 
 use Nemundo\User\Login\UserLogout;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlRedirect;
+use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\Web\WebConfig;
 
 class LogoutSite extends AbstractSite

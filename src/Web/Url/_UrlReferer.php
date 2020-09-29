@@ -1,12 +1,12 @@
 <?php
 
-namespace Nemundo\Web\Url;
+namespace Nemundo\Http\Url\UrlReferer;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 
-class UrlReferer extends AbstractBaseClass
+class _UrlReferer extends AbstractBaseClass
 {
 
     /**

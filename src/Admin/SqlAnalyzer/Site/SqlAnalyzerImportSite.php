@@ -5,7 +5,7 @@ namespace Nemundo\Admin\SqlAnalyzer\Site;
 
 use Nemundo\Admin\SqlAnalyzer\Import\SqlAnalyzerImport;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class SqlAnalyzerImportSite extends AbstractSite
 {

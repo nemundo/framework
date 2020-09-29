@@ -9,7 +9,7 @@ use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
 use Nemundo\Package\FontAwesome\Icon\ActiveIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class SchedulerActiveSite extends AbstractIconSite
 {

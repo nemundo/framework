@@ -11,7 +11,7 @@ use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\Package\FontAwesome\Icon\InactiveIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class SchedulerInactiveSite extends AbstractIconSite
 {

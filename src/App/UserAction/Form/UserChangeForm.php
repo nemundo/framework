@@ -8,7 +8,7 @@ use Nemundo\User\Com\ListBox\UserListBox;
 use Nemundo\User\Login\UserLogin;
 use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Type\UserSessionType;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class UserChangeForm extends AbstractFormBuilder
 {

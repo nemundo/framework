@@ -10,7 +10,7 @@ use Nemundo\User\Login\Session\IsLoggedSession;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Url\Url;
-use Nemundo\Web\Url\UrlRedirect;
+use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\Web\WebConfig;
 
 

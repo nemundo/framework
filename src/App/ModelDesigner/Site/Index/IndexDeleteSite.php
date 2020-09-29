@@ -5,7 +5,7 @@ namespace Nemundo\App\ModelDesigner\Site\Index;
 
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\FieldNameParameter;
 use Nemundo\App\ModelDesigner\Parameter\IndexParameter;

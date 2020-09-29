@@ -16,7 +16,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Package\FontAwesome\Site\AbstractEditIconSite;
 use Nemundo\Package\FontAwesome\Site\AbstractRestoreIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class TypeUndoDeleteSite extends AbstractRestoreIconSite
 {

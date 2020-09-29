@@ -9,7 +9,7 @@ use Nemundo\Admin\AppDesigner\Data\AppModelIndex\AppModelIndexReader;
 use Nemundo\Admin\AppDesigner\Orm\AppDesignerModelOrmSetup;
 use Nemundo\Admin\AppDesigner\Parameter\ModelIndexParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class AppModelIndexDeleteSite extends AbstractSite
 {

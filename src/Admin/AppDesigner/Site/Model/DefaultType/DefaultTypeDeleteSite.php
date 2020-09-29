@@ -10,7 +10,7 @@ use Nemundo\Admin\AppDesigner\Orm\AppDesignerModelOrmSetup;
 use Nemundo\Admin\AppDesigner\Parameter\DefaultTypeParameter;
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class DefaultTypeDeleteSite extends AbstractIconSite
 {

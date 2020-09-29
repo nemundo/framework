@@ -12,7 +12,7 @@ use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
 use Nemundo\Package\FontAwesome\Icon\ActiveIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Http\Url\UrlReferer;
 
 class SchedulerResetSite extends AbstractIconSite
 {
