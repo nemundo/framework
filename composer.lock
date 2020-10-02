@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "nemundo/core",
-            "version": "0.29",
+            "version": "0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nemundo/core.git",
-                "reference": "7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e"
+                "reference": "6edbf173cc74f5ad85329dc10661651f15b65817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nemundo/core/zipball/7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e",
-                "reference": "7a9db7f92817b237cadcdfdca0ec4e6606bcfa5e",
+                "url": "https://api.github.com/repos/nemundo/core/zipball/6edbf173cc74f5ad85329dc10661651f15b65817",
+                "reference": "6edbf173cc74f5ad85329dc10661651f15b65817",
                 "shasum": ""
             },
             "type": "library",
@@ -37,20 +37,20 @@
                 }
             ],
             "description": "Core Function",
-            "time": "2020-08-11T17:35:48+00:00"
+            "time": "2020-10-02T15:38:19+00:00"
         },
         {
             "name": "nemundo/db",
-            "version": "0.35",
+            "version": "0.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nemundo/db.git",
-                "reference": "d418c3cd3ce9cd73e48bac3252c06bd684ca908e"
+                "reference": "6eb96e506b1406d07f8af60c6592f665ed7db9f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nemundo/db/zipball/d418c3cd3ce9cd73e48bac3252c06bd684ca908e",
-                "reference": "d418c3cd3ce9cd73e48bac3252c06bd684ca908e",
+                "url": "https://api.github.com/repos/nemundo/db/zipball/6eb96e506b1406d07f8af60c6592f665ed7db9f8",
+                "reference": "6eb96e506b1406d07f8af60c6592f665ed7db9f8",
                 "shasum": ""
             },
             "require": {
@@ -73,20 +73,20 @@
                 }
             ],
             "description": "Database Access",
-            "time": "2020-08-11T17:35:48+00:00"
+            "time": "2020-08-27T10:16:20+00:00"
         },
         {
             "name": "nemundo/html",
-            "version": "0.45",
+            "version": "0.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nemundo/html.git",
-                "reference": "da429779f521a39b0747b4845022c34902ee8af9"
+                "reference": "3d9c9ee860131199016dbfc948ca18a03522ae97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nemundo/html/zipball/da429779f521a39b0747b4845022c34902ee8af9",
-                "reference": "da429779f521a39b0747b4845022c34902ee8af9",
+                "url": "https://api.github.com/repos/nemundo/html/zipball/3d9c9ee860131199016dbfc948ca18a03522ae97",
+                "reference": "3d9c9ee860131199016dbfc948ca18a03522ae97",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 }
             ],
             "description": "Html Generator",
-            "time": "2020-07-28T09:59:41+00:00"
+            "time": "2020-08-27T10:16:21+00:00"
         }
     ],
     "packages-dev": [],

@@ -5,6 +5,11 @@
 composer require nemundo/framework
 ```
 
+### Project Intallation
+```
+php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Dev\ProjectBuilder\ProjectBuilderScript())->createProject();"
+```
+
 ### Add Autoloader (composer.json)
 ```
   "autoload": {
@@ -19,16 +24,7 @@ composer require nemundo/framework
 composer update
 ```
 
-### Config Setup with Argument
-```
-php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig();"
-(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig('/srv/web/project/', 'localhost', 3306, 'root', 'password', 'db1');
-```
 
-### Project Intallation
-```
-php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Dev\ProjectBuilder\ProjectBuilderScript())->createProject();"
-```
 
 ### Standalone Admin Installation
 ```
@@ -148,7 +144,11 @@ cache_path=
 ```
 
 
-
+### Config Setup with Argument
+```
+php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig();"
+(new \Nemundo\Project\Config\ProjectConfigArgumentBuilder())->createConfig('/srv/web/project/', 'localhost', 3306, 'root', 'password', 'db1');
+```
 
 
 

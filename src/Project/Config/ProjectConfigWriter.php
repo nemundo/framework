@@ -30,17 +30,16 @@ class ProjectConfigWriter extends AbstractBaseClass
 
         if (!$file->fileExists()) {
 
-
-
-
             $config = new ProjectConfigBuilder();
             $config->filename =$this->filename;
-            $config->mysqlHost=$mysqlHost;
+            /*$config->mysqlHost=$mysqlHost;
             $config->mysqlPort=$mysqlPort;
             $config->mysqlUser=$mysqlUser;
             $config->mysqlPassword=$mysqlPassword;
             $config->mysqlDatabase=$mysqlDatabase;
-            $config->writeConfigFile();
+             $config->writeConfigFile();
+            */
+
 
 
             $writer = new ConfigWriter($this->filename);
