@@ -79,7 +79,7 @@ php bin\cmd.php admin-user-enable
 php bin\cmd.php user-password-reset
 ```
 
-### Dev Installation
+### Submodule Installation
 ```
 git submodule add https://github.com/nemundo/framework.git lib/framework
 php lib\framework\install\project-install.php
@@ -109,6 +109,13 @@ $lib->namespace = 'Nemundo';
 $config = new \Nemundo\Project\Config\ProjectConfigReader();
 $config->filename = __DIR__ . '/config.ini';
 $config->readFile();
+```
+
+
+###Submodule Deinstallation
+```
+git submodule deinit lib/framework
+git rm lib/framework
 ```
 
 
