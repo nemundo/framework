@@ -4,10 +4,11 @@
 namespace Nemundo\Com\Package;
 
 
+use Nemundo\Core\Path\AbstractPath;
 use Nemundo\Core\Path\Path;
 use Nemundo\FrameworkProject;
 
-class PackagePath extends Path
+class PackagePath extends AbstractPath // Path
 {
 
     public function __construct(AbstractPackage $package)
@@ -18,12 +19,18 @@ class PackagePath extends Path
             $package->project = new FrameworkProject();
         }
 
-        $this
-            ->addPath($package->project->path)
+        $this->addPath($package->project->path)
             ->addPath('..')
             ->addPath('package')
             ->addPath($package->packageName);
 
     }
+
+
+    protected function loadPath()
+    {
+        // TODO: Implement loadPath() method.
+    }
+
 
 }

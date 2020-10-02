@@ -18,11 +18,15 @@ abstract class AbstractCachePath extends AbstractPath
     public function __construct()
     {
 
+        parent::__construct();
+
         if (AbstractCachePath::$cachePath == null) {
             AbstractCachePath::$cachePath = (new ProjectConfigReader())->getValue('cache_path');
         }
 
-        parent::__construct(AbstractCachePath::$cachePath);
+        $this->addPath(AbstractCachePath::$cachePath);
+
+        //parent::__construct(AbstractCachePath::$cachePath);
 
     }
 

@@ -12,7 +12,7 @@ class DataPath extends AbstractPath
 
     protected function loadPath()
     {
-        parent::loadPath();
+        //parent::loadPath();
         $this->addPath(ModelConfig::$dataPath);
     }
 

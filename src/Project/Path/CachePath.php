@@ -9,6 +9,11 @@ use Nemundo\Project\Config\ProjectConfigReader;
 class CachePath extends AbstractCachePath
 {
 
+    protected function loadPath()
+    {
+        // TODO: Implement loadPath() method.
+    }
+
     /**
      * @var string
      */

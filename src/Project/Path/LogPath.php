@@ -3,12 +3,12 @@
 namespace Nemundo\Project\Path;
 
 
-class LogPath extends ProjectPath
+class LogPath extends AbstractProjectPath  // ProjectPath
 {
 
     protected function loadPath()
     {
-        parent::loadPath();
+        //parent::loadPath();
         $this->addPath('log');
     }
 
