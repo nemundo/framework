@@ -1,2 +1,2 @@
-git tag 0.40
+git tag 0.41
 git push --tags
