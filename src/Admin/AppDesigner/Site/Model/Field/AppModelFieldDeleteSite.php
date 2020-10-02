@@ -9,7 +9,7 @@ use Nemundo\Admin\AppDesigner\Data\AppModelField\AppModelFieldUpdate;
 use Nemundo\Admin\AppDesigner\Orm\AppDesignerModelOrmSetup;
 use Nemundo\Admin\AppDesigner\Parameter\ModelFieldParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class AppModelFieldDeleteSite extends AbstractSite
 {

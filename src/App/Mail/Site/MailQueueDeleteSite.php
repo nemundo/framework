@@ -5,8 +5,8 @@ namespace Nemundo\App\Mail\Site;
 
 use Nemundo\App\Mail\Data\MailQueue\MailQueueDelete;
 use Nemundo\App\Mail\Parameter\MailUrlParameter;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Http\Url\UrlReferer;
 
 class MailQueueDeleteSite extends AbstractDeleteIconSite
 {
@@ -19,7 +19,7 @@ class MailQueueDeleteSite extends AbstractDeleteIconSite
 
     protected function loadSite()
     {
-        MailQueueDeleteSite::$site=$this;
+        MailQueueDeleteSite::$site = $this;
     }
 
 

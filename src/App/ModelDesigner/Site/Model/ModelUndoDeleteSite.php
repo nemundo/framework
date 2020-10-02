@@ -7,7 +7,7 @@ use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Package\FontAwesome\Site\AbstractRestoreIconSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class ModelUndoDeleteSite extends AbstractRestoreIconSite
 {

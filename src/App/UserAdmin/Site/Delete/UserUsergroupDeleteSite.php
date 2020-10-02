@@ -6,7 +6,7 @@ namespace Nemundo\App\UserAdmin\Site\Delete;
 use Nemundo\App\UserAdmin\Parameter\UserUsergroupParameter;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupDelete;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class UserUsergroupDeleteSite extends AbstractDeleteIconSite
 {

@@ -9,7 +9,7 @@ use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Model\Delete\ModelDelete;
 use Nemundo\Model\Setup\ModelSetup;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class DropDataSite extends AbstractSite
 {

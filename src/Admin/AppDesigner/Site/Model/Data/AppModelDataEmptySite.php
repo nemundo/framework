@@ -7,7 +7,7 @@ use Nemundo\Admin\AppDesigner\Connection\AppDesignerConnection;
 use Nemundo\Admin\AppDesigner\Factory\RowFactory;
 use Nemundo\Db\Delete\DataDelete;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class AppModelDataEmptySite extends AbstractSite
 {

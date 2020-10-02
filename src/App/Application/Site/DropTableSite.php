@@ -7,7 +7,7 @@ namespace Nemundo\App\Application\Site;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\Db\Provider\MySql\Table\MySqlTable;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class DropTableSite extends AbstractSite
 {

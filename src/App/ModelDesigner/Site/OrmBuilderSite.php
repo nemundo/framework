@@ -7,7 +7,7 @@ use Nemundo\App\ModelDesigner\Orm\OrmBuilder;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class OrmBuilderSite extends AbstractSite
 {

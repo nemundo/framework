@@ -2,21 +2,32 @@
 
 namespace Nemundo\Project\Path;
 
-class TmpPath extends AbstractTmpPath  // ProjectPath
+use Nemundo\Project\ProjectConfig;
+
+class TmpPath extends ProjectPath
 {
 
-
-    protected function loadPath()
+/*
+    public function __construct()
     {
-        // TODO: Implement loadPath() method.
-    }
 
-    /*
+        $this->addPath(ProjectConfig::$projectPath);
+        $this->addPath('tmp');
+
+        parent::__construct();
+
+        //$this->addPath('tmp');
+        //$this->loadPath();
+
+    }*/
+
+
+
     protected function loadPath()
     {
         parent::loadPath();
         $this->addPath('tmp');
 
-    }*/
+    }
 
 }

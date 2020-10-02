@@ -8,7 +8,7 @@ use Nemundo\App\Apache\ApacheConfig;
 use Nemundo\App\Apache\Parameter\FilenameParameter;
 use Nemundo\App\Linux\Ssh\SftpUploadFile;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Paranautik\Ssh\ParanautikTestSshConnection;
 
 class ConfigDeleteSiteOld extends AbstractDeleteIconSite

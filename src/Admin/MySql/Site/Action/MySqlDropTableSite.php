@@ -8,7 +8,7 @@ use Nemundo\Db\Provider\MySql\Table\MySqlTable;
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 // DropTableSite
 class MySqlDropTableSite extends AbstractIconSite

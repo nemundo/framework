@@ -11,7 +11,7 @@ use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Db\Delete\DataDelete;
 use Nemundo\Model\Delete\ModelDelete;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class DataEmptySite extends AbstractSite
 {

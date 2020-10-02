@@ -10,7 +10,7 @@ use Nemundo\Core\File\Directory;
 use Nemundo\Core\Path\Path;
 use Nemundo\Dev\Code\PhpNamespace;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Http\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class ModelDeleteSite extends AbstractDeleteIconSite
 {
