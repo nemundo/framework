@@ -3,8 +3,7 @@
 namespace Nemundo\App\Linux\Ssh;
 
 
-// SshCommand
-use Nemundo\Dev\Linux\AbstractSshCommand;
+
 
 class SshCommand extends AbstractSshCommand  // AbstractSsh
 {
