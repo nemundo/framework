@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nemundo\App\Linux\Script;
+namespace Nemundo\App\Linux\_Script;
 
 
 use Nemundo\App\Linux\Ssh\SshCommand;

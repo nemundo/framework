@@ -156,13 +156,3 @@ php -r "require __DIR__.'/vendor/autoload.php';(new \Nemundo\Project\Config\Proj
 
 
 
-
-
-
-### Slow Sql Log
-
-
-
-
-
-

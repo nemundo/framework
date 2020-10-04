@@ -2,6 +2,7 @@
 
 namespace Nemundo\Dev\Script;
 
+use Nemundo\Admin\Install\AdminPackageInstall;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
 use Nemundo\Com\Package\PackageSetup;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
@@ -29,6 +30,13 @@ class AdminBuilderScript extends AbstractConsoleScript
     public function run()
     {
 
+        $projectPath =  (new ProjectPath())
+            ->addPath('admin')
+            ->getPath();
+
+        (new AdminPackageInstall($projectPath))->install();
+
+        /*
         $setup = new PackageSetup();
         $setup->destinationPath = (new ProjectPath())
             ->addPath('admin')
@@ -42,7 +50,7 @@ class AdminBuilderScript extends AbstractConsoleScript
         $setup->addPackage(new EchartsPackage());
         $setup->addPackage(new FancyboxPackage());
         $setup->addPackage(new BootstrapMultiselectPackage());
-        $setup->addPackage(new DropzonePackage());
+        $setup->addPackage(new DropzonePackage());*/
 
     }
 

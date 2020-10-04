@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Nemundo\App\Linux\Install;
+namespace Nemundo\App\Linux\_Install;
 
 
-use Nemundo\App\Linux\Script\LinuxIntallationScript;
+use Nemundo\App\Linux\_Script\LinuxIntallationScript;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Project\Install\AbstractInstall;
 

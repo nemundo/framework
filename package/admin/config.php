@@ -6,4 +6,6 @@ require __DIR__ . "/../vendor/autoload.php";
 
 // Project
 require __DIR__ . "/../config.php";
-(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject();
+require __DIR__ . "/../config_admin.php";
+
+//(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject();

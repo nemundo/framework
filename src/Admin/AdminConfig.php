@@ -4,6 +4,7 @@ namespace Nemundo\Admin;
 
 
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
+use Nemundo\Web\Controller\AbstractWebController;
 
 
 class AdminConfig
@@ -13,5 +14,10 @@ class AdminConfig
      * @var string
      */
     public static $defaultTemplateClassName = BootstrapDocument::class;
+
+    /**
+     * @var AbstractWebController
+     */
+    public static $webController;
 
 }

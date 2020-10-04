@@ -25,7 +25,6 @@ abstract class AbstractSshConnection extends AbstractBase
 
     public $rsaKey;
 
-
     /**
      * @var int
      */
@@ -38,6 +37,5 @@ abstract class AbstractSshConnection extends AbstractBase
     {
         $this->loadConnection();
     }
-
 
 }

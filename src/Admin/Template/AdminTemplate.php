@@ -42,24 +42,28 @@ class AdminTemplate extends BootstrapDocument
      */
     private $container;
 
+    /**
+     * @var BootstrapSiteNavbar
+     */
+    protected $navbar;
+
     protected function loadContainer()
     {
         parent::loadContainer();
 
         if (AdminTemplate::$webController !== null) {
 
-            $navbar = new BootstrapSiteNavbar();
-            $navbar->site = AdminTemplate::$webController;
-            $navbar->userMode = false;
-
+            $this->navbar = new BootstrapSiteNavbar();
+            $this->navbar->site = AdminTemplate::$webController;
+            $this->navbar->userMode = false;
 
             if (AdminTemplate::$logoUrl !== null) {
-                $logo = new BootstrapNavbarLogo($navbar);
+                $logo = new BootstrapNavbarLogo($this->navbar);
                 $logo->logoSite =new BaseUrlSite();
                 $logo->logoUrl = AdminTemplate::$logoUrl;
             }
 
-            parent::addContainer($navbar);
+            parent::addContainer($this->navbar);
 
         }
 

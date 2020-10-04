@@ -47,6 +47,7 @@ class ProjectBuilder extends AbstractBaseClass
         $this->copyAsset('.gitignore');
         $this->copyAsset('commit.bat');
         $this->copyAsset('deploy');
+        $this->copyAsset('config_admin.php');
         $this->copyAsset('.htaccess', 'web');
         $this->copyAsset('cmd.php', 'bin');
         $this->copyAsset('config.php', 'bin');

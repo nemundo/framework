@@ -29,19 +29,22 @@ class SftpUploadFile extends AbstractSsh
     {
 
 
-        define('NET_SFTP_LOGGING', SFTP::LOG_COMPLEX);
-        $this->sftp = new SFTP($this->connection->host);
+//        define('NET_SFTP_LOGGING', SFTP::LOG_COMPLEX);
+//        $this->sftp = new SFTP($this->connection->host);
 
         if (!$this->sftp->isConnected()) {
+
+            define('NET_SFTP_LOGGING', SFTP::LOG_COMPLEX);
+            $this->sftp = new SFTP($this->connection->host);
+
 
             if ($this->connection == null) {
                 $this->connection = SshConfig::$sshConnction;
             }
 
-
             if ($this->connection->rsaKey !== null) {
 
-                $rsa = new RSA();  // new RSA();  // new \Crypt_RSA();
+                $rsa = new RSA();
                 $rsa->loadKey($this->connection->rsaKey);
 
                 if (!$this->sftp->login($this->connection->user, $rsa)) {
@@ -59,7 +62,6 @@ class SftpUploadFile extends AbstractSsh
             }
 
         }
-
 
     }
 

@@ -11,7 +11,8 @@
   "require": {
     "nemundo/core": "*",
     "nemundo/html": "*",
-    "nemundo/db": "*"
+    "nemundo/db": "*",
+    "phpseclib/phpseclib": "^2.0"
   },
   "autoload": {
     "psr-4": {

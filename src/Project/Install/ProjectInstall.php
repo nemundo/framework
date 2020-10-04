@@ -51,9 +51,9 @@ class ProjectInstall extends AbstractInstall
         (new LogPath())->createPath();
 
         (new ScriptSetup())
-        ->addScript(new DeleteTmpScript())
-        ->addScript(new AdminBuilderScript())
-        ->addScript(new LogFileDeleteScript());
+            ->addScript(new DeleteTmpScript())
+            ->addScript(new AdminBuilderScript())
+            ->addScript(new LogFileDeleteScript());
 
 
     }
