@@ -13,7 +13,6 @@ use Nemundo\Package\FontAwesome\FontAwesomeIcon;
 use Nemundo\User\Login\Session\IsLoggedSession;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\SearchEngine\Com\Navbar\NavbarSearchForm;
 
 
 class BootstrapSiteNavbar extends BootstrapNavbar
@@ -33,7 +32,6 @@ class BootstrapSiteNavbar extends BootstrapNavbar
      * @var bool
      */
     public $searchMode = false;
-
 
     /**
      * @var AbstractSite[]
@@ -75,7 +73,6 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
             $hyperlink = new SiteHyperlink($li);
             $hyperlink->addCssClass('nav-link');
-
 
             $hyperlink->content = $site->title;
             $hyperlink->site = $site;
@@ -134,12 +131,11 @@ class BootstrapSiteNavbar extends BootstrapNavbar
                 $icon->icon = 'user';
 
                 $bold = new Bold($hyperlink);
-                $bold->content = ' ' . (new UserSessionType())->displayName;
+                $bold->content = ' '.(new UserSessionType())->displayName;
 
                 $div = new Div($li);
                 $div->addCssClass('dropdown-menu');
                 $div->addAttribute('aria-labelledby', '');
-
 
                 foreach ($this->userMenuSiteList as $userMenu) {
 
@@ -163,7 +159,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
         if ($this->searchMode) {
             if ((new UserSessionType())->isUserLogged()) {
-                new NavbarSearchForm($this);
+                //new NavbarSearchForm($this);
             }
         }
 

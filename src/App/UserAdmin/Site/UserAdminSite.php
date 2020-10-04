@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Com\Html\Hyperlink\EmailHyperlink;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Com\Template\TemplateDocument;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -46,7 +47,7 @@ class UserAdminSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+        $page = new TemplateDocument();  // (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $btn = new AdminSiteButton($page);
         $btn->site = UserNewSite::$site;

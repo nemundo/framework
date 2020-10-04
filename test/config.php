@@ -6,16 +6,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 
-/*
-require __DIR__ . '/../autoload/autoload.php';
-
-$autoload = new Autoloader();
-
-$lib = new Library($autoload);
-$lib->source = __DIR__ . '/../src/';
-$lib->namespace = 'Nemundo';*/
-
-
-//\Nemundo\Core\Log\LogConfig::$logType = [\Nemundo\Core\Log\LogType::SCREEN];
-//\Nemundo\Web\WebConfig::$webUrl = '/paranautik/web/';
-//\Nemundo\Web\WebConfig::$webUrl = '/schleuniger/web/';
+\Nemundo\Db\DbConfig::$defaultConnection=new \Nemundo\Db\Provider\MySql\Connection\MySqlConnection();
+\Nemundo\Db\DbConfig::$defaultConnection->connectionParameter->host='localhost';
+\Nemundo\Db\DbConfig::$defaultConnection->connectionParameter->port='3333';
+\Nemundo\Db\DbConfig::$defaultConnection->connectionParameter->user='root';
+\Nemundo\Db\DbConfig::$defaultConnection->connectionParameter->password='';
+\Nemundo\Db\DbConfig::$defaultConnection->connectionParameter->database='nemundo_test';

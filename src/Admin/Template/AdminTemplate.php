@@ -2,17 +2,14 @@
 
 namespace Nemundo\Admin\Template;
 
-use Nemundo\Admin\AppDesigner\Site\HomeRedirectSite;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
-use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
 use Nemundo\Web\Controller\AbstractWebController;
-use Nemundo\Web\Site\BaseUrlSite;
 
 class AdminTemplate extends BootstrapDocument
 {
@@ -30,7 +27,7 @@ class AdminTemplate extends BootstrapDocument
     /**
      * @var string
      */
-    public static $adminTitle='Admin';
+    public static $adminTitle = 'Admin';
 
     /**
      * @var string[]
@@ -49,23 +46,24 @@ class AdminTemplate extends BootstrapDocument
 
     protected function loadContainer()
     {
+
         parent::loadContainer();
 
-        if (AdminTemplate::$webController !== null) {
+        //if (AdminTemplate::$webController !== null) {
 
-            $this->navbar = new BootstrapSiteNavbar();
-            $this->navbar->site = AdminTemplate::$webController;
-            $this->navbar->userMode = false;
+        $this->navbar = new BootstrapSiteNavbar();
+        $this->navbar->site = \Nemundo\Admin\AdminConfig::$webController;  //  AdminTemplate::$webController;
+        $this->navbar->userMode = false;
 
-            if (AdminTemplate::$logoUrl !== null) {
-                $logo = new BootstrapNavbarLogo($this->navbar);
-                $logo->logoSite =new BaseUrlSite();
-                $logo->logoUrl = AdminTemplate::$logoUrl;
-            }
+        /*if (AdminTemplate::$logoUrl !== null) {
+            $logo = new BootstrapNavbarLogo($this->navbar);
+            $logo->logoSite =new BaseUrlSite();
+            $logo->logoUrl = AdminTemplate::$logoUrl;
+        }*/
 
-            parent::addContainer($this->navbar);
+        parent::addContainer($this->navbar);
 
-        }
+        //}
 
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;

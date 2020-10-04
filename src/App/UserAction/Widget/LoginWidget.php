@@ -27,11 +27,10 @@ class LoginWidget extends AdminWidget
         $this->widgetTitle = 'Login';
 
         $form = new LoginForm($this);
-        $form->showForgotHyperlink = true;
+        $form->showForgotHyperlink = false;  //true;
         $form->showRegisterHyperlink = false;
-        $form->autofocus=false;
+        $form->autofocus = false;
         $form->redirectSite = $this->redirectSite;
-
 
         return parent::getContent();
 
