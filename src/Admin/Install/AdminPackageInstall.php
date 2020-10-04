@@ -34,13 +34,14 @@ class AdminPackageInstall extends AbstractBase
     public function install()
     {
 
-        WebConfig::$webPath = $this->projectPath . 'admin';
+        //WebConfig::$webPath = $this->projectPath;  // . 'admin';
 
         $this->copyAssetFile('.htaccess', '.htaccess');
         $this->copyAssetFile('config.php', 'config.php');
         $this->copyAssetFile('index.php', 'index.php');
 
         $setup = new PackageSetup();
+        $setup->destinationPath = $this->projectPath;
         $setup->addPackage(new BootstrapPackage());
         $setup->addPackage(new FontAwesomePackage());
         $setup->addPackage(new PopperPackage());
@@ -65,7 +66,7 @@ class AdminPackageInstall extends AbstractBase
 
         $fileCopy->destinationFilename = (new Path())
             ->addPath($this->projectPath)
-            ->addPath('admin')
+            //->addPath('admin')
             ->addPath($filenameTo)
             ->getFilename();
 
