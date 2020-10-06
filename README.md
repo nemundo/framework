@@ -1,7 +1,5 @@
 # Nemundo Framework
 
-test123
-
 ### Installation
 ```
 composer require nemundo/framework
