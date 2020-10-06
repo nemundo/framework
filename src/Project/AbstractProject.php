@@ -39,8 +39,6 @@ abstract class AbstractProject extends AbstractBaseClass
      */
     public $modelPath;
 
-
-
     abstract protected function loadProject();
 
     public function __construct()

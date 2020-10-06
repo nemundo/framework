@@ -1,6 +1,7 @@
 <?php
 
-(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject();
+require __DIR__ . "/config.php";
+(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject(null);
 
 
 

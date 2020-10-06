@@ -46,5 +46,4 @@ abstract class AbstractProjectCollection extends AbstractBaseClass
 
     }
 
-
 }
