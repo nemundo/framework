@@ -37,13 +37,13 @@ abstract class AbstractMailMessage extends AbstractBaseClass
     public $contentType = ContentType::HTML;
 
 
-    protected $toList = array();
+    protected $toList = [];
 
-    protected $ccList = array();
+    protected $ccList = [];
 
-    protected $bccList = array();
+    protected $bccList = [];
 
-    protected $attachmentList = array();
+    protected $attachmentList = [];
 
 
     abstract public function sendMail();

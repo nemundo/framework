@@ -3,22 +3,26 @@
 namespace Nemundo\App\Mail\Message;
 
 use Nemundo\App\Mail\MailConfig;
-use Nemundo\Core\Http\Response\ContentType;
 use Nemundo\Core\Log\LogMessage;
 
 
 class SmtpMailMessage extends AbstractMailMessage
 {
 
+    /**
+     * @var bool
+     */
+    public $sslEncryption = true;
 
     public function sendMail()
     {
 
-        //$this->checkProperty('subject');
-        //$this->checkProperty('text');
+        $encryption = null;
+        if ($this->sslEncryption) {
+            $encryption = 'ssl';
+        }
 
-
-        $transport = (new \Swift_SmtpTransport(MailConfig::$mailConnection->host, MailConfig::$mailConnection->port));
+        $transport = (new \Swift_SmtpTransport(MailConfig::$mailConnection->host, MailConfig::$mailConnection->port, $encryption));
 
         if (MailConfig::$mailConnection->authentication) {
             $transport->setUsername(MailConfig::$mailConnection->user);
@@ -28,22 +32,18 @@ class SmtpMailMessage extends AbstractMailMessage
         $mailer = new  \Swift_Mailer($transport);
         $message = new \Swift_Message();
 
-        // To
         foreach ($this->toList as $email) {
             $message->addTo($email);
         }
 
-        // CC
         foreach ($this->ccList as $email) {
             $message->addCc($email);
         }
 
-        // BCC
         foreach ($this->bccList as $email) {
             $message->addBcc($email);
         }
 
-        // Absender
         $message->setFrom(array(MailConfig::$defaultMailFrom => MailConfig::$defaultMailFromText));
         $message->setSubject($this->subject);
 
@@ -52,11 +52,8 @@ class SmtpMailMessage extends AbstractMailMessage
 
         // Html Body
 //        $message->setBody($this->text, 'text/html');
-        $message->setBody($this->text,$this->contentType);
+        $message->setBody($this->text, $this->contentType);
 
-
-
-        // Attachment
         foreach ($this->attachmentList as $filename) {
             $message->attach(\Swift_Attachment::fromPath($filename));
         }

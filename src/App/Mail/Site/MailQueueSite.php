@@ -17,6 +17,8 @@ use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 
+
+// MailSite
 class MailQueueSite extends AbstractSite
 {
 

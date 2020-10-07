@@ -8,7 +8,7 @@ use Nemundo\App\Script\Data\Script\ScriptReader;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Console\ConsoleArgument;
 use Nemundo\Core\Console\ConsoleConfig;
-use Nemundo\Core\Console\ConsoleMessage;
+
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Log\LogConfig;
@@ -23,7 +23,6 @@ class ScriptConsole extends AbstractBaseClass
     public function checkCommand()
     {
 
-        //ConsoleConfig::$consoleMode = true;
         LogConfig::$logType = [LogType::CONSOLE];
 
         $consoleArgument = new ConsoleArgument();
@@ -34,16 +33,15 @@ class ScriptConsole extends AbstractBaseClass
             $scriptClassCount = new ScriptCount();
             $scriptClassCount->filter->andEqual($scriptClassCount->model->scriptName, $command);
 
-
             if ($scriptClassCount->getCount() > 0) {
 
                 $scriptReader = new ScriptReader();
+                $scriptReader->filter->andEqual($scriptReader->model->consoleScript, true);
                 $scriptReader->filter->andEqual($scriptReader->model->scriptName, $command);
                 $scriptRow = $scriptReader->getRow();
 
-                $script = $scriptRow->getScript();  //getScriptClassObject();
+                $script = $scriptRow->getScript();
                 $script->run();
-
 
                 /*try {
                     $script->run();
@@ -52,8 +50,8 @@ class ScriptConsole extends AbstractBaseClass
                 }*/
 
             } else {
-                (new LogMessage())->writeError('No Script found');
 
+                (new LogMessage())->writeError('No Script found');
 
                 $commandList = new TextDirectory();
 
@@ -75,8 +73,6 @@ class ScriptConsole extends AbstractBaseClass
 
         } else {
 
-            //ConsoleMessage::write('Available Command:');
-
             (new Debug())->write('Available Command:');
 
             $scriptReader = new ScriptReader();
@@ -84,7 +80,6 @@ class ScriptConsole extends AbstractBaseClass
             $scriptReader->addOrder($scriptReader->model->scriptName);
 
             foreach ($scriptReader->getData() as $scriptRow) {
-                //ConsoleMessage::write($scriptRow->scriptName);
                 (new Debug())->write($scriptRow->scriptName);
             }
 

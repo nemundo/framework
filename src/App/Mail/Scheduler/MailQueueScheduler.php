@@ -36,6 +36,8 @@ class MailQueueScheduler extends AbstractScheduler
             $mail->text = $queueRow->text;
             $mail->sendMail();
 
+
+
             $update = new MailQueueUpdate();
             $update->send = true;
             $update->dateTimeSend = (new DateTime())->setNow();

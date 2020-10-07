@@ -6,6 +6,7 @@ namespace Nemundo\Project\Config;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Config\ConfigWriter;
 use Nemundo\Core\Type\File\File;
+use Nemundo\Core\Type\Number\YesNo;
 
 class ProjectConfigBuilder extends AbstractBaseClass
 {
@@ -27,6 +28,20 @@ class ProjectConfigBuilder extends AbstractBaseClass
 
     public $webUrl = '/';
 
+    public $smtpAuthentication = true;
+
+    public $smtpHost;
+
+    public $smtpPort;
+
+    public $smtpUser = '';
+
+    public $smtpPassword;
+
+    public $defaultMailAddress;
+
+    public $defaultMailText;
+
 
     public function writeConfigFile()
     {
@@ -37,50 +52,19 @@ class ProjectConfigBuilder extends AbstractBaseClass
 
             $writer = new ConfigWriter($this->filename);
             $writer->overwriteExistingFile = true;
-
             $writer->add('mysql_host', $this->mysqlHost);
             $writer->add('mysql_port', $this->mysqlPort);
             $writer->add('mysql_user', $this->mysqlUser);
             $writer->add('mysql_password', $this->mysqlPassword);
             $writer->add('mysql_database', $this->mysqlDatabase);
             $writer->add('web_url', $this->webUrl);
-
-
-            /*
-            $input = new ConsoleInput();
-            $input->message = 'Smtp Host';
-            $writer->add('smtp_host', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Smtp Authentication';
-            $input->defaultValue = 'true';
-            $writer->add('smtp_authentication', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Smtp User';
-            $writer->add('smtp_user', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Smtp Password';
-            $writer->add('smtp_password', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Smtp Port';
-            $writer->add('smtp_port', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Default Mail Address';
-            $writer->add('default_mail_address', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Default Mail Text';
-            $writer->add('default_mail_text', $input->getValue());
-
-            $input = new ConsoleInput();
-            $input->message = 'Staging Enviroment';
-            $input->defaultValue = 'development';
-            $writer->add('staging_enviroment', $input->getValue());*/
-
+            $writer->add('smtp_host', $this->smtpHost);
+            $writer->add('smtp_port', $this->smtpPort);
+            $writer->add('smtp_authentication', (new YesNo($this->smtpAuthentication))->getText());
+            $writer->add('smtp_user', $this->smtpUser);
+            $writer->add('smtp_password', $this->smtpPassword);
+            $writer->add('default_mail_address', $this->defaultMailAddress);
+            $writer->add('default_mail_text', $this->defaultMailText);
             $writer->writeFile();
 
         }

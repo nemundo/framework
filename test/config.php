@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-//require __DIR__.'/../../../config.php';
+//require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../../../config.php';
 //require __DIR__ . '/../autoload/autoload.php';
 
 \Nemundo\Db\DbConfig::$defaultConnection = new \Nemundo\Db\Provider\MySql\Connection\MySqlConnection();
