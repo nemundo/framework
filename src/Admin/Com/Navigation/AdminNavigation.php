@@ -5,7 +5,7 @@ namespace Nemundo\Admin\Com\Navigation;
 
 use Nemundo\Package\Bootstrap\Tabs\BootstrapSiteTabs;
 
-
+// AdminSiteTabs
 class AdminNavigation extends BootstrapSiteTabs
 {
 

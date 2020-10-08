@@ -4,12 +4,13 @@ namespace Nemundo\Com\Device;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Device\DeviceInformation;
 
 
-class Browser extends AbstractBase
+class BrowserInformation extends DeviceInformation
 {
 
-    public function getAgent()
+   /* public function getAgent()
     {
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         return $userAgent;
@@ -21,7 +22,7 @@ class Browser extends AbstractBase
     {
         $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
         return $language;
-    }
+    }*/
 
 
     public function isMobile()
