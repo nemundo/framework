@@ -26,6 +26,12 @@ git tag -d 0.1
 ```
 
 
+### Branch Merge
+```
+git merge new
+```
+
+
 ### Delete History
 ```
 git checkout --orphan latest_branch
