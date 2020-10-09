@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Package\Echarts\Chart;
+namespace Nemundo\Com\Chart;
 
 
 use Nemundo\Com\Package\PackageTrait;
@@ -9,9 +9,7 @@ use Nemundo\Core\Type\Number\YesNo;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Script\JavaScript;
-use Nemundo\Package\Echarts\Data\AbstractChartData;
-use Nemundo\Package\Echarts\Data\LineChartData;
-use Nemundo\Package\Echarts\Package\EchartsPackage;
+
 
 abstract class AbstractChart extends AbstractHtmlContainer
 {
@@ -52,24 +50,10 @@ abstract class AbstractChart extends AbstractHtmlContainer
      */
     protected $script;
 
-
     /**
-     * @var LineChartData[]
+     * @var AbstractChartData[]
      */
-    private $dataList = [];
-
-
-
-    /*
-        protected function loadContainer()
-        {
-
-            parent::loadContainer();
-            $this->addPackage(new EchartsPackage());
-
-        }*/
-
-
+    protected $dataList = [];
 
 
 
@@ -85,7 +69,7 @@ abstract class AbstractChart extends AbstractHtmlContainer
     public function getContent()
     {
 
-        $this->addPackage(new EchartsPackage());
+      /*  $this->addPackage(new EchartsPackage());
 
         $chartId = (new UniqueId())->getUniqueId();
 
@@ -106,9 +90,9 @@ abstract class AbstractChart extends AbstractHtmlContainer
         }
 
         if ($this->showLegend) {
-            $script->addCodeLine('legend: 
+            $script->addCodeLine('legend:
             { show: true, y: "bottom"},
-            
+
             ');
         }
 
@@ -116,7 +100,7 @@ abstract class AbstractChart extends AbstractHtmlContainer
 
         $script->addCodeLine('};');
         $script->addCodeLine('myChart.setOption(option);');
-        $script->addCodeLine('');
+        $script->addCodeLine('');*/
 
         return parent::getContent();
     }

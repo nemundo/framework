@@ -6,7 +6,7 @@ namespace Nemundo\Package\Echarts\Chart;
 use Nemundo\Package\Echarts\Data\AbstractChartData;
 use Nemundo\Package\Echarts\Data\LineChartData;
 
-class PieChart extends AbstractChart
+class PieEchart extends AbstractEchart
 {
 
     public function __construct($parentContainer = null)

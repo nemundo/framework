@@ -4,7 +4,7 @@
 namespace Nemundo\Package\Echarts\Chart;
 
 
-class DataChart extends AbstractDataChart
+class DataChart extends AbstractDataEchart
 {
 
 }

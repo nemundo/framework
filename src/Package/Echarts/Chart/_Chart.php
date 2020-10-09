@@ -11,7 +11,7 @@ use Nemundo\Package\Echarts\Data\LineChartData;
 // Echarts
 // LineChart
 // EchartsChart
-class Chart extends AbstractChart
+class Echart extends AbstractEchart
 {
 
 

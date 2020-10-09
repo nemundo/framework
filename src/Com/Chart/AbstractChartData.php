@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Package\Echarts\Data;
+namespace Nemundo\Com\Chart;
 
 
 use Nemundo\Core\Base\AbstractBase;
@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Chart\Chart;
 
 
 // LineData
-abstract class AbstractOneDimensionChartData extends AbstractChartData
+abstract class AbstractChartData extends AbstractBase
 {
 
     /**
@@ -38,11 +38,20 @@ abstract class AbstractOneDimensionChartData extends AbstractChartData
     public $hideDataPoint = true;
 
 
-    public function __construct(AbstractEchart $chart)
+    /*public function __construct(AbstractEchart $chart)
     {
 
         parent::__construct($chart);
         $this->valueList = new TextDirectory();
+
+    }*/
+
+
+    public function __construct(AbstractChart $chart)
+    {
+
+        $this->valueList = new TextDirectory();
+        $chart->addData($this);
 
     }
 

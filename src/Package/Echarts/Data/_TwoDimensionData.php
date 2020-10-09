@@ -4,7 +4,7 @@ namespace Nemundo\Package\Echarts\Data;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Package\Echarts\Chart\PlotChart;
+use Nemundo\Package\Echarts\Chart\PlotEchart;
 use Nemundo\Package\Echarts\Type\ChartType;
 
 class TwoDimensionData extends AbstractBase
@@ -20,7 +20,7 @@ class TwoDimensionData extends AbstractBase
 
     private $plotData = '';
 
-    public function __construct(PlotChart $chart)
+    public function __construct(PlotEchart $chart)
     {
 
         $chart->addTwoDimensionData($this);

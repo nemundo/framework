@@ -5,7 +5,7 @@ require '../../config.php';
 $html = new \Nemundo\Html\Document\HtmlDocument();
 
 
-$chart = new \Nemundo\Package\Echarts\Chart\Chart($html);
+$chart = new \Nemundo\Package\Echarts\Chart\Echart($html);
 
 $data = new \Nemundo\Package\Echarts\Data\ScatterData($chart);
 $data->addValue(10,10);

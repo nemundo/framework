@@ -6,7 +6,7 @@ namespace Nemundo\Package\Echarts\Chart;
 use Nemundo\Package\Echarts\Data\AbstractChartData;
 use Nemundo\Package\Echarts\Data\TwoDimensionData;
 
-class PlotChart extends AbstractChart
+class PlotEchart extends AbstractEchart
 {
 
 
