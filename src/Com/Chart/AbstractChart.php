@@ -9,6 +9,7 @@ use Nemundo\Core\Type\Number\YesNo;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Script\JavaScript;
+use Nemundo\Package\Echarts\Data\LineChartData;
 
 
 abstract class AbstractChart extends AbstractHtmlContainer
@@ -40,8 +41,36 @@ abstract class AbstractChart extends AbstractHtmlContainer
      */
     public $showTooltip = true;
 
+    /**
+     * @var int
+     */
+    public $yMaxValue;
 
-    //abstract public function addData(AbstractChartData $chartData);
+    /**
+     * @var int
+     */
+    public $yMinValue;
+
+    /**
+     * @var string
+     */
+    public $yUnit;
+
+    /**
+     * @var string
+     */
+    public $xUnit;
+
+
+    /**
+     * @var string
+     */
+    protected $xAxisLabel = '';
+
+    /**
+     * @var string
+     */
+    protected $yAxis = '';
 
     use PackageTrait;
 

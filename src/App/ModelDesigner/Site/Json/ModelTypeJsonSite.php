@@ -6,11 +6,8 @@ namespace Nemundo\App\ModelDesigner\Site\Json;
 
 use Nemundo\App\ModelDesigner\Json\ProjectJson;
 use Nemundo\App\ModelDesigner\ModelDesignerConfig;
-use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
-use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\App\ModelDesigner\Type\ModelDesignerTypeTrait;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\AbstractType;
 use Nemundo\Model\Type\AbstractModelType;
 use Nemundo\Orm\Type\OrmTypeTrait;
@@ -34,11 +31,8 @@ class ModelTypeJsonSite extends AbstractJsonSite
     protected function loadJson()
     {
 
-        //$project = (new ProjectParameter())->getProject();
-        //$app = (new AppParameter())->getApp($project);
         $modelId = (new ModelParameter())->getValue();
-        $model=null;
-
+        $model = null;
 
         $projectCollection = (new ModelDesignerConfig())->getProjectCollection();
         foreach ($projectCollection->getProjectList() as $project) {
@@ -49,7 +43,7 @@ class ModelTypeJsonSite extends AbstractJsonSite
                 foreach ($appJson->getModelList() as $modelItem) {
 
                     if ($modelItem->modelId == $modelId) {
-                        $model=$modelItem;
+                        $model = $modelItem;
                     }
 
                 }
@@ -58,11 +52,10 @@ class ModelTypeJsonSite extends AbstractJsonSite
 
         }
 
-
         /** @var AbstractModelType|AbstractType|ModelDesignerTypeTrait|OrmTypeTrait $type */
         foreach ($model->getTypeList(false, false) as $type) {
 
-            $data=[];
+            $data = [];
             $data['name'] = $type->fieldName;
             $data['label'] = $type->label;
             $this->addJsonRow($data);

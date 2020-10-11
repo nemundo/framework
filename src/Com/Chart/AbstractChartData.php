@@ -28,7 +28,7 @@ abstract class AbstractChartData extends AbstractBase
     /**
      * @var string
      */
-    public $chartType;
+    public $chartType='line';
 
     /**
      * @var bool
@@ -68,6 +68,7 @@ abstract class AbstractChartData extends AbstractBase
     }
 
 
+    /*
     public function getJavaScript()
     {
 
@@ -79,7 +80,7 @@ abstract class AbstractChartData extends AbstractBase
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
 */
 
-
+/*
         $javaScript .= '
         {
             type:
@@ -112,9 +113,9 @@ abstract class AbstractChartData extends AbstractBase
         },
         ';*/
 
-        return $javaScript;
+     /*   return $javaScript;
 
-    }
+    }*/
 
 
 }

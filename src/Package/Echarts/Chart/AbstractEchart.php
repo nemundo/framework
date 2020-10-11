@@ -3,6 +3,7 @@
 namespace Nemundo\Package\Echarts\Chart;
 
 
+use Nemundo\Com\Chart\AbstractChart;
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Number\YesNo;
@@ -13,7 +14,7 @@ use Nemundo\Package\Echarts\Data\AbstractChartData;
 use Nemundo\Package\Echarts\Data\LineChartData;
 use Nemundo\Package\Echarts\Package\EchartsPackage;
 
-abstract class AbstractEchart extends AbstractHtmlContainer
+abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
 {
 
     /**
@@ -56,7 +57,7 @@ abstract class AbstractEchart extends AbstractHtmlContainer
     /**
      * @var LineChartData[]
      */
-    private $dataList = [];
+    //private $dataList = [];
 
 
 
@@ -72,14 +73,14 @@ abstract class AbstractEchart extends AbstractHtmlContainer
 
 
 
-
+/*
     public function addData(AbstractChartData $chartData)
     {
 
         $this->dataList[] = $chartData;
         return $this;
 
-    }
+    }*/
 
 
     public function getContent()
@@ -112,7 +113,74 @@ abstract class AbstractEchart extends AbstractHtmlContainer
             ');
         }
 
-        $script->addCodeLine($this->script);
+        //$script->addCodeLine($this->script);
+
+
+
+        $code = '  
+        xAxis: {
+        type: "category",
+        data: [' . $this->xAxisLabel . ']
+    },
+        yAxis: {';
+
+
+        if ($this->yUnit !== null) {
+            $code .= 'axisLabel : {
+        formatter: "{value}' . $this->yUnit . '",
+            },';
+        }
+
+        if ($this->yMinValue !== null) {
+            $code .= 'min: ' . $this->yMinValue . ',';
+        }
+
+        if ($this->yMaxValue !== null) {
+            $code .= 'max: ' . $this->yMaxValue . ',';
+        }
+
+        $code .= '  },
+        series: [';
+
+        foreach ($this->dataList as $chartData) {
+            //$code .= $chartData->getJavaScript();
+
+           // $code = '';
+
+            /*
+            smooth:true,
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+    */
+
+
+            $code .= '
+        {
+            type:
+            "' . $chartData->chartType . '",';
+
+            if ($chartData->legend !== null) {
+                $code .= 'name: "' . $chartData->legend . '",';
+            }
+
+            //$code .= 'symbol: "none",';
+
+            if ($chartData->smooth) {
+                $code .= 'smooth: true,';
+            }
+
+            $code .= 'data: ['.$chartData->valueList->getTextWithSeperator(',').']
+            
+        },';
+
+        }
+
+        $code .= '
+    ],';
+        
+        
+        
+        $script->addCodeLine($code);
+
 
         $script->addCodeLine('};');
         $script->addCodeLine('myChart.setOption(option);');

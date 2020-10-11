@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Application\ClassDesigner\ApplicationClassBuilderForm;
 use Nemundo\App\ClassDesigner\Builder\AbstractClassBuilderForm;
+use Nemundo\App\ClassDesigner\ClassDesignerConfig;
 use Nemundo\App\ClassDesigner\Designer\ListBox\ListBoxClassBuilderForm;
 use Nemundo\App\ClassDesigner\Designer\Parameter\ParameterClassBuilderForm;
 use Nemundo\App\ClassDesigner\Designer\Site\SiteClassBuilderForm;
@@ -23,7 +24,6 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
-use Nemundo\Process\Cms\ClassDesigner\CmsTypeClassBuilderForm;
 
 class ClassDesignerPage extends AbstractTemplateDocument
 {
@@ -72,17 +72,15 @@ class ClassDesignerPage extends AbstractTemplateDocument
                 $title->content = $app->appLabel;
 
                 /** @var AbstractClassBuilderForm[] $list */
-                $list = [];
-                $list[] = new SiteClassBuilderForm();
-                $list[] = new ParameterClassBuilderForm();
-                $list[] = new UsergroupClassBuilderForm();
-                //$list[] = new CmsTypeClassBuilderForm();
-                $list[] = new SchedulerClassBuilderForm();
-                $list[] = new ScriptClassBuilderForm();
-                $list[] = new ListBoxClassBuilderForm();
-                $list[] = new ApplicationClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new SiteClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new ParameterClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new UsergroupClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new SchedulerClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new ScriptClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new ListBoxClassBuilderForm();
+                ClassDesignerConfig::$classBuilderFormList[] = new ApplicationClassBuilderForm();
 
-                foreach ($list as $form) {
+                foreach (ClassDesignerConfig::$classBuilderFormList as $form) {
 
                     $widget = new AdminWidget($layout->col2);
                     $widget->widgetTitle = $form->formTitle;
