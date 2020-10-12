@@ -8,19 +8,13 @@ use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Number\YesNo;
 use Nemundo\Html\Block\Div;
-use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Script\JavaScript;
-use Nemundo\Package\Echarts\Data\AbstractChartData;
-use Nemundo\Package\Echarts\Data\LineChartData;
 use Nemundo\Package\Echarts\Package\EchartsPackage;
 
-abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
+abstract class AbstractEchart extends AbstractChart
 {
 
-    /**
-     * @var string
-     */
-    public $chartTitle;
+    use PackageTrait;
 
     /**
      * @var int
@@ -37,50 +31,10 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
      */
     public $showLegend = true;
 
-
     /**
      * @var bool
      */
     public $showTooltip = true;
-
-
-    //abstract public function addData(AbstractChartData $chartData);
-
-    use PackageTrait;
-
-    /**
-     * @var string
-     */
-    protected $script;
-
-
-    /**
-     * @var LineChartData[]
-     */
-    //private $dataList = [];
-
-
-
-    /*
-        protected function loadContainer()
-        {
-
-            parent::loadContainer();
-            $this->addPackage(new EchartsPackage());
-
-        }*/
-
-
-
-
-/*
-    public function addData(AbstractChartData $chartData)
-    {
-
-        $this->dataList[] = $chartData;
-        return $this;
-
-    }*/
 
 
     public function getContent()
@@ -103,7 +57,7 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
         $script->addCodeLine('},');
 
         if ($this->showTooltip) {
-        $script->addCodeLine('tooltip: { show: true},');
+            $script->addCodeLine('tooltip: { show: true},');
         }
 
         if ($this->showLegend) {
@@ -113,17 +67,12 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
             ');
         }
 
-        //$script->addCodeLine($this->script);
-
-
-
         $code = '  
         xAxis: {
         type: "category",
-        data: [' . $this->xAxisLabel . ']
+        data: ["' . $this->xAxisLabelDirectory->getTextWithSeperator('","') . '"]       
     },
         yAxis: {';
-
 
         if ($this->yUnit !== null) {
             $code .= 'axisLabel : {
@@ -143,15 +92,11 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
         series: [';
 
         foreach ($this->dataList as $chartData) {
-            //$code .= $chartData->getJavaScript();
-
-           // $code = '';
 
             /*
             smooth:true,
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
     */
-
 
             $code .= '
         {
@@ -168,7 +113,7 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
                 $code .= 'smooth: true,';
             }
 
-            $code .= 'data: ['.$chartData->valueList->getTextWithSeperator(',').']
+            $code .= 'data: [' . $chartData->valueList->getTextWithSeperator(',') . ']
             
         },';
 
@@ -176,11 +121,9 @@ abstract class AbstractEchart extends AbstractChart  // AbstractHtmlContainer
 
         $code .= '
     ],';
-        
-        
-        
-        $script->addCodeLine($code);
 
+
+        $script->addCodeLine($code);
 
         $script->addCodeLine('};');
         $script->addCodeLine('myChart.setOption(option);');

@@ -20,4 +20,14 @@ class AdminConfig
      */
     public static $webController;
 
+    /**
+     * @var string
+     */
+    public static $logoUrl;
+
+    /**
+     * @var string
+     */
+    public static $adminTitle = 'Admin';
+
 }

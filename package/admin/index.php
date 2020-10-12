@@ -10,6 +10,4 @@ $webUrl->replaceRight('/web/', '/admin/');
 \Nemundo\Admin\Controller\AdminController::addAdminSite(new \Nemundo\App\ModelDesigner\Site\ModelDesignerSite());
 \Nemundo\Admin\Controller\AdminController::addAdminSite(new \Nemundo\App\ClassDesigner\Site\ClassDesignerSite());
 
-\Nemundo\Admin\Template\AdminTemplate::$webController = new \Nemundo\Admin\Controller\AdminController();
-
 (new \Nemundo\Admin\Web\AdminWeb())->startWeb();

@@ -2,37 +2,19 @@
 
 namespace Nemundo\Admin\Template;
 
+use Nemundo\Admin\AdminConfig;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
+use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
-use Nemundo\Web\Controller\AbstractWebController;
+use Nemundo\Web\Site\BaseUrlSite;
 
 class AdminTemplate extends BootstrapDocument
 {
-
-    /**
-     * @var AbstractWebController
-     */
-    public static $webController;
-
-    /**
-     * @var string
-     */
-    public static $logoUrl;
-
-    /**
-     * @var string
-     */
-    public static $adminTitle = 'Admin';
-
-    /**
-     * @var string[]
-     */
-    public static $adminCssUrl = [];
 
     /**
      * @var BootstrapContainer
@@ -49,21 +31,17 @@ class AdminTemplate extends BootstrapDocument
 
         parent::loadContainer();
 
-        //if (AdminTemplate::$webController !== null) {
+        $this->title = AdminConfig::$adminTitle;
 
         $this->navbar = new BootstrapSiteNavbar();
-        $this->navbar->site = \Nemundo\Admin\AdminConfig::$webController;  //  AdminTemplate::$webController;
+        $this->navbar->site = \Nemundo\Admin\AdminConfig::$webController;
         $this->navbar->userMode = false;
-
-        /*if (AdminTemplate::$logoUrl !== null) {
+        if (AdminConfig::$logoUrl !== null) {
             $logo = new BootstrapNavbarLogo($this->navbar);
-            $logo->logoSite =new BaseUrlSite();
-            $logo->logoUrl = AdminTemplate::$logoUrl;
-        }*/
-
+            $logo->logoSite = new BaseUrlSite();
+            $logo->logoUrl = AdminConfig::$logoUrl;
+        }
         parent::addContainer($this->navbar);
-
-        //}
 
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;
@@ -77,13 +55,12 @@ class AdminTemplate extends BootstrapDocument
         $this->container->addContainer($container);
     }
 
+
     public function getContent()
     {
 
-        $this->title = AdminTemplate::$adminTitle;
-
-        foreach (AdminTemplate::$adminCssUrl as $url) {
-            $this->addCssUrl($url);
+        if ($this->title == null) {
+            $this->title = AdminConfig::$adminTitle;
         }
 
         $this->addPackage(new JqueryPackage());

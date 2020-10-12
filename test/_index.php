@@ -18,7 +18,7 @@ $layout->col2->columnWidth = 2;
 $list = new \Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList($layout->col1);
 
 
-$path = 'C:\git\schleuniger\lib\html\test';
+$path = '';
 
 $reader = new \Nemundo\Core\File\DirectoryReader();
 $reader->includeDirectories = true;

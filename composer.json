@@ -11,9 +11,7 @@
   "require": {
     "nemundo/core": "*",
     "nemundo/html": "*",
-    "nemundo/db": "*",
-    "phpseclib/phpseclib": "^2.0",
-    "swiftmailer/swiftmailer": "^6.2"
+    "nemundo/db": "*"
   },
   "autoload": {
     "psr-4": {
