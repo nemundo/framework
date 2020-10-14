@@ -51,14 +51,18 @@ class ExcelReader extends AbstractCsvReader
             return false;
         }
 
-        $file = new File($this->filename);
+        $this->checkFileExists();
+
+        /*$file = new File($this->filename);
         if ($file->fileExists()) {
             $this->spreadsheet = IOFactory::load($this->filename);
         } else {
             (new LogMessage())->writeError('File ' . $this->filename . ' does not exists.');
             return false;
-        }
+        }*/
 
+
+        $this->spreadsheet = IOFactory::load($this->filename);
         //(new Debug())->write($this->spreadsheet->getSheetNames());
 
 
