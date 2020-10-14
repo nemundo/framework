@@ -12,7 +12,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 
-class ExcelReader extends AbstractCsvReader  // AbstractDataSource
+class ExcelReader extends AbstractCsvReader
 {
 
     /**
@@ -24,13 +24,6 @@ class ExcelReader extends AbstractCsvReader  // AbstractDataSource
      * @var bool
      */
     public $useFirstRowAsHeader = true;
-
-    /**
-     * Abfrage soll begrenzt werden
-     * @var int
-     */
-    //public $limitResult;
-
 
     /**
      * @var string
@@ -88,7 +81,8 @@ class ExcelReader extends AbstractCsvReader  // AbstractDataSource
         $highestColumnIndex = Coordinate::columnIndexFromString($highestColumn);
 
         $count = 0;
-        $dataHeader = [];
+        //$dataHeader = [];
+
 
         for ($row = 1; $row <= $highestRow; ++$row) {
 
@@ -101,16 +95,20 @@ class ExcelReader extends AbstractCsvReader  // AbstractDataSource
 
                 if ($this->useFirstRowAsHeader) {
 
-                    if ($count == $this->lineOfStart) {   //} 0) {
-                        $dataHeader = $item;
+                    if ($count == $this->lineOfStart) {
+                        //$dataHeader = $item;
+                        $this->header = $item;
+
                     } else {
 
-//                    if ($count >= $this->lineOfStart) {
-
-                        //$dataNew = array();
                         $itemNew = [];
                         $rowCount = 0;
-                        foreach ($dataHeader as $rowHeader) {
+                        //foreach ($dataHeader as $rowHeader) {
+                        foreach ($this->header as $rowHeader) {
+
+                            //(new Debug())->write($rowHeader);
+
+                            //$itemNew[$rowHeader] = $item[$rowCount];
                             $itemNew[$rowHeader] = $item[$rowCount];
                             $rowCount++;
                         }
@@ -130,5 +128,16 @@ class ExcelReader extends AbstractCsvReader  // AbstractDataSource
         }
 
     }
+
+
+    public function getHeader() {
+
+        //$this->loadData();
+        $this->getData();
+        return $this->header;
+
+    }
+
+
 
 }
