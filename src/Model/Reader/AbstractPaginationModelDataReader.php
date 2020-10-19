@@ -4,8 +4,8 @@ namespace Nemundo\Model\Reader;
 
 
 use Nemundo\Core\Base\DataSource\PaginationTrait;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Count\ModelDataCount;
+use Nemundo\Model\ModelConfig;
 use Nemundo\Model\Row\ModelDataRow;
 
 
@@ -24,6 +24,7 @@ abstract class AbstractPaginationModelDataReader extends AbstractModelDataReader
     {
 
         parent::__construct();
+        $this->paginationLimit = ModelConfig::$defaultPaginationLimit;
         $this->loadPageRequest();
 
     }

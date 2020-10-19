@@ -3,7 +3,6 @@
 namespace Nemundo\Package\Bootstrap\FormElement;
 
 use Nemundo\Core\Language\LanguageCode;
-use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 
@@ -13,12 +12,12 @@ class BootstrapFromToDatePicker extends AbstractContainer
     /**
      * @var BootstrapDatePicker
      */
-    public $from;
+    private $from;
 
     /**
      * @var BootstrapDatePicker
      */
-    public $to;
+    private $to;
 
     /**
      * @var bool
@@ -51,6 +50,18 @@ class BootstrapFromToDatePicker extends AbstractContainer
 
         return parent::getContent();
 
+    }
+
+
+    public function getFromDate()
+    {
+        return $this->from->getDateValue();
+    }
+
+
+    public function getToDate()
+    {
+        return $this->to->getDateValue();
     }
 
 }

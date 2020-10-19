@@ -21,4 +21,9 @@ class ModelConfig
      */
     public static $dataUrl;
 
+    /**
+     * @var int
+     */
+    public static $defaultPaginationLimit = 30;
+
 }

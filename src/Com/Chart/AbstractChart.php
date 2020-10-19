@@ -2,15 +2,15 @@
 
 namespace Nemundo\Com\Chart;
 
-
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 
-
 abstract class AbstractChart extends AbstractHtmlContainer
 {
+
+    use PackageTrait;
 
     /**
      * @var string
@@ -31,7 +31,6 @@ abstract class AbstractChart extends AbstractHtmlContainer
      * @var bool
      */
     public $showLegend = true;
-
 
     /**
      * @var bool
@@ -58,7 +57,6 @@ abstract class AbstractChart extends AbstractHtmlContainer
      */
     public $xUnit;
 
-
     /**
      * @var string
      */
@@ -74,8 +72,6 @@ abstract class AbstractChart extends AbstractHtmlContainer
      */
     protected $yAxis = '';
 
-    use PackageTrait;
-
     /**
      * @var string
      */
@@ -90,7 +86,7 @@ abstract class AbstractChart extends AbstractHtmlContainer
     public function __construct(AbstractContainer $parentContainer = null)
     {
         parent::__construct($parentContainer);
-        $this->xAxisLabelDirectory=new TextDirectory();
+        $this->xAxisLabelDirectory = new TextDirectory();
     }
 
 
@@ -100,14 +96,11 @@ abstract class AbstractChart extends AbstractHtmlContainer
         return $this;
     }
 
+
     public function addXAxisLabel($label)
     {
-
-        //$this->xAxisLabel .= '"' . $label . '",';
         $this->xAxisLabelDirectory->addValue($label);
         return $this;
-
     }
-
 
 }

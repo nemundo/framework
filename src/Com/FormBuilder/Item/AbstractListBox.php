@@ -7,7 +7,7 @@ use Nemundo\Core\Sorting\SortingListOfObject;
 use Nemundo\Html\Form\Select\Optgroup;
 use Nemundo\Html\Form\Select\Option;
 use Nemundo\Html\Form\Select\Select;
-use Nemundo\Web\Parameter\MultipleUrlParameter;
+use Nemundo\Web\Parameter\UrlParameterList;
 
 
 abstract class AbstractListBox extends AbstractFormBuilderItem
@@ -143,9 +143,9 @@ abstract class AbstractListBox extends AbstractFormBuilderItem
         $value = null;
         if ($this->multiSelect) {
 
-            $parameter = new MultipleUrlParameter();
+            $parameter = new UrlParameterList();
             $parameter->parameterName = $this->name;
-            $value = $parameter->getMulipleValue();
+            $value = $parameter->getValueList();
 
         } else {
 
@@ -165,7 +165,7 @@ abstract class AbstractListBox extends AbstractFormBuilderItem
 
         if ($this->multiSelect) {
 
-            $parameter = new MultipleUrlParameter();
+            $parameter = new UrlParameterList();
             $parameter->parameterName = $this->name;
 
             if ($parameter->notExists()) {
@@ -188,9 +188,9 @@ abstract class AbstractListBox extends AbstractFormBuilderItem
     public function getMultiValue()
     {
 
-        $parameter = new MultipleUrlParameter();
+        $parameter = new UrlParameterList();
         $parameter->parameterName = $this->name;
-        $valueList = $parameter->getMulipleValue();
+        $valueList = $parameter->getValueList();
 
         return $valueList;
 

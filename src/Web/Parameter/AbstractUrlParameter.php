@@ -93,7 +93,7 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
 
         $returnValue = true;
 
-        $value =$this->getPlainValue();  // $this->getValue();
+        $value =$this->getPlainValue();
         if (($value == '') || ($value == '0')) {
             $returnValue = false;
 

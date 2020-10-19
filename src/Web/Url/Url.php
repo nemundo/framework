@@ -3,12 +3,11 @@
 namespace Nemundo\Web\Url;
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\WebConfig;
-
-
 
 class Url extends AbstractBaseClass
 {
@@ -17,20 +16,27 @@ class Url extends AbstractBaseClass
 
     protected $parameter;
 
-    function __construct($url = null)
+    function __construct() //$url = null)
     {
 
-        $this->url = $url;
+        //(new Debug())->write('load');
 
-        if ($this->url == null) {
+        //$this->url = $url;
+
+        //if ($this->url == null) {
             $this->url = $_SERVER['REQUEST_URI'];
-        }
+        //}
 
         // temporäres GET Array
         //$this->get = $_GET;
         // muss aus parse_url ausgelesen werden!!!
 
         parse_str(parse_url($this->url, PHP_URL_QUERY), $this->parameter);
+
+
+        //(new Debug())->write($this->parameter);
+        //exit;
+
 
     }
 

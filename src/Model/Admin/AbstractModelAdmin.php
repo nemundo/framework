@@ -148,7 +148,6 @@ abstract class AbstractModelAdmin extends AbstractActionPanel
                 $this->table->addRedirectHyperlink($redirect);
             }
 
-
             if ($this->showEditButton) {
                 $editRedirect = new ModelEditRedirect();
                 $editRedirect->url = $this->edit;

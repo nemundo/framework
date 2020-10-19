@@ -1,6 +1,7 @@
 <?php
 
-namespace Nemundo\Package\Echarts\Type;
+
+namespace Nemundo\Com\Chart;
 
 
 class ChartType
@@ -15,6 +16,5 @@ class ChartType
     const PIE = 'pie';
 
     const SCATTER = 'scatter';
-
 
 }

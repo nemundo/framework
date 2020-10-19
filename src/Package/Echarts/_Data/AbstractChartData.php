@@ -11,7 +11,6 @@ use Nemundo\Package\Echarts\Chart\AbstractEchart;
 abstract class AbstractChartData extends AbstractBase
 {
 
-
     abstract public function getJavaScript();
 
     public function __construct(AbstractEchart $chart)

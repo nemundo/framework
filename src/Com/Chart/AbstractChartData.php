@@ -5,12 +5,8 @@ namespace Nemundo\Com\Chart;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Directory\TextDirectory;
-use Nemundo\Package\Echarts\Chart\AbstractEchart;
-use Nemundo\Package\Echarts\Type\ChartType;
-use PhpOffice\PhpSpreadsheet\Chart\Chart;
 
 
-// LineData
 abstract class AbstractChartData extends AbstractBase
 {
 
@@ -19,16 +15,15 @@ abstract class AbstractChartData extends AbstractBase
      */
     public $legend;
 
-
     /**
      * @var TextDirectory
      */
-    public $valueList;  // = [];
+    public $valueList;
 
     /**
      * @var string
      */
-    public $chartType='line';
+    public $chartType = ChartType::LINE;
 
     /**
      * @var bool
@@ -36,15 +31,6 @@ abstract class AbstractChartData extends AbstractBase
     public $smooth = false;
 
     public $hideDataPoint = true;
-
-
-    /*public function __construct(AbstractEchart $chart)
-    {
-
-        parent::__construct($chart);
-        $this->valueList = new TextDirectory();
-
-    }*/
 
 
     public function __construct(AbstractChart $chart)
@@ -58,64 +44,13 @@ abstract class AbstractChartData extends AbstractBase
     public function addValue($value)
     {
 
-        if ($value ===null) {
-            $value='null';
+        if ($value === null) {
+            $value = 'null';
         }
 
         $this->valueList->addValue($value);
         return $this;
 
     }
-
-
-    /*
-    public function getJavaScript()
-    {
-
-
-        $javaScript = '';
-
-        /*
-        smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-*/
-
-/*
-        $javaScript .= '
-        {
-            type:
-            "' . $this->chartType . '",';
-
-        if ($this->legend !== null) {
-            $javaScript .= 'name: "' . $this->legend . '",';
-        }
-
-
-        //$javaScript .= 'symbol: "none",';
-
-
-
-        if ($this->smooth) {
-            $javaScript .= 'smooth: true,';
-        }
-
-        $javaScript .= 'data: ['.$this->valueList->getTextWithSeperator(',').']
-        },';
-
-
-
-        /*
-        foreach ($this->valueList as $value) {
-            $javaScript .= $value . ',';
-        }
-
-        $javaScript .= ']
-        },
-        ';*/
-
-     /*   return $javaScript;
-
-    }*/
-
 
 }

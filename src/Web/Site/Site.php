@@ -4,7 +4,7 @@ namespace Nemundo\Web\Site;
 
 
 use Nemundo\Core\Type\Text\Text;
-use Nemundo\Web\Parameter\MultipleUrlParameter;
+use Nemundo\Web\Parameter\UrlParameterList;
 use Nemundo\Web\Parameter\UrlParameter;
 use Nemundo\Web\Url\Url;
 use Nemundo\Web\WebConfig;
@@ -32,7 +32,7 @@ class Site extends AbstractSite
 
             } else {
 
-                $parameter = new MultipleUrlParameter($value);
+                $parameter = new UrlParameterList($value);
                 $parameter->parameterName = $key;
                 $this->addParameter($parameter);
 

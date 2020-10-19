@@ -51,11 +51,6 @@ abstract class AbstractSite extends AbstractSiteTree
     public $showMenuAsActive = false;
 
     /**
-     * @var int
-     */
-    //public $urlLevel = 0;
-
-    /**
      * @var AbstractUrlParameter[]
      */
     private $parameterList = [];
@@ -64,7 +59,6 @@ abstract class AbstractSite extends AbstractSiteTree
      * @var string
      */
     protected $parentUrl;
-
 
     abstract protected function loadSite();
 
@@ -141,6 +135,8 @@ abstract class AbstractSite extends AbstractSiteTree
     public function addParameter(AbstractUrlParameter $parameter)
     {
 
+        //(new Debug())->write($parameter);
+
         $found = false;
 
 
@@ -155,7 +151,6 @@ abstract class AbstractSite extends AbstractSiteTree
 
             }
         }
-
 
         if (!$found) {
             $this->parameterList[] = $parameter;
@@ -184,6 +179,9 @@ abstract class AbstractSite extends AbstractSiteTree
 
         $url = $this->getUrlWithoutParameter();
 
+        //(new Debug())->write($url);
+        //(new Debug())->write($this->parameterList);
+
         $urlParameter = [];
         foreach ($this->parameterList as $parameter) {
 
@@ -191,7 +189,13 @@ abstract class AbstractSite extends AbstractSiteTree
             if ($value !== '') {
                 $urlParameter[] = $value;
             }
+
+            //(new Debug())->write($value);
+
         }
+
+
+        //(new Debug())->write($urlParameter);
 
         if (sizeof($urlParameter) > 0) {
             $url .= '?' . implode('&', $urlParameter);
@@ -208,6 +212,8 @@ abstract class AbstractSite extends AbstractSiteTree
 
     public function getUrlWithoutParameter()
     {
+
+        //(new Debug())->write('url: '.$this->url);
 
         $url = $this->parentUrl . '/' . $this->url;
         $url = str_replace('//', '/', $url);
