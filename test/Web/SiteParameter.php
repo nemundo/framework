@@ -7,6 +7,8 @@ require '../config.php';
 $url=new \Nemundo\Web\Url\Url();
 (new \Nemundo\Core\Debug\Debug())->write($url->getUrl());
 
+
+
 /*
 $site = new \Nemundo\Web\Site\Site();
 (new \Nemundo\Core\Debug\Debug())->write($site->getUrl());

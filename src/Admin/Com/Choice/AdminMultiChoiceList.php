@@ -86,9 +86,6 @@ class AdminMultiChoiceList extends AbstractActionPanel
         $parameterList = new UrlParameterList();
         $parameterList->parameterName = 'multi';
 
-        //(new Debug())->write($parameterList->getUrl());
-
-
         $this->index = new ActionSite($this);
         $this->index->actionName = 'index';
         $this->index->onAction = function () {
@@ -101,7 +98,6 @@ class AdminMultiChoiceList extends AbstractActionPanel
             $site->removeParameter($parameterList);
             $hyperlink = new SiteHyperlink($this);
             $hyperlink->site = $site;
-
 
             $form = new SearchForm($this);
 
@@ -127,17 +123,14 @@ class AdminMultiChoiceList extends AbstractActionPanel
             foreach ($parameterList->getValueList() as $value) {
 
                 $row = new TableRow($table);
-                $row->addText($value);
+                //$row->addText($value);
                 $row->addText($this->valueList[$value]);
 
                 $parameter = new UrlParameter($value);
                 $parameter->parameterName = 'delete_id';
 
                 $site = clone($this->delete);
-                //$site->addParameter($parameter);
-
-                (new Debug())->write($site->getUrl());
-
+                $site->addParameter($parameter);
 
                 $hyperlink = new SiteHyperlink($row);
                 $hyperlink->site = $site;
@@ -152,16 +145,9 @@ class AdminMultiChoiceList extends AbstractActionPanel
         $this->add->actionName = 'add';
         $this->add->onAction = function () {
 
-            //$request = new GetRequest('choice_add');
-
-            /*(new Debug())->write($this->choiceIdParameter);
-            (new Debug())->write($this->choiceIdParameter->getValue());
-            exit;*/
-
             $parameterList = new UrlParameterList();
             $parameterList->parameterName = 'multi';
             $parameterList->addValue($this->choiceIdParameter->getValue());
-            //$parameterList->addValue($request->getValue());
 
             $site = clone($this->index);
             $site->addParameter($parameterList);
@@ -176,20 +162,17 @@ class AdminMultiChoiceList extends AbstractActionPanel
         $this->delete->actionName = 'delete';
         $this->delete->onAction = function () {
 
-            /*
-            $parameterList = new UrlParameterList();
-            $parameterList->parameterName = 'multi';
-            //$parameterList->readdValue($request->getValue());
-            //$parameterList->addValue()
-
             $parameter = new UrlParameter();
             $parameter->parameterName = 'delete_id';
 
+            $parameterList = new UrlParameterList();
+            $parameterList->parameterName = 'multi';
+            $parameterList->removeValue($parameter->getValue());
 
             $site = clone($this->index);
             $site->addParameter($parameterList);
             $site->removeParameter($parameter);
-            $site->redirect();*/
+            $site->redirect();
 
         };
 
