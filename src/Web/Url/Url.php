@@ -60,11 +60,12 @@ class Url extends AbstractBaseClass
     }
 
 
+    /*
     public function addParameterValue($parameterName, $value = '')
     {
         $this->parameter[$parameterName] = $value;
         return $this;
-    }
+    }*/
 
 
     public function addParameter(AbstractUrlParameter $parameter)

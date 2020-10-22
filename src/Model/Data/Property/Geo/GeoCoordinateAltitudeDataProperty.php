@@ -3,7 +3,7 @@
 namespace Nemundo\Model\Data\Property\Geo;
 
 
-use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinateAltitude;
 use Nemundo\Model\Data\Property\AbstractDataProperty;
 use Nemundo\Model\Type\Geo\GeoCoordinateAltitudeType;
 
@@ -16,8 +16,7 @@ class GeoCoordinateAltitudeDataProperty extends AbstractDataProperty
      */
     protected $type;
 
-
-    public function setValue(GeoCoordinateAltitude $geoCoordinate = null)
+    public function setValue(AbstractGeoCoordinateAltitude $geoCoordinate = null)
     {
 
         if ($geoCoordinate !== null) {

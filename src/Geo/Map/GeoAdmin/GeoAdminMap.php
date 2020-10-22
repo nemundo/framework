@@ -12,9 +12,12 @@ use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Style\DimensionStyle;
 use Nemundo\Com\Style\DimensionUnit;
 use Nemundo\Core\Directory\TextDirectory;
+use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 
+
+// AbstractMap
 
 // SwissMap
 class GeoAdminMap extends AbstractHtmlContainer
@@ -33,6 +36,11 @@ class GeoAdminMap extends AbstractHtmlContainer
      * @var DimensionStyle
      */
     public $dimension;
+
+    /**
+     * @var GeoCoordinate
+     */
+    public $mapCenter;
 
     private $layer = [];
 
@@ -114,9 +122,12 @@ class GeoAdminMap extends AbstractHtmlContainer
         $this->addJqueryScript('view: new ol.View({');
         $this->addJqueryScript('resolution: ' . $this->resolution . ',');
         //$this->addJqueryScript('center: coordinate');
-        // $this->addJqueryScript('center: [670000, 160000]');
-        //$this->addJqueryScript('center: ol.proj.fromLonLat([7.84956,46.57591],8)');
+         $this->addJqueryScript('center: [670000, 160000]');
 
+         /*
+        if ($this->mapCenter!==null) {
+        $this->addJqueryScript('center: ol.proj.fromLonLat(['.$this->mapCenter->getText().'],8)');
+        }*/
 
         $this->addJqueryScript('})');
         $this->addJqueryScript('});');

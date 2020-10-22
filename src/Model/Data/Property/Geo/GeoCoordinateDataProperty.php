@@ -3,7 +3,7 @@
 namespace Nemundo\Model\Data\Property\Geo;
 
 
-use Nemundo\Core\Type\Geo\GeoCoordinate;
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 use Nemundo\Model\Data\Property\AbstractDataProperty;
 use Nemundo\Model\Type\Geo\GeoCoordinateType;
 
@@ -15,16 +15,11 @@ class GeoCoordinateDataProperty extends AbstractDataProperty
      */
     protected $type;
 
-
-    public function setValue(GeoCoordinate $geoCoordinate)
+    public function setValue(AbstractGeoCoordinate $geoCoordinate)
     {
 
-       // $geoCoordinate->latitude !==0
-
-        //if ($geoCoordinate !== null) {
-            $this->typeValueList->setModelValue($this->type->latitude, $geoCoordinate->latitude);
-            $this->typeValueList->setModelValue($this->type->longitude, $geoCoordinate->longitude);
-        //}
+        $this->typeValueList->setModelValue($this->type->latitude, $geoCoordinate->latitude);
+        $this->typeValueList->setModelValue($this->type->longitude, $geoCoordinate->longitude);
 
         return $this;
     }
