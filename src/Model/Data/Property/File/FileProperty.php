@@ -43,7 +43,7 @@ class FileProperty extends AbstractBase
     {
 
         $this->filename = $filename;
-
+        return $this;
     }
 
 
@@ -51,7 +51,7 @@ class FileProperty extends AbstractBase
     {
 
         $this->url = $url;
-
+        return $this;
     }
 
 
@@ -75,6 +75,7 @@ class FileProperty extends AbstractBase
     public function fromFileRequest(AbstractFileRequest $fileRequest)
     {
         $this->fileRequest = $fileRequest;
+        return $this;
     }
 
 

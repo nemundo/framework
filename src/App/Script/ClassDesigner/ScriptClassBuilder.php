@@ -4,6 +4,7 @@ namespace Nemundo\App\Script\ClassDesigner;
 
 
 use Nemundo\App\ClassDesigner\Builder\AbstractClassBuilder;
+use Nemundo\App\Script\Type\AbstractConsoleScript;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
@@ -22,9 +23,9 @@ class ScriptClassBuilder extends AbstractClassBuilder
         $phpClass = new PhpClass();
         $phpClass->project = $this->project;
         $phpClass->className = $typeClassName;
-        $phpClass->extendsFromClass = 'AbstractScript';
+        $phpClass->extendsFromClass = 'AbstractConsoleScript';
         $phpClass->namespace = $namespace;
-        $phpClass->addUseClass(AbstractScript::class);
+        $phpClass->addUseClass(AbstractConsoleScript::class);
 
         $function = new PhpFunction($phpClass);
         $function->visibility = PhpVisibility::ProtectedVariable;

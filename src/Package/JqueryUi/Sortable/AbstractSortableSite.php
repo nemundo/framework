@@ -6,8 +6,6 @@ namespace Nemundo\Package\JqueryUi\Sortable;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Site\AbstractSiteTree;
-use Schleuniger\App\Projekt\Data\ProjektPhase\ProjektPhaseUpdate;
-use Schleuniger\App\Projekt\Site\Phase\PhaseItemOrderSite;
 
 abstract class AbstractSortableSite extends AbstractSite
 {
