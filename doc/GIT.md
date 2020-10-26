@@ -1,7 +1,26 @@
 ### Clone (with Submodule)
 ```
+git clone --recursive https://github.com/nemundo/dev.git 
+cd <path>
+git submodule foreach git checkout master
 
+git submodule foreach git pull
+git submodule update --recursive
 ```
+
+### Git Branch 
+```
+git branch new <sha1-of-commit>
+git branch -d master
+git branch -m new master
+```
+
+
+### delete branch remotely
+```
+git push origin --delete remoteBranchName
+```
+
 
 
 
