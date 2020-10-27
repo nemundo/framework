@@ -1,8 +1,9 @@
 <?php
 
-namespace Nemundo\Com\Chart;
+namespace Nemundo\Com\Chart\Data;
 
 
+use Nemundo\Com\Chart\AbstractChart;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Directory\TextDirectory;
 

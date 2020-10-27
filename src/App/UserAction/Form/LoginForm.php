@@ -89,7 +89,6 @@ class LoginForm extends AbstractFormBuilder
 
         }
 
-
         return parent::getContent();
 
     }
@@ -103,7 +102,7 @@ class LoginForm extends AbstractFormBuilder
         $login = new UserLogin();
         $login->login = $this->login->getValue();
         $login->password = $this->password->getValue();
-        $login->saveCookiePassword = $this->saveLogin->getValue();
+        $login->saveCookiePassword = true;  // $this->saveLogin->getValue();
 
         if ($login->loginUser()) {
             $returnValue = true;

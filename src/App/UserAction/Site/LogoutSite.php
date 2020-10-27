@@ -2,9 +2,9 @@
 
 namespace Nemundo\App\UserAction\Site;
 
+use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\User\Login\UserLogout;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\Web\WebConfig;
 
 class LogoutSite extends AbstractSite
@@ -20,9 +20,9 @@ class LogoutSite extends AbstractSite
 
         $this->title = 'Logout';
         $this->url = 'logout';
-        //$this->restricted = true;
         $this->menuActive = false;
         LogoutSite::$site = $this;
+
     }
 
 

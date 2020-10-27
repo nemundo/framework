@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nemundo\Com\Chart;
+namespace Nemundo\Com\Chart\Data;
 
 
 class ChartType

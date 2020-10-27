@@ -34,7 +34,7 @@ class AdminTemplate extends BootstrapDocument
         $this->title = AdminConfig::$adminTitle;
 
         $this->navbar = new BootstrapSiteNavbar();
-        $this->navbar->site = \Nemundo\Admin\AdminConfig::$webController;
+        $this->navbar->site = AdminConfig::$webController;
         $this->navbar->userMode = false;
         if (AdminConfig::$logoUrl !== null) {
             $logo = new BootstrapNavbarLogo($this->navbar);
@@ -63,8 +63,8 @@ class AdminTemplate extends BootstrapDocument
             $this->title = AdminConfig::$adminTitle;
         }
 
-        $this->addPackage(new JqueryPackage());
-        $this->addPackage(new JqueryUiPackage());
+        /*$this->addPackage(new JqueryPackage());
+        $this->addPackage(new JqueryUiPackage());*/
 
         new JqueryHeader($this);
 

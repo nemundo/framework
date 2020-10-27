@@ -2,6 +2,7 @@
 
 namespace Nemundo\Com\Chart;
 
+use Nemundo\Com\Chart\Data\AbstractChartData;
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Html\Container\AbstractContainer;
