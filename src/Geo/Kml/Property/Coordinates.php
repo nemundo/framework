@@ -3,6 +3,7 @@
 namespace Nemundo\Geo\Kml\Property;
 
 
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinateAltitude;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
 use Nemundo\Html\Container\AbstractTagContainer;
@@ -11,7 +12,7 @@ class Coordinates extends AbstractTagContainer
 {
 
     /**
-     * @var GeoCoordinateAltitude
+     * @var AbstractGeoCoordinateAltitude
      */
     public $coordinate;
 
@@ -23,11 +24,9 @@ class Coordinates extends AbstractTagContainer
         $longitude = round($this->coordinate->longitude, 5);
         $latitude = round($this->coordinate->latitude, 5);
 
-
         if ($this->coordinate->isObjectOfClass(GeoCoordinate::class)) {
             $this->addContent($longitude . ',' . $latitude . PHP_EOL);
         }
-
 
         if ($this->coordinate->isObjectOfClass(GeoCoordinateAltitude::class)) {
             $this->addContent($longitude . ',' . $latitude. ',' . $this->coordinate->altitude . PHP_EOL);
