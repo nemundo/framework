@@ -50,8 +50,11 @@ class DecimalNumberOrmType extends DecimalNumberType
         $var->visibility = PhpVisibility::PublicVariable;
         $var->dataType = 'float';
 
-        $phpFunction->add('$value = (new ' . $this->prefixClassName(Text::class) . '($this->' . $this->variableName . '))->replace(",", ".")->getValue();');
-        $phpFunction->add('$this->typeValueList->setModelValue($this->model->' . $this->variableName . ', $value);');
+        //$phpFunction->add('$value = (new ' . $this->prefixClassName(Text::class) . '($this->' . $this->variableName . '))->replace(",", ".")->getValue();');
+        $phpFunction->add('if (!is_null($this->' . $this->variableName . ')) $this->' . $this->variableName . ' = str_replace(",", ".", $this->' . $this->variableName . ');');
+        $phpFunction->add('$this->typeValueList->setModelValue($this->model->' . $this->variableName . ', $this->' . $this->variableName . ');');
+
+        //$phpFunction->add('$this->typeValueList->setModelValue($this->model->' . $this->variableName . ', $value);');
 
     }
 
