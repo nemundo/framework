@@ -30,6 +30,9 @@ class BootstrapDocument extends HtmlDocument
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new JqueryUiPackage());
         $this->addPackage(new PopperPackage());
+
+        //$this->addJsUrl('https://unpkg.com/@popperjs/core@2');
+
         $this->addPackage(new BootstrapPackage());
         $this->addPackage(new FontAwesomePackage());
 
