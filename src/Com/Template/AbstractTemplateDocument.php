@@ -16,9 +16,12 @@ class AbstractTemplateDocument extends AbstractDocument
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+        $page->title =  $this->pageTitle;
+
+        /*
         if ($this->pageTitle !== null) {
             $page->title ='123'. $this->pageTitle;
-        }
+        }*/
 
         $page->addContainer($this);
 
