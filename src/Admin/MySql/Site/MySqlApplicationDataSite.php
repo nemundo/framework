@@ -8,6 +8,7 @@ use Nemundo\Admin\MySql\Parameter\TableParameter;
 use Nemundo\Admin\MySql\Site\Action\MySqlDropTableSite;
 use Nemundo\Admin\MySql\Site\Action\MySqlEmptyTableSite;
 use Nemundo\Admin\MySql\Table\MySqlDataTable;
+use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Type\Number\Number;
@@ -57,10 +58,11 @@ class MySqlApplicationDataSite extends AbstractSite
         $applicationListBox->submitOnChange = true;
         $applicationListBox->value = $applicationListBox->getValue();
 
+
         if ($applicationListBox->hasValue()) {
 
             $applicationRow = (new ApplicationReader())->getRowById($applicationListBox->getValue());
-            $application = $applicationRow->getApplicationClassObject();
+            $application = $applicationRow->getApplication();  // getApplicationClassObject();
 
             if ($application->modelCollectionClass !== null) {
 
@@ -104,13 +106,13 @@ class MySqlApplicationDataSite extends AbstractSite
                         $p = new Paragraph($col2);
                         $p->content = (new Number($count->getCount()))->formatNumber() . ' Rows';
 
-                        $btn = new AdminSiteButton($col2);
+                        /*$btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlEmptyTableSite::$site);
                         $btn->site->addParameter($tableParameter);
 
                         $btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlDropTableSite::$site);
-                        $btn->site->addParameter($tableParameter);
+                        $btn->site->addParameter($tableParameter);*/
 
                         $data = new MySqlDataTable($col2);
                         $data->tableName = $tableName;

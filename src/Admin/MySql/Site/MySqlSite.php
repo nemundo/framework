@@ -24,8 +24,8 @@ class MySqlSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'MySql';
-        $this->url = 'mysql';
+        $this->title = 'MySql2';
+        $this->url = 'mysql2';
 
         new MySqlApplicationDataSite($this);
         new MySqlQuerySite($this);
@@ -58,8 +58,8 @@ class MySqlSite extends AbstractSite
 
 
 
-        //new MySqlNavigation($page);
-        //new MySqlAdmin($page);
+//        new MySqlNavigation($page);
+//        new MySqlAdmin($page);
 
         $page->render();
 
