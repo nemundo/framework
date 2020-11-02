@@ -4,7 +4,6 @@ namespace Nemundo\Crawler\HtmlParser;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\RegularExpression\RegularExpressionReader;
 use Nemundo\Core\Validation\UrlValidation;
 use Nemundo\Core\WebRequest\CurlWebRequest;
@@ -12,9 +11,6 @@ use Nemundo\Core\WebRequest\CurlWebRequest;
 
 class HtmlParser extends AbstractBaseClass
 {
-
-    //public $url;
-
 
     public $baseUrl = '';
 
@@ -64,7 +60,6 @@ class HtmlParser extends AbstractBaseClass
     }
 
 
-
     public function getDescription()
     {
 
@@ -86,10 +81,6 @@ class HtmlParser extends AbstractBaseClass
     }
 
 
-
-//<meta name="description"
-
-
     public function getRssFeed()
     {
 
@@ -99,10 +90,12 @@ class HtmlParser extends AbstractBaseClass
         $re->text = $this->html;
         $re->regularExpression = '<link rel="alternate".*?href="(.*?)".*?>';
 
+        $feedList = [];
         foreach ($re->getData() as $item) {
-            (new Debug())->write($item);
+            $feedList[] = $item->getValue(0);
         }
 
+        return $feedList;
 
     }
 
@@ -142,7 +135,7 @@ class HtmlParser extends AbstractBaseClass
 
         $hyperlinkList = [];
         foreach ($re->getData() as $item) {
-            $url = $item->getValue(0);  // $item->getValueByNumber(0);
+            $url = $item->getValue(0);
 
             if (!(new UrlValidation())->isUrl($url)) {
                 $url = $this->baseUrl . $url;
