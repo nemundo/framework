@@ -10,7 +10,7 @@ use Nemundo\App\Scheduler\Com\Navigation\SchedulerNavigation;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogCount;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogModel;
-use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogPaginationModelReader;
+
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogPaginationReader;
 use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
 use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
@@ -56,9 +56,6 @@ class SchedulerSchedulerLogSite extends AbstractIconSite
 
         $schedulerId = (new SchedulerParameter())->getValue();
 
-        //$title = new AdminTitle($page);
-        //$title->content = 'Scheduler Log';
-
         $schedulerReader= new SchedulerReader();
         $schedulerReader->model->loadScript();
         $schedulerRow = $schedulerReader->getRowById($schedulerId);
@@ -86,11 +83,9 @@ class SchedulerSchedulerLogSite extends AbstractIconSite
         $header->addText('Running Date/Time');
         $header->addText('Duration');
 
-        $logReader = new SchedulerLogPaginationReader();  //PaginationModelReader();
+        $logReader = new SchedulerLogPaginationReader();
         $logReader->model->loadSchedulerStatus();
-        $logReader->filter = $filter;  // ->andEqual($logReader->model->schedulerId, (new SchedulerParameter())->getValue());
-        //$logReader->addOrder($logReader->model->schedulerStatusId);
-        //$logReader->addOrder($logReader->model->runningDateTime, SortOrder::DESCENDING);
+        $logReader->filter = $filter;
         $logReader->addOrder($logReader->model->plannedDateTime, SortOrder::DESCENDING);
         $logReader->paginationLimit = 100;
 
