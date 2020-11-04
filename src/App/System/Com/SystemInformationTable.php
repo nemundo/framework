@@ -30,6 +30,7 @@ class SystemInformationTable extends AbstractHtmlContainer
         $title = new AdminSubtitle($this);
         $title->content = 'Php';
         $table = new AdminLabelValueTable($this);
+        $table->addLabelValue('Show Error', $phpEnvironment->getShowError());
         $table->addLabelValue('PHP Version', $phpEnvironment->getPhpVersion());
         $table->addLabelValue('Max File Upload', $phpEnvironment->getMaxFileUpload());
         $table->addLabelValue('Max File Upload Size', $phpEnvironment->getMaxFileUploadSize());
