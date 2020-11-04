@@ -4,6 +4,7 @@ namespace Nemundo\App\System\Com;
 
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Core\Date\Duration\TimeDuration;
 use Nemundo\Core\Http\Cookie\CookieReader;
 use Nemundo\Core\Http\Session\SessionReader;
@@ -37,8 +38,14 @@ class SystemInformationTable extends AbstractHtmlContainer
         $table->addLabelValue('Max Post File Size', $phpEnvironment->getMaxPostSize());
         $table->addLabelValue('Memory Limit', $phpEnvironment->getMemoryLimit());
         $table->addLabelValue('Time Limit', $phpEnvironment->getTimeLimit());
-
         $table->addLabelValue('php.ini Filename', $phpEnvironment->getPhpIniFilename());
+
+        $ul = new UnorderedList();
+        foreach ($phpEnvironment->getPhpModul() as $modul) {
+            $ul->addText($modul);
+        }
+        $table->addLabelCom('Php Modul', $ul);
+
 
         $title = new AdminSubtitle($this);
         $title->content = 'MySql';
