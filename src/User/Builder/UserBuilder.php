@@ -9,7 +9,7 @@ use Nemundo\Core\Random\UniqueId;
 use Nemundo\User\Data\User\User;
 use Nemundo\User\Data\User\UserCount;
 
-class UserBuilderNew extends AbstractBase
+class UserBuilder extends AbstractBase
 {
 
 

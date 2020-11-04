@@ -4,7 +4,7 @@ require '../config.php';
 
 $login = 'user10';
 
-$userBuilder = new \Nemundo\User\Builder\UserBuilderNew();
+$userBuilder = new \Nemundo\User\Builder\UserBuilder();
 $userBuilder->login =$login;
 $userId = $userBuilder->createUser();
 
