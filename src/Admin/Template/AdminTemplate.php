@@ -11,6 +11,7 @@ use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
+use Nemundo\Package\NemundoJs\NemundoJsScript;
 use Nemundo\Web\Site\BaseUrlSite;
 
 class AdminTemplate extends BootstrapDocument
@@ -29,9 +30,15 @@ class AdminTemplate extends BootstrapDocument
     protected function loadContainer()
     {
 
+
+
         parent::loadContainer();
 
         $this->title = AdminConfig::$adminTitle;
+
+        $script = new NemundoJsScript();
+        parent::addContainer($script);
+
 
         $this->navbar = new BootstrapSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;

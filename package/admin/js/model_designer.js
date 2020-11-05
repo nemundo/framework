@@ -6,8 +6,6 @@ formDocument.onLoaded = function () {
 
         let form = new FormContainer('type_form');
 
-        WebConfig.webUrl = '/schleuniger/admin/';
-
         let url = new UrlBuilder(WebConfig.webUrl + 'model-designer/model/model-type-json');
         url.addParameter('project', form.getDataAttribute('project'));
         url.addParameter('app', form.getDataAttribute('app'));

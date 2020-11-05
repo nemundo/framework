@@ -8,4 +8,16 @@ doc.onLoaded = function () {
 
     (new Debug).write(builder.getUrl());
 
+    let web = new WebRequest(builder.getUrl());
+    web.onLoaded= function () {
+        (new Debug).write(web.getJson());
+
+        json = web.getJson();
+        json.forEach(function(item) {
+            (new Debug).write(item.subject);
+        });
+
+    };
+
+
 };

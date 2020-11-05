@@ -36,10 +36,6 @@ class SelectContainer extends FormBaseContainer {
 
     }
 
-
-  //  this.options[this.selectedIndex].innerHTML
-
-
 }
 
 

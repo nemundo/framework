@@ -6,8 +6,6 @@ doc.onLoaded = function () {
     select.onChange = function () {
         console.log(select.value);
         console.log(select.text);
-
-
     };
 
     /*
