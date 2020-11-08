@@ -4,7 +4,6 @@ namespace Nemundo\Com\Chart\Data;
 
 
 use Nemundo\Com\Chart\AbstractChart;
-use Nemundo\Package\Echarts\Chart\AbstractEchart;
 
 
 class ScatterData extends AbstractChartData
