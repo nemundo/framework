@@ -4,7 +4,7 @@ namespace Nemundo\Admin\Log\Script;
 
 
 use Nemundo\App\Script\Type\AbstractConsoleScript;
-use Nemundo\Core\Log\LogFileDelete;
+use Nemundo\Project\Path\LogPath;
 
 class LogFileDeleteScript extends AbstractConsoleScript
 {
@@ -18,7 +18,7 @@ class LogFileDeleteScript extends AbstractConsoleScript
     public function run()
     {
 
-        (new LogFileDelete())->deleteLog();
+        (new LogPath())->emptyDirectory();
 
     }
 
