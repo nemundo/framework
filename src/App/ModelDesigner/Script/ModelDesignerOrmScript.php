@@ -21,8 +21,6 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
     public function run()
     {
 
-        //foreach (ModelDesignerConfig::$projectCollection->getProjectList() as $project) {
-
         foreach ((new ModelDesignerConfig)->getProjectList() as $project) {
 
             (new Debug())->write($project->projectName);
@@ -33,7 +31,8 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
                 $orm = new OrmBuilder();
                 $orm->project = $project;
                 $orm->app = $appJson;
-                $orm->createOrm();
+                $orm->deleteOrm();
+                //$orm->createOrm();
 
             }
 

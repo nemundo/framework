@@ -4,8 +4,10 @@ namespace Nemundo\Rss;
 
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\DateTime\Date;
+use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Core\Type\Text\Text;
 
 
@@ -109,7 +111,15 @@ class RssReader extends AbstractDataSource
                     $rssItem->enclosureType = $item->getEnclosure()->type;
                 }
 
-                $rssItem->date = new Date($item->getDateCreated()->format('Y-m-d H:i:s'));
+                //(new Debug())->write($rssItem->url);
+                //(new Debug())->write($item->getDateCreated());
+
+                $dateTime = $item->getDateCreated();
+                if ($dateTime!==null) {
+                $rssItem->dateTime = new DateTime($item->getDateCreated()->format('Y-m-d H:i:s'));
+                } else {
+                    $rssItem->dateTime = (new DateTime())->setNow();
+                }
 
                 $this->addItem($rssItem);
 

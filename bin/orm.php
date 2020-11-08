@@ -2,7 +2,13 @@
 
 require __DIR__ . '/../../../config.php';
 
-$orm = new \Nemundo\Admin\AppDesigner\Orm\ProjectOrm();
+
+(new \Nemundo\App\ModelDesigner\Script\ModelDesignerOrmScript())->run();
+
+
+
+/*$orm = new \Nemundo\Admin\AppDesigner\Orm\ProjectOrm();
 $orm->project = new \Nemundo\FrameworkProject();
-$orm->createOrm();
+$orm->deleteOrm();*/
+//$orm->createOrm();*/
 

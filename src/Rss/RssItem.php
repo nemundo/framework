@@ -5,6 +5,7 @@ namespace Nemundo\Rss;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Type\DateTime\Date;
+use Nemundo\Core\Type\DateTime\DateTime;
 
 class RssItem extends AbstractBase
 {
@@ -25,9 +26,9 @@ class RssItem extends AbstractBase
     public $url;
 
     /**
-     * @var Date
+     * @var DateTime
      */
-    public $date;
+    public $dateTime;
 
     /**
      * @var string

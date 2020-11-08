@@ -42,4 +42,19 @@ class OrmBuilder extends AbstractBase
 
     }
 
+
+
+    public function deleteOrm() {
+
+        foreach ($this->app->getModelList() as $model) {
+            $orm = new OrmModelSetup();
+            $orm->project = $this->project;
+            $orm->model = $model;
+            $orm->deleteOrm();
+        }
+
+
+    }
+
+
 }
