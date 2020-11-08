@@ -3,7 +3,7 @@
 namespace Nemundo\Project\Path;
 
 
-class LogPath extends ProjectPath  // ProjectPath
+class LogPath extends ProjectPath
 {
 
     protected function loadPath()

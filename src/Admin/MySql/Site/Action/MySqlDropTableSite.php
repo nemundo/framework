@@ -21,10 +21,14 @@ class MySqlDropTableSite extends AbstractIconSite
 
     protected function loadSite()
     {
+
         $this->title = 'Drop Table';
         $this->url = 'drop-table';
         $this->icon = new DeleteIcon();
         $this->menuActive = false;
+
+        MySqlDropTableSite::$site=$this;
+
       }
 
 

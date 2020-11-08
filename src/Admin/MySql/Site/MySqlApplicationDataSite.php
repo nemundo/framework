@@ -106,13 +106,13 @@ class MySqlApplicationDataSite extends AbstractSite
                         $p = new Paragraph($col2);
                         $p->content = (new Number($count->getCount()))->formatNumber() . ' Rows';
 
-                        /*$btn = new AdminSiteButton($col2);
+                        $btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlEmptyTableSite::$site);
                         $btn->site->addParameter($tableParameter);
 
                         $btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlDropTableSite::$site);
-                        $btn->site->addParameter($tableParameter);*/
+                        $btn->site->addParameter($tableParameter);
 
                         $data = new MySqlDataTable($col2);
                         $data->tableName = $tableName;

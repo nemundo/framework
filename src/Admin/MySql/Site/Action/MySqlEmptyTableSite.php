@@ -22,6 +22,9 @@ class MySqlEmptyTableSite extends AbstractSite
         $this->title = 'Empty Table';
         $this->url = 'empty-table';
         $this->menuActive = false;
+
+        MySqlEmptyTableSite::$site=$this;
+
          }
 
 
