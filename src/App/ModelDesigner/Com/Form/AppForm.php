@@ -138,9 +138,6 @@ class AppForm extends BootstrapForm
     protected function onSubmit()
     {
 
-
-        // Auslagern in AppBuilder Class
-
         $appName = $this->appLabel->getValue();
         $appPrefix = $this->appName->getValue();
 
@@ -153,12 +150,8 @@ class AppForm extends BootstrapForm
             $app->namespace = $this->appNamespace->getValue();
             $app->writeJson();
 
-
             $applicationClassName = $app->appLabel . 'Application';
-            //$app->namespace . '\Application\\'.$app->appLabel . 'Application';
 
-
-            // Install File
             $phpClass = new PhpClass();
             $phpClass->project = $this->project;
             $phpClass->className = $app->appLabel . 'Install';
@@ -174,37 +167,15 @@ class AppForm extends BootstrapForm
             $function = new PhpFunction($phpClass);
             $function->functionName = 'install()';
             $function->add('(new ApplicationSetup())->addApplication(new ' . $applicationClassName . '());');
-            $function->add('(new ModelCollectionSetup())->addCollection(new ' . $app->appLabel . 'Collection());');
+            $function->add('(new ModelCollectionSetup())->addCollection(new ' . $app->appLabel . 'ModelCollection());');
 
             $phpClass->saveFile();
 
-
             $builder = new ApplicationClassBuilder();
             $builder->project = $this->project;
-            $builder->className = $app->appLabel;  //$applicationClassName;
-            $builder->namespace = $app->namespace;  //$this->app->namespace;
+            $builder->className = $app->appLabel;
+            $builder->namespace = $app->namespace;
             $builder->buildClass();
-
-
-
-
-
-            // Application Class
-            /*$phpClass = new PhpClass();
-            $phpClass->project = $this->project;
-            $phpClass->className = $applicationClassName;  // $app->appLabel . 'Application';
-            $phpClass->extendsFromClass = 'AbstractApplication';
-            $phpClass->namespace = $app->namespace . '\Application';
-            $phpClass->addUseClass('Nemundo\App\Application\Type\AbstractApplication');
-
-            $function = new PhpFunction($phpClass);
-            $function->functionName = 'loadApplication()';
-            $function->visibility = PhpVisibility::ProtectedVariable;
-            $function->add('$this->application = \'' . $app->appLabel . '\';');
-            $function->add(' $this->applicationId = \'' . (new UniqueId())->getUniqueId() . '\';');
-
-            $phpClass->saveFile();*/
-
 
         } else {
 

@@ -55,7 +55,7 @@ abstract class AbstractModelIndex extends AbstractBaseClass
     protected $typeList = [];
 
 
-    public function addType(AbstractModelType $type)
+    public function addType(AbstractModelType $type=null)
     {
         $this->typeList[] = $type;
         return $this;

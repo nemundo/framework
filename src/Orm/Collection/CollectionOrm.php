@@ -48,7 +48,7 @@ class CollectionOrm extends AbstractBase
         $phpClass = new PhpClass();
         $phpClass->overwriteExistingPhpFile = true;
         $phpClass->project = $this->project;
-        $phpClass->className = $this->appName . 'Collection';
+        $phpClass->className = $this->appName . 'ModelCollection';
         $phpClass->namespace = $this->namespace . '\\' . 'Data';
         $phpClass->extendsFromClass = 'AbstractModelCollection';
 

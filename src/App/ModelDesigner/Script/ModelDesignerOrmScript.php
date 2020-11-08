@@ -31,8 +31,8 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
                 $orm = new OrmBuilder();
                 $orm->project = $project;
                 $orm->app = $appJson;
-                $orm->deleteOrm();
-                //$orm->createOrm();
+                //$orm->deleteOrm();
+                $orm->createOrm();
 
             }
 

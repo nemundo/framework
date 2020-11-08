@@ -4,8 +4,10 @@ namespace Nemundo\Orm\Setup;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\File\Path;
+
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Dev\Code\PhpNamespace;
 use Nemundo\Orm\Code\AdminOrmCode;
 use Nemundo\Orm\Code\AdminSiteOrmCode;
@@ -30,6 +32,7 @@ use Nemundo\Orm\Code\RedirectOrmCode;
 use Nemundo\Orm\Code\TableOrmCode;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Project\AbstractProject;
+use Nemundo\Project\Path\ProjectPath;
 
 
 class OrmModelSetup extends AbstractBase
@@ -58,7 +61,6 @@ class OrmModelSetup extends AbstractBase
 
     public function createModel()
     {
-
 
         $orm = new ModelOrmCode();
         $orm->project = $this->project;
@@ -150,12 +152,6 @@ class OrmModelSetup extends AbstractBase
         $orm->model = $this->model;
         $orm->createClass();
 
-        /*
-        $orm = new OrmCodeAction();
-        $orm->project = $this->project;
-        $orm->model = $this->model;
-        $orm->createClass();*/
-
         if ($this->model->createAdminOrm) {
 
             $orm = new FormOrmCode();
@@ -211,6 +207,7 @@ class OrmModelSetup extends AbstractBase
         $namespace = new PhpNamespace();
         $namespace->namespace = $this->model->namespace;
         $namespace->prefixNamespace = $this->project->namespace;
+
         (new Path())
             ->addPath($this->project->path)
             ->addPath($namespace->getPath())
