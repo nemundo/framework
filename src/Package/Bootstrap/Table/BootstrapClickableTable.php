@@ -25,7 +25,7 @@ class BootstrapClickableTable extends BootstrapTable
     public function getContent()
     {
 
-        if (!BootstrapClickableTable::$insertHeader) {
+        //if (!BootstrapClickableTable::$insertHeader) {
 
             LibraryHeader::addStyle('.clickable-row {');
             LibraryHeader::addStyle('cursor: pointer;');
@@ -42,7 +42,7 @@ class BootstrapClickableTable extends BootstrapTable
 
             BootstrapClickableTable::$insertHeader = true;
 
-        }
+        //}
 
 
         return parent::getContent();

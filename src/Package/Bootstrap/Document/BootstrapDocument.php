@@ -53,8 +53,8 @@ class BootstrapDocument extends HtmlDocument
         $meta->addAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
         //$this->addHeaderContainer($meta);
 
-        /*$script = new JavaScript($this);
-        LibraryTrait::$readyCode = new JqueryReadyCode($script);*/
+        $script = new JavaScript($this);
+        LibraryTrait::$readyCode = new JqueryReadyCode($script);
         //$this->addHeaderContainer($script);
 
         return parent::getContent();
