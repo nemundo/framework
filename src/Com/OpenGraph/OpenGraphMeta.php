@@ -3,7 +3,7 @@
 namespace Nemundo\Com\OpenGraph;
 
 
-use Nemundo\Html\Header\Meta;
+use Nemundo\Html\Header\Meta\Meta;
 
 class OpenGraphMeta extends Meta
 {

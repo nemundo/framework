@@ -4,8 +4,9 @@ namespace Nemundo\Package\Bootstrap\Document;
 
 
 use Nemundo\Com\Container\LibraryTrait;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Html\Document\HtmlDocument;
-use Nemundo\Html\Header\Meta;
+use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Html\Script\JavaScript;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
 use Nemundo\Package\FontAwesome\FontAwesomePackage;
@@ -30,11 +31,11 @@ class BootstrapDocument extends HtmlDocument
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new JqueryUiPackage());
         $this->addPackage(new PopperPackage());
-
-        //$this->addJsUrl('https://unpkg.com/@popperjs/core@2');
-
         $this->addPackage(new BootstrapPackage());
         $this->addPackage(new FontAwesomePackage());
+
+        $script = new JavaScript($this);
+        LibraryTrait::$readyCode = new JqueryReadyCode($script);
 
         parent::loadContainer();
         $this->jquery = new JqueryReadyCode();
@@ -45,14 +46,16 @@ class BootstrapDocument extends HtmlDocument
     public function getContent()
     {
 
-        $meta = new Meta();
+        //(new Debug())->write('getcontent');
+
+        $meta = new Meta($this);
         $meta->addAttribute('name', 'viewport');
         $meta->addAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
-        $this->addHeaderContainer($meta);
+        //$this->addHeaderContainer($meta);
 
-        $script = new JavaScript();
-        LibraryTrait::$readyCode = new JqueryReadyCode($script);
-        $this->addHeaderContainer($script);
+        /*$script = new JavaScript($this);
+        LibraryTrait::$readyCode = new JqueryReadyCode($script);*/
+        //$this->addHeaderContainer($script);
 
         return parent::getContent();
 

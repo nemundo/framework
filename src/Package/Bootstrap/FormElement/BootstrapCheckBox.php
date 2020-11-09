@@ -22,7 +22,7 @@ class BootstrapCheckBox extends AbstractCheckBox
         $this->checkbox->addCssClass('form-check-input');
 
         $label = new Label($this);
-        $label->content = $this->checkbox->getContent() . ' ' . $this->getLabelText();
+        $label->content = $this->checkbox->getContent()->bodyContent . ' ' . $this->getLabelText();
 
         $label->addCssClass('form-check-label');
 
@@ -32,7 +32,7 @@ class BootstrapCheckBox extends AbstractCheckBox
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $label->content .= ' ' . $bold->getContent();
+            $label->content .= ' ' . $bold->getContent()->bodyContent;
             $this->addCssClass('has-danger');
             $this->checkbox->addCssClass('form-control-danger');
 

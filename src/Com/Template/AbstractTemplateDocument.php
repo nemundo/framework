@@ -50,11 +50,14 @@ class AbstractTemplateDocument extends AbstractDocument
 
         //}
 
+        $page->render();
 
+
+        /*
         $response = new HttpResponse();
         $response->content = $page->getContent();
         $response->statusCode = $this->statusCode;
-        $response->sendResponse();
+        $response->sendResponse();*/
 
     }
 

@@ -10,6 +10,7 @@ use Nemundo\Core\Type\Number\YesNo;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Script\JavaScript;
 use Nemundo\Package\Echarts\Package\EchartsPackage;
+use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 
 abstract class AbstractEchart extends AbstractChart
 {
@@ -48,7 +49,7 @@ abstract class AbstractEchart extends AbstractChart
         $div->id = $chartId;
         $div->addAttribute('style', 'width:' . $this->widthPercent . '%; height:400px;');
 
-        $script = new JavaScript($this);
+        $script = new JqueryReadyCode($this);// new JavaScript($this);
         $script->addCodeLine('var myChart = echarts.init(document.getElementById("' . $chartId . '"));');
         $script->addCodeLine('var option = {');
         $script->addCodeLine('animation: ' . (new YesNo($this->animation))->getText() . ',');
