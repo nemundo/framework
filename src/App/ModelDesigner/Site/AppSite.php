@@ -56,7 +56,7 @@ class AppSite extends AbstractSite
         $btn->site->addParameter(new AppParameter($appJson->appName));
 
         $title = new AdminTitle($page);
-        $title->content = $appJson->appLabel . ' ' . $btn->getContent();
+        $title->content = $appJson->appLabel . ' ' . $btn->getContent()->bodyContent;
 
         $table = new AdminLabelValueTable($page);
         $table->addLabelValue('App', $appJson->appLabel);

@@ -89,7 +89,7 @@ class ModelSite extends AbstractSite
         $btn->site->addParameter(new ModelParameter($model->tableName));
 
         $title = new AdminTitle($page);
-        $title->content = $model->label . ' ' . $btn->getContent();
+        $title->content = $model->label . ' ' . $btn->getBodyContent();  // getContent()->bodyContent;
 
         $table = new AdminLabelValueTable($page);
         $table->addLabelValue('Template',$model->templateLabel);

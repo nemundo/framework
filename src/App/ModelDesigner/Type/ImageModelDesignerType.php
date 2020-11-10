@@ -36,7 +36,7 @@ class ImageModelDesignerType extends ImageOrmType
         $btn->site->addParameter(new ModelParameter());
         $btn->site->addParameter(new FieldNameParameter($this->fieldName));
 
-        $text = $btn->getContent();
+        $text = $btn->getBodyContent();
 
         return $text;
 
