@@ -1,11 +1,12 @@
 <?php
 
-namespace Nemundo\Com\OpenGraph;
+namespace Nemundo\Package\OpenGraph;
 
 
+use Nemundo\Html\Header\Meta\AbstractMeta;
 use Nemundo\Html\Header\Meta\Meta;
 
-class OpenGraphMeta extends Meta
+class OpenGraphMeta extends AbstractMeta
 {
 
     /**

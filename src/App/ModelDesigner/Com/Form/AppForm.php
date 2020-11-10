@@ -159,7 +159,7 @@ class AppForm extends BootstrapForm
             $phpClass->namespace = $app->namespace . '\Install';
             $phpClass->addUseClass('Nemundo\Project\Install\AbstractInstall');
             $phpClass->addUseClass(ModelCollectionSetup::class);
-            $phpClass->addUseClass($app->namespace . '\\Data\\' . $app->appLabel . 'Collection');
+            $phpClass->addUseClass($app->namespace . '\\Data\\' . $app->appLabel . 'ModelCollection');
             $phpClass->addUseClass($app->namespace . '\\Application\\' . $app->appLabel . 'Application');
 
             $phpClass->addUseClass(ApplicationSetup::class);

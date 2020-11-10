@@ -2,14 +2,12 @@
 
 namespace Nemundo\Orm\Collection;
 
-
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVisibility;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Project\AbstractProject;
-
 
 class CollectionOrm extends AbstractBase
 {
@@ -23,7 +21,6 @@ class CollectionOrm extends AbstractBase
      * @var string
      */
     public $namespace;
-
 
     /**
      * @var AbstractProject
