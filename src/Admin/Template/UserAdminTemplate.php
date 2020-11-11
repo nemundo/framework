@@ -13,8 +13,8 @@ class UserAdminTemplate extends AdminTemplate
 
         parent::loadContainer();
 
-        $p=new Paragraph($this);
-        $p->content = 'user: ';
+        /*$p=new Paragraph($this);
+        $p->content = 'user: ';*/
 
         $this->navbar->userMode = true;
 
