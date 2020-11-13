@@ -3,7 +3,7 @@
 namespace Nemundo\Dev\ProjectBuilder\Code;
 
 
-use Nemundo\Core\Text\TextConvert;
+use Nemundo\Core\Text\TextConverter;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVisibility;
@@ -31,7 +31,7 @@ class ProjectSiteCode extends AbstractProjectCode
         $function->visibility = PhpVisibility::ProtectedVariable;
 
         $function->add('$this->title = \'' . $this->siteClassName . '\';');
-        $function->add('$this->url = \'' . (new TextConvert)->convertToUrl($this->siteClassName) . '\';');
+        $function->add('$this->url = \'' . (new TextConverter)->convertToUrl($this->siteClassName) . '\';');
 
         $function = new PhpFunction($class);
         $function->functionName = 'loadContent()';

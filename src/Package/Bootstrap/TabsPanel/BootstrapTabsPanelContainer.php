@@ -4,7 +4,7 @@ namespace Nemundo\Package\Bootstrap\Tab;
 
 
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Core\Text\TextConvert;
+use Nemundo\Core\Text\TextConverter;
 
 class BootstrapTabsPanelContainer extends AbstractHtmlContainer
 {
@@ -27,7 +27,7 @@ class BootstrapTabsPanelContainer extends AbstractHtmlContainer
     public function getPanelId()
     {
 
-        $panelId = TextConvert::convertToCode($this->panelTitle, true);
+        $panelId = TextConverter::convertToCode($this->panelTitle, true);
         return $panelId;
 
     }

@@ -3,14 +3,14 @@
 namespace Nemundo\Dev\Code;
 
 
-use Nemundo\Core\Text\TextConvert;
+use Nemundo\Core\Text\TextConverter;
 
 class CodeConvert
 {
 
     public static function convertToVariable($variableName)
     {
-        $variableName = TextConvert::convertToCode($variableName, false, true);
+        $variableName = TextConverter::convertToCode($variableName, false, true);
         $variableName = str_replace('_', '', $variableName);
 
         // erster Buchstaben klein
@@ -24,7 +24,7 @@ class CodeConvert
 
     public static function convertToClassName($name)
     {
-        $name = TextConvert::convertToCode($name, false, true);
+        $name = TextConverter::convertToCode($name, false, true);
         $name = str_replace('_', '', $name);
         return $name;
     }

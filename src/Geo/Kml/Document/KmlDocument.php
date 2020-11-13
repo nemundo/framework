@@ -55,7 +55,7 @@ class KmlDocument extends AbstractTagContainer
     }
 
 
-    public function getContent()
+    public function getHtml()
     {
 
         $this->tagName = 'kml';
@@ -69,7 +69,7 @@ class KmlDocument extends AbstractTagContainer
         parent::addContainer($this->document);
 
         $html = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL;
-        $html .= parent::getContent();
+        $html .= $this->getBodyContent();
 
         return $html;
 
@@ -80,7 +80,7 @@ class KmlDocument extends AbstractTagContainer
     {
 
         $response = new HttpResponse();
-        $response->content = $this->getContent();
+        $response->content = $this->getHtml();
         $response->contentType = ContentType::KML;
         $response->attachmentFilename = $this->filename;
         $response->sendResponse();

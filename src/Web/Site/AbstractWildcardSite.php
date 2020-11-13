@@ -13,6 +13,15 @@ abstract class AbstractWildcardSite extends AbstractSite
 
     abstract function checkWildcardUrl();
 
+
+
+    public function __construct(AbstractSiteTree $site = null)
+    {
+        parent::__construct($site);
+        $this->url='';
+        $this->menuActive=false;
+    }
+
     protected function loadSite()
     {
         //$this->menuActive = false;
