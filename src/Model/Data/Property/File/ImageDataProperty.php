@@ -8,7 +8,7 @@ use Nemundo\Core\Http\Request\File\AbstractFileRequest;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
 use Nemundo\Core\Image\Format\FixHeightImageFormat;
 use Nemundo\Core\Image\Format\FixWidthImageFormat;
-use Nemundo\Core\Image\ImageProperty;
+use Nemundo\Core\Image\ImageFile;
 use Nemundo\Core\Image\ImageResize;
 use Nemundo\Core\Image\Manipulation\ImageRotation;
 use Nemundo\Core\Path\Path;
@@ -79,7 +79,7 @@ class ImageDataProperty extends FileDataProperty
             }
 
 
-            $image = new ImageProperty($uniqueFilename);
+            $image = new ImageFile($uniqueFilename);
             switch ($image->imageType) {
 
                 case 'jpg':

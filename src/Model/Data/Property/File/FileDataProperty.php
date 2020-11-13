@@ -64,7 +64,7 @@ class FileDataProperty extends AbstractFileDataProperty
 
         if ($filenameExtension == null) {
             //$filenameExtension = (new File($url))->getFileExtension();
-            $filenameExtension =(new FileInformation($url))->getExtension();
+            $filenameExtension =(new FileInformation($url))->getFileExtension();
         }
 
         $uniqueFilename = (new UniqueFilename())->getUniqueFilename($filenameExtension);
