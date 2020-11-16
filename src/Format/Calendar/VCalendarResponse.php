@@ -6,15 +6,15 @@ namespace Nemundo\Format\Calendar;
 use Nemundo\Core\Http\Response\AbstractHttpResponse;
 use Nemundo\Core\Http\Response\ContentType;
 
-class CalendarResponse extends AbstractHttpResponse
+class VCalendarResponse extends AbstractHttpResponse
 {
 
-    use CalendarTrait;
+    use VCalendarTrait;
 
     public function sendResponse()
     {
 
-        $icalendar = new Calendar();
+        $icalendar = new VCalendar();
         $icalendar->dateFrom = $this->dateFrom;
         $icalendar->dateTo = $this->dateTo;
         $icalendar->dayEvent = $this->dayEvent;

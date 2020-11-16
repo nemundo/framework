@@ -6,7 +6,7 @@ namespace Nemundo\Format\Calendar;
 
 use Nemundo\Core\Type\DateTime\DateTime;
 
-trait CalendarTrait
+trait VCalendarTrait
 {
 
     /**

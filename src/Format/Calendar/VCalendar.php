@@ -8,10 +8,10 @@ use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Random\UniqueId;
 
 
-class Calendar extends AbstractBase
+class VCalendar extends AbstractBase
 {
 
-    use CalendarTrait;
+    use VCalendarTrait;
 
     public function getContent()
     {

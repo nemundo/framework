@@ -55,6 +55,10 @@ abstract class AbstractBootstrapPagination extends Nav
     public function getContent()
     {
 
+
+        /*(new Debug())->write($this->totalCount);
+        (new Debug())->write($this->paginationLimit);*/
+
         $currentPage = (new PageParameter())->getValue();
 
         if ($this->totalCount <= $this->paginationLimit) {
