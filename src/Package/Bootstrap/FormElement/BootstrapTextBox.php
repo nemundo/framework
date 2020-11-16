@@ -41,7 +41,7 @@ class BootstrapTextBox extends AbstractTextBox
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $this->labelLabel->content .= ' ' . $bold->getContent();
+            $this->labelLabel->content .= ' ' . $bold->getBodyContent();
             $this->addCssClass('has-danger');
             $this->textInput->addCssClass('form-control-danger');
 

@@ -2,3 +2,6 @@ git config credential.helper store
 git pull
 
 php bin/setup.php
+
+sudo chown -R www-data:www-data web/data
+sudo chown -R www-data:www-data data_redirect

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Rss;
+namespace Nemundo\Rss\Reader;
 
 
 use Nemundo\Core\Base\AbstractBase;
