@@ -9,9 +9,6 @@ use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
-use Nemundo\Package\Jquery\Package\JqueryPackage;
-use Nemundo\Package\JqueryUi\JqueryUiPackage;
-use Nemundo\Package\NemundoJs\NemundoJsScript;
 use Nemundo\Web\Site\BaseUrlSite;
 
 class AdminTemplate extends BootstrapDocument
@@ -25,20 +22,45 @@ class AdminTemplate extends BootstrapDocument
     /**
      * @var BootstrapSiteNavbar
      */
-    protected $navbar;
+    public static $navbar;
+
+
+    //protected $navbar;
+
+
+    public static function loadTemplate()
+    {
+
+        if (AdminTemplate::$navbar == null) {
+            AdminTemplate::$navbar = new BootstrapSiteNavbar();
+        }
+
+    }
+
 
     protected function loadContainer()
     {
 
-        $this->navbar = new BootstrapSiteNavbar();
-        $this->navbar->site = AdminConfig::$webController;
-        $this->navbar->userMode = false;
+        //AdminTemplate::$navbar = new BootstrapSiteNavbar();
+        AdminTemplate::$navbar->site = AdminConfig::$webController;
+        AdminTemplate::$navbar->userMode = false;
         if (AdminConfig::$logoUrl !== null) {
-            $logo = new BootstrapNavbarLogo($this->navbar);
+            $logo = new BootstrapNavbarLogo(AdminTemplate::$navbar);
             $logo->logoSite = new BaseUrlSite();
             $logo->logoUrl = AdminConfig::$logoUrl;
         }
-        parent::addContainer($this->navbar);
+
+
+        /*
+        $this->navbar->addUserMenuDivider();
+        $this->navbar->addUserMenuDivider();
+        $this->navbar->addUserMenuSite(LogoutSite::$site);
+        $this->navbar->addUserMenuDivider();
+        $this->navbar->addUserMenuDivider();
+*/
+
+
+        parent::addContainer(AdminTemplate::$navbar);
 
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;
