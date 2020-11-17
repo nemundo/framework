@@ -60,20 +60,8 @@ abstract class AbstractModelPaginationTable extends AdminTable
         $this->addCssClass('table');
         $this->addCssClass('table-hover');
 
-
         $this->paginationReader->model = $this->model;
 
-        /*
-        foreach ($this->paginationReader->model->getTypeList() as $type) {
-            if ($type->isObjectOfClass(ExternalType::class)) {
-                if ($type->visible->table) {
-                    //$type->loadData = true;
-                }
-            }
-        }*/
-
-
-        // Header
         if ($this->showHeader) {
             $tableHeader = new TableHeader($this);
             foreach ($this->paginationReader->model->getTypeList() as $type) {
@@ -90,7 +78,6 @@ abstract class AbstractModelPaginationTable extends AdminTable
             foreach ($loop->getData() as $number) {
                 $tableHeader->addEmpty();
             }
-
 
         }
 
@@ -110,8 +97,6 @@ abstract class AbstractModelPaginationTable extends AdminTable
                 }
             }
 
-
-            // Hyperlink Redirect
             foreach ($this->redirectList as $redirectHyperlink) {
 
                 if ($redirectHyperlink->parameterField == null) {

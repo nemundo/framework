@@ -30,7 +30,6 @@ class AdminTemplate extends BootstrapDocument
     protected function loadContainer()
     {
 
-
         $this->navbar = new BootstrapSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
         $this->navbar->userMode = false;
@@ -41,26 +40,13 @@ class AdminTemplate extends BootstrapDocument
         }
         parent::addContainer($this->navbar);
 
-
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;
         parent::addContainer($this->container);
 
         parent::loadContainer();
 
-
-
-
         $this->title = AdminConfig::$adminTitle;
-
-        //$script = new NemundoJsScript($this);
-        //parent::addContainer($script);
-
-
-
-      /*  $this->container = new BootstrapContainer();
-        $this->container->fullWidth = true;
-        parent::addContainer($this->container);*/
 
     }
 
@@ -77,9 +63,6 @@ class AdminTemplate extends BootstrapDocument
         if ($this->title == null) {
             $this->title = AdminConfig::$adminTitle;
         }
-
-        /*$this->addPackage(new JqueryPackage());
-        $this->addPackage(new JqueryUiPackage());*/
 
         new JqueryHeader($this);
 

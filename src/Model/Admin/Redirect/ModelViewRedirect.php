@@ -13,7 +13,7 @@ class ModelViewRedirect extends ModelTableRedirect
     public function __construct(AbstractModelTable $table = null)
     {
         parent::__construct($table);
-        $this->label = (new ViewIcon())->getContent();
+        $this->label = (new ViewIcon())->getBodyContent();
     }
 
 }

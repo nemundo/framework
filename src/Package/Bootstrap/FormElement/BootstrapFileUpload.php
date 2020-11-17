@@ -29,7 +29,7 @@ class BootstrapFileUpload extends AbstractFileUpload
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $label->content .= ' ' . $bold->getContent();
+            $label->content .= ' ' . $bold->getBodyContent();
             $this->addCssClass('has-danger');
             $this->fileInput->addCssClass('form-control-danger');
 

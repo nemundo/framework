@@ -12,7 +12,7 @@ class ModelEditRedirect extends ModelTableRedirect
     public function __construct(AbstractModelTable $table = null)
     {
         parent::__construct($table);
-        $this->label = (new EditIcon())->getContent();
+        $this->label = (new EditIcon())->getBodyContent();
     }
 
 }

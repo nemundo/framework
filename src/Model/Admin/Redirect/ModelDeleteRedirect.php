@@ -12,7 +12,7 @@ class ModelDeleteRedirect extends ModelTableRedirect
     public function __construct(AbstractModelTable $table = null)
     {
         parent::__construct($table);
-        $this->label = (new DeleteIcon())->getContent();
+        $this->label = (new DeleteIcon())->getBodyContent();
 
     }
 
