@@ -5,3 +5,4 @@ php bin/setup.php
 
 sudo chown -R www-data:www-data web/data
 sudo chown -R www-data:www-data data_redirect
+sudo chown -R www-data:www-data log
