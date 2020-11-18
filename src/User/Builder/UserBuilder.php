@@ -49,17 +49,17 @@ class UserBuilder extends AbstractBase
         $count->filter->andEqual($count->model->login, $this->login);
         if ($count->getCount() == 0) {
 
-            $userId = (new UniqueId())->getUniqueId();
+            //$userId = (new UniqueId())->getUniqueId();
 
             $data = new User();
-            $data->id = $userId;
+            //$data->id = $userId;
             $data->ignoreIfExists = true;
             $data->active = $this->active;
             $data->login = $this->login;
             $data->email = $this->email;
             $data->displayName = $displayName;
             //$data->secureToken = (new UniqueId())->getUniqueId();
-            $data->save();
+            $userId=$data->save();
 
         } else {
 

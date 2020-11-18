@@ -7,11 +7,6 @@ class User extends \Nemundo\Model\Data\AbstractModelData {
 protected $model;
 
 /**
-* @var string
-*/
-public $id;
-
-/**
 * @var bool
 */
 public $active;
@@ -46,8 +41,6 @@ parent::__construct();
 $this->model = new UserModel();
 }
 public function save() {
-$id = $this->id;
-$this->typeValueList->setModelValue($this->model->id, $id);
 $this->typeValueList->setModelValue($this->model->active, $this->active);
 $this->typeValueList->setModelValue($this->model->login, $this->login);
 $this->typeValueList->setModelValue($this->model->password, $this->password);

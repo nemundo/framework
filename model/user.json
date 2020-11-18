@@ -12,7 +12,7 @@
             "table_name": "user_user",
             "namespace": "Nemundo\\User\\Data\\User",
             "row_class_name": "",
-            "primary_index": "text_id",
+            "primary_index": "auto_increment",
             "is_deleted": false,
             "type": [
                 {

@@ -7,7 +7,7 @@ class UserUsergroupModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+* @var \Nemundo\Model\Type\External\Id\ExternalIdType
 */
 public $userId;
 
@@ -44,7 +44,7 @@ $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
 
-$this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->userId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
 $this->userId->tableName = "user_user_usergroup";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "user_user_usergroup_user";

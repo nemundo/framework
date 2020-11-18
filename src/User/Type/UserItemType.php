@@ -81,7 +81,6 @@ class UserItemType extends AbstractBaseClass
         $this->displayName = $userRow->displayName;
         $this->secureToken = $userRow->secureToken;
 
-
     }
 
 
@@ -97,7 +96,7 @@ class UserItemType extends AbstractBaseClass
             }
 
         } else {
-            $this->userId = (new UniqueId())->getUniqueId();
+            //$this->userId = (new UniqueId())->getUniqueId();
         }
 
     }
@@ -325,14 +324,14 @@ class UserItemType extends AbstractBaseClass
         if ($count->getCount() == 0) {
 
             $data = new User();
-            $data->id = $this->userId;
+            //$data->id = $this->userId;
             $data->ignoreIfExists = true;
             $data->active = $this->active;
             $data->login = $this->login;
             $data->email = $this->email;
             $data->displayName = $displayName;
             $data->secureToken = (new UniqueId())->getUniqueId();
-            $data->save();
+            $this->userId= $data->save();
 
         } else {
 
