@@ -10,7 +10,7 @@ class UserAdminTemplate extends AdminTemplate
     {
 
         parent::loadContainer();
-        AdminTemplate::$navbar->userMode = true;
+        $this->navbar->userMode = true;
 
     }
 

@@ -1,6 +1,6 @@
 ### Delete Directory
 ```
-rm -r direcotry
+rm -rf direcotry
 ```
 
 

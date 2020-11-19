@@ -3,6 +3,7 @@
 namespace Nemundo\App\Scheduler\Job;
 
 
+use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Core\Type\DateTime\Time;
 
@@ -60,5 +61,21 @@ abstract class AbstractScheduler extends AbstractScript
     {
         parent::loadScript();
     }
+
+
+    public function setActive() {
+
+        $this->active=true;
+
+        (new SchedulerSetup())->addScheduler($this);
+
+
+    }
+
+
+    public function setInactive() {
+
+    }
+
 
 }

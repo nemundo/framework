@@ -22,30 +22,31 @@ class AdminTemplate extends BootstrapDocument
     /**
      * @var BootstrapSiteNavbar
      */
-    public static $navbar;
+    protected $navbar;
 
 
     //protected $navbar;
 
 
+    /*
     public static function loadTemplate()
     {
 
-        if (AdminTemplate::$navbar == null) {
-            AdminTemplate::$navbar = new BootstrapSiteNavbar();
+        if ($this->navbar == null) {
+            $this->navbar = new BootstrapSiteNavbar();
         }
 
-    }
+    }*/
 
 
     protected function loadContainer()
     {
 
-        //AdminTemplate::$navbar = new BootstrapSiteNavbar();
-        AdminTemplate::$navbar->site = AdminConfig::$webController;
-        AdminTemplate::$navbar->userMode = false;
+        $this->navbar = new BootstrapSiteNavbar();
+        $this->navbar->site = AdminConfig::$webController;
+        $this->navbar->userMode = false;
         if (AdminConfig::$logoUrl !== null) {
-            $logo = new BootstrapNavbarLogo(AdminTemplate::$navbar);
+            $logo = new BootstrapNavbarLogo($this->navbar);
             $logo->logoSite = new BaseUrlSite();
             $logo->logoUrl = AdminConfig::$logoUrl;
         }
@@ -59,8 +60,7 @@ class AdminTemplate extends BootstrapDocument
         $this->navbar->addUserMenuDivider();
 */
 
-
-        parent::addContainer(AdminTemplate::$navbar);
+        parent::addContainer($this->navbar);
 
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;

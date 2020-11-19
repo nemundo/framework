@@ -27,17 +27,12 @@ class PasswordChangeSite extends AbstractSite
         $this->title[LanguageCode::DE] = 'Passwort ändern';
 
         $this->url = 'change-password';
-        $this->menuActive = false;
+       // $this->menuActive = false;
 
         PasswordChangeSite::$site = $this;
 
     }
 
-/*
-    protected function registerSite()
-    {
-        PasswordChangeSite::$site = $this;
-    }*/
 
     public function loadContent()
     {

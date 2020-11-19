@@ -32,10 +32,9 @@ class PasswordRequestForm extends BootstrapForm
 
         $this->login = new BootstrapTextBox($this);
         $this->login->label = 'Login';
-        $this->login->name='password_request_login';
+        $this->login->name = 'password_request_login';
         $this->login->validation = true;
         $this->login->autofocus = true;
-        //$this->login->in->addCssClass('text-uppercase');
 
         return parent::getContent();
     }
@@ -50,7 +49,6 @@ class PasswordRequestForm extends BootstrapForm
         if (!$check) {
             $this->login->errorMessage = 'User nicht vorhanden';
             $this->login->showErrorMessage = true;
-
         }
 
         return $check;
@@ -69,7 +67,7 @@ class PasswordRequestForm extends BootstrapForm
         $mailMessage = new MailMessage();
         $mailMessage->mailTo = $userType->email;
         $mailMessage->subject = $passwordRequest->subject;
-        $mailMessage->text = $passwordRequest->getContent();
+        $mailMessage->text = $passwordRequest->getBodyContent();
         $mailMessage->sendMail();
 
     }
