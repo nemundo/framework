@@ -21,7 +21,6 @@ class BootstrapSiteTabs extends BootstrapTabs
      */
     public $parameter;
 
-    // addParameter
 
     public function getContent()
     {
@@ -38,9 +37,7 @@ class BootstrapSiteTabs extends BootstrapTabs
 
             if ($this->parameter !== null) {
                 $siteNew->addParameter($this->parameter);
-                //(new Debug())->write('parameter');
             }
-
 
             if ($siteNew->hasMenuActiveItems()) {
 

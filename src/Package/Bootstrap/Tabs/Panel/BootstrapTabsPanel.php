@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Package\Bootstrap\Tab;
+namespace Nemundo\Package\Bootstrap\Tabs\Panel;
 
 
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
