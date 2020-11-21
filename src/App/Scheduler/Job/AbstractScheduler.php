@@ -66,7 +66,6 @@ abstract class AbstractScheduler extends AbstractScript
     public function setActive() {
 
         $this->active=true;
-
         (new SchedulerSetup())->addScheduler($this);
 
 
@@ -74,6 +73,10 @@ abstract class AbstractScheduler extends AbstractScript
 
 
     public function setInactive() {
+
+        $this->active=false;
+        (new SchedulerSetup())->addScheduler($this);
+
 
     }
 

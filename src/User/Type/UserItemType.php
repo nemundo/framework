@@ -394,7 +394,7 @@ class UserItemType extends AbstractBaseClass
         $mailMessage = new MailMessage();
         $mailMessage->mailTo = $this->email;
         $mailMessage->subject = $mailContainer->subject;
-        $mailMessage->text = $mailContainer->getContent();
+        $mailMessage->text = $mailContainer->getBodyContent();
         $mailMessage->sendMail();
 
     }
