@@ -4,6 +4,7 @@ namespace Nemundo\App\Scheduler\Com\Table;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Scheduler\Check\RepeatingTime;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
@@ -87,6 +88,7 @@ class SchedulerTable extends AbstractHtmlContainer
             if (!$schedulerRow->overrideSetting) {
                 $site = clone(SchedulerEditSite::$site);
                 $site->addParameter(new SchedulerParameter($schedulerRow->id));
+                $site->addParameter(new ApplicationParameter());
                 $row->addIconSite($site);
             } else {
                 $row->addEmpty();

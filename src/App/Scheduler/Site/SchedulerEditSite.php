@@ -3,14 +3,16 @@
 namespace Nemundo\App\Scheduler\Site;
 
 
-use Nemundo\App\Scheduler\Com\Form\SchedulerCustomForm;
+use Nemundo\App\Scheduler\Com\Form\SchedulerForm;
 use Nemundo\App\Scheduler\Com\Navigation\SchedulerNavigation;
+use Nemundo\App\Scheduler\Page\SchedulerEditPage;
 use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\FontAwesome\Icon\EditIcon;
+use Nemundo\Package\FontAwesome\Site\AbstractEditIconSite;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 
-class SchedulerEditSite extends AbstractIconSite
+class SchedulerEditSite extends AbstractEditIconSite
 {
 
     /**
@@ -20,10 +22,12 @@ class SchedulerEditSite extends AbstractIconSite
 
     protected function loadSite()
     {
-        $this->title = 'Edit';
+
+
+        /*$this->title = 'Edit';
         $this->url = 'edit';
         $this->menuActive = false;
-        $this->icon = new EditIcon();
+        /$this->icon = new EditIcon();*/
 
         SchedulerEditSite::$site = $this;
     }
@@ -32,6 +36,9 @@ class SchedulerEditSite extends AbstractIconSite
     public function loadContent()
     {
 
+        (new SchedulerEditPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         new SchedulerNavigation($page);
@@ -41,7 +48,7 @@ class SchedulerEditSite extends AbstractIconSite
         $form->schedulerId = (new SchedulerParameter())->getValue();
         $form->redirectSite = clone(SchedulerSite::$site);
 
-        $page->render();
+        $page->render();*/
 
     }
 

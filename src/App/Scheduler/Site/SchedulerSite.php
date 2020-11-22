@@ -6,6 +6,7 @@ namespace Nemundo\App\Scheduler\Site;
 use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\Navigation\SchedulerNavigation;
 use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
+use Nemundo\App\Scheduler\Page\SchedulerPage;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -40,6 +41,9 @@ class SchedulerSite extends AbstractSite
     public function loadContent()
     {
 
+        (new SchedulerPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         new SchedulerNavigation($page);
@@ -55,7 +59,7 @@ class SchedulerSite extends AbstractSite
         $table = new SchedulerTable($page);
         $table->applicationId = $application->getValue();
 
-        $page->render();
+        $page->render();*/
 
     }
 

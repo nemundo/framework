@@ -3,17 +3,19 @@
 namespace Nemundo\App\Scheduler\Com\Form;
 
 
+use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Scheduler\Builder\NextJobBuilder;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerUpdate;
 use Nemundo\Core\Type\DateTime\Time;
 use Nemundo\Core\Validation\ValidationType;
+use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
-class SchedulerCustomForm extends BootstrapForm
+class SchedulerForm extends BootstrapForm
 {
 
     /**
@@ -54,6 +56,13 @@ class SchedulerCustomForm extends BootstrapForm
 
     public function getContent()
     {
+
+        $applicationParamter=new ApplicationParameter();
+
+        $hidden=new HiddenInput($this);
+        $hidden->name=$applicationParamter->getParameterName();
+        $hidden->value=$applicationParamter->getValue();
+
 
         $schedulerRow = (new SchedulerReader())->getRowById($this->schedulerId);
 
