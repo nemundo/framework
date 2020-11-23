@@ -40,9 +40,17 @@ class TestForm extends \Nemundo\Com\FormBuilder\AbstractFormBuilder
 
 
         $btn = new \Nemundo\Html\Form\Button\SubmitButton($this);
-        $btn->label = 'Submit';
+        $btn->name='button_value';
+        $btn->value='value01';
+        $btn->label = 'Submit01';
+
+        $btn = new \Nemundo\Html\Form\Button\SubmitButton($this);
+        $btn->name='button_value';
+        $btn->value='value02';
+        $btn->label = 'Submit02';
 
         return parent::getContent();
+
     }
 
 

@@ -10,6 +10,7 @@ use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Web\Site\BaseUrlSite;
+use Nemundo\Web\WebConfig;
 
 class AdminTemplate extends BootstrapDocument
 {
@@ -25,22 +26,10 @@ class AdminTemplate extends BootstrapDocument
     protected $navbar;
 
 
-    //protected $navbar;
-
-
-    /*
-    public static function loadTemplate()
-    {
-
-        if ($this->navbar == null) {
-            $this->navbar = new BootstrapSiteNavbar();
-        }
-
-    }*/
-
-
     protected function loadContainer()
     {
+
+        $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
 
         $this->navbar = new BootstrapSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
@@ -50,15 +39,6 @@ class AdminTemplate extends BootstrapDocument
             $logo->logoSite = new BaseUrlSite();
             $logo->logoUrl = AdminConfig::$logoUrl;
         }
-
-
-        /*
-        $this->navbar->addUserMenuDivider();
-        $this->navbar->addUserMenuDivider();
-        $this->navbar->addUserMenuSite(LogoutSite::$site);
-        $this->navbar->addUserMenuDivider();
-        $this->navbar->addUserMenuDivider();
-*/
 
         parent::addContainer($this->navbar);
 
