@@ -37,7 +37,7 @@ class HtaccessBuilder extends AbstractBase
     {
 
 
-        $filename = $this->path . '.htusers';
+        $filename = $this->path . '.htpasswd';
 
         $file = new TextFileWriter($filename);
         //$file->appendToExistingFile = true;
