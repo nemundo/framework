@@ -221,7 +221,7 @@ class PhpClass extends AbstractBaseClass
             return;
         }
 
-        $filename = FileUtility::appendDirectorySeparatorIfNotExists($this->path) . $this->className . '.php';
+        $filename = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->path) . $this->className . '.php';
 
         $textFile = new TextFileWriter($filename);
         $textFile->createDirectory = true;

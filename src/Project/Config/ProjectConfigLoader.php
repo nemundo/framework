@@ -16,7 +16,7 @@ class ProjectConfigLoader extends AbstractBaseClass
     public function loadConfig()
     {
 
-        ProjectConfig::$projectPath = FileUtility::appendDirectorySeparatorIfNotExists(ProjectConfig::$projectPath);
+        ProjectConfig::$projectPath = FileUtility::appendDirectorySeparatorIfNotExistsOld(ProjectConfig::$projectPath);
 
         WebConfig::$webPath = ProjectConfig::$projectPath . 'web' . DIRECTORY_SEPARATOR;
         ProjectConfig::$tmpPath = ProjectConfig::$projectPath . 'tmp' . DIRECTORY_SEPARATOR;

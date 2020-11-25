@@ -48,7 +48,7 @@ class BootstrapListBox extends AbstractListBox
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $label->content .= ' ' . $bold->getContent();
+            $label->content .= ' ' . $bold->getBodyContent();
             $this->addCssClass('has-danger');
             $this->select->addCssClass('form-control-danger');
 
