@@ -6,13 +6,13 @@ namespace Nemundo\Package\Bootstrap\Breadcrumb;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 
 use Nemundo\Html\Listing\Li;
-use Nemundo\Html\Listing\Ol;
+use Nemundo\Html\Listing\OrderedList;
 
 use Nemundo\Web\Site\AbstractSite;
 
 
 
-class BootstrapBreadcrumb extends Ol
+class BootstrapBreadcrumb extends OrderedList
 {
 
 

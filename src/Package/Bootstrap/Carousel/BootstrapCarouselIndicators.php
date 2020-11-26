@@ -4,10 +4,10 @@ namespace Nemundo\Package\Bootstrap\Carousel;
 
 
 use Nemundo\Html\Listing\Li;
-use Nemundo\Html\Listing\Ol;
+use Nemundo\Html\Listing\OrderedList;
 
 
-class BootstrapCarouselIndicators extends Ol
+class BootstrapCarouselIndicators extends OrderedList
 {
 
     /**
