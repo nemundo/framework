@@ -59,7 +59,7 @@ class BootstrapDropdown extends Div
     }
 
 
-    public function addDivider()
+    public function addSeperator()
     {
         $div = new Div($this->dropdownDiv);
         $div->addCssClass('dropdown-divider');
