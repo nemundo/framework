@@ -33,7 +33,7 @@ class MySqlQuery extends AbstractHtmlContainer
         $sqlRequest = new UrlParameter();
         $sqlRequest->parameterName= 'sql';
 
-        if ($sqlRequest->existsParameter()) {
+        if ($sqlRequest->exists()) {
 
             $stopwatch = new Stopwatch();
 

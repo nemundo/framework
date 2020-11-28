@@ -62,7 +62,7 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
 
         if ($this->value === null) {
 
-            if ($this->existsParameter()) {
+            if ($this->exists()) {
 
                 if ($this->nullIfEmpty) {
 
@@ -110,13 +110,7 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
 
     public function exists()
     {
-        return $this->existsParameter();
-    }
-
-
-    // parameterExists
-    public function existsParameter()
-    {
+        //return $this->exists();
 
         $value = (new GetRequest($this->parameterName))->existsRequest();
         return $value;
@@ -124,12 +118,22 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
     }
 
 
+    // parameterExists
+    /*public function existsParameter()
+    {
+
+        $value = (new GetRequest($this->parameterName))->existsRequest();
+        return $value;
+
+    }*/
+
+
     // notExistsParameter()
     // parameterNotExists
     public function notExists()
     {
 
-        $returnValue = !$this->existsParameter();
+        $returnValue = !$this->exists();
         return $returnValue;
 
     }
