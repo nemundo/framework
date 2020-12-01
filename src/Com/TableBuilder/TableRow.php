@@ -36,10 +36,36 @@ class TableRow extends Tr
         return $this;
     }
 
+    public function addTextRight($text, $nowrap = false)
+    {
+
+        $td = new Td($this);
+        $td->content = $text;
+        $td->nowrap = $nowrap;
+        $td->addCssClass('text-right');
+
+        return $this;
+    }
+
 
     public function addBoldText($text)
     {
+
         $bold = new Bold($this);
+        $bold->content = $text;
+        return $this;
+    }
+
+    public function addBoldTextRight($text)
+    {
+
+        $td = new Td($this);
+        //$td->content = $text;
+        //$td->nowrap = $nowrap;
+        $td->addCssClass('text-right');
+
+
+        $bold = new Bold($td);
         $bold->content = $text;
         return $this;
     }

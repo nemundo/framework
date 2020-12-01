@@ -22,6 +22,15 @@ class TableHeader extends Thead
         return $this;
     }
 
+    public function addTextRight($label)
+    {
+        $th = new Th($this);
+        $th->content = $label;
+        $th->nowrap = true;
+        $th->addCssClass('text-right');
+        return $this;
+    }
+
 
     public function addHyperlink($url, $label = null, $openNewWindow = false)
     {
