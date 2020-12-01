@@ -1,9 +1,9 @@
 /.idea
+/vendor
 /config.ini
 /log
 /tmp
+/data_redirect
 /web/data
 /web/tmp
 /backup
-/data_redirect
-/store

@@ -122,7 +122,7 @@ class GeoAdminMap extends AbstractHtmlContainer
         $this->addJqueryScript('view: new ol.View({');
         $this->addJqueryScript('resolution: ' . $this->resolution . ',');
         //$this->addJqueryScript('center: coordinate');
-         $this->addJqueryScript('center: [670000, 160000]');
+         //$this->addJqueryScript('center: [670000, 160000]');
 
          /*
         if ($this->mapCenter!==null) {
