@@ -13,18 +13,22 @@ abstract class AbstractJsonSite extends AbstractSite
      */
     private $json;
 
+
+    protected $jsonFilename;
+
     abstract protected function loadJson();
 
     public function __construct(AbstractSiteTree $site = null)
     {
 
         $this->menuActive = false;
-        $this->title = 'Json Response';
+        $this->title = 'Json';
         $this->url = 'json';
         parent::__construct($site);
 
 
         $this->json = new JsonResponse();
+
 
     }
 
@@ -41,10 +45,16 @@ abstract class AbstractJsonSite extends AbstractSite
     }
 
 
+    protected function setJsonData($data) {
+        $this->json->setData($data);
+    }
+
+
     public function loadContent()
     {
 
         $this->loadJson();
+        $this->json->filename = $this->jsonFilename;
         $this->json->render();
 
     }

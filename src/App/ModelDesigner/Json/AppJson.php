@@ -518,7 +518,7 @@ class AppJson extends AbstractBase
 
         }
 
-        $json->addData($jsonRow);
+        $json->setData($jsonRow);
 
         $json->writeFile();
 
