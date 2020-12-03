@@ -75,6 +75,10 @@ php bin\cmd.php admin-user-enable
 php bin\cmd.php user-password-reset
 ```
 
+### Htaccess Build
+```
+php bin\cmd.php htaccess-build
+```
 
 
 

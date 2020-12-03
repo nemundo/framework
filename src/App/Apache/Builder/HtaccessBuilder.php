@@ -15,6 +15,11 @@ class HtaccessBuilder extends AbstractBase
 
     public $message = 'Admin';
 
+    /**
+     * @var bool
+     */
+    public $passwordProtection=true;
+
     public function buildFile()
     {
 
@@ -24,10 +29,13 @@ class HtaccessBuilder extends AbstractBase
 
         $file = new TextFileWriter($filename);
         $file->overwriteExistingFile = true;
+
+        if ($this->passwordProtection) {
         $file->addLine('AuthType Basic');
         $file->addLine('AuthName "' . $this->message . '"');
         $file->addLine('AuthUserFile ' . $this->path . '.htpasswd');
         $file->addLine('Require valid-user');
+        }
 
         $file->addLine('RewriteEngine on');
         $file->addLine('RewriteCond %{REQUEST_FILENAME} !-f');
