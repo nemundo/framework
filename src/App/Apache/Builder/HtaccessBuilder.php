@@ -28,6 +28,11 @@ class HtaccessBuilder extends AbstractBase
         $file->addLine('AuthName "' . $this->message . '"');
         $file->addLine('AuthUserFile ' . $this->path . '.htpasswd');
         $file->addLine('Require valid-user');
+
+        $file->addLine('RewriteEngine on');
+        $file->addLine('RewriteCond %{REQUEST_FILENAME} !-f');
+        $file->addLine('RewriteRule  ^(.*) index.php [L]');
+
         $file->saveFile();
 
     }

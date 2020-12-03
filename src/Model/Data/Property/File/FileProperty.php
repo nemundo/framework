@@ -6,6 +6,7 @@ namespace Nemundo\Model\Data\Property\File;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Http\Request\File\AbstractFileRequest;
 use Nemundo\Core\Http\Request\File\FileRequest;
+use Nemundo\Core\Http\Url\UrlInformation;
 
 
 class FileProperty extends AbstractBase
@@ -97,6 +98,28 @@ class FileProperty extends AbstractBase
     public function getFileRequest()
     {
         return $this->fileRequest;
+    }
+
+
+    public function getOrginalFilename()
+    {
+
+        $filename = null;
+
+        if ($this->hasFilename()) {
+            $filename = $this->getFilename();
+        }
+
+        if ($this->hasUrl()) {
+            $filename = (new UrlInformation( $this->getUrl()))->getFilename();
+        }
+
+        if ($this->hasFileRequest()) {
+            $filename = $this->getFileRequest()->filename;
+        }
+
+        return $filename;
+
     }
 
 }
