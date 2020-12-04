@@ -1,13 +1,13 @@
 <?php
 
-namespace Nemundo\Orm\Type\Text;
+namespace Nemundo\Orm\Type\Language;
 
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Model\Type\Text\LargeTextType;
 use Nemundo\Orm\Type\OrmTypeTrait;
 
-class LargeTextOrmType extends LargeTextType
+class LanguageLargeTextOrmType extends LargeTextType
 {
 
     use OrmTypeTrait;
@@ -19,7 +19,7 @@ class LargeTextOrmType extends LargeTextType
 
         $this->typeLabel = 'Large Text';
         $this->typeName='large_text';
-        $this->typeId = '7ffa159e-71c0-4c98-887f-58161d225346';
+        $this->typeId = '';
 
     }
 

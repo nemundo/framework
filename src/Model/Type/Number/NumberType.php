@@ -15,17 +15,17 @@ class NumberType extends AbstractModelType
     /**
      * @var string
      */
-    public $measurementUnit;
+    //public $measurementUnit;
 
     /**
      * @var bool
      */
-    public $showThousandSeperator = true;
+    //public $showThousandSeperator = true;
 
     /**
      * @var string
      */
-    public $thousandSeparator = '\'';
+    //public $thousandSeparator = '\'';
 
 
     protected function loadExternalType()

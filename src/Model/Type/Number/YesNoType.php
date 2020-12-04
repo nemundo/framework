@@ -7,6 +7,7 @@ use Nemundo\Model\Form\Item\Number\YesNoModelFormItem;
 use Nemundo\Model\Item\Number\YesNoModelItem;
 use Nemundo\Model\Type\AbstractModelType;
 
+// YesNoModelType
 class YesNoType extends AbstractModelType
 {
 
