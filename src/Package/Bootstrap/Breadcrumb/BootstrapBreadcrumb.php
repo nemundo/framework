@@ -5,6 +5,7 @@ namespace Nemundo\Package\Bootstrap\Breadcrumb;
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 
+use Nemundo\Html\Listing\AbstractLi;
 use Nemundo\Html\Listing\Li;
 use Nemundo\Html\Listing\OrderedList;
 
@@ -14,6 +15,12 @@ use Nemundo\Web\Site\AbstractSite;
 
 class BootstrapBreadcrumb extends OrderedList
 {
+
+
+    /**
+     * @var AbstractLi[]
+     */
+    //private $liList=[];
 
 
     public function addSite(AbstractSite $site)
@@ -29,6 +36,7 @@ class BootstrapBreadcrumb extends OrderedList
     }
 
 
+    /*
     public function addItem(AbstractSite $site, $label = null)
     {
 
@@ -36,16 +44,13 @@ class BootstrapBreadcrumb extends OrderedList
             $label = $site->title;
         }
 
-
         $li = new Li($this);
         $li->addCssClass('breadcrumb-item');
 
         $li->addCssClass('active');
-        $hyperlink = new SiteHyperlink($li);
-        //$hyperlink->content = $label;
-        //$hyperlink->url = $site->getUrl();
+        new SiteHyperlink($li);
 
-    }
+    }*/
 
 
     public function addActiveItem($label)
@@ -61,8 +66,11 @@ class BootstrapBreadcrumb extends OrderedList
 
     public function getContent()
     {
+
         $this->addCssClass('breadcrumb');
+
         return parent::getContent();
+
     }
 
 }

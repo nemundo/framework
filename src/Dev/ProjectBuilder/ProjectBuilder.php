@@ -40,9 +40,9 @@ class ProjectBuilder extends AbstractBaseClass
     {
 
         $this->projectName = strtolower($this->project->namespace);
-        $projectPath = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->project->path);
+        $projectPath = (new FileUtility())->appendDirectorySeparatorIfNotExists($this->project->path);
 
-        $this->project->path = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->project->path);
+        $this->project->path = (new FileUtility())->appendDirectorySeparatorIfNotExists($this->project->path);
 
         $this->copyAsset('.gitignore');
         $this->copyAsset('commit.bat');

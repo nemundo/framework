@@ -1,6 +1,5 @@
 <?php
 
-
 require '../../config.php';
 
 $document = new \Nemundo\Package\Bootstrap\Document\BootstrapDocument();

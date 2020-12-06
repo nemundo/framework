@@ -9,6 +9,7 @@ use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
+use Nemundo\Package\NemundoJs\NemundoJsPackage;
 use Nemundo\Web\Site\BaseUrlSite;
 use Nemundo\Web\WebConfig;
 
@@ -28,6 +29,8 @@ class AdminTemplate extends BootstrapDocument
 
     protected function loadContainer()
     {
+
+        $this->addPackage(new NemundoJsPackage());
 
         $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
 

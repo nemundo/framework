@@ -18,17 +18,35 @@ class PhpClassTest extends AbstractBase
     public $statusOutput = false;
 
 
-    public function __construct()
-    {
-        //ConsoleConfig::$consoleMode = true;
-    }
-
-
     public function checkProject(AbstractProject $project)
     {
 
+        $this->checkPath($project->path);
+
+        /*
         $reader = new DirectoryReader();
-        $reader->path = $project->path;  // $path;
+        $reader->path = $project->path;
+        $reader->recursiveSearch = true;
+
+        foreach ($reader->getData() as $file) {
+
+            if ($file->getFileExtension() == 'php') {
+                if ($this->statusOutput) {
+                    (new Debug())->write('Check: ' . $file->filename);
+                }
+                require_once $file->fullFilename;
+            }
+
+        }*/
+
+
+    }
+
+
+    public function checkPath($path) {
+
+        $reader = new DirectoryReader();
+        $reader->path = $path;
         $reader->recursiveSearch = true;
 
         foreach ($reader->getData() as $file) {
@@ -44,5 +62,6 @@ class PhpClassTest extends AbstractBase
 
 
     }
+
 
 }
