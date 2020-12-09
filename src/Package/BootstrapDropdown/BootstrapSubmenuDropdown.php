@@ -72,10 +72,10 @@ class BootstrapSubmenuDropdown extends AbstractHtmlContainer
 
 
             $subDiv = new Div($dropdownDiv);
-            $subDiv->addCssClass('dropdown dropright dropdown-submenu');
+            $subDiv->addCssClass('dropdown dropdown-submenu');
 
             $button = new SiteHyperlink($subDiv); // new Button($subDiv);
-            $button->addCssClass('dropdown-item dropdown-toggle');
+            $button->addCssClass('dropdown-item');
             $button->site = $site;
             //$button->label= $site->title;
 
