@@ -10,7 +10,6 @@ use Nemundo\Dev\Code\PhpVariable;
 use Nemundo\Dev\Code\PhpVisibility;
 use Nemundo\Dev\Code\PrefixPhpClassTrait;
 use Nemundo\Model\Type\Complex\AbstractComplexType;
-use Nemundo\Model\Type\Number\YesNoType;
 use Nemundo\Orm\Model\AbstractOrmModel;
 
 
@@ -62,12 +61,12 @@ trait OrmTypeTrait
     /**
      * @var bool
      */
-    public $isEditable=true;
+    public $isEditable = true;
 
     /**
      * @var bool
      */
-    public $isDeleted=false;
+    public $isDeleted = false;
 
 
     abstract public function getModelCode(PhpClass $phpClass, PhpFunction $phpFunction);
@@ -129,7 +128,7 @@ trait OrmTypeTrait
             $phpFunction->add('$this->' . $this->variableName . '->defaultValue = ' . $this->defaultValue . ';');
         }
 
-        $phpFunction->add('$this->' . $this->variableName . '->allowNullValue = ' . (new YesNo( $this->allowNullValue))->getText() . ';');
+        $phpFunction->add('$this->' . $this->variableName . '->allowNullValue = ' . (new YesNo($this->allowNullValue))->getText() . ';');
 
         if (!$this->visible->form) {
             $phpFunction->add('$this->' . $this->variableName . '->visible->form = false;');
@@ -146,7 +145,7 @@ trait OrmTypeTrait
     }
 
 
-    protected function addExternlObject(PhpClass $phpClass, PhpFunction $phpFunction, $className, $additionalCode=[])
+    protected function addExternlObject(PhpClass $phpClass, PhpFunction $phpFunction, $className, $additionalCode = [])
     {
 
         $className = $this->prefixClassName($className);
@@ -232,7 +231,7 @@ trait OrmTypeTrait
     }
 
 
-    protected function addRowPrimitiveConversionFunctionVarialbe(PhpClass $phpClass, $dataType,$conversionFunction)
+    protected function addRowPrimitiveConversionFunctionVarialbe(PhpClass $phpClass, $dataType, $conversionFunction)
     {
 
         $var = new PhpVariable($phpClass);
@@ -240,7 +239,7 @@ trait OrmTypeTrait
         $var->visibility = PhpVisibility::PublicVariable;
         $var->dataType = $dataType;
 
-        $phpClass->addConstructor('$this->' . $this->variableName . ' = '.$conversionFunction.'($this->getModelValue($model->' . $this->variableName . '));');
+        $phpClass->addConstructor('$this->' . $this->variableName . ' = ' . $conversionFunction . '($this->getModelValue($model->' . $this->variableName . '));');
 
     }
 

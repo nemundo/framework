@@ -19,6 +19,7 @@ class TextType extends AbstractModelType
 
     protected function loadExternalType()
     {
+
         parent::loadExternalType();
 
         $this->formTypeClassName = TextModelFormItem::class;
