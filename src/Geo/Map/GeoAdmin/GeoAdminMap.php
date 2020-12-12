@@ -121,8 +121,14 @@ class GeoAdminMap extends AbstractHtmlContainer
 
         $this->addJqueryScript('view: new ol.View({');
         $this->addJqueryScript('resolution: ' . $this->resolution . ',');
+
+        if ($this->mapCenter !==null) {
         //$this->addJqueryScript('center: coordinate');
-         //$this->addJqueryScript('center: [670000, 160000]');
+
+        //$this->addJqueryScript('center: [670000, 160000]');
+            $this->addJqueryScript('center: ['.$this->mapCenter->getText().'],');
+
+        }
 
          /*
         if ($this->mapCenter!==null) {
