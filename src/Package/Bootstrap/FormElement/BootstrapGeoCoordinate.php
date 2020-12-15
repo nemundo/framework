@@ -2,6 +2,7 @@
 
 namespace Nemundo\Package\Bootstrap\FormElement;
 
+use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Html\Container\AbstractContainer;
@@ -9,6 +10,8 @@ use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 
 class BootstrapGeoCoordinate extends AbstractContainer
 {
+
+    use LibraryTrait;
 
     /**
      * @var BootstrapTextBox
@@ -20,6 +23,10 @@ class BootstrapGeoCoordinate extends AbstractContainer
      */
     private $lon;
 
+    /**
+     * @var GeoCoordinate
+     */
+    public $geoCoordinate;
 
     protected function loadContainer()
     {
@@ -30,28 +37,50 @@ class BootstrapGeoCoordinate extends AbstractContainer
 
         $this->lat = new BootstrapTextBox($formRow);
         $this->lat->label = 'Lat';
-        /*$this->lat->label[LanguageCode::EN] = 'From';
-        $this->from->label[LanguageCode::DE] = 'Von';*/
+        $this->lat->name='geo_lat';
 
         $this->lon = new BootstrapTextBox($formRow);
         $this->lon->label = 'Lon';
-
-        /*$this->lon->label[LanguageCode::EN] = 'To';
-        $this->lon>label[LanguageCode::DE] = 'Bis';*/
+        $this->lon->name='geo_lon';
 
     }
 
 
-    /*
+
     public function getContent()
     {
 
-        $this->from->searchMode = $this->searchMode;
-        $this->to->searchMode = $this->searchMode;
+        if ($this->geoCoordinate!==null) {
+            $this->lat->value = $this->geoCoordinate->latitude;
+            $this->lon->value = $this->geoCoordinate->longitude;
+        }
+
+
+        $this->addJavaScript('let doc = new DocumentContainer();
+doc.onLoaded = function () {
+
+    let latInput = new InputContainer("geo_lat");
+    latInput.onInput = function () {
+
+        let value = latInput.value;
+        var valueList = value.split(",");
+
+        if (valueList.length == 2) {
+
+            latInput.value = valueList[0];
+
+            let lonInput = new InputContainer("geo_lon");
+            lonInput.value = valueList[1];
+        
+        }
+
+    }
+
+};');
 
         return parent::getContent();
 
-    }*/
+    }
 
 
     public function getGeoCoordinate()

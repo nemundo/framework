@@ -85,13 +85,11 @@ abstract class AbstractModelSetup extends AbstractDbBase
             $table = new SqLiteTable();
         }
 
-
         $table->connection = $this->connection;
         $table->tableName = $this->model->tableName;
         $table->primaryIndex = $this->model->primaryIndex;
 
         foreach ($this->model->getTypeList(true) as $type) {
-
 
             if ($type->isObjectOfClass(AbstractExternalComplexType::class)) {
                 $setup = new ModelSetup();
@@ -190,25 +188,19 @@ abstract class AbstractModelSetup extends AbstractDbBase
         foreach ($this->model->getTypeList() as $type) {
 
             if ($type->isObjectOfClass(FileType::class)) {
-                //(new Directory($type->getDataPath()))->createDirectory();
                 (new Path($type->getDataPath()))->createPath();
-
             }
 
             if ($type->isObjectOfClass(ImageType::class)) {
-                //(new Directory($type->getOrginalDataPath()))->createDirectory();
                 foreach ($type->getFormatList() as $resizeFormat) {
                     $path = $type->getDataPath() . $resizeFormat->getPath();
-                    //(new Directory($path))->createDirectory();
                     (new Path($path))->createPath();
                 }
             }
 
             if ($type->isObjectOfClass(RedirectFilenameType::class)) {
-                //(new Directory($type->file->getDataPath()))->createDirectory();
                 (new Path($type->file->getDataPath()))->createPath();
             }
-
 
         }
 
@@ -239,13 +231,6 @@ abstract class AbstractModelSetup extends AbstractDbBase
         (new RedirectDataPath())
             ->addPath($this->model->tableName)
             ->deleteDirectory();
-
-        /*
-        $path = ModelConfig::$dataPath . $this->model->tableName;
-        (new Directory($path))->deleteDirectory();
-
-        $path = ModelConfig::$redirectDataPath . $this->model->tableName;
-        (new Directory($path))->deleteDirectory();*/
 
         $table = new  MySqlTable();
         $table->connection = $this->connection;

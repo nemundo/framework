@@ -28,6 +28,6 @@ class AdminConfig
     /**
      * @var string
      */
-    public static $adminTitle = 'Admin';
+    public static $pageTitle = 'Admin';
 
 }

@@ -12,6 +12,12 @@ use Nemundo\Core\Debug\Debug;
 class ModelDesignerOrmScript extends AbstractConsoleScript
 {
 
+    /**
+     * @var bool
+     */
+    public $deleteOrm = false;
+
+
     protected function loadScript()
     {
         $this->scriptName = 'modeldesigner-orm';
@@ -31,7 +37,10 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
                 $orm = new OrmBuilder();
                 $orm->project = $project;
                 $orm->app = $appJson;
-                //$orm->deleteOrm();
+
+                if ($this->deleteOrm) {
+                    $orm->deleteOrm();
+                }
                 $orm->createOrm();
 
             }

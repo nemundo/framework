@@ -51,7 +51,7 @@ class AdminTemplate extends BootstrapDocument
 
         parent::loadContainer();
 
-        $this->title = AdminConfig::$adminTitle;
+        $this->title = AdminConfig::$pageTitle;
 
     }
 
@@ -66,7 +66,7 @@ class AdminTemplate extends BootstrapDocument
     {
 
         if ($this->title == null) {
-            $this->title = AdminConfig::$adminTitle;
+            $this->title = AdminConfig::$pageTitle;
         }
 
         new JqueryHeader($this);
