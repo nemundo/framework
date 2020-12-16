@@ -8,8 +8,11 @@ use Nemundo\App\ModelDesigner\Com\ListBox\PrimaryIndexListBox;
 use Nemundo\App\ModelDesigner\Jquery\DisableSpaceKeyJquery;
 use Nemundo\App\ModelDesigner\Json\AppJson;
 use Nemundo\App\ModelDesigner\Model\ModelDesignerOrmModel;
+use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
+use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Com\Container\LibraryTrait;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Db\Index\UniqueIdPrimaryIndex;
@@ -231,9 +234,29 @@ class ModelForm extends BootstrapForm
             $this->model->rowClassName = $this->modelRowClassName->getValue();
             $this->model->primaryIndex = $this->modelPrimaryIndex->getPrimaryIndex();
 
-            $this->app->writeJson();
+            // $this->app->writeJson();
+            //(new Debug())->write('else');
 
         }
+
+        $this->app->writeJson();
+
+
+        // Problem: Model muss neu geladen werden
+
+
+        /*
+        $project = (new ProjectParameter())->getProject();
+        $appJson = (new AppParameter())->getApp($project);
+        $appJson->writeJson();*/
+
+        //$model = (new ModelParameter())->getModel($appJson);
+        //$this->app->writeJson();
+
+        /*
+        (new Debug())->write('write json');
+        (new Debug())->write($this->model->templateName);
+        exit;*/
 
         $this->redirectSite->addParameter(new ModelParameter($tableName));
 

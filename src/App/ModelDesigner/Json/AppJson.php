@@ -16,6 +16,7 @@ use Nemundo\App\ModelDesigner\Type\ExternalModelDesignerType;
 use Nemundo\App\ModelDesigner\Type\TextModelDesignerType;
 use Nemundo\App\ModelDesigner\Type\VirtualExternalModelDesignerType;
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Json\Document\JsonDocument;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Core\Log\LogMessage;
@@ -332,28 +333,6 @@ class AppJson extends AbstractBase
     }
 
 
-    /*
-        public function getModelById($modelId, $hideDeletedModel = true)
-        {
-
-            /** @var ModelDesignerOrmModel $modelValue */
-    /* $modelValue = null;
-     foreach ($this->getModelList($hideDeletedModel) as $model) {
-         if ($model->modelId == $modelId) {
-             $modelValue = $model;
-         }
-     }
-
-     if ($modelValue == null) {
-         (new LogMessage())->writeError('No model found');
-         exit;
-     }
-
-     return $modelValue;
-
- }*/
-
-
     public function addModel(AbstractOrmModel $model)
     {
 
@@ -417,6 +396,8 @@ class AppJson extends AbstractBase
         $jsonRow['is_deleted'] = $this->isDeleted;
 
         foreach ($this->modelList as $model) {
+
+            //(new Debug())->write( $model->templateName);
 
             $row = null;
             $row['template'] = $model->templateName;
@@ -519,8 +500,9 @@ class AppJson extends AbstractBase
         }
 
         $json->setData($jsonRow);
-
         $json->writeFile();
+
+        // load json
 
         $orm = new OrmBuilder();
         $orm->project = $this->project;

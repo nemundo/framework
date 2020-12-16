@@ -25,6 +25,7 @@ class TypeEditSite extends AbstractEditIconSite
 
     protected function loadSite()
     {
+
         $this->title = 'Type Edit';
         $this->url = 'type-edit';
 
@@ -61,9 +62,7 @@ class TypeEditSite extends AbstractEditIconSite
         $form->redirectSite->addParameter(new ModelParameter());
         $form->updateMode = true;
 
-
         $page->render();
-
 
     }
 

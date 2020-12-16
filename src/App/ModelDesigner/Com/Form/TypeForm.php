@@ -84,10 +84,8 @@ class TypeForm extends BootstrapForm
         $this->addDataAttribute('project', $this->project->projectName);
         $this->addDataAttribute('app', $this->appJson->appName);
 
-
         $subtitle = new AdminSubtitle($this);
         $subtitle->content = $this->type->typeLabel;
-
 
         $this->fieldLabel = new BootstrapTextBox($this);
         $this->fieldLabel->label = 'Field Label';
@@ -113,7 +111,6 @@ class TypeForm extends BootstrapForm
             $this->allowNullValue->value = $this->type->allowNullValue;
 
         }
-
 
         if ($this->type->isObjectOfTrait(ModelDesignerTypeTrait::class)) {
 
