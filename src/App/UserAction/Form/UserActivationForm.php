@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Form\AbstractAdminForm;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
+use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Login\UserLogin;
 use Nemundo\User\Type\UserItemType;
 
@@ -24,10 +25,10 @@ class UserActivationForm extends AbstractAdminForm
 
         // $secureToken = (new SecureTokenUrlParameter())->getValue();
 
-        $user = (new UserItemType())->fromSecureTokenParameter();
+        //$user = (new UserItemType())->fromSecureTokenParameter();
 
         $bold = new Bold($this);
-        $bold->content = $user->login;
+        $bold->content = (new UserBuilder())->fromSecureTokenParameter()->getUserRow()->login;  //  $user->login;
 
 
         $this->password = new BootstrapPasswordTextBox($this);
@@ -46,16 +47,15 @@ class UserActivationForm extends AbstractAdminForm
 
         $password = $this->password->getValue();
 
-        $user = (new UserItemType())->fromSecureTokenParameter();
+        $user = (new UserBuilder())->fromSecureTokenParameter();  // (new UserItemType())->fromSecureTokenParameter();
         $user->changePassword($password);
         $user->enableUser();
 
         $login = new UserLogin();
-        $login->login = $user->login;
+        $login->login = $user->getUserRow()->login;
         $login->password = $password;
         $login->saveCookiePassword = true;
         $login->loginUser();
-
 
     }
 

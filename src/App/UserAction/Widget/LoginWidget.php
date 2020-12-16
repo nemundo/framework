@@ -6,6 +6,7 @@ namespace Nemundo\App\UserAction\Widget;
 
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\UserAction\Form\LoginForm;
+use Nemundo\User\Session\UserSession;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -20,7 +21,7 @@ class LoginWidget extends AdminWidget
     public function getContent()
     {
 
-        if ((new UserSessionType())->isUserLogged()) {
+        if ((new UserSession())->isUserLogged()) {
             $this->visible = false;
         }
 

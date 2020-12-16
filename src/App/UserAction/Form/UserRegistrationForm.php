@@ -7,8 +7,9 @@ use Nemundo\Core\Validation\ValidationType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Login\UserLogin;
-use Nemundo\User\Type\UserBuilder;
+
 
 class UserRegistrationForm extends BootstrapForm
 {
@@ -22,6 +23,9 @@ class UserRegistrationForm extends BootstrapForm
      * @var BootstrapPasswordTextBox
      */
     private $password;
+
+
+    // default usergroup
 
 
     public function getContent()

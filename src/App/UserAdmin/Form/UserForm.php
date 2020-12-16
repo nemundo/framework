@@ -8,7 +8,8 @@ use Nemundo\Core\Validation\ValidationType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-
+use Nemundo\User\Builder\UserBuilder;
+use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupCount;
 use Nemundo\User\Type\UserItemType;
@@ -38,11 +39,6 @@ class UserForm extends BootstrapForm
      */
     private $eMail;
 
-    /**
-     * @var UsergroupListBox
-     */
-    private $usergroup;
-
 
     public function getContent()
     {
@@ -65,24 +61,21 @@ class UserForm extends BootstrapForm
             $this->login->validation = true;
         } else {
 
-            $userType = new UserItemType($this->userId);
-
+            $userRow = (new UserReader())->getRowById($this->userId);
 
             // Problem bei Submit !!!
             //$this->login->disabled = true;
 
-            $this->active->value = $userType->active;
-            $this->login->value = $userType->login;
-            $this->eMail->value = $userType->email;
+            $this->active->value = $userRow->active;
+            $this->login->value = $userRow->login;
+            $this->eMail->value = $userRow->email;
 
         }
 
         $usergroupReader = new UsergroupReader();
-        //$usergroupReader->model->loadApplication();
         foreach ($usergroupReader->getData() as $usergroupRow) {
             $checkbox = new BootstrapCheckBox($this);
             $checkbox->name = 'usergroup_' . $usergroupRow->id;
-            //$checkbox->label = $usergroupRow->usergroup . ' (' . $usergroupRow->application->application . ')';
             $checkbox->label = $usergroupRow->usergroup;
             $checkbox->value = false;
 
@@ -105,10 +98,7 @@ class UserForm extends BootstrapForm
     public function onSubmit()
     {
 
-        //(new Debug())->write('bla');
-        //exit;
-
-        $user = new UserItemType($this->userId);
+        $user = new UserBuilder($this->userId);
         $user->active = $this->active->getValue();
         $user->login = $this->login->getValue();
         $user->email = $this->eMail->getValue();

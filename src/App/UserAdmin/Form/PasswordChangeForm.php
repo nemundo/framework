@@ -5,7 +5,7 @@ namespace Nemundo\App\UserAdmin\Form;
 
 use Nemundo\Admin\Com\Form\AbstractAdminForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
-use Nemundo\User\Type\UserItemType;
+use Nemundo\User\Builder\UserBuilder;
 
 class PasswordChangeForm extends AbstractAdminForm
 {
@@ -37,8 +37,8 @@ class PasswordChangeForm extends AbstractAdminForm
     protected function onSubmit()
     {
 
-        $userType = new UserItemType($this->userId);
-        $userType->changePassword($this->password->getValue());
+        $builder = new UserBuilder($this->userId);
+        $builder->changePassword($this->password->getValue());
 
     }
 

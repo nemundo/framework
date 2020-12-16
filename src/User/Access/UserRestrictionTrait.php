@@ -2,6 +2,7 @@
 
 namespace Nemundo\User\Access;
 
+use Nemundo\User\Session\UserSession;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 
@@ -42,18 +43,17 @@ trait UserRestrictionTrait
         return $this;
     }
 
-    // checkUserAccess
+
     public function checkUserVisibility()
     {
 
-        // access
         $visible = true;
 
         if ($this->restricted) {
 
             $visible = false;
 
-            $userInformation = new UserSessionType();
+            $userInformation = new UserSession();
             if ($userInformation->isUserLogged()) {
 
                 foreach ($this->getRestrictedUsergroupList() as $usergroup) {

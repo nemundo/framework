@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\App\Mail\Site\MyMailQueueSite;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
+use Nemundo\User\Session\UserSession;
 use Nemundo\User\Type\UserSessionType;
 
 class UsergroupMembershipWidget extends AbstractAdminWidget
@@ -25,7 +26,7 @@ class UsergroupMembershipWidget extends AbstractAdminWidget
     {
 
         $list = new UnorderedList($this);
-        foreach ((new UserSessionType())->getUsergroup() as $usergroupRow) {
+        foreach ((new UserSession())->getUsergroup() as $usergroupRow) {
             //$list->addText($usergroupRow->usergroup . ' (' . $usergroupRow->application->application . ')');
             $list->addText($usergroupRow->usergroup);
         }

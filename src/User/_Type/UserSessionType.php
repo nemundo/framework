@@ -3,6 +3,7 @@
 namespace Nemundo\User\Type;
 
 
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\User\Data\User\UserCount;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Data\User\UserRow;
@@ -14,7 +15,7 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 
 
 // UserSession
-class UserSessionType extends UserItemType
+class UserSessionType extends AbstractBase  // UserItemType
 {
 
     /**
@@ -24,10 +25,12 @@ class UserSessionType extends UserItemType
 
     private static $usergroupList;
 
+    protected $userId;
+
     public function __construct()
     {
 
-        parent::__construct();
+        //parent::__construct();
         $this->fromLoginSession();
 
     }

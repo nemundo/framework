@@ -41,7 +41,7 @@ $this->tableName = "user_user";
 $this->aliasTableName = "user_user";
 $this->label = "User";
 
-$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "user_user";

@@ -5,8 +5,10 @@ namespace Nemundo\App\UserAction\Form;
 
 use Nemundo\Admin\Com\Form\AbstractAdminForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
+use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Login\Session\LoginNameSession;
 use Nemundo\User\Login\UserLogin;
+use Nemundo\User\Session\UserSession;
 use Nemundo\User\Type\UserSessionType;
 
 class PasswordChangeForm extends AbstractAdminForm  // BootstrapForm
@@ -38,8 +40,10 @@ class PasswordChangeForm extends AbstractAdminForm  // BootstrapForm
         $login = (new LoginNameSession())->getValue();
         $password = $this->password->getValue();
 
-        $userType = new UserSessionType();
+        $userType = new UserBuilder((new UserSession())->userId);  // new UserSession();
         $userType->changePassword($password);
+
+        //$builder=new UserBuilder();
 
         /*
         $changePassword = new PasswordChange();

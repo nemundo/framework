@@ -8,6 +8,8 @@ use Nemundo\User\Data\User\UserRow;
 use Nemundo\User\Data\UserUsergroup\UserUsergroup;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
 
+
+// AbstractUsergroupItem
 abstract class AbstractUsergroup extends AbstractBaseClass
 {
 

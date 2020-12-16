@@ -11,7 +11,7 @@ use Nemundo\Html\Listing\Li;
 use Nemundo\Html\Listing\Ul;
 use Nemundo\Package\FontAwesome\FontAwesomeIcon;
 use Nemundo\User\Login\Session\IsLoggedSession;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Session\UserSession;
 use Nemundo\Web\Site\AbstractSite;
 
 
@@ -131,7 +131,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
                 $icon->icon = 'user';
 
                 $bold = new Bold($hyperlink);
-                $bold->content = ' '.(new UserSessionType())->displayName;
+                $bold->content = ' ' . (new UserSession())->displayName;
 
                 $div = new Div($li);
                 $div->addCssClass('dropdown-menu');
@@ -157,11 +157,11 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
         // das muss hier raus !!!
 
-        if ($this->searchMode) {
+        /*if ($this->searchMode) {
             if ((new UserSessionType())->isUserLogged()) {
                 //new NavbarSearchForm($this);
             }
-        }
+        }*/
 
         return parent::getContent();
 

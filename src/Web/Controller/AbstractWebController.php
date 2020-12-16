@@ -97,7 +97,6 @@ abstract class AbstractWebController extends AbstractSiteTree
 
             if ($siteChild->isObjectOfClass(AbstractWildcardSite::class)) {
                 $siteChild->wildcardUrl = $this->urlList[$urlLevel - 1];
-                //$siteChild->wildcardUrl = $this->urlList[$urlLevel];
                 $this->foundSite = $siteChild->checkWildcardUrl();
 
                 if ($this->foundSite) {
@@ -110,11 +109,9 @@ abstract class AbstractWebController extends AbstractSiteTree
 
                 if ($this->urlList[$urlLevel - 1] == $siteChild->url) {
 
-                    //if (!$siteChild->isAccessable()) {
                     if (!$siteChild->checkUserVisibility()) {
                         $this->accessForbidden = true;
                     }
-
 
                     if ($this->urlListCount == $urlLevel) {
 
