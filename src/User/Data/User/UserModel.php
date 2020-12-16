@@ -74,7 +74,7 @@ $this->password->tableName = "user_user";
 $this->password->fieldName = "password";
 $this->password->aliasFieldName = "user_user_password";
 $this->password->label = "Password";
-$this->password->allowNullValue = false;
+$this->password->allowNullValue = true;
 $this->password->length = 255;
 
 $this->email = new \Nemundo\Model\Type\Text\TextType($this);

@@ -37,7 +37,7 @@
                     "label": "Password",
                     "field_name": "password",
                     "variable_name": "password",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false,
                     "length": "255"
                 },
