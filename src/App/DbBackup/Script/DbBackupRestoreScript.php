@@ -44,12 +44,20 @@ class DbBackupRestoreScript extends AbstractConsoleScript
 
 
 
-        (new UploadRestorePath())->createPath();
+        /*(new UploadRestorePath())->createPath();
 
         $zip = new ZipExtractor();
         $zip->archiveFilename = (new UploadRestoreFilename())->getFilename();  // $zipFilename;
         $zip->extractPath = (new UploadRestorePath())->getPath();
-        $zip->extract();
+        $zip->extract();*/
+
+
+
+
+
+
+
+
 
         $dump = new MySqlDumpRestore();
         $dump->filename = (new UploadRestorePath())->addPath('dump.sql')->getFilename();

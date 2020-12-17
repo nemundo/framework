@@ -67,7 +67,7 @@ composer require phpseclib/phpseclib
 
 ### Admin User erstellen
 ```
-php bin\cmd.php admin-user-enable
+php bin/cmd.php admin-user-enable
 ```
 
 ### Password Reset
@@ -75,10 +75,38 @@ php bin\cmd.php admin-user-enable
 php bin\cmd.php user-password-reset
 ```
 
+### Usergroup Clean
+```
+sudo php bin/cmd.php usergroup-clean
+```
+
 ### Htaccess Build
 ```
-php bin\cmd.php htaccess-build
+sudo php bin/cmd.php htaccess-build
 ```
+
+### Db Backup
+```
+sudo php bin/cmd.php backup-dump
+sudo php bin/cmd.php backup-import
+
+```
+
+
+
+
+
+
+### MySql Dump (outdated)
+```
+sudo php bin/cmd.php mysql-dump
+```
+
+### Db Backup (outdated)
+```
+sudo php bin/cmd.php db-backup
+```
+
 
 
 

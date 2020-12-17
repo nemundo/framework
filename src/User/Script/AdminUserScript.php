@@ -15,7 +15,7 @@ class AdminUserScript extends AbstractConsoleScript
 
     protected function loadScript()
     {
-        $this->scriptName = 'admin-user-enable';
+        $this->scriptName = 'admin-user';
     }
 
 
@@ -26,19 +26,13 @@ class AdminUserScript extends AbstractConsoleScript
         $input->message = 'Password';
         $password = $input->getValue();
 
-
-        $user = new UserBuilder();  //ItemType();
+        $user = new UserBuilder();
         $user->login = 'admin';
         $user->email = 'noreply@noreply.com';
         $user->createUser();
 
         $user->changePassword($password);
         $user->addAllUsergroup();
-
-
-        /*$builder = new AdminUserBuilder();
-        $builder->password = $password;
-        $builder->createAdminUser();*/
 
     }
 
