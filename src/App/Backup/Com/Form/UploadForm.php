@@ -4,7 +4,7 @@ namespace Nemundo\App\Backup\Com\Form;
 
 
 use Nemundo\Admin\Com\Form\AbstractAdminForm;
-use Nemundo\App\Backup\Path\RestorePath;
+use Nemundo\App\Backup\Path\RestoreBackupPath;
 use Nemundo\App\DbBackup\Path\UploadRestoreFilename;
 use Nemundo\App\DbBackup\Path\UploadRestorePath;
 use Nemundo\Core\Archive\ZipExtractor;
@@ -38,10 +38,10 @@ class UploadForm extends AbstractAdminForm
     protected function onSubmit()
     {
 
-        (new RestorePath())->createPath();
+        (new RestoreBackupPath())->createPath();
 
         $fileRequest = $this->file->getFileRequest();
-        $filename = $fileRequest->saveAsOrginalFilename((new RestorePath())->getPath());
+        $filename = $fileRequest->saveAsOrginalFilename((new RestoreBackupPath())->getPath());
 
 
         (new Debug())->write($filename);
@@ -49,7 +49,7 @@ class UploadForm extends AbstractAdminForm
 
         $zip = new ZipExtractor();
         $zip->archiveFilename = $filename;  // (new UploadRestoreFilename())->getFilename();  // $zipFilename;
-        $zip->extractPath = (new RestorePath())->getPath();
+        $zip->extractPath = (new RestoreBackupPath())->getPath();
         $zip->extract();
 
         (new File($filename))->deleteFile();

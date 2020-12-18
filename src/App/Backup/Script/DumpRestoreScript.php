@@ -3,7 +3,7 @@
 namespace Nemundo\App\Backup\Script;
 
 
-use Nemundo\App\Backup\Path\RestorePath;
+use Nemundo\App\Backup\Path\RestoreBackupPath;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
 use Nemundo\Core\Console\ConsoleInput;
 use Nemundo\Core\Debug\Debug;
@@ -44,7 +44,7 @@ class DumpRestoreScript extends AbstractConsoleScript
 
 
         $reader = new DirectoryReader();
-        $reader->path = (new RestorePath())->getPath();
+        $reader->path = (new RestoreBackupPath())->getPath();
         foreach ($reader->getData() as $file) {
 
             /*$row=new TableRow($table);
@@ -69,7 +69,7 @@ class DumpRestoreScript extends AbstractConsoleScript
         $n = $input->getValue();
 
         if ($n == '0') {
-            (new RestorePath())->emptyDirectory();
+            (new RestoreBackupPath())->emptyDirectory();
         } else {
 
 
@@ -77,7 +77,7 @@ class DumpRestoreScript extends AbstractConsoleScript
 
                 $dumpFilename = $fileList[$n];
 
-                $filename = (new RestorePath())
+                $filename = (new RestoreBackupPath())
                     ->addPath($dumpFilename)
                     ->getFilename();
 

@@ -89,6 +89,7 @@ sudo php bin/cmd.php htaccess-build
 ```
 sudo php bin/cmd.php backup-dump
 sudo php bin/cmd.php backup-import
+sudo php bin/cmd.php backup-clean
 
 ```
 

@@ -4,16 +4,14 @@
 namespace Nemundo\App\Backup\Path;
 
 
-use Nemundo\Project\Path\ProjectPath;
-
-class BackupPath extends ProjectPath
+class RestoreBackupPath extends BackupPath
 {
 
     protected function loadPath()
     {
 
         parent::loadPath();
-        $this->addPath('backup');
+        $this->addPath('restore');
 
     }
 
