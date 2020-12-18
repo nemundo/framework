@@ -6,6 +6,7 @@ namespace Nemundo\App\Backup\Site;
 
 use Nemundo\App\Backup\Parameter\FileParameter;
 use Nemundo\App\Backup\Path\BackupPath;
+use Nemundo\App\Backup\Path\RestoreBackupPath;
 use Nemundo\Core\Http\Response\FileResponse;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -29,7 +30,7 @@ class DownloadSite extends AbstractSite
     {
 
         $response = new FileResponse();
-        $response->filename = (new BackupPath())
+        $response->filename = (new RestoreBackupPath())
             ->addPath((new FileParameter())->getValue())
             ->getFullFilename();
         $response->sendResponse();
