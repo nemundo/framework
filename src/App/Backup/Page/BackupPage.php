@@ -5,14 +5,18 @@ namespace Nemundo\App\Backup\Page;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Backup\Com\Form\UploadForm;
 use Nemundo\App\Backup\Parameter\FileParameter;
 use Nemundo\App\Backup\Path\DumpBackupPath;
+use Nemundo\App\Backup\Path\RestoreBackupPath;
 use Nemundo\App\Backup\Site\DownloadSite;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\File\DirectoryReader;
+use Nemundo\Html\Typography\Code;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class BackupPage extends AbstractTemplateDocument
 {
@@ -20,9 +24,13 @@ class BackupPage extends AbstractTemplateDocument
     public function getContent()
     {
 
-        new UploadForm($this);
 
-        $table = new AdminTable($this);
+        $layout=new BootstrapTwoColumnLayout($this);
+
+        $widget=new AdminWidget($layout->col1);
+        $widget->widgetTitle='Backup Dump';
+
+        $table = new AdminTable($widget);
 
         $header = new TableHeader($table);
         $header->addText('File');
@@ -35,13 +43,45 @@ class BackupPage extends AbstractTemplateDocument
 
             $row = new TableRow($table);
             $row->addText($file->filename);
-            $row->addText($file->getFileSize());
+            $row->addText($file->getFileSizeText());
 
             $site = clone(DownloadSite::$site);
             $site->addParameter(new FileParameter($file->filename));
             $row->addSite($site);
 
         }
+
+
+
+
+
+
+        $widget=new AdminWidget($layout->col2);
+        $widget->widgetTitle='Dump Upload';
+        new UploadForm($widget);
+
+
+        $widget=new AdminWidget($layout->col2);
+        $widget->widgetTitle='Restore Dump';
+
+        $table = new AdminTable($widget);
+
+        $header = new TableHeader($table);
+        $header->addText('File');
+        $header->addText('Size');
+
+        $reader = new DirectoryReader();
+        $reader->path = (new RestoreBackupPath())->getPath();
+        foreach ($reader->getData() as $file) {
+
+            $row = new TableRow($table);
+            $row->addText($file->filename);
+            $row->addText($file->getFileSizeText());
+
+        }
+
+        $code=new Code($widget);
+        $code->content='sudo php bin/cmd.php backup-restore';
 
         return parent::getContent();
 

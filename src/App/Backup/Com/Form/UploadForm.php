@@ -44,7 +44,7 @@ class UploadForm extends AbstractAdminForm
         $filename = $fileRequest->saveAsOrginalFilename((new RestoreBackupPath())->getPath());
 
 
-        (new Debug())->write($filename);
+        //(new Debug())->write($filename);
 
 
         $zip = new ZipExtractor();
@@ -60,9 +60,9 @@ class UploadForm extends AbstractAdminForm
         $dump->restoreDumpFile();*/
 
 
-        (new Debug())->write('php bin/cmd.php backup-restore');
+        //(new Debug())->write('php bin/cmd.php backup-restore');
 
-        exit;
+        //exit;
 
     }
 
