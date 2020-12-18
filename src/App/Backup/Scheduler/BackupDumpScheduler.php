@@ -4,6 +4,7 @@ namespace Nemundo\App\Backup\Scheduler;
 
 
 use Nemundo\App\Backup\Path\BackupPath;
+use Nemundo\App\Backup\Path\DumpBackupPath;
 use Nemundo\App\Scheduler\Job\AbstractScheduler;
 use Nemundo\Core\Archive\ZipArchive;
 use Nemundo\Core\Type\DateTime\DateTime;
@@ -41,7 +42,7 @@ class BackupDumpScheduler extends AbstractScheduler
         //$backupFilename = $path . 'dump_' . $dateTime->getValue() . '.sql';
         //$zipFilename = $path . 'dump_' . $dateTime->getValue() . '.zip';
 
-        $sqlFilename = (new BackupPath())
+        $sqlFilename = (new DumpBackupPath())
             ->addPath($uniqueName . '.sql')
             ->getFullFilename();
 
