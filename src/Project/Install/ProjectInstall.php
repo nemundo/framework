@@ -6,6 +6,7 @@ namespace Nemundo\Project\Install;
 use Nemundo\Admin\Log\Script\LogFileDeleteScript;
 use Nemundo\App\Application\Install\ApplicationInstall;
 use Nemundo\App\Application\Setup\ApplicationSetup;
+use Nemundo\App\Backup\Install\BackupInstall;
 use Nemundo\App\DbAdmin\Install\DbAdminInstall;
 use Nemundo\App\Mail\Install\MailInstall;
 use Nemundo\App\Scheduler\Install\SchedulerInstall;
@@ -46,6 +47,7 @@ class ProjectInstall extends AbstractInstall
         (new SchedulerInstall())->install();
         (new UserInstall())->install();
         (new MailInstall())->install();
+        (new BackupInstall())->install();
         (new DbAdminInstall())->run();
 
         (new TmpPath())->createPath();
