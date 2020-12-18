@@ -35,7 +35,7 @@ class BackupDumpScheduler extends AbstractScheduler
         $dateTime = new Text((new DateTime())->setNow()->getIsoDateTimeFormat());
         $dateTime->replace('-', '_');
         $dateTime->replace(':', '_');
-        $dateTime->replace(' ', '_');
+        $dateTime->replace(' ', '__');
 
         $uniqueName = 'dump_' . $dateTime->getValue();
 
@@ -53,7 +53,7 @@ class BackupDumpScheduler extends AbstractScheduler
         $mysqlDump->createDumpFile();
 
         $zip = new ZipArchive();
-        $zip->archiveFilename = (new BackupPath())
+        $zip->archiveFilename = (new DumpBackupPath())
             ->addPath($uniqueName . '.zip')
             ->getFullFilename();
 
