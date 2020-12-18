@@ -7,7 +7,7 @@ use Nemundo\Html\Form\Input\AcceptFileType;
 use Nemundo\Model\Form\Item\File\FileModelFormItem;
 use Nemundo\Model\Item\File\FileModelItem;
 use Nemundo\Model\ModelConfig;
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 
 
 class FileType extends AbstractFileType
@@ -47,7 +47,7 @@ class FileType extends AbstractFileType
 
     public function getFullUrlPath()
     {
-        $url = (new Domain())->getDomain() . $this->getUrlPath();
+        $url = (new DomainInformation())->getDomain() . $this->getUrlPath();
         return $url;
     }
 

@@ -4,7 +4,7 @@ namespace Nemundo\Model\Reader\Property\File;
 
 
 use Nemundo\Model\Type\ImageFormat\AbstractModelImageFormat;
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 
 class ImageReaderProperty extends FileReaderProperty
 {
@@ -19,7 +19,7 @@ class ImageReaderProperty extends FileReaderProperty
     public function getImageUrlWithDomain(AbstractModelImageFormat $imageFormat)
     {
 
-        $url = (new Domain())->getDomain() . $this->getImageUrl($imageFormat);
+        $url = (new DomainInformation())->getDomain() . $this->getImageUrl($imageFormat);
         return $url;
     }
 

@@ -6,7 +6,7 @@ namespace Nemundo\Model\Reader\Property\File;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Model\Reader\Property\AbstractReaderProperty;
 use Nemundo\Model\Type\File\AbstractFileType;
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 
 class FileReaderProperty extends AbstractReaderProperty
 {
@@ -40,7 +40,7 @@ class FileReaderProperty extends AbstractReaderProperty
 
     public function getUrlWithDomain()
     {
-        $url = (new Domain())->getDomain() . $this->getUrl();
+        $url = (new DomainInformation())->getDomain() . $this->getUrl();
         return $url;
     }
 

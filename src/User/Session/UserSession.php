@@ -12,7 +12,6 @@ use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
 use Nemundo\User\Login\Session\IsLoggedSession;
 use Nemundo\User\Login\Session\UserIdSession;
 use Nemundo\User\Login\UserLogout;
-use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 
 class UserSession extends AbstractBase
@@ -48,27 +47,6 @@ class UserSession extends AbstractBase
      */
     public $secureToken;
 
-    /*
-    public $login;
-
-    /**
-     * @var string
-     */
-   /* public $userId;
-
-    public function __construct()
-    {
-
-        $isUserLogged = (new IsLoggedSession())->getValue();
-
-        if ($isUserLogged) {
-            $this->userId = (new UserIdSession())->getValue();
-        }
-
-    }*/
-
-
-
     /**
      * @var UserRow
      */
@@ -76,12 +54,10 @@ class UserSession extends AbstractBase
 
     private static $usergroupList;
 
-    //protected $userId;
 
     public function __construct()
     {
 
-        //parent::__construct();
         $this->fromLoginSession();
 
     }

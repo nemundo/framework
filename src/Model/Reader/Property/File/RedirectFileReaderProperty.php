@@ -7,7 +7,7 @@ use Nemundo\Core\Type\File\File;
 use Nemundo\Model\Parameter\FilenameParameter;
 use Nemundo\Model\Reader\Property\AbstractReaderProperty;
 use Nemundo\Model\Type\File\RedirectFileType;
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 
 class RedirectFileReaderProperty extends AbstractReaderProperty
 {
@@ -62,7 +62,7 @@ class RedirectFileReaderProperty extends AbstractReaderProperty
 
     public function getUrlWithDomain()
     {
-        $url = (new Domain())->getDomain() . $this->getUrl();
+        $url = (new DomainInformation())->getDomain() . $this->getUrl();
         return $url;
     }
 

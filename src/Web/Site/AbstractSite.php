@@ -4,7 +4,7 @@ namespace Nemundo\Web\Site;
 
 
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 use Nemundo\User\Access\UserRestrictionTrait;
 use Nemundo\User\Login\Session\IsLoggedSession;
 use Nemundo\User\Usergroup\UsergroupMembership;
@@ -225,7 +225,7 @@ abstract class AbstractSite extends AbstractSiteTree
 // getFullUrl
     public function getUrlWithDomain()
     {
-        $domain = new Domain();
+        $domain = new DomainInformation();
         $url = $domain->getDomain() . $this->getUrl();
         return $url;
     }

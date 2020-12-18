@@ -3,7 +3,6 @@
 namespace Nemundo\User\Access;
 
 use Nemundo\User\Session\UserSession;
-use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 
 

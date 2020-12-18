@@ -7,6 +7,7 @@ use Nemundo\App\Backup\Path\BackupPath;
 use Nemundo\App\Backup\Path\DumpBackupPath;
 use Nemundo\App\Scheduler\Job\AbstractScheduler;
 use Nemundo\Core\Archive\ZipArchive;
+use Nemundo\Core\Http\Domain\DomainInformation;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Core\Type\Text\Text;
@@ -37,7 +38,7 @@ class BackupDumpScheduler extends AbstractScheduler
         $dateTime->replace(':', '_');
         $dateTime->replace(' ', '__');
 
-        $uniqueName = 'dump_' . $dateTime->getValue();
+        $uniqueName = (new DomainInformation())->getHost(). '_' . $dateTime->getValue();
 
         //$backupFilename = $path . 'dump_' . $dateTime->getValue() . '.sql';
         //$zipFilename = $path . 'dump_' . $dateTime->getValue() . '.zip';

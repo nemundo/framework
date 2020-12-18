@@ -2,7 +2,7 @@
 
 namespace Nemundo\Model\Reader\Property\File;
 
-use Nemundo\Core\Http\Domain\Domain;
+use Nemundo\Core\Http\Domain\DomainInformation;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Db\Row\AbstractDataRow;
@@ -103,7 +103,7 @@ class RedirectFilenameReaderProperty extends AbstractReaderProperty
     public function getUrlWithDomain()
     {
 
-        $url = (new Domain())->getDomain() . $this->getUrl();
+        $url = (new DomainInformation())->getDomain() . $this->getUrl();
         return $url;
     }
 
