@@ -85,25 +85,25 @@ class RedirectFilenameType extends AbstractComplexType
         $this->file->aliasFieldName = $this->fieldName . '_file';
         $this->file->tableName = $this->tableName;
         $this->file->allowNullValue=$this->allowNullValue;
-        $this->addType($this->file);
+        //$this->addType($this->file);
 
         $this->fileName->fieldName = $this->fieldName . '_filename';
         $this->fileName->aliasFieldName = $this->fieldName . '_filename';
         $this->fileName->tableName = $this->tableName;
         $this->fileName->allowNullValue=$this->allowNullValue;
-        $this->addType($this->fileName);
+        //$this->addType($this->fileName);
 
         $this->fileSize->fieldName = $this->fieldName . '_filesize';
         $this->fileSize->aliasFieldName = $this->fieldName . '_filesize';
         $this->fileSize->tableName = $this->tableName;
         $this->fileSize->allowNullValue=$this->allowNullValue;
-        $this->addType($this->fileSize);
+        //$this->addType($this->fileSize);
 
         $this->fileExtension->fieldName = $this->fieldName . '_extension';
         $this->fileExtension->aliasFieldName = $this->fieldName . '_extension';
         $this->fileExtension->tableName = $this->tableName;
         $this->fileExtension->allowNullValue=$this->allowNullValue;
-        $this->addType($this->fileExtension);
+        //$this->addType($this->fileExtension);
 
     }
 

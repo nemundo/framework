@@ -18,9 +18,24 @@ mysql -e "CREATE DATABASE dbname2;GRANT ALL PRIVILEGES ON dbname.* TO 'username'
 
 
 
+### Strict Mode
+```
+
+SET GLOBAL sql_mode = 'STRICT_TRANS_TABLES';
+
+SHOW VARIABLES LIKE "sql_mode";
+
+Disable: mysql> 
+SET sql_mode = '';
+Enable: mysql> 
+SET sql_mode = 'STRICT_ALL_TABLES';
+```
 
 
-
+```
+[mysqld]
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+```
 
 
 

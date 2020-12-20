@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Nemundo\User\Session;
 
 
@@ -8,6 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\User\Data\User\UserCount;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Data\User\UserRow;
+use Nemundo\User\Data\Usergroup\UsergroupRow;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
 use Nemundo\User\Login\Session\IsLoggedSession;
 use Nemundo\User\Login\Session\UserIdSession;
@@ -106,6 +106,27 @@ class UserSession extends AbstractBase
         return $isUserLogged;
 
     }
+
+
+    /**
+     * @return UsergroupRow[]
+     */
+    public function getUsergroup()
+    {
+
+        $reader = new UserUsergroupReader();
+        $reader->model->loadUsergroup();
+        $reader->filter->andEqual($reader->model->userId, $this->userId);
+
+        $list = [];
+        foreach ($reader->getData() as $row) {
+            $list[] = $row->usergroup;
+        }
+
+        return $list;
+
+    }
+
 
 
     public function isMemberOfUsergroup(AbstractUsergroup $usergroup)

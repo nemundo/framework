@@ -224,15 +224,15 @@ abstract class AbstractModelSetup extends AbstractDbBase
             exit;
         }
 
-        (new DataPath())->
-        addPath($this->model->tableName)
+        (new DataPath())
+            ->addPath($this->model->tableName)
             ->deleteDirectory();
 
         (new RedirectDataPath())
             ->addPath($this->model->tableName)
             ->deleteDirectory();
 
-        $table = new  MySqlTable();
+        $table = new MySqlTable();
         $table->connection = $this->connection;
         $table->tableName = $this->model->tableName;
         $table->dropTable();

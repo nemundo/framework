@@ -8,7 +8,6 @@ use Nemundo\App\Mail\Site\MyMailQueueSite;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
 use Nemundo\User\Session\UserSession;
-use Nemundo\User\Type\UserSessionType;
 
 class UsergroupMembershipWidget extends AbstractAdminWidget
 {

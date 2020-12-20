@@ -3,6 +3,7 @@
 namespace Nemundo\Model\Definition\Model;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Type\AbstractModelType;
 use Nemundo\Model\Type\Complex\AbstractComplexType;
 use Nemundo\Model\Type\External\ExternalType;
@@ -49,7 +50,14 @@ trait TypeListTrait
 
                 if ($type->isObjectOfClass(AbstractComplexType::class)) {
 
+                    /*(new Debug())->write('type'.$type->fieldName);
+
+                    (new Debug())->write($type->getTypeList());
+                    exit;*/
+
                     foreach ($type->getTypeList() as $subType) {
+
+                        //(new Debug())->write('SubType: '.$subType->fieldName);
 
                         $list[] = $subType;
 

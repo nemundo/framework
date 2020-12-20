@@ -59,7 +59,6 @@ class ProjectInstall extends AbstractInstall
             ->addScript(new AdminBuilderScript())
             ->addScript(new LogFileDeleteScript());
 
-
     }
 
 

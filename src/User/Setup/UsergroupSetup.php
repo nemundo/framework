@@ -27,10 +27,6 @@ class UsergroupSetup extends AbstractBase
         $data->updateOnDuplicate = true;
         $data->id = $usergroup->usergroupId;
         $data->usergroup = $usergroup->usergroup;
-        /*$data->usergroupClass = $usergroup->getClassName();
-        if ($this->application !== null) {
-            $data->applicationId = $this->application->applicationId;
-        }*/
         $data->setupStatus = true;
         $data->save();
 
@@ -85,6 +81,5 @@ class UsergroupSetup extends AbstractBase
         return $this;
 
     }
-
 
 }

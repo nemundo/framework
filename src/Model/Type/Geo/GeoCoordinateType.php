@@ -46,13 +46,13 @@ class GeoCoordinateType extends AbstractComplexType
         $this->latitude->aliasFieldName = $this->aliasFieldName . '_lat';
         $this->latitude->tableName = $this->tableName;
         $this->latitude->allowNullValue = $this->allowNullValue;
-        $this->addType($this->latitude);
+        //$this->addType($this->latitude);
 
         $this->longitude->fieldName = $this->fieldName . '_lon';
         $this->longitude->aliasFieldName = $this->aliasFieldName . '_lon';
         $this->longitude->tableName = $this->tableName;
         $this->longitude->allowNullValue = $this->allowNullValue;
-        $this->addType($this->longitude);
+        //$this->addType($this->longitude);
 
     }
 
