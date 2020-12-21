@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\App\MySqlAdmin\Com\ListBox;
+namespace Nemundo\App\MySql\Com\ListBox;
 
 
 use Nemundo\App\MySqlAdmin\Parameter\DatabaseParameter;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\App\MySqlAdmin\Com\Table;
+namespace Nemundo\App\MySql\Com\Table;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;

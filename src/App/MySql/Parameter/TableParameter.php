@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nemundo\App\MySqlAdmin\Parameter;
+namespace Nemundo\App\MySql\Parameter;
 
 
 use Nemundo\Web\Parameter\AbstractUrlParameter;
