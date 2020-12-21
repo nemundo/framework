@@ -15,6 +15,7 @@ class BackupSite extends AbstractSite
         $this->title = 'Backup';
         $this->url = 'backup';
         new DownloadSite($this);
+        new UploadSite($this);
     }
 
 

@@ -11,12 +11,14 @@ use Nemundo\App\Backup\Parameter\FileParameter;
 use Nemundo\App\Backup\Path\DumpBackupPath;
 use Nemundo\App\Backup\Path\RestoreBackupPath;
 use Nemundo\App\Backup\Site\DownloadSite;
+use Nemundo\App\Backup\Site\UploadSite;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\File\DirectoryReader;
 use Nemundo\Html\Typography\Code;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
+use Nemundo\Package\Dropzone\DropzoneUploadForm;
 
 class BackupPage extends AbstractTemplateDocument
 {
@@ -51,14 +53,13 @@ class BackupPage extends AbstractTemplateDocument
 
         }
 
-
-
-
-
-
         $widget=new AdminWidget($layout->col2);
-        $widget->widgetTitle='Dump Upload';
-        new UploadForm($widget);
+        $widget->widgetTitle='Dump Upload (Zip File)';
+
+        $dropzone=new DropzoneUploadForm($widget);
+        $dropzone->saveSite=UploadSite::$site;
+
+        //new UploadForm($widget);
 
 
         $widget=new AdminWidget($layout->col2);
@@ -73,11 +74,9 @@ class BackupPage extends AbstractTemplateDocument
         $reader = new DirectoryReader();
         $reader->path = (new RestoreBackupPath())->getPath();
         foreach ($reader->getData() as $file) {
-
             $row = new TableRow($table);
             $row->addText($file->filename);
             $row->addText($file->getFileSizeText());
-
         }
 
         $code=new Code($widget);
