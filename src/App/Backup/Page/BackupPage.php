@@ -3,10 +3,8 @@
 
 namespace Nemundo\App\Backup\Page;
 
-
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Widget\AdminWidget;
-use Nemundo\App\Backup\Com\Form\UploadForm;
 use Nemundo\App\Backup\Parameter\FileParameter;
 use Nemundo\App\Backup\Path\DumpBackupPath;
 use Nemundo\App\Backup\Path\RestoreBackupPath;
@@ -26,11 +24,10 @@ class BackupPage extends AbstractTemplateDocument
     public function getContent()
     {
 
+        $layout = new BootstrapTwoColumnLayout($this);
 
-        $layout=new BootstrapTwoColumnLayout($this);
-
-        $widget=new AdminWidget($layout->col1);
-        $widget->widgetTitle='Backup Dump';
+        $widget = new AdminWidget($layout->col1);
+        $widget->widgetTitle = 'Backup Dump';
 
         $table = new AdminTable($widget);
 
@@ -53,17 +50,17 @@ class BackupPage extends AbstractTemplateDocument
 
         }
 
-        $widget=new AdminWidget($layout->col2);
-        $widget->widgetTitle='Dump Upload (Zip File)';
+        $widget = new AdminWidget($layout->col2);
+        $widget->widgetTitle = 'Dump Upload (Zip File)';
 
-        $dropzone=new DropzoneUploadForm($widget);
-        $dropzone->saveSite=UploadSite::$site;
+        $dropzone = new DropzoneUploadForm($widget);
+        $dropzone->saveSite = UploadSite::$site;
 
         //new UploadForm($widget);
 
 
-        $widget=new AdminWidget($layout->col2);
-        $widget->widgetTitle='Restore Dump';
+        $widget = new AdminWidget($layout->col2);
+        $widget->widgetTitle = 'Restore Dump';
 
         $table = new AdminTable($widget);
 
@@ -79,8 +76,8 @@ class BackupPage extends AbstractTemplateDocument
             $row->addText($file->getFileSizeText());
         }
 
-        $code=new Code($widget);
-        $code->content='sudo php bin/cmd.php backup-restore';
+        $code = new Code($widget);
+        $code->content = 'sudo php bin/cmd.php backup-restore';
 
         return parent::getContent();
 

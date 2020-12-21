@@ -3,7 +3,6 @@
 namespace Nemundo\Package\Bootstrap\FormElement;
 
 use Nemundo\Com\Container\LibraryTrait;
-use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -37,20 +36,19 @@ class BootstrapGeoCoordinate extends AbstractContainer
 
         $this->lat = new BootstrapTextBox($formRow);
         $this->lat->label = 'Lat';
-        $this->lat->name='geo_lat';
+        $this->lat->name = 'geo_lat';
 
         $this->lon = new BootstrapTextBox($formRow);
         $this->lon->label = 'Lon';
-        $this->lon->name='geo_lon';
+        $this->lon->name = 'geo_lon';
 
     }
-
 
 
     public function getContent()
     {
 
-        if ($this->geoCoordinate!==null) {
+        if ($this->geoCoordinate !== null) {
             $this->lat->value = $this->geoCoordinate->latitude;
             $this->lon->value = $this->geoCoordinate->longitude;
         }
@@ -83,17 +81,35 @@ doc.onLoaded = function () {
     }
 
 
+    public function hasValue()
+    {
+
+        $value = false;
+        if (($this->lat->getValue() !== '') || ($this->lon->getValue() !== '')) {
+            $value = true;
+        }
+        return $value;
+
+    }
+
+
     public function getGeoCoordinate()
     {
 
-        $geoCoordinate=new GeoCoordinate();
-        $geoCoordinate->latitude=$this->lat->getValue();
-        $geoCoordinate->longitude=$this->lon->getValue();
+        /** @var GeoCoordinate $geoCoordinate */
+        //$geoCoordinate = null;
+
+        $geoCoordinate = new GeoCoordinate();
+
+        if ($this->hasValue()) {
+
+            $geoCoordinate->latitude = $this->lat->getValue();
+            $geoCoordinate->longitude = $this->lon->getValue();
+        }
 
         return $geoCoordinate;
 
     }
-
 
 
 }
