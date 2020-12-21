@@ -92,6 +92,11 @@ sudo php bin/cmd.php backup-import
 sudo php bin/cmd.php backup-clean
 ```
 
+### Db Index Delete
+```
+sudo php bin/cmd.php db-index-delete
+```
+
 
 
 ### MySql Dump (outdated)
