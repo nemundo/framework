@@ -12,24 +12,18 @@ trait HyperlinkTrait
     use ContainerUserRestrictionTrait;
 
     /**
-     * @var string
-     */
-    //public $title;
-
-    /**
      * @var bool
      */
     public $openNewWindow = false;
 
 
-    protected function loadHyperlink() {
+    protected function loadHyperlink()
+    {
 
         if ($this->openNewWindow) {
-         $this->target = HyperlinkTarget::BLANK;
-     }
-
+            $this->target = HyperlinkTarget::BLANK;
+        }
 
     }
-
 
 }
