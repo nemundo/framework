@@ -62,13 +62,14 @@ class BootstrapFromToDatePicker extends AbstractContainer
         return $this->to->hasValue();
     }
 
-    public function getFromDate()
+
+    public function getDateFrom()
     {
         return $this->from->getDateValue();
     }
 
 
-    public function getToDate()
+    public function getDateTo()
     {
         return $this->to->getDateValue();
     }
