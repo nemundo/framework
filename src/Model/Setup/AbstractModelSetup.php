@@ -20,6 +20,7 @@ use Nemundo\Model\Definition\Index\ModelIndex;
 use Nemundo\Model\Definition\Index\ModelSearchIndex;
 use Nemundo\Model\Definition\Index\ModelUniqueIndex;
 use Nemundo\Model\Definition\Model\AbstractModel;
+use Nemundo\Model\Log\SetupLog;
 use Nemundo\Model\Path\DataPath;
 use Nemundo\Model\Path\RedirectDataPath;
 use Nemundo\Model\Path\SetupLogPath;
@@ -52,6 +53,7 @@ abstract class AbstractModelSetup extends AbstractDbBase
      * @var AbstractModel
      */
     protected $model;
+
 
     public function createTable()
     {
@@ -153,9 +155,9 @@ abstract class AbstractModelSetup extends AbstractDbBase
                 $table->addModifiedTimestamp($type->fieldName);
             }
 
-            if ($type->isObjectOfClass(PhpClassType::class)) {
+            /*if ($type->isObjectOfClass(PhpClassType::class)) {
                 $table->addTextField($type->fieldName);
-            }
+            }*/
 
         }
 
@@ -203,6 +205,8 @@ abstract class AbstractModelSetup extends AbstractDbBase
             }
 
         }
+
+        SetupLog::$modelList[]=$this->model;
 
         $logFilename = (new SetupLogPath())->getFilename();
 

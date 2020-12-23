@@ -16,6 +16,7 @@ use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Db\Provider\MySql\Database\MySqlDatabase;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
+use Nemundo\Model\Install\ModelInstall;
 use Nemundo\Model\Script\ImageResizeScript;
 use Nemundo\Project\Config\ProjectConfigBuilderScript;
 use Nemundo\Project\Path\LogPath;
@@ -53,8 +54,10 @@ class ProjectInstall extends AbstractInstall
         (new TmpPath())->createPath();
         (new LogPath())->createPath();
 
+        (new ModelInstall())->install();
+
         (new ScriptSetup())
-            ->addScript(new ImageResizeScript())
+            //->addScript(new ImageResizeScript())
             ->addScript(new DeleteTmpScript())
             ->addScript(new AdminBuilderScript())
             ->addScript(new LogFileDeleteScript());

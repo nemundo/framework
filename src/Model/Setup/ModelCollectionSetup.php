@@ -10,7 +10,6 @@ use Nemundo\Model\Collection\AbstractModelCollection;
 class ModelCollectionSetup extends AbstractDbBase
 {
 
-
     public function addCollection(AbstractModelCollection $collection)
     {
 

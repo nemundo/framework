@@ -32,16 +32,9 @@ class ImageResizeScript extends AbstractConsoleScript
         $reader->model =$model;
         foreach ($reader->getData() as $dataRow) {
 
-
-            //(new Debug())->write($dataRow->getModelValue($model->id));
-
-
             foreach ($model->getTypeList() as $type) {
 
                 if ($type->isObjectOfClass(ImageType::class)) {
-
-                    //(new Debug())->write($dataRow->getModelValue($type));
-
 
                     $image = new ImageReaderProperty($dataRow,$type);
                         $filenameOrginal = $image->getFullFilename();
