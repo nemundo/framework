@@ -7,9 +7,10 @@ use Nemundo\App\Script\Type\AbstractConsoleScript;
 use Nemundo\Core\Console\ConsoleInput;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\User\Data\User\UserCount;
+use Nemundo\User\Data\Usergroup\UsergroupCount;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupDelete;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
-use Nemundo\User\Type\UserItemType;
+
 
 
 
@@ -30,6 +31,12 @@ class UsergroupCleanScript extends AbstractConsoleScript
 
             $count = new UserCount();
             $count->filter->andEqual($count->model->id,$userUsergroupRow->userId);
+            if ($count->getCount() == 0) {
+                (new UserUsergroupDelete())->deleteById($userUsergroupRow->id);
+            }
+
+            $count = new UsergroupCount();
+            $count->filter->andEqual($count->model->id,$userUsergroupRow->usergroupId);
             if ($count->getCount() == 0) {
                 (new UserUsergroupDelete())->deleteById($userUsergroupRow->id);
             }
