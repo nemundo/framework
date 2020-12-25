@@ -4,10 +4,12 @@ namespace Nemundo\Geo\Kml\Object;
 
 
 use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
+use Nemundo\Core\Type\Text\Text;
 use Nemundo\Geo\Kml\Container\Placemark;
 use Nemundo\Geo\Kml\Element\Point;
 use Nemundo\Geo\Kml\Property\HtmlDescription;
 use Nemundo\Geo\Kml\Property\Name;
+use Nemundo\Html\Character\HtmlCharacter;
 
 
 class KmlMarker extends Placemark
@@ -32,15 +34,16 @@ class KmlMarker extends Placemark
     public function getContent()
     {
 
+        /*if ($this->label !== null) {
 
-        if ($this->label !== null) {
+
             $name = new Name($this);
-            $name->value = $this->label;
-        }
+            $name->value = $this->replaceText($this->label);   //  $label; // $this->label;
+        }*/
 
         if ($this->description !== null) {
-            $name = new HtmlDescription($this);
-            $name->value = $this->description;
+            $description = new HtmlDescription($this);
+            $description->value = $this->description;  // $this->replaceText($this->description);   //$this->description;
         }
 
         $point = new Point($this);
@@ -50,6 +53,15 @@ class KmlMarker extends Placemark
 
     }
 
+
+/*
+    private function replaceText($text) {
+
+        return (new Text($text))
+            ->replace('&',HtmlCharacter::AMPERSAND)  //HtmlCharacter::AMPERSAND)
+            ->getValue();
+
+    }*/
 
     /*
 <Placemark>

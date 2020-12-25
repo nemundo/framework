@@ -3,6 +3,7 @@
 namespace Nemundo\Geo\Kml\Container;
 
 use Nemundo\Geo\Kml\Property\Name;
+use Nemundo\Geo\Kml\Text\KmlTextConverter;
 use Nemundo\Html\Container\AbstractTagContainer;
 
 
@@ -27,7 +28,7 @@ class Placemark extends AbstractTagContainer
 
         if ($this->label !== null) {
             $name = new Name($this);
-            $name->value = $this->label;
+            $name->value = (new KmlTextConverter())->getText($this->label);
         }
 
         return parent::getContent();

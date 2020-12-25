@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Admin\MySql\Site;
+namespace Nemundo\App\MySql\Site;
 
 
 use Nemundo\Admin\Com\Button\AdminSiteButton;
@@ -10,6 +10,7 @@ use Nemundo\Admin\MySql\Site\Action\MySqlEmptyTableSite;
 use Nemundo\Admin\MySql\Table\MySqlDataTable;
 use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
+use Nemundo\App\MySql\Page\MySqlApplicationDataPage;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Type\Number\Number;
 use Nemundo\Db\Count\DataCount;
@@ -36,8 +37,9 @@ class MySqlApplicationDataSite extends AbstractSite
         $this->title = 'Application Data';
         $this->url = 'application-data';
 
+        /*
         new MySqlEmptyTableSite($this);
-        new MySqlDropTableSite($this);
+        new MySqlDropTableSite($this);*/
 
 
     }
@@ -46,6 +48,9 @@ class MySqlApplicationDataSite extends AbstractSite
     public function loadContent()
     {
 
+        (new MySqlApplicationDataPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         //new MySqlNavigation($page);
@@ -106,14 +111,15 @@ class MySqlApplicationDataSite extends AbstractSite
                         $p = new Paragraph($col2);
                         $p->content = (new Number($count->getCount()))->formatNumber() . ' Rows';
 
-                        $btn = new AdminSiteButton($col2);
+                        /*$btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlEmptyTableSite::$site);
                         $btn->site->addParameter($tableParameter);
 
                         $btn = new AdminSiteButton($col2);
                         $btn->site = clone(MySqlDropTableSite::$site);
-                        $btn->site->addParameter($tableParameter);
+                        $btn->site->addParameter($tableParameter);*/
 
+        /*
                         $data = new MySqlDataTable($col2);
                         $data->tableName = $tableName;
                         $data->limit = 50;
@@ -129,7 +135,7 @@ class MySqlApplicationDataSite extends AbstractSite
 
         }
 
-        $page->render();
+        $page->render();*/
 
     }
 

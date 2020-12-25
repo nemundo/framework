@@ -18,6 +18,14 @@ class GeoCoordinateDataProperty extends AbstractDataProperty
     public function setValue(AbstractGeoCoordinate $geoCoordinate)
     {
 
+        if ($geoCoordinate->latitude == '') {
+            $geoCoordinate->latitude = 0;
+        }
+
+        if ($geoCoordinate->longitude == '') {
+            $geoCoordinate->longitude = 0;
+        }
+
         $this->typeValueList->setModelValue($this->type->latitude, $geoCoordinate->latitude);
         $this->typeValueList->setModelValue($this->type->longitude, $geoCoordinate->longitude);
 
