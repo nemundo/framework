@@ -28,7 +28,7 @@
                     "label": "Date Time Send",
                     "field_name": "date_time_send",
                     "variable_name": "dateTimeSend",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false
                 },
                 {

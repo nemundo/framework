@@ -66,7 +66,7 @@ $this->dateTimeSend->tableName = "mail_queue";
 $this->dateTimeSend->fieldName = "date_time_send";
 $this->dateTimeSend->aliasFieldName = "mail_queue_date_time_send";
 $this->dateTimeSend->label = "Date Time Send";
-$this->dateTimeSend->allowNullValue = false;
+$this->dateTimeSend->allowNullValue = true;
 
 $this->mailTo = new \Nemundo\Model\Type\Text\TextType($this);
 $this->mailTo->tableName = "mail_queue";

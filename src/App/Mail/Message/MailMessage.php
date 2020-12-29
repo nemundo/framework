@@ -32,7 +32,7 @@ class MailMessage extends AbstractBase
     {
 
         if (!(new EmailValidation())->isEmail($this->mailTo)) {
-            (new LogMessage())->writeError('MailMessage: No valid eMail '.$this->mailTo);
+            (new LogMessage())->writeError('MailMessage: No valid eMail ' . $this->mailTo);
             return;
         }
 
@@ -41,6 +41,7 @@ class MailMessage extends AbstractBase
         $data->mailTo = $this->mailTo;
         $data->subject = $this->subject;
         $data->text = $this->text;
+        $data->send = false;
         $data->save();
 
     }

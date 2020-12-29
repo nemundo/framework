@@ -7,10 +7,10 @@ $html = new \Nemundo\Html\Document\HtmlDocument();
 
 $chart = new \Nemundo\Package\Echarts\Chart\Echart($html);
 
-$data = new \Nemundo\Package\Echarts\Data\ScatterData($chart);
-$data->addValue(10,10);
-$data->addValue(20,5);
-$data->addValue(30,10);
+$data = new \Nemundo\Content\App\Chart\Data\ChartLine\ChartLine($chart);
+$data->addValue(10);
+$data->addValue(20);
+$data->addValue(30);
 
 
 /*

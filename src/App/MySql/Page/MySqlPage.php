@@ -2,30 +2,13 @@
 
 namespace Nemundo\App\MySql\Page;
 
-use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Com\Widget\AdminWidget;
-use Nemundo\Admin\MySql\Form\MySqlDatabaseForm;
 use Nemundo\App\MySql\Com\ListBox\MySqlTableListBox;
 use Nemundo\App\MySql\Com\Table\MySqlDataTable;
+use Nemundo\App\MySql\Com\Table\MySqlIndexTable;
 use Nemundo\App\MySql\Com\Table\MySqlTableFieldTable;
-use Nemundo\App\MySql\Com\Table\MySqlTableTable;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Db\DbConfig;
-use Nemundo\Db\Provider\MySql\Connection\MySqlConnection;
-use Nemundo\Db\Provider\MySql\Database\MySqlDatabaseReader;
-use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\MySql\Com\Form\SqlFileImportForm;
-use Nemundo\MySql\Connection\SessionConnection;
-use Nemundo\MySql\Parameter\DatabaseParameter;
-use Nemundo\MySql\Site\DatabaseDeleteSite;
-use Nemundo\MySql\Site\DatabaseSite;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
-use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 
 class MySqlPage extends AbstractTemplateDocument
 {
@@ -34,25 +17,29 @@ class MySqlPage extends AbstractTemplateDocument
     {
 
 
-        $form=new SearchForm($this);
+        $form = new SearchForm($this);
 
-        $formRow=new BootstrapFormRow($form);
+        $formRow = new BootstrapFormRow($form);
 
-        $table=new MySqlTableListBox($formRow);
-        $table->submitOnChange=true;
-        $table->searchMode=true;
+        $table = new MySqlTableListBox($formRow);
+        $table->submitOnChange = true;
+        $table->searchMode = true;
 
         if ($table->hasValue()) {
 
-            $data=new MySqlTableFieldTable($this);
-            $data->tableName=$table->getValue();
+            $data = new MySqlTableFieldTable($this);
+            $data->tableName = $table->getValue();
 
-            $data=new MySqlDataTable($this);
-            $data->tableName=$table->getValue();
+            /*$data = new MySqlTableFieldTable($this);
+            $data->tableName = $table->getValue();*/
+
+            $data = new MySqlIndexTable($this);
+            $data->tableName = $table->getValue();
+
+            $data = new MySqlDataTable($this);
+            $data->tableName = $table->getValue();
 
         }
-
-
 
 
         /*

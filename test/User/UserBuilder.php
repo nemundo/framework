@@ -1,15 +1,23 @@
 <?php
 
-require '../config.php';
+require __DIR__ . '/../config.php';
 
-$login = 'user10';
+$loop = new \Nemundo\Core\Structure\ForLoop();
+$loop->minNumber = 1;
+$loop->maxNumber = 10;
+foreach ($loop->getData() as $n) {
 
-$userBuilder = new \Nemundo\User\Builder\UserBuilder();
-$userBuilder->login =$login;
-$userId = $userBuilder->createUser();
+    $login = 'user' . $n;
 
-(new \Nemundo\Core\Debug\Debug())->write('UserId: '.$userId);
+    $userBuilder = new \Nemundo\User\Builder\UserBuilder();
+    $userBuilder->login = $login;
+    $userBuilder->email = $login . '@test.com';
+    $userId = $userBuilder->createUser();
 
-$userType = new \Nemundo\User\Builder\UserTypeNew($userId);
-$userType->changePassword($login);
-$userType->addAllUsergroup();
+    (new \Nemundo\Core\Debug\Debug())->write('UserId: ' . $userId);
+
+    $userType = new \Nemundo\User\Builder\UserBuilder($userId);
+    $userType->changePassword($login);
+    $userType->addAllUsergroup();
+
+}
