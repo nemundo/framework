@@ -4,7 +4,6 @@ namespace Nemundo\Model\Data\Property\File;
 
 
 use Nemundo\Core\Http\Request\File\AbstractFileRequest;
-use Nemundo\Core\Http\Request\File\FileRequest;
 use Nemundo\Model\Data\Property\AbstractDataProperty;
 
 abstract class AbstractFileDataProperty extends AbstractDataProperty
@@ -17,7 +16,8 @@ abstract class AbstractFileDataProperty extends AbstractDataProperty
     abstract public function fromFileRequest(AbstractFileRequest $fileRequest);
 
 
-    public function fromFileProperty(FileProperty $fileProperty) {
+    public function fromFileProperty(FileProperty $fileProperty)
+    {
 
         if ($fileProperty->hasFilename()) {
             $this->fromFilename($fileProperty->getFilename());
@@ -30,7 +30,6 @@ abstract class AbstractFileDataProperty extends AbstractDataProperty
         if ($fileProperty->hasFileRequest()) {
             $this->fromFileRequest($fileProperty->getFileRequest());
         }
-
 
     }
 

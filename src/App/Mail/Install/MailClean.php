@@ -21,8 +21,7 @@ class MailClean extends AbstractConsoleScript
         $setup = new ModelCollectionSetup();
         $setup->removeCollection(new MailCollection());
 
-
-        (new MailInstall())->run();
+        (new MailInstall())->install();
 
     }
 

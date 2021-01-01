@@ -54,6 +54,7 @@ class RedirectFilenameDataProperty extends AbstractFileDataProperty
         $fileProperty = new FileDataProperty($this->type->file, $this->typeValueList);
         $fileProperty->fromUrl($url);
 
+        // not working !!!
         $this->typeValueList->setModelValue($this->type->fileName, $filename);
         $this->typeValueList->setModelValue($this->type->fileExtension, $filenameExtension);
 
@@ -66,32 +67,10 @@ class RedirectFilenameDataProperty extends AbstractFileDataProperty
         $fileProperty = new FileDataProperty($this->type->file, $this->typeValueList);
         $fileProperty->fromFileRequest($fileRequest);
 
-        //(new Debug())->write($fileRequest);
-
         $this->typeValueList->setModelValue($this->type->fileName, $fileRequest->filename);
         $this->typeValueList->setModelValue($this->type->fileExtension, $fileRequest->filenameExtension);
         $this->typeValueList->setModelValue($this->type->fileSize, $fileRequest->fileSize);
 
     }
-
-
-    /*
-    public function fromFileProperty(FileProperty $fileProperty) {
-
-        if ($fileProperty->hasFilename()) {
-            $this->fromFilename($fileProperty->getFilename());
-        }
-
-        if ($fileProperty->hasUrl()) {
-            $this->fromUrl($fileProperty->getUrl());
-        }
-
-        if ($fileProperty->hasFileRequest()) {
-            $this->fromFileRequest($fileProperty->getFileRequest());
-        }
-
-
-    }*/
-
 
 }
