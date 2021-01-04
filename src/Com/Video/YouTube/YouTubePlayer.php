@@ -30,6 +30,7 @@ class YouTubePlayer extends AbstractVideoPlayer
         $iframe->width = $this->width;
         $iframe->height = $this->height;
         $iframe->src = $url->getUrl();
+        //$iframe->addCssClass('embed-responsive-item');
         $iframe->addAttributeWithoutValue('allowfullscreen');
 
         return parent::getContent();
