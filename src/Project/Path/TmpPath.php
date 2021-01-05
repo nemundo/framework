@@ -2,8 +2,6 @@
 
 namespace Nemundo\Project\Path;
 
-use Nemundo\Project\ProjectConfig;
-
 class TmpPath extends ProjectPath
 {
 

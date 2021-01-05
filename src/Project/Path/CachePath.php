@@ -15,26 +15,8 @@ class CachePath extends AbstractPath
     private static $cachePath;
 
 
-    /*
-    public function __construct()
-    {
-
-        parent::__construct();
-
-        if (AbstractCachePath::$cachePath == null) {
-            AbstractCachePath::$cachePath = (new ProjectConfigReader())->getValue('cache_path');
-        }
-
-        $this->addPath(AbstractCachePath::$cachePath);
-
-        //parent::__construct(AbstractCachePath::$cachePath);
-
-    }*/
-
-
     protected function loadPath()
     {
-        // TODO: Implement loadPath() method.
 
         if (CachePath::$cachePath == null) {
             CachePath::$cachePath = (new ProjectConfigReader())->getValue('cache_path');
@@ -42,8 +24,6 @@ class CachePath extends AbstractPath
 
         $this->addPath(CachePath::$cachePath);
 
-
     }
-
 
 }
