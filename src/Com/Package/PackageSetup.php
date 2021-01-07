@@ -4,7 +4,7 @@ namespace Nemundo\Com\Package;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\File\DirectoryCopier;
+use Nemundo\Core\File\DirectoryCopy;
 use Nemundo\Core\Path\Path;
 use Nemundo\FrameworkProject;
 use Nemundo\Web\WebConfig;
@@ -41,7 +41,7 @@ class PackageSetup extends AbstractBaseClass
             ->addPath($package->packageName)
             ->getPath();
 
-        $copy = new DirectoryCopier();
+        $copy = new DirectoryCopy();
         $copy->overwriteExistingFile = true;
         $copy->sourcePath = $sourcePath;
         $copy->destinationPath = $destinationPath;

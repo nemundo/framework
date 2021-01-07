@@ -9,7 +9,7 @@ use Nemundo\App\DbBackup\Path\UploadRestorePath;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
 use Nemundo\Core\Archive\ZipExtractor;
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\File\DirectoryCopier;
+use Nemundo\Core\File\DirectoryCopy;
 use Nemundo\Db\Provider\MySql\Dump\MySqlDumpRestore;
 use Nemundo\Dev\Job\DataFileDeleteScript;
 use Nemundo\Model\ModelConfig;
@@ -67,13 +67,13 @@ class DbBackupRestoreScript extends AbstractConsoleScript
         (new DataFileDeleteScript())->run();
 
 
-        $copy = new DirectoryCopier();
+        $copy = new DirectoryCopy();
         $copy->sourcePath = (new UploadRestorePath())
             ->addPath('data')->getPath();
         $copy->destinationPath = ModelConfig::$dataPath;
         $copy->copyDirectory();
 
-        $copy = new DirectoryCopier();
+        $copy = new DirectoryCopy();
         $copy->sourcePath = (new UploadRestorePath())
             ->addPath('data_redirect')->getPath();
         $copy->destinationPath = ModelConfig::$redirectDataPath;
