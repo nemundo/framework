@@ -9,6 +9,7 @@ use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Crawler\HtmlParser\HtmlParser;
@@ -40,9 +41,22 @@ class RssPage extends AbstractTemplateDocument
             $rssReader = new RssReader();
             $rssReader->feedUrl= $input->getValue();
 
+
+            $table=new AdminLabelValueTable($this);
+            $table->addLabelValue('Title',$rssReader->getTitle());
+            $table->addLabelValue('Description',$rssReader->getDescription());
+            $table->addLabelValue('Image Url',$rssReader->getImageUrl());
+
+
             $table = new AdminTable($this);
-            //$table->addLabelValue('Title', $rssReader->getPageTitle());
-            //$table->addLabelValue('Description', $rssReader->getDescription());
+
+            $header = new TableHeader($table);
+            $header->addText('Title');
+            $header->addText('Description');
+            $header->addText('Date/Time');
+            $header->addText('Url');
+            $header->addText('Enclosure Url');
+            $header->addText('Enclosure Type');
 
             foreach ($rssReader->getData() as $rssItem) {
 
@@ -51,6 +65,8 @@ class RssPage extends AbstractTemplateDocument
                 $row->addText($rssItem->description);
                 $row->addText($rssItem->dateTime->getIsoDateTimeFormat());
                 $row->addHyperlink($rssItem->url);
+                $row->addHyperlink($rssItem->enclosureUrl);
+                $row->addText($rssItem->enclosureType);
 
             }
 

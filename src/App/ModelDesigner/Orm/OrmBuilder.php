@@ -27,7 +27,7 @@ class OrmBuilder extends AbstractBase
 
         foreach ($this->app->getModelList() as $model) {
 
-            (new Debug())->write('model='.$model->templateName);
+            //(new Debug())->write('model='.$model->templateName);
 
             $orm = new OrmModelSetup();
             $orm->project = $this->project;

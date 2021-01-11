@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Http\Request\File\AbstractFileRequest;
 use Nemundo\Core\Http\Request\File\FileRequest;
 use Nemundo\Core\Http\Url\UrlInformation;
+use Nemundo\Core\Type\File\File;
 
 
 class FileProperty extends AbstractBase
@@ -107,7 +108,7 @@ class FileProperty extends AbstractBase
         $filename = null;
 
         if ($this->hasFilename()) {
-            $filename = $this->getFilename();
+            $filename = (new File( $this->getFilename()))->filename;
         }
 
         if ($this->hasUrl()) {
