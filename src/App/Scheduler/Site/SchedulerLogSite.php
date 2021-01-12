@@ -13,6 +13,7 @@ use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogPaginationReader;
 use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
+use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
@@ -35,7 +36,7 @@ class SchedulerLogSite extends AbstractSite
     {
         $this->title = 'Log';
         $this->url = 'log';
-        $this->menuActive = false;
+        //$this->menuActive = false;
 
         SchedulerLogSite::$site = $this;
     }
@@ -44,9 +45,9 @@ class SchedulerLogSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+        $page =new SchedulerTemplate();  // (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        new SchedulerNavigation($page);
+        //new SchedulerNavigation($page);
 
         //$title = new AdminTitle($page);
         //$title->content = 'Log';

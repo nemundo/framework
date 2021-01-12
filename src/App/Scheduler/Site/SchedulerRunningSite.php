@@ -10,6 +10,7 @@ use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogReader;
 use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
 use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
+use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
@@ -28,7 +29,7 @@ class SchedulerRunningSite extends AbstractSite
 
         $this->title = 'Running';
         $this->url = 'running';
-        $this->menuActive = false;
+        //$this->menuActive = false;
 
         new SchedulerResetSite($this);
 
@@ -39,9 +40,9 @@ class SchedulerRunningSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+        $page = new SchedulerTemplate();  // (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        new SchedulerNavigation($page);
+        //new SchedulerNavigation($page);
 
         $title = new AdminTitle($page);
         $title->content = 'Running';
