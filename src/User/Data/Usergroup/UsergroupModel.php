@@ -17,7 +17,9 @@ public $usergroup;
 public $setupStatus;
 
 protected function loadModel() {
-$this->tableName = "user_usergroup";
+//$this->tableName = "test_user_usergroup";
+    $this->tableName = "user_usergroup";
+
 $this->aliasTableName = "user_usergroup";
 $this->label = "Usergroup";
 

@@ -14,6 +14,8 @@ use Nemundo\Db\Provider\MySql\Index\MySqlIndex;
 use Nemundo\Db\Provider\MySql\Index\MySqlUniqueIndex;
 use Nemundo\Db\Provider\MySql\Table\MySqlTable;
 use Nemundo\Db\Provider\SqLite\Connection\SqLiteConnection;
+use Nemundo\Db\Provider\SqLite\Index\SqLiteIndex;
+use Nemundo\Db\Provider\SqLite\Index\SqLiteUniqueIndex;
 use Nemundo\Db\Provider\SqLite\Table\SqLiteTable;
 use Nemundo\Db\Table\AbstractTable;
 use Nemundo\Model\Definition\Index\ModelIndex;
@@ -40,7 +42,6 @@ use Nemundo\Model\Type\Id\UniqueIdType;
 use Nemundo\Model\Type\Number\DecimalNumberType;
 use Nemundo\Model\Type\Number\NumberType;
 use Nemundo\Model\Type\Number\YesNoType;
-use Nemundo\Model\Type\Php\PhpClassType;
 use Nemundo\Model\Type\Text\LargeTextType;
 use Nemundo\Model\Type\Text\TextType;
 use Nemundo\Orm\Model\AbstractOrmModel;
@@ -55,6 +56,7 @@ abstract class AbstractModelSetup extends AbstractDbBase
     protected $model;
 
 
+    // createModel(AbstractModel $model)
     public function createTable()
     {
 
@@ -148,38 +150,67 @@ abstract class AbstractModelSetup extends AbstractDbBase
             }
 
             if ($type->isObjectOfClass(CreatedDateTimeType::class)) {
-                $table->addCreatedTimestamp($type->fieldName);
+
+                if ($this->connection->isObjectOfClass(MySqlConnection::class)) {
+                    $table->addCreatedTimestamp($type->fieldName);
+                }
+
+                if ($this->connection->isObjectOfClass(SqLiteConnection::class)) {
+                    $table->addDateTimeField($type->fieldName);
+                }
+
             }
 
             if ($type->isObjectOfClass(ModifiedDateTimeType::class)) {
-                $table->addModifiedTimestamp($type->fieldName);
-            }
 
-            /*if ($type->isObjectOfClass(PhpClassType::class)) {
-                $table->addTextField($type->fieldName);
-            }*/
+                if ($this->connection->isObjectOfClass(MySqlConnection::class)) {
+                    $table->addModifiedTimestamp($type->fieldName);
+                }
+
+                if ($this->connection->isObjectOfClass(SqLiteConnection::class)) {
+                    $table->addDateTimeField($type->fieldName);
+                }
+
+            }
 
         }
 
         foreach ($this->model->getIndexList() as $index) {
 
-            $mysqlIndex = null;
+            $dbIndex = null;
             if ($index->getClassName() == ModelIndex::class) {
-                $mysqlIndex = new MySqlIndex($table);
+
+
+                if ($this->connection->isObjectOfClass(MySqlConnection::class)) {
+                    $dbIndex = new MySqlIndex($table);
+                }
+
+                if ($this->connection->isObjectOfClass(SqLiteConnection::class)) {
+                    $dbIndex = new SqLiteIndex($table);
+                }
+
             }
 
             if ($index->getClassName() == ModelUniqueIndex::class) {
-                $mysqlIndex = new MySqlUniqueIndex($table);
+
+                if ($this->connection->isObjectOfClass(MySqlConnection::class)) {
+                    $dbIndex = new MySqlUniqueIndex($table);
+                }
+
+                if ($this->connection->isObjectOfClass(SqLiteConnection::class)) {
+                    $dbIndex = new SqLiteUniqueIndex($table);
+                }
+
             }
 
             if ($index->getClassName() == ModelSearchIndex::class) {
-                $mysqlIndex = new MySqlFullTextIndex($table);
+                $dbIndex = new MySqlFullTextIndex($table);
             }
 
-            if ($mysqlIndex !== null) {
-                $mysqlIndex->indexName = $index->indexName;
+            if ($dbIndex !== null) {
+                $dbIndex->indexName = $index->indexName;
                 foreach ($index->getFieldNameList() as $fieldName) {
-                    $mysqlIndex->addField($fieldName);
+                    $dbIndex->addField($fieldName);
                 }
             }
 
@@ -206,7 +237,7 @@ abstract class AbstractModelSetup extends AbstractDbBase
 
         }
 
-        SetupLog::$modelList[]=$this->model;
+        SetupLog::$modelList[] = $this->model;
 
         $logFilename = (new SetupLogPath())->getFilename();
 

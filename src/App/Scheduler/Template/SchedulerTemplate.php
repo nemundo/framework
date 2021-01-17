@@ -16,8 +16,8 @@ class SchedulerTemplate extends AbstractTemplateDocument
 
         parent::loadContainer();
 
-        $nav=new AdminNavigation($this);
-        $nav->site=SchedulerSite::$site;
+        $nav = new AdminNavigation($this);
+        $nav->site = SchedulerSite::$site;
 
     }
 

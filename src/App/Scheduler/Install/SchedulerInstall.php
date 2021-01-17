@@ -6,6 +6,8 @@ use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Data\SchedulerModelCollection;
 use Nemundo\App\Scheduler\Data\SchedulerStatus\SchedulerStatus;
+use Nemundo\App\Scheduler\Data\SchedulerStatus\SchedulerStatusCount;
+use Nemundo\App\Scheduler\Data\SchedulerStatus\SchedulerStatusUpdate;
 use Nemundo\App\Scheduler\Script\SchedulerCheckScript;
 use Nemundo\App\Scheduler\Script\SchedulerCleanScript;
 use Nemundo\App\Scheduler\Script\SchedulerInactiveScipt;
@@ -52,11 +54,21 @@ class SchedulerInstall extends AbstractInstall
     private function addSchedulerStatus(AbstractSchedulerStatus $schedulerStatus)
     {
 
+        $count = new SchedulerStatusCount();
+        $count->filter->andEqual($count->model->id, $schedulerStatus->id);
+        if ($count->getCount() == 0) {
         $data = new SchedulerStatus();
-        $data->updateOnDuplicate = true;
+        //$data->updateOnDuplicate = true;
         $data->id = $schedulerStatus->id;
         $data->schedulerStatus = $schedulerStatus->schedulerStatus;
         $data->save();
+        } else {
+            $update = new SchedulerStatusUpdate();
+            //$data->updateOnDuplicate = true;
+            //$data->id = $schedulerStatus->id;
+            $update->schedulerStatus = $schedulerStatus->schedulerStatus;
+            $update->updateById($schedulerStatus->id);
+        }
 
     }
 

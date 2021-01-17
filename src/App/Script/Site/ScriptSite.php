@@ -6,6 +6,7 @@ namespace Nemundo\App\Script\Site;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Script\Data\Script\ScriptReader;
+use Nemundo\App\Script\Page\ScriptPage;
 use Nemundo\App\Script\Parameter\ScriptUrlParameter;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -17,6 +18,11 @@ use Nemundo\Web\Site\AbstractSite;
 class ScriptSite extends AbstractSite
 {
 
+    /**
+     * @var ScriptSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
 
@@ -25,12 +31,18 @@ class ScriptSite extends AbstractSite
 
         new ScriptRunSite($this);
 
+        ScriptSite::$site=$this;
+
     }
 
 
     public function loadContent()
     {
 
+        (new ScriptPage())->render();
+
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $search = new SearchForm($page);
@@ -73,7 +85,7 @@ class ScriptSite extends AbstractSite
 
         }
 
-        $page->render();
+        $page->render();*/
 
     }
 

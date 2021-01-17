@@ -1,0 +1,33 @@
+<?php
+
+
+namespace Nemundo\App\Translation\Setup;
+
+
+use Nemundo\App\Translation\Data\SourceType\SourceType;
+use Nemundo\App\Translation\Data\SourceType\SourceTypeCount;
+use Nemundo\App\Translation\Type\Source\AbstractSourceType;
+use Nemundo\Core\Base\AbstractBase;
+
+class SourceSetup extends AbstractBase
+{
+
+
+    public function addSourceType(AbstractSourceType $sourceType)
+    {
+
+
+        $count = new SourceTypeCount();
+        $count->filter->andEqual($count->model->sourceType, $sourceType->sourceType);
+        if ($count->getCount() == 0) {
+            $data = new SourceType();
+            $data->sourceType = $sourceType->sourceType;
+            $data->save();
+        }
+
+        return $this;
+
+    }
+
+
+}

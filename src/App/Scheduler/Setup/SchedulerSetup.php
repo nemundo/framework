@@ -4,7 +4,6 @@ namespace Nemundo\App\Scheduler\Setup;
 
 
 use Nemundo\App\Application\Setup\AbstractSetup;
-use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\App\Scheduler\Builder\NextJobBuilder;
 use Nemundo\App\Scheduler\Data\Scheduler\Scheduler;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerCount;
@@ -21,7 +20,6 @@ use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
 use Nemundo\App\Script\Data\Script\ScriptId;
 use Nemundo\App\Script\Setup\ScriptSetup;
-use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\DateTime\Time;
 use Nemundo\Db\Filter\Filter;
@@ -41,8 +39,8 @@ class SchedulerSetup extends AbstractSetup
 
         }
 
-        $setup = new ScriptSetup($this->application);
-        $setup->addScript($scheduler);
+        (new ScriptSetup($this->application))
+            ->addScript($scheduler);
 
         $id = new ScriptId();
         $id->filter->andEqual($id->model->scriptClass, $scheduler->getClassName());
@@ -78,7 +76,7 @@ class SchedulerSetup extends AbstractSetup
         }
 
         $data = new Scheduler();
-        $data->updateOnDuplicate = true;
+        //$data->updateOnDuplicate = true;
         $data->scriptId = $scriptId;
         $data->overrideSetting = $scheduler->overrideSetting;
         $data->startTime = new Time('00:00');

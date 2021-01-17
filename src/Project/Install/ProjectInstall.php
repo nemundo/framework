@@ -32,8 +32,8 @@ class ProjectInstall extends AbstractInstall
     public function install()
     {
 
-        (new ProjectConfigBuilderScript())->run();
-        (new MySqlDatabase())->createDatabase();
+        /*(new ProjectConfigBuilderScript())->run();
+        (new MySqlDatabase())->createDatabase();*/
 
         // Ausführen vor Setup Status Reset !!!
         (new ApplicationInstall())->install();
