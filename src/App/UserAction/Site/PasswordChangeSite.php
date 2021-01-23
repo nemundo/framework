@@ -5,10 +5,12 @@ namespace Nemundo\App\UserAction\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\UserAction\Form\PasswordChangeForm;
+use Nemundo\App\UserAction\Widget\PasswordChangeWidget;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\User\Parameter\PasswordChangeParameter;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -38,8 +40,17 @@ class PasswordChangeSite extends AbstractSite
     {
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-        $col = new BootstrapColumn($page);
-        $col->columnWidth = 4;
+
+
+        //$col = new BootstrapColumn($page);
+        //$col->columnWidth = 4;
+
+        $layout = new BootstrapTwoColumnLayout($page);
+
+        new PasswordChangeWidget($layout->col1);
+
+
+        /*
 
         $passwordChangeParameter = new PasswordChangeParameter();
         if (!$passwordChangeParameter->exists()) {
@@ -55,7 +66,7 @@ class PasswordChangeSite extends AbstractSite
         } else {
             $p = new Paragraph($col);
             $p->content = 'Passwort wurde geändert.';
-        }
+        }*/
 
         $page->render();
 

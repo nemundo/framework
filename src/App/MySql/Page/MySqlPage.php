@@ -3,6 +3,7 @@
 namespace Nemundo\App\MySql\Page;
 
 use Nemundo\Admin\Com\Button\AdminSiteButton;
+use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\MySql\Com\ListBox\MySqlTableListBox;
 use Nemundo\App\MySql\Com\Table\MySqlDataTable;
 use Nemundo\App\MySql\Com\Table\MySqlIndexTable;
@@ -13,6 +14,7 @@ use Nemundo\App\MySql\Site\Action\EmptyTableSite;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class MySqlPage extends AbstractTemplateDocument
 {
@@ -20,8 +22,15 @@ class MySqlPage extends AbstractTemplateDocument
     public function getContent()
     {
 
+        $layout=new BootstrapTwoColumnLayout($this);
+        $layout->col1->columnWidth = 3;
+        $layout->col2->columnWidth= 9;
 
-        $form = new SearchForm($this);
+
+        $widget=new AdminWidget($layout->col1);
+        $widget->widgetTitle='Search';
+
+        $form = new SearchForm($widget);
 
         $formRow = new BootstrapFormRow($form);
 
@@ -31,79 +40,37 @@ class MySqlPage extends AbstractTemplateDocument
 
         if ($table->hasValue()) {
 
-            $btn = new AdminSiteButton($this);
+            $widget=new AdminWidget($layout->col1);
+            $widget->widgetTitle = 'Field';
+
+            $data = new MySqlTableFieldTable($widget);
+            $data->tableName = $table->getValue();
+
+
+            $widget=new AdminWidget($layout->col1);
+            $widget->widgetTitle = 'Index';
+
+            $data = new MySqlIndexTable($widget);
+            $data->tableName = $table->getValue();
+
+
+            $widget=new AdminWidget($layout->col2);
+            $widget->widgetTitle = 'Data';
+
+            $btn = new AdminSiteButton($widget);
             $btn->site = clone(EmptyTableSite::$site);
             $btn->site->addParameter(new TableParameter());
 
-            $btn = new AdminSiteButton($this);
+            $btn = new AdminSiteButton($widget);
             $btn->site = clone(DropTableSite::$site);
             $btn->site->addParameter(new TableParameter());
 
-
-            $data = new MySqlTableFieldTable($this);
-            $data->tableName = $table->getValue();
-
-            /*$data = new MySqlTableFieldTable($this);
-            $data->tableName = $table->getValue();*/
-
-            $data = new MySqlIndexTable($this);
-            $data->tableName = $table->getValue();
-
-            $data = new MySqlDataTable($this);
+            $data = new MySqlDataTable($widget);
             $data->tableName = $table->getValue();
 
         }
 
 
-        /*
-        $p = new Paragraph($this);
-        $p->content = 'MySql';
-
-        //$p=new Paragraph($this);
-        //$p->content='Tmp Path: '.(new TmpPath())->getPath();
-
-
-        //new SqlFileImportForm($this);
-
-
-
-        /*
-        $layout=new BootstrapTwoColumnLayout($this);
-
-
-        $table = new AdminClickableTable($layout->col1);
-
-        $header = new TableHeader($table);
-        $header->addText('Database');
-        $header->addEmpty();
-
-
-        $reader = new MySqlDatabaseReader();
-        $reader->connection =  new SessionConnection();
-        foreach ($reader->getData() as $database) {
-
-            $row = new BootstrapClickableTableRow($table);
-            $row->addText($database->databaseName);
-
-            $site =clone(DatabaseSite::$site);
-            $site->addParameter(new DatabaseParameter($database->databaseName));
-            $row->addClickableSite($site);
-
-
-            $site=clone(DatabaseDeleteSite::$site);
-            $site->addParameter(new DatabaseParameter($database->databaseName));
-            $row->addIconSite($site);
-
-        }
-
-
-        DbConfig::$defaultConnection =  new SessionConnection();
-
-
-        $widget=new AdminWidget($layout->col2);
-        $widget->widgetTitle='Create Database';
-
-        new MySqlDatabaseForm($widget);*/
 
 
         return parent::getContent();
