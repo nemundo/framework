@@ -3,7 +3,7 @@
 namespace Nemundo\App\ModelDesigner\Com\Form;
 
 
-use Nemundo\Admin\AppDesigner\Parameter\AppParameter;
+use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\Application\ClassDesigner\ApplicationClassBuilder;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\ModelDesigner\Json\AppJson;

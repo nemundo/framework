@@ -21,5 +21,4 @@ abstract class AbstractSetup extends AbstractBase
         $this->application = $application;
     }
 
-
 }

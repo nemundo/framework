@@ -13,7 +13,6 @@ use Nemundo\Db\Reader\DataReader;
 class SqLiteDataTable extends AdminTable
 {
 
-
     use ConnectionTrait;
 
     /**

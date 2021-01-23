@@ -34,7 +34,7 @@ class TranslationText extends AbstractBase
     public function getText($source, $languageId, $sourceTypeId)
     {
 
-        $text = '-';
+        $text = '';
         $found = false;
 
         $reader = new TextTranslationReader();

@@ -16,6 +16,8 @@ class MySqlSite extends AbstractSite
         $this->title = 'MySql';
         $this->url = 'mysql';
 
+        new DropTableSite($this);
+        new EmptyTableSite($this);
 
     }
 

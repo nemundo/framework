@@ -22,6 +22,7 @@ class TranslationSite extends AbstractSite
         TranslationSite::$site = $this;
 
         new LanguageSite($this);
+        new SourceDeleteSite($this);
 
     }
 

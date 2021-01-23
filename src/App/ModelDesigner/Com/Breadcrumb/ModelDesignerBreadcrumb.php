@@ -2,10 +2,9 @@
 
 namespace Nemundo\App\ModelDesigner\Com\Breadcrumb;
 
-
-use Nemundo\Admin\AppDesigner\Parameter\AppParameter;
-use Nemundo\Admin\AppDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Json\AppJson;
+use Nemundo\App\ModelDesigner\Parameter\AppParameter;
+use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\App\ModelDesigner\Site\AppSite;
 use Nemundo\App\ModelDesigner\Site\ModelDesignerSite;
@@ -58,11 +57,8 @@ class ModelDesignerBreadcrumb extends BootstrapBreadcrumb
         $site->addParameter(new ProjectParameter());
         $site->addParameter(new AppParameter());
         $site->addParameter(new ModelParameter($model->tableName));
-
         $this->addSite($site);
 
     }
-
-
 
 }

@@ -12,9 +12,11 @@ use Nemundo\App\Translation\Data\Source\SourceReader;
 use Nemundo\App\Translation\Parameter\SourceParameter;
 use Nemundo\App\Translation\Parameter\SourceTypeParameter;
 use Nemundo\App\Translation\Parameter\TranslationParameter;
+use Nemundo\App\Translation\Site\SourceDeleteSite;
 use Nemundo\App\Translation\Site\TranslationSite;
 use Nemundo\App\Translation\Template\TranslationTemplate;
 use Nemundo\App\Translation\Text\TranslationText;
+use Nemundo\App\Translation\Type\LanguageType;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -25,6 +27,7 @@ use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 
 class TranslationPage extends TranslationTemplate
 {
+
     public function getContent()
     {
 
@@ -39,15 +42,13 @@ class TranslationPage extends TranslationTemplate
         $language->submitOnChange = true;
         $language->searchMode = true;*/
 
-        $sourceType=new SourceTypeListBox($formRow);
-        $sourceType->submitOnChange=true;
-        $sourceType->searchMode=true;
+        $sourceType = new SourceTypeListBox($formRow);
+        $sourceType->submitOnChange = true;
+        $sourceType->searchMode = true;
 
-        $uniqueId = new BootstrapTextBox($formRow);
-        $uniqueId->label = 'Unique Id';
-        $uniqueId->searchMode = true;
-
-
+        $source = new BootstrapTextBox($formRow);
+        $source->label = 'Source';
+        $source->searchMode = true;
 
 
         $table = new AdminClickableTable($layout->col1);
@@ -56,16 +57,16 @@ class TranslationPage extends TranslationTemplate
         $sourceReader->model->loadSourceType();  // source->loadSourceType();
 
         if ($sourceType->hasValue()) {
-            $sourceReader->filter->andEqual($sourceReader->model->sourceTypeId,$sourceType->getValue());
+            $sourceReader->filter->andEqual($sourceReader->model->sourceTypeId, $sourceType->getValue());
         }
 
         /*if ($language->hasValue()) {
             $reader->filter->andEqual($reader->model->languageId,$language->getValue());
-        }
-
-        if ($uniqueId->hasValue()) {
-            // $reader->filter->andContainsLeft($reader->model->uniqueId,$uniqueId->getValue());
         }*/
+
+        if ($source->hasValue()) {
+            $sourceReader->filter->andContainsLeft($sourceReader->model->source, $source->getValue());
+        }
 
         //$reader->addOrder($reader->model->uniqueId);
 
@@ -76,9 +77,9 @@ class TranslationPage extends TranslationTemplate
         $header->addText($sourceReader->model->sourceType->label);
         //$header->addText($reader->model->text->label);
 
-        $languageReader = new LanguageReader();
-        $languageReader->addOrder($languageReader->model->code);
-        foreach ($languageReader->getData() as $languageRow) {
+        //$languageReader = new LanguageReader();
+        //$languageReader->addOrder($languageReader->model->code);
+        foreach ((new LanguageType())->getLanguageData() as $languageRow) {
             $header->addText($languageRow->code);
         }
 
@@ -95,13 +96,19 @@ class TranslationPage extends TranslationTemplate
 
             //$text = (new TranslationText())->getText($sourceRow->source,$languageRow->id);
 
-            $languageReader = new LanguageReader();
-            $languageReader->addOrder($languageReader->model->code);
-            foreach ($languageReader->getData() as $languageRow) {
+            //$languageReader = new LanguageReader();
+            //$languageReader->addOrder($languageReader->model->code);
+            //foreach ($languageReader->getData() as $languageRow) {
+            foreach ((new LanguageType())->getLanguageData() as $languageRow) {
                 $text = (new TranslationText())->getText($sourceRow->source, $languageRow->id, $sourceRow->sourceTypeId);
                 $row->addText($text);
                 //$header->addText($languageRow->code);
             }
+
+
+            $site = clone(SourceDeleteSite::$site);
+            $site->addParameter(new SourceParameter($sourceRow->id));
+            $row->addSite($site);
 
 
             $site = clone(TranslationSite::$site);
@@ -111,15 +118,15 @@ class TranslationPage extends TranslationTemplate
 
         }
 
-        $pagination=new BootstrapPagination($layout->col1);
-        $pagination->paginationReader=$sourceReader;
-
+        $pagination = new BootstrapPagination($layout->col1);
+        $pagination->paginationReader = $sourceReader;
 
 
         $sourceParameter = new SourceParameter();
         if ($sourceParameter->hasValue()) {
             $form = new TranslationForm($layout->col2);
             $form->sourceId = $sourceParameter->getValue();
+            $form->redirectSite = TranslationSite::$site;
         }
 
 

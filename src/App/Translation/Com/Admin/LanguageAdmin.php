@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Translation\Com\Form\LanguageForm;
 use Nemundo\App\Translation\Data\Language\LanguageReader;
+use Nemundo\App\Translation\Language\DefaultLanguage;
 use Nemundo\App\Translation\Parameter\LanguageParameter;
 use Nemundo\App\Translation\Setup\LanguageSetup;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -108,24 +109,18 @@ class LanguageAdmin extends AbstractActionPanel
 
         $this->delete = new DeleteActionSite($this);
         $this->delete->actionName = 'delete';
-        $this->delete->title='Delete';
+        $this->delete->title = 'Delete';
         $this->delete->onAction = function () {
 
             $languageId = (new LanguageParameter())->getValue();
+
+            if ($languageId == (new DefaultLanguage())->getLanguageId()) {
+                (new Debug())->write('You can not delete the default language.');
+                exit;
+            }
+
             (new LanguageSetup())->removeLanguage($languageId);
             (new UrlReferer())->redirect();
-
-            //if ($languageId !== (new DefaultLanguage())->getDefaultLanguageId()) {
-            //(new LanguageDelete())->deleteById($languageId);
-
-
-
-
-            /*(new UrlReferer())->redirect();
-            } else {
-                (new Debug())->write('You can not delete the default language.');
-                exit;*/
-            //}
 
         };
 

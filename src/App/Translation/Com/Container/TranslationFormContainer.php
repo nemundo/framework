@@ -4,10 +4,10 @@ namespace Nemundo\App\Translation\Com\Container;
 
 
 use Nemundo\App\Translation\Data\Language\LanguageReader;
-use Nemundo\App\Translation\Data\TextTranslation\TextTranslation;
-use Nemundo\App\Translation\Language\DefaultLanguage;
 use Nemundo\App\Translation\Text\TranslationText;
+use Nemundo\App\Translation\Type\LanguageType;
 use Nemundo\App\Translation\Type\Source\AbstractSourceType;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -24,6 +24,8 @@ class TranslationFormContainer extends AbstractHtmlContainer
 
     public $source;
 
+    public $label;
+
     /**
      * @var BootstrapTextBox[]
      */
@@ -33,26 +35,23 @@ class TranslationFormContainer extends AbstractHtmlContainer
     protected function loadContainer()
     {
 
-        $p = new Paragraph($this);
-        $p->content = 'Label Translation';
+        parent::loadContainer();
 
-        $defaultLanguage = new DefaultLanguage();
+        if ($this->label !== null) {
+            $p = new Paragraph($this);
+            $p->content = $this->label;
+        }
 
-        $reader = new LanguageReader();
-        $reader->addOrder($reader->model->code);
-
-//        foreach ((new LanguageTranslationReader())->getLanguageReader()->getData() as $languageRow) {
-        foreach ($reader->getData() as $languageRow) {
+        foreach ((new LanguageType())->getLanguageData() as $languageRow) {
 
             $formRow = new BootstrapFormRow($this);
 
             $this->translation[$languageRow->code] = new BootstrapTextBox($formRow);
 
             $label = $languageRow->code;
-            /*if ($languageRow->id == $defaultLanguage->id) {
-                $label .= ' (Default)';
-                $this->translation[$languageRow->easyLanguage]->validation = true;
-            }*/
+            if ($languageRow->default) {
+                $label .= ' (default)';
+            }
 
             $this->translation[$languageRow->code]->label = $label;
 
@@ -66,15 +65,13 @@ class TranslationFormContainer extends AbstractHtmlContainer
 
         if ($this->source !== null) {
 
-            $p=new Paragraph($this);
-            $p->content='Source: '.$this->source;
+            $p = new Paragraph($this);
+            $p->content = 'Source: ' . $this->source;
 
-            $reader = new LanguageReader();
-            $reader->addOrder($reader->model->code);
-            foreach ($reader->getData() as $languageRow) {
+            foreach ((new LanguageType())->getLanguageData() as $languageRow) {
                 $this->translation[$languageRow->code]->value = 'test';
 
-                $text = (new TranslationText())->getText($this->source,$languageRow->id, $this->sourceType->getId());
+                $text = (new TranslationText())->getText($this->source, $languageRow->id, $this->sourceType->getId());
                 $this->translation[$languageRow->code]->value = $text;
 
             }
@@ -86,16 +83,49 @@ class TranslationFormContainer extends AbstractHtmlContainer
     }
 
 
+    public function getTextList()
+    {
+
+
+        $text = [];
+        foreach ((new LanguageType())->getLanguageData() as $languageRow) {
+            $text[$languageRow->code] = $this->translation[$languageRow->code]->getValue();
+            //(new TranslationText())->saveText($languageRow->id, $source, $this->sourceType, $this->translation[$languageRow->code]->getValue());
+        }
+
+        return $text;
+
+    }
+
+
     public function saveTranslation($source)
     {
 
-        $reader = new LanguageReader();
-        foreach ($reader->getData() as $languageRow) {
 
-            (new TranslationText())->saveText($languageRow->id,$source,$this->sourceType,$this->translation[$languageRow->code]->getValue());
+        foreach ((new LanguageType())->getLanguageData() as $languageRow) {
+
+            (new TranslationText())->saveText($languageRow->id, $source, $this->sourceType, $this->translation[$languageRow->code]->getValue());
 
         }
 
     }
+
+
+
+    /*
+    public function setValue($textList) {
+
+
+        foreach ((new LanguageType())->getLanguageData() as $languageRow) {
+            $this->translation[$languageRow->code]->value = 'test';
+
+            $text = (new TranslationText())->getText($this->source, $languageRow->id, $this->sourceType->getId());
+            $this->translation[$languageRow->code]->value = $text;
+
+        }
+
+
+    }*/
+
 
 }

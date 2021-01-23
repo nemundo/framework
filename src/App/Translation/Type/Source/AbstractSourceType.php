@@ -4,15 +4,23 @@
 namespace Nemundo\App\Translation\Type\Source;
 
 
+use Nemundo\App\Translation\Data\Source\SourceDelete;
+use Nemundo\App\Translation\Data\Source\SourceId;
 use Nemundo\App\Translation\Data\SourceType\SourceTypeId;
+use Nemundo\App\Translation\Data\TextTranslation\TextTranslationDelete;
+use Nemundo\App\Translation\Session\LanguageSession;
 use Nemundo\App\Translation\Text\TranslationText;
 use Nemundo\App\Translation\Type\LanguageType;
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Base\AbstractBaseClass;
+use Slu3000\Data\Menu\MenuDelete;
+use Slu3000\Parameter\MenuParameter;
+use Slu3000\Type\Source\MenuSourceType;
 
 
 // AbstractTranslationType
 // AbstractTranslationSourceType
-abstract class AbstractSourceType extends AbstractBase
+abstract class AbstractSourceType extends AbstractBaseClass
 {
 
     public $sourceType;
@@ -31,6 +39,14 @@ abstract class AbstractSourceType extends AbstractBase
         $id=new SourceTypeId();
         $id->filter->andEqual($id->model->sourceType,$this->sourceType);
         return $id->getId();
+
+    }
+
+
+    public function getSessionText($source)
+    {
+
+        return $this->getText($source, (new LanguageSession())->getValue(), $this->getId());
 
     }
 
@@ -59,6 +75,32 @@ return $text;
 
 
     }
+
+
+
+    // deleteTranslation
+    public function deleteTranslation($dataId) {
+
+        $id = new SourceId();
+        $id->filter->andEqual($id->model->sourceTypeId, $this->getId());
+        $id->filter->andEqual($id->model->source, $dataId);
+        $sourceId =$id->getId();
+
+        (new SourceDelete())->deleteById($sourceId);
+
+
+        /*
+        $delete=new TextTranslationDelete();
+        $delete->filter->andEqual($delete->model->sourceId,$sourceId);
+        $delete->delete();
+*/
+
+
+        return $sourceId;
+
+    }
+
+
 
 
 }

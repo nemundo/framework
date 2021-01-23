@@ -27,9 +27,11 @@ use Nemundo\Orm\Type\Number\NumberOrmType;
 use Nemundo\Orm\Type\Number\YesNoOrmType;
 use Nemundo\Orm\Type\Text\LargeTextOrmType;
 use Nemundo\Orm\Type\Text\TextOrmType;
+use Nemundo\Orm\Type\Text\TranslationTextOrmType;
 use Nemundo\Orm\Type\User\CreatedUserOrmType;
 use Nemundo\Orm\Type\User\UserOrmType;
 
+// ModelTypeCollection
 class TypeCollection extends AbstractBase
 {
 
@@ -81,6 +83,8 @@ class TypeCollection extends AbstractBase
             TypeCollection::addType(new CreatedUserOrmType());
             TypeCollection::addType(new UserOrmType());
             TypeCollection::addType(new IdOrmType());
+
+            TypeCollection::addType(new TranslationTextOrmType());
 
             TypeCollection::$loadedType = true;
 

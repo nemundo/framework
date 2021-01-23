@@ -6,17 +6,17 @@ namespace Nemundo\App\ModelDesigner\Install;
 use Nemundo\App\ModelDesigner\Script\JsonCleanScript;
 use Nemundo\App\ModelDesigner\Script\ModelDesignerOrmScript;
 use Nemundo\App\Script\Setup\ScriptSetup;
-use Nemundo\App\Script\Type\AbstractScript;
+use Nemundo\Project\Install\AbstractInstall;
 
-class ModelDesignerInstall extends AbstractScript
+class ModelDesignerInstall extends AbstractInstall
 {
 
-    public function run()
+    public function install()
     {
 
-        $setup = new ScriptSetup();
-        $setup->addScript(new JsonCleanScript());
-        $setup->addScript(new ModelDesignerOrmScript());
+        (new ScriptSetup())
+            ->addScript(new JsonCleanScript())
+            ->addScript(new ModelDesignerOrmScript());
 
     }
 

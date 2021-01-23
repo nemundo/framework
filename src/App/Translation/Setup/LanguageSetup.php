@@ -10,6 +10,7 @@ use Nemundo\App\Translation\Data\Language\LanguageDelete;
 use Nemundo\App\Translation\Data\Language\LanguageUpdate;
 use Nemundo\App\Translation\Data\SourceType\SourceType;
 use Nemundo\App\Translation\Data\SourceType\SourceTypeCount;
+use Nemundo\App\Translation\Data\TextTranslation\TextTranslationDelete;
 use Nemundo\App\Translation\Language\AbstractLanguage;
 use Nemundo\App\Translation\Type\Source\AbstractSourceType;
 use Nemundo\Core\Base\AbstractBase;
@@ -63,13 +64,13 @@ class LanguageSetup extends AbstractBase
 
 
     public function removeLanguage($languageId)
-    {   //AbstractLanguage $language) {
-
+    {
 
         (new LanguageDelete())->deleteById($languageId);
 
-        // translation delete
-
+        $delete = new TextTranslationDelete();
+        $delete->filter->andEqual($delete->model->languageId,$languageId);
+        $delete->delete();
 
         return $this;
 

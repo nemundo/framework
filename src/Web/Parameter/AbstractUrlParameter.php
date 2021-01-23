@@ -67,11 +67,11 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
                 if ($this->nullIfEmpty) {
 
                     if ($this->hasValue()) {
-                        $value =$this->getPlainValue();  // (new GetRequest($this->parameterName))->getValue();
+                        $value =$this->getPlainValue();
                     }
 
                 } else {
-                $value = $this->getPlainValue();  //(new GetRequest($this->parameterName))->getValue();
+                $value = $this->getPlainValue();
                 }
 
             }

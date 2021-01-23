@@ -32,7 +32,7 @@ abstract class AbstractProject extends AbstractBaseClass
     /**
      * @var string
      */
-    public $dbFilename;
+    //public $dbFilename;
 
     /**
      * @var string

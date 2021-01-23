@@ -42,15 +42,15 @@ class SchedulerSetup extends AbstractSetup
         (new ScriptSetup($this->application))
             ->addScript($scheduler);
 
+        $newSchedulerJob = false;
+        $changeRepeatingTime = false;
+
         $id = new ScriptId();
         $id->filter->andEqual($id->model->scriptClass, $scheduler->getClassName());
         $scriptId = $id->getId();
 
         $count = new SchedulerCount();
         $count->filter->andEqual($count->model->scriptId, $scriptId);
-
-        $newSchedulerJob = false;
-        $changeRepeatingTime = false;
         if ($count->getCount() == 0) {
             $newSchedulerJob = true;
             $changeRepeatingTime = true;
@@ -76,7 +76,7 @@ class SchedulerSetup extends AbstractSetup
         }
 
         $data = new Scheduler();
-        //$data->updateOnDuplicate = true;
+        $data->updateOnDuplicate = true;
         $data->scriptId = $scriptId;
         $data->overrideSetting = $scheduler->overrideSetting;
         $data->startTime = new Time('00:00');

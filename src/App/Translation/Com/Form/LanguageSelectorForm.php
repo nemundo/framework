@@ -25,13 +25,14 @@ class LanguageSelectorForm extends AbstractFormBuilder
         $formRow=new BootstrapFormRow($this);
 
         $this->language=new LanguageListBox($formRow);
+        $this->language->emptyValueAsDefault=false;
         $this->language->submitOnChange=true;
 
 
         $session=new LanguageSession();
-        if ($session->exists()) {
+        //if ($session->exists()) {
             $this->language->value=$session->getValue();
-        }
+        //}
 
         return parent::getContent();
 

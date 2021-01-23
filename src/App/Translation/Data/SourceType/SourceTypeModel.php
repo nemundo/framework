@@ -11,6 +11,11 @@ public $id;
 */
 public $sourceType;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $phpClass;
+
 protected function loadModel() {
 $this->tableName = "translation_source_type";
 $this->aliasTableName = "translation_source_type";
@@ -36,6 +41,14 @@ $this->sourceType->aliasFieldName = "translation_source_type_source_type";
 $this->sourceType->label = "Source Type";
 $this->sourceType->allowNullValue = false;
 $this->sourceType->length = 50;
+
+$this->phpClass = new \Nemundo\Model\Type\Text\TextType($this);
+$this->phpClass->tableName = "translation_source_type";
+$this->phpClass->fieldName = "php_class";
+$this->phpClass->aliasFieldName = "translation_source_type_php_class";
+$this->phpClass->label = "Php Class";
+$this->phpClass->allowNullValue = true;
+$this->phpClass->length = 255;
 
 }
 }

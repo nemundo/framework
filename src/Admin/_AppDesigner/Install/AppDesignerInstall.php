@@ -94,9 +94,9 @@ class AppDesignerInstall extends AbstractScript
         $setup->addOrmType(new NumberOrmType());
         $setup->addOrmType(new DecimalNumberOrmType());
         $setup->addOrmType(new YesNoOrmType());
-        $setup->addOrmType(new ItemOrderOrmType());
+        /*$setup->addOrmType(new ItemOrderOrmType());
         $setup->addOrmType(new AutoNumberOrmType());
-        $setup->addOrmType(new PrefixAutoNumberOrmType());
+        $setup->addOrmType(new PrefixAutoNumberOrmType());*/
 
         $setup->addOrmType(new DateTimeOrmType());
         $setup->addOrmType(new DateOrmType());
@@ -107,13 +107,13 @@ class AppDesignerInstall extends AbstractScript
         $setup->addOrmType(new FileOrmType());
         $setup->addOrmType(new RedirectFileOrmType());
         $setup->addOrmType(new RedirectFilenameOrmType());
-        $setup->addOrmType(new MultiRedirectFilenameOrmType());
+        //$setup->addOrmType(new MultiRedirectFilenameOrmType());
         $setup->addOrmType(new ImageOrmType());
-        $setup->addOrmType(new MultiFileOrmType());
+        /*$setup->addOrmType(new MultiFileOrmType());
         $setup->addOrmType(new MultiImageOrmType());
         $setup->addOrmType(new AudioOrmType());
         $setup->addOrmType(new VideoOrmType());
-        $setup->addOrmType(new ImageCroppingOrmType());
+        $setup->addOrmType(new ImageCroppingOrmType());*/
 
         $setup->addOrmType(new GeoCoordinateOrmType());
         $setup->addOrmType(new GeoCoordinateAltitudeOrmType());
@@ -125,7 +125,7 @@ class AppDesignerInstall extends AbstractScript
         $setup->addOrmType(new CreatedUserOrmType());
         $setup->addOrmType(new ModifiedUserOrmType());
 
-        $setup->addOrmType(new PhpClassOrmType());
+        //$setup->addOrmType(new PhpClassOrmType());
 
         // Index
         $this->addIndex(new ModelIndex());

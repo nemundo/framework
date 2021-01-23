@@ -23,6 +23,8 @@ class SqLiteSite extends AbstractSite
         $this->title = 'SqLite';
         $this->url = 'sqlite';
 
+        new ConfigSite($this);
+
         new EmptyTableSite($this);
         new DropTableSite($this);
 

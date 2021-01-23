@@ -3,6 +3,7 @@
 namespace Nemundo\Model\Setup;
 
 
+use Nemundo\App\Translation\Type\LanguageType;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
@@ -44,6 +45,7 @@ use Nemundo\Model\Type\Number\NumberType;
 use Nemundo\Model\Type\Number\YesNoType;
 use Nemundo\Model\Type\Text\LargeTextType;
 use Nemundo\Model\Type\Text\TextType;
+use Nemundo\Model\Type\Text\TranslationTextType;
 use Nemundo\Orm\Model\AbstractOrmModel;
 
 
@@ -115,6 +117,12 @@ abstract class AbstractModelSetup extends AbstractDbBase
 
             if ($type->isObjectOfClass(TextType::class)) {
                 $table->addTextField($type->fieldName, $type->length, $type->allowNullValue);
+            }
+
+            if ($type->isObjectOfClass(TranslationTextType::class)) {
+                foreach ((new LanguageType())->getLanguageData() as $languageRow) {
+                    $table->addTextField($type->fieldName . '_' . $languageRow->code, $type->length, $type->allowNullValue);
+                }
             }
 
             if ($type->isObjectOfClass(AbstractFileType::class)) {
