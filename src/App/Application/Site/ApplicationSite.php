@@ -12,12 +12,13 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\MySql\Parameter\IdParameter;
 use Nemundo\Admin\MySql\Parameter\TableParameter;
 use Nemundo\Admin\MySql\Site\Action\CsvExportSite;
+use Nemundo\App\Application\Page\ApplicationPage;
 use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\MySql\Com\Table\MySqlTableFieldTable;
-use Nemundo\App\MySqlAdmin\Com\Table\MySqlDataTable;
+
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Html\Form\Input\HiddenInput;
@@ -42,8 +43,12 @@ class ApplicationSite extends AbstractSite
         $this->url = 'application';
         ApplicationSite::$site = $this;
 
+        new InstallSite($this);
+        new UnInstallSite($this);
+
+
         //new DropTableSite($this);
-        new CsvExportSite($this);
+        //new CsvExportSite($this);
 
     }
 
@@ -51,7 +56,10 @@ class ApplicationSite extends AbstractSite
     public function loadContent()
     {
 
+        (new ApplicationPage())->render();
 
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $form = new SearchForm($page);
@@ -131,7 +139,7 @@ class ApplicationSite extends AbstractSite
                         $btn->site=clone(DropTableSite::$site);
                         $btn->site->addParameter($modelParameter);*/
 
-                        $btn = new AdminSiteButton($layout->col2);
+                   /*     $btn = new AdminSiteButton($layout->col2);
                         $btn->site = clone(CsvExportSite::$site);
                         $btn->site->addParameter(new TableParameter($tableName));
 
@@ -199,10 +207,12 @@ class ApplicationSite extends AbstractSite
           }*/
 
 
-        }
+       /* }
 
 
         $page->render();
+*/
+
 
 
     }

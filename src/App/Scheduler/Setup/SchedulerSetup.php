@@ -54,6 +54,32 @@ class SchedulerSetup extends AbstractSetup
         if ($count->getCount() == 0) {
             $newSchedulerJob = true;
             $changeRepeatingTime = true;
+
+
+            $data = new Scheduler();
+            //$data->updateOnDuplicate = true;
+            $data->scriptId = $scriptId;
+            $data->overrideSetting = $scheduler->overrideSetting;
+            $data->startTime = new Time('00:00');
+
+            if (($scheduler->overrideSetting) || ($newSchedulerJob)) {
+                $data->active = $scheduler->active;
+                $data->day = $scheduler->day;
+                $data->hour = $scheduler->hour;
+                $data->minute = $scheduler->minute;
+
+                $data->specificStartTime = $scheduler->specificStartTime;
+                if ($scheduler->specificStartTime) {
+                    $data->startTime = $scheduler->startTime;
+                }
+                $data->running = false;
+
+            }
+
+            $data->setupStatus = true;
+            $data->save();
+
+
         } else {
 
             // Repeating Time Change Check
@@ -75,8 +101,9 @@ class SchedulerSetup extends AbstractSetup
 
         }
 
+        /*
         $data = new Scheduler();
-        $data->updateOnDuplicate = true;
+        //$data->updateOnDuplicate = true;
         $data->scriptId = $scriptId;
         $data->overrideSetting = $scheduler->overrideSetting;
         $data->startTime = new Time('00:00');
@@ -96,7 +123,7 @@ class SchedulerSetup extends AbstractSetup
         }
 
         $data->setupStatus = true;
-        $data->save();
+        $data->save();*/
 
         $id = new SchedulerId();
         $id->filter->andEqual($id->model->scriptId, $scriptId);

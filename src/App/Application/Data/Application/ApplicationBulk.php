@@ -26,6 +26,11 @@ public $setupStatus;
 */
 public $applicationClass;
 
+/**
+* @var bool
+*/
+public $install;
+
 public function __construct() {
 parent::__construct();
 $this->model = new ApplicationModel();
@@ -36,6 +41,7 @@ $this->typeValueList->setModelValue($this->model->id, $id);
 $this->typeValueList->setModelValue($this->model->application, $this->application);
 $this->typeValueList->setModelValue($this->model->setupStatus, $this->setupStatus);
 $this->typeValueList->setModelValue($this->model->applicationClass, $this->applicationClass);
+$this->typeValueList->setModelValue($this->model->install, $this->install);
 $id = parent::save();
 return $id;
 }

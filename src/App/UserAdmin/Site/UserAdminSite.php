@@ -24,7 +24,7 @@ class UserAdminSite extends AbstractSite
         new UserNewSite($this);
         new UserEditSite($this);
         new UserDeleteSite($this);
-        new UserPasswordChangeSite($this);
+        new PasswordChangeSite($this);
 
         UserAdminSite::$site = $this;
     }

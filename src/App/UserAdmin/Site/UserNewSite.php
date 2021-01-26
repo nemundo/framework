@@ -4,6 +4,7 @@ namespace Nemundo\App\UserAdmin\Site;
 
 
 use Nemundo\App\UserAdmin\Form\UserForm;
+use Nemundo\App\UserAdmin\Page\UserNewPage;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Web\Site\AbstractSite;
@@ -18,9 +19,9 @@ class UserNewSite extends AbstractSite
 
     protected function loadSite()
     {
-        $this->title = 'New User';
+        $this->title = 'New';
         $this->url = 'new';
-        $this->menuActive = false;
+        //$this->menuActive = false;
 
         UserNewSite::$site = $this;
     }
@@ -29,6 +30,9 @@ class UserNewSite extends AbstractSite
     public function loadContent()
     {
 
+        (new UserNewPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $layout = new BootstrapTwoColumnLayout($page);
@@ -37,7 +41,7 @@ class UserNewSite extends AbstractSite
         $form->redirectSite = UserAdminSite::$site;
 
 
-        $page->render();
+        $page->render();*/
 
     }
 

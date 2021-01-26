@@ -67,8 +67,8 @@ class ProjectConfigReader extends AbstractBaseClass
             (new LogMessage())->writeError('Config File not found');
         }
 
-        $loader = new ProjectConfigLoader();
-        $loader->loadConfig();
+        /*$loader = new ProjectConfigLoader();
+        $loader->loadConfig();*/
 
     }
 

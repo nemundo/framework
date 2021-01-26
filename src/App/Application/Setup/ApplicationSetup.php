@@ -24,6 +24,7 @@ class ApplicationSetup extends AbstractBase
             $data->application = $application->application;
             $data->applicationClass = $application->getClassName();
             $data->setupStatus = true;
+            $data->install = false;
             $data->save();
         } else {
             $update = new ApplicationUpdate();

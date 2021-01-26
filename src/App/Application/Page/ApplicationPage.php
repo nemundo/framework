@@ -1,16 +1,115 @@
 <?php
 
 
-namespace Nemundo\App\Application;
+namespace Nemundo\App\Application\Page;
 
 
+use Nemundo\Admin\Com\Button\AdminSiteButton;
+use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Data\Application\ApplicationReader;
+use Nemundo\App\Application\Parameter\ApplicationParameter;
+use Nemundo\App\Application\Site\InstallSite;
+use Nemundo\App\Application\Site\UnInstallSite;
+use Nemundo\Com\FormBuilder\SearchForm;
+use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
+use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class ApplicationPage extends AbstractTemplateDocument
 {
 
     public function getContent()
     {
+
+        $layout = new BootstrapTwoColumnLayout($this);
+
+        $table=new AdminTable($layout->col1);
+
+
+        $reader = new ApplicationReader();
+        $reader->addOrder($reader->model->application);
+
+
+        $header = new TableHeader($table);
+        $header->addText($reader->model->application->label);
+        $header->addText($reader->model->install->label);
+
+
+        foreach ($reader->getData() as $applicationRow) {
+
+            $row=new TableRow($table);
+            $row->addText($applicationRow->application);
+            $row->addYesNo($applicationRow->install);
+
+
+        }
+
+
+
+
+
+
+
+        $form = new SearchForm($layout->col2);
+
+        $formRow = new BootstrapFormRow($form);
+
+        $application = new ApplicationListBox($formRow);
+
+        $application->submitOnChange = true;
+        $application->searchMode = true;
+
+
+        if ($application->hasValue()) {
+
+
+            $btn=new AdminSiteButton($layout->col2);
+            $btn->site=clone(InstallSite::$site);
+            $btn->site->addParameter(new ApplicationParameter());
+
+            $btn=new AdminSiteButton($layout->col2);
+            $btn->site=clone(UnInstallSite::$site);
+            $btn->site->addParameter(new ApplicationParameter());
+
+
+
+        }
+
+
+
+
+
+        /*
+        $table=new AdminTable($this);
+
+        $reader = new ApplicationReader();
+
+        $header=new TableHeader($table);
+        $header->addText($reader->model->application->label);
+        $header->addEmpty();
+        $header->addEmpty();
+        $header->addEmpty();
+        $header->addEmpty();
+        $header->addText('Model Collection');
+        $header->addText('Install');
+        $header->addText('Uninstall');
+
+
+
+        foreach ($reader->getData() as $applicationCustomRow) {
+
+            $app = $applicationCustomRow->getApplication();
+
+            $row=new TableRow($table);
+            $row->addText($applicationCustomRow->application);
+            $row->addText($app->modelCollectionClass);
+            $row->addText($app->installClass);
+            $row->addText($app->uninstallClass);
+
+        }*/
 
 
 

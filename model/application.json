@@ -40,6 +40,14 @@
                     "allow_null": false,
                     "is_deleted": false,
                     "length": "255"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Install",
+                    "field_name": "install",
+                    "variable_name": "install",
+                    "allow_null": false,
+                    "is_deleted": false
                 }
             ],
             "index": []

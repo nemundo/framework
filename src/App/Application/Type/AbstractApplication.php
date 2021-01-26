@@ -2,8 +2,12 @@
 
 namespace Nemundo\App\Application\Type;
 
+use Nemundo\App\Application\Data\Application\ApplicationUpdate;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
+use Nemundo\Project\Install\AbstractInstall;
+use Nemundo\Project\Install\AbstractUninstall;
 
 abstract class AbstractApplication extends AbstractBaseClass
 {
@@ -31,23 +35,17 @@ abstract class AbstractApplication extends AbstractBaseClass
     /**
      * @var string
      */
-    //public $installClass;
+    public $installClass;
 
     /**
      * @var string
      */
-    //public $uninstallClass;
+    public $uninstallClass;
 
     /**
      * @var string
      */
     //public $cleanClass;
-
-    /**
-     * @var string
-     */
-    //public $migrationClass;
-    // migrationCollectionClass
 
 
     abstract protected function loadApplication();
@@ -58,17 +56,17 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+    public function getModelCollection()
+    {
 
-    public function getModelCollection() {
 
-
-        $modelCollection=null;
+        $modelCollection = null;
 
         $className = $this->modelCollectionClass;
         if (class_exists($className)) {
 
             /** @var AbstractModelCollection $modelCollection */
-            $modelCollection=new $className();
+            $modelCollection = new $className();
         }
 
         return $modelCollection;
@@ -76,9 +74,26 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    /*
     public function installApp()
     {
+
+        if (class_exists($this->installClass)) {
+
+            /** @var AbstractInstall $install */
+            $install = new $this->installClass();
+            $install->install();
+
+            $update = new ApplicationUpdate();
+            $update->install = true;
+            $update->updateById($this->applicationId);
+
+
+        } else {
+
+            (new Debug())->write('No Install Class');
+
+        }
+
 
     }
 
@@ -86,7 +101,24 @@ abstract class AbstractApplication extends AbstractBaseClass
     public function uninstallApp()
     {
 
-    }*/
+        if (class_exists($this->uninstallClass)) {
+
+            /** @var AbstractUninstall $install */
+            $install = new $this->uninstallClass();
+            $install->uninstall();
+
+            $update = new ApplicationUpdate();
+            $update->install = false;
+            $update->updateById($this->applicationId);
+
+
+        } else {
+
+            (new Debug())->write('No UnInstall Class');
+
+        }
+
+    }
 
 
 }

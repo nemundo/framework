@@ -4,13 +4,15 @@ namespace Nemundo\App\UserAdmin\Site;
 
 
 use Nemundo\App\UserAdmin\Form\UserForm;
+use Nemundo\App\UserAdmin\Page\UserEditPage;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\FontAwesome\Icon\EditIcon;
+use Nemundo\Package\FontAwesome\Site\AbstractEditIconSite;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\User\Parameter\UserParameter;
 
-class UserEditSite extends AbstractIconSite
+class UserEditSite extends AbstractEditIconSite
 {
 
     /**
@@ -20,9 +22,10 @@ class UserEditSite extends AbstractIconSite
 
     protected function loadSite()
     {
-        $this->url = 'edit';
+
+        /*$this->url = 'edit';
         $this->icon = new EditIcon();
-        $this->menuActive = false;
+        $this->menuActive = false;*/
 
         UserEditSite::$site = $this;
     }
@@ -31,6 +34,9 @@ class UserEditSite extends AbstractIconSite
     public function loadContent()
     {
 
+        (new UserEditPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $layout = new BootstrapTwoColumnLayout($page);
@@ -39,7 +45,7 @@ class UserEditSite extends AbstractIconSite
         $form->userId = (new UserParameter())->getValue();
         $form->redirectSite = UserAdminSite::$site;
 
-        $page->render();
+        $page->render();*/
 
     }
 

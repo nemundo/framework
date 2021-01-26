@@ -21,6 +21,11 @@ public $setupStatus;
 */
 public $applicationClass;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $install;
+
 protected function loadModel() {
 $this->tableName = "application_application";
 $this->aliasTableName = "application_application";
@@ -61,6 +66,13 @@ $this->applicationClass->aliasFieldName = "application_application_application_c
 $this->applicationClass->label = "Application Class";
 $this->applicationClass->allowNullValue = false;
 $this->applicationClass->length = 255;
+
+$this->install = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->install->tableName = "application_application";
+$this->install->fieldName = "install";
+$this->install->aliasFieldName = "application_application_install";
+$this->install->label = "Install";
+$this->install->allowNullValue = false;
 
 }
 }

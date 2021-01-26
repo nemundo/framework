@@ -7,7 +7,9 @@ use Nemundo\App\UserAction\Site\LogoutSite;
 use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Content\App\UserProfile\Site\MyUserProfileSite;
 
-class UserAdminTemplate extends AdminTemplate
+
+// UserMode
+class UserModeAdminTemplate extends AdminTemplate
 {
 
     protected function loadContainer()

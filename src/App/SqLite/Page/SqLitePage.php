@@ -27,10 +27,8 @@ class SqLitePage extends SqLiteTemplate
     public function getContent()
     {
 
-
         $table=new AdminLabelValueTable($this);
         $table->addLabelValue('Filename',(new FilenameCookie())->getValue());
-
 
 
         $connection = new FilenameConnection();

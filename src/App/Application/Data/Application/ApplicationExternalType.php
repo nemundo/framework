@@ -21,6 +21,11 @@ public $setupStatus;
 */
 public $applicationClass;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $install;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = ApplicationModel::class;
@@ -53,6 +58,13 @@ $this->applicationClass->tableName = $this->parentFieldName . "_" . $this->exter
 $this->applicationClass->aliasFieldName = $this->applicationClass->tableName . "_" . $this->applicationClass->fieldName;
 $this->applicationClass->label = "Application Class";
 $this->addType($this->applicationClass);
+
+$this->install = new \Nemundo\Model\Type\Number\YesNoType();
+$this->install->fieldName = "install";
+$this->install->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->install->aliasFieldName = $this->install->tableName . "_" . $this->install->fieldName;
+$this->install->label = "Install";
+$this->addType($this->install);
 
 }
 }

@@ -3,7 +3,7 @@
 require '../../config.php';
 
 
-class TestTemplate extends \Nemundo\Admin\Template\UserAdminTemplate
+class TestTemplateMode extends \Nemundo\Admin\Template\UserModeAdminTemplate
 {
 
     public function getContent()
@@ -39,7 +39,7 @@ class TestHomeSite extends \Nemundo\Web\Site\AbstractSite
     public function loadContent()
     {
 
-        $page = new TestTemplate();
+        $page = new TestTemplateMode();
 
         $widget = new \Nemundo\App\UserAction\Widget\LoginWidget($page);
         $widget->redirectSite = TestHomeSite::$site;
@@ -75,7 +75,7 @@ class TestController extends \Nemundo\Web\Controller\AbstractWebController
 }
 
 \Nemundo\Web\WebConfig::$webUrl = '/framework/test/Admin/Template/';
-\Nemundo\Admin\AdminConfig::$defaultTemplateClassName = \Nemundo\Admin\Template\UserAdminTemplate::class;
+\Nemundo\Admin\AdminConfig::$defaultTemplateClassName = \Nemundo\Admin\Template\UserModeAdminTemplate::class;
 
 $controller = new TestController();
 \Nemundo\Admin\AdminConfig::$webController = $controller;

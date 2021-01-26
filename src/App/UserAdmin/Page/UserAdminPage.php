@@ -9,7 +9,8 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\UserAdmin\Site\UserDeleteSite;
 use Nemundo\App\UserAdmin\Site\UserEditSite;
 use Nemundo\App\UserAdmin\Site\UserNewSite;
-use Nemundo\App\UserAdmin\Site\UserPasswordChangeSite;
+use Nemundo\App\UserAdmin\Site\PasswordChangeSite;
+use Nemundo\App\UserAdmin\Template\UserAdminTemplate;
 use Nemundo\Com\Html\Hyperlink\EmailHyperlink;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
@@ -23,14 +24,14 @@ use Nemundo\User\Data\User\UserPaginationReader;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
 use Nemundo\User\Parameter\UserParameter;
 
-class UserAdminPage extends AbstractTemplateDocument
+class UserAdminPage extends UserAdminTemplate
 {
 
     public function getContent()
     {
 
-        $btn = new AdminSiteButton($this);
-        $btn->site = UserNewSite::$site;
+        /*$btn = new AdminSiteButton($this);
+        $btn->site = UserNewSite::$site;*/
 
         $searchForm = new BootstrapSearchForm($this);
 
@@ -87,7 +88,7 @@ class UserAdminPage extends AbstractTemplateDocument
 
             $userParameter = new UserParameter($userRow->id);
 
-            $site = clone(UserPasswordChangeSite::$site);
+            $site = clone(PasswordChangeSite::$site);
             $site->addParameter($userParameter);
             $row->addIconSite($site);
 
