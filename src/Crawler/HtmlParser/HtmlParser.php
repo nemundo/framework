@@ -49,13 +49,12 @@ class HtmlParser extends AbstractBaseClass
         $re->text = $this->html;
         $re->regularExpression = '<title.*?>(.*?)<';
 
-        $pageTitle = '[no title]';
+        $pageTitle = '';  //'[no title]';
         if ($re->hasItems()) {
             $pageTitle = $re->getDataRow()->getValue(0);
         }
 
         return $pageTitle;
-
 
     }
 

@@ -17,6 +17,7 @@ abstract class AbstractFileDataProperty extends AbstractDataProperty
 
 
     public function fromFileProperty(FileProperty $fileProperty)
+    //public function fromFileProperty(AbstractFileDataProperty $fileProperty)
     {
 
         if ($fileProperty->hasFilename()) {

@@ -3,6 +3,7 @@
 namespace Nemundo\Model\Data\Property\File;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\File\FileCopy;
 use Nemundo\Core\Http\Request\File\AbstractFileRequest;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
@@ -80,6 +81,11 @@ class ImageDataProperty extends FileDataProperty
 
 
             $image = new ImageFile($uniqueFilename);
+
+           /* (new Debug())->write($image->imageType);
+            (new Debug())->write($uniqueFilename);
+            (new Debug())->write($destinationFilename);*/
+
             switch ($image->imageType) {
 
                 case 'jpg':

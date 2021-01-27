@@ -27,6 +27,11 @@ class OpenGraphParser extends AbstractBase
     public $siteName;
 
     /**
+     * @var bool
+     */
+    public $hasImage=false;
+
+    /**
      * @var string
      */
     public $imageUrl;
@@ -46,7 +51,6 @@ class OpenGraphParser extends AbstractBase
 
     public function __construct($url)
     {
-
 
         $crawler = new WebCrawler();
         $crawler->url = $url;
@@ -79,7 +83,13 @@ class OpenGraphParser extends AbstractBase
         $this->title = $this->loadProperty('title');
         $this->description = $this->loadProperty('description');
         $this->url = $this->loadProperty('url');
+
         $this->imageUrl = $this->loadProperty('image');
+
+        if ($this->imageUrl !=='') {
+            $this->hasImage=true;
+        }
+
         $this->siteName = $this->loadProperty('site_name');
         $this->type = $this->loadProperty('type');
 

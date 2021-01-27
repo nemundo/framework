@@ -2,9 +2,8 @@
 
 namespace Nemundo\Package\OpenGraph;
 
-
-use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Header\AbstractHeaderHtmlContainer;
+
 
 class OpenGraph extends AbstractHeaderHtmlContainer
 {
