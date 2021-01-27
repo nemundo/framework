@@ -175,6 +175,16 @@ class SchedulerSetup extends AbstractSetup
     public function removeScheduler(AbstractScheduler $scheduler)
     {
 
+
+        $id = new ScriptId();
+        $id->filter->andEqual($id->model->scriptClass, $scheduler->getClassName());
+        $scriptId = $id->getId();
+
+
+        $delete = new SchedulerDelete();
+        $delete->filter->andEqual($delete->model->scriptId, $scriptId);
+        $delete->delete();
+
     }
 
 
