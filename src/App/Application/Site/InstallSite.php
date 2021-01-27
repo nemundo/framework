@@ -35,7 +35,7 @@ class InstallSite extends AbstractSite
         $app = (new ApplicationParameter())->getApplication();
         $app->installApp();
 
-        (new UrlReferer())->redirect();
+        //(new UrlReferer())->redirect();
 
     }
 

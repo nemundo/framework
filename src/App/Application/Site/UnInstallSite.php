@@ -8,6 +8,7 @@ use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Web\Site\AbstractSite;
 
+// Uninstall
 class UnInstallSite extends AbstractSite
 {
 
@@ -33,7 +34,7 @@ class UnInstallSite extends AbstractSite
         $app = (new ApplicationParameter())->getApplication();
         $app->uninstallApp();
 
-        (new UrlReferer())->redirect();
+        //(new UrlReferer())->redirect();
 
     }
 

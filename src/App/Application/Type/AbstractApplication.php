@@ -35,12 +35,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     /**
      * @var string
      */
-    public $installClass;
+    protected $installClass;
 
     /**
      * @var string
      */
-    public $uninstallClass;
+    protected $uninstallClass;
 
     /**
      * @var string
@@ -74,10 +74,23 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+    public function hasInstall() {
+
+
+        $value=false;
+        if (class_exists($this->installClass)) {
+            $value=true;
+        }
+        return $value;
+
+    }
+
+
+
     public function installApp()
     {
 
-        if (class_exists($this->installClass)) {
+        if ($this->hasInstall()) {  // class_exists($this->installClass)) {
 
             /** @var AbstractInstall $install */
             $install = new $this->installClass();
@@ -98,10 +111,21 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+    public function hasUninstall() {
+
+        $value=false;
+        if (class_exists($this->uninstallClass)) {
+            $value=true;
+        }
+        return $value;
+
+    }
+
+
     public function uninstallApp()
     {
 
-        if (class_exists($this->uninstallClass)) {
+        if ($this->hasUninstall()) {
 
             /** @var AbstractUninstall $install */
             $install = new $this->uninstallClass();
