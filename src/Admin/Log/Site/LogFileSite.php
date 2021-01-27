@@ -25,8 +25,8 @@ class LogFileSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'System Log';
-        $this->url = 'system-log';
+        $this->title = 'Log File';
+        $this->url = 'Log File';
 
         new LogFileDeleteSite($this);
 

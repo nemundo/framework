@@ -18,11 +18,11 @@ class ProjectConfigCode extends AbstractProjectCode
         $php->add('require \'vendor/autoload.php\';');
 
         $php->add('\Nemundo\Project\ProjectConfig::$projectPath = __DIR__ . DIRECTORY_SEPARATOR;');
-        $php->add('');
-        $php->add('$config = new \Nemundo\Project\Config\ProjectConfigReader();');
+        $php->add('(new \Nemundo\Project\Loader\MySqlProjectLoader())->loadProject();');
+        /*$php->add('$config = new \Nemundo\Project\Config\ProjectConfigReader();');
         $php->add('$config->filename = __DIR__ . \'/config.ini\';');
         $php->add('$config->readFile();');
-        $php->add('');
+        $php->add('');*/
 
         $php->saveFile();
 
