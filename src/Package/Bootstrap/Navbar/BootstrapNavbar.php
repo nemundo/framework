@@ -18,6 +18,7 @@ class BootstrapNavbar extends Nav
     public function getContent()
     {
 
+
         $this->addCssClass('navbar navbar-expand-lg navbar-light bg-light');
 
         if ($this->fixed) {

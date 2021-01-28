@@ -8,9 +8,7 @@ use Nemundo\App\ModelDesigner\ModelDesignerConfig;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\App\ModelDesigner\Site\ProjectSite;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Core\System\ObjectBuilder;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\Project\Collection\AbstractProjectCollection;
 
 class ProjectTable extends AdminClickableTable
 {
@@ -24,10 +22,6 @@ class ProjectTable extends AdminClickableTable
         $header->addText('Model Path');
         $header->addText('Namespace');
         $header->addEmpty();
-
-        /** @var AbstractProjectCollection $projectCollection */
-        //$projectCollection = (new ObjectBuilder())->getObject(ModelDesignerConfig::$projectCollectionClass);
-
 
         foreach ((new ModelDesignerConfig())->getProjectCollection()->getProjectList() as $project) {
 

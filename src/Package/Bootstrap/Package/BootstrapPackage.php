@@ -14,7 +14,8 @@ class BootstrapPackage extends AbstractPackage
         $this->packageName = 'bootstrap';
 
         $this->addCss('css/bootstrap.css');
-        $this->addJs('js/bootstrap.js');
+        //$this->addJs('js/bootstrap.js');
+        $this->addJs('js/bootstrap.bundle.min.js');
 
     }
 

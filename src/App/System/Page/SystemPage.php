@@ -9,6 +9,7 @@ use Nemundo\App\System\Com\SystemInformationTable;
 use Nemundo\App\System\Com\Table\MySqlSystemTable;
 use Nemundo\App\System\Com\Table\PhpSystemTable;
 use Nemundo\App\System\Com\Table\SystemTable;
+use Nemundo\App\System\Widget\ProjectWidget;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Db\DbConfig;
 use Nemundo\Db\Provider\MySql\Connection\MySqlConnection;
@@ -32,7 +33,7 @@ class SystemPage extends AbstractTemplateDocument
         new PhpSystemTable($widget);
 
         if (DbConfig::$defaultConnection->isObjectOfClass(MySqlConnection::class)) {
-            $widget = new AdminWidget($layout->col1);
+            $widget = new AdminWidget($layout->col2);
             $widget->widgetTitle = 'MySql';
             new MySqlSystemTable($widget);
         }
@@ -47,6 +48,7 @@ class SystemPage extends AbstractTemplateDocument
         }
 
 
+        new ProjectWidget($layout->col2);
 
 
         //new SystemInformationTable($layout->col2);

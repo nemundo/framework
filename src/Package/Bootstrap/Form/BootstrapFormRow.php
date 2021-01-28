@@ -11,7 +11,9 @@ class BootstrapFormRow extends AbstractHtmlContainer
     public function getContent()
     {
         $this->tagName = 'div';
-        $this->addCssClass('form-row');
+
+        //$this->addCssClass('form-row');
+        $this->addCssClass('row');
 
         return parent::getContent();
     }

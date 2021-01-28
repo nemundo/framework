@@ -2,8 +2,6 @@
 
 namespace Nemundo\Orm\Type\External;
 
-use Nemundo\Admin\AppDesigner\Form\Field\Type\ExternalTypeFormPart;
-use Nemundo\Admin\AppDesigner\Item\ExternalModelFieldAdminItem;
 use Nemundo\Core\Check\ValueCheck;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\Number\YesNo;
@@ -54,8 +52,8 @@ class ExternalOrmType extends ExternalType
         $this->typeLabel = 'External';
         $this->typeName = 'external';
         $this->typeId = '26e8b692-3af6-46ff-96ae-f10c983deb06';
-        $this->adminFormPartClassName = ExternalTypeFormPart::class;
-        $this->adminItemClassName = ExternalModelFieldAdminItem::class;
+        /*$this->adminFormPartClassName = ExternalTypeFormPart::class;
+        $this->adminItemClassName = ExternalModelFieldAdminItem::class;*/
 
     }
 
@@ -141,34 +139,37 @@ class ExternalOrmType extends ExternalType
         }
 
 
-        if (class_exists($externalModelClassName)) {
-
-        /** @var AbstractOrmModel $externalModel */
-        $externalModel = new $externalModelClassName();
-
         $dataType = null;
         $pre = '';
         $after = '';
 
-        switch ($externalModel->primaryIndex->getClassName()) {
-            case AutoIncrementIdPrimaryIndex::class:
-            case NumberIdPrimaryIndex::class:
-                $dataType = 'int';
-                $pre = 'intval(';
-                $after = ')';
+        if (class_exists($externalModelClassName)) {
 
-                break;
+            /** @var AbstractOrmModel $externalModel */
+            $externalModel = new $externalModelClassName();
 
-            case UniqueIdPrimaryIndex::class:
-            case TextIdPrimaryIndex::class:
-                $dataType = 'string';
-                break;
+            /*$dataType = null;
+            $pre = '';
+            $after = '';*/
 
-        }
+            switch ($externalModel->primaryIndex->getClassName()) {
+                case AutoIncrementIdPrimaryIndex::class:
+                case NumberIdPrimaryIndex::class:
+                    $dataType = 'int';
+                    $pre = 'intval(';
+                    $after = ')';
 
+                    break;
+
+                case UniqueIdPrimaryIndex::class:
+                case TextIdPrimaryIndex::class:
+                    $dataType = 'string';
+                    break;
+
+            }
 
         } else {
-            (new LogMessage())->writeError('clas does not exist: '.$externalModelClassName);
+            (new LogMessage())->writeError('clas does not exist: ' . $externalModelClassName);
         }
 
 
