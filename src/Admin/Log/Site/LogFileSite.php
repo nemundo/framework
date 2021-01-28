@@ -26,7 +26,7 @@ class LogFileSite extends AbstractSite
     {
 
         $this->title = 'Log File';
-        $this->url = 'Log File';
+        $this->url = 'log-file';
 
         new LogFileDeleteSite($this);
 
