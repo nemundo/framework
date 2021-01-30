@@ -52,44 +52,15 @@ class BootstrapSiteNavbar extends BootstrapNavbar
         return $this;
     }
 
+
     public function getContent()
     {
 
         $div = new Div($this);
-        //$div->id = 'navbarNavDropdown';
         $div->addCssClass('collapse navbar-collapse');
 
         $list = new Ul($div);
         $list->addCssClass('navbar-nav');
-
-        //$list->addCssClass('collapse navbar-collapse');
-
-/*
-
-
-<div class="collapse navbar-collapse">
-<ul class="navbar-nav">
-
-<li class="nav-item dropdown">
-<a data-bs-toggle="dropdown" aria-expanded="false" role="button" href="/dev/web/content-app" id="navbarDropdown1"
-class="nav-link dropdown-toggle">Content App</a>
-<ul aria-labelledby="navbarDropdown1" class="dropdown-menu">
-<li><a href="/dev/web/content-app/explorer" class="dropdown-item">Explorer</a>
-
-
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-  */
 
         foreach ($this->site->getMenuActiveSite() as $site) {
 
@@ -98,24 +69,9 @@ class="nav-link dropdown-toggle">Content App</a>
 
             if ($site->hasItems()) {
                 $li->addCssClass('dropdown');
-                //$li->addCssClass('dropdown-item');
             }
 
-            /*$hyperlink = new SiteHyperlink($li);
-            $hyperlink->addCssClass('nav-link');
-
-            $hyperlink->content = $site->title;
-            $hyperlink->site = $site;*/
-
             if ($site->hasItems()) {
-
-
-                $hyperlink = new Hyperlink($li);  // new SiteHyperlink($li);
-                $hyperlink->addCssClass('nav-link');
-$hyperlink->href='#';
-                $hyperlink->content = $site->title;
-                //$hyperlink->site = $site;
-
 
                 $menuActive = false;
                 foreach ($site->getMenuActiveSite() as $subSite) {
@@ -126,6 +82,10 @@ $hyperlink->href='#';
 
                 if ($menuActive) {
 
+                    $hyperlink = new Hyperlink($li);
+                    $hyperlink->addCssClass('nav-link');
+                    $hyperlink->content = $site->title;
+                    $hyperlink->href='#';
                     $hyperlink->id='navbarDropdown2';
                     $hyperlink->addCssClass('dropdown-toggle');
                     $hyperlink->addAttribute('data-bs-toggle', 'dropdown');
@@ -135,10 +95,6 @@ $hyperlink->href='#';
                     $ul = new Ul($li);
                     $ul->addAttribute('aria-labelledby', 'navbarDropdown2');
                     $ul->addCssClass('dropdown-menu');
-
-
-         //           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
 
                     foreach ($site->getMenuActiveSite() as $subSite) {
                         if ($subSite->menuActive) {
@@ -151,13 +107,19 @@ $hyperlink->href='#';
                             $subHyperlink->site = $subSite;
                         }
                     }
+                } else {
+
+                    $hyperlink = new SiteHyperlink($li);
+                    $hyperlink->addCssClass('nav-link');
+                    $hyperlink->content = $site->title;
+                    $hyperlink->site = $site;
+
                 }
 
             } else {
 
                 $hyperlink = new SiteHyperlink($li);
                 $hyperlink->addCssClass('nav-link');
-
                 $hyperlink->content = $site->title;
                 $hyperlink->site = $site;
 
@@ -180,13 +142,6 @@ $hyperlink->href='#';
                 $hyperlink->addAttribute('aria-expanded', 'false');
                 $hyperlink->addAttribute('role', 'button');
 
-                /*
-                $hyperlink->addCssClass('nav-link');
-                $hyperlink->addCssClass('dropdown-toggle');
-                $hyperlink->addAttribute('data-bs-toggle', 'dropdown');
-                //$hyperlink->addAttribute('aria-haspopup', 'true');
-                $hyperlink->addAttribute('aria-expanded', 'false');*/
-
                 $icon = new FontAwesomeIcon($hyperlink);
                 $icon->icon = 'user';
 
@@ -196,11 +151,6 @@ $hyperlink->href='#';
                 $div = new Ul($li); new Div($li);
                 $div->addCssClass('dropdown-menu');
                 $div->addAttribute('aria-labelledby', 'navbarDropdown2');
-
-
-                //$ul->addAttribute('aria-labelledby', 'navbarDropdown2');
-                //$ul->addCssClass('dropdown-menu');
-
 
                 foreach ($this->userMenuSiteList as $userMenu) {
 

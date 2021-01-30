@@ -146,6 +146,7 @@ class ProjectBuilder extends AbstractBaseClass
         $filename =  $projectPath . '.gitignore';
         $gitIgnore = new TextFileWriter($filename);
         $gitIgnore->addLine('config.ini');
+        $gitIgnore->addLine('/admin');
         $gitIgnore->addLine('/web/data');
         $gitIgnore->addLine('/tmp');
         $gitIgnore->addLine('/log');

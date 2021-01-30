@@ -115,7 +115,7 @@ abstract class AbstractModelSetup extends AbstractDbBase
                 $table->addTextField($type->fieldName, 36, $type->allowNullValue);
             }
 
-            if ($type->isObjectOfClass(TextType::class)) {
+            if ($type->isObjectOfClass(TextType::class) && !$type->isObjectOfClass(TranslationTextType::class)) {
                 $table->addTextField($type->fieldName, $type->length, $type->allowNullValue);
             }
 

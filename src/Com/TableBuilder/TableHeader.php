@@ -5,14 +5,12 @@ namespace Nemundo\Com\TableBuilder;
 
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Table\Th;
 use Nemundo\Html\Table\Thead;
 
 
 class TableHeader extends Thead
 {
-
 
     public function addText($label)
     {
@@ -21,6 +19,7 @@ class TableHeader extends Thead
         $th->nowrap = true;
         return $this;
     }
+
 
     public function addTextRight($label)
     {

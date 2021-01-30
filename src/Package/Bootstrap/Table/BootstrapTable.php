@@ -50,8 +50,8 @@ class BootstrapTable extends Table
             $this->addCssClass('table-striped');
         }
 
-
         return parent::getContent();
+
     }
 
 }

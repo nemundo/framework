@@ -27,6 +27,9 @@ class ProjectTable extends AdminLabelValueTable
         $this->addLabelValue('Project Path', ProjectConfig::$projectPath);
         $this->addLabelValue('Web Url', WebConfig::$webUrl);
 
+
+
+
         return parent::getContent();
 
     }

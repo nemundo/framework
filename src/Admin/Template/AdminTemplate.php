@@ -8,7 +8,9 @@ use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
+use Nemundo\Package\FontAwesome\FontAwesomePackage;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
+use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\NemundoJs\NemundoJsPackage;
 use Nemundo\Web\Site\BaseUrlSite;
 use Nemundo\Web\WebConfig;
@@ -31,6 +33,8 @@ class AdminTemplate extends BootstrapDocument
     {
 
         $this->addPackage(new NemundoJsPackage());
+        $this->addPackage(new JqueryPackage());
+        $this->addPackage(new FontAwesomePackage());
 
         $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
 

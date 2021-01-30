@@ -26,11 +26,12 @@ class BootstrapDocument extends HtmlDocument
     protected function loadContainer()
     {
 
-        $this->addPackage(new JqueryPackage());
-        $this->addPackage(new JqueryUiPackage());
+
+        //$this->addPackage(new JqueryPackage());
+        //$this->addPackage(new JqueryUiPackage());
         //$this->addPackage(new PopperPackage());
         $this->addPackage(new BootstrapPackage());
-        $this->addPackage(new FontAwesomePackage());
+        //$this->addPackage(new FontAwesomePackage());
 
         $script = new JavaScript($this);
         LibraryTrait::$readyCode = new JqueryReadyCode($script);

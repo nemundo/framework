@@ -9,6 +9,7 @@ use Nemundo\App\System\Com\SystemInformationTable;
 use Nemundo\App\System\Com\Table\MySqlSystemTable;
 use Nemundo\App\System\Com\Table\PhpSystemTable;
 use Nemundo\App\System\Com\Table\SystemTable;
+use Nemundo\App\System\Widget\MailWidget;
 use Nemundo\App\System\Widget\ProjectWidget;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Db\DbConfig;
@@ -49,6 +50,7 @@ class SystemPage extends AbstractTemplateDocument
 
 
         new ProjectWidget($layout->col2);
+        new MailWidget($layout->col2);
 
 
         //new SystemInformationTable($layout->col2);

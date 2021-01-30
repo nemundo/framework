@@ -40,20 +40,27 @@ class ApplicationPage extends AbstractTemplateDocument
             $row->addYesNo($applicationRow->install);
 
             $app = $applicationRow->getApplication();
-            if ($app->hasInstall()) {
-                $site = clone(InstallSite::$site);
-                $site->addParameter(new ApplicationParameter($applicationRow->id));
-                $row->addSite($site);
-            } else {
-                $row->addEmpty();
-            }
 
-            if ($app->hasUninstall()) {
-                $site = clone(UnInstallSite::$site);
-                $site->addParameter(new ApplicationParameter($applicationRow->id));
-                $row->addSite($site);
+            if ($app !== null) {
+
+                if ($app->hasInstall()) {
+                    $site = clone(InstallSite::$site);
+                    $site->addParameter(new ApplicationParameter($applicationRow->id));
+                    $row->addSite($site);
+                } else {
+                    $row->addEmpty();
+                }
+
+                if ($app->hasUninstall()) {
+                    $site = clone(UnInstallSite::$site);
+                    $site->addParameter(new ApplicationParameter($applicationRow->id));
+                    $row->addSite($site);
+                } else {
+                    $row->addEmpty();
+                }
+
             } else {
-                $row->addEmpty();
+                $row->addText('No Class');
             }
 
             //$app->installApp()

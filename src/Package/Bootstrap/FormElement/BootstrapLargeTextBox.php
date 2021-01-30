@@ -39,6 +39,7 @@ class BootstrapLargeTextBox extends AbstractLargeTextBox
             $labelText .= ' *';
         }
 
+        $this->labelLabel->addCssClass('form-label');
         $this->labelLabel->content = $labelText;
 
         if ($this->showErrorMessage) {

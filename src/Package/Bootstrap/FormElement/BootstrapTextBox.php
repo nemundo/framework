@@ -5,6 +5,7 @@ namespace Nemundo\Package\Bootstrap\FormElement;
 use Nemundo\Com\FormBuilder\Item\AbstractTextBox;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Formatting\Bold;
+use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
 class BootstrapTextBox extends AbstractTextBox
 {
@@ -28,11 +29,22 @@ class BootstrapTextBox extends AbstractTextBox
         $this->prepareHtml();
 
         $this->tagName = 'div';
-        $this->addCssClass('pr-3');
+        //$this->addCssClass('pr-3');
+        //$this->addCssClass('mb-5');
 
-        $this->addCssClass('form-group');
+        $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
+        //$this->addCssClass('col');
+
+        //$this->addCssClass('form-group');
 
         $this->textInput->addCssClass('form-control');
+
+
+        /*
+        <label for="formGroupExampleInput" class="form-label">Example label</label>
+        */
+
+        $this->labelLabel->addCssClass('form-label');
         $this->labelLabel->content = $this->getLabelText();
 
         if ($this->showErrorMessage) {
@@ -42,8 +54,8 @@ class BootstrapTextBox extends AbstractTextBox
             $bold->content = $this->errorMessage;
 
             $this->labelLabel->content .= ' ' . $bold->getBodyContent();
-            $this->addCssClass('has-danger');
-            $this->textInput->addCssClass('form-control-danger');
+            //$this->addCssClass('has-danger');
+            //$this->textInput->addCssClass('form-control-danger');
 
         }
 

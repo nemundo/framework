@@ -7,6 +7,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Formatting\Bold;
+use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
 class BootstrapDatePicker extends AbstractDatePicker
 {
@@ -18,13 +19,18 @@ class BootstrapDatePicker extends AbstractDatePicker
         $this->prepareHtml();
 
         $this->tagName = 'div';
-        $this->addCssClass('form-group');
-        $this->addCssClass('pr-3');
+        //$this->addCssClass('form-group');
+        //$this->addCssClass('pr-3');
+        $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
+        $this->addCssClass('col');
+
+
 
         $this->textInput->addCssClass('form-control');
 
         $label = new Label();
         $label->id = 'label_' . $this->name;
+        $label->addCssClass('form-label');
         $label->content = $this->getLabelText();
 
         if ($this->showErrorMessage) {
