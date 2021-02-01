@@ -2,6 +2,7 @@
 
 namespace Nemundo\Model\Reader\Property\File;
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Domain\DomainInformation;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
@@ -36,7 +37,10 @@ class RedirectFilenameReaderProperty extends AbstractReaderProperty
 
         $value = false;
 
-        if ($this->getFilename() !== '') {
+        //(new Debug())->write($this->getFilename());
+
+
+        if (($this->getFilename() !== '') &&($this->getFilename() !== null)) {
             $value = true;
         }
 

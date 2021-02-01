@@ -3,6 +3,7 @@
 namespace Nemundo\Project\Loader;
 
 
+use Nemundo\App\SqLite\SqLiteConfig;
 use Nemundo\Core\Config\ConfigFileReader;
 use Nemundo\Db\DbConfig;
 use Nemundo\Project\Connection\ProjectSqLiteConnection;
@@ -21,6 +22,8 @@ class SqLiteProjectLoader extends AbstractProjectLoader
 
         $this->loadPath();
         DbConfig::$defaultConnection = new ProjectSqLiteConnection();
+
+        SqLiteConfig::$sqLiteFilename = DbConfig::$defaultConnection->filename;
 
     }
 
