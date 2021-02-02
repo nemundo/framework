@@ -3,7 +3,6 @@
 namespace Nemundo\Package\Bootstrap\FormElement;
 
 use Nemundo\Com\FormBuilder\Item\AbstractDatePicker;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Formatting\Bold;
@@ -19,12 +18,8 @@ class BootstrapDatePicker extends AbstractDatePicker
         $this->prepareHtml();
 
         $this->tagName = 'div';
-        //$this->addCssClass('form-group');
-        //$this->addCssClass('pr-3');
         $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
         $this->addCssClass('col');
-
-
 
         $this->textInput->addCssClass('form-control');
 
@@ -45,7 +40,6 @@ class BootstrapDatePicker extends AbstractDatePicker
 
         }
 
-
         $this->addContainer($label);
         $this->addContainer($this->textInput);
 
@@ -65,8 +59,6 @@ class BootstrapDatePicker extends AbstractDatePicker
 
         return $date;
 
-
     }
-
 
 }

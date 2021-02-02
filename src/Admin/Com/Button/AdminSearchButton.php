@@ -8,6 +8,7 @@ use Nemundo\Html\Character\HtmlCharacter;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Package\Bootstrap\Button\BootstrapButtonSize;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapFormStyle;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
@@ -16,19 +17,25 @@ use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 class AdminSearchButton extends AbstractHtmlContainer
 {
 
+    use BootstrapFormStyle;
+
     public function getContent()
     {
 
-        $this->tagName = 'div';
+        //$this->tagName = 'div';
         //$this->addCssClass('pr-3');
         //$this->addCssClass('form-group');
-        $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
-        $this->addCssClass('col');
+      //  $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
+      //  $this->addCssClass('col');
 
+        $this->columnSize=1;
+
+        $this->loadStyle();
 
 
         $label = new Label($this);
-        $label->content = HtmlCharacter::NON_BREAKING_SPACE;
+        $label->addCssClass('form-label');
+        $label->content =  HtmlCharacter::NON_BREAKING_SPACE;
 
         $btn = new BootstrapSubmitButton($this);
         $btn->size = BootstrapButtonSize::SMALL;

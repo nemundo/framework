@@ -10,6 +10,8 @@ use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 class BootstrapTextBox extends AbstractTextBox
 {
 
+    use BootstrapFormStyle;
+
     /**
      * @var Label
      */
@@ -28,9 +30,14 @@ class BootstrapTextBox extends AbstractTextBox
 
         $this->prepareHtml();
 
-        $this->tagName = 'div';
+        $this->loadStyle();
+
+        //$this->tagName = 'div';
+
+        /*
         $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
-        //$this->addCssClass('col');
+        $this->addCssClass('col');*/
+
 
         //$this->addCssClass('form-group');
 

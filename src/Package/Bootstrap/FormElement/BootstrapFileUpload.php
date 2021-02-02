@@ -17,14 +17,8 @@ class BootstrapFileUpload extends AbstractFileUpload
         $this->prepareHtml();
 
         $this->tagName = 'div';
-/*        $this->addCssClass('form-group');
-        $this->addCssClass('col');*/
-
         $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
         $this->addCssClass('col');
-
-
-        //$this->addCssClass('custom-file');
 
         $label = new Label();
         $label->addCssClass('form-label');
