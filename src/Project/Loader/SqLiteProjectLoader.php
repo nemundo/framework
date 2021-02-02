@@ -16,9 +16,11 @@ class SqLiteProjectLoader extends AbstractProjectLoader
     public function loadProject()
     {
 
-        $reader = new ConfigFileReader();
-        $reader->filename = ProjectConfig::$projectPath . 'config.ini';
-        WebConfig::$webUrl = $reader->getValue('web_url');
+        //if ($this->loadConfigFile) {
+            $reader = new ConfigFileReader();
+            $reader->filename = ProjectConfig::$projectPath . 'config.ini';
+            WebConfig::$webUrl = $reader->getValue('web_url');
+        //}
 
         $this->loadPath();
         DbConfig::$defaultConnection = new ProjectSqLiteConnection();

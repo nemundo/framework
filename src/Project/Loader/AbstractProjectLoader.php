@@ -13,11 +13,15 @@ use Nemundo\Web\WebConfig;
 abstract class AbstractProjectLoader extends AbstractBase
 {
 
+    /**
+     * @var bool
+     */
+    //public $loadConfigFile = true;
+
     abstract public function loadProject();
 
-
-    protected function loadPath() {
-
+    protected function loadPath()
+    {
 
         ProjectConfig::$projectPath = (new FileUtility())->appendDirectorySeparatorIfNotExists(ProjectConfig::$projectPath);
 
@@ -30,11 +34,6 @@ abstract class AbstractProjectLoader extends AbstractBase
 
         ModelConfig::$redirectDataPath = ProjectConfig::$projectPath . 'data_redirect' . DIRECTORY_SEPARATOR;
 
-
-
-
     }
-
-
 
 }

@@ -27,9 +27,10 @@ abstract class AbstractAdminForm extends AbstractFormBuilder
     {
         parent::loadContainer();
 
-        $this->buttonFormRow = new BootstrapFormRow();
+        //$this->buttonFormRow = new BootstrapFormRow();
 
-        $this->submitButton = new AdminSubmitButton($this->buttonFormRow);
+        $this->submitButton = new SubmitButton();  // new AdminSubmitButton();  // $this->buttonFormRow);
+        $this->submitButton->addCssClass('btn btn-primary btn-sm');
         $this->submitButton->label=[];
         $this->submitButton->label[LanguageCode::EN] = 'Save';
         $this->submitButton->label[LanguageCode::DE] = 'Speichern';
@@ -40,8 +41,10 @@ abstract class AbstractAdminForm extends AbstractFormBuilder
     public function getContent()
     {
 
-        $this->addContainer($this->buttonFormRow);
+        //$this->addContainer($this->buttonFormRow);
+        $this->addContainer($this->submitButton);
         return parent::getContent();
+
     }
 
 }

@@ -29,9 +29,6 @@ class BootstrapTextBox extends AbstractTextBox
         $this->prepareHtml();
 
         $this->tagName = 'div';
-        //$this->addCssClass('pr-3');
-        //$this->addCssClass('mb-5');
-
         $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
         //$this->addCssClass('col');
 

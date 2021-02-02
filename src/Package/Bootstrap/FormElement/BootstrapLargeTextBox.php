@@ -7,6 +7,7 @@ use Nemundo\Com\FormBuilder\Item\AbstractLargeTextBox;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Core\Language\Translation;
+use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
 class BootstrapLargeTextBox extends AbstractLargeTextBox
 {
@@ -30,7 +31,7 @@ class BootstrapLargeTextBox extends AbstractLargeTextBox
         $this->prepareHtml();
 
         $this->tagName = 'div';
-        $this->addCssClass('form-group');
+        $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
 
         $this->textarea->addCssClass('form-control');
 
