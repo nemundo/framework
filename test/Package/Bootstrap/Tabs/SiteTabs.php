@@ -1,6 +1,6 @@
 <?php
 
-require '../../config.php';
+require '../../../config.php';
 
 
 $html = new \Nemundo\Package\Bootstrap\Document\BootstrapDocument();

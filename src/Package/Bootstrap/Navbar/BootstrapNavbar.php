@@ -3,6 +3,8 @@
 namespace Nemundo\Package\Bootstrap\Navbar;
 
 
+use Nemundo\Html\Block\Div;
+use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Layout\Nav;
 
 
@@ -15,9 +17,26 @@ class BootstrapNavbar extends Nav
     public $fixed = false;
 
 
-    public function getContent()
+    /**
+     * @var Div
+     */
+    private $containerDiv;
+
+
+    protected function loadContainer()
     {
 
+        parent::loadContainer();
+
+        $this->containerDiv = new Div();
+        $this->containerDiv->addCssClass('container-fluid');
+
+        parent::addContainer($this->containerDiv);
+
+    }
+
+    public function getContent()
+    {
 
         $this->addCssClass('navbar navbar-expand-lg navbar-light bg-light');
 
@@ -25,9 +44,18 @@ class BootstrapNavbar extends Nav
             $this->addCssClass('fixed-top');
         }
 
-        new BootstrapNavbarToggler($this);
+        $toggler = new BootstrapNavbarToggler();
+        $this->addContainer($toggler);
 
         return parent::getContent();
+
+    }
+
+
+    public function addContainer(AbstractContainer $container)
+    {
+
+        $this->containerDiv->addContainer($container);
 
     }
 

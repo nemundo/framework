@@ -29,7 +29,7 @@ class BootstrapSiteTabsDropdown extends AbstractLi
         $hyperlink =new SiteHyperlink($this);
         $hyperlink->site = $this->site;
         $hyperlink->addCssClass('nav-link dropdown-toggle');
-        $hyperlink->addAttribute('data-toggle', 'dropdown');
+        $hyperlink->addAttribute('data-bs-toggle', 'dropdown');
         $hyperlink->addAttribute('role', 'button');
         $hyperlink->addAttribute('aria-haspopup', 'true');
         $hyperlink->addAttribute('aria-expanded', 'false');

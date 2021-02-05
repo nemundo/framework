@@ -64,11 +64,11 @@ class BootstrapCarousel extends AbstractHtmlContainer
 
     protected function loadContainer()
     {
+
         parent::loadContainer();
 
         $this->carousel = new Div();
         $this->carousel->addCssClass('carousel-inner');
-        $this->carousel->addAttribute('role', 'listbox');
 
         parent::addContainer($this->carousel);
 
@@ -81,17 +81,16 @@ class BootstrapCarousel extends AbstractHtmlContainer
         BootstrapCarousel::$carouselCount++;
 
         $this->tagName = 'div';
-        //$this->id = 'carousel';
         $this->id = 'carousel_' . BootstrapCarousel::$carouselCount;
-        //$this->setAutoId();
 
         $this->addCssClass('carousel');
+        $this->addAttribute('data-bs-ride', 'carousel');
 
         if ($this->slideshow) {
-            $this->addAttribute('data-ride', 'carousel');
-            $this->addAttribute('data-interval', $this->slideshowInterval * 1000);
+            $this->addAttribute('data-bs-ride', 'carousel');
+            $this->addAttribute('data-bs-interval', $this->slideshowInterval * 1000);
         } else {
-            $this->addAttribute('data-interval', 'false');
+            $this->addAttribute('data-bs-interval', 'false');
         }
 
         if ($this->slideEffect) {
@@ -99,7 +98,7 @@ class BootstrapCarousel extends AbstractHtmlContainer
         }
 
         if ($this->stopAtTheEnd) {
-            $this->addAttribute('data-wrap', 'false');
+            $this->addAttribute('data-bs-wrap', 'false');
         }
 
         if ($this->showIndicator) {
@@ -110,7 +109,6 @@ class BootstrapCarousel extends AbstractHtmlContainer
             parent::addContainer($indicator);
 
         }
-
 
         if ($this->showControl) {
 

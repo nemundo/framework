@@ -31,8 +31,8 @@ class BootstrapCarouselIndicators extends OrderedList
             if ($n == 0) {
                 $li->addCssClass('active');
             }
-            $li->addAttribute('data-target', '#' . $this->carouselId);
-            $li->addAttribute('data-slide-to', $n);
+            $li->addAttribute('data-bs-target', '#' . $this->carouselId);
+            $li->addAttribute('data-bs-slide-to', $n);
         }
 
         return parent::getContent();

@@ -53,7 +53,7 @@ class BootstrapAccordionItem extends Div
         $div->addCssClass('collapse');
         $div->addAttribute('role', 'tabpanel');
         $div->addAttribute('aria-labelledby', 'headingTwo');
-        $div->addAttribute('data-parent', '#accordion');
+        $div->addAttribute('data-bs-parent', '#accordion');
         parent::addContainer($div);
 
         $this->bodyDiv = new Div($div);

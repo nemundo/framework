@@ -25,7 +25,7 @@ abstract class AbstractBootstrapCarouselControlContainer extends AbstractHyperli
 
         $this->addCssClass('carousel-control-' . $this->controlName);
         $this->addAttribute('role', 'button');
-        $this->addAttribute('data-slide', $this->controlName);
+        $this->addAttribute('data-bs-slide', $this->controlName);
         $this->href = '#' . $this->carouselId;
 
         $span = new Span($this);

@@ -4,6 +4,7 @@ namespace Nemundo\Package\Bootstrap\Navbar;
 
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -57,6 +58,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
     {
 
         $div = new Div($this);
+        $div->id = 'navbarNavDropdown';
         $div->addCssClass('collapse navbar-collapse');
 
         $list = new Ul($div);
@@ -132,12 +134,26 @@ class BootstrapSiteNavbar extends BootstrapNavbar
             $isLogged = new IsLoggedSession();
             if ($isLogged->getValue()) {
 
+/*
+                <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>*/
+
+
                 $li = new Li($list);
                 $li->addCssClass('nav-item dropdown');
 
                 $hyperlink = new Hyperlink($li);
                 $hyperlink->id = 'navbarDropdown2';
-                $hyperlink->addCssClass('dropdown-toggle');
+                $hyperlink->addCssClass('nav-link dropdown-toggle');
                 $hyperlink->addAttribute('data-bs-toggle', 'dropdown');
                 $hyperlink->addAttribute('aria-expanded', 'false');
                 $hyperlink->addAttribute('role', 'button');
@@ -148,13 +164,13 @@ class BootstrapSiteNavbar extends BootstrapNavbar
                 $bold = new Bold($hyperlink);
                 $bold->content = ' ' . (new UserSession())->displayName;
 
-                $div = new Ul($li); new Div($li);
-                $div->addCssClass('dropdown-menu');
-                $div->addAttribute('aria-labelledby', 'navbarDropdown2');
+                $userList = new Ul($li); //new Div($li);
+                $userList->addCssClass('dropdown-menu');
+                $userList->addAttribute('aria-labelledby', 'navbarDropdown2');
 
                 foreach ($this->userMenuSiteList as $userMenu) {
 
-                    $subLi = new Li($div);
+                    $subLi = new Li($userList);
 
                     if ($userMenu !== null) {
                         $subHyperlink = new SiteHyperlink($subLi);

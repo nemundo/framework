@@ -7,11 +7,8 @@ use Nemundo\Html\Document\HtmlDocument;
 use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Html\Script\JavaScript;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
-use Nemundo\Package\FontAwesome\FontAwesomePackage;
 use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
-use Nemundo\Package\JqueryUi\JqueryUiPackage;
-use Nemundo\Package\Popper\PopperPackage;
 
 class BootstrapDocument extends HtmlDocument
 {
@@ -26,12 +23,8 @@ class BootstrapDocument extends HtmlDocument
     protected function loadContainer()
     {
 
-
-        //$this->addPackage(new JqueryPackage());
-        //$this->addPackage(new JqueryUiPackage());
-        //$this->addPackage(new PopperPackage());
+        $this->addPackage(new JqueryPackage());
         $this->addPackage(new BootstrapPackage());
-        //$this->addPackage(new FontAwesomePackage());
 
         $script = new JavaScript($this);
         LibraryTrait::$readyCode = new JqueryReadyCode($script);
