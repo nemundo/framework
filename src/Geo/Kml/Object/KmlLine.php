@@ -3,7 +3,6 @@
 namespace Nemundo\Geo\Kml\Object;
 
 
-use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
 use Nemundo\Geo\Kml\Container\Placemark;
 use Nemundo\Geo\Kml\Element\LineString;
@@ -19,11 +18,6 @@ class KmlLine extends Placemark  // AbstractKmlElement
 {
 
     /**
-     * @var string
-     */
-    //public $title;
-
-    /**
      * @var int
      */
     public $width;
@@ -32,19 +26,6 @@ class KmlLine extends Placemark  // AbstractKmlElement
      * @var string
      */
     public $color;
-
-    // http://www.zonums.com/gmaps/kml_color/
-
-    /**
-     * @var TextDirectory
-     */
-    //private $coordinateDirectory;
-
-    /**
-     * @var string
-     */
-    //private $coordinateText = '';
-
 
     /**
      * @var LineString
@@ -57,19 +38,9 @@ class KmlLine extends Placemark  // AbstractKmlElement
 
         parent::loadContainer();
         $this->lineString = new LineString($this);
-        $this->lineString->altitudeMode=AltitudeMode::CLAMP_TO_GROUND;
+        $this->lineString->altitudeMode = AltitudeMode::CLAMP_TO_GROUND;
 
     }
-
-
-    /*
-    public function __construct(KmlDocument $kmlDocument = null)
-    {
-
-        parent::__construct($kmlDocument);
-        $this->coordinateDirectory = new TextDirectory();
-
-    }*/
 
 
     public function addPoint(GeoCoordinateAltitude $coordinate)
@@ -98,63 +69,7 @@ class KmlLine extends Placemark  // AbstractKmlElement
             $width->value = $this->width;
         }
 
-
-        /*$item = new XmlItem();
-        $item->tagName = 'Placemark';
-
-
-        if ($this->title !== null) {
-            $name = new XmlItem($item);
-            $name->tagName = 'name';
-            $name->value = $this->title;
-        }
-
-
-        /*
-        $style = new XmlItem($item);
-        $style->tagName = 'Style';
-
-        $lineStyle = new XmlItem($style);
-        $lineStyle->tagName = 'LineStyle';
-
-        if ($this->width !== null) {
-            $style = new XmlItem($lineStyle);
-            $style->tagName = 'width';
-            $style->value = $this->width;
-        }
-
-        if ($this->color !== null) {
-            $style = new XmlItem($lineStyle);
-            $style->tagName = 'color';
-            $style->value = $this->color;
-        }*/
-
-
-        /*
-        $style = new XmlItem($item);
-        $style->tagName = 'styleUrl';
-        $style->value = '#linestyleExample';*/
-
-
-        /*
-        $lineString = new XmlItem($item);
-        $lineString->tagName = 'LineString';
-
-        $altitudeMode = new XmlItem($lineString);
-        $altitudeMode->tagName = 'altitudeMode';
-        $altitudeMode->value = 'absolute';
-        //$altitudeMode->value = 'relativeToGround';
-        //$altitudeMode->value = 'clampToGround';
-
-        $coordinate = new XmlItem($lineString);
-        $coordinate->tagName = 'coordinates';
-        $coordinate->value = $this->coordinateText;*/
-
-
-        //$this->addContainer($this->lineString);
-
         return parent::getContent();
-
 
     }
 

@@ -28,7 +28,7 @@ class GeoAdminMap extends AbstractHtmlContainer
     /**
      * @var int
      */
-    public $zoomLevel;
+    public $zoom;
 
     public $resolution = 500;
 
@@ -54,7 +54,7 @@ class GeoAdminMap extends AbstractHtmlContainer
         $this->dimension = new DimensionStyle();
         $this->dimension->width = 100;
         $this->dimension->widthUnit = DimensionUnit::PERCENT;
-        $this->dimension->height = 500;
+        $this->dimension->height = 1000;
         $this->dimension->heightUnit = DimensionUnit::PIXEL;
 
 
@@ -84,7 +84,7 @@ class GeoAdminMap extends AbstractHtmlContainer
         //$this->addAttribute('style', 'height: 100%;width: 100%;');
 
         $this->addPackage(new JqueryPackage());
-        $this->addJsUrl('https://api3.geo.admin.ch/loader.js?lang=en');
+        $this->addJsUrl('https://api3.geo.admin.ch/loader.js');
         //$this->addJsUrl('http://api3.geo.admin.ch/loader.js?lang=en');
 
 
@@ -116,11 +116,17 @@ class GeoAdminMap extends AbstractHtmlContainer
 
         $this->addJqueryScript('var map = new ga.Map({');
         $this->addJqueryScript('target: "map",');
-        //$this->addJqueryScript('zoom: 4,');
+
+
+
         $this->addJqueryScript('layers: [' . $layerList->getTextWithSeperator(',') . '],');
 
         $this->addJqueryScript('view: new ol.View({');
         $this->addJqueryScript('resolution: ' . $this->resolution . ',');
+
+        if ($this->zoom !==null) {
+            $this->addJqueryScript('zoom: '.$this->zoom.'');
+        }
 
         if ($this->mapCenter !==null) {
         //$this->addJqueryScript('center: coordinate');

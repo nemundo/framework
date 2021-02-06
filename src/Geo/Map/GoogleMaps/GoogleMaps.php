@@ -112,8 +112,8 @@ class GoogleMaps extends Div
 
         $this->addJavaScript('zoom: ' . $this->zoom . ',');
         $this->addJavaScript('mapTypeId: google.maps.MapTypeId.' . $this->mapType);
-        $this->addJavaScript('}');
-        $this->addJavaScript('var map = new google.maps.Map(mapCanvas, mapOptions)');
+        $this->addJavaScript('};');
+        $this->addJavaScript('var map = new google.maps.Map(mapCanvas, mapOptions);');
         $this->addJavaScript('');
 
 
