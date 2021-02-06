@@ -74,23 +74,26 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    public function hasInstall() {
+    public function hasInstall()
+    {
 
-
-        $value=false;
+        $value = false;
+        if ($this->installClass!==null) {
         if (class_exists($this->installClass)) {
-            $value=true;
+            $value = true;
+        } else {
+            (new Debug())->write('Install Class not found. Class: '.$this->installClass);
+        }
         }
         return $value;
 
     }
 
 
-
     public function installApp()
     {
 
-        if ($this->hasInstall()) {  // class_exists($this->installClass)) {
+        if ($this->hasInstall()) {
 
             /** @var AbstractInstall $install */
             $install = new $this->installClass();
@@ -99,7 +102,6 @@ abstract class AbstractApplication extends AbstractBaseClass
             $update = new ApplicationUpdate();
             $update->install = true;
             $update->updateById($this->applicationId);
-
 
         } else {
 
@@ -111,11 +113,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    public function hasUninstall() {
+    public function hasUninstall()
+    {
 
-        $value=false;
+        $value = false;
         if (class_exists($this->uninstallClass)) {
-            $value=true;
+            $value = true;
         }
         return $value;
 

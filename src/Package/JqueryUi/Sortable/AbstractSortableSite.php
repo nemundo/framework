@@ -10,7 +10,6 @@ use Nemundo\Web\Site\AbstractSiteTree;
 abstract class AbstractSortableSite extends AbstractSite
 {
 
-
     public function __construct(AbstractSiteTree $site = null)
     {
 
@@ -21,46 +20,11 @@ abstract class AbstractSortableSite extends AbstractSite
     }
 
 
-    /*
-    protected function loadSite()
+    protected function getItemOrderList()
     {
-        $this->url = 'item-order';
-        $this->menuActive = false;
-        //$this->restricted = true;
-        //$this->addRestrictedUsergroup(new ProzesssteuerungAdministratorUsergroup());
-
-        PhaseItemOrderSite::$site=$this;
-
-    }
-
-
-    public function loadContent()
-    {
-
-
-        $itemOrder = 0;
-        foreach ($_POST['item'] as $value) {
-
-            $data =  new ProjektPhaseUpdate();
-            $data->itemOrder = $itemOrder;
-            $data->updateById($value);
-
-            $itemOrder++;
-
-        }
-
-
-    }*/
-
-
-
-    protected function getItemOrderList() {
 
         return $_POST['item'];
 
-
     }
-
-
 
 }

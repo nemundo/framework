@@ -24,6 +24,11 @@ class BootstrapFromToDatePicker extends AbstractContainer
      */
     public $searchMode = false;
 
+    /**
+     * @var bool
+     */
+    public $validation = false;
+
     protected function loadContainer()
     {
 
@@ -46,19 +51,24 @@ class BootstrapFromToDatePicker extends AbstractContainer
     {
 
         $this->from->searchMode = $this->searchMode;
+        $this->from->validation = $this->validation;
+
         $this->to->searchMode = $this->searchMode;
+        $this->to->validation = $this->validation;
 
         return parent::getContent();
 
     }
 
 
-    public function hasValueFrom() {
+    public function hasValueFrom()
+    {
         return $this->from->hasValue();
     }
 
 
-    public function hasValueTo() {
+    public function hasValueTo()
+    {
         return $this->to->hasValue();
     }
 
@@ -73,8 +83,6 @@ class BootstrapFromToDatePicker extends AbstractContainer
     {
         return $this->to->getDateValue();
     }
-
-
 
 
 }
