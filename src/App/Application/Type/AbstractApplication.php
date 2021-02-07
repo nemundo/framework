@@ -8,6 +8,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
 use Nemundo\Project\Install\AbstractInstall;
 use Nemundo\Project\Install\AbstractUninstall;
+use Nemundo\Web\Site\AbstractSite;
 
 abstract class AbstractApplication extends AbstractBaseClass
 {
@@ -21,6 +22,11 @@ abstract class AbstractApplication extends AbstractBaseClass
      * @var string
      */
     public $application;
+
+    /**
+     * @var string
+     */
+    public $description;
 
     /**
      * @var string
@@ -46,6 +52,11 @@ abstract class AbstractApplication extends AbstractBaseClass
      * @var string
      */
     //public $cleanClass;
+
+    /**
+     * @var string
+     */
+    protected $siteClass;
 
 
     abstract protected function loadApplication();
@@ -146,6 +157,31 @@ abstract class AbstractApplication extends AbstractBaseClass
         }
 
     }
+
+
+    public function hasSite() {
+
+        $value = false;
+        if ($this->siteClass !==null) {
+            $value=true;
+        }
+        return $value;
+
+
+    }
+
+
+    public function getSite(AbstractSite $parentSite) {
+
+
+        $site = new $this->siteClass($parentSite);
+        return $site;
+
+        //return $this->site;
+
+
+    }
+
 
 
 }
