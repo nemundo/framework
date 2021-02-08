@@ -3,7 +3,7 @@
 namespace Nemundo\Orm\Type\Text;
 
 
-use Nemundo\App\Translation\Type\LanguageType;
+use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVariable;
@@ -51,31 +51,38 @@ class TranslationTextOrmType extends TextOrmType
         $var->visibility = PhpVisibility::PublicVariable;
         $var->dataType = 'string[]';
 
-        $phpClass->addUseClass(LanguageType::class);
+        //$phpClass->addUseClass(LanguageType::class);
+        $phpClass->addUseClass(LanguageConfig::class);
         $phpClass->addUseClass(TextType::class);
 
-        $phpFunction->add('foreach ((new LanguageType())->getLanguageData() as $languageRow) {');
-        $phpFunction->add('if (isset($this->multiText[$languageRow->code])) {');
+        //$phpFunction->add('foreach ((new LanguageType())->getLanguageData() as $languageRow) {');
+        $phpFunction->add('foreach (LanguageConfig::$languageList as $language) {');
+        $phpFunction->add('if (isset($this->' . $var->variableName . '[$language])) {');
         $phpFunction->add('$type = new TextType();');
-        $phpFunction->add('$type->fieldName = $this->model->' . $this->variableName . '->fieldName."_" . $languageRow->code;');
-        $phpFunction->add('$this->typeValueList->setModelValue($type, $this->' . $this->variableName . '[$languageRow->code]);');
+        $phpFunction->add('$type->fieldName = $this->model->' . $this->variableName . '->fieldName."_" . $language;');
+        $phpFunction->add('$this->typeValueList->setModelValue($type, $this->' . $this->variableName . '[$language]);');
         $phpFunction->add('}');
         $phpFunction->add('}');
 
     }
 
 
+    /*
     public function getRowCode(PhpClass $phpClass)
     {
-        $this->addRowPrimitiveVarialbe($phpClass, 'string');
 
-        /*
-        $type = new TextType();
-        $type->fieldName = $this->model->multiText->fieldName."_" .(new LanguageSession())->getCode();  //getValue();  // $languageRow->code;
+        $var = new PhpVariable($phpClass);
+        $var->variableName = $this->variableName;
+        $var->visibility = PhpVisibility::PublicVariable;
+        $var->dataType = 'string';
 
-        $this->multiText = $this->getModelValue($type);
-        */
+        $phpClass->addUseClass(LanguageConfig::class);
+        $phpClass->addUseClass(TextType::class);
 
-    }
+        $phpClass->addConstructor('$type = new TextType();');
+        $phpClass->addConstructor('$type->aliasFieldName = $model->' . $this->variableName . '->aliasFieldName . "_" . LanguageConfig::$currentLanguageCode;');
+        $phpClass->addConstructor('$this->' . $this->variableName . ' = $this->getModelValue($type);');
+
+    }*/
 
 }

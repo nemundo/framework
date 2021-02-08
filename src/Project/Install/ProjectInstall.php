@@ -41,7 +41,7 @@ class ProjectInstall extends AbstractInstall
         (new UserInstall())->install();
         (new SchedulerInstall())->install();
 
-        $this->resetSetupStatus();
+        //$this->resetSetupStatus();
 
         (new ApplicationInstall())->install();
         (new ScriptInstall())->install();

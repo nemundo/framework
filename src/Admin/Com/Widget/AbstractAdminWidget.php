@@ -71,7 +71,7 @@ abstract class AbstractAdminWidget extends AbstractRestrictedUserHtmlContainer
     {
 
         $this->tagName = 'div';
-        $this->id = 'item_'.$this->widgetId;
+        //$this->id = 'item_'.$this->widgetId;
 
         //$this->cardBlock->id = 'item'.$this->widgetId;
 

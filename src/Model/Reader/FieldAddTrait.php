@@ -4,10 +4,13 @@
 namespace Nemundo\Model\Reader;
 
 
+use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Db\Sql\Join\SqlJoin;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Definition\Model\TypeListTrait;
 use Nemundo\Model\Type\External\ExternalType;
+use Nemundo\Model\Type\Text\TextType;
+use Nemundo\Model\Type\Text\TranslationTextType;
 
 
 trait FieldAddTrait
@@ -35,7 +38,22 @@ trait FieldAddTrait
                 if ($type->fieldMapping) {
 
                     $type->tableName = $model->aliasTableName;
+
+                    if ($type->isObjectOfClass(TranslationTextType::class)) {
+
+                        //$type2 = new TextType();
+                        //$type2->aliasFieldName = $model->country->aliasFieldName;  // . "_" . LanguageConfig::$currentLanguageCode;
+                        //$this->country = $this->getModelValue($type);
+
+                        $type->fieldName = $type->fieldName. "_" . LanguageConfig::$currentLanguageCode;
+                        //$type->aliasFieldName = $type->aliasFieldName. "_" . LanguageConfig::$currentLanguageCode;
+
+                        $this->addField($type);
+
+
+                    } else {
                     $this->addField($type);
+                    }
 
                 } else {
 

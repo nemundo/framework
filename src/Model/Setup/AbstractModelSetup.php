@@ -3,8 +3,8 @@
 namespace Nemundo\Model\Setup;
 
 
-use Nemundo\App\Translation\Type\LanguageType;
 use Nemundo\Core\Directory\TextDirectory;
+use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
@@ -120,9 +120,15 @@ abstract class AbstractModelSetup extends AbstractDbBase
             }
 
             if ($type->isObjectOfClass(TranslationTextType::class)) {
-                foreach ((new LanguageType())->getLanguageData() as $languageRow) {
+                /*foreach ((new LanguageType())->getLanguageData() as $languageRow) {
                     $table->addTextField($type->fieldName . '_' . $languageRow->code, $type->length, $type->allowNullValue);
+                }*/
+
+                foreach (LanguageConfig::$languageList as $language) {
+                    $table->addTextField($type->fieldName . '_' . $language, $type->length, $type->allowNullValue);
                 }
+
+
             }
 
             if ($type->isObjectOfClass(AbstractFileType::class)) {

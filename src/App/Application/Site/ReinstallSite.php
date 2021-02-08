@@ -8,22 +8,22 @@ use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Web\Site\AbstractSite;
 
-// Uninstall
-class UnInstallSite extends AbstractSite
+
+class ReinstallSite extends AbstractSite
 {
 
     /**
-     * @var UnInstallSite
+     * @var UninstallSite
      */
     public static $site;
 
     protected function loadSite()
     {
 
-        $this->title = 'UnInstall';
-        $this->url = 'uninstall';
+        $this->title = 'ReInstall';
+        $this->url = 'reinstall';
 
-        UnInstallSite::$site = $this;
+        ReinstallSite::$site = $this;
 
     }
 
@@ -33,8 +33,9 @@ class UnInstallSite extends AbstractSite
 
         $app = (new ApplicationParameter())->getApplication();
         $app->uninstallApp();
+        $app->installApp();
 
-        //(new UrlReferer())->redirect();
+        (new UrlReferer())->redirect();
 
     }
 

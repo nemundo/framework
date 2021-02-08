@@ -116,7 +116,6 @@ abstract class AbstractModelDataReader extends AbstractDataReader
 
         }
 
-
     }
 
 }

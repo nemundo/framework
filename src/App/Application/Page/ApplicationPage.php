@@ -8,7 +8,8 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Application\Site\InstallSite;
-use Nemundo\App\Application\Site\UnInstallSite;
+use Nemundo\App\Application\Site\ReinstallSite;
+use Nemundo\App\Application\Site\UninstallSite;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
@@ -32,6 +33,7 @@ class ApplicationPage extends AbstractTemplateDocument
         $header->addText($reader->model->install->label);
         $header->addEmpty();
         $header->addEmpty();
+        $header->addEmpty();
 
         foreach ($reader->getData() as $applicationRow) {
 
@@ -52,12 +54,23 @@ class ApplicationPage extends AbstractTemplateDocument
                 }
 
                 if ($app->hasUninstall()) {
-                    $site = clone(UnInstallSite::$site);
+                    $site = clone(UninstallSite::$site);
                     $site->addParameter(new ApplicationParameter($applicationRow->id));
                     $row->addSite($site);
                 } else {
                     $row->addEmpty();
                 }
+
+                if ($app->hasInstall() && ($app->hasUninstall())) {
+                    $site = clone(ReinstallSite::$site);
+                    $site->addParameter(new ApplicationParameter($applicationRow->id));
+                    $row->addSite($site);
+
+                } else {
+                    $row->addEmpty();
+                }
+
+
 
             } else {
                 $row->addText('No Class');
