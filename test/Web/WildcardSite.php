@@ -14,13 +14,7 @@ class TestWildcardSite extends AbstractWildcardSite
 {
 
 
-    public function loadContent()
-    {
 
-        (new \Nemundo\Core\Debug\Debug())->write('Output for '.$this->wildcardUrl);
-
-
-    }
 
 
     public function checkWildcardUrl()
@@ -36,6 +30,15 @@ class TestWildcardSite extends AbstractWildcardSite
         }
 
         return $value;
+
+
+    }
+
+
+    public function loadContent()
+    {
+
+        (new \Nemundo\Core\Debug\Debug())->write('Output for '.$this->wildcardUrl);
 
 
     }

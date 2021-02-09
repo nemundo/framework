@@ -59,6 +59,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     protected $siteClass;
 
 
+    /**
+     * @var string[]
+     */
+    private static $installDone = [];
+
+
     abstract protected function loadApplication();
 
     public function __construct()
@@ -89,12 +95,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     {
 
         $value = false;
-        if ($this->installClass!==null) {
-        if (class_exists($this->installClass)) {
-            $value = true;
-        } else {
-            (new Debug())->write('Install Class not found. Class: '.$this->installClass);
-        }
+        if ($this->installClass !== null) {
+            if (class_exists($this->installClass)) {
+                $value = true;
+            } else {
+                (new Debug())->write('Install Class not found. Class: ' . $this->installClass);
+            }
         }
         return $value;
 
@@ -106,13 +112,19 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         if ($this->hasInstall()) {
 
-            /** @var AbstractInstall $install */
-            $install = new $this->installClass();
-            $install->install();
+            if (!isset(AbstractApplication::$installDone[$this->applicationId])) {
 
-            $update = new ApplicationUpdate();
-            $update->install = true;
-            $update->updateById($this->applicationId);
+                /** @var AbstractInstall $install */
+                $install = new $this->installClass();
+                $install->install();
+
+                $update = new ApplicationUpdate();
+                $update->install = true;
+                $update->updateById($this->applicationId);
+
+                AbstractApplication::$installDone[$this->applicationId] = true;
+
+            }
 
         } else {
 
@@ -159,11 +171,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    public function hasSite() {
+    public function hasSite()
+    {
 
         $value = false;
-        if ($this->siteClass !==null) {
-            $value=true;
+        if ($this->siteClass !== null) {
+            $value = true;
         }
         return $value;
 
@@ -171,7 +184,8 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    public function getSite(AbstractSite $parentSite) {
+    public function getSite(AbstractSite $parentSite)
+    {
 
 
         $site = new $this->siteClass($parentSite);
@@ -181,7 +195,6 @@ abstract class AbstractApplication extends AbstractBaseClass
 
 
     }
-
 
 
 }

@@ -96,6 +96,9 @@ abstract class AbstractWebController extends AbstractSiteTree
         foreach ($site->getSiteList() as $siteChild) {
 
             if ($siteChild->isObjectOfClass(AbstractWildcardSite::class)) {
+
+                // user check
+
                 $siteChild->wildcardUrl = $this->urlList[$urlLevel - 1];
                 $this->foundSite = $siteChild->checkWildcardUrl();
 

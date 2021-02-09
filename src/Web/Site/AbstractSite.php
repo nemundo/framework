@@ -3,14 +3,11 @@
 namespace Nemundo\Web\Site;
 
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Domain\DomainInformation;
+use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\User\Access\UserRestrictionTrait;
-use Nemundo\User\Login\Session\IsLoggedSession;
-use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Url\Url;
-use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\Web\WebConfig;
 
 
@@ -111,6 +108,7 @@ abstract class AbstractSite extends AbstractSiteTree
     }
 
 
+    /*
     public function isChildMenuActive()
     {
 
@@ -129,13 +127,11 @@ abstract class AbstractSite extends AbstractSiteTree
 
         return $active;
 
-    }
+    }*/
 
 
     public function addParameter(AbstractUrlParameter $parameter)
     {
-
-        //(new Debug())->write($parameter);
 
         $found = false;
 
@@ -179,9 +175,6 @@ abstract class AbstractSite extends AbstractSiteTree
 
         $url = $this->getUrlWithoutParameter();
 
-        //(new Debug())->write($url);
-        //(new Debug())->write($this->parameterList);
-
         $urlParameter = [];
         foreach ($this->parameterList as $parameter) {
 
@@ -190,12 +183,7 @@ abstract class AbstractSite extends AbstractSiteTree
                 $urlParameter[] = $value;
             }
 
-            //(new Debug())->write($value);
-
         }
-
-
-        //(new Debug())->write($urlParameter);
 
         if (sizeof($urlParameter) > 0) {
             $url .= '?' . implode('&', $urlParameter);
@@ -212,8 +200,6 @@ abstract class AbstractSite extends AbstractSiteTree
 
     public function getUrlWithoutParameter()
     {
-
-        //(new Debug())->write('url: '.$this->url);
 
         $url = $this->parentUrl . '/' . $this->url;
         $url = str_replace('//', '/', $url);
@@ -243,6 +229,5 @@ abstract class AbstractSite extends AbstractSiteTree
     {
         $this->loadContent();
     }
-
 
 }
