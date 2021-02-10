@@ -46,12 +46,12 @@ trait OrmTypeTrait
     /**
      * @var string
      */
-    public $adminFormPartClassName;
+    //public $adminFormPartClassName;
 
     /**
      * @var string
      */
-    public $adminItemClassName;
+    //public $adminItemClassName;
 
     /**
      * @var bool

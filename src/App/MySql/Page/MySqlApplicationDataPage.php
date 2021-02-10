@@ -18,9 +18,9 @@ use Nemundo\Db\Provider\MySql\Table\MySqlTable;
 use Nemundo\Html\Heading\H2;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Model\Factory\ModelCollectionFactory;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Url\Url;
 
@@ -32,7 +32,7 @@ class MySqlApplicationDataPage extends AbstractTemplateDocument
 
         $form = new SearchForm($this);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         $applicationListBox = new ApplicationListBox($formRow);
         $applicationListBox->submitOnChange = true;

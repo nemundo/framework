@@ -4,8 +4,6 @@ namespace Nemundo\Com\Package;
 
 
 use Nemundo\Html\Header\LibraryHeader;
-use Nemundo\Html\Header\StylesheetLink;
-use Nemundo\Html\Script\JavaScript;
 use Nemundo\Web\WebConfig;
 
 trait PackageTrait

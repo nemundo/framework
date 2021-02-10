@@ -8,7 +8,7 @@ use Nemundo\App\Application\Com\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class SchedulerPage extends SchedulerTemplate
 {
@@ -18,7 +18,7 @@ class SchedulerPage extends SchedulerTemplate
 
         $form = new SearchForm($this);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         $application = new ApplicationListBox($formRow);
         $application->submitOnChange = true;

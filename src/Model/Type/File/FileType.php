@@ -19,7 +19,7 @@ class FileType extends AbstractFileType
     public $acceptFileType;
 
 
-    protected function loadExternalType()
+    /*protected function loadExternalType()
     {
         parent::loadExternalType();
 
@@ -27,7 +27,7 @@ class FileType extends AbstractFileType
         $this->viewItemClassName = FileModelItem::class;
         $this->tableItemClassName = FileModelItem::class;
 
-    }
+    }*/
 
 
     public function getDataPath()

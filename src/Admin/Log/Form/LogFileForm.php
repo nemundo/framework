@@ -6,7 +6,7 @@ namespace Nemundo\Admin\Log\Form;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\File\DirectoryReader;
 use Nemundo\Core\Log\LogConfig;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 
 class LogFileForm extends SearchForm
@@ -21,7 +21,7 @@ class LogFileForm extends SearchForm
     {
         parent::loadContainer();
 
-        $row = new BootstrapFormRow($this);
+        $row = new BootstrapRow($this);
 
         $this->listbox = new BootstrapListBox($row);
         $this->listbox->name = 'file';

@@ -3,8 +3,6 @@
 namespace Nemundo\Orm\Type\User;
 
 
-use Nemundo\Admin\AppDesigner\Form\Field\Type\ExternalUserTypeFormPart;
-use Nemundo\Admin\AppDesigner\Item\ExternalUserModelFieldAdminItem;
 use Nemundo\Orm\Type\External\ExternalOrmType;
 use Nemundo\User\Data\User\UserModel;
 
@@ -22,8 +20,8 @@ class UserOrmType extends ExternalOrmType
 
         $this->externalModelClassName = $this->prefixClassName(UserModel::class);
 
-        $this->adminFormPartClassName = ExternalUserTypeFormPart::class;
-        $this->adminItemClassName = ExternalUserModelFieldAdminItem::class;
+        /*$this->adminFormPartClassName = ExternalUserTypeFormPart::class;
+        $this->adminItemClassName = ExternalUserModelFieldAdminItem::class;*/
 
     }
 

@@ -171,6 +171,14 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+    public function reinstallApp() {
+
+        $this->uninstallApp();
+        $this->installApp();
+
+    }
+
+
     public function hasSite()
     {
 

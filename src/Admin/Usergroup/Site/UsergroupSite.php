@@ -12,7 +12,7 @@ use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\Web\Site\AbstractSite;
@@ -47,7 +47,7 @@ class UsergroupSite extends AbstractSite
 
         $form = new SearchForm($layout->col1);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         /*
         $applicationParameter = new ApplicationParameter();

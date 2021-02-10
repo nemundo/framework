@@ -15,13 +15,14 @@ class RedirectFileType extends FileType
      */
     public $redirectSite;
 
+    /*
     protected function loadExternalType()
     {
         parent::loadExternalType();
         $this->tableItemClassName = RedirectFileModelItem::class;
         $this->viewItemClassName = RedirectFileModelItem::class;
 
-    }
+    }*/
 
 
     public function getDataPath()

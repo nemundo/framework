@@ -2,9 +2,6 @@
 
 namespace Nemundo\App\ModelDesigner\Site\Data;
 
-
-use Nemundo\Admin\AppDesigner\Connection\AppDesignerConnection;
-use Nemundo\Admin\AppDesigner\Factory\RowFactory;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;

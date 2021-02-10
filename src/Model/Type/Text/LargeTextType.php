@@ -9,6 +9,7 @@ use Nemundo\Model\Type\AbstractModelType;
 class LargeTextType extends AbstractModelType
 {
 
+    /*
     protected function loadExternalType()
     {
 
@@ -18,6 +19,6 @@ class LargeTextType extends AbstractModelType
         $this->viewItemClassName = LargeTextModelItem::class;
         $this->tableItemClassName = LargeTextModelItem::class;
 
-    }
+    }*/
 
 }

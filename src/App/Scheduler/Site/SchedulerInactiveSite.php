@@ -10,7 +10,6 @@ use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
 use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\Package\FontAwesome\Icon\InactiveIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
 use Nemundo\Core\Http\Url\UrlReferer;
 
 class SchedulerInactiveSite extends AbstractIconSite
@@ -20,8 +19,6 @@ class SchedulerInactiveSite extends AbstractIconSite
     {
         $this->url = 'inactive';
         $this->menuActive = false;
-        //$this->restricted = true;
-        //$this->addRestrictedUsergroup(new SystemAdministratorUsergroup());
         $this->icon = new InactiveIcon();
     }
 

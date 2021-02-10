@@ -19,7 +19,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Db\Provider\SqLite\Connection\SqLiteConnection;
 use Nemundo\Html\Block\Div;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class SqLitePage extends SqLiteTemplate
 {
@@ -35,7 +35,7 @@ class SqLitePage extends SqLiteTemplate
 
         $form = new SearchForm($this);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         $list = new SqLiteTableListBox($formRow);
         $list->connection = $connection;

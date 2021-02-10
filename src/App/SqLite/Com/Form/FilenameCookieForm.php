@@ -7,7 +7,7 @@ namespace Nemundo\App\SqLite\Com\Form;
 use Nemundo\App\SqLite\Cookie\FilenameCookie;
 use Nemundo\App\SqLite\SqLiteConfig;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
 class FilenameCookieForm extends BootstrapForm
@@ -21,7 +21,7 @@ class FilenameCookieForm extends BootstrapForm
     public function getContent()
     {
 
-        $formRow=new BootstrapFormRow($this);
+        $formRow=new BootstrapRow($this);
 
         $this->input=new BootstrapTextBox($formRow);
         $this->input->label='SqLite Filename';

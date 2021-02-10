@@ -3,6 +3,9 @@
 namespace Nemundo\Package\Bootstrap\Layout;
 
 
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
+
 class BootstrapTwoColumnLayout extends BootstrapRow
 {
 

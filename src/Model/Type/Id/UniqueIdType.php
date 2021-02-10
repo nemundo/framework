@@ -17,9 +17,9 @@ class UniqueIdType extends AbstractModelType
         $this->visible->form = false;
         $this->visible->view = false;
         $this->visible->table = false;
-        $this->formTypeClassName = TextModelFormItem::class;
+        /*$this->formTypeClassName = TextModelFormItem::class;
         $this->tableItemClassName = TextModelItem::class;
-        $this->viewItemClassName = TextModelItem::class;
+        $this->viewItemClassName = TextModelItem::class;*/
 
     }
 

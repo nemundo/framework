@@ -14,7 +14,7 @@ class DecimalNumberType extends AbstractModelType
     /**
      * @var string
      */
-    public $measurementUnit;
+    //public $measurementUnit;
 
     protected function loadExternalType()
     {
@@ -23,9 +23,10 @@ class DecimalNumberType extends AbstractModelType
         // todo: validationType
         $this->validationType = ValidationType::IS_NUMBER;
 
+        /*
         $this->formTypeClassName = DecimalNumberModelFormItem::class;  // TextModelFormItem::class;
         $this->tableItemClassName = DecimalNumberModelItem::class;
-        $this->viewItemClassName = DecimalNumberModelItem::class;
+        $this->viewItemClassName = DecimalNumberModelItem::class;*/
 
     }
 

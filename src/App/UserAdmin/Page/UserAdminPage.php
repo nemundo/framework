@@ -16,7 +16,7 @@ use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Directory\TextDirectory;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Form\BootstrapSearchForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
@@ -35,7 +35,7 @@ class UserAdminPage extends UserAdminTemplate
 
         $searchForm = new BootstrapSearchForm($this);
 
-        $formRow = new BootstrapFormRow($searchForm);
+        $formRow = new BootstrapRow($searchForm);
 
         $text = new BootstrapTextBox($formRow);
         $text->name = 'q';

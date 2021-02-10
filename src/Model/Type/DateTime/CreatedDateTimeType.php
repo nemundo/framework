@@ -18,8 +18,8 @@ class CreatedDateTimeType extends DateTimeType
         $this->fieldName = 'created_date_time';
         $this->label = 'Created Date/Time';
 
-        $this->viewItemClassName = DateTimeModelItem::class;
-        $this->tableItemClassName = DateTimeModelItem::class;
+        //$this->viewItemClassName = DateTimeModelItem::class;
+        //$this->tableItemClassName = DateTimeModelItem::class;
 
         //$this->dataPropertyClassName = null;
 

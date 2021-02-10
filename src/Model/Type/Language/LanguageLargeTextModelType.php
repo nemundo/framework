@@ -14,10 +14,11 @@ class LanguageLargeTextModelType extends AbstractModelType
 
         parent::loadExternalType();
 
+        /*
         $this->formTypeClassName = LargeTextModelFormItem::class;
         $this->viewItemClassName = LargeTextModelItem::class;
         $this->tableItemClassName = LargeTextModelItem::class;
-
+*/
     }
 
 }

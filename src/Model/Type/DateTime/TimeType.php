@@ -12,7 +12,7 @@ class TimeType extends AbstractModelType
 
     // default formatierung
 
-    protected function loadExternalType()
+    /*protected function loadExternalType()
     {
         parent::loadExternalType();
 
@@ -20,6 +20,6 @@ class TimeType extends AbstractModelType
         $this->viewItemClassName = TimeModelItem::class;
         $this->tableItemClassName = TimeModelItem::class;
 
-    }
+    }*/
 
 }

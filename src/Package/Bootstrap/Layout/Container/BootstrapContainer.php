@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Package\Bootstrap\Layout;
+namespace Nemundo\Package\Bootstrap\Layout\Container;
 
 
 use Nemundo\Html\Container\AbstractHtmlContainer;

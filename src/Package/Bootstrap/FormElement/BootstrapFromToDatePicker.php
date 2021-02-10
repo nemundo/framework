@@ -4,7 +4,7 @@ namespace Nemundo\Package\Bootstrap\FormElement;
 
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class BootstrapFromToDatePicker extends AbstractContainer
 {
@@ -34,7 +34,7 @@ class BootstrapFromToDatePicker extends AbstractContainer
 
         parent::loadContainer();
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->from = new BootstrapDatePicker($formRow);
         $this->from->label[LanguageCode::EN] = 'From';

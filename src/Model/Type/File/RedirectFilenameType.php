@@ -69,10 +69,11 @@ class RedirectFilenameType extends AbstractComplexType
         $this->fileExtension->visible->table = false;
         $this->addType($this->fileExtension);
 
+        /*
         $this->formTypeClassName = RedirectFilenameModelFormItem::class;
         $this->tableItemClassName = RedirectFilenameModelItem::class;
         $this->viewItemClassName = RedirectFilenameModelItem::class;
-
+*/
     }
 
 

@@ -13,7 +13,7 @@ use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class MySqlPage extends AbstractTemplateDocument
@@ -32,7 +32,7 @@ class MySqlPage extends AbstractTemplateDocument
 
         $form = new SearchForm($widget);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         $table = new MySqlTableListBox($formRow);
         $table->submitOnChange = true;

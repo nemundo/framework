@@ -32,9 +32,10 @@ class GeoCoordinateType extends AbstractComplexType
         $this->longitude = new DecimalNumberType();
         $this->addType($this->longitude);
 
+        /*
         $this->formTypeClassName = GeoCoordinateModelFormItem::class;
         $this->viewItemClassName = GeoCoordinateModelItem::class;
-        $this->tableItemClassName = GeoCoordinateModelItem::class;
+        $this->tableItemClassName = GeoCoordinateModelItem::class;*/
 
     }
 

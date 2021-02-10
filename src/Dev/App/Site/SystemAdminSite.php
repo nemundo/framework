@@ -14,8 +14,6 @@ use Nemundo\App\Script\Site\ScriptSite;
 use Nemundo\App\System\Site\SystemSite;
 use Nemundo\App\SystemLog\Site\SystemLogSite;
 use Nemundo\App\UserAdmin\Site\UserAdminSite;
-use Nemundo\App\WebLog\Site\WebLogSite;
-use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
 use Nemundo\Web\Site\AbstractSite;
 
 class SystemAdminSite extends AbstractSite
@@ -26,8 +24,6 @@ class SystemAdminSite extends AbstractSite
 
         $this->title = 'System Admin';
         $this->url = 'system-admin';
-        $this->restricted = true;
-        $this->addRestrictedUsergroup(new SystemAdministratorUsergroup());
 
         new SchedulerSite($this);
         new MailQueueSite($this);
@@ -36,11 +32,9 @@ class SystemAdminSite extends AbstractSite
         new UserAdminSite($this);
         new UsergroupSite($this);
         new SystemLogSite($this);
-        new WebLogSite($this);
         new SystemSite($this);
         new LogFileSite($this);
         new ConfigSite($this);
-        new MigrationSite($this);
 
     }
 
@@ -49,6 +43,5 @@ class SystemAdminSite extends AbstractSite
     {
 
     }
-
 
 }

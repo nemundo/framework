@@ -3,7 +3,6 @@
 namespace Nemundo\Model\Type\File;
 
 use Nemundo\Model\Form\Item\File\FileModelFormItem;
-use Nemundo\Model\Item\File\FileModelItem;
 use Nemundo\Model\Type\AbstractModelType;
 
 abstract class AbstractFileType extends AbstractModelType
@@ -22,9 +21,9 @@ abstract class AbstractFileType extends AbstractModelType
     {
         parent::loadExternalType();
 
-        $this->formTypeClassName = FileModelFormItem::class;
-        $this->viewItemClassName = FileModelItem::class;
-        $this->tableItemClassName = FileModelItem::class;
+        //$this->formTypeClassName = FileModelFormItem::class;
+        /*$this->viewItemClassName = FileModelItem::class;
+        $this->tableItemClassName = FileModelItem::class;*/
 
     }
 

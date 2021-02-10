@@ -17,6 +17,7 @@ class YesNoType extends AbstractModelType
     public $defaultValue; // = false;
 
 
+    /*
     protected function loadExternalType()
     {
         parent::loadExternalType();
@@ -24,6 +25,6 @@ class YesNoType extends AbstractModelType
         $this->tableItemClassName = YesNoModelItem::class;
         $this->viewItemClassName = YesNoModelItem::class;
 
-    }
+    }*/
 
 }

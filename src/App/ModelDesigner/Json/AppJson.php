@@ -13,6 +13,7 @@ use Nemundo\App\ModelDesigner\Model\ModelDesignerOrmModel;
 use Nemundo\App\ModelDesigner\Orm\OrmBuilder;
 use Nemundo\App\ModelDesigner\Path\ModelPath;
 use Nemundo\App\ModelDesigner\Type\ExternalModelDesignerType;
+use Nemundo\App\ModelDesigner\Type\ImageModelDesignerType;
 use Nemundo\App\ModelDesigner\Type\TextModelDesignerType;
 use Nemundo\App\ModelDesigner\Type\VirtualExternalModelDesignerType;
 use Nemundo\Core\Base\AbstractBase;
@@ -410,7 +411,7 @@ class AppJson extends AbstractBase
             $row['primary_index'] = $model->primaryIndex->primaryIndexName;
             $row['is_deleted'] = $model->isDeleted;
 
-            /** @var ExternalModelDesignerType|VirtualExternalModelDesignerType $type */
+            /** @var ExternalModelDesignerType|VirtualExternalModelDesignerType|TextModelDesignerType|ImageModelDesignerType $type */
             foreach ($model->getTypeList(false, false) as $type) {
 
                 if ($type->isEditable) {

@@ -19,10 +19,6 @@ class UserAdminNavbar extends BootstrapSiteNavbar
 
         $this->fixed = true;
 
-        /*$logo = new BootstrapNavbarLogo($this);
-        $logo->logoSite = HomeSite::$site;
-        $logo->logoUrl = WebConfig::$webUrl . 'img/logo.png';*/
-
         $this->site = AdminConfig::$webController;
 
         /*

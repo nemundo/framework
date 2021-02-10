@@ -10,7 +10,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Crawler\HtmlParser\HtmlParser;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
 class HtmlParserPage extends AbstractTemplateDocument
@@ -21,7 +21,7 @@ class HtmlParserPage extends AbstractTemplateDocument
 
         $form = new SearchForm($this);
 
-        $formRow = new BootstrapFormRow($form);
+        $formRow = new BootstrapRow($form);
 
         $input = new BootstrapTextBox($formRow);
         $input->name = 'url';

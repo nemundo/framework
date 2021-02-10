@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Button\AdminSubmitButton;
 use Nemundo\Com\FormBuilder\AbstractFormBuilder;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Html\Form\Button\SubmitButton;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 
 abstract class AbstractAdminForm extends AbstractFormBuilder
@@ -19,7 +19,7 @@ abstract class AbstractAdminForm extends AbstractFormBuilder
     public $submitButton;
 
     /**
-     * @var BootstrapFormRow
+     * @var BootstrapRow
      */
     protected $buttonFormRow;
 
@@ -27,7 +27,7 @@ abstract class AbstractAdminForm extends AbstractFormBuilder
     {
         parent::loadContainer();
 
-        //$this->buttonFormRow = new BootstrapFormRow();
+        //$this->buttonFormRow = new BootstrapRow();
 
         $this->submitButton = new SubmitButton();  // new AdminSubmitButton();  // $this->buttonFormRow);
         $this->submitButton->addCssClass('btn btn-primary btn-sm');

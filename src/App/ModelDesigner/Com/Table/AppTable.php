@@ -19,7 +19,7 @@ use Nemundo\Html\Form\Form;
 use Nemundo\Html\Form\FormMethod;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
-use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTable;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\Site;

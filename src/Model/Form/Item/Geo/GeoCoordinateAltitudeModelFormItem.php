@@ -8,7 +8,7 @@ use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Model\Reader\Property\Geo\GeoCoordinateAltitudeReaderProperty;
 use Nemundo\Model\Type\AbstractModelType;
 use Nemundo\Model\Type\Geo\GeoCoordinateAltitudeType;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
 class GeoCoordinateAltitudeModelFormItem extends AbstractModelFormItem
@@ -42,7 +42,7 @@ class GeoCoordinateAltitudeModelFormItem extends AbstractModelFormItem
 
         //$map = new GoogleMaps($this);
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->latTextBox = new BootstrapTextBox($formRow);
         $this->latTextBox->label = 'Lat';

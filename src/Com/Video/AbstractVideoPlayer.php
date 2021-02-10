@@ -22,12 +22,12 @@ abstract class AbstractVideoPlayer extends AbstractHtmlContainer
     /**
      * @var int
      */
-    public $width = 600;
+    public $width;  // = 600;
 
     /**
      * @var int
      */
-    public $height = 360;
+    public $height;  // = 360;
 
 
 }

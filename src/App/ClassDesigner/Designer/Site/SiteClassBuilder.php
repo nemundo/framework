@@ -4,12 +4,9 @@ namespace Nemundo\App\ClassDesigner\Designer\Site;
 
 use Nemundo\App\ClassDesigner\Builder\AbstractClassBuilder;
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Core\Type\Text\Text;
-use Nemundo\Corona\App\Eurostat\Page\EurostatPage;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVisibility;
-use Nemundo\Project\AbstractProject;
 
 class SiteClassBuilder extends AbstractClassBuilder
 {
@@ -27,7 +24,7 @@ class SiteClassBuilder extends AbstractClassBuilder
     /**
      * @var bool
      */
-    public $createPageClass=false;
+    public $createPageClass = false;
 
 
     public function buildClass()
@@ -35,7 +32,7 @@ class SiteClassBuilder extends AbstractClassBuilder
 
         $siteClass = new PhpClass();
         $siteClass->overwriteExistingPhpFile = false;
-        $siteClass->project =$this->project;
+        $siteClass->project = $this->project;
         $siteClass->namespace = $this->namespace . '\\Site';
         $siteClass->className = $this->className . 'Site';
         $siteClass->extendsFromClass = 'AbstractSite';
@@ -51,36 +48,28 @@ class SiteClassBuilder extends AbstractClassBuilder
         $loadContentFunction = new PhpFunction($siteClass);
         $loadContentFunction->functionName = 'loadContent()';
 
-
-
-
         if ($this->createPageClass) {
 
             $phpClass = new PhpClass();
-            $phpClass->project =$this->project;
+            $phpClass->project = $this->project;
             $phpClass->namespace = $this->namespace . '\\Page';
             $phpClass->className = $this->className . 'Page';
-            $phpClass->extendsFromClass='AbstractTemplateDocument';
+            $phpClass->extendsFromClass = 'AbstractTemplateDocument';
             $phpClass->addUseClass(AbstractTemplateDocument::class);
 
-            $siteClass->addUseClass($this->namespace . '\\Page\\'. $this->className . 'Page');
+            $siteClass->addUseClass($this->namespace . '\\Page\\' . $this->className . 'Page');
 
-            $function=new PhpFunction($phpClass);
-            $function->functionName='getContent()';
+            $function = new PhpFunction($phpClass);
+            $function->functionName = 'getContent()';
             $function->add('return parent::getContent();');
 
-            $loadContentFunction->add('(new '.$this->className .'Page())->render();');
-
-
+            $loadContentFunction->add('(new ' . $this->className . 'Page())->render();');
 
             $phpClass->saveFile();
 
         }
 
-
         $siteClass->saveFile();
-
-
 
     }
 

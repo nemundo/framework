@@ -5,7 +5,7 @@ namespace Nemundo\Admin\Template;
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
-use Nemundo\Package\Bootstrap\Layout\BootstrapContainer;
+use Nemundo\Package\Bootstrap\Layout\Container\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\FontAwesome\FontAwesomePackage;

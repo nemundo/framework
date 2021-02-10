@@ -23,7 +23,7 @@ class GeoCoordinateAltitudeType extends GeoCoordinateType
         $this->altitude->label = 'Altitude';
         $this->addType($this->altitude);
 
-        $this->formTypeClassName = GeoCoordinateAltitudeModelFormItem::class;
+        //$this->formTypeClassName = GeoCoordinateAltitudeModelFormItem::class;
 
     }
 

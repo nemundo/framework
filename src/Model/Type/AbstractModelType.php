@@ -48,20 +48,20 @@ abstract class AbstractModelType extends AbstractColumnField
     /**
      * @var AbstractModelFormItem
      */
-    public $formTypeClassName;
+    //public $formTypeClassName;
 // formItemClassName
 // formClassName
 
     /**
      * @var AbstractModelItem
      */
-    public $tableItemClassName;
+    //public $tableItemClassName;
     // tableClassName
 
     /**
      * @var AbstractModelItem
      */
-    public $viewItemClassName;
+    //public $viewItemClassName;
     // viewClassName
 
 

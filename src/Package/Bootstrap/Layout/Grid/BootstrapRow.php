@@ -1,21 +1,21 @@
 <?php
 
-namespace Nemundo\Package\Bootstrap\Form;
+namespace Nemundo\Package\Bootstrap\Layout\Grid;
 
 
 use Nemundo\Html\Container\AbstractHtmlContainer;
 
-class BootstrapFormRow extends AbstractHtmlContainer
+class BootstrapRow extends AbstractHtmlContainer
 {
 
     public function getContent()
     {
-        $this->tagName = 'div';
 
-        //$this->addCssClass('form-row');
+        $this->tagName = 'div';
         $this->addCssClass('row');
 
         return parent::getContent();
+
     }
 
 }

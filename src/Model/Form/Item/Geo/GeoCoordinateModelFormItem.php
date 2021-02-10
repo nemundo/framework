@@ -9,7 +9,7 @@ use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Model\Reader\Property\Geo\GeoCoordinateReaderProperty;
 use Nemundo\Model\Type\AbstractModelType;
 use Nemundo\Model\Type\Geo\GeoCoordinateType;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
 class GeoCoordinateModelFormItem extends AbstractModelFormItem
@@ -38,7 +38,7 @@ class GeoCoordinateModelFormItem extends AbstractModelFormItem
 
         //$map = new GoogleMaps($this);
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->latTextBox = new BootstrapTextBox($formRow);
         $this->latTextBox->label = 'Lat';

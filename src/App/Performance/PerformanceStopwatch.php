@@ -5,11 +5,11 @@ namespace Nemundo\App\Performance;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Math\Percent\Percent;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Core\Time\Stopwatch;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Core\Type\Number\Number;
-use Nemundo\Core\Type\Number\PercentNumber;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Project\Path\LogPath;
 
@@ -116,7 +116,7 @@ class PerformanceStopwatch extends AbstractBase
 
         foreach (PerformanceStopwatch::$stopwatchTime as $key => $value) {
 
-            $percent = new PercentNumber($value);
+            $percent = new Percent($value);
             $percent->baseValue = $total;
 
             $content[] = $key . ': ' . (new Number($value))->formatNumber(1) . ' sec (' . $percent->getValue() . ')';

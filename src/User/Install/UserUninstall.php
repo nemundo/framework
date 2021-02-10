@@ -3,18 +3,18 @@
 namespace Nemundo\User\Install;
 
 
-use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
-use Nemundo\User\Data\UserCollection;
+use Nemundo\Project\Install\AbstractUninstall;
+use Nemundo\User\Data\UserModelCollection;
 
-class UserUninstall extends AbstractScript
+class UserUninstall extends AbstractUninstall
 {
 
     public function run()
     {
 
-        $setup = new ModelCollectionSetup();
-        $setup->removeCollection(new UserCollection());
+        (new ModelCollectionSetup())
+            ->removeCollection(new UserModelCollection());
 
     }
 

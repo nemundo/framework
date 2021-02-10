@@ -12,16 +12,17 @@ use Nemundo\Model\Type\AbstractModelType;
 class DateTimeType extends AbstractModelType
 {
 
-    public $dateTimeFormat = DateTimeFormat::SHORT_DATE_TIME_FORMAT;
+    //public $dateTimeFormat = DateTimeFormat::SHORT_DATE_TIME_FORMAT;
 
 
+    /*
     protected function loadExternalType()
     {
 
         $this->formTypeClassName = DateTimeModelFormItem::class;
-        $this->viewItemClassName = DateTimeModelItem::class;
-        $this->tableItemClassName = DateTimeModelItem::class;
+        /*$this->viewItemClassName = DateTimeModelItem::class;
+        $this->tableItemClassName = DateTimeModelItem::class;*/
 
-    }
+    //}
 
 }

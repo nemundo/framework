@@ -7,7 +7,7 @@ use Nemundo\App\UserAction\Form\PasswordRequestForm;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
 use Nemundo\Web\Parameter\UrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 

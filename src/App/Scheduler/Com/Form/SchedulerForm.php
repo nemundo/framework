@@ -11,7 +11,7 @@ use Nemundo\Core\Type\DateTime\Time;
 use Nemundo\Core\Validation\ValidationType;
 use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
@@ -66,13 +66,13 @@ class SchedulerForm extends BootstrapForm
 
         $schedulerRow = (new SchedulerReader())->getRowById($this->schedulerId);
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->active = new BootstrapCheckBox($formRow);
         $this->active->label = 'Active';
         $this->active->value = $schedulerRow->active;
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
 
         $this->day = new BootstrapTextBox($formRow);
@@ -93,7 +93,7 @@ class SchedulerForm extends BootstrapForm
         $this->minute->validation = true;
         $this->minute->validationType = ValidationType::IS_NUMBER;
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->specificStartTime = new BootstrapCheckBox($formRow);
         $this->specificStartTime->label = 'Specific Start Time';

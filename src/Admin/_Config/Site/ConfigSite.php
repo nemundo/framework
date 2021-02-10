@@ -5,8 +5,8 @@ namespace Nemundo\Admin\Config\Site;
 
 use Nemundo\Admin\Config\Com\ConfigInformationTable;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Site\AbstractSite;
 

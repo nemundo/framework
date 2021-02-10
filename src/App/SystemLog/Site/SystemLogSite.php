@@ -12,7 +12,7 @@ use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -35,7 +35,7 @@ class SystemLogSite extends AbstractSite
 
         $searchForm = new SearchForm($page);
 
-        $row = new BootstrapFormRow($searchForm);
+        $row = new BootstrapRow($searchForm);
 
         $applicationListBox = new ApplicationListBox($row);
         $applicationListBox->submitOnChange = true;

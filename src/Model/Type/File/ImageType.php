@@ -33,9 +33,10 @@ class ImageType extends FileType
 
         $this->acceptFileType = AcceptFileType::IMAGE;
 
-        $this->formTypeClassName = ImageModelFormItem::class;
+       /* $this->formTypeClassName = ImageModelFormItem::class;
         $this->viewItemClassName = ImageModelItem::class;
         $this->tableItemClassName = ImageModelItem::class;
+*/
 
     }
 

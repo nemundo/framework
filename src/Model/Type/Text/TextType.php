@@ -17,6 +17,7 @@ class TextType extends AbstractModelType
     public $length = 255;
 
 
+    /*
     protected function loadExternalType()
     {
 
@@ -26,6 +27,6 @@ class TextType extends AbstractModelType
         $this->viewItemClassName = TextModelItem::class;
         $this->tableItemClassName = TextModelItem::class;
 
-    }
+    }*/
 
 }

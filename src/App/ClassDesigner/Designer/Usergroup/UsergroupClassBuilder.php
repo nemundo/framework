@@ -1,10 +1,7 @@
 <?php
 
-
 namespace Nemundo\App\ClassDesigner\Designer\Usergroup;
 
-
-use Nemundo\Admin\AppDesigner\AppDesignerConfig;
 use Nemundo\App\ClassDesigner\Builder\AbstractClassBuilder;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Dev\Code\PhpClass;
@@ -18,7 +15,7 @@ class UsergroupClassBuilder extends AbstractClassBuilder
     {
 
         $phpClass = new PhpClass();
-        $phpClass->project =$this->project;
+        $phpClass->project = $this->project;
         $phpClass->className = $this->className . 'Usergroup';
         $phpClass->extendsFromClass = 'AbstractUsergroup';
         $phpClass->namespace = $this->namespace . '\Usergroup';
@@ -32,7 +29,6 @@ class UsergroupClassBuilder extends AbstractClassBuilder
         $function->add('$this->usergroupId = \'' . (new UniqueId())->getUniqueId() . '\';');
 
         $phpClass->saveFile();
-
 
     }
 

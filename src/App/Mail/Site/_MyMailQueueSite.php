@@ -4,7 +4,6 @@ namespace Nemundo\App\Mail\Site;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\App\Mail\Data\MailQueue\MailQueuePaginationModelReader;
 use Nemundo\App\Mail\Parameter\MailUrlParameter;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -18,7 +17,6 @@ use Nemundo\Web\Site\AbstractSite;
 
 class MyMailQueueSite extends AbstractSite
 {
-
 
     /**
      * @var MyMailQueueSite

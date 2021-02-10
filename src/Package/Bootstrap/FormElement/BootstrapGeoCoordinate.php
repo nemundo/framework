@@ -5,7 +5,7 @@ namespace Nemundo\Package\Bootstrap\FormElement;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class BootstrapGeoCoordinate extends AbstractContainer
 {
@@ -32,7 +32,7 @@ class BootstrapGeoCoordinate extends AbstractContainer
 
         parent::loadContainer();
 
-        $formRow = new BootstrapFormRow($this);
+        $formRow = new BootstrapRow($this);
 
         $this->lat = new BootstrapTextBox($formRow);
         $this->lat->label = 'Lat';

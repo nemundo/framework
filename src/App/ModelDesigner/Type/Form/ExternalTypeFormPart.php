@@ -3,7 +3,6 @@
 namespace Nemundo\App\ModelDesigner\Type\Form;
 
 
-use Nemundo\Admin\AppDesigner\Data\AppModel\AppModelListBox;
 use Nemundo\App\ModelDesigner\Builder\ModelBuilder;
 use Nemundo\App\ModelDesigner\Com\ListBox\ModelListBox;
 use Nemundo\App\ModelDesigner\Type\ExternalModelDesignerType;
@@ -17,7 +16,7 @@ class ExternalTypeFormPart extends AbstractModelDesignerTypeFormPart
     public $type;
 
     /**
-     * @var AppModelListBox
+     * @var ModelListBox
      */
     private $externalModel;
 

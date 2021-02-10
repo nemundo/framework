@@ -32,9 +32,10 @@ class NumberType extends AbstractModelType
     {
         $this->validationType = ValidationType::IS_NUMBER;
 
+        /*
         $this->formTypeClassName = TextModelFormItem::class;
         $this->tableItemClassName = NumberModelItem::class;
-        $this->viewItemClassName = NumberModelItem::class;
+        $this->viewItemClassName = NumberModelItem::class;*/
 
     }
 

@@ -19,7 +19,7 @@ use Nemundo\Model\Form\ModelFormUpdate;
 use Nemundo\Model\Table\ActiveModelPaginationTable;
 use Nemundo\Model\Table\ModelPaginationTable;
 use Nemundo\Model\View\ModelView;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Web\Action\ActionSite;

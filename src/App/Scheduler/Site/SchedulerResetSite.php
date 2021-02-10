@@ -11,7 +11,6 @@ use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
 use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
 use Nemundo\Package\FontAwesome\Icon\ActiveIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
 use Nemundo\Core\Http\Url\UrlReferer;
 
 class SchedulerResetSite extends AbstractIconSite
@@ -24,12 +23,14 @@ class SchedulerResetSite extends AbstractIconSite
 
     protected function loadSite()
     {
+
         $this->title = 'Reset';
         $this->url = 'reset';
         $this->menuActive = false;
         $this->icon = new ActiveIcon();
 
         SchedulerResetSite::$site = $this;
+
     }
 
 

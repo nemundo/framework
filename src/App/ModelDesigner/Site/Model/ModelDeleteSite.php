@@ -6,7 +6,6 @@ namespace Nemundo\App\ModelDesigner\Site\Model;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Path\Path;
 use Nemundo\Dev\Code\PhpNamespace;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;

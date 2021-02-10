@@ -32,8 +32,7 @@ class ReinstallSite extends AbstractSite
     {
 
         $app = (new ApplicationParameter())->getApplication();
-        $app->uninstallApp();
-        $app->installApp();
+        $app->reinstallApp();
 
         (new UrlReferer())->redirect();
 

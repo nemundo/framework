@@ -18,8 +18,8 @@ class ModifiedDateTimeType extends DateTimeType
         $this->fieldName = 'modified_date_time';
         $this->label = 'Modified Date/Time';
 
-        $this->viewItemClassName = DateTimeModelItem::class;
-        $this->tableItemClassName = DateTimeModelItem::class;
+        //$this->viewItemClassName = DateTimeModelItem::class;
+        //$this->tableItemClassName = DateTimeModelItem::class;
 
     }
 

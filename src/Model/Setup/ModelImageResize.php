@@ -4,11 +4,11 @@ namespace Nemundo\Model\Setup;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\File\Path;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
 use Nemundo\Core\Image\Format\FixHeightImageFormat;
 use Nemundo\Core\Image\Format\FixWidthImageFormat;
 use Nemundo\Core\Image\ImageResize;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Reader\ModelDataReader;

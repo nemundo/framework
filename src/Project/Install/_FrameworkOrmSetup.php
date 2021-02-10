@@ -18,7 +18,7 @@ class FrameworkOrmSetup extends AbstractScript
 
         $setup = new OrmCollectionSetup();
         $setup->project = new FrameworkProject();
-        $setup->addCollection(new AppDesignerOrmCollection());
+        //$setup->addCollection(new AppDesignerOrmCollection());
         $setup->addCollection(new SqlAnalyzerOrmCollection());
 
     }

@@ -12,7 +12,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Web\Site\AbstractSite;
 
 class ScriptSite extends AbstractSite
@@ -47,7 +47,7 @@ class ScriptSite extends AbstractSite
 
         $search = new SearchForm($page);
 
-        $formRow = new BootstrapFormRow($search);
+        $formRow = new BootstrapRow($search);
 
         $applicationListBox = new ApplicationListBox($formRow);
         $applicationListBox->submitOnChange = true;

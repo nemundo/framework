@@ -62,9 +62,10 @@ class ExternalType extends AbstractModelType
 
         $this->visible->view = true;
 
+        /*
         $this->formTypeClassName = ExternalModelFormItem::class;
         $this->tableItemClassName = ExternalModelItem::class;
-        $this->viewItemClassName = ExternalModelItem::class;
+        $this->viewItemClassName = ExternalModelItem::class;*/
 
     }
 

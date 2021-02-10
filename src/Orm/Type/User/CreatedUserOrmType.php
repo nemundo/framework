@@ -2,9 +2,6 @@
 
 namespace Nemundo\Orm\Type\User;
 
-
-use Nemundo\Admin\AppDesigner\Form\Field\Type\ExternalUserTypeFormPart;
-use Nemundo\Admin\AppDesigner\Item\ExternalUserModelFieldAdminItem;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Model\Type\User\CreatedUserType;
@@ -20,8 +17,8 @@ class CreatedUserOrmType extends UserOrmType
         $this->typeName = 'created_user';
         $this->typeId = 'e37deb62-9855-413f-9e76-aee5a6a56cf0';
 
-        $this->adminFormPartClassName = ExternalUserTypeFormPart::class;
-        $this->adminItemClassName = ExternalUserModelFieldAdminItem::class;
+        //$this->adminFormPartClassName = ExternalUserTypeFormPart::class;
+        //$this->adminItemClassName = ExternalUserModelFieldAdminItem::class;
 
     }
 

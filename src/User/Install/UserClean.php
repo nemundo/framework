@@ -4,6 +4,7 @@ namespace Nemundo\User\Install;
 
 
 use Nemundo\App\Script\Type\AbstractConsoleScript;
+use Nemundo\User\Application\UserApplication;
 
 class UserClean extends AbstractConsoleScript
 {
@@ -16,8 +17,7 @@ class UserClean extends AbstractConsoleScript
     public function run()
     {
 
-        (new UserUninstall())->run();
-        (new UserInstall())->run();
+        (new UserApplication())->reinstallApp();
 
     }
 

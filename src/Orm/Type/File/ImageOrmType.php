@@ -2,7 +2,6 @@
 
 namespace Nemundo\Orm\Type\File;
 
-use Nemundo\Admin\AppDesigner\Item\ImageModelFieldAdminItem;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVariable;
@@ -25,7 +24,7 @@ class ImageOrmType extends ImageType
         $this->typeLabel = 'Image';
         $this->typeName = 'image';
         $this->typeId = 'ab8d94c6-09d0-4e26-ada4-10de45a449b5';
-        $this->adminItemClassName = ImageModelFieldAdminItem::class;
+        //$this->adminItemClassName = ImageModelFieldAdminItem::class;
     }
 
 

@@ -2,8 +2,6 @@
 
 namespace Nemundo\Orm\Type\File;
 
-use Nemundo\Admin\AppDesigner\Form\Field\Type\FileTypeFormPart;
-use Nemundo\Admin\AppDesigner\Item\FileModelFieldAdminItem;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Model\Data\Property\File\FileDataProperty;
@@ -26,8 +24,8 @@ class FileOrmType extends FileType
         $this->typeName='file';
         $this->typeId = 'b6810630-5fc9-4b9a-9f99-83b1d76d38a0';
 
-        $this->adminFormPartClassName = FileTypeFormPart::class;
-        $this->adminItemClassName = FileModelFieldAdminItem::class;
+        /*$this->adminFormPartClassName = FileTypeFormPart::class;
+        $this->adminItemClassName = FileModelFieldAdminItem::class;*/
 
     }
 

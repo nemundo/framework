@@ -17,8 +17,8 @@ class UserApplication extends AbstractApplication
         $this->application = 'User';
         $this->applicationId = '3fe9852f-322d-4d9d-af37-eaafdcda8f25';
         $this->modelCollectionClass = UserModelCollection::class;
-        $this->installClass=UserInstall::class;
-        //$this->uninstallClass=UserUninstall::class;
+        $this->installClass = UserInstall::class;
+        $this->uninstallClass = UserUninstall::class;
 
     }
 

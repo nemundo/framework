@@ -13,7 +13,7 @@ use Nemundo\App\Script\Template\ScriptTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class ScriptPage extends ScriptTemplate
 {
@@ -23,7 +23,7 @@ class ScriptPage extends ScriptTemplate
 
         $search = new SearchForm($this);
 
-        $formRow = new BootstrapFormRow($search);
+        $formRow = new BootstrapRow($search);
 
         $applicationListBox = new ApplicationListBox($formRow);
         $applicationListBox->submitOnChange = true;

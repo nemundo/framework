@@ -9,7 +9,7 @@ use Nemundo\App\UserAction\Widget\PasswordChangeWidget;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\User\Parameter\PasswordChangeParameter;
 use Nemundo\Web\Site\AbstractSite;

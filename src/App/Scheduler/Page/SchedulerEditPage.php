@@ -12,7 +12,7 @@ use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
 use Nemundo\App\Scheduler\Site\SchedulerSite;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class SchedulerEditPage extends SchedulerTemplate
 {
