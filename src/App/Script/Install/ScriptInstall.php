@@ -5,7 +5,7 @@ namespace Nemundo\App\Script\Install;
 use Nemundo\App\Application\Install\ApplicationInstall;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Script\Application\ScriptApplication;
-use Nemundo\App\Script\Data\ScriptCollection;
+use Nemundo\App\Script\Data\ScriptModelCollection;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Install\AbstractInstall;
 
@@ -21,7 +21,7 @@ class ScriptInstall extends AbstractInstall
             ->addApplication(new ScriptApplication());
 
         (new ModelCollectionSetup())
-            ->addCollection(new ScriptCollection());
+            ->addCollection(new ScriptModelCollection());
 
     }
 
