@@ -28,7 +28,7 @@ class IdOrmType extends IdType
     {
 
         $this->addModelObject($phpClass, $phpFunction, IdType::class);
-        $phpFunction->add('$this->id->visible->form = false;');
+        //$phpFunction->add('$this->id->visible->form = false;');
 
     }
 

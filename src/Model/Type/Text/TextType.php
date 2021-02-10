@@ -4,7 +4,7 @@ namespace Nemundo\Model\Type\Text;
 
 
 use Nemundo\Model\Form\Item\Text\TextModelFormItem;
-use Nemundo\Model\Item\Text\TextModelItem;
+
 use Nemundo\Model\Type\AbstractModelType;
 
 // TextModelType

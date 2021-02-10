@@ -13,7 +13,7 @@ class ModifiedDateTimeType extends DateTimeType
 
         parent::loadExternalType();
 
-        $this->visible->form = false;
+        //$this->visible->form = false;
 
         $this->fieldName = 'modified_date_time';
         $this->label = 'Modified Date/Time';

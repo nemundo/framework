@@ -6,7 +6,7 @@ use Nemundo\Db\Filter\Filter;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Definition\Model\TypeListTrait;
 use Nemundo\Model\Form\Item\External\ExternalModelFormItem;
-use Nemundo\Model\Item\External\ExternalModelItem;
+
 use Nemundo\Model\Type\AbstractModelType;
 use Nemundo\Model\Type\Id\UniqueIdType;
 use Nemundo\Orm\Model\AbstractOrmModel;
@@ -60,7 +60,7 @@ class ExternalType extends AbstractModelType
 
         $this->filter = new Filter();
 
-        $this->visible->view = true;
+        //$this->visible->view = true;
 
         /*
         $this->formTypeClassName = ExternalModelFormItem::class;

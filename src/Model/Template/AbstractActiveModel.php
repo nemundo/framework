@@ -26,8 +26,8 @@ abstract class AbstractActiveModel extends AbstractModel
         $this->active->aliasFieldName = $this->tableName . '_active';
         $this->active->tableName = $this->tableName;
         $this->active->defaultValue = true;
-        $this->active->visible->form = false;
-        $this->active->visible->view = false;
+        //$this->active->visible->form = false;
+        //$this->active->visible->view = false;
 
     }
 

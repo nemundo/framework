@@ -28,15 +28,16 @@ class NumberType extends AbstractModelType
     //public $thousandSeparator = '\'';
 
 
+    /*
     protected function loadExternalType()
     {
-        $this->validationType = ValidationType::IS_NUMBER;
+       // $this->validationType = ValidationType::IS_NUMBER;
 
         /*
         $this->formTypeClassName = TextModelFormItem::class;
         $this->tableItemClassName = NumberModelItem::class;
         $this->viewItemClassName = NumberModelItem::class;*/
 
-    }
+    //}
 
 }

@@ -7,7 +7,7 @@ use Nemundo\Db\Sql\Field\AbstractColumnField;
 use Nemundo\Model\Data\Property\AbstractDataProperty;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
-use Nemundo\Model\Item\AbstractModelItem;
+
 use Nemundo\Model\Type\Property\ModelVisible;
 
 
@@ -38,12 +38,12 @@ abstract class AbstractModelType extends AbstractColumnField
     /**
      * @var ModelVisible
      */
-    public $visible;
+    //public $visible;
 
     /**
      * @var bool
      */
-    public $validation = false;
+    //public $validation = false;
 
     /**
      * @var AbstractModelFormItem
@@ -78,7 +78,7 @@ abstract class AbstractModelType extends AbstractColumnField
     /**
      * @var ValidationType
      */
-    public $validationType = ValidationType::IS_VALUE;
+    //public $validationType = ValidationType::IS_VALUE;
 
 
     public function __construct(AbstractModel $model = null)
@@ -90,7 +90,7 @@ abstract class AbstractModelType extends AbstractColumnField
             $model->addType($this);
         }
 
-        $this->visible = new ModelVisible();
+        //$this->visible = new ModelVisible();
 
         $this->loadExternalType();
 

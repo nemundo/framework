@@ -52,21 +52,21 @@ class RedirectFilenameType extends AbstractComplexType
         $this->fieldMapping = false;
 
         $this->file = new RedirectFileType();
-        $this->file->visible->table = false;
+        //$this->file->visible->table = false;
         $this->addType($this->file);
 
         $this->fileName = new TextType();
-        $this->fileName->visible->table = false;
+        //$this->fileName->visible->table = false;
         $this->addType($this->fileName);
 
         $this->fileSize = new NumberType();
         $this->fileSize->label = 'File Size';
-        $this->fileSize->visible->table = false;
+        //$this->fileSize->visible->table = false;
         $this->addType($this->fileSize);
 
         $this->fileExtension = new TextType();
         $this->fileExtension->length = 10;
-        $this->fileExtension->visible->table = false;
+        //$this->fileExtension->visible->table = false;
         $this->addType($this->fileExtension);
 
         /*

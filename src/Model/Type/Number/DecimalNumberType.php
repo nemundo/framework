@@ -16,7 +16,7 @@ class DecimalNumberType extends AbstractModelType
      */
     //public $measurementUnit;
 
-    protected function loadExternalType()
+   /* protected function loadExternalType()
     {
 
         // todo: komma durch punkt ersetzen in inbox
@@ -28,6 +28,6 @@ class DecimalNumberType extends AbstractModelType
         $this->tableItemClassName = DecimalNumberModelItem::class;
         $this->viewItemClassName = DecimalNumberModelItem::class;*/
 
-    }
+    //}
 
 }

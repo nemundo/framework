@@ -16,7 +16,6 @@ class BootstrapNavbar extends Nav
      */
     public $fixed = false;
 
-
     /**
      * @var Div
      */

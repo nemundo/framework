@@ -1,13 +1,13 @@
 <?php
 
-namespace Nemundo\Package\Bootstrap\Autocomplete;
+namespace Nemundo\Package\JqueryUi\Autocomplete;
 
 use Nemundo\Com\Container\LibraryTrait;
+use Nemundo\Html\Form\Input\TextInput;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\Package\JqueryUi\Autocomplete\AutocompleteTrait;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
 
-class BootstrapAutocompleteMultipleValueTextBox extends BootstrapTextBox
+class AutocompleteMultipleValueTextInput extends TextInput
 {
 
     use LibraryTrait;

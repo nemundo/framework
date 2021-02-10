@@ -49,10 +49,6 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "user_user_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
-$this->id->visible->table = false;
-$this->id->visible->view = false;
-$this->id->visible->form = false;
 
 $this->active = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->active->tableName = "user_user";

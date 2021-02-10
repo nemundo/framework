@@ -5,6 +5,8 @@ namespace Nemundo\Package\Bootstrap\Navbar;
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Content\App\Explorer\Site\SearchSite;
+use Nemundo\Content\Index\Search\Com\Form\NavbarContentSearchForm;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -35,6 +37,11 @@ class BootstrapSiteNavbar extends BootstrapNavbar
     public $searchMode = false;
 
     /**
+     * @var AbstractSite
+     */
+    public $searchSite;
+
+    /**
      * @var AbstractSite[]
      */
     private $userMenuSiteList = [];
@@ -62,11 +69,12 @@ class BootstrapSiteNavbar extends BootstrapNavbar
         $div->addCssClass('collapse navbar-collapse');
 
         $list = new Ul($div);
-        $list->addCssClass('navbar-nav');
+        $list->addCssClass('navbar-nav me-auto mb-2 mb-lg-0');
+
 
         foreach ($this->site->getMenuActiveSite() as $site) {
 
-            $li = new Li($list);
+            $li = new Li($list);   // NavItem
             $li->addCssClass('nav-item');
 
             if ($site->hasItems()) {
@@ -84,7 +92,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
                 if ($menuActive) {
 
-                    $hyperlink = new Hyperlink($li);
+                    $hyperlink = new Hyperlink($li);  // NavHyperlink
                     $hyperlink->addCssClass('nav-link');
                     $hyperlink->content = $site->title;
                     $hyperlink->href='#';
@@ -134,20 +142,6 @@ class BootstrapSiteNavbar extends BootstrapNavbar
             $isLogged = new IsLoggedSession();
             if ($isLogged->getValue()) {
 
-/*
-                <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>*/
-
-
                 $li = new Li($list);
                 $li->addCssClass('nav-item dropdown');
 
@@ -164,7 +158,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
                 $bold = new Bold($hyperlink);
                 $bold->content = ' ' . (new UserSession())->displayName;
 
-                $userList = new Ul($li); //new Div($li);
+                $userList = new Ul($li);
                 $userList->addCssClass('dropdown-menu');
                 $userList->addAttribute('aria-labelledby', 'navbarDropdown2');
 
@@ -190,11 +184,16 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
         // das muss hier raus !!!
 
-        /*if ($this->searchMode) {
-            if ((new UserSessionType())->isUserLogged()) {
+        if ($this->searchMode) {
+            if ((new UserSession())->isUserLogged()) {
+
+                $search=new NavbarContentSearchForm($div);
+                $search->site= $this->searchSite;  // SearchSite::$site;
+
                 //new NavbarSearchForm($this);
+
             }
-        }*/
+        }
 
         return parent::getContent();
 

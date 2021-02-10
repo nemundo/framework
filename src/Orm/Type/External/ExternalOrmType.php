@@ -296,14 +296,16 @@ class ExternalOrmType extends ExternalType
         $loadFunction->add('$this->' . $this->variableName . '->aliasFieldName = "' . $this->getAliasFieldName() . '";');
         $loadFunction->add('$this->' . $this->variableName . '->label = "' . $this->label . '";');
 
+        /*
         if ($this->validation) {
             $loadFunction->add('$this->' . $this->variableName . '->validation = true;');
-        }
+        }*/
 
         if ($this->defaultValue !== null) {
             $loadFunction->add('$this->' . $this->variableName . '->defaultValue = ' . $this->defaultValue . ';');
         }
 
+        /*
         if (!$this->visible->form) {
             $loadFunction->add('$this->' . $this->variableName . '->visible->form = false;');
         }
@@ -318,7 +320,7 @@ class ExternalOrmType extends ExternalType
 
         if ($this->isObjectOfClass(CreatedUserOrmType::class) || $this->isObjectOfClass(ModifiedUserOrmType::class)) {
             $loadFunction->add('$this->' . $this->variableName . '->visible->form = false;');
-        }
+        }*/
 
         $loadFunction->add('}');
 

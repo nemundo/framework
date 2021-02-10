@@ -5,6 +5,7 @@ namespace Nemundo\Package\Bootstrap\Autocomplete;
 
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\JqueryUi\Autocomplete\AutocompleteTrait;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
 use Nemundo\Web\Site\AbstractSite;
 

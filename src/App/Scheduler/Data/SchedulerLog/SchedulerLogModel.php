@@ -54,10 +54,6 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "scheduler_log_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
-$this->id->visible->table = false;
-$this->id->visible->view = false;
-$this->id->visible->form = false;
 
 $this->schedulerId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
 $this->schedulerId->tableName = "scheduler_log";

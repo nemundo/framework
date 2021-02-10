@@ -17,6 +17,11 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
      */
     public $deleteOrm = false;
 
+    /**
+     * @var bool
+     */
+    public $createOrm = false;
+
 
     protected function loadScript()
     {
@@ -41,7 +46,10 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
                 if ($this->deleteOrm) {
                     $orm->deleteOrm();
                 }
+
+                if ($this->createOrm) {
                 $orm->createOrm();
+                }
 
             }
 

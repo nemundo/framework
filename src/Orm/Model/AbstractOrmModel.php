@@ -84,8 +84,8 @@ abstract class AbstractOrmModel extends AbstractModel
         $this->id = new IdOrmType($this);
         $this->id->fieldName = 'id';
         $this->id->variableName = 'id';
-        $this->id->visible->form = false;
-        $this->id->visible->table = false;
+        //$this->id->visible->form = false;
+        //$this->id->visible->table = false;
 
         parent::__construct();
 

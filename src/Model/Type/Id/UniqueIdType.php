@@ -10,6 +10,7 @@ use Nemundo\Model\Type\AbstractModelType;
 class UniqueIdType extends AbstractModelType
 {
 
+    /*
     protected function loadExternalType()
     {
 
@@ -21,6 +22,6 @@ class UniqueIdType extends AbstractModelType
         $this->tableItemClassName = TextModelItem::class;
         $this->viewItemClassName = TextModelItem::class;*/
 
-    }
+    //}
 
 }

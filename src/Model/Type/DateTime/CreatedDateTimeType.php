@@ -3,7 +3,6 @@
 namespace Nemundo\Model\Type\DateTime;
 
 
-use Nemundo\Model\Item\DateTime\DateTimeModelItem;
 
 class CreatedDateTimeType extends DateTimeType
 {
@@ -13,7 +12,7 @@ class CreatedDateTimeType extends DateTimeType
 
         parent::loadExternalType();
 
-        $this->visible->form = false;
+        //$this->visible->form = false;
 
         $this->fieldName = 'created_date_time';
         $this->label = 'Created Date/Time';

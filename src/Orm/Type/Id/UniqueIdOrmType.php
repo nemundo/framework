@@ -29,7 +29,7 @@ class UniqueIdOrmType extends UniqueIdType
     {
 
         $this->addModelObject($phpClass, $phpFunction, UniqueIdType::class);
-        $phpFunction->add('$this->id->visible->form = false;');
+        //$phpFunction->add('$this->id->visible->form = false;');
 
     }
 
@@ -53,6 +53,5 @@ class UniqueIdOrmType extends UniqueIdType
     {
         $this->addRowPrimitiveVarialbe($phpClass, 'string');
     }
-
 
 }

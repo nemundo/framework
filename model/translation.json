@@ -2,7 +2,7 @@
     "app": "Translation",
     "name": "translation",
     "namespace": "Nemundo\\App\\Translation",
-    "is_deleted": false,
+    "is_deleted": true,
     "model": [
         {
             "template": "default",

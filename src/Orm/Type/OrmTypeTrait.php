@@ -120,9 +120,9 @@ trait OrmTypeTrait
         $phpFunction->add('$this->' . $this->variableName . '->fieldName = "' . $this->fieldName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->aliasFieldName = "' . $aliasFieldName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->label = "' . $this->label . '";');
-        if ($this->validation) {
+        /*if ($this->validation) {
             $phpFunction->add('$this->' . $this->variableName . '->validation = true;');
-        }
+        }*/
 
         if ($this->defaultValue !== null) {
             $phpFunction->add('$this->' . $this->variableName . '->defaultValue = ' . $this->defaultValue . ';');
@@ -130,6 +130,7 @@ trait OrmTypeTrait
 
         $phpFunction->add('$this->' . $this->variableName . '->allowNullValue = ' . (new YesNo($this->allowNullValue))->getText() . ';');
 
+        /*
         if (!$this->visible->form) {
             $phpFunction->add('$this->' . $this->variableName . '->visible->form = false;');
         }
@@ -140,7 +141,7 @@ trait OrmTypeTrait
 
         if (!$this->visible->view) {
             $phpFunction->add('$this->' . $this->variableName . '->visible->view = false;');
-        }
+        }*/
 
     }
 

@@ -6,7 +6,7 @@ namespace Nemundo\Package\Bootstrap\Autocomplete;
 
 use Nemundo\Web\Site\AbstractSite;
 
-trait AutocompleteTrait
+trait __AutocompleteTrait
 {
 
     /**

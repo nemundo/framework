@@ -7,6 +7,7 @@ use Nemundo\Model\Type\AbstractModelType;
 abstract class AbstractExternalIdType extends AbstractModelType
 {
 
+    /*
     protected function loadExternalType()
     {
 
@@ -15,6 +16,6 @@ abstract class AbstractExternalIdType extends AbstractModelType
         $this->visible->view = false;
         $this->visible->table = false;
 
-    }
+    }*/
 
 }

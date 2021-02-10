@@ -14,7 +14,7 @@ class CreatedUserType extends UniqueIdType
     {
         parent::loadExternalType();
 
-        $this->visible->form = false;
+        //$this->visible->form = false;
         $this->dataPropertyClassName = CreatedUserDataProperty::class;
 
     }

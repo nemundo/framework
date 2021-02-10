@@ -17,9 +17,7 @@ public $usergroup;
 public $setupStatus;
 
 protected function loadModel() {
-//$this->tableName = "test_user_usergroup";
-    $this->tableName = "user_usergroup";
-
+$this->tableName = "user_usergroup";
 $this->aliasTableName = "user_usergroup";
 $this->label = "Usergroup";
 
@@ -31,10 +29,6 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "user_usergroup_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
-$this->id->visible->table = false;
-$this->id->visible->view = false;
-$this->id->visible->form = false;
 
 $this->usergroup = new \Nemundo\Model\Type\Text\TextType($this);
 $this->usergroup->tableName = "user_usergroup";

@@ -49,10 +49,6 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "mail_queue_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
-$this->id->visible->table = false;
-$this->id->visible->view = false;
-$this->id->visible->form = false;
 
 $this->send = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->send->tableName = "mail_queue";
@@ -97,7 +93,6 @@ $this->dateTimeCreated->fieldName = "date_time_created";
 $this->dateTimeCreated->aliasFieldName = "mail_queue_date_time_created";
 $this->dateTimeCreated->label = "Date Time Created";
 $this->dateTimeCreated->allowNullValue = false;
-$this->dateTimeCreated->visible->form = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
 $index->indexName = "send";
