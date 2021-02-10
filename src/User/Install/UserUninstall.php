@@ -10,8 +10,9 @@ use Nemundo\User\Data\UserModelCollection;
 class UserUninstall extends AbstractUninstall
 {
 
-    public function run()
+    public function uninstall()
     {
+
 
         (new ModelCollectionSetup())
             ->removeCollection(new UserModelCollection());
