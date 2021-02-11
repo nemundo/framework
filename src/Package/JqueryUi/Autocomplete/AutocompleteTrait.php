@@ -4,6 +4,7 @@
 namespace Nemundo\Package\JqueryUi\Autocomplete;
 
 
+use Nemundo\Package\Bootstrap\Autocomplete\AbstractAutocompleteJsonSite;
 use Nemundo\Web\Site\AbstractSite;
 
 trait AutocompleteTrait

@@ -76,8 +76,7 @@ class AbstractTextBox extends AbstractFormBuilderItem
         }
 
         $this->textInput->value = $this->value;
-        $this->textInput->list=$this->datalist;
-        //$this->textInput->addAttribute('list', $this->datalist);
+        $this->textInput->list = $this->datalist;
 
     }
 

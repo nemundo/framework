@@ -188,9 +188,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
             if ((new UserSession())->isUserLogged()) {
 
                 $search=new NavbarContentSearchForm($div);
-                $search->site= $this->searchSite;  // SearchSite::$site;
-
-                //new NavbarSearchForm($this);
+                $search->site= $this->searchSite;
 
             }
         }

@@ -9,19 +9,21 @@ use Nemundo\Com\Item\TitleTextUrlItem;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Hyperlink\Hyperlink;
+use Nemundo\Html\Listing\Li;
 use Nemundo\Web\Site\AbstractSite;
 
 
 // SiteList
-class BootstrapHyperlinkList extends AbstractHtmlContainer
+class BootstrapHyperlinkList extends BootstrapList  // AbstractHtmlContainer
 {
 
     /**
      * @var TitleTextUrlItem[]
      */
-    private $list = [];
+    //private $list = [];
 
 
+    /*
     protected function loadContainer()
     {
         parent::loadContainer();
@@ -29,25 +31,28 @@ class BootstrapHyperlinkList extends AbstractHtmlContainer
         $this->tagName = 'div';
         $this->addCssClass('list-group');
 
-    }
+    }*/
 
 
     /**
      * @param AbstractContainer|AbstractHtmlContainer $container
      */
-    public function addContainer(AbstractContainer $container)
+    /*public function addContainer(AbstractContainer $container)
     {
 
         $container->addCssClass('list-group-item');
         parent::addContainer($container);
 
-    }
+    }*/
 
 
     public function addHyperlink($label, $url = '#')
     {
 
-        $hyperlink = new UrlHyperlink($this);
+        $li = new Li($this);
+        $li->addCssClass('list-group-item');
+
+        $hyperlink = new UrlHyperlink($li);
         $hyperlink->content = $label;
         $hyperlink->url = $url;
 
@@ -55,6 +60,7 @@ class BootstrapHyperlinkList extends AbstractHtmlContainer
     }
 
 
+    /*
     public function addSite(AbstractSite $site)
     {
 
@@ -62,13 +68,16 @@ class BootstrapHyperlinkList extends AbstractHtmlContainer
         $hyperlink->addCssClass('list-group-item-action');
         $hyperlink->site = $site;
 
-    }
+    }*/
 
 
     public function addActiveHyperlink($label)
     {
 
-        $hyperlink = new Hyperlink($this);
+        $li = new Li($this);
+        $li->addCssClass('list-group-item');
+
+        $hyperlink = new Hyperlink($li);
         $hyperlink->addCssClass('list-group-item active');
         $hyperlink->content = $label;
 

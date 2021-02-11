@@ -29,24 +29,9 @@ class BootstrapTextBox extends AbstractTextBox
     {
 
         $this->prepareHtml();
-
         $this->loadStyle();
 
-        //$this->tagName = 'div';
-
-        /*
-        $this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
-        $this->addCssClass('col');*/
-
-
-        //$this->addCssClass('form-group');
-
         $this->textInput->addCssClass('form-control');
-
-
-        /*
-        <label for="formGroupExampleInput" class="form-label">Example label</label>
-        */
 
         $this->labelLabel->addCssClass('form-label');
         $this->labelLabel->content = $this->getLabelText();

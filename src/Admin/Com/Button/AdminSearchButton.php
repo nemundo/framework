@@ -44,6 +44,10 @@ class AdminSearchButton extends AbstractHtmlContainer
         $btn->label[LanguageCode::DE] = 'Suchen';
         $btn->addCssClass('form-control');
 
+
+        //$this->query->placeholder[LanguageCode::EN] = 'Search';
+        //$this->query->placeholder[LanguageCode::DE] = 'Suche';
+
         return parent::getContent();
 
     }

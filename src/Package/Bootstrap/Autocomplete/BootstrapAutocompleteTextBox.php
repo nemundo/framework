@@ -4,10 +4,10 @@ namespace Nemundo\Package\Bootstrap\Autocomplete;
 
 
 use Nemundo\Com\Container\LibraryTrait;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapFormStyle;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\JqueryUi\Autocomplete\AutocompleteMultipleValueTextInput;
 use Nemundo\Package\JqueryUi\Autocomplete\AutocompleteTrait;
-use Nemundo\Package\JqueryUi\JqueryUiPackage;
-use Nemundo\Web\Site\AbstractSite;
 
 
 class BootstrapAutocompleteTextBox extends BootstrapTextBox
@@ -15,33 +15,22 @@ class BootstrapAutocompleteTextBox extends BootstrapTextBox
 
     use LibraryTrait;
     use AutocompleteTrait;
-
-    /**
-     * @var string[]
-     */
-    protected $codeList = [];
+    use BootstrapFormStyle;
 
 
     public function getContent()
     {
 
-        if (!$this->checkObject('sourceSite', $this->sourceSite, AbstractSite::class)) {
-            return null;
-        }
+        $this->prepareHtml();
+        $this->loadStyle();
 
-        $this->addPackage(new JqueryUiPackage());
-
-        $this->addJqueryScript('$("#' . $this->name . '" ).autocomplete({');
-        $this->addJqueryScript('source: "' . $this->sourceSite->getUrl() . '",');
-        $this->addJqueryScript('minLength: ' . $this->minLength . ',');
-        $this->addJqueryScript('delay: ' . $this->delay . ',');
-        foreach ($this->codeList as $code) {
-            $this->addJqueryScript($code);
-        }
-        $this->addJqueryScript('});');
+        $input = new AutocompleteMultipleValueTextInput($this);
+        $input->addCssClass('form-control');
+        $input->sourceSite = $this->sourceSite;
 
         return parent::getContent();
 
     }
+
 
 }
