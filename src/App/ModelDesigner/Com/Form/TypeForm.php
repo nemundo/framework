@@ -101,7 +101,7 @@ class TypeForm extends BootstrapForm
 
         $this->allowNullValue = new BootstrapCheckBox($this);
         $this->allowNullValue->label = 'Allow Null Value';
-        $this->allowNullValue->value = true;
+        //$this->allowNullValue->value = true;
 
         if ($this->updateMode) {
 

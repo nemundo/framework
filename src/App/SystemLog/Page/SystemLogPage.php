@@ -1,43 +1,30 @@
 <?php
 
-namespace Nemundo\App\SystemLog\Site;
+namespace Nemundo\App\SystemLog\Page;
+
 
 use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\SystemLog\Com\ListBox\LogTypeListBox;
+use Nemundo\App\SystemLog\Data\Log\LogPaginationReader;
 
-use Nemundo\App\SystemLog\Page\SystemLogPage;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
-use Nemundo\Web\Site\AbstractSite;
 
-class SystemLogSite extends AbstractSite
+class SystemLogPage extends AbstractTemplateDocument
 {
-    protected function loadSite()
-    {
-        $this->title = 'System Log';
-        $this->url = 'system-log';
-    }
 
-    public function loadContent()
+    public function getContent()
     {
 
-        (new SystemLogPage())->render();
 
-        /*
-
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-
-        $title = new AdminTitle($page);
-        $title->content = $this->title;
-
-
-        $searchForm = new SearchForm($page);
+        $searchForm = new SearchForm($this);
 
         $row = new BootstrapRow($searchForm);
 
@@ -49,16 +36,15 @@ class SystemLogSite extends AbstractSite
         $typeListbox->submitOnChange = true;
         $typeListbox->value = $typeListbox->getValue();
 
+        $table = new AdminTable($this);
 
-        $table = new AdminTable($page);
-
-        $header = new TableHeader($table);
+        $header = new AdminTableHeader($table);
         $header->addText('Application');
         $header->addText('Log Type');
         $header->addText('Message');
         $header->addText('Date/Time');
 
-        $reader = new SystemLogPaginationModelReader();
+        $reader = new LogPaginationReader();
         $reader->model->loadApplication();
         $reader->model->loadLogType();
         $reader->paginationLimit = 50;
@@ -85,11 +71,10 @@ class SystemLogSite extends AbstractSite
 
         }
 
-        $pagination = new BootstrapPagination($page);
+        $pagination = new BootstrapPagination($this);
         $pagination->paginationReader = $reader;
 
-        $page->render();*/
-
+        return parent::getContent();
     }
 
 }

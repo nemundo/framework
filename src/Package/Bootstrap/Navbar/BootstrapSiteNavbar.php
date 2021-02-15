@@ -4,9 +4,6 @@ namespace Nemundo\Package\Bootstrap\Navbar;
 
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Com\Html\Listing\UnorderedList;
-use Nemundo\Content\App\Explorer\Site\SearchSite;
-use Nemundo\Content\Index\Search\Com\Form\NavbarContentSearchForm;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -64,17 +61,19 @@ class BootstrapSiteNavbar extends BootstrapNavbar
     public function getContent()
     {
 
-        $div = new Div($this);
+
+        /*
+        $div =  new Div($this);
         $div->id = 'navbarNavDropdown';
         $div->addCssClass('collapse navbar-collapse');
 
         $list = new Ul($div);
-        $list->addCssClass('navbar-nav me-auto mb-2 mb-lg-0');
+        $list->addCssClass('navbar-nav me-auto mb-2 mb-lg-0');*/
 
 
         foreach ($this->site->getMenuActiveSite() as $site) {
 
-            $li = new Li($list);   // NavItem
+            $li = new Li($this->navbarNavUl);   // NavItem
             $li->addCssClass('nav-item');
 
             if ($site->hasItems()) {
@@ -95,8 +94,8 @@ class BootstrapSiteNavbar extends BootstrapNavbar
                     $hyperlink = new Hyperlink($li);  // NavHyperlink
                     $hyperlink->addCssClass('nav-link');
                     $hyperlink->content = $site->title;
-                    $hyperlink->href='#';
-                    $hyperlink->id='navbarDropdown2';
+                    $hyperlink->href = '#';
+                    $hyperlink->id = 'navbarDropdown2';
                     $hyperlink->addCssClass('dropdown-toggle');
                     $hyperlink->addAttribute('data-bs-toggle', 'dropdown');
                     $hyperlink->addAttribute('aria-expanded', 'false');
@@ -142,7 +141,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
             $isLogged = new IsLoggedSession();
             if ($isLogged->getValue()) {
 
-                $li = new Li($list);
+                $li = new Li($this->navbarNavUl);
                 $li->addCssClass('nav-item dropdown');
 
                 $hyperlink = new Hyperlink($li);
@@ -182,16 +181,17 @@ class BootstrapSiteNavbar extends BootstrapNavbar
         }
 
 
-        // das muss hier raus !!!
-
+        /*
         if ($this->searchMode) {
             if ((new UserSession())->isUserLogged()) {
 
-                $search=new NavbarContentSearchForm($div);
-                $search->site= $this->searchSite;
+                $search = new BootstrapNavbarSearchForm($div);
+                $search->site = $this->searchSite;
+
+
 
             }
-        }
+        }*/
 
         return parent::getContent();
 

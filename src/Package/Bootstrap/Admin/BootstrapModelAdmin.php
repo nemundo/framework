@@ -17,7 +17,7 @@ class BootstrapModelAdmin extends ModelAdmin
 
 
         $this->tableClass = BootstrapModelTable::class;
-        $this->formClass = BootstrapModelForm::class;
+        $this->formClassList[] = BootstrapModelForm::class;
 
     }
 

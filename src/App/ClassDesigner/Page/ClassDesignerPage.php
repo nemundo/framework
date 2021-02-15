@@ -24,6 +24,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Package\Bootstrap\Listing\BootstrapSiteList;
 
 class ClassDesignerPage extends AbstractTemplateDocument
 {
@@ -47,12 +48,12 @@ class ClassDesignerPage extends AbstractTemplateDocument
             $project = $projectListBox->getProject();
             $projectJson = new ProjectJson($project);
 
-            $hyperlinkList = new BootstrapHyperlinkList($layout->col1);
+            $hyperlinkList = new BootstrapSiteList($layout->col1);
 
             foreach ($projectJson->getAppJsonList(true) as $appJson) {
 
                 if ((new AppParameter())->getValue() == $appJson->appName) {
-                    $hyperlinkList->addActiveHyperlink($appJson->appLabel);
+                    $hyperlinkList->addActiveText($appJson->appLabel);
                 } else {
                     $site = clone(ClassDesignerSite::$site);
                     $site->title = $appJson->appLabel;

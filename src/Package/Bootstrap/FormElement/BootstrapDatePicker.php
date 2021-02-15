@@ -48,6 +48,7 @@ class BootstrapDatePicker extends AbstractDatePicker
     }
 
 
+    /*
     public function getDateValue()
     {
 
@@ -59,6 +60,6 @@ class BootstrapDatePicker extends AbstractDatePicker
 
         return $date;
 
-    }
+    }*/
 
 }

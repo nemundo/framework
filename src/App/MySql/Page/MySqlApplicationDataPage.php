@@ -20,7 +20,6 @@ use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Model\Factory\ModelCollectionFactory;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
-use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Url\Url;
 

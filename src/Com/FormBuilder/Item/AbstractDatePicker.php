@@ -3,6 +3,7 @@
 namespace Nemundo\Com\FormBuilder\Item;
 
 use Nemundo\Com\Container\LibraryTrait;
+use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Validation\ValidationType;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\JqueryUi\JqueryUiPackage;
@@ -36,5 +37,22 @@ abstract class AbstractDatePicker extends AbstractTextBox
         $this->addJqueryScript('});');
 
     }
+
+
+    // getDate
+    public function getDateValue()
+    {
+
+        $date = null;
+        if ($this->hasValue()) {
+            $date = new Date();
+            $date->fromGermanFormat($this->getValue());
+        }
+
+        return $date;
+
+    }
+
+
 
 }

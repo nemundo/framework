@@ -2,14 +2,13 @@
 
 namespace Nemundo\Com\FormBuilder;
 
-
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Form\AbstractForm;
 use Nemundo\Html\Form\FormMethod;
 use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Web\Site\AbstractSite;
 
-class SearchForm extends AbstractForm  // Form
+class SearchForm extends AbstractForm
 {
 
     /**
@@ -66,6 +65,5 @@ class SearchForm extends AbstractForm  // Form
         return parent::getContent();
 
     }
-
 
 }

@@ -4,13 +4,14 @@ namespace Nemundo\App\SystemLog\Message;
 
 
 use Nemundo\App\Application\Type\AbstractApplication;
-use Nemundo\App\SystemLog\Data\SystemLog\SystemLog;
+use Nemundo\App\SystemLog\Data\Log\Log;
 use Nemundo\App\SystemLog\Type\AbstractLogType;
 use Nemundo\App\SystemLog\Type\ErrorLogType;
 use Nemundo\App\SystemLog\Type\InformationLogType;
 use Nemundo\App\SystemLog\Type\WarningLogType;
 use Nemundo\Core\Base\AbstractBaseClass;
 
+// LogMessage
 class SystemLogMessage extends AbstractBaseClass
 {
 
@@ -47,7 +48,7 @@ class SystemLogMessage extends AbstractBaseClass
     private function logMessage(AbstractLogType $logType, $message)
     {
 
-        $data = new SystemLog();
+        $data = new Log();
 
         if ($this->application !== null) {
             $data->applicationId = $this->application->applicationId;

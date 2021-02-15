@@ -3,6 +3,7 @@
 namespace Nemundo\App\Application\Type;
 
 use Nemundo\App\Application\Data\Application\ApplicationUpdate;
+use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
@@ -110,6 +111,9 @@ abstract class AbstractApplication extends AbstractBaseClass
     public function installApp()
     {
 
+        (new ApplicationSetup())
+            ->addApplication($this);
+
         if ($this->hasInstall()) {
 
             if (!isset(AbstractApplication::$installDone[$this->applicationId])) {
@@ -171,7 +175,8 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-    public function reinstallApp() {
+    public function reinstallApp()
+    {
 
         $this->uninstallApp();
         $this->installApp();

@@ -6,6 +6,8 @@ namespace Nemundo\App\System\Com\Table;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Db\DbConfig;
 use Nemundo\Db\Provider\MySql\Database\MySqlDatabase;
+use Nemundo\Project\Path\CachePath;
+use Nemundo\Project\Path\ProjectPath;
 use Nemundo\Project\ProjectConfig;
 use Nemundo\Web\WebConfig;
 
@@ -24,9 +26,11 @@ class ProjectTable extends AdminLabelValueTable
 
         }
 
-        $this->addLabelValue('Project Path', ProjectConfig::$projectPath);
         $this->addLabelValue('Web Url', WebConfig::$webUrl);
+        $this->addLabelValue('Project Path' , (new ProjectPath())->getFullFilename());  // ProjectConfig::$projectPath);
+        $this->addLabelValue('Project Path' , ProjectConfig::$projectPath);
 
+        $this->addLabelValue('Cache Path', (new CachePath())->getFullFilename());
 
 
 
