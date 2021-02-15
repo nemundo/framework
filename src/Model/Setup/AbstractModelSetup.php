@@ -251,6 +251,8 @@ abstract class AbstractModelSetup extends AbstractDbBase
 
         }
 
+
+        /*
         SetupLog::$modelList[] = $this->model;
 
         $logFilename = (new SetupLogPath())->getFilename();
@@ -259,7 +261,7 @@ abstract class AbstractModelSetup extends AbstractDbBase
         $fileWriter->createDirectory = true;
         $fileWriter->appendToExistingFile = true;
         $fileWriter->addLine($this->model->tableName);
-        $fileWriter->saveFile();
+        $fileWriter->saveFile();*/
 
         return $sql;
 
