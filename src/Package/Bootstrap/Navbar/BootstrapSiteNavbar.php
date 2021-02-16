@@ -31,12 +31,12 @@ class BootstrapSiteNavbar extends BootstrapNavbar
     /**
      * @var bool
      */
-    public $searchMode = false;
+    //public $searchMode = false;
 
     /**
      * @var AbstractSite
      */
-    public $searchSite;
+    //public $searchSite;
 
     /**
      * @var AbstractSite[]
@@ -61,19 +61,9 @@ class BootstrapSiteNavbar extends BootstrapNavbar
     public function getContent()
     {
 
-
-        /*
-        $div =  new Div($this);
-        $div->id = 'navbarNavDropdown';
-        $div->addCssClass('collapse navbar-collapse');
-
-        $list = new Ul($div);
-        $list->addCssClass('navbar-nav me-auto mb-2 mb-lg-0');*/
-
-
         foreach ($this->site->getMenuActiveSite() as $site) {
 
-            $li = new Li($this->navbarNavUl);   // NavItem
+            $li = new Li($this->navbarNavUl);
             $li->addCssClass('nav-item');
 
             if ($site->hasItems()) {
@@ -91,7 +81,7 @@ class BootstrapSiteNavbar extends BootstrapNavbar
 
                 if ($menuActive) {
 
-                    $hyperlink = new Hyperlink($li);  // NavHyperlink
+                    $hyperlink = new Hyperlink($li);
                     $hyperlink->addCssClass('nav-link');
                     $hyperlink->content = $site->title;
                     $hyperlink->href = '#';

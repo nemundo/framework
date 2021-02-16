@@ -54,6 +54,11 @@ abstract class AbstractApplication extends AbstractBaseClass
      */
     //public $cleanClass;
 
+    // adminSite
+    // usergroupCollection
+    // addUsergroup
+
+
     /**
      * @var string
      */

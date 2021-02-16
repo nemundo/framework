@@ -22,7 +22,7 @@ class BootstrapNavbar extends Nav
     /**
      * @var Div
      */
-    private $containerDiv;
+    protected $containerDiv;
 
 
     protected $navbarNavUl;
@@ -35,7 +35,6 @@ class BootstrapNavbar extends Nav
 
         $this->containerDiv = new Div();
         $this->containerDiv->addCssClass('container-fluid');
-
 
         $div = new Div($this->containerDiv);
         $div->id = 'navbarNavDropdown';
