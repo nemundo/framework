@@ -52,8 +52,6 @@ class ExternalOrmType extends ExternalType
         $this->typeLabel = 'External';
         $this->typeName = 'external';
         $this->typeId = '26e8b692-3af6-46ff-96ae-f10c983deb06';
-        /*$this->adminFormPartClassName = ExternalTypeFormPart::class;
-        $this->adminItemClassName = ExternalModelFieldAdminItem::class;*/
 
     }
 

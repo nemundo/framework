@@ -17,7 +17,6 @@ class GeoCoordinateOrmType extends GeoCoordinateType
 
     use OrmTypeTrait;
 
-
     protected function loadExternalType()
     {
         parent::loadExternalType();
@@ -56,6 +55,5 @@ class GeoCoordinateOrmType extends GeoCoordinateType
         $this->addRowObjectProperty($phpClass, GeoCoordinate::class, GeoCoordinateReaderProperty::class);
 
     }
-
 
 }

@@ -12,13 +12,11 @@ class CreatedUserOrmType extends UserOrmType
 
     protected function loadExternalType()
     {
+
         parent::loadExternalType();
         $this->typeLabel = 'Created User';
         $this->typeName = 'created_user';
         $this->typeId = 'e37deb62-9855-413f-9e76-aee5a6a56cf0';
-
-        //$this->adminFormPartClassName = ExternalUserTypeFormPart::class;
-        //$this->adminItemClassName = ExternalUserModelFieldAdminItem::class;
 
     }
 
@@ -45,6 +43,5 @@ class CreatedUserOrmType extends UserOrmType
         // function überschreiben
 
     }
-
 
 }

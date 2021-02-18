@@ -44,16 +44,6 @@ trait OrmTypeTrait
     public $model;
 
     /**
-     * @var string
-     */
-    //public $adminFormPartClassName;
-
-    /**
-     * @var string
-     */
-    //public $adminItemClassName;
-
-    /**
      * @var bool
      */
     public $createModelProperty = true;

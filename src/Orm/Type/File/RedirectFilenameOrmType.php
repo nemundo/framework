@@ -26,7 +26,8 @@ class RedirectFilenameOrmType extends RedirectFilenameType
     }
 
 
-    private function getAdditionalCode() {
+    private function getAdditionalCode()
+    {
 
 
         $variableName = new RedirectVariableName();
@@ -34,9 +35,9 @@ class RedirectFilenameOrmType extends RedirectFilenameType
         $variableName->type = $this;
         $registerVariableName = $variableName->getVariableName();
 
-        $code=[];
+        $code = [];
         $code[] = '$this->' . $this->variableName . '->redirectSite = \\' . $this->model->namespace . '\\Redirect\\' . $this->model->className . 'RedirectConfig::$' . $registerVariableName . ';';
-return $code;
+        return $code;
 
     }
 
@@ -47,37 +48,22 @@ return $code;
         $this->addModelObject($phpClass, $phpFunction, RedirectFilenameType::class);
         $phpFunction->add($this->getAdditionalCode());
 
-        /*
-        $variableName = new RedirectVariableName();
-        $variableName->model = $this->model;
-        $variableName->type = $this;
-        $registerVariableName = $variableName->getVariableName();*/
-
-        //$phpFunction->add('$this->' . $this->variableName . '->redirectSite = \\' . $this->model->namespace . '\\Redirect\\' . $this->model->className . 'RedirectConfig::$' . $registerVariableName . ';');
-
     }
 
 
     public function getExternalCode(PhpClass $phpClass, PhpFunction $phpFunction)
     {
 
-        //$additionalCode[] =
-
-//        $this->addExternlObject($phpClass, $phpFunction, RedirectFilenameType::class);
-
-
-       $this->addExternlObject($phpClass, $phpFunction, RedirectFilenameType::class,$this->getAdditionalCode());
-
-
-        // redirectSite is missing!!!
-
+        $this->addExternlObject($phpClass, $phpFunction, RedirectFilenameType::class, $this->getAdditionalCode());
 
     }
 
 
     public function getDataCode(PhpClass $phpClass, PhpFunction $phpFunction)
     {
+
         $this->addDataProperty($phpClass, RedirectFilenameDataProperty::class);
+
     }
 
 
@@ -90,7 +76,6 @@ return $code;
         $var->variableName = $this->variableName;
         $var->dataType = $propertyClassName;
 
-        //$phpClass->addConstructor('$this->' . $this->variableName . ' = new ' . $propertyClassName . '($row, $model->' . $this->variableName . ', $this->id);');
         $phpClass->addConstructor('$this->' . $this->variableName . ' = new ' . $propertyClassName . '($row, $model->' . $this->variableName . ', $model->id);');
 
     }

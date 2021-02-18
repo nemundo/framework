@@ -15,37 +15,28 @@ class UniqueIdOrmType extends UniqueIdType
 
     protected function loadExternalType()
     {
-
         parent::loadExternalType();
         $this->typeLabel = 'Unique Id';
         $this->typeId = '6f3dc563-02ac-4ecd-b4de-960e18a5a8c5';
-
         $this->label = 'Id';
-
     }
 
 
     public function getModelCode(PhpClass $phpClass, PhpFunction $phpFunction)
     {
-
         $this->addModelObject($phpClass, $phpFunction, UniqueIdType::class);
-        //$phpFunction->add('$this->id->visible->form = false;');
-
     }
+
 
     public function getExternalCode(PhpClass $phpClass, PhpFunction $phpFunction)
     {
-
         $this->addExternlObject($phpClass, $phpFunction, UniqueIdType::class);
-
     }
 
 
     public function getDataCode(PhpClass $phpClass, PhpFunction $phpFunction)
     {
-
         $this->addDataPrimitiveVariable($phpClass, $phpFunction, 'string');
-
     }
 
 

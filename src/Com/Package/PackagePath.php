@@ -27,10 +27,20 @@ class PackagePath extends AbstractPath // Path
     }
 
 
+
     protected function loadPath()
     {
         // TODO: Implement loadPath() method.
     }
+
+
+    /*
+    protected function loadPath()
+    {
+
+
+        // TODO: Implement loadPath() method.
+    }*/
 
 
 }

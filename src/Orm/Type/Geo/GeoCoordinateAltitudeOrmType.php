@@ -20,7 +20,7 @@ class GeoCoordinateAltitudeOrmType extends GeoCoordinateAltitudeType
     {
         parent::loadExternalType();
         $this->typeLabel = 'Geo Coordinate/Altitude';
-        $this->typeName='geo_coordinate_altitude';
+        $this->typeName = 'geo_coordinate_altitude';
         $this->typeId = '38613992-8251-42d7-b806-04bf65e3e36a';
     }
 
@@ -54,6 +54,5 @@ class GeoCoordinateAltitudeOrmType extends GeoCoordinateAltitudeType
         $this->addRowObjectProperty($phpClass, GeoCoordinateAltitude::class, GeoCoordinateAltitudeReaderProperty::class);
 
     }
-
 
 }

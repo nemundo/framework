@@ -10,20 +10,13 @@ use Nemundo\Model\Type\User\ModifiedUserType;
 class ModifiedUserOrmType extends UserOrmType
 {
 
-
     protected function loadExternalType()
     {
+
         parent::loadExternalType();
 
         $this->typeLabel = 'Modified User';
         $this->typeId = '3e5df96f-cc14-41d1-8069-2ba44307f0c1';
-
-        //$this->adminFormPartClassName = null;
-        //$this->adminItemClassName = null;
-
-        //$this->adminFormPartClassName = ExternalUserTypeFormPart::class;
-        //$this->adminItemClassName = ExternalUserModelFieldAdminItem::class;
-
 
     }
 
@@ -50,9 +43,5 @@ class ModifiedUserOrmType extends UserOrmType
         // überschreiben
 
     }
-
-
-    // update
-
 
 }

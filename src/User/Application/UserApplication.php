@@ -3,6 +3,7 @@
 namespace Nemundo\User\Application;
 
 use Nemundo\App\Application\Type\AbstractApplication;
+use Nemundo\App\UserAdmin\Site\UserAdminSite;
 use Nemundo\User\Data\UserModelCollection;
 use Nemundo\User\Install\UserInstall;
 use Nemundo\User\Install\UserUninstall;
@@ -19,6 +20,7 @@ class UserApplication extends AbstractApplication
         $this->modelCollectionClass = UserModelCollection::class;
         $this->installClass = UserInstall::class;
         $this->uninstallClass = UserUninstall::class;
+        $this->siteClass = UserAdminSite::class;
 
     }
 

@@ -18,8 +18,6 @@ class TextOrmType extends TextType
         $this->typeLabel = 'Text';
         $this->typeName = 'text';
         $this->typeId = 'd4b65d54-1cfb-4fd4-a367-3564f8cbcd1b';
-        /*$this->adminFormPartClassName = TextTypeFormPart::class;
-        $this->adminItemClassName = TextModelFieldAdminItem::class;*/
     }
 
 

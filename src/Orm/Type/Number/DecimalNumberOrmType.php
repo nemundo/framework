@@ -3,7 +3,6 @@
 namespace Nemundo\Orm\Type\Number;
 
 
-use Nemundo\Core\Type\Text\Text;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVariable;
@@ -22,7 +21,7 @@ class DecimalNumberOrmType extends DecimalNumberType
         parent::loadExternalType();
 
         $this->typeLabel = 'Decimal Number';
-        $this->typeName='decimal_number';
+        $this->typeName = 'decimal_number';
         $this->typeId = '73050637-3df5-4a26-a814-8a0980f40da8';
 
     }
@@ -50,11 +49,8 @@ class DecimalNumberOrmType extends DecimalNumberType
         $var->visibility = PhpVisibility::PublicVariable;
         $var->dataType = 'float';
 
-        //$phpFunction->add('$value = (new ' . $this->prefixClassName(Text::class) . '($this->' . $this->variableName . '))->replace(",", ".")->getValue();');
         $phpFunction->add('if (!is_null($this->' . $this->variableName . ')) $this->' . $this->variableName . ' = str_replace(",", ".", $this->' . $this->variableName . ');');
         $phpFunction->add('$this->typeValueList->setModelValue($this->model->' . $this->variableName . ', $this->' . $this->variableName . ');');
-
-        //$phpFunction->add('$this->typeValueList->setModelValue($this->model->' . $this->variableName . ', $value);');
 
     }
 
@@ -62,7 +58,7 @@ class DecimalNumberOrmType extends DecimalNumberType
     public function getRowCode(PhpClass $phpClass)
     {
 
-        $this->addRowPrimitiveConversionFunctionVarialbe($phpClass, 'float','floatval');
+        $this->addRowPrimitiveConversionFunctionVarialbe($phpClass, 'float', 'floatval');
 
     }
 

@@ -23,8 +23,6 @@ class TranslationTextOrmType extends TextOrmType
         $this->typeLabel = 'Translation Text';
         $this->typeName = 'translation_text';
         $this->typeId = '6ed62749-871d-4317-959d-fdeb90ceabea';
-        //$this->adminFormPartClassName = TextTypeFormPart::class;
-        //$this->adminItemClassName = TextModelFieldAdminItem::class;
     }
 
 
@@ -51,11 +49,9 @@ class TranslationTextOrmType extends TextOrmType
         $var->visibility = PhpVisibility::PublicVariable;
         $var->dataType = 'string[]';
 
-        //$phpClass->addUseClass(LanguageType::class);
         $phpClass->addUseClass(LanguageConfig::class);
         $phpClass->addUseClass(TextType::class);
 
-        //$phpFunction->add('foreach ((new LanguageType())->getLanguageData() as $languageRow) {');
         $phpFunction->add('foreach (LanguageConfig::$languageList as $language) {');
         $phpFunction->add('if (isset($this->' . $var->variableName . '[$language])) {');
         $phpFunction->add('$type = new TextType();');

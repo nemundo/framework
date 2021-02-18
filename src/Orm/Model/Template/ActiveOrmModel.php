@@ -41,5 +41,4 @@ class ActiveOrmModel extends AbstractOrmModel
 
     }
 
-
 }

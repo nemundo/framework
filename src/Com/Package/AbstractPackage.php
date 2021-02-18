@@ -19,9 +19,6 @@ abstract class AbstractPackage extends AbstractBase
      */
     public $project;
 
-    // projectClass
-
-
     private $jsList = [];
 
     private $cssList = [];

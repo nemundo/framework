@@ -17,7 +17,6 @@ class RedirectFileOrmType extends RedirectFileType
 
     use OrmTypeTrait;
 
-
     protected function loadExternalType()
     {
         parent::loadExternalType();
@@ -36,9 +35,6 @@ class RedirectFileOrmType extends RedirectFileType
         $registerVariableName = $variableName->getVariableName();
 
         $phpFunction->add('$this->' . $this->variableName . '->redirectSite = \\' . $this->model->namespace . '\\Redirect\\' . $this->model->className . 'RedirectConfig::$' . $registerVariableName . ';');
-
-
-        // $phpFunction->add('$this->' . $this->variableName . '->redirectSite = \\' . $this->model->namespace . '\\Redirect\\' . $this->model->className . 'RedirectConfig::$' . $this->variableName . 'RedirectSite;');
 
     }
 
@@ -66,10 +62,7 @@ class RedirectFileOrmType extends RedirectFileType
         $var->variableName = $this->variableName;
         $var->dataType = $propertyClassName;
 
-        //$phpClass->addConstructor('$this->' . $this->variableName . ' = new ' . $propertyClassName . '($this->id, $this->getModelValue($model->' . $this->variableName . '), $model->' . $this->variableName . ');');
-
         $phpClass->addConstructor('$this->' . $this->variableName . ' = new ' . $propertyClassName . '($row, $model->' . $this->variableName . ', $this->id);');
-
 
     }
 }

@@ -15,17 +15,14 @@ class FileOrmType extends FileType
 
     use OrmTypeTrait;
 
-
     protected function loadExternalType()
     {
+
         parent::loadExternalType();
 
         $this->typeLabel = 'File';
-        $this->typeName='file';
+        $this->typeName = 'file';
         $this->typeId = 'b6810630-5fc9-4b9a-9f99-83b1d76d38a0';
-
-        /*$this->adminFormPartClassName = FileTypeFormPart::class;
-        $this->adminItemClassName = FileModelFieldAdminItem::class;*/
 
     }
 
