@@ -22,16 +22,26 @@ class MailSite extends AbstractSite
     // public $test;
 
 
+    /**
+     * @var MailSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
 
-        $this->title = 'Mail Queue';
+        $this->title = 'Mail';
         $this->url = 'mail';
+
+MailSite::$site=$this;
 
         //new MailQueueDetailSite($this);
         //  $this->test = new MailTestSite($this);
 
         new MailQueueDeleteSite($this);
+
+        new MailTestSite($this);
+
         //new MyMailQueueSite($this);
 
 

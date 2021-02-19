@@ -10,6 +10,7 @@ use Nemundo\App\AppConfig;
 use Nemundo\App\Mail\Data\MailQueue\MailQueuePaginationReader;
 use Nemundo\App\Mail\Parameter\MailUrlParameter;
 use Nemundo\App\Mail\Site\MailQueueDeleteSite;
+use Nemundo\App\Mail\Site\MailTestSite;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\Template\AbstractTemplateDocument;
@@ -25,11 +26,11 @@ class MailPage extends AbstractTemplateDocument
     {
 
 
-        /*
-        $btn = new AdminSiteButton($page);
+
+        $btn = new AdminSiteButton($this);
         $btn->content = 'Test Mail';
-        $btn->site = $this->test;
-*/
+        $btn->site = MailTestSite::$site;
+
 
         //$form=new SearchForm($page);
 
@@ -53,7 +54,7 @@ class MailPage extends AbstractTemplateDocument
         $mailQueueReader = new MailQueuePaginationReader();  // Mail new MailQueuePaginationModelReader();
         //$mailQueueReader->addOrder($mailQueueReader->model->dateTime, SortOrder::DESCENDING);
         $mailQueueReader->addOrder($mailQueueReader->model->id, SortOrder::DESCENDING);
-        $mailQueueReader->paginationLimit =AppConfig::PAGINATION_LIMIT;
+        //$mailQueueReader->paginationLimit =AppConfig::PAGINATION_LIMIT;
 
         foreach ($mailQueueReader->getData() as $mailQueueRow) {
 
