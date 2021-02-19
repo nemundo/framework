@@ -7,7 +7,7 @@ use Nemundo\Admin\Config\Site\ConfigSite;
 use Nemundo\Admin\Log\Site\LogFileSite;
 use Nemundo\Admin\MySql\Site\MySqlSite;
 use Nemundo\Admin\Usergroup\Site\UsergroupSite;
-use Nemundo\App\Mail\Site\MailQueueSite;
+use Nemundo\App\Mail\Site\MailSite;
 use Nemundo\App\Migration\Site\MigrationSite;
 use Nemundo\App\Scheduler\Site\SchedulerSite;
 use Nemundo\App\Script\Site\ScriptSite;
@@ -26,7 +26,7 @@ class SystemAdminSite extends AbstractSite
         $this->url = 'system-admin';
 
         new SchedulerSite($this);
-        new MailQueueSite($this);
+        new MailSite($this);
         new ScriptSite($this);
         new MySqlSite($this);
         new UserAdminSite($this);

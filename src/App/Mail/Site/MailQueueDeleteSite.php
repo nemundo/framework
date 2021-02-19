@@ -19,6 +19,10 @@ class MailQueueDeleteSite extends AbstractDeleteIconSite
 
     protected function loadSite()
     {
+
+        $this->title = 'Delete Mail';
+        $this->url='delete-mail';
+
         MailQueueDeleteSite::$site = $this;
     }
 

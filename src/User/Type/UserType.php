@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\User\Builder;
+namespace Nemundo\User\Type;
 
 
 use Nemundo\App\Mail\Message\MailMessage;
@@ -26,35 +26,16 @@ use Nemundo\User\Usergroup\Usergroup;
 
 
 // UserType
-class UserBuilder extends AbstractBase
+class UserType extends AbstractBase
 {
 
-    /**
-     * @var bool
-     */
-    public $active = true;
 
-    /**
-     * @var string
-     */
-    public $login;
+    private $userId;
 
-    /**
-     * @var string
-     */
-    public $displayName;
-
-    /**
-     * @var string
-     */
-    public $email;
+    private $login;
 
 
-    protected $userId;
-
-
-
-    public function __construct($userId=null)
+    public function __construct($userId = null)
     {
 
         $this->userId = $userId;
@@ -62,13 +43,26 @@ class UserBuilder extends AbstractBase
     }
 
 
-
-
-
     public function fromLogin($login)
     {
 
-        if ($login !== null) {
+        $this->login = $login;
+
+        if ($this->existsUser()) {
+
+            $id = new UserId();
+            $id->filter->andEqual($id->model->login, $login);
+            $this->userId = $id->getId();
+
+        }
+
+
+        /*
+        $count = new UserCount();
+
+
+
+        //if ($login !== null) {
             $id = new UserId();
             $id->filter->andEqual($id->model->login, $login);
             $this->userId = $id->getId();
@@ -79,13 +73,14 @@ class UserBuilder extends AbstractBase
                 // (new LogMessage())->writeError('Login not found');
             }
 
-        }
+        //}*/
 
         return $this;
 
     }
 
 
+    /*
     public function fromLoginOrEmail($login)
     {
 
@@ -100,7 +95,7 @@ class UserBuilder extends AbstractBase
 
         return $this;
 
-    }
+    }*/
 
 
     public function fromSecureTokenParameter()
@@ -129,31 +124,43 @@ class UserBuilder extends AbstractBase
     }
 
 
-    public function existsUser() {
+    public function existsUser()
+    {
 
+        $value = false;
 
         $count = new UserCount();
-        //$count->filter->andEqual($count->model->login, $login);
-        $count->filter->andEqual($count->model->secureToken, $secureToken);
-        if ($count->getCount() == 0) {
-            (new LogMessage())->writeError('Invalid Secure Token');
-            exit;
+        $count->filter->andEqual($count->model->active, true);
+        $count->filter->andEqual($count->model->login, $this->login);
+        if ($count->getCount() == 1) {
+            $value = true;
         }
 
+        return $value;
 
     }
 
 
-
-    public function getUserRow() {
+    public function getUserRow()
+    {
 
         return (new UserReader())->getRowById($this->userId);
 
     }
 
 
+    public function getUserId()
+    {
+
+        if ($this->userId == null) {
 
 
+        }
+
+
+        return $this->userId;
+
+    }
 
 
     public function createUser()

@@ -70,7 +70,7 @@ class MailPage extends AbstractTemplateDocument
             $row->addText($mailQueueRow->subject);
             $row->addText($mailQueueRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
-            $site = clone(MailQueueDeleteSite::$site);
+           $site = clone(MailQueueDeleteSite::$site);
             $site->addParameter((new MailUrlParameter($mailQueueRow->id)));
             $row->addIconSite($site);
 

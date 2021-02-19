@@ -2,12 +2,13 @@
 
 namespace Nemundo\App\UserAction\Form;
 
-
 use Nemundo\App\Mail\Message\MailMessage;
 use Nemundo\App\UserAction\Mail\PasswordRequestMailContainer;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\User\Type\UserItemType;
+use Nemundo\User\Builder\UserBuilder;
+use Nemundo\User\Session\UserSession;
+use Nemundo\User\Type\UserType;
 
 class PasswordRequestForm extends BootstrapForm
 {
@@ -43,8 +44,8 @@ class PasswordRequestForm extends BootstrapForm
     public function onValidate()
     {
 
-        $userType = (new UserItemType())->fromLogin($this->login->getValue());
-        $check = $userType->exists();
+        $userType = (new UserType())->fromLogin($this->login->getValue());
+        $check = $userType->existsUser();
 
         if (!$check) {
             $this->login->errorMessage = 'User nicht vorhanden';
@@ -59,13 +60,15 @@ class PasswordRequestForm extends BootstrapForm
     protected function onSubmit()
     {
 
-        $userType = (new UserItemType())->fromLogin($this->login->getValue());
+        $userType = (new UserType())->fromLogin($this->login->getValue());
 
         $passwordRequest = new PasswordRequestMailContainer();
-        $passwordRequest->userId = $userType->userId;
+        $passwordRequest->userId = $userType->getUserId();  // userId;
+
+        $userRow = $userType->getUserRow();
 
         $mailMessage = new MailMessage();
-        $mailMessage->mailTo = $userType->email;
+        $mailMessage->mailTo = $userRow->email;
         $mailMessage->subject = $passwordRequest->subject;
         $mailMessage->text = $passwordRequest->getBodyContent();
         $mailMessage->sendMail();

@@ -3,46 +3,35 @@
 namespace Nemundo\App\Mail\Site;
 
 
-use Nemundo\Admin\Com\Button\AdminSiteButton;
-use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\App\AppConfig;
-use Nemundo\App\Mail\Data\MailQueue\MailQueuePaginationReader;
 use Nemundo\App\Mail\Page\MailPage;
-use Nemundo\App\Mail\Parameter\MailUrlParameter;
-use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 
 
 // MailSite
-class MailQueueSite extends AbstractSite
+class MailSite extends AbstractSite
 {
 
     /**
      * @var MailQueueDetailSite
      */
-    public $detail;
+    // public $detail;
 
     /**
      * @var MailTestSite
      */
-    public $test;
+    // public $test;
 
 
     protected function loadSite()
     {
+
         $this->title = 'Mail Queue';
         $this->url = 'mail';
 
-        $this->detail = new MailQueueDetailSite($this);
-        $this->test = new MailTestSite($this);
+        //new MailQueueDetailSite($this);
+        //  $this->test = new MailTestSite($this);
 
-        //new MailQueueDeleteSite($this);
+        new MailQueueDeleteSite($this);
         //new MyMailQueueSite($this);
 
 

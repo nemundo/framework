@@ -6,9 +6,10 @@ namespace Nemundo\App\UserAction\Mail;
 use Nemundo\App\UserAction\Site\UserActivationSite;
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Html\Paragraph\Paragraph;
+use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Login\Parameter\SecureTokenUrlParameter;
 use Nemundo\User\Mail\AbstractUserLoginMailContainer;
-use Nemundo\User\Type\UserItemType;
+
 
 class PasswordRequestMailContainer extends AbstractUserLoginMailContainer
 {
@@ -23,7 +24,7 @@ class PasswordRequestMailContainer extends AbstractUserLoginMailContainer
     public function getContent()
     {
 
-        $userItem = new UserItemType($this->userId);
+        $userItem = (new UserReader())->getRowById($this->userId);  // new UserItemType($this->userId);
 
         $p = new Paragraph($this);
         $p->content = 'Setzen sie das Passwort für das Login: ' . $userItem->login;
