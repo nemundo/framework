@@ -3,9 +3,9 @@
 namespace Nemundo\Dev\ProjectBuilder;
 
 
-use Nemundo\Admin\Install\AdminPackageInstall;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Console\ConsoleInput;
+use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Project\Project;
 
 class ProjectBuilderScript extends AbstractBase
@@ -35,8 +35,7 @@ class ProjectBuilderScript extends AbstractBase
         $builder->project = $project;
         $builder->createProject();
 
-        $install = new AdminPackageInstall($projectPath);
-        $install->install();
+        (new AdminBuilderScript())->run();
 
     }
 

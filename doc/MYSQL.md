@@ -1,6 +1,5 @@
 ### Create User
 
-
 ```
 mysql -u root
 CREATE DATABASE dbname;
@@ -8,8 +7,6 @@ GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'localhost' IDENTIFIED BY 'passwo
 FLUSH PRIVILEGES;
 QUIT;
 ```
-
-
 
 
 ```

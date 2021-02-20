@@ -13,6 +13,9 @@ abstract class AbstractInstall extends AbstractBase
     // only run once
 
 
+    // run one (only first install)
+
+
     abstract public function install();
 
 }
