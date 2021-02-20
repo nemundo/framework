@@ -5,20 +5,21 @@ namespace Nemundo\App\Application\Site;
 
 
 use Nemundo\App\Application\Data\Application\ApplicationReader;
+use Nemundo\App\Application\Usergroup\AdminUsergroup;
 use Nemundo\App\Application\Usergroup\AppUsergroup;
 use Nemundo\Web\Site\AbstractSite;
 
 
-class AppSite extends AbstractSite
+class AdminSite extends AbstractSite
 {
 
     protected function loadSite()
     {
 
-        $this->title = 'App';
-        $this->url = 'app';
+        $this->title = 'Admin';
+        $this->url = 'admin';
         $this->restricted = true;
-        $this->addRestrictedUsergroup(new AppUsergroup());
+        $this->addRestrictedUsergroup(new AdminUsergroup());
 
         $reader = new ApplicationReader();
         $reader->filter->andEqual($reader->model->install, true);
@@ -26,8 +27,8 @@ class AppSite extends AbstractSite
         foreach ($reader->getData() as $applicationRow) {
 
             $app = $applicationRow->getApplication();
-            if ($app->hasSite()) {
-                $app->getSite($this);
+            if ($app->hasAdminSite()) {
+                $app->getAdminSite($this);
             }
 
         }
