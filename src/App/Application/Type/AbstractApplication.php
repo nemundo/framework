@@ -143,7 +143,7 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         } else {
 
-            (new Debug())->write('No Install Class');
+            (new Debug())->write('No Install Class. Class: ' . $this->getClassName());
 
         }
 

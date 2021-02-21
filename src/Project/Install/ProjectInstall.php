@@ -16,6 +16,7 @@ use Nemundo\App\Scheduler\Install\SchedulerInstall;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Install\ScriptInstall;
 use Nemundo\App\Script\Setup\ScriptSetup;
+use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Db\Provider\MySql\Database\MySqlDatabase;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
@@ -57,6 +58,7 @@ class ProjectInstall extends AbstractInstall
         (new UserApplication())->installApp();
         (new SchedulerApplication())->installApp();
         (new MailApplication())->installApp();
+        (new SystemApplication())->installApp();
 
 
         //(new MailInstall())->install();
