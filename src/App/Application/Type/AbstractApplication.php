@@ -119,6 +119,18 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+
+    public function getInstall() {
+
+        /** @var AbstractInstall $install */
+        $install = new $this->installClass();
+
+        return $install;
+
+
+    }
+
+
     public function installApp()
     {
 
@@ -130,7 +142,9 @@ abstract class AbstractApplication extends AbstractBaseClass
             if (!isset(AbstractApplication::$installDone[$this->applicationId])) {
 
                 /** @var AbstractInstall $install */
-                $install = new $this->installClass();
+                //$install = new $this->installClass();
+
+                $install = $this->getInstall();
                 $install->install();
 
                 $update = new ApplicationUpdate();

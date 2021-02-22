@@ -131,10 +131,10 @@ class ProjectBuilder extends AbstractBaseClass
         $code->createCode();
 
         // Package Setup
-        $code = new ProjectPackageSetupCode();
+        /*$code = new ProjectPackageSetupCode();
         $code->prefixNamespace = $this->project->namespace;
         $code->path = $srcPath . 'Setup';
-        $code->createCode();
+        $code->createCode();*/
 
         // Template
         $code = new ProjectTemplateCode();

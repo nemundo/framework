@@ -17,7 +17,12 @@ class BootstrapDropdown extends Div
     /**
      * @var Button
      */
-    private $dropdownButton;
+    public $dropdownButton;
+
+    /**
+     * @var bool
+     */
+    public $showToggle=true;
 
     /**
      * @var Div
@@ -37,7 +42,20 @@ class BootstrapDropdown extends Div
         $this->dropdownButton->addAttribute('data-bs-toggle', 'dropdown');
         $this->dropdownButton->addAttribute('aria-haspopup', 'true');
         $this->dropdownButton->addAttribute('aria-expanded', 'false');
-        $this->dropdownButton->addCssClass('btn btn-primary dropdown-toggle');
+        $this->dropdownButton->addCssClass('btn');
+        //$this->dropdownButton->addCssClass('btn dropdown-toggle');
+
+
+//        $this->dropdownButton->addCssClass('btn btn-primary dropdown-toggle');
+
+
+        /*
+        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+        */
+
+
 
         $this->dropdownDiv = new Div($this);
         $this->dropdownDiv->addAttribute('aria-labelledby', 'dropdownMenuButton');
@@ -68,7 +86,13 @@ class BootstrapDropdown extends Div
 
     public function getContent()
     {
+
         $this->dropdownButton->label = $this->label;
+
+        if ($this->showToggle) {
+        $this->dropdownButton->addCssClass('btn-primary dropdown-toggle');
+        }
+
         return parent::getContent();
     }
 
