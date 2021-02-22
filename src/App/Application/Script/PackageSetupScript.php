@@ -35,7 +35,6 @@ class PackageSetupScript extends AbstractConsoleScript
 
                 $install=$application->getInstall();
 
-                $install->
 
                 //(new Debug())->write($application->getInstall());
 
