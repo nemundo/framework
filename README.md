@@ -65,9 +65,9 @@ composer require phpseclib/phpseclib
 ```
 
 
-### Admin User erstellen
+### Create Admin User
 ```
-php bin/cmd.php admin-user-enable
+php bin/cmd.php admin-user
 ```
 
 ### Password Reset

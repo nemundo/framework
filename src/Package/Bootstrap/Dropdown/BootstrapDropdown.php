@@ -5,6 +5,7 @@ namespace Nemundo\Package\Bootstrap\Dropdown;
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Button\Button;
+use Nemundo\Package\Bootstrap\Icon\BootstrapIcon;
 
 class BootstrapDropdown extends Div
 {
@@ -43,6 +44,15 @@ class BootstrapDropdown extends Div
         $this->dropdownButton->addAttribute('aria-haspopup', 'true');
         $this->dropdownButton->addAttribute('aria-expanded', 'false');
         $this->dropdownButton->addCssClass('btn');
+
+$this->dropdownButton->addCssClass('bi bi-plus');
+
+        //$icon = new BootstrapIcon($dropdown);
+        //$icon->icon = 'plus';
+
+
+
+
         //$this->dropdownButton->addCssClass('btn dropdown-toggle');
 
 
