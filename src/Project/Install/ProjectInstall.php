@@ -8,7 +8,7 @@ use Nemundo\App\Application\Application\ApplicationApplication;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Backup\Application\BackupApplication;
 use Nemundo\App\DbAdmin\Install\DbAdminInstall;
-
+use Nemundo\App\Help\Application\HelpApplication;
 use Nemundo\App\Mail\Application\MailApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
@@ -55,9 +55,8 @@ class ProjectInstall extends AbstractInstall
 
 
         (new ApplicationSetup())
-            ->addApplication(new BackupApplication());
-
-
+            ->addApplication(new BackupApplication())
+            ->addApplication(new HelpApplication());
 
 
         //(new MailInstall())->install();

@@ -19,7 +19,7 @@ abstract class AbstractInstall extends AbstractBase
     /**
      * @var AbstractPackage[]
      */
-    private $packageList;
+    //private $packageList;
 
     protected function loadInstall() {
 
@@ -38,6 +38,7 @@ abstract class AbstractInstall extends AbstractBase
 
 
 
+    /*
     public function addPackage(AbstractPackage $package) {
 
 $this->packageList[]=$package;
@@ -45,12 +46,11 @@ return $this;
 
     }
 
-
     public function getPackageList() {
 
         return $this->packageList;
 
-    }
+    }*/
 
 
 }

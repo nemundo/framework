@@ -26,7 +26,7 @@ class ApplicationInstall extends AbstractInstall
         $setup->addApplication(new ApplicationApplication());
 
         (new ScriptSetup())
-        ->addScript(new PackageSetupScript());
+            ->addScript(new PackageSetupScript());
 
         (new UsergroupSetup())
             ->addUsergroup(new AppUsergroup())

@@ -23,6 +23,8 @@ class PackageSetupScript extends AbstractConsoleScript
     {
 
 
+        $packageList = [];
+
         $applicationReader = new ApplicationReader();
         $applicationReader->filter->andEqual($applicationReader->model->install, true);
         $applicationReader->addOrder($applicationReader->model->install, true);
@@ -30,31 +32,23 @@ class PackageSetupScript extends AbstractConsoleScript
 
             $application = $applicationRow->getApplication();
 
-            if ($application->hasInstall()) {
-
-
-                $install=$application->getInstall();
-
-
-                //(new Debug())->write($application->getInstall());
-
+            foreach ($application->getPackageList() as $package) {
+                $packageList[$package->packageName]=$package;
             }
-
-            // packageClassNameList
 
         }
 
 
 
+        foreach ($packageList as $package) {
 
-            /*
+            (new Debug())->write($package->packageName);
+
             (new PackageSetup())
-                ->addPackage(new BootstrapPackage())
-                ->addPackage(new FontAwesomePackage())
-                ->addPackage(new JqueryPackage())
-                ->addPackage(new JqueryUiPackage())
-                ->addPackage(new FontAwesomePackage());
-    */
+                ->addPackage($package);
+
+        }
+
 
     }
 }

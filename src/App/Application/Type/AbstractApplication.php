@@ -4,6 +4,7 @@ namespace Nemundo\App\Application\Type;
 
 use Nemundo\App\Application\Data\Application\ApplicationUpdate;
 use Nemundo\App\Application\Setup\ApplicationSetup;
+use Nemundo\Com\Package\AbstractPackage;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
@@ -119,8 +120,8 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-
-    public function getInstall() {
+    public function getInstall()
+    {
 
         /** @var AbstractInstall $install */
         $install = new $this->installClass();
@@ -247,6 +248,31 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         $site = new $this->adminSiteClass($parentSite);
         return $site;
+
+    }
+
+
+
+    //protected function addPackageClass()
+
+    /**
+     * @var AbstractPackage[]
+     */
+    private $packageList = [];
+
+    protected function addPackage(AbstractPackage $package)
+    {
+
+        $this->packageList[] = $package;
+        return $this;
+
+    }
+
+
+    public function getPackageList()
+    {
+
+        return $this->packageList;
 
     }
 
