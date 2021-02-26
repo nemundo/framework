@@ -8,6 +8,7 @@ use Nemundo\Com\Package\AbstractPackage;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
+use Nemundo\Project\AbstractProject;
 use Nemundo\Project\Install\AbstractInstall;
 use Nemundo\Project\Install\AbstractUninstall;
 use Nemundo\Web\Site\AbstractSite;
@@ -72,6 +73,14 @@ abstract class AbstractApplication extends AbstractBaseClass
     protected $siteClass;
 
 
+    //protected $projectClass;
+
+    /**
+     * @var AbstractProject
+     */
+    public $project;
+
+
     /**
      * @var string[]
      */
@@ -128,7 +137,6 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         return $install;
 
-
     }
 
 
@@ -162,6 +170,7 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         }
 
+        return $this;
 
     }
 
@@ -275,6 +284,21 @@ abstract class AbstractApplication extends AbstractBaseClass
         return $this->packageList;
 
     }
+
+
+    /*
+    public function getProject() {
+
+        $project=null;
+
+        if (class_exists($this->projectClass)) {
+    $project = new $this->projectClass();
+
+        }
+        return $project; $value;
+
+
+    }*/
 
 
 }

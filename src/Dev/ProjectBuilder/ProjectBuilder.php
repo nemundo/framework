@@ -50,6 +50,7 @@ class ProjectBuilder extends AbstractBaseClass
         $this->copyAsset('config_admin.php');
         $this->copyAsset('.htaccess', 'web');
         $this->copyAsset('cmd.php', 'bin');
+        $this->copyAsset('init.php', 'bin');
         $this->copyAsset('config.php', 'bin');
 
         $pathList = [];

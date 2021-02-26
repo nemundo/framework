@@ -28,9 +28,9 @@ class BootstrapSiteList extends BootstrapList
 
         if ($count !== null) {
 
-            $li->addCssClass('d-flex justify-content-between align-items-center');
+            $hyperlink->addCssClass('d-flex justify-content-between align-items-center');
 
-            $badge = new BootstrapBadge($li);
+            $badge = new BootstrapBadge($hyperlink);
             $badge->content = $count;
 
         }
