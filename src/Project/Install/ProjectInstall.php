@@ -5,6 +5,7 @@ namespace Nemundo\Project\Install;
 
 use Nemundo\Admin\Log\Script\LogFileDeleteScript;
 use Nemundo\App\Application\Application\ApplicationApplication;
+use Nemundo\App\Application\Install\ApplicationInstall;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Backup\Application\BackupApplication;
 use Nemundo\App\DbAdmin\Install\DbAdminInstall;
@@ -40,6 +41,9 @@ class ProjectInstall extends AbstractInstall
          (new SchedulerInstall())->install();*/
 
         //$this->resetSetupStatus();
+
+        (new ApplicationInstall())->install();
+        (new ApplicationSetup())->addApplication(new ApplicationApplication());
 
         (new ApplicationApplication())->installApp();
 
