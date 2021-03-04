@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nemundo\Project\Install;
+namespace Nemundo\App\Application\Type\Install;
 
 
 use Nemundo\Com\Package\AbstractPackage;
@@ -35,22 +35,5 @@ abstract class AbstractInstall extends AbstractBase
         $this->loadInstall();
 
     }
-
-
-
-    /*
-    public function addPackage(AbstractPackage $package) {
-
-$this->packageList[]=$package;
-return $this;
-
-    }
-
-    public function getPackageList() {
-
-        return $this->packageList;
-
-    }*/
-
 
 }

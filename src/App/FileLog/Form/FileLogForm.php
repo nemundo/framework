@@ -1,15 +1,15 @@
 <?php
 
-namespace Nemundo\Admin\Log\Form;
+namespace Nemundo\App\FileLog\Form;
 
 
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\File\DirectoryReader;
 use Nemundo\Core\Log\LogConfig;
-use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
-class LogFileForm extends SearchForm
+class FileLogForm extends SearchForm
 {
 
     /**
@@ -25,6 +25,8 @@ class LogFileForm extends SearchForm
 
         $this->listbox = new BootstrapListBox($row);
         $this->listbox->name = 'file';
+        $this->listbox->column = true;
+        $this->listbox->columnSize = 2;
 
     }
 

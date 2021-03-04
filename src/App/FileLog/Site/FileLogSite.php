@@ -1,36 +1,28 @@
 <?php
 
-namespace Nemundo\Admin\Log\Site;
+namespace Nemundo\App\FileLog\Site;
 
 
-use Nemundo\Admin\Com\Button\AdminSiteButton;
-use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Log\Form\LogFileForm;
-use Nemundo\Com\TableBuilder\TableRow;
-use Nemundo\Core\Log\LogConfig;
-use Nemundo\Core\TextFile\Reader\TextFileReader;
-use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\App\FileLog\Page\FileLogPage;
 use Nemundo\Web\Site\AbstractSite;
 
-// LogFile
-// move nach App
-class LogFileSite extends AbstractSite
+
+class FileLogSite extends AbstractSite
 {
 
     /**
-     * @var LogFileSite
+     * @var FileLogSite
      */
     public static $site;
 
     protected function loadSite()
     {
 
-        $this->title = 'Log File';
-        $this->url = 'log-file';
+        $this->title = 'File Log';
+        $this->url = 'file-log';
+        FileLogSite::$site = $this;
 
-        new LogFileDeleteSite($this);
-
-        LogFileSite::$site = $this;
+        new FileLogDeleteSite($this);
 
     }
 
@@ -38,6 +30,9 @@ class LogFileSite extends AbstractSite
     public function loadContent()
     {
 
+        (new FileLogPage())->render();
+
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $form = new LogFileForm($page);
@@ -59,7 +54,7 @@ class LogFileSite extends AbstractSite
         $btn = new AdminSiteButton($page);
         $btn->site = LogFileDeleteSite::$site;
 
-        $page->render();
+        $page->render();*/
 
     }
 
