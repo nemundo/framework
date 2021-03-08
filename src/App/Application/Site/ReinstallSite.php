@@ -22,6 +22,7 @@ class ReinstallSite extends AbstractSite
 
         $this->title = 'Reinstall';
         $this->url = 'reinstall';
+        $this->menuActive=false;
 
         ReinstallSite::$site = $this;
 

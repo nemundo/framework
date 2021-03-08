@@ -23,6 +23,7 @@ class InstallSite extends AbstractSite
 
         $this->title = 'Install';
         $this->url = 'install';
+        $this->menuActive=false;
 
         InstallSite::$site=$this;
 

@@ -26,6 +26,8 @@ class ApplicationSite extends AbstractSite
         new UninstallSite($this);
         new ReinstallSite($this);
 
+        new DataSite($this);
+
     }
 
 

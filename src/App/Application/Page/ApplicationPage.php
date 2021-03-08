@@ -11,6 +11,7 @@ use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Application\Site\InstallSite;
 use Nemundo\App\Application\Site\ReinstallSite;
 use Nemundo\App\Application\Site\UninstallSite;
+use Nemundo\App\Application\Template\ApplicationTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -19,7 +20,7 @@ use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
-class ApplicationPage extends AbstractTemplateDocument
+class ApplicationPage extends ApplicationTemplate
 {
 
     public function getContent()
