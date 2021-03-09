@@ -175,6 +175,19 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+
+    public function setAppMenuActive() {
+
+        $update = new ApplicationUpdate();
+        $update->appMenu = true;
+        $update->updateById($this->applicationId);
+
+        return $this;
+
+    }
+
+
+
     public function hasUninstall()
     {
 
@@ -198,6 +211,8 @@ abstract class AbstractApplication extends AbstractBaseClass
 
             $update = new ApplicationUpdate();
             $update->install = false;
+            $update->appMenu=false;
+            $update->adminMenu=false;
             $update->updateById($this->applicationId);
 
 

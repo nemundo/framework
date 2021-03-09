@@ -2,6 +2,7 @@
 
 ### Installation
 ```
+composer init
 composer require nemundo/framework
 ```
 

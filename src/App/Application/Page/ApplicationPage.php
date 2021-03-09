@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
+use Nemundo\App\Application\Site\ApplicationEditSite;
 use Nemundo\App\Application\Site\InstallSite;
 use Nemundo\App\Application\Site\ReinstallSite;
 use Nemundo\App\Application\Site\UninstallSite;
@@ -55,12 +56,14 @@ class ApplicationPage extends ApplicationTemplate
         $header->addText($applicationReader->model->project->label);
         $header->addText($applicationReader->model->application->label);
         $header->addText($applicationReader->model->install->label);
+        $header->addText($applicationReader->model->appMenu->label);
+        $header->addText($applicationReader->model->adminMenu->label);
         $header->addEmpty();
         $header->addEmpty();
         $header->addEmpty();
         $header->addText('Package');
         $header->addText('Dependency');
-
+        $header->addEmpty();
 
         foreach ($applicationReader->getData() as $applicationRow) {
 
@@ -68,6 +71,8 @@ class ApplicationPage extends ApplicationTemplate
             $row->addText($applicationRow->project->project);
             $row->addText($applicationRow->application);
             $row->addYesNo($applicationRow->install);
+            $row->addYesNo($applicationRow->appMenu);
+            $row->addYesNo($applicationRow->adminMenu);
 
             $app = $applicationRow->getApplication();
 
@@ -114,6 +119,13 @@ class ApplicationPage extends ApplicationTemplate
             } else {
                 $row->addText('No Class');
             }
+
+
+            $site=clone(ApplicationEditSite::$site);
+            $site->addParameter(new ApplicationParameter($applicationRow->id));
+            $row->addIconSite($site);
+
+
 
         }
 

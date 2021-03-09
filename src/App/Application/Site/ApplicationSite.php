@@ -22,6 +22,8 @@ class ApplicationSite extends AbstractSite
         $this->url = 'application';
         ApplicationSite::$site = $this;
 
+        new ApplicationEditSite($this);
+
         new InstallSite($this);
         new UninstallSite($this);
         new ReinstallSite($this);
