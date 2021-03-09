@@ -53,7 +53,7 @@ class ApplicationPage extends ApplicationTemplate
         $applicationReader->addOrder($applicationReader->model->application);
 
         $header = new TableHeader($table);
-        $header->addText($applicationReader->model->project->label);
+
         $header->addText($applicationReader->model->application->label);
         $header->addText($applicationReader->model->install->label);
         $header->addText($applicationReader->model->appMenu->label);
@@ -61,6 +61,7 @@ class ApplicationPage extends ApplicationTemplate
         $header->addEmpty();
         $header->addEmpty();
         $header->addEmpty();
+        $header->addText($applicationReader->model->project->label);
         $header->addText('Package');
         $header->addText('Dependency');
         $header->addEmpty();
@@ -68,7 +69,7 @@ class ApplicationPage extends ApplicationTemplate
         foreach ($applicationReader->getData() as $applicationRow) {
 
             $row = new TableRow($table);
-            $row->addText($applicationRow->project->project);
+
             $row->addText($applicationRow->application);
             $row->addYesNo($applicationRow->install);
             $row->addYesNo($applicationRow->appMenu);
@@ -103,7 +104,7 @@ class ApplicationPage extends ApplicationTemplate
                     $row->addEmpty();
                 }
 
-
+                $row->addText($applicationRow->project->project);
 
                 $ul = new UnorderedList($row);
                 foreach ($app->getPackageList() as $package) {

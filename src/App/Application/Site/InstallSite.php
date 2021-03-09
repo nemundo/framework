@@ -34,7 +34,7 @@ class InstallSite extends AbstractSite
     {
 
         $application = (new ApplicationParameter())->getApplication();
-        $application->installApp();
+        $application->installApp()->setAppMenuActive();
 
         foreach ($application->getPackageList() as $package) {
             $packageList[$package->packageName]=$package;
