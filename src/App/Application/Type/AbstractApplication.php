@@ -13,6 +13,9 @@ use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Application\Type\Install\AbstractUninstall;
 use Nemundo\Web\Site\AbstractSite;
 
+
+// splitting ???
+
 abstract class AbstractApplication extends AbstractBaseClass
 {
 
@@ -71,7 +74,7 @@ abstract class AbstractApplication extends AbstractBaseClass
      * @var string
      */
     protected $siteClass;
-
+// appSiteClass
 
     //protected $projectClass;
 
@@ -231,9 +234,12 @@ abstract class AbstractApplication extends AbstractBaseClass
         $this->uninstallApp();
         $this->installApp();
 
+        return $this;
+
     }
 
 
+    // hasAppSite
     public function hasSite()
     {
 
@@ -246,6 +252,7 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+    // getAppSite
     public function getSite(AbstractSite $parentSite)
     {
 
