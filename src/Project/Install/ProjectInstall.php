@@ -21,6 +21,7 @@ use Nemundo\Dev\Script\DeleteTmpScript;
 use Nemundo\Model\Install\ModelInstall;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
+use Nemundo\Project\Script\ProjectCleanScript;
 use Nemundo\User\Application\UserApplication;
 use Nemundo\User\Setup\UsergroupSetup;
 
@@ -55,6 +56,7 @@ class ProjectInstall extends AbstractInstall
         (new ModelInstall())->install();
 
         (new ScriptSetup())
+            ->addScript(new ProjectCleanScript())
             //->addScript(new ImageResizeScript())
             ->addScript(new DeleteTmpScript())
             ->addScript(new AdminBuilderScript());

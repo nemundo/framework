@@ -106,6 +106,12 @@ sudo php bin/cmd.php db-index-delete
 ```
 
 
+### Project Clean (Delete Databas/Files)
+```
+sudo php bin/cmd.php project-clean
+```
+
+
 
 ### MySql Dump (outdated)
 ```
