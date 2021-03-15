@@ -40,7 +40,7 @@ class MySqlPage extends MySqlTemplate
 
         $header=new AdminTableHeader($table);
         $header->addText('Table Name');
-        $header->addText('Charset');
+        $header->addText('Collation');
         $header->addText('Engine');
         $header->addText('Rows');
 
