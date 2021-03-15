@@ -3,8 +3,10 @@
 namespace Nemundo\App\MySql\Page;
 
 use Nemundo\Admin\Com\Button\AdminSiteButton;
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
+use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\MySql\Com\ListBox\MySqlTableListBox;
@@ -15,6 +17,8 @@ use Nemundo\App\MySql\Com\Table\MySqlTableTable;
 use Nemundo\App\MySql\Parameter\TableParameter;
 use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
+use Nemundo\App\MySql\Site\MySqlTableSite;
+use Nemundo\App\MySql\Template\MySqlTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Db\DbConfig;
@@ -22,7 +26,7 @@ use Nemundo\Db\Reader\SqlReader;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
-class MySqlPage extends AbstractTemplateDocument
+class MySqlPage extends MySqlTemplate
 {
 
     public function getContent()
@@ -32,7 +36,7 @@ class MySqlPage extends AbstractTemplateDocument
         //new MySqlTableTable($this);
 
 
-        $table = new AdminTable($this);
+        $table = new AdminClickableTable($this);
 
         $header=new AdminTableHeader($table);
         $header->addText('Table Name');
@@ -44,11 +48,17 @@ class MySqlPage extends AbstractTemplateDocument
         $reader->sqlStatement->sql= 'SELECT * FROM information_schema.tables WHERE table_schema = "'.DbConfig::$defaultConnection->connectionParameter->database.'" ORDER BY TABLE_NAME';
         foreach ($reader->getData() as $dataRow) {
 
-            $row=new AdminTableRow($table);
-            $row->addText($dataRow->getValue('TABLE_NAME'));
+            $tableName = $dataRow->getValue('TABLE_NAME');
+
+            $row=new AdminClickableTableRow($table);
+            $row->addText($tableName);
             $row->addText($dataRow->getValue('TABLE_COLLATION'));
             $row->addText($dataRow->getValue('ENGINE'));
             $row->addText($dataRow->getValue('TABLE_ROWS'));
+
+            $site = clone(MySqlTableSite::$site);
+            $site->addParameter(new TableParameter($tableName));
+            $row->addClickableSite($site);
 
         }
 

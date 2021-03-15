@@ -3,36 +3,34 @@
 namespace Nemundo\App\MySql\Site;
 
 use Nemundo\App\MySql\Page\MySqlPage;
+use Nemundo\App\MySql\Page\MySqlTablePage;
 use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
 use Nemundo\Web\Site\AbstractSite;
 
-class MySqlSite extends AbstractSite
+class MySqlTableSite extends AbstractSite
 {
 
     /**
-     * @var MySqlSite
+     * @var MySqlTableSite
      */
     public static $site;
 
     protected function loadSite()
     {
 
-        $this->title = 'MySql';
-        $this->url = 'mysql';
+        $this->title = 'MySql Table';
+        $this->url = 'mysql-table';
+        $this->menuActive=false;
 
-        MySqlSite::$site=$this;
-
-        new MySqlTableSite($this);
-        new DropTableSite($this);
-        new EmptyTableSite($this);
+        MySqlTableSite::$site=$this;
 
     }
 
 
     public function loadContent()
     {
-        (new MySqlPage())->render();
+        (new MySqlTablePage())->render();
     }
 
 }
