@@ -18,6 +18,11 @@ class LoginWidget extends AdminWidget
     public $showForgotHyperlink = false;
 
     /**
+     * @var bool
+     */
+    public $showRegisterHyperlink = false;
+
+    /**
      * @var AbstractSite
      */
     public $redirectSite;
@@ -32,8 +37,8 @@ class LoginWidget extends AdminWidget
         $this->widgetTitle = 'Login';
 
         $form = new LoginForm($this);
-        $form->showForgotHyperlink =$this->showForgotHyperlink;  // true;
-        //$form->showRegisterHyperlink = false;
+        $form->showForgotHyperlink =$this->showForgotHyperlink;
+        $form->showRegisterHyperlink =$this->showRegisterHyperlink;
         $form->autofocus = false;
         $form->redirectSite = $this->redirectSite;
 

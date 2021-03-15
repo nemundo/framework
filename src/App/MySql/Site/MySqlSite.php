@@ -10,6 +10,7 @@ use Nemundo\Web\Site\AbstractSite;
 class MySqlSite extends AbstractSite
 {
 
+
     protected function loadSite()
     {
 

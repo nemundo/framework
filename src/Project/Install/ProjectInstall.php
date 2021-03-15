@@ -12,6 +12,7 @@ use Nemundo\App\DbAdmin\Install\DbAdminInstall;
 use Nemundo\App\FileLog\Application\FileLogApplication;
 use Nemundo\App\Help\Application\HelpApplication;
 use Nemundo\App\Mail\Application\MailApplication;
+use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Setup\ScriptSetup;
@@ -43,6 +44,7 @@ class ProjectInstall extends AbstractInstall
 
         (new ApplicationSetup())
             ->addApplication(new SystemApplication())
+            ->addApplication(new MySqlApplication())
             ->addApplication(new FileLogApplication())
             ->addApplication(new BackupApplication())
             ->addApplication(new HelpApplication());
