@@ -26,6 +26,7 @@ class MySqlSite extends AbstractSite
         new MySqlTableSite($this);
         new DropTableSite($this);
         new EmptyTableSite($this);
+        new DatabaseSite($this);
 
     }
 
