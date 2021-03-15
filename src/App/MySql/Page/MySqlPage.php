@@ -41,7 +41,7 @@ class MySqlPage extends AbstractTemplateDocument
         $header->addText('Rows');
 
         $reader = new SqlReader();
-        $reader->sqlStatement->sql= 'SELECT * FROM information_schema.tables WHERE table_schema = "'.DbConfig::$defaultConnection->connectionParameter->database.'"';
+        $reader->sqlStatement->sql= 'SELECT * FROM information_schema.tables WHERE table_schema = "'.DbConfig::$defaultConnection->connectionParameter->database.'" ORDER BY TABLE_NAME';
         foreach ($reader->getData() as $dataRow) {
 
             $row=new AdminTableRow($table);
