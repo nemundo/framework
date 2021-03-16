@@ -34,15 +34,24 @@ OPTIMIZE TABLE table_name;
 
 
 
+
+            // ALTER TABLE wp_comments ENGINE=InnoDB;
             //(new Debug())->write($mySqlTable->tableName.' '.$mySqlTable->charset);
 
 
             $sql=new SqlStatement();
-            $sql->sql = 'ALTER TABLE `'.$mySqlTable->tableName.'` CONVERT TO CHARACTER SET utf8mb4';
+            $sql->sql = 'ALTER TABLE `'.$mySqlTable->tableName.'` CONVERT TO CHARACTER SET utf8mb4;';
             DbConfig::$defaultConnection->execute($sql);
 
 
-   // COLLATE utf8mb4_unicode_ci;
+            $sql=new SqlStatement();
+            $sql->sql = 'ALTER TABLE `'.$mySqlTable->tableName.'` ENGINE=InnoDB;';
+            DbConfig::$defaultConnection->execute($sql);
+
+
+
+
+            // COLLATE utf8mb4_unicode_ci;
 
 
 

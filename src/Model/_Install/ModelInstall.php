@@ -15,8 +15,8 @@ class ModelInstall extends AbstractInstall
     public function install()
     {
 
-        (new ScriptSetup())
-            ->addScript(new ImageResizeScript());
+        //(new ScriptSetup())
+        //    ->addScript(new ImageResizeScript());
 
         //    ->addScript(new ModelCheckScript());
 

@@ -9,6 +9,7 @@ namespace Nemundo\Admin\Com\Navbar;
 use Nemundo\Content\Index\Search\Site\Json\SearchJsonSite;
 use Nemundo\Content\Index\Search\Site\SearchSite;
 use Nemundo\Package\Bootstrap\Autocomplete\AbstractAutocompleteJsonSite;
+use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarBrand;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarSearchForm;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarToggler;
@@ -24,6 +25,8 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
 {
 
     public $logoUrl;
+
+    public $brand='Home';
 
     /**
      * @var bool
@@ -44,10 +47,20 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
     public function getContent()
     {
 
+
+        if ($this->logoUrl !==null) {
         $logo = new BootstrapNavbarLogo();
         $logo->logoSite = new BaseUrlSite();
         $logo->logoUrl = $this->logoUrl;
         $this->containerDiv->addContainerAtFirst($logo);
+        } else {
+
+            $brand=new BootstrapNavbarBrand();
+            $brand->content = $this->brand; // 'hello';
+             $this->containerDiv->addContainerAtFirst($brand);
+
+        }
+
 
         $toggler = new BootstrapNavbarToggler();
         $this->containerDiv->addContainerAtFirst($toggler);

@@ -98,6 +98,23 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
+
+    public function hasModelCollection()
+    {
+
+        $value = false;
+        if ($this->modelCollectionClass !== null) {
+            if (class_exists($this->modelCollectionClass)) {
+                $value = true;
+            } else {
+                (new Debug())->write('Model Collection Class not found. Class: ' . $this->modelCollectionClass);
+            }
+        }
+        return $value;
+
+    }
+
+
     public function getModelCollection()
     {
 

@@ -100,6 +100,12 @@ sudo php bin/cmd.php backup-import
 sudo php bin/cmd.php backup-clean
 ```
 
+
+### Model Image Resize
+```
+sudo php bin/cmd.php model-image-resize
+```
+
 ### Db Index Delete
 ```
 sudo php bin/cmd.php db-index-delete
@@ -110,6 +116,9 @@ sudo php bin/cmd.php db-index-delete
 ```
 sudo php bin/cmd.php project-clean
 ```
+
+
+
 
 
 

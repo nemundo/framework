@@ -20,6 +20,7 @@ use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
 use Nemundo\Model\Install\ModelInstall;
+use Nemundo\Model\Script\ImageResizeScript;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
 use Nemundo\Project\Script\ProjectCleanScript;
@@ -55,13 +56,14 @@ class ProjectInstall extends AbstractInstall
         (new TmpPath())->createPath();
         (new LogPath())->createPath();
 
-        (new ModelInstall())->install();
+        //(new ModelInstall())->install();
 
         (new ScriptSetup())
             ->addScript(new ProjectCleanScript())
             //->addScript(new ImageResizeScript())
             ->addScript(new DeleteTmpScript())
             ->addScript(new AdminBuilderScript());
+
 
     }
 
