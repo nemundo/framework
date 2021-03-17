@@ -6,6 +6,8 @@ namespace Nemundo\Admin\Com\Navbar;
 namespace Nemundo\Admin\Com\Navbar;
 
 
+use Nemundo\App\UserAction\Site\LogoutSite;
+use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Content\Index\Search\Site\Json\SearchJsonSite;
 use Nemundo\Content\Index\Search\Site\SearchSite;
 use Nemundo\Package\Bootstrap\Autocomplete\AbstractAutocompleteJsonSite;
@@ -44,6 +46,11 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
     public $searchSourceSite;
 
 
+    /**
+     * @var bool
+     */
+    public $showPasswordChange = true;
+
     public function getContent()
     {
 
@@ -56,7 +63,7 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
         } else {
 
             $brand=new BootstrapNavbarBrand();
-            $brand->content = $this->brand; // 'hello';
+            $brand->content = $this->brand;
              $this->containerDiv->addContainerAtFirst($brand);
 
         }
@@ -72,6 +79,15 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
             $search->sourceSite = $this->searchSourceSite;
 
         }
+
+
+        if ($this->showPasswordChange) {
+            $this->addUserMenuSite(PasswordChangeSite::$site);
+            $this->addUserMenuDivider();
+        }
+
+        $this->addUserMenuSite(LogoutSite::$site);
+
 
         return parent::getContent();
 

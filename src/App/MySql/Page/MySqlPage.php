@@ -21,6 +21,7 @@ use Nemundo\App\MySql\Site\MySqlTableSite;
 use Nemundo\App\MySql\Template\MySqlTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
+use Nemundo\Core\Type\Number\Number;
 use Nemundo\Db\DbConfig;
 use Nemundo\Db\Reader\SqlReader;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
@@ -54,7 +55,11 @@ class MySqlPage extends MySqlTemplate
             $row->addText($tableName);
             $row->addText($dataRow->getValue('TABLE_COLLATION'));
             $row->addText($dataRow->getValue('ENGINE'));
-            $row->addText($dataRow->getValue('TABLE_ROWS'));
+
+
+            $rowCount = $dataRow->getValue('TABLE_ROWS');
+
+            $row->addText((new Number($rowCount))->formatNumber());
 
             $site = clone(MySqlTableSite::$site);
             $site->addParameter(new TableParameter($tableName));

@@ -30,4 +30,9 @@ class AdminConfig
      */
     //public static $pageTitle = 'Admin';
 
+
+    // AdminTemplate (static)
+
+    public static $showPasswordChange = true;
+
 }

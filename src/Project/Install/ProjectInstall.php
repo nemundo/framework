@@ -19,7 +19,7 @@ use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
-use Nemundo\Model\Install\ModelInstall;
+
 use Nemundo\Model\Script\ImageResizeScript;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
@@ -50,20 +50,15 @@ class ProjectInstall extends AbstractInstall
             ->addApplication(new BackupApplication())
             ->addApplication(new HelpApplication());
 
-
         (new DbAdminInstall())->run();
 
         (new TmpPath())->createPath();
         (new LogPath())->createPath();
 
-        //(new ModelInstall())->install();
-
         (new ScriptSetup())
             ->addScript(new ProjectCleanScript())
-            //->addScript(new ImageResizeScript())
             ->addScript(new DeleteTmpScript())
             ->addScript(new AdminBuilderScript());
-
 
     }
 
