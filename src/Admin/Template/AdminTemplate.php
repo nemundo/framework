@@ -12,6 +12,7 @@ use Nemundo\Package\FontAwesome\FontAwesomePackage;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 use Nemundo\Package\NemundoJs\NemundoJsPackage;
+use Nemundo\Web\ResponseConfig;
 use Nemundo\Web\Site\BaseUrlSite;
 use Nemundo\Web\WebConfig;
 
@@ -55,7 +56,7 @@ class AdminTemplate extends BootstrapDocument
 
         parent::loadContainer();
 
-        $this->title = AdminConfig::$pageTitle;
+        //$this->title = AdminConfig::$pageTitle;
 
     }
 
@@ -70,7 +71,7 @@ class AdminTemplate extends BootstrapDocument
     {
 
         if ($this->title == null) {
-            $this->title = AdminConfig::$pageTitle;
+            $this->title = ResponseConfig::$title;  // AdminConfig::$pageTitle;
         }
 
         new JqueryHeader($this);
