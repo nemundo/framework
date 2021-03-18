@@ -15,6 +15,7 @@ use Nemundo\App\Mail\Application\MailApplication;
 use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
+use Nemundo\App\Script\Application\ScriptApplication;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
@@ -44,6 +45,7 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new ScriptApplication())
             ->addApplication(new SystemApplication())
             ->addApplication(new MySqlApplication())
             ->addApplication(new FileLogApplication())
