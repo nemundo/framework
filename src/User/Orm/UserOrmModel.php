@@ -7,7 +7,6 @@ use Nemundo\Model\Definition\Index\ModelUniqueIndex;
 use Nemundo\Model\Definition\Model\ModelTrait\ActiveModelTrait;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Orm\Type\Text\TextOrmType;
-use Nemundo\Orm\Type\Web\EmailOrmType;
 
 
 class UserOrmModel extends AbstractOrmModel
@@ -63,6 +62,7 @@ class UserOrmModel extends AbstractOrmModel
         $this->password->fieldName = 'password';
         $this->password->variableName = 'password';
         $this->password->label = 'Passwort';
+        $this->password->allowNullValue=true;
         /*$this->password->visible->form = false;
         $this->password->visible->table = false;
         $this->password->visible->view = false;*/
@@ -72,6 +72,7 @@ class UserOrmModel extends AbstractOrmModel
         $this->email->fieldName = 'email';
         $this->email->variableName = 'email';
         $this->email->label = 'eMail';
+        $this->email->allowNullValue=true;
         //$this->email->validation = true;
         $this->email->isEditable = false;
 

@@ -6,6 +6,7 @@ namespace Nemundo\App\Application\Page;
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
@@ -55,7 +56,7 @@ class ApplicationPage extends ApplicationTemplate
 
         $applicationReader->addOrder($applicationReader->model->application);
 
-        $header = new TableHeader($table);
+        $header = new AdminTableHeader($table);
 
         $header->addText($applicationReader->model->application->label);
         $header->addText($applicationReader->model->install->label);
