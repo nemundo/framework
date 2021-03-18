@@ -13,6 +13,7 @@ use Nemundo\Package\Bootstrap\Listing\BootstrapBadge;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Site\AbstractSite;
 use Paranautik\Xcontest\Data\Flight\FlightReader;
+use Paranautik\Xcontest\Search\FlightSearchSiteBuilder;
 use Paranautik\Xcontest\Site\Search\AbstractRemoveParameterSite;
 
 
@@ -32,6 +33,17 @@ abstract class AbstractAdminSearchRedefine extends Div
      * @var bool
      */
     public $hideAtStartup = true;
+
+    /**
+     * @var bool
+     */
+    public $hideIfEmpty = false;
+
+    /**
+     * @var bool
+     */
+    public $showClearButton=false;
+
 
     /**
      * @var AbstractSite
@@ -123,6 +135,14 @@ abstract class AbstractAdminSearchRedefine extends Div
         $this->addJqueryScript('$("#' . $this->titleDiv->id . '").click(function(){');
         $this->addJqueryScript('$("#' . $this->contentDiv->id . '").toggle();');
         $this->addJqueryScript('});');
+
+
+
+        
+        //$this->removeButton = new AdminIconSiteButton($this);  // ($this->titleDiv);
+        //$this->removeButton->site = (new FlightSearchSiteBuilder())->getSite($this->removeSite);
+
+
 
         return parent::getContent();
 

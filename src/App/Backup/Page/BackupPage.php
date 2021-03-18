@@ -76,6 +76,11 @@ class BackupPage extends AbstractTemplateDocument
             $row->addText($file->getFileSizeText());
         }
 
+
+        $code = new Code($widget);
+        $code->content = 'sudo php bin/cmd.php backup-dump';
+
+
         $code = new Code($widget);
         $code->content = 'sudo php bin/cmd.php backup-restore';
 
