@@ -20,12 +20,12 @@ abstract class AbstractDatabaseModelClean extends AbstractBase
     /**
      * @var bool
      */
-    public $dropTable = true;
+    public $dropTable = false;
 
     /**
      * @var bool
      */
-    public $dropField = true;
+    public $dropField = false;
 
     /**
      * @var AbstractInstall[]
@@ -50,6 +50,9 @@ abstract class AbstractDatabaseModelClean extends AbstractBase
 
 
         // include application install
+
+
+        // Problem --> extends Model (z.B. User Model)
 
 
         $tableReader = new MySqlTableReader();
@@ -88,7 +91,7 @@ abstract class AbstractDatabaseModelClean extends AbstractBase
                         }
 
                         if (!$typeFound) {
-                            (new Debug())->write('Drop Field: ' . $mySqlField->fieldName);
+                            (new Debug())->write('Drop Field: ' . $mySqlField->fieldName. ' ('.$mySqlTable->tableName.')');
                             if ($this->dropField) {
                                 $mySqlField->dropField();
                             }

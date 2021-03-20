@@ -17,6 +17,12 @@ use Paranautik\Xcontest\Search\FlightSearchSiteBuilder;
 use Paranautik\Xcontest\Site\Search\AbstractRemoveParameterSite;
 
 
+// to do
+// more (z.B. Country)
+
+
+
+
 // AdminRedefineCard
 abstract class AbstractAdminSearchRedefine extends Div
 {
@@ -33,6 +39,8 @@ abstract class AbstractAdminSearchRedefine extends Div
      * @var bool
      */
     public $hideAtStartup = true;
+// showAtStartup
+
 
     /**
      * @var bool
