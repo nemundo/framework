@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../../config.php';
 
-$swissCoordinate = new \Nemundo\Geo\Coordinate\Swiss\SwissCoordinateConverter();
+$swissCoordinate = new \Nemundo\Geo\Coordinate\_Swiss\SwissCoordinateConverter();
 $coordinate = $swissCoordinate->getLatLon(729880, 115820);
 
 $html = new \Nemundo\Html\Document\HtmlDocument();

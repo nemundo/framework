@@ -3,7 +3,7 @@
 namespace Nemundo\Model\Reader;
 
 
-use Nemundo\Core\Base\DataSource\PaginationTrait;
+use Nemundo\Com\Pagination\PaginationTrait;
 use Nemundo\Model\Count\ModelDataCount;
 use Nemundo\Model\ModelConfig;
 use Nemundo\Model\Row\ModelDataRow;
@@ -17,7 +17,7 @@ abstract class AbstractPaginationModelDataReader extends AbstractModelDataReader
     /**
      * @var bool
      */
-    public $loadField = true;
+    //public $loadField = true;
 
 
     public function __construct()

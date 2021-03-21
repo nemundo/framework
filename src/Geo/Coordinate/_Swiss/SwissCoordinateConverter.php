@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Geo\Coordinate\Swiss;
+namespace Nemundo\Geo\Coordinate\_Swiss;
 
 
 use Nemundo\Core\Base\AbstractBase;

@@ -38,9 +38,7 @@ abstract class AbstractAdminSearchRedefine extends Div
     /**
      * @var bool
      */
-    public $hideAtStartup = true;
-// showAtStartup
-
+    public $showAtStartup = true;
 
     /**
      * @var bool
@@ -134,7 +132,7 @@ abstract class AbstractAdminSearchRedefine extends Div
         $this->titleDiv->id = $this->id . '-title';
         $this->contentDiv->id = $this->id . '-content';
 
-        if ($this->hideAtStartup) {
+        if ($this->showAtStartup) {
             $this->addStyle('#' . $this->contentDiv->id . ' {');
             $this->addStyle('display: none;');
             $this->addStyle('}');

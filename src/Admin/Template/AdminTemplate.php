@@ -42,9 +42,9 @@ class AdminTemplate extends BootstrapDocument
 
         $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
 
-        $this->navbar = new AdminSiteNavbar();  // new BootstrapSiteNavbar();
+        $this->navbar = new AdminSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
-        $this->navbar->userMode = AdminConfig::$userMode;  // false;
+        $this->navbar->userMode = AdminConfig::$userMode;
 
         $this->navbar->showPasswordChange= AdminConfig::$showPasswordChange;  // false;
 
@@ -63,8 +63,6 @@ class AdminTemplate extends BootstrapDocument
         parent::addContainer($this->container);
 
         parent::loadContainer();
-
-        //$this->title = AdminConfig::$pageTitle;
 
     }
 
