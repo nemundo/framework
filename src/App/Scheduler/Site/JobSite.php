@@ -19,7 +19,9 @@ class JobSite extends AbstractSite
         $this->title = 'Job';
         $this->url = 'job';
 
-        JobSite::$site=$this;
+        JobSite::$site = $this;
+
+        new JobCleanSite($this);
 
     }
 

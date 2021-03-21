@@ -8,6 +8,7 @@ use Nemundo\App\Scheduler\Builder\NextJobBuilder;
 use Nemundo\App\Scheduler\Data\Job\Job;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerUpdate;
+use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\App\Script\Com\ListBox\ScriptListBox;
 use Nemundo\Core\Type\DateTime\Time;
 use Nemundo\Core\Validation\ValidationType;
@@ -45,6 +46,7 @@ class JobForm extends BootstrapForm
         $data=new Job();
         $data->scriptId=$this->script->getValue();
         $data->finished=false;
+        $data->statusId=(new PlannedSchedulerStatus())->id;
         $data->save();
 
 

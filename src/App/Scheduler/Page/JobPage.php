@@ -2,11 +2,14 @@
 
 namespace Nemundo\App\Scheduler\Page;
 
+use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\App\Scheduler\Com\Form\JobForm;
 use Nemundo\App\Scheduler\Data\Job\JobPaginationReader;
+use Nemundo\App\Scheduler\Site\JobCleanSite;
 use Nemundo\App\Scheduler\Site\JobSite;
+use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -20,14 +23,20 @@ class JobPage extends SchedulerTemplate
 
         $layout = new BootstrapTwoColumnLayout($this);
 
+        $btn=new AdminIconSiteButton($layout->col1);
+        $btn->site=JobCleanSite::$site;
+
+
         $jobReader = new JobPaginationReader();
         $jobReader->model->loadScript();
+        $jobReader->model->loadStatus();
         $jobReader->addOrder($jobReader->model->finished);
         $jobReader->addOrder($jobReader->model->id);
 
         $table = new AdminTable($layout->col1);
 
         $header = new AdminTableHeader($table);
+        $header->addText($jobReader->model->status->label);
         $header->addText($jobReader->model->script->label);
         $header->addText($jobReader->model->finished->label);
         $header->addText($jobReader->model->duration->label);
@@ -35,9 +44,14 @@ class JobPage extends SchedulerTemplate
         foreach ($jobReader->getData() as $jobRow) {
 
             $row = new TableRow($table);
+            $row->addText($jobRow->status->schedulerStatus);
             $row->addText($jobRow->script->scriptClass);
             $row->addYesNo($jobRow->finished);
+            if ($jobRow->statusId == (new FinishedSchedulerStatus())->id) {
             $row->addText($jobRow->duration.' sec');
+            } else {
+                $row->addEmpty();
+            }
 
 
         }

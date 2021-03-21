@@ -39,6 +39,15 @@
                     "variable_name": "duration",
                     "allow_null": true,
                     "is_deleted": false
+                },
+                {
+                    "type": "external",
+                    "label": "Status",
+                    "field_name": "status",
+                    "variable_name": "status",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "58be01d6-5944-479b-8ca1-ead2ddc7b191"
                 }
             ],
             "index": [

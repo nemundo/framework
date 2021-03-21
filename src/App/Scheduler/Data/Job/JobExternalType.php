@@ -26,6 +26,16 @@ public $finished;
 */
 public $duration;
 
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $statusId;
+
+/**
+* @var \Nemundo\App\Scheduler\Data\SchedulerStatus\SchedulerStatusExternalType
+*/
+public $status;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = JobModel::class;
@@ -59,6 +69,13 @@ $this->duration->aliasFieldName = $this->duration->tableName . "_" . $this->dura
 $this->duration->label = "Duration";
 $this->addType($this->duration);
 
+$this->statusId = new \Nemundo\Model\Type\Id\IdType();
+$this->statusId->fieldName = "status";
+$this->statusId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->statusId->aliasFieldName = $this->statusId->tableName ."_".$this->statusId->fieldName;
+$this->statusId->label = "Status";
+$this->addType($this->statusId);
+
 }
 public function loadScript() {
 if ($this->script == null) {
@@ -68,6 +85,17 @@ $this->script->tableName = $this->parentFieldName . "_" . $this->externalTableNa
 $this->script->aliasFieldName = $this->script->tableName ."_".$this->script->fieldName;
 $this->script->label = "Script";
 $this->addType($this->script);
+}
+return $this;
+}
+public function loadStatus() {
+if ($this->status == null) {
+$this->status = new \Nemundo\App\Scheduler\Data\SchedulerStatus\SchedulerStatusExternalType(null, $this->parentFieldName . "_status");
+$this->status->fieldName = "status";
+$this->status->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->status->aliasFieldName = $this->status->tableName ."_".$this->status->fieldName;
+$this->status->label = "Status";
+$this->addType($this->status);
 }
 return $this;
 }

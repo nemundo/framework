@@ -4,6 +4,10 @@ require __DIR__ . "/config.php";
 
 (new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject(new \Nemundo\FrameworkProject());
 
+//\Nemundo\Admin\AdminConfig::
+
+\Nemundo\Web\ResponseConfig::$title='Framework';
+
 /*
 $site =new \Nemundo\App\Application\Site\AppSite();
 $site->restricted=false;

@@ -50,8 +50,8 @@ class AdminPackageInstall extends AbstractBase
         $content = $file->getText();
 
         $random = new RandomNumber();
-        $random->minNumber = 1000;
-        $random->maxNumber = 99999;
+        $random->minNumber = 10000;
+        $random->maxNumber = 50000;
         $port = $random->getNumber();
         $content = (new Text($content))->replace('[port]', $port)->getValue();
 

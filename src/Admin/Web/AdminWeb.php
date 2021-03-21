@@ -20,7 +20,7 @@ class AdminWeb extends AbstractWeb
 
         AdminConfig::$webController = $controller;
         AdminConfig::$defaultTemplateClassName = AdminTemplate::class;
-        ResponseConfig::$title = 'Admin';
+        //ResponseConfig::$title = 'Admin';
 
         $controller->render();
 
