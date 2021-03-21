@@ -19,7 +19,7 @@ class ActionUrlBuilder extends UrlBuilder
      */
     public $onAction;
 
-    private $url;
+    //private $url;
 
     //private $parameter;
 

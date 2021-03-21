@@ -20,7 +20,7 @@ class MySqlDumpScheduler extends AbstractScheduler
         $this->active = false;
         $this->scriptName = 'mysql-dump';  // db-dump
         $this->overrideSetting = false;
-        $this->scriptDescription = 'Create a MySql Dump File in path /backup/dump';
+        $this->description = 'Create a MySql Dump File in path /backup/dump';
         $this->consoleScript = true;
     }
 

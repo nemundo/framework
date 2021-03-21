@@ -6,6 +6,53 @@
     "model": [
         {
             "template": "default",
+            "model_id": "e7c4a487-8708-4335-a608-4ecb718cf867",
+            "label": "Job",
+            "class_name": "Job",
+            "table_name": "scheduler_job",
+            "namespace": "Nemundo\\App\\Scheduler\\Data\\Job",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Script",
+                    "field_name": "script",
+                    "variable_name": "script",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "03222a83-fda9-442c-b530-00cc87588637"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Finished",
+                    "field_name": "finished",
+                    "variable_name": "finished",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "number",
+                    "label": "Duration",
+                    "field_name": "duration",
+                    "variable_name": "duration",
+                    "allow_null": true,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "finished",
+                    "index_type": "index",
+                    "field_name": [
+                        "finished"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
             "model_id": "2ea91806-872d-4813-acbf-b33ab7059884",
             "label": "Scheduler",
             "class_name": "Scheduler",

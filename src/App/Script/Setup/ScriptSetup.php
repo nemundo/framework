@@ -27,7 +27,7 @@ class ScriptSetup extends AbstractSetup
             $data = new Script();
             $data->setupStatus = true;
             $data->scriptName = $script->scriptName;
-            $data->description = $script->scriptDescription;
+            $data->description = $script->description;
             $data->scriptClass = $scriptClass;
             $data->consoleScript = $script->consoleScript;
             if ($this->application !== null) {
@@ -44,7 +44,7 @@ class ScriptSetup extends AbstractSetup
             $update = new ScriptUpdate();
             $update->setupStatus = true;
             $update->scriptName = $script->scriptName;
-            $update->description = $script->scriptDescription;
+            $update->description = $script->description;
             $update->scriptClass = $script->getClassName();
             $update->consoleScript = $script->consoleScript;
             if ($this->application !== null) {

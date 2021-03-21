@@ -19,8 +19,7 @@ abstract class AbstractScript extends AbstractBaseClass
     /**
      * @var string
      */
-    public $scriptDescription = '';
-    // description
+    public $description = '';
 
     /**
      * @var bool

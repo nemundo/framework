@@ -1,2 +1,2 @@
-start http://localhost:333/
-php -S localhost:333
+start http://localhost:[port]/
+php -S localhost:[port]

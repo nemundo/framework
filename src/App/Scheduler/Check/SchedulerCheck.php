@@ -1,11 +1,10 @@
 <?php
 
-namespace Nemundo\App\Scheduler\Script;
+
+namespace Nemundo\App\Scheduler\Check;
 
 
 use Nemundo\App\Scheduler\Builder\NextJobBuilder;
-use Nemundo\App\Scheduler\Check\JobCheck;
-use Nemundo\App\Scheduler\Check\SchedulerCheck;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerUpdate;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogCount;
@@ -14,35 +13,19 @@ use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogUpdate;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
-use Nemundo\App\Script\Type\AbstractConsoleScript;
-use Nemundo\App\Script\Type\AbstractScript;
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Date\DateTimeDifference;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogConfig;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Log\LogType;
 use Nemundo\Core\Time\Stopwatch;
 use Nemundo\Core\Type\DateTime\DateTime;
 
-// SchedulerRunScript
-class SchedulerCheckScript extends AbstractConsoleScript
+class SchedulerCheck extends AbstractBase
 {
 
-    protected function loadScript()
-    {
-        $this->scriptName = 'scheduler-check';
-    }
+    public function checkScheduler() {
 
-
-    public function run()
-    {
-
-        (new SchedulerCheck())->checkScheduler();
-        (new JobCheck())->checkJob();
-
-
-
-        /*
 
         LogConfig::$logType = [LogType::FILE];
 
@@ -118,7 +101,8 @@ class SchedulerCheckScript extends AbstractConsoleScript
 
             }
 
-        }*/
+        }
+
 
     }
 

@@ -34,6 +34,8 @@ class SchedulerSite extends AbstractSite
         new SchedulerRunningSite($this);
         new SchedulerRunSite($this);
 
+        new JobSite($this);
+
         SchedulerSite::$site = $this;
     }
 

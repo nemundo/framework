@@ -7,6 +7,10 @@ use Nemundo\Com\Package\PackageSetup;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\File\FileCopy;
 use Nemundo\Core\Path\Path;
+use Nemundo\Core\Random\RandomNumber;
+use Nemundo\Core\TextFile\Reader\TextFileReader;
+use Nemundo\Core\TextFile\Writer\TextFileWriter;
+use Nemundo\Core\Type\Text\Text;
 use Nemundo\FrameworkProject;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
 use Nemundo\Package\FontAwesome\FontAwesomePackage;
@@ -37,6 +41,26 @@ class AdminPackageInstall extends AbstractBase
         $this->copyAssetFile('index.php', 'index.php');
         $this->copyAssetFile('start.bat', 'start.bat');
 
+        $filename = (new ProjectPath())
+            ->addPath('admin')
+            ->addPath('start.bat')
+            ->getFullFilename();
+
+        $file = new TextFileReader($filename);
+        $content = $file->getText();
+
+        $random = new RandomNumber();
+        $random->minNumber = 1000;
+        $random->maxNumber = 99999;
+        $port = $random->getNumber();
+        $content = (new Text($content))->replace('[port]', $port)->getValue();
+
+        $write = new TextFileWriter($filename);
+        $write->overwriteExistingFile = true;
+        $write->addLine($content);
+        $write->saveFile();
+
+
         $setup = new PackageSetup();
         $setup->destinationPath = $this->projectPath;
         $setup->addPackage(new BootstrapPackage());
@@ -52,6 +76,7 @@ class AdminPackageInstall extends AbstractBase
     {
 
         $fileCopy = new FileCopy();
+        $fileCopy->overwriteExistingFile = true;
         $fileCopy->sourceFilename = (new Path())
             ->addPath((new FrameworkProject())->path)
             ->addPath('..')

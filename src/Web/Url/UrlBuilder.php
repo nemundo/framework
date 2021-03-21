@@ -9,28 +9,14 @@ use Nemundo\Core\Type\Text\Text;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\WebConfig;
 
-class UrlBuilder extends AbstractUrlBuilder  // AbstractBaseClass
+class UrlBuilder extends AbstractUrlBuilder
 {
-
-    /*
-    private $url;
-
-    protected $parameter;
-
-    function __construct()
-    {
-
-        $this->url = $_SERVER['REQUEST_URI'];
-        parse_str(parse_url($this->url, PHP_URL_QUERY), $this->requestList);
-
-    }*/
-
 
     public function getParameterList()
     {
 
-        
         return $this->requestList;
+
     }
 
 
@@ -68,20 +54,6 @@ class UrlBuilder extends AbstractUrlBuilder  // AbstractBaseClass
     }
 
 
-    /*
-    public function getUrl()
-    {
-
-        $url = strtok($this->url, '?');
-
-        if (sizeof($this->requestList) > 0) {
-            $query_string = http_build_query($this->requestList);
-            $url = $url . '?' . $query_string;
-        }
-
-        return $url;
-
-    }*/
 
 
     // seperate !!!
