@@ -6,6 +6,18 @@
     "model": [
         {
             "template": "default",
+            "model_id": "a7ae5fa5-adff-4948-a1f0-562ce728f6d8",
+            "label": "Mail Config",
+            "class_name": "MailConfig",
+            "table_name": "mail_mail_config",
+            "namespace": "Nemundo\\App\\Mail\\Data\\MailConfig",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": true,
+            "index": []
+        },
+        {
+            "template": "default",
             "model_id": "e75e5f42-ecf6-451a-b529-6d5ebb41833a",
             "label": "Mail Queue",
             "class_name": "MailQueue",
@@ -75,6 +87,89 @@
                     ]
                 }
             ]
+        },
+        {
+            "template": "default",
+            "model_id": "e4d76de0-03f5-4e8a-accd-d8693f788e2e",
+            "label": "Mail Server",
+            "class_name": "MailServer",
+            "table_name": "mail_mail_server",
+            "namespace": "Nemundo\\App\\Mail\\Data\\MailServer",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Host",
+                    "field_name": "host",
+                    "variable_name": "host",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "number",
+                    "label": "Port",
+                    "field_name": "port",
+                    "variable_name": "port",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Authentication",
+                    "field_name": "authentication",
+                    "variable_name": "authentication",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "text",
+                    "label": "User",
+                    "field_name": "user",
+                    "variable_name": "user",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Password",
+                    "field_name": "password",
+                    "variable_name": "password",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Mail Address",
+                    "field_name": "mail_address",
+                    "variable_name": "mailAddress",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Mail Text",
+                    "field_name": "mail_text",
+                    "variable_name": "mailText",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Active",
+                    "field_name": "active",
+                    "variable_name": "active",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": []
         }
     ]
 }

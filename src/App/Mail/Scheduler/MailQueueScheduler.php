@@ -3,6 +3,7 @@
 namespace Nemundo\App\Mail\Scheduler;
 
 
+use Nemundo\App\Mail\Config\MailConfigLoader;
 use Nemundo\App\Mail\Data\MailQueue\MailQueueReader;
 use Nemundo\App\Mail\Data\MailQueue\MailQueueUpdate;
 use Nemundo\App\Mail\Message\SmtpMailMessage;
@@ -18,12 +19,15 @@ class MailQueueScheduler extends AbstractScheduler
         $this->active = false;
         $this->minute = 1;
         $this->scriptName = 'mail-queue-send';
+        $this->description='Send the mails in the queue';
         $this->consoleScript = true;
     }
 
 
     public function run()
     {
+
+        (new MailConfigLoader())->loadConfig();
 
         $reader = new MailQueueReader();
         $reader->filter->andEqual($reader->model->send, false);
@@ -35,8 +39,6 @@ class MailQueueScheduler extends AbstractScheduler
             $mail->subject = $queueRow->subject;
             $mail->text = $queueRow->text;
             $mail->sendMail();
-
-
 
             $update = new MailQueueUpdate();
             $update->send = true;

@@ -4,7 +4,7 @@ namespace Nemundo\User\Parameter;
 
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 
-class UserSecureTokenUrlParameter extends AbstractUrlParameter
+class SecureTokenParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {

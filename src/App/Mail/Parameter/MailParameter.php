@@ -5,7 +5,7 @@ namespace Nemundo\App\Mail\Parameter;
 
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 
-class MailUrlParameter extends AbstractUrlParameter
+class MailParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {

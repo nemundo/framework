@@ -20,6 +20,7 @@ use Nemundo\User\Data\UserUsergroup\UserUsergroupDelete;
 use Nemundo\User\Login\Parameter\SecureTokenUrlParameter;
 use Nemundo\User\Mail\AbstractUserLoginMailContainer;
 use Nemundo\User\Mail\UserLoginMailContainer;
+use Nemundo\User\Parameter\SecureTokenParameter;
 use Nemundo\User\Password\PasswordHash;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\User\Usergroup\Usergroup;
@@ -101,7 +102,7 @@ class UserType extends AbstractBase
     public function fromSecureTokenParameter()
     {
 
-        $secureToken = (new SecureTokenUrlParameter())->getValue();
+        $secureToken = (new SecureTokenParameter())->getValue();
 
         $count = new UserCount();
         //$count->filter->andEqual($count->model->login, $login);

@@ -4,15 +4,17 @@ namespace Nemundo\App\Mail\Site;
 
 
 use Nemundo\App\Mail\Data\MailQueue\MailQueueDelete;
+use Nemundo\App\Mail\Data\MailServer\MailServerDelete;
 use Nemundo\App\Mail\Parameter\MailParameter;
+use Nemundo\App\Mail\Parameter\MailServerParameter;
 use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 
-class MailQueueDeleteSite extends AbstractDeleteIconSite
+class MailServerDeleteSite extends AbstractDeleteIconSite
 {
 
     /**
-     * @var MailQueueDeleteSite
+     * @var MailServerDeleteSite
      */
     public static $site;
 
@@ -20,17 +22,17 @@ class MailQueueDeleteSite extends AbstractDeleteIconSite
     protected function loadSite()
     {
 
-        $this->title = 'Delete Mail';
-        $this->url='delete-mail';
+        $this->title = 'Delete Mail Server';
+        $this->url='delete-mail-server';
 
-        MailQueueDeleteSite::$site = $this;
+        MailServerDeleteSite::$site = $this;
     }
 
 
     public function loadContent()
     {
 
-        (new MailQueueDelete())->deleteById((new MailParameter())->getValue());
+        (new MailServerDelete())->deleteById((new MailServerParameter())->getValue());
         (new UrlReferer())->removeAllParameter()->redirect();
 
     }

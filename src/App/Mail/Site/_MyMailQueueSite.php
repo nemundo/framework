@@ -4,7 +4,7 @@ namespace Nemundo\App\Mail\Site;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\App\Mail\Parameter\MailUrlParameter;
+use Nemundo\App\Mail\Parameter\MailParameter;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Language\LanguageCode;
@@ -85,7 +85,7 @@ class MyMailQueueSite extends AbstractSite
             $row->addText($mailQueueRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
             $site = clone(MailQueueDetailSite::$site);
-            $site->addParameter((new MailUrlParameter($mailQueueRow->id)));
+            $site->addParameter((new MailParameter($mailQueueRow->id)));
             $row->addClickableSite($site);
 
         }

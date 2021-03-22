@@ -7,20 +7,8 @@ use Nemundo\App\Mail\Page\MailPage;
 use Nemundo\Web\Site\AbstractSite;
 
 
-// MailSite
 class MailSite extends AbstractSite
 {
-
-    /**
-     * @var MailQueueDetailSite
-     */
-    // public $detail;
-
-    /**
-     * @var MailTestSite
-     */
-    // public $test;
-
 
     /**
      * @var MailSite
@@ -40,7 +28,11 @@ MailSite::$site=$this;
 
         new MailQueueDeleteSite($this);
 
-        new MailTestSite($this);
+        new TestMailSite($this);
+
+        new ConfigSite($this);
+
+        //new MailTestSite($this);
 
         //new MyMailQueueSite($this);
 

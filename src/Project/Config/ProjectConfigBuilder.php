@@ -28,6 +28,7 @@ class ProjectConfigBuilder extends AbstractBaseClass
 
     public $webUrl = '/';
 
+    /*
     public $smtpAuthentication = true;
 
     public $smtpHost;
@@ -40,7 +41,7 @@ class ProjectConfigBuilder extends AbstractBaseClass
 
     public $defaultMailAddress;
 
-    public $defaultMailText;
+    public $defaultMailText;*/
 
 
     public function writeConfigFile()
@@ -58,13 +59,13 @@ class ProjectConfigBuilder extends AbstractBaseClass
             $writer->add('mysql_password', $this->mysqlPassword);
             $writer->add('mysql_database', $this->mysqlDatabase);
             $writer->add('web_url', $this->webUrl);
-            $writer->add('smtp_host', $this->smtpHost);
+           /* $writer->add('smtp_host', $this->smtpHost);
             $writer->add('smtp_port', $this->smtpPort);
             $writer->add('smtp_authentication', (new YesNo($this->smtpAuthentication))->getText());
             $writer->add('smtp_user', $this->smtpUser);
             $writer->add('smtp_password', $this->smtpPassword);
             $writer->add('default_mail_address', $this->defaultMailAddress);
-            $writer->add('default_mail_text', $this->defaultMailText);
+            $writer->add('default_mail_text', $this->defaultMailText);*/
             $writer->writeFile();
 
         }

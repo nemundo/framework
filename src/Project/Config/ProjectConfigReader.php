@@ -51,6 +51,7 @@ class ProjectConfigReader extends AbstractBaseClass
 
             WebConfig::$webUrl = ProjectConfigReader::$configReader->getValue('web_url');
 
+            /*
             MailConfig::$mailConnection = new SmtpConnection();
             MailConfig::$mailConnection->host = ProjectConfigReader::$configReader->getValue('smtp_host');
             MailConfig::$mailConnection->authentication = ProjectConfigReader::$configReader->getValue('smtp_authentication');
@@ -59,7 +60,9 @@ class ProjectConfigReader extends AbstractBaseClass
             MailConfig::$mailConnection->port = ProjectConfigReader::$configReader->getValue('smtp_port');
 
             MailConfig::$defaultMailFrom = ProjectConfigReader::$configReader->getValue('default_mail_address');
-            MailConfig::$defaultMailFromText = ProjectConfigReader::$configReader->getValue('default_mail_text');
+            MailConfig::$defaultMailFromText = ProjectConfigReader::$configReader->getValue('default_mail_text');*/
+
+
 
             DeploymentConfig::$stagingEnviroment = ProjectConfigReader::$configReader->getValue('staging_enviroment');
 

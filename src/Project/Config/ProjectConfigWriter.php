@@ -54,6 +54,7 @@ class ProjectConfigWriter extends AbstractBaseClass
             $input->defaultValue = '/';
             $config->webUrl = $input->getValue();
 
+            /*
             $input = new ConsoleInput();
             $input->message = 'Smtp Host';
             $config->smtpHost = $input->getValue();
@@ -77,7 +78,7 @@ class ProjectConfigWriter extends AbstractBaseClass
 
             $input = new ConsoleInput();
             $input->message = 'Default Mail Text';
-            $config->defaultMailText = $input->getValue();
+            $config->defaultMailText = $input->getValue();*/
 
             $config->writeConfigFile();
 

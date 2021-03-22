@@ -14,6 +14,7 @@ class MailQueueDeleteScript extends AbstractScript
     {
         $this->scriptName = 'mail-queue-delete';
         $this->consoleScript = true;
+        $this->description='Delete the mail queue';
     }
 
 

@@ -5,7 +5,7 @@ namespace Nemundo\App\Mail\Site;
 
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\App\Mail\Data\MailQueue\MailQueueReader;
-use Nemundo\App\Mail\Parameter\MailUrlParameter;
+use Nemundo\App\Mail\Parameter\MailParameter;
 use Nemundo\Html\Container\HtmlContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Web\Site\AbstractSite;
@@ -31,7 +31,7 @@ class MailQueueDetailSite extends AbstractSite
     public function loadContent()
     {
 
-        $mailParameter = new MailUrlParameter();
+        $mailParameter = new MailParameter();
         $mailRow = (new MailQueueReader())->getRowById($mailParameter->getValue());
 
         $page = new BootstrapDocument();

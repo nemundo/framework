@@ -40,7 +40,7 @@ class TestMailForm extends BootstrapForm
         $this->mailTo->value = 'test@test.ch';
 
         $this->subject = new BootstrapTextBox($this);
-        $this->subject->label = 'To';
+        $this->subject->label = 'Subject';
         $this->subject->validation = true;
         $this->subject->value = 'Test Mail';
 

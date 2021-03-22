@@ -4,6 +4,7 @@ namespace Nemundo\App\UserAction\Site;
 
 
 use Nemundo\App\UserAction\Form\LoginForm;
+use Nemundo\App\UserAction\Page\LoginPage;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Web\Site\AbstractSite;
@@ -23,7 +24,9 @@ class LoginSite extends AbstractSite
     public function loadContent()
     {
 
+        (new LoginPage())->render();
 
+        /*
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
@@ -35,10 +38,11 @@ class LoginSite extends AbstractSite
         $form->showForgotHyperlink = true;
 
 
+
         //$form->redirectSite = new Site();
 
 
-        $page->render();
+        $page->render();*/
 
     }
 

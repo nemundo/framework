@@ -8,6 +8,7 @@ use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Login\Parameter\SecureTokenUrlParameter;
+use Nemundo\User\Parameter\SecureTokenParameter;
 use Nemundo\User\Type\UserItemType;
 
 class UserLoginMailContainer extends AbstractUserLoginMailContainer
@@ -29,7 +30,7 @@ class UserLoginMailContainer extends AbstractUserLoginMailContainer
         $p->content = 'Login: ' . $userRow->login;  // $userItem->login;
 
         $site = clone(UserActivationSite::$site);
-        $site->addParameter(new SecureTokenUrlParameter($userRow->secureToken));
+        $site->addParameter(new SecureTokenParameter($userRow->secureToken));
 
         $link = new UrlHyperlink($this);
         $link->content = $site->title;

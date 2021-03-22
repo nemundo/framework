@@ -9,6 +9,7 @@ use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Login\Parameter\SecureTokenUrlParameter;
 use Nemundo\User\Mail\AbstractUserLoginMailContainer;
+use Nemundo\User\Parameter\SecureTokenParameter;
 
 
 class PasswordRequestMailContainer extends AbstractUserLoginMailContainer
@@ -30,7 +31,7 @@ class PasswordRequestMailContainer extends AbstractUserLoginMailContainer
         $p->content = 'Setzen sie das Passwort für das Login: ' . $userItem->login;
 
         $site = UserActivationSite::$site;
-        $site->addParameter(new SecureTokenUrlParameter($userItem->secureToken));
+        $site->addParameter(new SecureTokenParameter($userItem->secureToken));
         $url = $site->getUrlWithDomain();
 
         $hyperlink = new UrlHyperlink($this);
