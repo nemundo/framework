@@ -11,7 +11,6 @@ use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\App\ModelDesigner\Site\Index\IndexDeleteSite;
 use Nemundo\App\ModelDesigner\Site\Index\IndexSite;
-use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
@@ -47,19 +46,19 @@ class IndexTable extends AdminClickableTable
 
             if ($index->isEditable) {
 
-            $site = clone(IndexDeleteSite::$site);
-            $site->addParameter(new ProjectParameter());
-            $site->addParameter(new AppParameter());
-            $site->addParameter(new ModelParameter());
-            $site->addParameter(new IndexParameter($index->indexName));
-            $row->addIconSite($site);
+                $site = clone(IndexDeleteSite::$site);
+                $site->addParameter(new ProjectParameter());
+                $site->addParameter(new AppParameter());
+                $site->addParameter(new ModelParameter());
+                $site->addParameter(new IndexParameter($index->indexName));
+                $row->addIconSite($site);
 
-            $site = clone(IndexSite::$site);
-            $site->addParameter(new ProjectParameter());
-            $site->addParameter(new AppParameter());
-            $site->addParameter(new ModelParameter());
-            $site->addParameter(new IndexParameter($index->indexName));
-            $row->addClickableSite($site);
+                $site = clone(IndexSite::$site);
+                $site->addParameter(new ProjectParameter());
+                $site->addParameter(new AppParameter());
+                $site->addParameter(new ModelParameter());
+                $site->addParameter(new IndexParameter($index->indexName));
+                $row->addClickableSite($site);
 
             } else {
 

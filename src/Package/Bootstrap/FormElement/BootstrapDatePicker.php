@@ -5,7 +5,6 @@ namespace Nemundo\Package\Bootstrap\FormElement;
 use Nemundo\Com\FormBuilder\Item\AbstractDatePicker;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Formatting\Bold;
-use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
 class BootstrapDatePicker extends AbstractDatePicker
 {
@@ -19,8 +18,6 @@ class BootstrapDatePicker extends AbstractDatePicker
         $this->loadStyle();;
 
         $this->tagName = 'div';
-        //$this->addCssClass(BootstrapSpacing::MARIGN_BOTTOM_3);
-        //$this->addCssClass('col');
 
         $this->textInput->addCssClass('form-control');
 
@@ -35,7 +32,7 @@ class BootstrapDatePicker extends AbstractDatePicker
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $label->content .= ' ' . $bold->getContent();
+            $label->content .= ' ' . $bold->getContent()->bodyContent;
             $this->addCssClass('has-danger');
             $this->textInput->addCssClass('form-control-danger');
 
@@ -47,20 +44,5 @@ class BootstrapDatePicker extends AbstractDatePicker
         return parent::getContent();
 
     }
-
-
-    /*
-    public function getDateValue()
-    {
-
-        $date = null;
-        if ($this->hasValue()) {
-            $date = new Date();
-            $date->fromGermanFormat($this->getValue());
-        }
-
-        return $date;
-
-    }*/
 
 }

@@ -6,7 +6,7 @@ namespace Nemundo\User\Login;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\User\Data\User\UserCount;
 use Nemundo\User\Login\Session\UserIdSession;
-use Nemundo\User\Type\UserSessionType;
+
 
 
 class UserCheck extends AbstractBase

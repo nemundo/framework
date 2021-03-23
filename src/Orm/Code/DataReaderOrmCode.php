@@ -4,7 +4,6 @@ namespace Nemundo\Orm\Code;
 
 
 use Nemundo\Core\Check\ValueCheck;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVariable;
@@ -33,21 +32,15 @@ class DataReaderOrmCode extends AbstractOrmCode
         $php->addConstructor('parent::__construct();');
         $php->addConstructor('$this->model = new ' . $this->model->className . 'Model();');
 
-
         $rowClassName = $this->model->className . 'Row';
 
         if ((new ValueCheck())->hasValue($this->model->rowClassName)) {
             $rowClassName = '\\' . $this->model->rowClassName;
         }
 
-        // getData
         $function = new PhpFunction($php);
         $function->functionName = 'getData()';
-        $function->returnDataType = $rowClassName . '[]';  // $this->model->className . 'Row[]';
-
-        //$function->add('$this->addFieldByModel($this->model);');
-        //$function->add('$this->checkExternal($this->model);');
-
+        $function->returnDataType = $rowClassName . '[]';
         $function->add('$list = [];');
         $function->add('foreach (parent::getData() as $dataRow) {');
         $function->add('$row = $this->getModelRow($dataRow);');
@@ -55,30 +48,21 @@ class DataReaderOrmCode extends AbstractOrmCode
         $function->add('}');
         $function->add('return $list;');
 
-        // getRow
         $function = new PhpFunction($php);
         $function->functionName = 'getRow()';
-        $function->returnDataType = $rowClassName;  // $this->model->className . 'Row';
-
-        //$function->add('$this->addFieldByModel($this->model);');
-        //$function->add('$this->checkExternal($this->model);');
-
-
+        $function->returnDataType = $rowClassName;
         $function->add('$dataRow = parent::getRow();');
         $function->add('$row = $this->getModelRow($dataRow);');
         $function->add('return $row;');
 
-        // getRowById
         $function = new PhpFunction($php);
         $function->functionName = 'getRowById($id)';
-        $function->returnDataType = $rowClassName;  // $this->model->className . 'Row';
+        $function->returnDataType = $rowClassName;
         $function->add('return parent::getRowById($id);');
 
-        // getModelRow
         $function = new PhpFunction($php);
         $function->functionName = 'getModelRow($dataRow)';
         $function->visibility = PhpVisibility::PrivateVariable;
-        //$function->add('$row = new ' . $this->model->className . 'Row($dataRow, $this->model);');
         $function->add('$row = new ' . $rowClassName . '($dataRow, $this->model);');
         $function->add('$row->model = $this->model;');
         $function->add('return $row;');

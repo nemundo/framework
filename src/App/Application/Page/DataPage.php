@@ -12,20 +12,17 @@ use Nemundo\App\MySql\Parameter\TableParameter;
 use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Type\Number\Number;
 use Nemundo\Db\Count\DataCount;
 use Nemundo\Db\Provider\MySql\Table\MySqlTable;
 use Nemundo\Html\Heading\H2;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Model\Factory\ModelCollectionFactory;
-use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Url\UrlBuilder;
 
-
-// nach Application ???
 
 class DataPage extends ApplicationTemplate
 {
@@ -40,8 +37,8 @@ class DataPage extends ApplicationTemplate
         $applicationListBox = new ApplicationListBox($formRow);
         $applicationListBox->submitOnChange = true;
         $applicationListBox->value = $applicationListBox->getValue();
-        $applicationListBox->column=true;
-        $applicationListBox->columnSize=2;
+        $applicationListBox->column = true;
+        $applicationListBox->columnSize = 2;
 
         if ($applicationListBox->hasValue()) {
 

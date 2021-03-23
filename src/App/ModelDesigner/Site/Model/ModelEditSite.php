@@ -13,7 +13,6 @@ use Nemundo\App\ModelDesigner\Site\AppSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\FontAwesome\Site\AbstractEditIconSite;
-use Nemundo\Web\Site\AbstractSite;
 
 class ModelEditSite extends AbstractEditIconSite
 {
@@ -49,7 +48,7 @@ class ModelEditSite extends AbstractEditIconSite
         $breadcrumb->addActiveItem('Edit');
 
         $title = new AdminTitle($page);
-        $title->content =$this->title;
+        $title->content = $this->title;
 
         $layout = new BootstrapTwoColumnLayout($page);
 

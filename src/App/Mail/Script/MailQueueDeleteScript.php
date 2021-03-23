@@ -4,7 +4,6 @@ namespace Nemundo\App\Mail\Script;
 
 
 use Nemundo\App\Mail\Data\MailQueue\MailQueueDelete;
-use Nemundo\App\Mail\Queue\MailQueue;
 use Nemundo\App\Script\Type\AbstractScript;
 
 class MailQueueDeleteScript extends AbstractScript
@@ -14,17 +13,14 @@ class MailQueueDeleteScript extends AbstractScript
     {
         $this->scriptName = 'mail-queue-delete';
         $this->consoleScript = true;
-        $this->description='Delete the mail queue';
+        $this->description = 'Delete the mail queue';
     }
 
 
     public function run()
     {
 
-        (new MailQueue())->deleteMailQueue();
-
-        //$delete = new MailQueueDelete();
-        //$delete->delete();
+        (new MailQueueDelete())->delete();
 
     }
 

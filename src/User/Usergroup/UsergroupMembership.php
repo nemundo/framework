@@ -4,7 +4,7 @@ namespace Nemundo\User\Usergroup;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Session\UserSession;
 
 
 class UsergroupMembership extends AbstractBase
@@ -42,9 +42,7 @@ class UsergroupMembership extends AbstractBase
     private function loadUsergroup()
     {
 
-        //$userId = (new UserSessionType())->userId;
-
-        $userId = (new UserSessionType())->userId;
+        $userId = (new UserSession())->userId;
 
         if (is_null(UsergroupMembership::$usergroupIdList)) {
 

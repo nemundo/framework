@@ -8,11 +8,8 @@ use Nemundo\App\ModelDesigner\Com\ListBox\PrimaryIndexListBox;
 use Nemundo\App\ModelDesigner\Jquery\DisableSpaceKeyJquery;
 use Nemundo\App\ModelDesigner\Json\AppJson;
 use Nemundo\App\ModelDesigner\Model\ModelDesignerOrmModel;
-use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
-use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\Com\Container\LibraryTrait;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Db\Index\UniqueIdPrimaryIndex;
@@ -137,8 +134,8 @@ class ModelForm extends BootstrapForm
             $event->addCodeLine('if ($("#' . $this->modelTemplate->name . '" ).val() == "' . (new UserOrmModel())->templateName . '") {');
             $event->addCodeLine('$("#' . $this->modelTableName->name . '").prop("readonly", true);');
             $event->addCodeLine('$("#' . $this->modelPrimaryIndex->name . '").prop("readonly", true);');
-            $event->addCodeLine('$("#' . $this->modelTableName->name . '").val("'.$userTableName.'");');
-            $event->addCodeLine('$("#' . $this->modelPrimaryIndex->name . '").val("'.(new UniqueIdPrimaryIndex())->primaryIndexName.'");');
+            $event->addCodeLine('$("#' . $this->modelTableName->name . '").val("' . $userTableName . '");');
+            $event->addCodeLine('$("#' . $this->modelPrimaryIndex->name . '").val("' . (new UniqueIdPrimaryIndex())->primaryIndexName . '");');
             $event->addCodeLine('} else {');
             $event->addCodeLine('$("#' . $this->modelTableName->name . '").prop("readonly", false);');
             $event->addCodeLine('$("#' . $this->modelPrimaryIndex->name . '").prop("readonly", false);');
@@ -164,7 +161,7 @@ class ModelForm extends BootstrapForm
             $this->addJqueryScript('namespace = "' . (new Text($namespacePrefix))->replace('\\', '\\\\')->getValue() . '" + value.replace(/ /g, "");');
             $this->addJqueryScript('$("#' . $this->modelClassName->name . '" ).val(className);');
 
-            $this->addJqueryScript('if ($("#' . $this->modelTableName->name . '" ).val() != "'.$userTableName.'") {');
+            $this->addJqueryScript('if ($("#' . $this->modelTableName->name . '" ).val() != "' . $userTableName . '") {');
             $this->addJqueryScript('$("#' . $this->modelTableName->name . '" ).val(tableName);');
             $this->addJqueryScript('}');
 
@@ -209,7 +206,7 @@ class ModelForm extends BootstrapForm
     protected function onSubmit()
     {
 
-        $tableName =  $this->modelTableName->getValue();
+        $tableName = $this->modelTableName->getValue();
 
         if ($this->model == null) {
 
@@ -218,7 +215,7 @@ class ModelForm extends BootstrapForm
             $model->modelId = (new UniqueId())->getUniqueId();
             $model->label = $this->modelLabel->getValue();
             $model->className = $this->modelClassName->getValue();
-            $model->tableName =$tableName;
+            $model->tableName = $tableName;
             $model->namespace = $this->modelNamespace->getValue();
             $model->rowClassName = $this->modelRowClassName->getValue();
             $model->primaryIndex = $this->modelPrimaryIndex->getPrimaryIndex();
@@ -229,34 +226,14 @@ class ModelForm extends BootstrapForm
             $this->model->templateName = $this->modelTemplate->getValue();
             $this->model->label = $this->modelLabel->getValue();
             $this->model->className = $this->modelClassName->getValue();
-            $this->model->tableName =$tableName;
+            $this->model->tableName = $tableName;
             $this->model->namespace = $this->modelNamespace->getValue();
             $this->model->rowClassName = $this->modelRowClassName->getValue();
             $this->model->primaryIndex = $this->modelPrimaryIndex->getPrimaryIndex();
 
-            // $this->app->writeJson();
-            //(new Debug())->write('else');
-
         }
 
         $this->app->writeJson();
-
-
-        // Problem: Model muss neu geladen werden
-
-
-        /*
-        $project = (new ProjectParameter())->getProject();
-        $appJson = (new AppParameter())->getApp($project);
-        $appJson->writeJson();*/
-
-        //$model = (new ModelParameter())->getModel($appJson);
-        //$this->app->writeJson();
-
-        /*
-        (new Debug())->write('write json');
-        (new Debug())->write($this->model->templateName);
-        exit;*/
 
         $this->redirectSite->addParameter(new ModelParameter($tableName));
 

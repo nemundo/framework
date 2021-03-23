@@ -3,9 +3,7 @@
 namespace Nemundo\App\Mail\Site;
 
 
-use Nemundo\App\Mail\Data\MailQueue\MailQueueDelete;
 use Nemundo\App\Mail\Data\MailServer\MailServerDelete;
-use Nemundo\App\Mail\Parameter\MailParameter;
 use Nemundo\App\Mail\Parameter\MailServerParameter;
 use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
@@ -23,7 +21,7 @@ class MailServerDeleteSite extends AbstractDeleteIconSite
     {
 
         $this->title = 'Delete Mail Server';
-        $this->url='delete-mail-server';
+        $this->url = 'delete-mail-server';
 
         MailServerDeleteSite::$site = $this;
     }

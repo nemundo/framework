@@ -8,10 +8,8 @@ use Nemundo\App\ModelDesigner\Parameter\FieldNameParameter;
 use Nemundo\App\ModelDesigner\Parameter\IndexParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Core\Http\Url\UrlReferer;
+use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 
 class IndexTypeDeleteSite extends AbstractDeleteIconSite
 {
@@ -24,10 +22,10 @@ class IndexTypeDeleteSite extends AbstractDeleteIconSite
     protected function loadSite()
     {
 
-   $this->title = 'Delete Index Type';
-   $this->url = 'index-type-delete';
+        $this->title = 'Delete Index Type';
+        $this->url = 'index-type-delete';
 
-   IndexTypeDeleteSite::$site=$this;
+        IndexTypeDeleteSite::$site = $this;
 
     }
 

@@ -7,7 +7,6 @@ use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
-use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Db\Base\AbstractDbBase;
 use Nemundo\Db\Provider\MySql\Connection\MySqlConnection;
 use Nemundo\Db\Provider\MySql\Index\MySqlFullTextIndex;
@@ -25,7 +24,6 @@ use Nemundo\Model\Definition\Index\ModelUniqueIndex;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Path\DataPath;
 use Nemundo\Model\Path\RedirectDataPath;
-use Nemundo\Model\Path\SetupLogPath;
 use Nemundo\Model\Type\DateTime\CreatedDateTimeType;
 use Nemundo\Model\Type\DateTime\DateTimeType;
 use Nemundo\Model\Type\DateTime\DateType;
@@ -55,18 +53,13 @@ abstract class AbstractModelSetup extends AbstractDbBase
     /**
      * @var AbstractModel
      */
-    public static $setupLog=[];
-
-
-
-
+    public static $setupLog = [];
 
 
     // split !!!
 
     // addModel($model)
     // removeModel($model)
-
 
 
     // createModel(AbstractModel $model)
@@ -271,7 +264,6 @@ abstract class AbstractModelSetup extends AbstractDbBase
             }
 
         }
-
 
 
         //AbstractModelSetup::$setupLog

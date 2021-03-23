@@ -12,7 +12,6 @@ use Nemundo\App\Scheduler\Site\JobSite;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\TableBuilder\TableRow;
-use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 
@@ -23,8 +22,8 @@ class JobPage extends SchedulerTemplate
 
         $layout = new BootstrapTwoColumnLayout($this);
 
-        $btn=new AdminIconSiteButton($layout->col1);
-        $btn->site=JobCleanSite::$site;
+        $btn = new AdminIconSiteButton($layout->col1);
+        $btn->site = JobCleanSite::$site;
 
 
         $jobReader = new JobPaginationReader();
@@ -48,7 +47,7 @@ class JobPage extends SchedulerTemplate
             $row->addText($jobRow->script->scriptClass);
             $row->addYesNo($jobRow->finished);
             if ($jobRow->statusId == (new FinishedSchedulerStatus())->id) {
-            $row->addText($jobRow->duration.' sec');
+                $row->addText($jobRow->duration . ' sec');
             } else {
                 $row->addEmpty();
             }
@@ -59,13 +58,11 @@ class JobPage extends SchedulerTemplate
         $pagination = new BootstrapPagination($layout->col1);
         $pagination->paginationReader = $jobReader;
 
-
         $form = new JobForm($layout->col2);
         $form->redirectSite = JobSite::$site;
 
-        //new ScriptListBox($this);
-
-
         return parent::getContent();
+
     }
+
 }

@@ -3,11 +3,8 @@
 namespace Nemundo\Model\Data\Property\File;
 
 
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\File\FileInformation;
 use Nemundo\Core\File\UniqueFilename;
 use Nemundo\Core\Http\Request\File\AbstractFileRequest;
-use Nemundo\Core\Http\Request\File\FileRequest;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Core\WebRequest\WebRequest;
@@ -37,12 +34,8 @@ class FileDataProperty extends AbstractFileDataProperty
 
                 $uniqueFilename = (new UniqueFilename())->getUniqueFilename($file->getFileExtension());
 
-                //$fullFilename = $this->getUniqueFilename($filenameExtension);
-                //$uniqueFilename = basename($fullFilename);
-
                 if ($this->type->keepOrginalFilename) {
                     $uniqueFilename = $file->filename;
-                    // overwrite file !!!
                 }
 
                 $fullFilename = $this->type->getDataPath() . $uniqueFilename;
@@ -63,15 +56,7 @@ class FileDataProperty extends AbstractFileDataProperty
     {
 
         if ($filenameExtension == null) {
-            //$filenameExtension =(new FileInformation($url))->getFileExtension();
-
             $filenameExtension = (new WebRequest())->getMimeType($url);
-
-            //(new Debug())->write($mimeType);
-
-            //(new Debug())->write($filenameExtension);
-            //exit;
-
         }
 
         $uniqueFilename = (new UniqueFilename())->getUniqueFilename($filenameExtension);
@@ -94,10 +79,6 @@ class FileDataProperty extends AbstractFileDataProperty
 
             $path = $this->type->getDataPath();
             $fullFilename = $fileRequest->saveAsUniqueFilename($path);
-
-            //$fullFilename = $this->getUniqueFilename($fileRequest->filenameExtension);
-            //$fileRequest->saveFile($fullFilename);
-
             $filename = basename($fullFilename);
 
         }
@@ -107,17 +88,5 @@ class FileDataProperty extends AbstractFileDataProperty
         return $fullFilename;
 
     }
-
-
-    /*
-    protected function getUniqueFilename($filenameExtension) {
-
-        $uniqueFilename = (new UniqueFilename())->getUniqueFilename($filenameExtension);
-        $fullFilename = $this->type->getDataPath() . $uniqueFilename;
-
-        return $fullFilename;
-
-
-    }*/
 
 }

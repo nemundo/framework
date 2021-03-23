@@ -3,6 +3,7 @@
 namespace Nemundo\Admin\Site;
 
 
+use Nemundo\App\UserAction\Widget\LoginWidget;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -18,6 +19,9 @@ class AdminHomeSite extends AbstractSite
     {
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+        $widget= new LoginWidget($page);
+
         $page->render();
 
     }

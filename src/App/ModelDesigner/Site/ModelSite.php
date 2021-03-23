@@ -28,7 +28,6 @@ use Nemundo\App\ModelDesigner\Site\Type\TypeEditSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeNewSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeSortableSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeUndoDeleteSite;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -89,10 +88,10 @@ class ModelSite extends AbstractSite
         $btn->site->addParameter(new ModelParameter($model->tableName));
 
         $title = new AdminTitle($page);
-        $title->content = $model->label . ' ' . $btn->getBodyContent();  // getContent()->bodyContent;
+        $title->content = $model->label . ' ' . $btn->getBodyContent();
 
         $table = new AdminLabelValueTable($page);
-        $table->addLabelValue('Template',$model->templateLabel);
+        $table->addLabelValue('Template', $model->templateLabel);
         $table->addLabelValue('Label', $model->label);
         $table->addLabelValue('Class Name', $model->className);
         $table->addLabelValue('Table Name', $model->tableName);
@@ -106,7 +105,7 @@ class ModelSite extends AbstractSite
         $btn->site->addParameter(new AppParameter());
         $btn->site->addParameter(new ModelParameter());
 
-     new TypeDropdown($page);
+        new TypeDropdown($page);
 
         $table = new ModelTypeTable($page);
         $table->model = $model;

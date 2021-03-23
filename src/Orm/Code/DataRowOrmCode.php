@@ -2,7 +2,6 @@
 
 namespace Nemundo\Orm\Code;
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Row\AbstractDataRow;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpVariable;

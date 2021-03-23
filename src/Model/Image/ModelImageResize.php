@@ -4,8 +4,6 @@
 namespace Nemundo\Model\Image;
 
 
-use Nemundo\App\Script\Type\AbstractConsoleScript;
-use Nemundo\Content\App\Camera\Data\Camera\CameraModel;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Model\Data\Property\Image\DataImageResize;
 use Nemundo\Model\Definition\Model\AbstractModel;
@@ -16,8 +14,6 @@ use Nemundo\Model\Type\File\ImageType;
 
 class ModelImageResize extends AbstractBase
 {
-
-
 
     public function resizeModel(AbstractModel $model)
     {

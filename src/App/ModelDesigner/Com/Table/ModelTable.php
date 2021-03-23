@@ -13,7 +13,6 @@ use Nemundo\App\ModelDesigner\Site\Model\ModelDeleteSite;
 use Nemundo\App\ModelDesigner\Site\Model\ModelEditSite;
 use Nemundo\App\ModelDesigner\Site\Model\ModelUndoDeleteSite;
 use Nemundo\App\ModelDesigner\Site\ModelSite;
-use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 
 class ModelTable extends AdminClickableTable
@@ -45,7 +44,6 @@ class ModelTable extends AdminClickableTable
 
             $row = new BootstrapClickableTableRow($this);
             $row->strikeThrough = $model->isDeleted;
-            //$row->addText($model->modelId);
             $row->addText($model->label);
             $row->addText($model->className);
             $row->addText($model->tableName);

@@ -34,16 +34,9 @@ class KmlMarker extends Placemark
     public function getContent()
     {
 
-        /*if ($this->label !== null) {
-
-
-            $name = new Name($this);
-            $name->value = $this->replaceText($this->label);   //  $label; // $this->label;
-        }*/
-
         if ($this->description !== null) {
             $description = new HtmlDescription($this);
-            $description->value = $this->description;  // $this->replaceText($this->description);   //$this->description;
+            $description->value = $this->description;
         }
 
         $point = new Point($this);

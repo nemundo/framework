@@ -12,7 +12,6 @@ use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
 use Nemundo\App\ModelDesigner\Site\Index\IndexTypeDeleteSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeSortableSite;
-use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Model\Definition\Index\AbstractModelIndex;
 use Nemundo\Package\JqueryUi\Sortable\JquerySortable;
@@ -39,24 +38,20 @@ class IndexTypeTable extends AdminTable
             $row = new TableRow($this);
             $row->addText($type->fieldName);
 
+            $site = clone(IndexTypeDeleteSite::$site);
+            $site->addParameter(new ProjectParameter());
+            $site->addParameter(new AppParameter());
+            $site->addParameter(new ModelParameter());
+            $site->addParameter(new IndexParameter());
+            $site->addParameter(new FieldNameParameter($type->fieldName));
 
-                $site = clone(IndexTypeDeleteSite::$site);
-                $site->addParameter(new ProjectParameter());
-                $site->addParameter(new AppParameter());
-                $site->addParameter(new ModelParameter());
-                $site->addParameter(new IndexParameter());
-                $site->addParameter(new FieldNameParameter($type->fieldName));
-
-                $row->addIconSite($site);
-
-
+            $row->addIconSite($site);
 
         }
 
         $sortable = new JquerySortable($this);
         $sortable->id = $this->id . ' tbody';
         $sortable->sortableSite = clone(TypeSortableSite::$site);
-
 
         return parent::getContent();
 

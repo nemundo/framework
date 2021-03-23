@@ -14,7 +14,6 @@ use Nemundo\App\ModelDesigner\Site\Type\TypeEditSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeSortableSite;
 use Nemundo\App\ModelDesigner\Site\Type\TypeUndoDeleteSite;
 use Nemundo\App\ModelDesigner\Type\ModelDesignerTypeTrait;
-use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Type\AbstractType;
 use Nemundo\Model\Type\AbstractModelType;

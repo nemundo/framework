@@ -4,7 +4,6 @@ namespace Nemundo\App\ModelDesigner\Site\Index;
 
 
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
-use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\ModelDesigner\Com\Breadcrumb\ModelDesignerBreadcrumb;
 use Nemundo\App\ModelDesigner\Com\Form\IndexTypeForm;
 use Nemundo\App\ModelDesigner\Com\Table\IndexTypeTable;
@@ -12,10 +11,7 @@ use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\ModelDesigner\Parameter\IndexParameter;
 use Nemundo\App\ModelDesigner\Parameter\ModelParameter;
 use Nemundo\App\ModelDesigner\Parameter\ProjectParameter;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -46,7 +42,7 @@ class IndexSite extends AbstractSite
 
         $project = (new ProjectParameter())->getProject();
         $app = (new AppParameter())->getApp($project);
-        $model =  (new ModelParameter())->getModel($app);
+        $model = (new ModelParameter())->getModel($app);
 
         $index = (new IndexParameter())->getIndex($model);
 
@@ -79,7 +75,6 @@ class IndexSite extends AbstractSite
 
         $table = new IndexTypeTable($layout->col1);
         $table->index = $index;
-
 
         $page->render();
 

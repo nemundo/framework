@@ -4,7 +4,6 @@
 namespace Nemundo\Web\Action\Site;
 
 
-use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Icon\EditIcon;
 use Nemundo\Package\FontAwesome\Site\IconSiteTrait;
 use Nemundo\Web\Action\AbstractActionPanel;

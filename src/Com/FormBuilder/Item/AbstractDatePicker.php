@@ -53,6 +53,4 @@ abstract class AbstractDatePicker extends AbstractTextBox
 
     }
 
-
-
 }

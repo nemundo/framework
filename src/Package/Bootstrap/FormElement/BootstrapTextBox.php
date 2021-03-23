@@ -5,7 +5,6 @@ namespace Nemundo\Package\Bootstrap\FormElement;
 use Nemundo\Com\FormBuilder\Item\AbstractTextBox;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Formatting\Bold;
-use Nemundo\Package\Bootstrap\Utility\BootstrapSpacing;
 
 class BootstrapTextBox extends AbstractTextBox
 {

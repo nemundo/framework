@@ -3,7 +3,6 @@
 namespace Nemundo\App\FileLog\Site;
 
 use Nemundo\App\FileLog\Script\FileLogDeleteScript;
-use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Web\Site\AbstractSite;
 
 class FileLogDeleteSite extends AbstractSite

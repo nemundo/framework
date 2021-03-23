@@ -18,7 +18,7 @@ use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\User\Data\UserUsergroup\UserUsergroup;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupCount;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupDelete;
-use Nemundo\User\Login\Parameter\SecureTokenUrlParameter;
+
 use Nemundo\User\Mail\AbstractUserLoginMailContainer;
 use Nemundo\User\Mail\UserLoginMailContainer;
 use Nemundo\User\Parameter\SecureTokenParameter;
@@ -106,20 +106,20 @@ class UserBuilder extends AbstractBase
 
         $secureToken = (new SecureTokenParameter())->getValue();
 
-        $count = new UserCount();
+        /*$count = new UserCount();
         //$count->filter->andEqual($count->model->login, $login);
         $count->filter->andEqual($count->model->secureToken, $secureToken);
         if ($count->getCount() == 0) {
             (new LogMessage())->writeError('Invalid Secure Token');
             exit;
-        }
+        }*/
+
+
+        $this->existsUser($secureToken);
 
         $id = new UserId();
-        //$count->filter->andEqual($count->model->login, $login);
-        $id->filter->andEqual($count->model->secureToken, $secureToken);
+        $id->filter->andEqual($id->model->secureToken, $secureToken);
         $this->userId = $id->getId();
-
-        //$this->loadData();
 
         return $this;
 
@@ -127,18 +127,15 @@ class UserBuilder extends AbstractBase
     }
 
 
-    public function existsUser()
+    public function existsUser($secureToken)
     {
 
-
         $count = new UserCount();
-        //$count->filter->andEqual($count->model->login, $login);
         $count->filter->andEqual($count->model->secureToken, $secureToken);
         if ($count->getCount() == 0) {
             (new LogMessage())->writeError('Invalid Secure Token');
             exit;
         }
-
 
     }
 
@@ -154,8 +151,6 @@ class UserBuilder extends AbstractBase
     public function createUser()
     {
 
-        //$userId = null;
-
         $displayName = $this->displayName;
         if ($displayName == null) {
             $displayName = $this->login;
@@ -165,11 +160,7 @@ class UserBuilder extends AbstractBase
         $count->filter->andEqual($count->model->login, $this->login);
         if ($count->getCount() == 0) {
 
-            //$userId = (new UniqueId())->getUniqueId();
-
             $data = new User();
-            //$data->id = $userId;
-            //$data->ignoreIfExists = true;
             $data->active = $this->active;
             $data->login = $this->login;
             $data->email = $this->email;

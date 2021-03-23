@@ -20,8 +20,6 @@ use Nemundo\Model\Type\External\Id\ExternalUniqueIdType;
 use Nemundo\Model\Type\Id\IdType;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Orm\Type\OrmTypeTrait;
-use Nemundo\Orm\Type\User\CreatedUserOrmType;
-use Nemundo\Orm\Type\User\ModifiedUserOrmType;
 use Nemundo\Orm\Utility\UppercaseFirstLetter;
 
 
@@ -145,10 +143,6 @@ class ExternalOrmType extends ExternalType
 
             /** @var AbstractOrmModel $externalModel */
             $externalModel = new $externalModelClassName();
-
-            /*$dataType = null;
-            $pre = '';
-            $after = '';*/
 
             switch ($externalModel->primaryIndex->getClassName()) {
                 case AutoIncrementIdPrimaryIndex::class:
@@ -294,31 +288,9 @@ class ExternalOrmType extends ExternalType
         $loadFunction->add('$this->' . $this->variableName . '->aliasFieldName = "' . $this->getAliasFieldName() . '";');
         $loadFunction->add('$this->' . $this->variableName . '->label = "' . $this->label . '";');
 
-        /*
-        if ($this->validation) {
-            $loadFunction->add('$this->' . $this->variableName . '->validation = true;');
-        }*/
-
         if ($this->defaultValue !== null) {
             $loadFunction->add('$this->' . $this->variableName . '->defaultValue = ' . $this->defaultValue . ';');
         }
-
-        /*
-        if (!$this->visible->form) {
-            $loadFunction->add('$this->' . $this->variableName . '->visible->form = false;');
-        }
-
-        if (!$this->visible->table) {
-            $loadFunction->add('$this->' . $this->variableName . '->visible->table = false;');
-        }
-
-        if (!$this->visible->view) {
-            $loadFunction->add('$this->' . $this->variableName . '->visible->view = false;');
-        }
-
-        if ($this->isObjectOfClass(CreatedUserOrmType::class) || $this->isObjectOfClass(ModifiedUserOrmType::class)) {
-            $loadFunction->add('$this->' . $this->variableName . '->visible->form = false;');
-        }*/
 
         $loadFunction->add('}');
 
