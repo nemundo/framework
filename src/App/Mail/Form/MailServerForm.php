@@ -63,6 +63,7 @@ class MailServerForm extends AbstractAdminEditForm
 
         $this->active = new BootstrapCheckBox($this);
         $this->active->label = $model->active->label;
+        $this->active->value = true;
 
         $this->host = new BootstrapTextBox($this);
         $this->host->label = $model->host->label;
@@ -74,6 +75,7 @@ class MailServerForm extends AbstractAdminEditForm
 
         $this->authentication = new BootstrapCheckBox($this);
         $this->authentication->label = $model->authentication->label;
+        $this->authentication->value = true;
 
         $this->user = new BootstrapTextBox($this);
         $this->user->label = $model->user->label;
@@ -148,7 +150,8 @@ class MailServerForm extends AbstractAdminEditForm
     }
 
 
-    private function resetActive() {
+    private function resetActive()
+    {
 
         if ($this->active->getValue()) {
             $update = new MailServerUpdate();

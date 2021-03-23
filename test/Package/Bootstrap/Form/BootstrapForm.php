@@ -1,6 +1,6 @@
 <?php
 
-require '../../config.php';
+require '../../../config.php';
 
 
 
@@ -26,6 +26,11 @@ class TestForm extends \Nemundo\Package\Bootstrap\Form\BootstrapForm
      * @var \Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox
      */
     private $checkbox;
+
+    /**
+     * @var \Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox
+     */
+    private $largeText;
 
     private $listBox;
 
@@ -53,9 +58,16 @@ class TestForm extends \Nemundo\Package\Bootstrap\Form\BootstrapForm
 
         $this->listBox = new \Nemundo\Package\Bootstrap\FormElement\BootstrapListBox($this);
         $this->listBox->label = 'ListBox';
+        $this->listBox->validation=true;
         $this->listBox->addItem(1, 'One');
         $this->listBox->addItem(2, 'Two');
         $this->listBox->addItem(3, 'Three');
+
+
+        $this->largeText=new \Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox($this);
+        $this->largeText->label = 'Large Text';
+        $this->largeText->validation=true;
+
 
 /*
         $this->checkbox = new \Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox($this);

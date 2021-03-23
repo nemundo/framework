@@ -12,6 +12,7 @@ class ProjectControllerCode extends AbstractProjectCode
 
     public function createCode()
     {
+
         $class = new PhpClass();
         $class->path = $this->path;
         $class->namespace = $this->prefixNamespace . '\\Controller';
@@ -22,7 +23,6 @@ class ProjectControllerCode extends AbstractProjectCode
         $function = new PhpFunction($class);
         $function->functionName = 'loadController()';
         $function->visibility = PhpVisibility::ProtectedVariable;
-
 
         $class->saveFile();
 

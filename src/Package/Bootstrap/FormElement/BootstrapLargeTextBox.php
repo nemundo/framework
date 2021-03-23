@@ -49,7 +49,7 @@ class BootstrapLargeTextBox extends AbstractLargeTextBox
             $bold->addCssClass('form-control-label');
             $bold->content = $this->errorMessage;
 
-            $this->labelLabel->content .= ' ' . $bold->getContent();
+            $this->labelLabel->content .= ' ' . $bold->getContent()->bodyContent;
             $this->addCssClass('has-danger');
             $this->textarea->addCssClass('form-control-danger');
 

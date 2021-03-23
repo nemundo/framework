@@ -2,7 +2,7 @@
 
 ### Installation
 ```
-composer init ()
+composer init
 composer require nemundo/framework
 ```
 --> kein .ignore File erzeugen

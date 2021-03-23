@@ -49,7 +49,7 @@ class SystemPage extends AbstractTemplateDocument
 
 
         new ProjectWidget($layout->col2);
-        new MailWidget($layout->col2);
+       // new MailWidget($layout->col2);
 
 
         //new SystemInformationTable($layout->col2);

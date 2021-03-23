@@ -48,10 +48,11 @@ class ProjectBuilder extends AbstractBaseClass
         $this->copyAsset('.gitignore');
         $this->copyAsset('commit.bat');
         $this->copyAsset('deploy');
+        $this->copyAsset('config.php');
         $this->copyAsset('config_admin.php');
         $this->copyAsset('.htaccess', 'web');
-        $this->copyAsset('cmd.php', 'bin');
-        $this->copyAsset('init.php', 'bin');
+        $this->copyAsset('bin/cmd.php', 'bin');
+        $this->copyAsset('bin/init.php', 'bin');
         $this->copyAsset('config.php', 'bin');
 
         $pathList = [];
@@ -68,10 +69,10 @@ class ProjectBuilder extends AbstractBaseClass
             (new Path($path))->createPath();
         }
 
-        $code = new ProjectConfigCode();
+        /*$code = new ProjectConfigCode();
         $code->path = $projectPath;
         $code->prefixNamespace = $this->project->namespace;
-        $code->createCode();
+        $code->createCode();*/
 
         $webPath = (new Path())
             ->addPath($projectPath)
