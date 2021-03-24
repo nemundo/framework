@@ -4,22 +4,25 @@ namespace Nemundo\Project\Install;
 
 
 use Nemundo\App\Application\Application\ApplicationApplication;
+use Nemundo\App\Application\Data\ApplicationModelCollection;
 use Nemundo\App\Application\Install\ApplicationInstall;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Backup\Application\BackupApplication;
-use Nemundo\App\DbAdmin\Install\DbAdminInstall;
 use Nemundo\App\FileLog\Application\FileLogApplication;
 use Nemundo\App\Help\Application\HelpApplication;
 use Nemundo\App\Mail\Application\MailApplication;
 use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
+use Nemundo\App\Scheduler\Data\SchedulerModelCollection;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Application\ScriptApplication;
+use Nemundo\App\Script\Data\ScriptModelCollection;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
+use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
 use Nemundo\Project\Script\ProjectCleanScript;
@@ -33,8 +36,14 @@ class ProjectInstall extends AbstractInstall
     public function install()
     {
 
+        (new ModelCollectionSetup())
+            ->addCollection(new ScriptModelCollection())
+            ->addCollection(new SchedulerModelCollection())
+            ->addCollection(new ApplicationModelCollection());
+
+
         (new ApplicationInstall())->install();
-        (new ApplicationSetup())->addApplication(new ApplicationApplication());
+        //(new ApplicationSetup())->addApplication(new ApplicationApplication());
         (new ApplicationApplication())->installApp();
 
         (new UserApplication())->installApp();
@@ -48,8 +57,6 @@ class ProjectInstall extends AbstractInstall
             ->addApplication(new FileLogApplication())
             ->addApplication(new BackupApplication())
             ->addApplication(new HelpApplication());
-
-        //(new DbAdminInstall())->run();
 
         (new TmpPath())->createPath();
         (new LogPath())->createPath();

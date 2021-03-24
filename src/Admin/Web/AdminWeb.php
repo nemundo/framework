@@ -6,9 +6,8 @@ namespace Nemundo\Admin\Web;
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Admin\Controller\AdminController;
 use Nemundo\Admin\Template\AdminTemplate;
-use Nemundo\Admin\Template\UserModeAdminTemplate;
+use Nemundo\User\Login\CookieLogin;
 use Nemundo\Web\Base\AbstractWeb;
-use Nemundo\Web\ResponseConfig;
 
 
 class AdminWeb extends AbstractWeb
@@ -17,15 +16,13 @@ class AdminWeb extends AbstractWeb
     public function loadWeb()
     {
 
-        $controller = new AdminController();
+        (new CookieLogin())->checkLogin();
 
-        AdminConfig::$webController = $controller;
+        AdminConfig::$webController = new AdminController();
         AdminConfig::$defaultTemplateClassName = AdminTemplate::class;
-        //AdminConfig::$defaultTemplateClassName = UserModeAdminTemplate::class;
+        AdminConfig::$userMode = true;
+        AdminConfig::$webController->render();
 
-        //ResponseConfig::$title = 'Admin';
-
-        $controller->render();
 
     }
 

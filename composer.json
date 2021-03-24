@@ -11,8 +11,7 @@
   "require": {
     "nemundo/core": "*",
     "nemundo/html": "*",
-    "nemundo/db": "*",
-    "swiftmailer/swiftmailer": "^6.2"
+    "nemundo/db": "*"
   },
   "autoload": {
     "psr-4": {

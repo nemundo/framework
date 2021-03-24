@@ -50,11 +50,12 @@ class ProjectBuilder extends AbstractBaseClass
         $this->copyAsset('deploy');
         $this->copyAsset('config.php');
         $this->copyAsset('config_admin.php');
+        $this->copyAsset('tag.bat');
         $this->copyAsset('.htaccess', 'web');
-        $this->copyAsset('bin/cmd.php', 'bin');
-        $this->copyAsset('bin/init.php', 'bin');
-        $this->copyAsset('bin/class_test.php', 'bin');
-        $this->copyAsset('config.php', 'bin');
+        $this->copyAsset('bin/cmd.php');  //, 'bin');
+        $this->copyAsset('bin/init.php');  //, 'bin');
+        $this->copyAsset('bin/class_test.php');  //, 'bin');
+        $this->copyAsset('bin/config.php');  //, 'bin');
 
         $pathList = [];
         $pathList[] = $projectPath . 'test';
@@ -83,7 +84,6 @@ class ProjectBuilder extends AbstractBaseClass
         $index = new PhpFile();
         $index->filename = $webPath . 'index.php';
         $index->add('require "../config.php";');
-        //$index->add('(new \\' . $this->project->namespace . '\\Controller\\' . $this->project->namespace . 'Controller())->render();');
         $index->add('(new \\' . $this->project->namespace . '\\Web\\' . $this->project->namespace . 'Web())->loadWeb();');
         $index->saveFile();
 
