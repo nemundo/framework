@@ -16,6 +16,7 @@ use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\App\Scheduler\Status\RunningSchedulerStatus;
+use Nemundo\App\Script\Application\ScriptApplication;
 use Nemundo\App\Script\Install\ScriptInstall;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
@@ -28,7 +29,7 @@ class SchedulerInstall extends AbstractInstall
     public function install()
     {
 
-        (new ScriptInstall())->install();
+        (new ScriptApplication())->installApp();
 
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new SchedulerModelCollection());

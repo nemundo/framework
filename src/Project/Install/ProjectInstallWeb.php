@@ -4,6 +4,7 @@
 namespace Nemundo\Project\Install;
 
 
+use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\Get\GetRequest;

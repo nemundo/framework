@@ -32,9 +32,12 @@ class AdminPackageInstall extends AbstractBase
     public function install()
     {
 
-        $this->projectPath = (new ProjectPath())
-            ->addPath('admin')
-            ->getPath();
+        $adminPath = (new ProjectPath())
+            ->addPath('admin');
+
+        $this->projectPath =$adminPath->getPath();
+
+        $adminPath->emptyDirectory();
 
         $this->copyAssetFile('.htaccess', '.htaccess');
         $this->copyAssetFile('config.php', 'config.php');
@@ -59,7 +62,6 @@ class AdminPackageInstall extends AbstractBase
         $write->overwriteExistingFile = true;
         $write->addLine($content);
         $write->saveFile();
-
 
         $setup = new PackageSetup();
         $setup->destinationPath = $this->projectPath;
