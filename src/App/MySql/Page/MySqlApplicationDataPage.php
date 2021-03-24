@@ -10,6 +10,7 @@ use Nemundo\App\MySql\Com\Table\MySqlDataTable;
 use Nemundo\App\MySql\Parameter\TableParameter;
 use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
+use Nemundo\App\MySql\Site\Action\MySqlIndexDeleteSite;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Type\Number\Number;
@@ -93,6 +94,10 @@ class MySqlApplicationDataPage extends AbstractTemplateDocument
 
                         $btn = new AdminSiteButton($col2);
                         $btn->site = clone(DropTableSite::$site);
+                        $btn->site->addParameter($tableParameter);
+
+                        $btn = new AdminSiteButton($col2);
+                        $btn->site = clone(MySqlIndexDeleteSite::$site);
                         $btn->site->addParameter($tableParameter);
 
                         $data = new MySqlDataTable($col2);

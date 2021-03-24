@@ -5,6 +5,7 @@ namespace Nemundo\App\MySql\Site;
 use Nemundo\App\MySql\Page\MySqlPage;
 use Nemundo\App\MySql\Site\Action\DropTableSite;
 use Nemundo\App\MySql\Site\Action\EmptyTableSite;
+use Nemundo\App\MySql\Site\Action\MySqlIndexDeleteSite;
 use Nemundo\Web\Site\AbstractSite;
 
 class MySqlSite extends AbstractSite
@@ -26,6 +27,8 @@ class MySqlSite extends AbstractSite
         new MySqlTableSite($this);
         new DropTableSite($this);
         new EmptyTableSite($this);
+        new MySqlIndexDeleteSite($this);
+
         new DatabaseSite($this);
 
     }
