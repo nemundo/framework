@@ -35,6 +35,7 @@ class ConfigPage extends MailTemplate
         $header->addText($reader->model->mailAddress->label);
         $header->addText($reader->model->mailText->label);
         $header->addEmpty();
+        $header->addEmpty();
 
         foreach ($reader->getData() as $mailServerRow) {
 

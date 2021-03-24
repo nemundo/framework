@@ -21,6 +21,8 @@ class AdminHomeSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $widget= new LoginWidget($page);
+        $widget->showForgotHyperlink=true;
+        //$widget->showRegisterHyperlink=true;
 
         $page->render();
 

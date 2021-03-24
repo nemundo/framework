@@ -20,8 +20,8 @@ class AdminWeb extends AbstractWeb
         $controller = new AdminController();
 
         AdminConfig::$webController = $controller;
-        //AdminConfig::$defaultTemplateClassName = AdminTemplate::class;
-        AdminConfig::$defaultTemplateClassName = UserModeAdminTemplate::class;
+        AdminConfig::$defaultTemplateClassName = AdminTemplate::class;
+        //AdminConfig::$defaultTemplateClassName = UserModeAdminTemplate::class;
 
         //ResponseConfig::$title = 'Admin';
 

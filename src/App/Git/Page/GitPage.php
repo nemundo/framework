@@ -23,10 +23,27 @@ class GitPage extends AbstractTemplateDocument
 
 
         $cmd=new LocalCommand();
+        $value = $cmd->runLocalCommand('git tag');
+
+        $subtitle=new AdminSubtitle($this);
+        $subtitle->content='Git Tag';
+
+        $table=new AdminTable($this);
+
+        foreach ($value as $line) {
+            $row=new TableRow($table);
+
+            $cell=new Text($line);
+            foreach ($cell->split(' ') as $item) {
+                $row->addText($item);
+            }
+            //$row->addText($line);
+        }
+
+
+
+        $cmd=new LocalCommand();
         $value = $cmd->runLocalCommand('git submodule');
-
-        //(new Debug())->write($value);
-
 
         $subtitle=new AdminSubtitle($this);
         $subtitle->content='Git Submodule';

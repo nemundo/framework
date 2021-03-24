@@ -7,7 +7,6 @@ use Nemundo\Admin\Com\Navbar\AdminSiteNavbar;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\Container\BootstrapContainer;
-use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbarLogo;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\FontAwesome\FontAwesomePackage;
 use Nemundo\Package\Jquery\Container\JqueryHeader;
@@ -16,7 +15,6 @@ use Nemundo\Package\NemundoJs\NemundoJsPackage;
 use Nemundo\Package\OpenGraph\OpenGraph;
 use Nemundo\Package\TwitterCard\TwitterCard;
 use Nemundo\Web\ResponseConfig;
-use Nemundo\Web\Site\BaseUrlSite;
 use Nemundo\Web\WebConfig;
 
 class AdminTemplate extends BootstrapDocument
@@ -36,6 +34,10 @@ class AdminTemplate extends BootstrapDocument
     protected function loadContainer()
     {
 
+        if (ResponseConfig::$title == null) {
+            ResponseConfig::$title = AdminConfig::$pageTitle;
+        }
+
         $this->addPackage(new NemundoJsPackage());
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new FontAwesomePackage());
@@ -46,12 +48,10 @@ class AdminTemplate extends BootstrapDocument
         $this->navbar->site = AdminConfig::$webController;
         $this->navbar->userMode = AdminConfig::$userMode;
 
-        $this->navbar->showPasswordChange= AdminConfig::$showPasswordChange;  // false;
+        $this->navbar->showPasswordChange = AdminConfig::$showPasswordChange;
 
         if (AdminConfig::$logoUrl !== null) {
-            $logo = new BootstrapNavbarLogo($this->navbar);
-            $logo->logoSite = new BaseUrlSite();
-            $logo->logoUrl = AdminConfig::$logoUrl;
+            $this->navbar->logoUrl = AdminConfig::$logoUrl;
         } else {
             $this->navbar->brand = ResponseConfig::$title;
         }
@@ -77,7 +77,7 @@ class AdminTemplate extends BootstrapDocument
     {
 
         if ($this->title == null) {
-            $this->title = ResponseConfig::$title;  // AdminConfig::$pageTitle;
+            $this->title = ResponseConfig::$title;
         }
 
         new JqueryHeader($this);

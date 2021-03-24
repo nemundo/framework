@@ -32,11 +32,6 @@ abstract class AbstractProject extends AbstractBaseClass
     /**
      * @var string
      */
-    //public $dbFilename;
-
-    /**
-     * @var string
-     */
     public $modelPath;
 
     abstract protected function loadProject();

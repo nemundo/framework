@@ -3,11 +3,6 @@
 namespace Nemundo\Admin\Template;
 
 
-use Nemundo\App\UserAction\Site\LogoutSite;
-use Nemundo\App\UserAction\Site\PasswordChangeSite;
-use Nemundo\Content\App\UserProfile\Site\MyUserProfileSite;
-
-
 // UserMode
 // WithoutUser
 class UserModeAdminTemplate extends AdminTemplate

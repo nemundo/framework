@@ -3,8 +3,6 @@
 namespace Nemundo\Project\Config;
 
 
-use Nemundo\App\Mail\Connection\SmtpConnection;
-use Nemundo\App\Mail\MailConfig;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Config\ConfigFileReader;
 use Nemundo\Core\Log\LogMessage;
@@ -40,8 +38,6 @@ class ProjectConfigReader extends AbstractBaseClass
                 ProjectConfigReader::$configReader->filename = $this->filename;
             }
 
-
-
             DbConfig::$defaultConnection = new MySqlConnection();
             DbConfig::$defaultConnection->connectionParameter->host = ProjectConfigReader::$configReader->getValue('mysql_host');
             DbConfig::$defaultConnection->connectionParameter->port = ProjectConfigReader::$configReader->getValue('mysql_port');
@@ -63,25 +59,25 @@ class ProjectConfigReader extends AbstractBaseClass
             MailConfig::$defaultMailFromText = ProjectConfigReader::$configReader->getValue('default_mail_text');*/
 
 
-
             DeploymentConfig::$stagingEnviroment = ProjectConfigReader::$configReader->getValue('staging_enviroment');
 
         } else {
             (new LogMessage())->writeError('Config File not found');
         }
 
-        /*$loader = new ProjectConfigLoader();
+        /*
+        $loader = new ProjectConfigLoader();
         $loader->loadConfig();*/
 
     }
 
 
-    public function getValue($variable) {
+    public function getValue($variable)
+    {
 
-
-        $value=null;
-        if (ProjectConfigReader::$configReader!== null) {
-        $value = ProjectConfigReader::$configReader->getValue($variable);
+        $value = null;
+        if (ProjectConfigReader::$configReader !== null) {
+            $value = ProjectConfigReader::$configReader->getValue($variable);
         }
         return $value;
 
