@@ -28,7 +28,7 @@ class AdminConfig
     /**
      * @var string
      */
-    public static $pageTitle = '[no title]';
+    //public static $pageTitle = '[no title]';
 
 
     // AdminTemplate (static)

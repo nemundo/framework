@@ -7,7 +7,7 @@ namespace Nemundo\Web;
 class ResponseConfig
 {
 
-    public static $title;  // = '[no title]';
+    //public static $title;  // = '[no title]';
 
     public static $description = '';
 

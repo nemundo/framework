@@ -2,7 +2,9 @@
 
 namespace Nemundo\Package\TwitterCard;
 
+use Nemundo\Html\Header\LibraryHeader;
 use Nemundo\Package\OpenGraph\AbstractOpenGraph;
+use Nemundo\Web\ResponseConfig;
 
 class TwitterCard extends AbstractOpenGraph
 {
@@ -13,9 +15,9 @@ class TwitterCard extends AbstractOpenGraph
         $this->prefix = 'twitter';
 
         $this->addMeta('card', 'summary');
-        $this->addMeta('title', $this->title);
-        $this->addMeta('description', $this->description);
-        $this->addMeta('image', $this->imageUrl);
+        $this->addMeta('title', LibraryHeader::$documentTitle);
+        $this->addMeta('description',ResponseConfig::$description);
+        $this->addMeta('image', ResponseConfig::$imageUrl);
 
         return parent::getContent();
 

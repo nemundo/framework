@@ -3,6 +3,9 @@
 namespace Nemundo\Package\OpenGraph;
 
 
+use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Web\ResponseConfig;
+
 class OpenGraph extends AbstractOpenGraph
 {
 
@@ -11,9 +14,9 @@ class OpenGraph extends AbstractOpenGraph
 
         $this->prefix = 'og';
 
-        $this->addMeta('title', $this->title);
-        $this->addMeta('description', $this->description);
-        $this->addMeta('image', $this->imageUrl);
+        $this->addMeta('title', LibraryHeader::$documentTitle); // $this->title);
+        $this->addMeta('description', ResponseConfig::$description);
+        $this->addMeta('image',ResponseConfig::$imageUrl);
 
         return parent::getContent();
 

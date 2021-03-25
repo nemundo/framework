@@ -3,6 +3,7 @@
 namespace Nemundo\Package\OpenGraph;
 
 use Nemundo\Html\Header\AbstractHeaderHtmlContainer;
+use Nemundo\Html\Header\LibraryHeader;
 use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Web\ResponseConfig;
 
@@ -13,36 +14,36 @@ abstract class AbstractOpenGraph extends AbstractHeaderHtmlContainer
     /**
      * @var string
      */
-    public $title;
+    //public $title;
 
     /**
      * @var string
      */
-    public $siteName;
+   // public $siteName;
 
     /**
      * @var string
      */
-    public $description;
+    //public $description;
 
     /**
      * @var string
      */
-    public $imageUrl;
+    //public $imageUrl;
 
     protected $prefix;
 
 
-    protected function loadContainer()
+   /* protected function loadContainer()
     {
 
         parent::loadContainer();
 
-        $this->title = ResponseConfig::$title;
+        $this->title = LibraryHeader::$documentTitle;   // ResponseConfig::$title;
         $this->description = ResponseConfig::$description;
         $this->imageUrl = ResponseConfig::$imageUrl;
 
-    }
+    }*/
 
 
     protected function addMeta($property, $content)
