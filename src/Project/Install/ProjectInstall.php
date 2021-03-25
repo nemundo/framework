@@ -10,7 +10,9 @@ use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Backup\Application\BackupApplication;
 use Nemundo\App\FileLog\Application\FileLogApplication;
+use Nemundo\App\Git\Application\GitApplication;
 use Nemundo\App\Help\Application\HelpApplication;
+use Nemundo\App\Linux\Application\LinuxApplication;
 use Nemundo\App\Mail\Application\MailApplication;
 use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
@@ -41,9 +43,7 @@ class ProjectInstall extends AbstractInstall
             ->addCollection(new SchedulerModelCollection())
             ->addCollection(new ApplicationModelCollection());
 
-
         (new ApplicationInstall())->install();
-        //(new ApplicationSetup())->addApplication(new ApplicationApplication());
         (new ApplicationApplication())->installApp();
 
         (new UserApplication())->installApp();
@@ -51,6 +51,8 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new GitApplication())
+            ->addApplication(new LinuxApplication())
             ->addApplication(new ScriptApplication())
             ->addApplication(new SystemApplication())
             ->addApplication(new MySqlApplication())

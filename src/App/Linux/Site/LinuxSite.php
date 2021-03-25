@@ -10,11 +10,18 @@ use Nemundo\Web\Site\AbstractSite;
 class LinuxSite extends AbstractSite
 {
 
+    /**
+     * @var LinuxSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
 
-        $this->title='Linux';
-        $this->url='linux';
+        $this->title = 'Linux';
+        $this->url = 'linux';
+
+        LinuxSite::$site = $this;
 
     }
 

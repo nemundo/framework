@@ -20,8 +20,6 @@ class GitPage extends AbstractTemplateDocument
     public function getContent()
     {
 
-
-
         $cmd=new LocalCommand();
         $value = $cmd->runLocalCommand('git tag');
 

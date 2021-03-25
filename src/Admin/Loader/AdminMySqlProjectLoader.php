@@ -20,7 +20,7 @@ class AdminMySqlProjectLoader extends MySqlProjectLoader
         WebConfig::$webUrl = '/';
         WebConfig::$webPath = ProjectConfig::$projectPath . 'admin' . DIRECTORY_SEPARATOR;
 
-        ModelConfig::$dataPath = ProjectConfig::$projectPath . 'admin' . DIRECTORY_SEPARATOR . 'data_redirect' . DIRECTORY_SEPARATOR;
+        ModelConfig::$dataPath = ProjectConfig::$projectPath . 'admin' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR;
         ModelConfig::$dataUrl = WebConfig::$webUrl . 'data/';
 
         ModelConfig::$redirectDataPath = ProjectConfig::$projectPath . 'admin' . DIRECTORY_SEPARATOR . 'data_redirect' . DIRECTORY_SEPARATOR;

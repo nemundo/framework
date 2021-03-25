@@ -4,16 +4,15 @@
 namespace Nemundo\App\Linux\Page;
 
 
-use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\App\Linux\Ssh\SshCommand;
-use Nemundo\App\Linux\Ssh\SshConnection;
-use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
+use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
+use Nemundo\App\Git\Parameter\PathParameter;
+use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Core\Csv\CsvSeperator;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
+use Nemundo\Html\Paragraph\Paragraph;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 
 class LinuxPage extends AbstractTemplateDocument
 {
@@ -22,27 +21,57 @@ class LinuxPage extends AbstractTemplateDocument
     {
 
 
-        /*
+        $pathCmd ='/';
 
-        $cmd= new SshCommand();
-        $cmd->connection= $conn;
-        $value = $cmd->runCommand('df');
+        $pathParameter=new PathParameter();
+        if ($pathParameter->hasValue()) {
 
-        (new Debug())->write($value);
+            $p=new Paragraph($this);
+            $p->content= 'Path: '. $pathParameter->getValue();
 
-        $subtitle=new AdminSubtitle($this);
-        $subtitle->content='Diskspace';
+            $pathCmd.=$pathParameter->getValue();
 
-        $table=new AdminTable($this);
+        }
+
+
+        $cmd = new LocalCommand();
+        $value = $cmd->runLocalCommand('cd '.$pathCmd.'&&ls -l');
+        //$value = $cmd->runLocalCommand('cd /&&ls -l');
+
+
+        $table = new AdminClickableTableRow($this);
+
+        $header = new AdminTableHeader($table);
+        $header->addText('Path');
+        $header->addText('Time');
+        /*$header->addText('');
+        $header->addText('');
+        $header->addText('');*/
+
+
         foreach ($value as $line) {
-            $row=new TableRow($table);
 
-            $cell=new Text($line);
-            foreach ($cell->split(CsvSeperator::TAB) as $item) {
+            $row = new BootstrapClickableTableRow($table);
+
+            $list = (new Text($line))->split(' ');
+
+            /*
+            foreach ($cell->split(' ') as $item) {
                 $row->addText($item);
-            }
-            $row->addText($line);
-        }*/
+            }*/
+
+            $time = $list[7];
+            $path = $list[8];
+
+            $row->addText($path);
+            $row->addText($time);
+
+            $site = clone(LinuxSite::$site);
+            $site->addParameter(new PathParameter($path));
+            $row->addClickableSite($site);
+
+        }
+
 
         return parent::getContent();
 
