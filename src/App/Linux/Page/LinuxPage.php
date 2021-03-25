@@ -36,7 +36,7 @@ class LinuxPage extends AbstractTemplateDocument
 
 
         $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('cd '.$pathCmd.'&&ls -l');
+        $value = $cmd->runLocalCommand('cd '.$pathCmd.'&&ls');
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
 
 
@@ -62,13 +62,13 @@ class LinuxPage extends AbstractTemplateDocument
             }*/
 
             //$time = $list[7];
-            $path = $list[4];
+            $path = $list[0];
 
             $row->addText($path);
             //$row->addText($time);
 
             $site = clone(LinuxSite::$site);
-            //$site->addParameter(new PathParameter($path));
+            $site->addParameter(new PathParameter($path));
             $row->addClickableSite($site);
 
         }
