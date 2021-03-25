@@ -13,7 +13,7 @@ use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 
 class LinuxPage extends AbstractTemplateDocument
 {
@@ -22,22 +22,43 @@ class LinuxPage extends AbstractTemplateDocument
     {
 
 
-        $pathCmd ='/';
+        $pathCmd = null;  // '/';
 
-        $pathParameter=new PathParameter();
+        $pathParameter = new PathParameter();
         if ($pathParameter->hasValue()) {
 
-            $p=new Paragraph($this);
-            $p->content= 'Path: '. $pathParameter->getValue();
+            $p = new Paragraph($this);
+            $p->content = 'Path: ' . $pathParameter->getValue();
 
-            $pathCmd.=$pathParameter->getValue();
-
+            $pathCmd = $pathParameter->getValue() . '/';
+        } else {
+            $pathCmd = '/';
         }
 
 
         $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('cd '.$pathCmd.'&&ls');
+        $value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls');
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
+
+
+        $breadcrumb = new BootstrapBreadcrumb($this);
+
+        $valueNew = '';
+
+        foreach ((new Text($pathCmd))->split('/') as $str) {
+
+            $valueNew .= $str;
+
+            if ($str !== '') {
+                $site = clone(LinuxSite::$site);
+                $site->title = $str;
+                $site->addParameter(new PathParameter($valueNew));
+                $breadcrumb->addSite($site);
+            }
+
+        }
+
+        //$breadcrumb->addSite();
 
 
         $table = new AdminClickableTable($this);
@@ -68,7 +89,7 @@ class LinuxPage extends AbstractTemplateDocument
             //$row->addText($time);
 
             $site = clone(LinuxSite::$site);
-            $site->addParameter(new PathParameter($path));
+            $site->addParameter(new PathParameter($pathCmd . $path));
             $row->addClickableSite($site);
 
         }

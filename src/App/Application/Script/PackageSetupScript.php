@@ -11,8 +11,8 @@ class PackageSetupScript extends AbstractConsoleScript
     protected function loadScript()
     {
 
-        // app-package
-        $this->scriptName = 'package-setup';
+        $this->scriptName = 'app-package';
+
     }
 
     public function run()
