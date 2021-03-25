@@ -4,6 +4,7 @@
 namespace Nemundo\App\Linux\Page;
 
 
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\App\Git\Parameter\PathParameter;
@@ -39,7 +40,7 @@ class LinuxPage extends AbstractTemplateDocument
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
 
 
-        $table = new AdminClickableTableRow($this);
+        $table = new AdminClickableTable($this);
 
         $header = new AdminTableHeader($table);
         $header->addText('Path');
@@ -51,7 +52,7 @@ class LinuxPage extends AbstractTemplateDocument
 
         foreach ($value as $line) {
 
-            $row = new BootstrapClickableTableRow($table);
+            $row = new AdminClickableTableRow($table);
 
             $list = (new Text($line))->split(' ');
 
@@ -60,14 +61,14 @@ class LinuxPage extends AbstractTemplateDocument
                 $row->addText($item);
             }*/
 
-            $time = $list[7];
-            $path = $list[8];
+            //$time = $list[7];
+            $path = $list[4];
 
             $row->addText($path);
-            $row->addText($time);
+            //$row->addText($time);
 
             $site = clone(LinuxSite::$site);
-            $site->addParameter(new PathParameter($path));
+            //$site->addParameter(new PathParameter($path));
             $row->addClickableSite($site);
 
         }
