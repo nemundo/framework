@@ -15,6 +15,11 @@ class FindReader extends CommandReader
     protected function loadData()
     {
 
+
+        // find / -maxdepth 1 -type d -printf "%f %TD\n" | sort -z
+
+
+        //  | sort -z |
 //        $this->command= 'find ' . $this->path . ' -maxdepth 1 -type '.$this->type.' -printf "%p %TD\n"';
         $this->command= 'find ' . $this->path . ' -maxdepth 1 -type '.$this->type.' -printf "%f %TD\n"';
 

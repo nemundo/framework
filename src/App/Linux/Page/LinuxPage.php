@@ -7,6 +7,7 @@ namespace Nemundo\App\Linux\Page;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
+use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\App\Git\Parameter\PathParameter;
 use Nemundo\App\Linux\Parameter\FilenameParameter;
 use Nemundo\App\Linux\Reader\CommandReader;
@@ -14,6 +15,7 @@ use Nemundo\App\Linux\Reader\FindReader;
 use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
+use Nemundo\Core\Type\File\File;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Paragraph\Paragraph;
@@ -93,8 +95,6 @@ class LinuxPage extends LinuxTemplate
         }
 
 
-        //$breadcrumb->addSite();
-
         $layout = new BootstrapTwoColumnLayout($this);
 
 
@@ -103,38 +103,16 @@ class LinuxPage extends LinuxTemplate
         $header = new AdminTableHeader($table);
         $header->addText('Path');
         $header->addText('Time');
-        /*$header->addText('');
-        $header->addText('');
-        $header->addText('');*/
 
 
         foreach ($reader->getData() as $line) {
 
             $row = new AdminClickableTableRow($table);
-
-            //$row->addText($line);
-
-            /*
-            if ($line[0] == '') {
-                $row->addText('file');
-            } else {
-                $row->addEmpty();
-            }*/
-
-
             $path = $line[0];
             $row->addText($path);
-            $row->addText('---');
-
-            //$list = (new Text($line))->split(' ');
             foreach ($line as $item) {
                 $row->addText($item);
             }
-
-
-            //$time = $list[7];
-            //$row->addText($time);
-
             $site = clone(LinuxSite::$site);
             $site->addParameter(new PathParameter($pathCmd . $path));
             $row->addClickableSite($site);
@@ -154,20 +132,11 @@ class LinuxPage extends LinuxTemplate
             $path = $line[0];
             $row->addText($path);
             $row->addText($line[1]);
-            //$row->addText('---');
-
-
-            /*
-            foreach ($line as $item) {
-                $row->addText($item);
-            }*/
-
-
-            //$time = $list[7];
-            //$row->addText($time);
 
             $site = clone(LinuxSite::$site);
             $site->addParameter(new FilenameParameter($pathCmd . $path));
+            $site->addParameter(new PathParameter());
+
             $row->addClickableSite($site);
 
         }
@@ -177,10 +146,13 @@ class LinuxPage extends LinuxTemplate
 
         if ($filenameParameter->hasValue()) {
 
-            $filename = $filenameParameter->getValue();   //-> get '/etc/mysql/my.cnf';
+            $filename = $filenameParameter->getValue();
 
             $file = new TextFileReader($filename);
             $text = $file->getText();
+
+            $subtitle = new AdminSubtitle($layout->col2);
+            $subtitle->content= (new File( $filename))->filename;
 
             $code = new Code($layout->col2);
             $code->content = (new Html($text))->getValue();
