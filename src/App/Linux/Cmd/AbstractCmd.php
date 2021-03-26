@@ -9,6 +9,22 @@ use Nemundo\Core\Base\AbstractBase;
 abstract class AbstractCmd extends AbstractBase
 {
 
-    abstract public function getCmd();
+    public $label;
+
+    public $command;
+
+    //public $description;
+
+
+    abstract protected function loadCmd();
+
+
+    //abstract public function getCmd();
+
+    public function getCmd() {
+
+        return $this->command;
+
+    }
 
 }

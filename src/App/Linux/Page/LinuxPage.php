@@ -17,6 +17,7 @@ use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Typography\Code;
 use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class LinuxPage extends LinuxTemplate
 {
@@ -25,7 +26,7 @@ class LinuxPage extends LinuxTemplate
     {
 
 
-        $pathCmd = null;  // '/';
+        $pathCmd = null;
 
         $pathParameter = new PathParameter();
         if ($pathParameter->hasValue()) {
@@ -40,7 +41,7 @@ class LinuxPage extends LinuxTemplate
 
 
         $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls');
+        $value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls -l');
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
 
 
@@ -69,8 +70,10 @@ class LinuxPage extends LinuxTemplate
 
         //$breadcrumb->addSite();
 
+        $layout=new BootstrapTwoColumnLayout($this);
 
-        $table = new AdminClickableTable($this);
+
+        $table = new AdminClickableTable($layout->col1);
 
         $header = new AdminTableHeader($table);
         $header->addText('Path');
@@ -84,15 +87,22 @@ class LinuxPage extends LinuxTemplate
 
             $row = new AdminClickableTableRow($table);
 
-            $list = (new Text($line))->split(' ');
+            if ($line[0] == '') {
+                $row->addText('file');
+            } else {
+                $row->addEmpty();
+            }
 
-            /*
-            foreach ($cell->split(' ') as $item) {
+
+            $list = (new Text($line))->split(' ');
+            foreach ($list as $item) {
                 $row->addText($item);
-            }*/
+            }
+
+            $row->addText('---');
 
             //$time = $list[7];
-            $path = $list[0];
+            $path = $list[7];
 
             $row->addText($path);
             //$row->addText($time);
@@ -104,13 +114,14 @@ class LinuxPage extends LinuxTemplate
         }
 
 
+
+
         $filename = '/etc/mysql/my.cnf';
 
         $file = new TextFileReader($filename);
         $text = $file->getText();
 
-
-        $code =new Code($this);
+        $code =new Code($layout->col2);
         $code->content = (new Html($text))->getValue();
 
 

@@ -4,6 +4,9 @@ namespace Nemundo\App\Linux\Page;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
+use Nemundo\App\Linux\Cmd\DiskUsageCmd;
+use Nemundo\App\Linux\Cmd\RebootCmd;
+use Nemundo\App\Linux\Com\ListBox\CommandListBox;
 use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Local\LocalCommand;
@@ -22,10 +25,17 @@ class CmdPage extends LinuxTemplate
 
         $row = new BootstrapRow($form);
 
-        $listobx = new BootstrapListBox($row);
+        $listobx = new CommandListBox($row);
         $listobx->submitOnChange = true;
-        $listobx->addItem('df', 'df');
-        $listobx->addItem('ls -l', 'ls -l');
+        $listobx->searchMode=true;
+
+        $listobx->addCommand(new DiskUsageCmd());
+        $listobx->addCommand(new RebootCmd());
+
+        //$listobx->addItem('df', 'df');
+        //$listobx->addItem('ls -l', 'ls -l');
+
+
 
         if ($listobx->hasValue()) {
 
@@ -40,17 +50,17 @@ class CmdPage extends LinuxTemplate
                 $row = new AdminTableRow($table);
                 $row->addText($str);
 
-                /*$list = (new Text($str))->split(' ');
-                foreach ($list as $item) {
-                    $row->addText($item);
-                }*/
-
-
-
-                $list = (new Text($str))->split(chr(9));
+                $list = (new Text($str))->split(' ');
                 foreach ($list as $item) {
                     $row->addText($item);
                 }
+
+
+/*
+                $list = (new Text($str))->split(chr(9));
+                foreach ($list as $item) {
+                    $row->addText($item);
+                }*/
 
 
 
