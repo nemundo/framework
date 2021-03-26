@@ -24,7 +24,7 @@ class CommandReader extends AbstractDataSource
 
         foreach ($value as $line) {
 
-            (new Debug())->write($line);
+            //(new Debug())->write($line);
 
             $list = (new Text($line))->split(' ');
 
