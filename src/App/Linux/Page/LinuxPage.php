@@ -95,11 +95,12 @@ class LinuxPage extends LinuxTemplate
 
             $row->addText($line);
 
+            /*
             if ($line[0] == '') {
                 $row->addText('file');
             } else {
                 $row->addEmpty();
-            }
+            }*/
 
 
             $list = (new Text($line))->split(' ');
@@ -110,7 +111,7 @@ class LinuxPage extends LinuxTemplate
             $row->addText('---');
 
             //$time = $list[7];
-            $path = $list[7];
+            $path = $list[0];
 
             $row->addText($path);
             //$row->addText($time);
