@@ -16,7 +16,7 @@ class FindReader extends CommandReader
     {
 
 
-        // find / -maxdepth 1 -type d -printf "%f %TD\n" | sort -z
+        // find /srv -maxdepth 1 -type d -printf "%f %TD\n" | sort -z
 
 
         //  | sort -z |
