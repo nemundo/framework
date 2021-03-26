@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\App\Git\Parameter\PathParameter;
+use Nemundo\App\Linux\Reader\CommandReader;
 use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Core\Local\LocalCommand;
@@ -40,11 +41,21 @@ class LinuxPage extends LinuxTemplate
         }
 
 
-        $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('find ' . $pathCmd . ' -maxdepth 1 "%p\n"');
+        //$cmd = new LocalCommand();
+        //$value = $cmd->runLocalCommand('find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'');
+
+
+        $reader = new CommandReader();
+        $reader->command = 'find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'';
 
         // -printf '%%p'
         // -printf '%Tc %p\n'
+
+
+        // -type f
+
+
+        // find / -maxdepth 1 -printf "%p %TD\n"
 
         //$value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls -l');
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
@@ -89,7 +100,7 @@ class LinuxPage extends LinuxTemplate
         $header->addText('');*/
 
 
-        foreach ($value as $line) {
+        foreach ($reader->getData() as $line) {
 
             $row = new AdminClickableTableRow($table);
 
