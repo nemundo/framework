@@ -10,6 +10,7 @@ use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\App\Git\Parameter\PathParameter;
 use Nemundo\App\Linux\Parameter\FilenameParameter;
 use Nemundo\App\Linux\Reader\CommandReader;
+use Nemundo\App\Linux\Reader\FindReader;
 use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
@@ -45,8 +46,11 @@ class LinuxPage extends LinuxTemplate
         //$value = $cmd->runLocalCommand('find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'');
 
 
-        $reader = new CommandReader();
-        $reader->command = 'find / -maxdepth 1 -type d -printf "%p %TD\n"';
+        $reader = new FindReader(); // new CommandReader();
+        $reader->path=$pathCmd;
+        $reader->type='d';
+
+        //$reader->command = 'find ' . $pathCmd . ' -maxdepth 1 -type d -printf "%p %TD\n"';
 
         //$reader->command = 'find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'';
 
@@ -122,7 +126,6 @@ class LinuxPage extends LinuxTemplate
             $row->addText($path);
             $row->addText('---');
 
-
             //$list = (new Text($line))->split(' ');
             foreach ($line as $item) {
                 $row->addText($item);
@@ -139,8 +142,11 @@ class LinuxPage extends LinuxTemplate
         }
 
 
-        $reader = new CommandReader();
-        $reader->command = 'find / -maxdepth 1 -type d -printf "%p %TD\n"';
+        $reader = new FindReader();
+        $reader->path=$pathCmd;
+        $reader->type='f';
+
+        //$reader->command = 'find / -maxdepth 1 -type d -printf "%p %TD\n"';
         foreach ($reader->getData() as $line) {
 
             $row = new AdminClickableTableRow($table);
