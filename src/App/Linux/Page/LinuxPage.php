@@ -106,7 +106,7 @@ class LinuxPage extends LinuxTemplate
 
             $row = new AdminClickableTableRow($table);
 
-            $row->addText($line);
+            //$row->addText($line);
 
             /*
             if ($line[0] == '') {
@@ -116,17 +116,19 @@ class LinuxPage extends LinuxTemplate
             }*/
 
 
-            $list = (new Text($line))->split(' ');
-            foreach ($list as $item) {
+            $path = $line[0];
+            $row->addText($path);
+            $row->addText('---');
+
+
+            //$list = (new Text($line))->split(' ');
+            foreach ($line as $item) {
                 $row->addText($item);
             }
 
-            $row->addText('---');
+
 
             //$time = $list[7];
-            $path = $list[0];
-
-            $row->addText($path);
             //$row->addText($time);
 
             $site = clone(LinuxSite::$site);
