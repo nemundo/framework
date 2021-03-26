@@ -87,6 +87,8 @@ class LinuxPage extends LinuxTemplate
 
             $row = new AdminClickableTableRow($table);
 
+            $row->addText($line);
+
             if ($line[0] == '') {
                 $row->addText('file');
             } else {

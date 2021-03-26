@@ -19,6 +19,11 @@ abstract class AbstractCmd extends AbstractBase
     abstract protected function loadCmd();
 
 
+    public function __construct() {
+        $this->loadCmd();
+    }
+
+
     //abstract public function getCmd();
 
     public function getCmd() {
