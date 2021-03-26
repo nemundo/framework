@@ -3,6 +3,7 @@
 namespace Nemundo\Project\Install;
 
 
+use Nemundo\App\Apache\Application\ApacheApplication;
 use Nemundo\App\Application\Application\ApplicationApplication;
 use Nemundo\App\Application\Data\ApplicationModelCollection;
 use Nemundo\App\Application\Install\ApplicationInstall;
@@ -51,6 +52,7 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new ApacheApplication())
             ->addApplication(new GitApplication())
             ->addApplication(new LinuxApplication())
             ->addApplication(new ScriptApplication())

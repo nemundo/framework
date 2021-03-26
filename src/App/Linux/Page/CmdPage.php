@@ -4,13 +4,13 @@ namespace Nemundo\App\Linux\Page;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
-use Nemundo\App\Git\Parameter\PathParameter;
-use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
-use Nemundo\Com\Template\AbstractTemplateDocument;
+use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
-use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Html\Character\HtmlCharacter;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class CmdPage extends LinuxTemplate
 {
@@ -18,28 +18,45 @@ class CmdPage extends LinuxTemplate
     {
 
 
-        $table=new AdminTable($this);
+        $form = new SearchForm($this);
+
+        $row = new BootstrapRow($form);
+
+        $listobx = new BootstrapListBox($row);
+        $listobx->submitOnChange = true;
+        $listobx->addItem('df', 'df');
+        $listobx->addItem('ls -l', 'ls -l');
+
+        if ($listobx->hasValue()) {
+
+            $table = new AdminTable($this);
+
+            $cmd = new LocalCommand();
+            $value = $cmd->runLocalCommand($listobx->getValue());
+            //$value = $cmd->runLocalCommand('df');
+
+            foreach ($value as $str) {
+
+                $row = new AdminTableRow($table);
+                $row->addText($str);
+
+                /*$list = (new Text($str))->split(' ');
+                foreach ($list as $item) {
+                    $row->addText($item);
+                }*/
 
 
-        $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('df');
 
-        foreach ($value as $str) {
+                $list = (new Text($str))->split(chr(9));
+                foreach ($list as $item) {
+                    $row->addText($item);
+                }
 
-            $row=new AdminTableRow($table);
-            $row->addText($str);
 
-            $list = (new Text($str))->split(' ');
-            foreach ($list as $item) {
-                $row->addText($item);
+
             }
 
-
         }
-
-
-
-
 
 
         return parent::getContent();

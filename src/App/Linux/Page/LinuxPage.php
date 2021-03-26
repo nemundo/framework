@@ -44,7 +44,14 @@ class LinuxPage extends LinuxTemplate
 
         $breadcrumb = new BootstrapBreadcrumb($this);
 
-        $valueNew = '';
+        //$valueNew = '/';
+
+        $site = clone(LinuxSite::$site);
+        $site->title = 'Base';
+        $site->addParameter(new PathParameter('/'));
+        $breadcrumb->addSite($site);
+
+
 
         foreach ((new Text($pathCmd))->split('/') as $str) {
 
