@@ -23,6 +23,8 @@ class LinuxSite extends AbstractSite
 
         LinuxSite::$site = $this;
 
+        new CmdSite($this);
+
     }
 
 

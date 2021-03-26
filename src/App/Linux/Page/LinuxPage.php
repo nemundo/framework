@@ -9,13 +9,14 @@ use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\App\Git\Parameter\PathParameter;
 use Nemundo\App\Linux\Site\LinuxSite;
+use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 
-class LinuxPage extends AbstractTemplateDocument
+class LinuxPage extends LinuxTemplate
 {
 
     public function getContent()
@@ -47,7 +48,7 @@ class LinuxPage extends AbstractTemplateDocument
 
         foreach ((new Text($pathCmd))->split('/') as $str) {
 
-            $valueNew .= $str;
+            $valueNew .= '/'. $str;
 
             if ($str !== '') {
                 $site = clone(LinuxSite::$site);
@@ -65,7 +66,7 @@ class LinuxPage extends AbstractTemplateDocument
 
         $header = new AdminTableHeader($table);
         $header->addText('Path');
-        $header->addText('Time');
+        //$header->addText('Time');
         /*$header->addText('');
         $header->addText('');
         $header->addText('');*/
