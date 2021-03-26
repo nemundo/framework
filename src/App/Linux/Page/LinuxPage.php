@@ -46,7 +46,9 @@ class LinuxPage extends LinuxTemplate
 
 
         $reader = new CommandReader();
-        $reader->command = 'find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'';
+        $reader->command='find / -maxdepth 1 -printf "%p %TD\n"';
+
+        //$reader->command = 'find ' . $pathCmd . ' -maxdepth 1 \'%p %TD\n\'';
 
         // -printf '%%p'
         // -printf '%Tc %p\n'
