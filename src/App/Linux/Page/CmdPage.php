@@ -59,6 +59,11 @@ class CmdPage extends LinuxTemplate
         }
 
 
+
+
+
+
+
         return parent::getContent();
     }
 }

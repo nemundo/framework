@@ -1,9 +1,18 @@
 <?php
+
 namespace Nemundo\App\Apache\Application;
+
+use Nemundo\App\Apache\Install\ApacheInstall;
 use Nemundo\App\Application\Type\AbstractApplication;
-class ApacheApplication extends AbstractApplication {
-protected function loadApplication() {
-$this->application = 'Apache';
-$this->applicationId = '7361e6e8-7853-4733-a79b-f4e348ea3225';
-}
+use Nemundo\FrameworkProject;
+
+class ApacheApplication extends AbstractApplication
+{
+    protected function loadApplication()
+    {
+        $this->project=new FrameworkProject();
+        $this->application = 'Apache';
+        $this->applicationId = '7361e6e8-7853-4733-a79b-f4e348ea3225';
+        $this->installClass=ApacheInstall::class;
+    }
 }

@@ -10,10 +10,12 @@ use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
 use Nemundo\App\Git\Parameter\PathParameter;
 use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
-use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Local\LocalCommand;
+use Nemundo\Core\TextFile\Reader\TextFileReader;
+use Nemundo\Core\Type\Text\Html;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Paragraph\Paragraph;
+use Nemundo\Html\Typography\Code;
 use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 
 class LinuxPage extends LinuxTemplate
@@ -44,18 +46,17 @@ class LinuxPage extends LinuxTemplate
 
         $breadcrumb = new BootstrapBreadcrumb($this);
 
-        //$valueNew = '/';
+
+        $valueNew = '/';
 
         $site = clone(LinuxSite::$site);
         $site->title = 'Base';
-        $site->addParameter(new PathParameter('/'));
+        $site->addParameter(new PathParameter($valueNew));
         $breadcrumb->addSite($site);
-
-
 
         foreach ((new Text($pathCmd))->split('/') as $str) {
 
-            $valueNew .= '/'. $str;
+            $valueNew .= '/' . $str;
 
             if ($str !== '') {
                 $site = clone(LinuxSite::$site);
@@ -101,6 +102,23 @@ class LinuxPage extends LinuxTemplate
             $row->addClickableSite($site);
 
         }
+
+
+        $filename = '/etc/mysql/my.cnf';
+
+        $file = new TextFileReader($filename);
+        $text = $file->getText();
+
+
+        $code =new Code($this);
+        $code->content = (new Html($text))->getValue();
+
+
+
+
+
+
+
 
 
         return parent::getContent();
