@@ -41,8 +41,14 @@ class LinuxPage extends LinuxTemplate
 
 
         $cmd = new LocalCommand();
-        $value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls -l');
+        $value = $cmd->runLocalCommand('find ' . $pathCmd . ' -maxdepth 1 "%p\n"');
+
+        // -printf '%%p'
+        // -printf '%Tc %p\n'
+
+        //$value = $cmd->runLocalCommand('cd ' . $pathCmd . '&&ls -l');
         //$value = $cmd->runLocalCommand('cd /&&ls -l');
+        // -printf '%Tc %p\n'
 
 
         $breadcrumb = new BootstrapBreadcrumb($this);
