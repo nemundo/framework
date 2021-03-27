@@ -3,6 +3,7 @@
 namespace Nemundo\Project\Path;
 
 
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\AbstractPath;
 use Nemundo\Project\Config\ProjectConfigReader;
 
@@ -20,6 +21,11 @@ class CachePath extends AbstractPath
 
         if (CachePath::$cachePath == null) {
             CachePath::$cachePath = (new ProjectConfigReader())->getValue('cache_path');
+
+            if (CachePath::$cachePath == '') {
+                (new LogMessage())->writeError('Cache Path not defined');
+            }
+
         }
 
         $this->addPath(CachePath::$cachePath);

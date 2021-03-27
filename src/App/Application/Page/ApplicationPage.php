@@ -5,17 +5,23 @@ namespace Nemundo\App\Application\Page;
 
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
+use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
+use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Application\Site\ApplicationEditSite;
+use Nemundo\App\Application\Site\ApplicationSite;
 use Nemundo\App\Application\Site\ClearSite;
 use Nemundo\App\Application\Site\InstallSite;
 use Nemundo\App\Application\Site\ReinstallSite;
 use Nemundo\App\Application\Site\UninstallSite;
 use Nemundo\App\Application\Template\ApplicationTemplate;
+use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
+use Nemundo\App\Script\Com\Table\ScriptTable;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -44,7 +50,7 @@ class ApplicationPage extends ApplicationTemplate
         $btn=new AdminIconSiteButton($formRow);
         $btn->site = ClearSite::$site;
 
-        $table = new AdminTable($layout->col1);
+        $table = new AdminClickableTable($layout->col1);
 
         $applicationReader = new ApplicationReader();
         $applicationReader->model->loadProject();
@@ -72,7 +78,7 @@ class ApplicationPage extends ApplicationTemplate
 
         foreach ($applicationReader->getData() as $applicationRow) {
 
-            $row = new TableRow($table);
+            $row = new AdminClickableTableRow($table);
 
             $row->addText($applicationRow->application);
             $row->addYesNo($applicationRow->install);
@@ -128,8 +134,38 @@ class ApplicationPage extends ApplicationTemplate
             $site->addParameter(new ApplicationParameter($applicationRow->id));
             $row->addIconSite($site);
 
+            $site = clone(ApplicationSite::$site);
+            $site->addParameter(new ApplicationParameter($applicationRow->id));
+            $row->addClickableSite($site);
 
         }
+
+
+
+        $parameter=new ApplicationParameter();
+        if ($parameter->hasValue()) {
+
+            $applicationId=$parameter->getValue();
+
+            $widget=new AdminWidget($layout->col2);
+            $widget->widgetTitle='Scheduler';
+
+            $table=new SchedulerTable($widget);
+            $table->applicationId=$applicationId;
+
+            $widget=new AdminWidget($layout->col2);
+            $widget->widgetTitle='Script';
+
+            $table=new ScriptTable($widget);
+            $table->applicationId=$applicationId;
+
+
+
+
+        }
+
+
+
 
         return parent::getContent();
 

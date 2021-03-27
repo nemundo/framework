@@ -29,15 +29,10 @@ class LinuxPage extends LinuxTemplate
     public function getContent()
     {
 
-
         $pathCmd = null;
 
         $pathParameter = new PathParameter();
         if ($pathParameter->hasValue()) {
-
-            //$p = new Paragraph($this);
-            //$p->content = 'Path: ' . $pathParameter->getValue();
-
             $pathCmd = $pathParameter->getValue() . '/';
         } else {
             $pathCmd = '/';

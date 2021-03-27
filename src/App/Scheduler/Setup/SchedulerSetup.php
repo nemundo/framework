@@ -101,30 +101,6 @@ class SchedulerSetup extends AbstractSetup
 
         }
 
-        /*
-        $data = new Scheduler();
-        //$data->updateOnDuplicate = true;
-        $data->scriptId = $scriptId;
-        $data->overrideSetting = $scheduler->overrideSetting;
-        $data->startTime = new Time('00:00');
-
-        if (($scheduler->overrideSetting) || ($newSchedulerJob)) {
-            $data->active = $scheduler->active;
-            $data->day = $scheduler->day;
-            $data->hour = $scheduler->hour;
-            $data->minute = $scheduler->minute;
-
-            $data->specificStartTime = $scheduler->specificStartTime;
-            if ($scheduler->specificStartTime) {
-                $data->startTime = $scheduler->startTime;
-            }
-            $data->running = false;
-
-        }
-
-        $data->setupStatus = true;
-        $data->save();*/
-
         $id = new SchedulerId();
         $id->filter->andEqual($id->model->scriptId, $scriptId);
         $schedulerId = $id->getId();
@@ -175,15 +151,24 @@ class SchedulerSetup extends AbstractSetup
     public function removeScheduler(AbstractScheduler $scheduler)
     {
 
-
         $id = new ScriptId();
         $id->filter->andEqual($id->model->scriptClass, $scheduler->getClassName());
         $scriptId = $id->getId();
 
+        $id = new SchedulerId();
+        $id->filter->andEqual($id->model->scriptId, $scriptId);
+        $schedulerId = $id->getId();
+
+        $delete = new SchedulerLogDelete();
+        $delete->filter->andEqual($delete->model->schedulerId, $schedulerId);
+        $delete->delete();
 
         $delete = new SchedulerDelete();
         $delete->filter->andEqual($delete->model->scriptId, $scriptId);
         $delete->delete();
+
+        (new ScriptSetup())->removeScript($scheduler);
+
 
     }
 

@@ -24,7 +24,7 @@ class SchedulerTable extends AbstractHtmlContainer
     /**
      * @var string
      */
-    public $applicationId = '';
+    public $applicationId;
 
     public function getContent()
     {
@@ -51,7 +51,7 @@ class SchedulerTable extends AbstractHtmlContainer
         $schedulerReader->model->loadScript();
         $schedulerReader->model->script->loadApplication();
 
-        if ($this->applicationId !== '') {
+        if ($this->applicationId !== null) {
             $schedulerReader->filter->andEqual($schedulerReader->model->script->applicationId, $this->applicationId);
         }
 

@@ -27,10 +27,11 @@ class SchedulerPage extends SchedulerTemplate
         $application->columnSize = 2;
 
         $table = new SchedulerTable($this);
-        $table->applicationId = $application->getValue();
-
+        if ($application->hasValue()) {
+            $table->applicationId = $application->getValue();
+        }
         return parent::getContent();
-        
+
     }
 
 }

@@ -6,6 +6,7 @@ namespace Nemundo\App\Script\Page;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Script\Com\Table\ScriptTable;
 use Nemundo\App\Script\Data\Script\ScriptReader;
 use Nemundo\App\Script\Parameter\ScriptUrlParameter;
 use Nemundo\App\Script\Site\ScriptRunSite;
@@ -31,6 +32,12 @@ class ScriptPage extends ScriptTemplate
         $applicationListBox->column = true;
         $applicationListBox->columnSize = 2;
 
+        $table=new ScriptTable($this);
+        $table->applicationId = $applicationListBox->getValue();
+
+
+
+        /*
         $table = new AdminTable($this);
 
         $header = new TableHeader($table);
@@ -60,7 +67,7 @@ class ScriptPage extends ScriptTemplate
             $site->addParameter(new ScriptUrlParameter($scriptRow->id));
             $row->addIconSite($site);
 
-        }
+        }*/
 
         return parent::getContent();
     }

@@ -1,0 +1,43 @@
+<?php
+
+
+namespace NemundoTest;
+
+
+use Nemundo\Admin\Com\Container\PathContainer;
+use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Web\Site\AbstractSite;
+
+class TestSite extends AbstractSite
+{
+
+    protected function loadSite()
+    {
+
+        $this->title='Test';
+        $this->url='test';
+
+        // TODO: Implement loadSite() method.
+    }
+
+    public function loadContent()
+    {
+
+        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+
+
+
+        $container=new PathContainer($page);
+        $container->path = 'c:/';
+
+
+
+
+        $page->render();
+
+
+        // TODO: Implement loadContent() method.
+    }
+
+}

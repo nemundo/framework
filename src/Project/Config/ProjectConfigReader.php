@@ -21,7 +21,7 @@ class ProjectConfigReader extends AbstractBaseClass
     public $filename;
 
     /**
-     * @var ProjectConfigReader
+     * @var ConfigFileReader
      */
     private static $configReader;
 

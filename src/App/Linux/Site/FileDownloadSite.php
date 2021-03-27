@@ -19,6 +19,7 @@ class FileDownloadSite extends AbstractSite
     {
         $this->title = 'FileDownload';
         $this->url = 'FileDownload';
+        $this->menuActive=false;
 
         FileDownloadSite::$site=$this;
 

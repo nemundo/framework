@@ -13,10 +13,12 @@ class ApplicationParameter extends AbstractUrlParameter
     protected function loadParameter()
     {
         $this->parameterName = 'app';
+        $this->defaultValue = null;
     }
 
 
-    public function getApplication() {
+    public function getApplication()
+    {
 
         $row = (new ApplicationReader())->getRowById($this->getValue());
 
@@ -32,8 +34,6 @@ class ApplicationParameter extends AbstractUrlParameter
 
         return $application;
 
-
     }
-
 
 }
