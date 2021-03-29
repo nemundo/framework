@@ -3,7 +3,6 @@
 namespace Nemundo\Package\Bootstrap\Tabs;
 
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -25,28 +24,32 @@ class BootstrapSiteTabs extends BootstrapTabs
     public function getContent()
     {
 
-        $baseSite = clone($this->site);
-        if ($this->parameter !== null) {
-            $baseSite->addParameter($this->parameter);
-        }
-        $this->addSite($baseSite);
+        if ($this->site !== null) {
 
-        foreach ($this->site->getMenuActiveSite() as $site) {
-
-            $siteNew = clone($site);
-
+            $baseSite = clone($this->site);
             if ($this->parameter !== null) {
-                $siteNew->addParameter($this->parameter);
+                $baseSite->addParameter($this->parameter);
             }
+            $this->addSite($baseSite);
 
-            if ($siteNew->hasMenuActiveItems()) {
+            foreach ($this->site->getMenuActiveSite() as $site) {
 
-                $li = new BootstrapSiteTabsDropdown($this);
-                $li->site = $siteNew;
+                $siteNew = clone($site);
 
-            } else {
+                if ($this->parameter !== null) {
+                    $siteNew->addParameter($this->parameter);
+                }
 
-                $this->addSite($siteNew);
+                if ($siteNew->hasMenuActiveItems()) {
+
+                    $li = new BootstrapSiteTabsDropdown($this);
+                    $li->site = $siteNew;
+
+                } else {
+
+                    $this->addSite($siteNew);
+
+                }
 
             }
 

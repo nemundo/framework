@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\App\Application\Com;
+namespace Nemundo\App\Application\Com\ListBox;
 
 
 use Nemundo\App\Application\Data\Application\ApplicationReader;
@@ -25,6 +25,7 @@ class ApplicationListBox extends BootstrapListBox
     {
 
         $reader = new ApplicationReader();
+        $reader->filter->andEqual($reader->model->install,true);
         $reader->addOrder($reader->model->application);
         foreach ($reader->getData() as $applicationRow) {
             $this->addItem($applicationRow->id, $applicationRow->application);

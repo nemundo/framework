@@ -4,7 +4,7 @@ namespace Nemundo\App\SystemLog\Site;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 
 use Nemundo\App\SystemLog\Page\SystemLogPage;
 use Nemundo\Com\FormBuilder\SearchForm;

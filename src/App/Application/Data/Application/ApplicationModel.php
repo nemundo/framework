@@ -111,6 +111,11 @@ $this->adminMenu->aliasFieldName = "application_application_admin_menu";
 $this->adminMenu->label = "Admin Menu";
 $this->adminMenu->allowNullValue = false;
 
+$index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
+$index->indexName = "install_application";
+$index->addType($this->install);
+$index->addType($this->application);
+
 }
 public function loadProject() {
 if ($this->project == null) {

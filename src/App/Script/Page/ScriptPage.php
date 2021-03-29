@@ -5,7 +5,7 @@ namespace Nemundo\App\Script\Page;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Script\Com\Table\ScriptTable;
 use Nemundo\App\Script\Data\Script\ScriptReader;
 use Nemundo\App\Script\Parameter\ScriptUrlParameter;

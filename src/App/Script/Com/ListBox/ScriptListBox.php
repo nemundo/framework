@@ -9,12 +9,13 @@ class ScriptListBox extends BootstrapListBox
 {
     public function getContent()
     {
+
         $this->label = 'Script';
 
-
-        $reader=new ScriptReader();
+        $reader = new ScriptReader();
+        $reader->addOrder($reader->model->scriptName);
         foreach ($reader->getData() as $scriptRow) {
-            $this->addItem($scriptRow->id,$scriptRow->scriptName);
+            $this->addItem($scriptRow->id, $scriptRow->scriptName);
         }
 
         return parent::getContent();

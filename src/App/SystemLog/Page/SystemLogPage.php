@@ -5,7 +5,7 @@ namespace Nemundo\App\SystemLog\Page;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\SystemLog\Com\ListBox\LogTypeListBox;
 use Nemundo\App\SystemLog\Data\Log\LogPaginationReader;
 

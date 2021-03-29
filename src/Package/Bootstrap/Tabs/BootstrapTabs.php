@@ -22,14 +22,6 @@ class BootstrapTabs extends Ul
     }
 
 
-    /*
-    public function addActiveTab($label)
-    {
-
-
-    }*/
-
-
     public function addSite(AbstractSite $site)
     {
 

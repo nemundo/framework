@@ -6,7 +6,7 @@ namespace Nemundo\App\Scheduler\Page;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\ListBox\SchedulerStatusListBox;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogPaginationReader;
 use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;

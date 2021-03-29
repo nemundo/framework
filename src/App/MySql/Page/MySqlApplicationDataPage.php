@@ -4,7 +4,7 @@ namespace Nemundo\App\MySql\Page;
 
 
 use Nemundo\Admin\Com\Button\AdminSiteButton;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\MySql\Com\Table\MySqlDataTable;
 use Nemundo\App\MySql\Parameter\TableParameter;

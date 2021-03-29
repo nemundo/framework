@@ -75,7 +75,16 @@
                     "is_deleted": false
                 }
             ],
-            "index": []
+            "index": [
+                {
+                    "index_name": "install_application",
+                    "index_type": "index",
+                    "field_name": [
+                        "install",
+                        "application"
+                    ]
+                }
+            ]
         },
         {
             "template": "default",

@@ -3,7 +3,7 @@
 namespace Nemundo\App\Scheduler\Site;
 
 
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\Navigation\SchedulerNavigation;
 use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
 use Nemundo\App\Scheduler\Page\SchedulerPage;

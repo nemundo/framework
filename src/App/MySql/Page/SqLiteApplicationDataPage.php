@@ -3,7 +3,7 @@
 namespace Nemundo\App\MySql\Page;
 
 
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\MySql\Parameter\TableParameter;
 use Nemundo\App\SqLite\Com\Table\SqLiteDataTable;

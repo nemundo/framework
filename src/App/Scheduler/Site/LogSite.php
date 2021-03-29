@@ -5,7 +5,7 @@ namespace Nemundo\App\Scheduler\Site;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\ListBox\SchedulerStatusListBox;
 use Nemundo\App\Scheduler\Com\Navigation\SchedulerNavigation;
 

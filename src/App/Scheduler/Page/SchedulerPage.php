@@ -4,7 +4,7 @@
 namespace Nemundo\App\Scheduler\Page;
 
 
-use Nemundo\App\Application\Com\ApplicationListBox;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;

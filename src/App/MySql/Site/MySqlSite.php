@@ -31,6 +31,10 @@ class MySqlSite extends AbstractSite
 
         new DatabaseSite($this);
 
+        new SlowQuerySite($this);
+        new ConfigSite($this);
+
+
     }
 
 
