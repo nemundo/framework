@@ -21,7 +21,7 @@ class DropzoneUploadForm extends AbstractForm
     /**
      * @var AbstractSite
      */
-    public $saveSite;
+    public $uploadSite;
 
     public function getContent()
     {
@@ -30,7 +30,7 @@ class DropzoneUploadForm extends AbstractForm
         $this->addCssClass('dropzone');
 
         $this->id = 'dropzone2';
-        $this->action = $this->saveSite->getUrl();
+        $this->action = $this->uploadSite->getUrl();
 
         $this->addJavaScript('Dropzone.options.dropzone2 = {');
 

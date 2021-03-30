@@ -56,7 +56,7 @@ class BackupPage extends AbstractTemplateDocument
 
         $dropzone = new DropzoneUploadForm($widget);
         $dropzone->acceptedFileType=AcceptFileType::ZIP;
-        $dropzone->saveSite = UploadSite::$site;
+        $dropzone->uploadSite = UploadSite::$site;
 
         $widget = new AdminWidget($layout->col2);
         $widget->widgetTitle = 'Restore Dump';

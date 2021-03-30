@@ -5,6 +5,7 @@ namespace Nemundo\App\Linux\Page;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
 use Nemundo\App\Linux\Cmd\DiskUsageCmd;
+use Nemundo\App\Linux\Cmd\DistributionVersionCmd;
 use Nemundo\App\Linux\Cmd\RebootCmd;
 use Nemundo\App\Linux\Com\ListBox\CommandListBox;
 use Nemundo\App\Linux\Template\LinuxTemplate;
@@ -25,25 +26,22 @@ class CmdPage extends LinuxTemplate
 
         $row = new BootstrapRow($form);
 
-        $listobx = new CommandListBox($row);
-        $listobx->submitOnChange = true;
-        $listobx->searchMode=true;
+        $listbox = new CommandListBox($row);
+        $listbox->submitOnChange = true;
+        $listbox->searchMode=true;
 
-        $listobx->addCommand(new DiskUsageCmd());
-        $listobx->addCommand(new RebootCmd());
-
-        //$listobx->addItem('df', 'df');
-        //$listobx->addItem('ls -l', 'ls -l');
+        $listbox->addCommand(new DiskUsageCmd());
+        $listbox->addCommand(new RebootCmd());
+        $listbox->addCommand(new DistributionVersionCmd());
 
 
 
-        if ($listobx->hasValue()) {
+        if ($listbox->hasValue()) {
 
             $table = new AdminTable($this);
 
             $cmd = new LocalCommand();
-            $value = $cmd->runLocalCommand($listobx->getValue());
-            //$value = $cmd->runLocalCommand('df');
+            $value = $cmd->runLocalCommand($listbox->getValue());
 
             foreach ($value as $str) {
 
