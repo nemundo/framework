@@ -26,12 +26,14 @@ use Nemundo\App\Script\Data\ScriptModelCollection;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
-use Nemundo\Dev\Script\DeleteTmpScript;
-use Nemundo\Dev\Script\LogDeleteScript;
+
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
+use Nemundo\Project\Script\CacheDeleteScript;
+use Nemundo\Project\Script\LogDeleteScript;
 use Nemundo\Project\Script\ProjectCleanScript;
+use Nemundo\Project\Script\TmpDeleteScript;
 use Nemundo\User\Application\UserApplication;
 use Nemundo\User\Data\UserModelCollection;
 use Nemundo\User\Setup\UsergroupSetup;
@@ -74,8 +76,9 @@ class ProjectInstall extends AbstractInstall
 
         (new ScriptSetup())
             ->addScript(new ProjectCleanScript())
-            ->addScript(new DeleteTmpScript())
+            ->addScript(new TmpDeleteScript())
             ->addScript(new LogDeleteScript())
+            ->addScript(new CacheDeleteScript())
             ->addScript(new AdminBuilderScript());
 
     }

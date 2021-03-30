@@ -1,13 +1,14 @@
 <?php
 
-namespace Nemundo\Dev\Script;
+namespace Nemundo\Project\Script;
 
 
 use Nemundo\App\Script\Type\AbstractConsoleScript;
-use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
+use Nemundo\Project\Path\WebTmpPath;
 
-class LogDeleteScript extends AbstractConsoleScript
+
+class TmpDeleteScript extends AbstractConsoleScript
 {
 
     protected function loadScript()
@@ -21,7 +22,10 @@ class LogDeleteScript extends AbstractConsoleScript
     public function run()
     {
 
-        (new LogPath())
+        (new TmpPath())
+            ->emptyDirectory();
+
+        (new WebTmpPath())
             ->emptyDirectory();
 
     }
