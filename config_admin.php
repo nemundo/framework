@@ -12,3 +12,4 @@ $project = new \Nemundo\FrameworkProject();
 \Nemundo\Html\Header\LibraryHeader::$documentTitle = $project->project;
 
 \Nemundo\Admin\Controller\AdminController::addAdminSite(new \NemundoTest\TestSite());
+\Nemundo\Admin\Controller\AdminController::addAdminSite(new \NemundoTest\Package\Bootstrap\Form\BootstrapFormTestSite());

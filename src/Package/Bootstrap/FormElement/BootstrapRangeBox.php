@@ -2,12 +2,13 @@
 
 namespace Nemundo\Package\Bootstrap\FormElement;
 
+use Nemundo\Com\FormBuilder\Item\AbstractRangeBox;
 use Nemundo\Com\FormBuilder\Item\AbstractTextBox;
 use Nemundo\Html\Form\Formatting\Label;
 use Nemundo\Html\Form\Input\NumberInput;
 use Nemundo\Html\Formatting\Bold;
 
-class BootstrapRangeBox extends AbstractTextBox
+class BootstrapRangeBox extends AbstractRangeBox
 {
 
     use BootstrapFormStyle;
@@ -43,8 +44,8 @@ class BootstrapRangeBox extends AbstractTextBox
         $this->prepareHtml();
         $this->loadStyle();
 
-        $this->textInput= new NumberInput();
-        $this->textInput->addCssClass('form-control');
+        //$this->textInput= new NumberInput();
+        $this->rangeInput->addCssClass('form-range');
 
         $this->labelLabel->addCssClass('form-label');
         $this->labelLabel->content = $this->getLabelText();
@@ -62,7 +63,7 @@ class BootstrapRangeBox extends AbstractTextBox
         }
 
         $this->addContainer($this->labelLabel);
-        $this->addContainer($this->textInput);
+        $this->addContainer($this->rangeInput);
 
         return parent::getContent();
 

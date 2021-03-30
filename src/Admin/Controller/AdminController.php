@@ -41,7 +41,6 @@ class AdminController extends AbstractWebController
         $site = new AdminSite($this);
         $site->restricted = false;
 
-        new GitSite($this);
         new UserActionSite($this);
 
         new ModelDesignerSite($this);

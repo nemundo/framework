@@ -2,26 +2,14 @@
 
 namespace Nemundo\Package\Bootstrap\FormElement;
 
-use Nemundo\Com\FormBuilder\Item\AbstractTextBox;
+use Nemundo\Com\FormBuilder\Item\AbstractNumberBox;
 use Nemundo\Html\Form\Formatting\Label;
-use Nemundo\Html\Form\Input\NumberInput;
 use Nemundo\Html\Formatting\Bold;
 
-class BootstrapNumberBox extends AbstractTextBox
+class BootstrapNumberBox extends AbstractNumberBox
 {
 
     use BootstrapFormStyle;
-
-
-    /**
-     * @var int
-     */
-    public $minValue;
-
-    /**
-     * @var int
-     */
-    public $maxValue;
 
 
     /**
@@ -43,8 +31,8 @@ class BootstrapNumberBox extends AbstractTextBox
         $this->prepareHtml();
         $this->loadStyle();
 
-        $this->textInput= new NumberInput();
-        $this->textInput->addCssClass('form-control');
+        //$this->textInput= new NumberInput();
+        $this->numberInput->addCssClass('form-control');
 
         $this->labelLabel->addCssClass('form-label');
         $this->labelLabel->content = $this->getLabelText();
@@ -62,7 +50,7 @@ class BootstrapNumberBox extends AbstractTextBox
         }
 
         $this->addContainer($this->labelLabel);
-        $this->addContainer($this->textInput);
+        $this->addContainer($this->numberInput);
 
         return parent::getContent();
 

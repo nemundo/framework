@@ -23,7 +23,6 @@ class AdminWeb extends AbstractWeb
         AdminConfig::$userMode = true;
         AdminConfig::$webController->render();
 
-
     }
 
 }

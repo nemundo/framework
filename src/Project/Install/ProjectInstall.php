@@ -10,11 +10,13 @@ use Nemundo\App\Application\Install\ApplicationInstall;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Backup\Application\BackupApplication;
+use Nemundo\App\ClassDesigner\Application\ClassDesignerApplication;
 use Nemundo\App\FileLog\Application\FileLogApplication;
 use Nemundo\App\Git\Application\GitApplication;
 use Nemundo\App\Help\Application\HelpApplication;
 use Nemundo\App\Linux\Application\LinuxApplication;
 use Nemundo\App\Mail\Application\MailApplication;
+use Nemundo\App\ModelDesigner\Application\ModelDesignerApplication;
 use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Data\SchedulerModelCollection;
@@ -25,6 +27,7 @@ use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Dev\Script\DeleteTmpScript;
+use Nemundo\Dev\Script\LogDeleteScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
@@ -54,6 +57,8 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new ModelDesignerApplication())
+            ->addApplication(new ClassDesignerApplication())
             ->addApplication(new ApacheApplication())
             ->addApplication(new GitApplication())
             ->addApplication(new LinuxApplication())
@@ -70,6 +75,7 @@ class ProjectInstall extends AbstractInstall
         (new ScriptSetup())
             ->addScript(new ProjectCleanScript())
             ->addScript(new DeleteTmpScript())
+            ->addScript(new LogDeleteScript())
             ->addScript(new AdminBuilderScript());
 
     }

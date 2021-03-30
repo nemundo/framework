@@ -1,0 +1,11 @@
+<?php
+
+require __DIR__ . '/../config.php';
+
+
+
+(new \Nemundo\Core\Debug\Debug())->write((new \Nemundo\Project\Filename\ProjectConfigFilename())->getFullFilename());
+
+
+
+

@@ -1,0 +1,6 @@
+{
+    "app": "ModelDesigner",
+    "name": "modeldesigner",
+    "namespace": "Nemundo\\App\\ModelDesigner",
+    "is_deleted": false
+}

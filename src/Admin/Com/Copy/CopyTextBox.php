@@ -4,10 +4,10 @@ namespace Nemundo\Admin\Com\Copy;
 
 
 use Nemundo\Admin\Com\Button\AdminCopyButton;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 
 
-class CopyLargeTextBox extends BootstrapLargeTextBox
+class CopyTextBox extends BootstrapTextBox
 {
 
     public function getContent()

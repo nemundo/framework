@@ -1,0 +1,6 @@
+{
+    "app": "ClassDesigner",
+    "name": "classdesigner",
+    "namespace": "Nemundo\\App\\ClassDesigner",
+    "is_deleted": false
+}

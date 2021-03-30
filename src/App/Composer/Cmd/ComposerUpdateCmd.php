@@ -9,10 +9,12 @@ use Nemundo\App\Linux\Cmd\AbstractCmd;
 class ComposerUpdateCmd extends AbstractCmd
 {
 
-    public function getCmd()
+    protected function loadCmd()
     {
-        $cmd = 'composer update';
-        return $cmd;
+
+        $this->label = 'Composer Update';
+        $this->command = 'composer update';
+
     }
 
 }

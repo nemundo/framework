@@ -2,6 +2,7 @@
 
 namespace Nemundo\App\MySql\Page;
 
+use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\App\MySql\Com\Form\DeleteQuerySlowLogFileForm;
 use Nemundo\App\MySql\Com\Form\SlowQuerySwitcherForm;
 use Nemundo\App\MySql\Config\SlowLogFilename;
@@ -23,6 +24,16 @@ class SlowQueryPage extends MySqlTemplate
 
         $p = new Paragraph($this);
         $p->content = 'Value: ' . $variable;
+
+        $table = new AdminLabelValueTable($this);
+        $table->addLabelValue('Slow Log', (new MySqlVariable())->getValue('slow_query_log'));
+        $table->addLabelValue('Log File', (new MySqlVariable())->getValue('slow_query_log_file'));
+        $table->addLabelValue('Query Time', (new MySqlVariable())->getValue('long_query_time'));
+
+
+
+        //long_query_time
+
 
         // timeslot
 
