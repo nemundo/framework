@@ -30,4 +30,21 @@ abstract class AbstractNumberUrlParameter extends AbstractUrlParameter
 
     }
 
+
+    /*
+    public function hasValue()
+    {
+
+        $returnValue = true;
+
+        $value =$this->getValue();
+
+        if ($value == 0) {
+            $returnValue = false;
+        }
+
+        return $returnValue;
+
+    }*/
+
 }

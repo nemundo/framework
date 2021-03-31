@@ -4,6 +4,8 @@ namespace Nemundo\Admin\Com\Redefine;
 
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
+use Nemundo\Admin\Parameter\RemoveParameter;
+use Nemundo\Admin\Site\ParameterRemoveSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Core\Random\UniqueId;
@@ -12,16 +14,12 @@ use Nemundo\Html\Block\Div;
 use Nemundo\Html\Heading\H5;
 use Nemundo\Package\Bootstrap\Listing\BootstrapBadge;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Paranautik\Xcontest\Data\Flight\FlightReader;
-use Paranautik\Xcontest\Search\FlightSearchSiteBuilder;
-use Paranautik\Xcontest\Site\Search\AbstractRemoveParameterSite;
 
 
 // to do
 // more (z.B. Country)
-
-
 
 
 // AdminRedefineCard
@@ -49,7 +47,7 @@ abstract class AbstractAdminSearchRedefine extends Div
     /**
      * @var bool
      */
-    public $showClearButton=false;
+    public $showClearButton = false;
 
 
     /**
@@ -62,10 +60,17 @@ abstract class AbstractAdminSearchRedefine extends Div
      */
     public static $mobileVersion = false;
 
+
+    /**
+     * @var AbstractUrlParameter
+     */
+    protected $removeParameter;
+
+
     /**
      * @var AbstractRemoveParameterSite
      */
-    protected $removeSite;
+    //protected $removeSite;
 
     /**
      * @var AdminIconSiteButton
@@ -124,9 +129,8 @@ abstract class AbstractAdminSearchRedefine extends Div
         }*/
 
         if ($this->id == null) {
-            $this->id = 'card-'.(new UniqueId())->getUniqueId();  // $this->searchTopic. 'country2-card';
+            $this->id = 'card-' . (new UniqueId())->getUniqueId();  // $this->searchTopic. 'country2-card';
         }
-
 
 
         $this->h5->content = $this->searchTopic;
@@ -145,11 +149,15 @@ abstract class AbstractAdminSearchRedefine extends Div
         $this->addJqueryScript('});');
 
 
+        if ($this->showClearButton) {
+            $btn = new AdminIconSiteButton($this);
+            $btn->site = clone(ParameterRemoveSite::$site);
+            $btn->site->addParameter(new RemoveParameter($this->removeParameter->getParameterName()));
+        }
 
-        
+
         //$this->removeButton = new AdminIconSiteButton($this);  // ($this->titleDiv);
         //$this->removeButton->site = (new FlightSearchSiteBuilder())->getSite($this->removeSite);
-
 
 
         return parent::getContent();
