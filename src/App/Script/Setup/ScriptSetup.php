@@ -71,6 +71,7 @@ class ScriptSetup extends AbstractSetup
     }
 
 
+    /*
     public function resetSetupStatus()
     {
 
@@ -88,6 +89,6 @@ class ScriptSetup extends AbstractSetup
         $delete->filter->andEqual($delete->model->setupStatus, false);
         $delete->delete();
 
-    }
+    }*/
 
 }

@@ -82,6 +82,7 @@ class ApplicationSetup extends AbstractBase
     }
 
 
+    /*
     public function resetSetupStatus()
     {
 
@@ -99,6 +100,6 @@ class ApplicationSetup extends AbstractBase
         $delete->filter->andEqual($delete->model->setupStatus, false);
         $delete->delete();
 
-    }
+    }*/
 
 }

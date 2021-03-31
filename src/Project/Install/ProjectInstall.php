@@ -83,7 +83,7 @@ class ProjectInstall extends AbstractInstall
 
     }
 
-
+/*
     public function resetSetupStatus()
     {
 
@@ -103,6 +103,6 @@ class ProjectInstall extends AbstractInstall
         (new ApplicationSetup())->removeUnusedApplication();
         (new SchedulerSetup())->removeUnusedScheduler();
 
-    }
+    }*/
 
 }

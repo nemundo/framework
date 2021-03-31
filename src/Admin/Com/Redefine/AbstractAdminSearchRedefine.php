@@ -30,6 +30,8 @@ abstract class AbstractAdminSearchRedefine extends Div
 
     public $searchTopic;
 
+    public $searchResult;
+
     public $limit = 10;
 
     public $value;
@@ -65,12 +67,6 @@ abstract class AbstractAdminSearchRedefine extends Div
      * @var AbstractUrlParameter
      */
     protected $removeParameter;
-
-
-    /**
-     * @var AbstractRemoveParameterSite
-     */
-    //protected $removeSite;
 
     /**
      * @var AdminIconSiteButton
@@ -129,11 +125,15 @@ abstract class AbstractAdminSearchRedefine extends Div
         }*/
 
         if ($this->id == null) {
-            $this->id = 'card-' . (new UniqueId())->getUniqueId();  // $this->searchTopic. 'country2-card';
+            $this->id = 'card-' . (new UniqueId())->getUniqueId();
         }
 
 
         $this->h5->content = $this->searchTopic;
+
+        if ($this->searchResult!==null) {
+            $this->h5->content .=': '.$this->searchResult;
+        }
 
         $this->titleDiv->id = $this->id . '-title';
         $this->contentDiv->id = $this->id . '-content';
@@ -150,15 +150,10 @@ abstract class AbstractAdminSearchRedefine extends Div
 
 
         if ($this->showClearButton) {
-            $btn = new AdminIconSiteButton($this);
+            $btn = new AdminIconSiteButton($this->titleDiv);
             $btn->site = clone(ParameterRemoveSite::$site);
             $btn->site->addParameter(new RemoveParameter($this->removeParameter->getParameterName()));
         }
-
-
-        //$this->removeButton = new AdminIconSiteButton($this);  // ($this->titleDiv);
-        //$this->removeButton->site = (new FlightSearchSiteBuilder())->getSite($this->removeSite);
-
 
         return parent::getContent();
 

@@ -219,6 +219,7 @@ class SchedulerSetup extends AbstractSetup
 
 
 
+    /*
 
     public function resetSetupStatus()
     {
@@ -245,6 +246,6 @@ class SchedulerSetup extends AbstractSetup
         $delete->delete();
 
 
-    }
+    }*/
 
 }

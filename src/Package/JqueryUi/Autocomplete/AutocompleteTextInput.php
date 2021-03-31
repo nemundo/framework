@@ -12,12 +12,6 @@ class AutocompleteTextInput extends TextInput
     use LibraryTrait;
     use AutocompleteTrait;
 
-    /**
-     * @var string
-     */
-   // public $seperator = ', ';
-
-
     public function getContent()
     {
 
@@ -29,15 +23,8 @@ class AutocompleteTextInput extends TextInput
 
         $this->addPackage(new JqueryUiPackage());
 
-       /*
-        $this->addJqueryScript('function extractLast( term ) {');
-        $this->addJqueryScript('return split( term ).pop();');
-        $this->addJqueryScript('}');
-*/
 
         $this->addJqueryScript('$("#' . $this->name . '" )');
-
-        //$this->addJqueryScript('$(".' . $className . '" )');
         $this->addJqueryScript('.on( "keydown", function( event ) {');
         $this->addJqueryScript('if ( event.keyCode === $.ui.keyCode.TAB &&');
         $this->addJqueryScript('$( this ).autocomplete( "instance" ).menu.active ) {');
@@ -49,19 +36,11 @@ class AutocompleteTextInput extends TextInput
         $this->addJqueryScript('minLength: ' . $this->minLength . ',');
         $this->addJqueryScript('delay: ' . $this->delay . ',');
         $this->addJqueryScript('source: function( request, response ) {');
-        $this->addJqueryScript('$.getJSON("' . $this->sourceSite->getUrl() . '", { term : extractLast( request.term )},response);');
+        $this->addJqueryScript('$.getJSON("' . $this->sourceSite->getUrl() . '", { term : request.term },response);');
         $this->addJqueryScript('},');
         $this->addJqueryScript('focus: function() {');
         $this->addJqueryScript('return false;');
         $this->addJqueryScript('},');
-        /*$this->addJqueryScript('select: function( event, ui ) {');
-        $this->addJqueryScript('var terms = split( this.value );');
-        $this->addJqueryScript('terms.pop();');
-        $this->addJqueryScript('terms.push( ui.item.value );');
-        $this->addJqueryScript('terms.push( "" );');
-        $this->addJqueryScript('this.value = terms.join("' . $this->seperator . '");');
-        $this->addJqueryScript('return false;');
-        $this->addJqueryScript('}');*/
         $this->addJqueryScript('});');
 
         return parent::getContent();

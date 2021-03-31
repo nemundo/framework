@@ -75,6 +75,7 @@ class UsergroupSetup extends AbstractBase
     }
 
 
+    /*
     public function resetSetupStatus()
     {
 
@@ -94,6 +95,6 @@ class UsergroupSetup extends AbstractBase
 
         return $this;
 
-    }
+    }*/
 
 }
