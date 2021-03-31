@@ -17,4 +17,17 @@ abstract class AbstractNumberUrlParameter extends AbstractUrlParameter
         return (int)parent::getValue();
     }
 
+
+    public function hasValue()
+    {
+
+        $returnValue = true;
+        if ($this->getValue() == 0) {
+            $returnValue = false;
+        }
+
+        return $returnValue;
+
+    }
+
 }

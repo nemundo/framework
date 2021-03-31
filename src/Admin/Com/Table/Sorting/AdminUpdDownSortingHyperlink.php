@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Table\Header\UpDownSortingHyperlink;
 
 
 // AdminSortingCell
+// AdminUpDownSorting
 class AdminUpdDownSortingHyperlink extends UpDownSortingHyperlink
 {
 

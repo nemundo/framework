@@ -4,6 +4,7 @@ namespace Nemundo\App\Scheduler\Setup;
 
 
 use Nemundo\App\Application\Setup\AbstractSetup;
+use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\App\Scheduler\Builder\NextJobBuilder;
 use Nemundo\App\Scheduler\Data\Scheduler\Scheduler;
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerCount;
@@ -82,6 +83,35 @@ class SchedulerSetup extends AbstractSetup
 
         } else {
 
+
+
+            $update = new SchedulerUpdate();
+            //$update->updateOnDuplicate = true;
+            //$update->scriptId = $scriptId;
+            $update->overrideSetting = $scheduler->overrideSetting;
+            $update->startTime = new Time('00:00');
+
+            if (($scheduler->overrideSetting) || ($newSchedulerJob)) {
+                $update->active = $scheduler->active;
+                $update->day = $scheduler->day;
+                $update->hour = $scheduler->hour;
+                $update->minute = $scheduler->minute;
+
+                $update->specificStartTime = $scheduler->specificStartTime;
+                if ($scheduler->specificStartTime) {
+                    $update->startTime = $scheduler->startTime;
+                }
+                $update->running = false;
+
+            }
+
+            $update->setupStatus = true;
+            $update->filter->andEqual($update->model->scriptId,$scriptId);
+            $update->update();
+            
+            
+            
+            
             // Repeating Time Change Check
             $schedulerReader = new SchedulerReader();
             $schedulerReader->filter->andEqual($count->model->scriptId, $scriptId);
@@ -171,6 +201,23 @@ class SchedulerSetup extends AbstractSetup
 
 
     }
+
+
+    public function removeSchedulerByApplication(AbstractApplication $application) {
+
+
+        $reader = new SchedulerReader();
+        $reader->model->loadScript();
+        $reader->filter->andEqual($reader->model->script->applicationId,$application->applicationId);
+        foreach ($reader->getData() as $schedulerRow) {
+            //$schedulerRow->gets
+        }
+
+
+
+    }
+
+
 
 
     public function resetSetupStatus()

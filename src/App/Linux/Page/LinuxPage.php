@@ -5,6 +5,7 @@ namespace Nemundo\App\Linux\Page;
 
 
 use Nemundo\Admin\Com\Button\AdminSiteButton;
+use Nemundo\Admin\Com\Container\PathContainer;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
@@ -15,6 +16,7 @@ use Nemundo\App\Linux\Reader\FindReader;
 use Nemundo\App\Linux\Site\FileDownloadSite;
 use Nemundo\App\Linux\Site\LinuxSite;
 use Nemundo\App\Linux\Template\LinuxTemplate;
+use Nemundo\Core\System\OperatingSystem;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Core\Type\Text\Html;
@@ -29,6 +31,19 @@ class LinuxPage extends LinuxTemplate
     public function getContent()
     {
 
+        $container = new PathContainer($this);
+
+        if ((new OperatingSystem())->isLinux()) {
+            $container->path='/';
+        }
+
+        if ((new OperatingSystem())->isWindows()) {
+            $container->path='c:/';
+        }
+
+
+
+        /*
         $pathCmd = null;
 
         $pathParameter = new PathParameter();
@@ -86,7 +101,7 @@ class LinuxPage extends LinuxTemplate
             /*foreach ($line as $item) {
                 $row->addText($item);
             }*/
-            $site = clone(LinuxSite::$site);
+/*            $site = clone(LinuxSite::$site);
             $site->addParameter(new PathParameter($pathCmd . $path));
             $row->addClickableSite($site);
 
@@ -134,7 +149,7 @@ class LinuxPage extends LinuxTemplate
             $code = new Code($layout->col2);
             $code->content = (new Html($text))->getValue();
 
-        }
+        }*/
 
         return parent::getContent();
 

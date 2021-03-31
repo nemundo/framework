@@ -13,6 +13,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Character\HtmlCharacter;
+use Nemundo\Html\Typography\Code;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
@@ -38,10 +39,17 @@ class CmdPage extends LinuxTemplate
 
         if ($listbox->hasValue()) {
 
-            $table = new AdminTable($this);
 
             $cmd = new LocalCommand();
             $value = $cmd->runLocalCommand($listbox->getValue());
+
+
+            $code=new Code($this);
+            $code->content=$value;
+
+
+            $table = new AdminTable($this);
+
 
             foreach ($value as $str) {
 

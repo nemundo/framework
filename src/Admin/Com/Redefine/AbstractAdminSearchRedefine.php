@@ -6,6 +6,7 @@ namespace Nemundo\Admin\Com\Redefine;
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
+use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Number\Number;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Heading\H5;
@@ -91,10 +92,6 @@ abstract class AbstractAdminSearchRedefine extends Div
      */
     private $h5;
 
-    /**
-     * @var FlightReader
-     */
-    //protected $flightReader;
 
     protected function loadContainer()
     {
@@ -125,6 +122,11 @@ abstract class AbstractAdminSearchRedefine extends Div
         if ($this->flightReader->getCount() ==0) {
             $this->visible=false;
         }*/
+
+        if ($this->id == null) {
+            $this->id = 'card-'.(new UniqueId())->getUniqueId();  // $this->searchTopic. 'country2-card';
+        }
+
 
 
         $this->h5->content = $this->searchTopic;
