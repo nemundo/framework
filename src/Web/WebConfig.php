@@ -27,15 +27,16 @@ class WebConfig extends AbstractBaseClass
     // baseUrl
 
     /**
-     * @var HtmlDocument
+     * @var string
      */
     public static $notFound404Page = NotFound404Page::class;
+    // notFoundPageClass
 
     /**
-     * @var HtmlDocument
+     * @var string
      */
     public static $forbidden403Page = Forbidden403Page::class;
-
+// forbidden403PageClass
 
 
 

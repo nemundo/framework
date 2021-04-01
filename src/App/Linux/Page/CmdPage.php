@@ -12,9 +12,7 @@ use Nemundo\App\Linux\Template\LinuxTemplate;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Core\Local\LocalCommand;
 use Nemundo\Core\Type\Text\Text;
-use Nemundo\Html\Character\HtmlCharacter;
 use Nemundo\Html\Typography\Code;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
 class CmdPage extends LinuxTemplate
@@ -29,12 +27,11 @@ class CmdPage extends LinuxTemplate
 
         $listbox = new CommandListBox($row);
         $listbox->submitOnChange = true;
-        $listbox->searchMode=true;
+        $listbox->searchMode = true;
 
         $listbox->addCommand(new DiskUsageCmd());
         $listbox->addCommand(new RebootCmd());
         $listbox->addCommand(new DistributionVersionCmd());
-
 
 
         if ($listbox->hasValue()) {
@@ -44,8 +41,8 @@ class CmdPage extends LinuxTemplate
             $value = $cmd->runLocalCommand($listbox->getValue());
 
 
-            $code=new Code($this);
-            $code->content=$value;
+            $code = new Code($this);
+            $code->content = $value;
 
 
             $table = new AdminTable($this);
@@ -62,22 +59,16 @@ class CmdPage extends LinuxTemplate
                 }
 
 
-/*
-                $list = (new Text($str))->split(chr(9));
-                foreach ($list as $item) {
-                    $row->addText($item);
-                }*/
-
+                /*
+                                $list = (new Text($str))->split(chr(9));
+                                foreach ($list as $item) {
+                                    $row->addText($item);
+                                }*/
 
 
             }
 
         }
-
-
-
-
-
 
 
         return parent::getContent();
