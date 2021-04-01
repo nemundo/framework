@@ -2,7 +2,6 @@
 
 namespace Nemundo\Web;
 
-use Nemundo\Html\Document\HtmlDocument;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Web\Template\Forbidden403Page;
 use Nemundo\Web\Template\NotFound404Page;
@@ -23,8 +22,7 @@ class WebConfig extends AbstractBaseClass
     /**
      * @var string
      */
-    public static $webUrl= '/';
-    // baseUrl
+    public static $webUrl = '/';
 
     /**
      * @var string
@@ -37,7 +35,6 @@ class WebConfig extends AbstractBaseClass
      */
     public static $forbidden403Page = Forbidden403Page::class;
 // forbidden403PageClass
-
 
 
 }

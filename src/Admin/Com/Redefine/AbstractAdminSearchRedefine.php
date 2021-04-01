@@ -131,8 +131,8 @@ abstract class AbstractAdminSearchRedefine extends Div
 
         $this->h5->content = $this->searchTopic;
 
-        if ($this->searchResult!==null) {
-            $this->h5->content .=': '.$this->searchResult;
+        if ($this->searchResult !== null) {
+            $this->h5->content .= ': ' . $this->searchResult;
         }
 
         $this->titleDiv->id = $this->id . '-title';
@@ -153,6 +153,7 @@ abstract class AbstractAdminSearchRedefine extends Div
             $btn = new AdminIconSiteButton($this->titleDiv);
             $btn->site = clone(ParameterRemoveSite::$site);
             $btn->site->addParameter(new RemoveParameter($this->removeParameter->getParameterName()));
+            $btn->site->icon->iconSize = 1;
         }
 
         return parent::getContent();
