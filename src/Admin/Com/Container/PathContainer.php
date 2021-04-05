@@ -100,7 +100,7 @@ class PathContainer extends AbstractContainer
             $filename = '';
 
             if ((new OperatingSystem())->isWindows()) {
-                $filename .= 'c:\\';
+                //$filename .= 'c:\\';
             }
 
 
@@ -112,9 +112,9 @@ class PathContainer extends AbstractContainer
             $subtitle = new AdminSubtitle($layout->col2);
             $subtitle->content = (new File($filename))->filename;
 
-            $btn = new AdminSiteButton($layout->col2);
+            /*$btn = new AdminSiteButton($layout->col2);
             $btn->site = FileDownloadSite::$site;
-            $btn->site->addParameter(new FilenameParameter($filename));
+            $btn->site->addParameter(new FilenameParameter($filename));*/
             //$btn->site->addParameter($filenameParameter);
 
             $code = new Code($layout->col2);

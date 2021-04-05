@@ -35,6 +35,9 @@ class UpDownSortingHyperlink extends Th
      */
     public $sortOrder = SortOrder::ASCENDING;
 
+    public $defaultSorting = false;
+
+
     /**
      * @var SiteHyperlink
      */
@@ -53,7 +56,6 @@ class UpDownSortingHyperlink extends Th
 
         $this->nowrap = true;
         $this->title = 'Sortierung ' . (new Translation())->getText($this->label);
-
 
 
         if ($this->label == null) {
@@ -110,6 +112,13 @@ class UpDownSortingHyperlink extends Th
         if ($sortingParameter->getValue() == $this->fieldType->fieldName) {
             $reader->addOrder($this->fieldType, $sortOrderParameter->getValue());
         }
+
+        if ($this->defaultSorting) {
+            if (!$sortingParameter->hasValue()) {
+                $reader->addOrder($this->fieldType, $sortOrderParameter->getValue());
+            }
+        }
+
 
     }
 

@@ -16,17 +16,16 @@ use Nemundo\App\Git\Application\GitApplication;
 use Nemundo\App\Help\Application\HelpApplication;
 use Nemundo\App\Linux\Application\LinuxApplication;
 use Nemundo\App\Mail\Application\MailApplication;
+use Nemundo\App\Manifest\Application\ManifestApplication;
 use Nemundo\App\ModelDesigner\Application\ModelDesignerApplication;
 use Nemundo\App\MySql\Application\MySqlApplication;
 use Nemundo\App\Scheduler\Application\SchedulerApplication;
 use Nemundo\App\Scheduler\Data\SchedulerModelCollection;
-use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Application\ScriptApplication;
 use Nemundo\App\Script\Data\ScriptModelCollection;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
-
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\Path\TmpPath;
@@ -36,7 +35,6 @@ use Nemundo\Project\Script\ProjectCleanScript;
 use Nemundo\Project\Script\TmpDeleteScript;
 use Nemundo\User\Application\UserApplication;
 use Nemundo\User\Data\UserModelCollection;
-use Nemundo\User\Setup\UsergroupSetup;
 
 
 class ProjectInstall extends AbstractInstall
@@ -59,6 +57,7 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new ManifestApplication())
             ->addApplication(new ModelDesignerApplication())
             ->addApplication(new ClassDesignerApplication())
             ->addApplication(new ApacheApplication())
@@ -82,27 +81,5 @@ class ProjectInstall extends AbstractInstall
             ->addScript(new AdminBuilderScript());
 
     }
-
-/*
-    public function resetSetupStatus()
-    {
-
-        (new ScriptSetup())->resetSetupStatus();
-        (new UsergroupSetup())->resetSetupStatus();
-        (new ApplicationSetup())->resetSetupStatus();
-        (new SchedulerSetup())->resetSetupStatus();
-
-    }
-
-
-    public function removeUnused()
-    {
-
-        (new ScriptSetup())->removeUnusedScript();
-        (new UsergroupSetup())->removeUnusedUsergroup();
-        (new ApplicationSetup())->removeUnusedApplication();
-        (new SchedulerSetup())->removeUnusedScheduler();
-
-    }*/
 
 }
