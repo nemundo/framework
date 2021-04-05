@@ -104,7 +104,7 @@ class PathContainer extends AbstractContainer
             }
 
 
-            $filename .= (new PathParameter())->getValue() . DIRECTORY_SEPARATOR . $filenameParameter->getValue();
+            $filename = $this->path . (new PathParameter())->getValue() . DIRECTORY_SEPARATOR . $filenameParameter->getValue();
 
             $file = new TextFileReader($filename);
             $text = $file->getText();
