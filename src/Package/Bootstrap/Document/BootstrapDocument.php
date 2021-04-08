@@ -3,14 +3,14 @@
 namespace Nemundo\Package\Bootstrap\Document;
 
 use Nemundo\Com\Container\LibraryTrait;
-use Nemundo\Html\Document\HtmlDocument;
+use Nemundo\Com\Template\TemplateHtmlDocument;
 use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Html\Script\JavaScript;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
 use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 
-class BootstrapDocument extends HtmlDocument
+class BootstrapDocument extends TemplateHtmlDocument
 {
 
     use LibraryTrait;

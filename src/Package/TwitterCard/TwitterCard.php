@@ -2,7 +2,7 @@
 
 namespace Nemundo\Package\TwitterCard;
 
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Package\OpenGraph\AbstractOpenGraph;
 use Nemundo\Web\ResponseConfig;
 

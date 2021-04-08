@@ -3,7 +3,7 @@
 namespace Nemundo\Web\Template;
 
 
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Document\HtmlDocument;
 

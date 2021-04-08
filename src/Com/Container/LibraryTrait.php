@@ -5,7 +5,7 @@ namespace Nemundo\Com\Container;
 
 use Nemundo\Com\JavaScript\Code\AbstractJavaScriptCode;
 use Nemundo\Com\Package\PackageTrait;
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 use Nemundo\Web\WebConfig;
 

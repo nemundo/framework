@@ -3,7 +3,7 @@
 namespace Nemundo\Com\Package;
 
 
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Web\WebConfig;
 
 trait PackageTrait

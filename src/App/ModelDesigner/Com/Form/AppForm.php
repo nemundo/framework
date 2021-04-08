@@ -158,7 +158,6 @@ class AppForm extends BootstrapForm
             $phpClass->className = $app->appLabel . 'Install';
             $phpClass->extendsFromClass = 'AbstractInstall';
             $phpClass->namespace = $app->namespace . '\Install';
-            //$phpClass->addUseClass('Nemundo\App\Application\Type\Install\AbstractInstall');
             $phpClass->addUseClass(AbstractInstall::class);
             $phpClass->addUseClass(ModelCollectionSetup::class);
             $phpClass->addUseClass($app->namespace . '\\Data\\' . $app->appLabel . 'ModelCollection');
@@ -171,6 +170,25 @@ class AppForm extends BootstrapForm
             $function->add('(new ModelCollectionSetup())->addCollection(new ' . $app->appLabel . 'ModelCollection());');
 
             $phpClass->saveFile();
+
+
+            $phpClass = new PhpClass();
+            $phpClass->project = $this->project;
+            $phpClass->className = $app->appLabel . 'Uninstall';
+            $phpClass->extendsFromClass = 'AbstractUninstall';
+            $phpClass->namespace = $app->namespace . '\Install';
+            $phpClass->addUseClass(AbstractInstall::class);
+            $phpClass->addUseClass(ModelCollectionSetup::class);
+            $phpClass->addUseClass($app->namespace . '\\Data\\' . $app->appLabel . 'ModelCollection');
+            $phpClass->addUseClass($app->namespace . '\\Application\\' . $app->appLabel . 'Application');
+            $phpClass->addUseClass(ApplicationSetup::class);
+
+            $function = new PhpFunction($phpClass);
+            $function->functionName = 'uninstall()';
+            $function->add('(new ModelCollectionSetup())->removeCollection(new ' . $app->appLabel . 'ModelCollection());');
+
+            $phpClass->saveFile();
+
 
             $builder = new ApplicationClassBuilder();
             $builder->project = $this->project;

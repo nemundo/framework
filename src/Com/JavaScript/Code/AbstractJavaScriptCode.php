@@ -3,8 +3,10 @@
 namespace Nemundo\Com\JavaScript\Code;
 
 
-use Nemundo\Html\Header\JavaScriptHeaderCode;
+//use Nemundo\Html\Header\JavaScriptHeaderCode;
 
+
+use Nemundo\Html\Script\JavaScriptHeaderCode;
 
 abstract class AbstractJavaScriptCode extends JavaScriptHeaderCode
 {

@@ -10,8 +10,6 @@ use Nemundo\Admin\Com\Table\Row\AdminTableRow;
 use Nemundo\App\Script\Data\Script\ScriptReader;
 use Nemundo\App\Script\Parameter\ScriptUrlParameter;
 use Nemundo\App\Script\Site\ScriptRunSite;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Com\TableBuilder\TableRow;
 
 class ScriptTable extends AdminClickableTable
 {
@@ -25,14 +23,11 @@ class ScriptTable extends AdminClickableTable
     public function getContent()
     {
 
-
         $scriptReader = new ScriptReader();
         $scriptReader->model->loadApplication();
 
-
-
         $header = new AdminTableHeader($this);
-        $header->addText('App');
+        $header->addText($scriptReader->model->application->label);
         $header->addText($scriptReader->model->scriptName->label);
         $header->addText($scriptReader->model->description->label);
         $header->addText($scriptReader->model->scriptClass->label);
@@ -40,7 +35,7 @@ class ScriptTable extends AdminClickableTable
         $header->addEmpty();
 
 
-        if ($this->applicationId!==null) {
+        if ($this->applicationId !== null) {
             $scriptReader->filter->andEqual($scriptReader->model->applicationId, $this->applicationId);
         }
 
@@ -52,23 +47,14 @@ class ScriptTable extends AdminClickableTable
             $row->addText($scriptRow->scriptClass);
             $row->addYesNo($scriptRow->consoleScript);
 
-            /*
             $site = clone(ScriptRunSite::$site);
             $site->addParameter(new ScriptUrlParameter($scriptRow->id));
-            $row->addIconSite($site);*/
+            $row->addIconSite($site);
 
         }
-
-
-
-
-
-
-
 
         return parent::getContent();
 
     }
-
 
 }

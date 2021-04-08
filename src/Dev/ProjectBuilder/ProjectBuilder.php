@@ -10,11 +10,11 @@ use Nemundo\Core\Path\Path;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Dev\Code\PhpFile;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectConfigCode;
-use Nemundo\Dev\ProjectBuilder\Code\ProjectControllerCode;
+use Nemundo\Dev\ProjectBuilder\Code\ControllerProjectCode;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectPackageSetupCode;
-use Nemundo\Dev\ProjectBuilder\Code\ProjectPageCode;
+use Nemundo\Dev\ProjectBuilder\Code\PageProjectCode;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectProjectCode;
-use Nemundo\Dev\ProjectBuilder\Code\ProjectSetupCode;
+use Nemundo\Dev\ProjectBuilder\Code\SetupProjectCode;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectSiteCode;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectTemplateCode;
 use Nemundo\Dev\ProjectBuilder\Code\ProjectWebCode;
@@ -109,7 +109,7 @@ class ProjectBuilder extends AbstractBaseClass
         $code->path = $srcPath;
         $code->createCode();
 
-        $code = new ProjectControllerCode();
+        $code = new ControllerProjectCode();
         $code->prefixNamespace = $this->project->namespace;
         $code->path = $srcPath . 'Controller';
         $code->createCode();
@@ -119,7 +119,7 @@ class ProjectBuilder extends AbstractBaseClass
         $code->path = $srcPath . 'Web';
         $code->createCode();
 
-        $code = new ProjectPageCode();
+        $code = new PageProjectCode();
         $code->prefixNamespace = $this->project->namespace;
         $code->path = $srcPath . 'Page';
         $code->pageClassName = 'Home';
@@ -131,7 +131,7 @@ class ProjectBuilder extends AbstractBaseClass
         $code->siteClassName = 'Home';
         $code->createCode();
 
-        $code = new ProjectSetupCode();
+        $code = new SetupProjectCode();
         $code->prefixNamespace = $this->project->namespace;
         $code->path = $srcPath . 'Setup';
         $code->createCode();

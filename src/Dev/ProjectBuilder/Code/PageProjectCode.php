@@ -6,7 +6,7 @@ namespace Nemundo\Dev\ProjectBuilder\Code;
 use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 
-class ProjectPageCode extends AbstractProjectCode
+class PageProjectCode extends AbstractProjectCode
 {
 
     /**

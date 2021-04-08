@@ -4,7 +4,7 @@ namespace Nemundo\Package\Bootstrap\Table;
 
 
 use Nemundo\Com\Container\LibraryTrait;
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 
 class BootstrapClickableTable extends BootstrapTable
 {

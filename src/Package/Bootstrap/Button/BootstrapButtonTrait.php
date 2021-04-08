@@ -27,7 +27,6 @@ trait BootstrapButtonTrait
 
         $this->addAttribute('role', 'button');
         $this->addCssClass('btn');
-        //$this->addCssClass('mb-2');
         $this->addCssClass($this->color);
 
         if ($this->size !== null) {

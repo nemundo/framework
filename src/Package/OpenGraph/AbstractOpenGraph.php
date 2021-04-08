@@ -3,7 +3,7 @@
 namespace Nemundo\Package\OpenGraph;
 
 use Nemundo\Html\Header\AbstractHeaderHtmlContainer;
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Web\ResponseConfig;
 

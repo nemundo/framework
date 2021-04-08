@@ -4,8 +4,10 @@ namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Admin\Com\Navbar\AdminSiteNavbar;
+use Nemundo\App\Manifest\Com\WebManifestJavaScript;
+use Nemundo\App\Manifest\Com\WebManifestLink;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\Container\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
@@ -90,6 +92,15 @@ class AdminTemplate extends BootstrapDocument
 
         LibraryHeader::addHeaderContainer(new OpenGraph());
         LibraryHeader::addHeaderContainer(new TwitterCard());
+
+        LibraryHeader::addHeaderContainer(new WebManifestLink());
+        LibraryHeader::addHeaderContainer(new WebManifestJavaScript());
+
+
+
+
+        //$head->addContent($library->getContent()->headerContent . $htmlItem->headerContent);
+
 
         return parent::getContent();
 

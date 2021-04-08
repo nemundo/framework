@@ -4,7 +4,7 @@ namespace Nemundo\App\Application\Page;
 
 
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Web\ResponseConfig;
 

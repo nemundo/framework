@@ -3,7 +3,7 @@
 namespace Nemundo\Package\OpenGraph;
 
 
-use Nemundo\Html\Header\LibraryHeader;
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Web\ResponseConfig;
 
 class OpenGraph extends AbstractOpenGraph

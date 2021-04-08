@@ -7,7 +7,7 @@ use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVisibility;
 
-class ProjectControllerCode extends AbstractProjectCode
+class ControllerProjectCode extends AbstractProjectCode
 {
 
     public function createCode()

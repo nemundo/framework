@@ -49,13 +49,16 @@ abstract class AbstractEchart extends AbstractChart
         $div->id = $chartId;
         $div->addAttribute('style', 'width:' . $this->widthPercent . '%; height:400px;');
 
-        $script = new JqueryReadyCode($this);// new JavaScript($this);
+        $script = new JqueryReadyCode($this);
         $script->addCodeLine('var myChart = echarts.init(document.getElementById("' . $chartId . '"));');
         $script->addCodeLine('var option = {');
         $script->addCodeLine('animation: ' . (new YesNo($this->animation))->getText() . ',');
         $script->addCodeLine('title: {');
         $script->addCodeLine('text: "' . $this->chartTitle . '"');
+        $script->addCodeLine('left: "center"');
+        $script->addCodeLine('top: 0');
         $script->addCodeLine('},');
+
 
         if ($this->showTooltip) {
             $script->addCodeLine('tooltip: { show: true},');
