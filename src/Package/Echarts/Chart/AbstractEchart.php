@@ -4,6 +4,7 @@ namespace Nemundo\Package\Echarts\Chart;
 
 
 use Nemundo\Com\Chart\AbstractChart;
+use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Random\UniqueId;
 use Nemundo\Core\Type\Number\YesNo;
@@ -15,7 +16,7 @@ use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 abstract class AbstractEchart extends AbstractChart
 {
 
-    use PackageTrait;
+    use LibraryTrait;
 
     /**
      * @var int
@@ -49,22 +50,21 @@ abstract class AbstractEchart extends AbstractChart
         $div->id = $chartId;
         $div->addAttribute('style', 'width:' . $this->widthPercent . '%; height:400px;');
 
-        $script = new JqueryReadyCode($this);
-        $script->addCodeLine('var myChart = echarts.init(document.getElementById("' . $chartId . '"));');
-        $script->addCodeLine('var option = {');
-        $script->addCodeLine('animation: ' . (new YesNo($this->animation))->getText() . ',');
-        $script->addCodeLine('title: {');
-        $script->addCodeLine('text: "' . $this->chartTitle . '",');
-        $script->addCodeLine('left: "center",');
-        $script->addCodeLine('top: 0');
-        $script->addCodeLine('},');
+        $this->addJqueryScript('var myChart = echarts.init(document.getElementById("' . $chartId . '"));');
+        $this->addJqueryScript('var option = {');
+        $this->addJqueryScript('animation: ' . (new YesNo($this->animation))->getText() . ',');
+        $this->addJqueryScript('title: {');
+        $this->addJqueryScript('text: "' . $this->chartTitle . '",');
+        $this->addJqueryScript('left: "center",');
+        $this->addJqueryScript('top: 0');
+        $this->addJqueryScript('},');
 
         if ($this->showTooltip) {
-            $script->addCodeLine('tooltip: { show: true},');
+            $this->addJqueryScript('tooltip: { show: true},');
         }
 
         if ($this->showLegend) {
-            $script->addCodeLine('legend: 
+            $this->addJqueryScript('legend: 
             { show: true, y: "bottom"},
             
             ');
@@ -126,13 +126,14 @@ abstract class AbstractEchart extends AbstractChart
     ],';
 
 
-        $script->addCodeLine($code);
+        $this->addJqueryScript($code);
 
-        $script->addCodeLine('};');
-        $script->addCodeLine('myChart.setOption(option);');
-        $script->addCodeLine('');
+        $this->addJqueryScript('};');
+        $this->addJqueryScript('myChart.setOption(option);');
+        $this->addJqueryScript('');
 
         return parent::getContent();
+
     }
 
 }
