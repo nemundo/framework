@@ -11,9 +11,7 @@ use Nemundo\Html\Header\Title;
 use Nemundo\Html\Script\JavaScript;
 
 
-// ResponseHeader
-// DocumentHeader
-class LibraryHeader extends AbstractHeaderHtmlContainer  // AbstractHtmlContainer
+class LibraryHeader extends AbstractHeaderHtmlContainer
 {
 
     public static $documentTitle;
@@ -67,19 +65,12 @@ class LibraryHeader extends AbstractHeaderHtmlContainer  // AbstractHtmlContaine
     }
 
 
-
     public static function addHeaderContainer(AbstractHtmlContainer $container)
     {
 
         LibraryHeader::$headerContainerList[] = $container;
 
-
     }
-
-/*
-    public function getHeaderContainerList() {
-        return LibraryHeader::$headerContainerList;
-    }*/
 
 
     public function getContent()
@@ -87,16 +78,13 @@ class LibraryHeader extends AbstractHeaderHtmlContainer  // AbstractHtmlContaine
 
 
         $title = new Title($this);
-        $title->content = LibraryHeader::$documentTitle;  // $this->title;
-
-
-        //og
-
+        $title->content = LibraryHeader::$documentTitle;
 
         LibraryHeader::$jsUrlList = array_unique(LibraryHeader::$jsUrlList);
         foreach (LibraryHeader::$jsUrlList as $filename) {
-            $js = new JavaScript($this);
+            $js = new JavaScript();
             $js->src = $filename;
+            $this->addContainer($js);
         }
 
         LibraryHeader::$cssUrlList = array_unique(LibraryHeader::$cssUrlList);
@@ -112,15 +100,12 @@ class LibraryHeader extends AbstractHeaderHtmlContainer  // AbstractHtmlContaine
             }
         }
 
-
         if (count(LibraryHeader::$jsList) > 0) {
-            $style = new JavaScript($this);
+            $script = new JavaScript($this);
             foreach (LibraryHeader::$jsList as $value) {
-                $style->addCodeLine($value);
+                $script->addCodeLine($value);
             }
         }
-
-
 
         foreach (LibraryHeader::$headerContainerList as $container) {
             $this->addContainer($container);

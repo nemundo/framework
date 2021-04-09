@@ -34,6 +34,8 @@ class AdminTemplate extends BootstrapDocument
     protected function loadContainer()
     {
 
+        parent::loadContainer();
+
         $this->addPackage(new NemundoJsPackage());
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new FontAwesomePackage());
@@ -58,7 +60,7 @@ class AdminTemplate extends BootstrapDocument
         $this->container->fullWidth = true;
         parent::addContainer($this->container);
 
-        parent::loadContainer();
+        //parent::loadContainer();
 
     }
 

@@ -68,7 +68,9 @@ trait LibraryTrait
         }
 
         LibraryTrait::$readyCode->addCodeLine($code);
+
         return $this;
+
     }
 
 

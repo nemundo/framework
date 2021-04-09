@@ -23,6 +23,8 @@ class BootstrapDocument extends TemplateHtmlDocument
     protected function loadContainer()
     {
 
+        parent::loadContainer();
+
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new BootstrapPackage());
 

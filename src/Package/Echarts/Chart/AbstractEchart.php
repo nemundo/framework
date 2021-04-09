@@ -54,11 +54,10 @@ abstract class AbstractEchart extends AbstractChart
         $script->addCodeLine('var option = {');
         $script->addCodeLine('animation: ' . (new YesNo($this->animation))->getText() . ',');
         $script->addCodeLine('title: {');
-        $script->addCodeLine('text: "' . $this->chartTitle . '"');
-        $script->addCodeLine('left: "center"');
+        $script->addCodeLine('text: "' . $this->chartTitle . '",');
+        $script->addCodeLine('left: "center",');
         $script->addCodeLine('top: 0');
         $script->addCodeLine('},');
-
 
         if ($this->showTooltip) {
             $script->addCodeLine('tooltip: { show: true},');
