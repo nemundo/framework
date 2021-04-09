@@ -25,7 +25,7 @@ class BootstrapColorPicker extends AbstractColorPicker
         $label->addCssClass('form-label');
         $label->content = $this->getLabelText();
 
-        $this->fileInput->addCssClass('form-control');
+        $this->colorInput->addCssClass('form-control');
 
         if ($this->showErrorMessage) {
 

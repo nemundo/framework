@@ -25,19 +25,10 @@ class AdminConfig
      */
     public static $logoUrl;
 
-    /**
-     * @var string
-     */
-    //public static $pageTitle = '[no title]';
-
-
-    // AdminTemplate (static)
-
     public static $showPasswordChange = true;
 
     public static $userMode = false;
 
     public static $searchMode = false;
-
 
 }

@@ -34,10 +34,6 @@ class WebManifestBuilder extends AbstractBase
     public function createFile()
     {
 
-
-
-
-
         $json = new JsonDocument();
         $json->filename = (new WebPath())
             ->addPath($this->jsonFilename)
@@ -61,7 +57,7 @@ class WebManifestBuilder extends AbstractBase
         $icon['src'] = $this->icon;
         $icon['sizes'] = '144x144';
         $icon['type'] = 'image/png';
-        $iconList[]=$icon;
+        $iconList[] = $icon;
 
         $data['icons'] = $iconList;
 
@@ -74,15 +70,15 @@ class WebManifestBuilder extends AbstractBase
         $json->writeFile();
 
 
-
         $filename = (new WebPath())
             ->addPath('js')
             ->addPath('serviceworker.js')
-        ->getFullFilename();
+            ->getFullFilename();
 
         if ((new File($filename))->notExists()) {
 
-            $file=new TextFileWriter($filename);
+            $file = new TextFileWriter($filename);
+            $file->createDirectory = true;
             $file->addLine('self.addEventListener("fetch", function(e) {');
             $file->addLine('});');
             $file->addLine('self.addEventListener("install", function(event) {');
@@ -93,8 +89,6 @@ class WebManifestBuilder extends AbstractBase
         }
 
     }
-
-
 
 
 }

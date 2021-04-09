@@ -13,12 +13,12 @@ use Nemundo\Package\Jquery\Package\JqueryPackage;
 class BootstrapDocument extends TemplateHtmlDocument
 {
 
-    use LibraryTrait;
+    //use LibraryTrait;
 
     /**
      * @var JqueryReadyCode
      */
-    private $jquery;
+    //private $jquery;
 
     protected function loadContainer()
     {
@@ -26,11 +26,11 @@ class BootstrapDocument extends TemplateHtmlDocument
         $this->addPackage(new JqueryPackage());
         $this->addPackage(new BootstrapPackage());
 
-        $script = new JavaScript($this);
+      /*  $script = new JavaScript($this);
         LibraryTrait::$readyCode = new JqueryReadyCode($script);
 
         parent::loadContainer();
-        $this->jquery = new JqueryReadyCode();
+        $this->jquery = new JqueryReadyCode();*/
 
     }
 
@@ -42,8 +42,9 @@ class BootstrapDocument extends TemplateHtmlDocument
         $meta->addAttribute('name', 'viewport');
         $meta->addAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
 
+        /*
         $script = new JavaScript($this);
-        LibraryTrait::$readyCode = new JqueryReadyCode($script);
+        LibraryTrait::$readyCode = new JqueryReadyCode($script);*/
 
         return parent::getContent();
 

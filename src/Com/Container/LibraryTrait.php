@@ -3,9 +3,10 @@
 namespace Nemundo\Com\Container;
 
 
+use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Com\JavaScript\Code\AbstractJavaScriptCode;
 use Nemundo\Com\Package\PackageTrait;
-use Nemundo\Com\Html\Header\LibraryHeader;
+use Nemundo\Html\Script\JavaScript;
 use Nemundo\Package\Jquery\Code\JqueryReadyCode;
 use Nemundo\Web\WebConfig;
 
@@ -57,6 +58,15 @@ trait LibraryTrait
 
     public function addJqueryScript($code)
     {
+
+        if (LibraryTrait::$readyCode == null) {
+
+            $script = new JavaScript();
+            LibraryTrait::$readyCode = new JqueryReadyCode($script);
+
+            LibraryHeader::addHeaderContainer($script);
+        }
+
         LibraryTrait::$readyCode->addCodeLine($code);
         return $this;
     }

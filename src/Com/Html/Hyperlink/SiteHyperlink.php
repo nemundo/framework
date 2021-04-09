@@ -34,7 +34,7 @@ class SiteHyperlink extends AbstractHyperlink
 
         $this->checkContainerVisibility();
 
-        $this->checkObject('site', $this->site, AbstractSite::class);
+        //$this->checkObject('site', $this->site, AbstractSite::class);
 
         if ($this->site !== null) {
 

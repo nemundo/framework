@@ -13,10 +13,10 @@ class WebManifestJavaScript extends JavaScript
     public function getContent()
     {
 
-        $url = WebConfig::$webUrl.'js/serviceworker.js';
+        $url = WebConfig::$webUrl . 'js/serviceworker.js';
 
         $this->addCodeLine('if ("serviceWorker" in navigator) {');
-        $this->addCodeLine('navigator.serviceWorker.register("'.$url.'");');
+        $this->addCodeLine('navigator.serviceWorker.register("' . $url . '");');
         $this->addCodeLine('}');
 
         return parent::getContent();

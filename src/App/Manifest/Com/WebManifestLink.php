@@ -5,6 +5,7 @@ namespace Nemundo\App\Manifest\Com;
 
 
 use Nemundo\Html\Header\Link\AbstractLink;
+use Nemundo\Web\WebConfig;
 
 class WebManifestLink extends AbstractLink
 {
@@ -13,7 +14,8 @@ class WebManifestLink extends AbstractLink
     {
 
         $this->rel = 'manifest';
-        $this->href = '/webmanifest.json';
+        //$this->href = '/webmanifest.json';
+        $this->href = WebConfig::$webUrl. 'webmanifest.json';
 
         return parent::getContent();
 

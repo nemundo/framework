@@ -1,0 +1,63 @@
+{
+    "app": "CssDesigner",
+    "name": "cssdesigner",
+    "namespace": "Nemundo\\App\\CssDesigner",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "c103df6c-928a-4c04-b214-d5e0d12103c7",
+            "label": "Style",
+            "class_name": "Style",
+            "table_name": "cssdesigner_style",
+            "namespace": "Nemundo\\App\\CssDesigner\\Data\\Style",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Style Type",
+                    "field_name": "style_type",
+                    "variable_name": "styleType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "d0ab082a-f515-414e-8704-e8f402c14458"
+                },
+                {
+                    "type": "text",
+                    "label": "Style",
+                    "field_name": "style",
+                    "variable_name": "style",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": []
+        },
+        {
+            "template": "default",
+            "model_id": "d0ab082a-f515-414e-8704-e8f402c14458",
+            "label": "Style Type",
+            "class_name": "StyleType",
+            "table_name": "cssdesigner_style_type",
+            "namespace": "Nemundo\\App\\CssDesigner\\Data\\StyleType",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Style Type",
+                    "field_name": "style_type",
+                    "variable_name": "styleType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "20"
+                }
+            ],
+            "index": []
+        }
+    ]
+}

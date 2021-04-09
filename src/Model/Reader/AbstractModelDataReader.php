@@ -91,9 +91,9 @@ abstract class AbstractModelDataReader extends AbstractDataReader
     private function prepareData()
     {
 
-        if (!$this->checkProperty('model')) {
+        /*if (!$this->checkProperty('model')) {
             exit;
-        }
+        }*/
 
         $this->tableName = $this->model->tableName;
         $this->aliasTableName = $this->model->aliasTableName;

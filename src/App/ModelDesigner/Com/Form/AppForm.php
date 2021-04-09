@@ -4,6 +4,7 @@ namespace Nemundo\App\ModelDesigner\Com\Form;
 
 
 use Nemundo\App\Application\Type\Install\AbstractInstall;
+use Nemundo\App\Application\Type\Install\AbstractUninstall;
 use Nemundo\App\ModelDesigner\Parameter\AppParameter;
 use Nemundo\App\Application\ClassDesigner\ApplicationClassBuilder;
 use Nemundo\App\Application\Setup\ApplicationSetup;
@@ -177,7 +178,7 @@ class AppForm extends BootstrapForm
             $phpClass->className = $app->appLabel . 'Uninstall';
             $phpClass->extendsFromClass = 'AbstractUninstall';
             $phpClass->namespace = $app->namespace . '\Install';
-            $phpClass->addUseClass(AbstractInstall::class);
+            $phpClass->addUseClass(AbstractUninstall::class);
             $phpClass->addUseClass(ModelCollectionSetup::class);
             $phpClass->addUseClass($app->namespace . '\\Data\\' . $app->appLabel . 'ModelCollection');
             $phpClass->addUseClass($app->namespace . '\\Application\\' . $app->appLabel . 'Application');

@@ -7,7 +7,7 @@ use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Project\AbstractProject;
 
-
+// extends TextFileDocument
 class PhpClass extends AbstractBaseClass
 {
 
