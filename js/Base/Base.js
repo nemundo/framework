@@ -55,7 +55,7 @@ class BaseContainer {
             }
 
             if (this._htmlElement == null) {
-                (new Debug).writeError("problem");
+                (new Debug).writeError("Html Element not found");
             }
 
         }

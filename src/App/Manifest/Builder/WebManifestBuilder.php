@@ -13,7 +13,7 @@ use Nemundo\Project\Path\WebPath;
 class WebManifestBuilder extends AbstractBase
 {
 
-    public $jsonFilename = 'webmanifest.json';
+    public $jsonFilename = 'manifest.webmanifest';
 
     public $appName;
 

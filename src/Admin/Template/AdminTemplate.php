@@ -4,8 +4,12 @@ namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Admin\Com\Navbar\AdminSiteNavbar;
+use Nemundo\App\Manifest\Com\WebManifestJavaScript;
+use Nemundo\App\Manifest\Com\WebManifestLink;
 use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Container\AbstractContainer;
+use Nemundo\Html\Container\Container;
+use Nemundo\Html\Container\HtmlContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\Container\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
@@ -41,6 +45,7 @@ class AdminTemplate extends BootstrapDocument
         $this->addPackage(new FontAwesomePackage());
 
         $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
+
 
         $this->navbar = new AdminSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
@@ -78,6 +83,45 @@ class AdminTemplate extends BootstrapDocument
 
         LibraryHeader::addHeaderContainer(new OpenGraph());
         LibraryHeader::addHeaderContainer(new TwitterCard());
+
+
+        //LibraryHeader::addJsUrl(WebConfig::$webUrl.'js/serviceworker.js');
+
+        /*
+        LibraryHeader::addHeaderContainer(new WebManifestLink());
+        LibraryHeader::addHeaderContainer(new WebManifestJavaScript());*/
+
+
+
+
+        $container = new HtmlContainer();
+        $container->addContent('
+<link rel="manifest" href="/manifest.webmanifest" />
+<script type="text/javascript">
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/js/serviceworker.js");
+}
+</script>
+
+');
+
+        /*
+         *
+         *
+         */
+
+
+        /*new WebManifestLink($container);
+        new WebManifestJavaScript($container);*/
+        LibraryHeader::addHeaderContainer($container);
+
+
+
+
+
+        //$this->addJsUrl('js/serviceworker.js');
+
+
 
         return parent::getContent();
 

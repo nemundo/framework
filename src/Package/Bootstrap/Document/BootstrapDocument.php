@@ -2,12 +2,13 @@
 
 namespace Nemundo\Package\Bootstrap\Document;
 
+use Nemundo\Com\Template\AbstractTemplateHtmlDocument;
 use Nemundo\Com\Template\TemplateHtmlDocument;
 use Nemundo\Html\Header\Meta\Meta;
 use Nemundo\Package\Bootstrap\Package\BootstrapPackage;
 use Nemundo\Package\Jquery\Package\JqueryPackage;
 
-class BootstrapDocument extends TemplateHtmlDocument
+class BootstrapDocument extends AbstractTemplateHtmlDocument
 {
 
     protected function loadContainer()

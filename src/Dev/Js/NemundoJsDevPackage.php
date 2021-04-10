@@ -4,31 +4,14 @@
 namespace Nemundo\Dev\Js;
 
 
-use Nemundo\Core\Debug\Debug;
-use Nemundo\FrameworkProject;
-use Nemundo\Project\Path\ProjectPath;
-
 class NemundoJsDevPackage extends AbstractJsPackage
 {
 
     protected function loadPackage()
     {
 
-
-        //(new Debug())->write((new FrameworkProject())->path);
-
-   //     $this->basePath = 'C:\git\app\lib\framework\js\\';
-   //     $this->baseUrl = '/app/lib/framework/js/';
-
-        $this->basePath = 'C:\git\schleuniger\lib\framework\js\\';
-        $this->baseUrl = '/schleuniger/lib/framework/js/';
-
-/*        $this->basePath =  (new FrameworkProject())->path;
-        (new Debug())->write($this->basePath);
-        exit;*/
-       // $this->baseUrl = '/schleuniger/lib/framework/js/';
-        //new ProjectPath()
-
+        $this->basePath = 'C:\git\framework\js\\';
+        $this->baseUrl = '/framework/js/';
 
         $this->addJs('Debug/Debug.js');
         $this->addJs('Config/WebConfig.js');

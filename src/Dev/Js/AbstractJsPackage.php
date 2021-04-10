@@ -37,10 +37,6 @@ abstract class AbstractJsPackage extends AbstractBase
 
         $this->jsList[] = $filename;
 
-        //$url = $this->baseUrl . $filename;
-        //return $url;
-
-
     }
 
 

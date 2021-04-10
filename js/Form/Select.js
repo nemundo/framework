@@ -16,6 +16,11 @@ class SelectContainer extends FormBaseContainer {
     }
 
 
+    clearItem() {
+        this.emptyContainer();
+    }
+
+
     set value(value) {
 
         this._htmlElement.value = value;

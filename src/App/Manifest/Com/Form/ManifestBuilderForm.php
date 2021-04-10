@@ -6,6 +6,8 @@ namespace Nemundo\App\Manifest\Com\Form;
 
 use Nemundo\App\Manifest\Builder\WebManifestBuilder;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Image\Format\AutoSizeImageFormat;
+use Nemundo\Core\Image\ImageResize;
 use Nemundo\Html\Form\Input\AcceptFileType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapColorPicker;
@@ -84,14 +86,9 @@ class ManifestBuilderForm extends BootstrapForm
         $this->display = new BootstrapListBox($this);
         $this->display->label = 'Display';
         $this->display->validation = true;
-        //$this->display->addItem('browser', 'Browser');
         $this->display->addItem('standalone', 'Standalone');
         $this->display->addItem('fullscreen', 'Fullscreen');
         $this->display->addItem('minimal-ui', 'Minimal UI');
-
-
-        //standalone', 'fullscreen', or 'minimal-ui'
-
 
         $this->themeColor=new BootstrapColorPicker($this);
         $this->themeColor->label='Theme Color';
@@ -128,6 +125,16 @@ class ManifestBuilderForm extends BootstrapForm
                 ->getFullFilename();
 
             $this->icon->getFileRequest()->saveFile($filename);
+
+
+            $resize = new ImageResize();
+            $resize->format =new AutoSizeImageFormat();
+            $resize->format->size=144;
+            //$resize->format->height=144;
+            $resize->sourceFilename=$filename;
+            $resize->destinationFilename=$filename;
+            $resize->resizeImage();
+
 
             $builder->icon = 'img/icon.png';
 

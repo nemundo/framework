@@ -14,8 +14,7 @@ class WebManifestLink extends AbstractLink
     {
 
         $this->rel = 'manifest';
-        //$this->href = '/webmanifest.json';
-        $this->href = WebConfig::$webUrl. 'webmanifest.json';
+        $this->href = WebConfig::$webUrl. 'manifest.webmanifest';
 
         return parent::getContent();
 
