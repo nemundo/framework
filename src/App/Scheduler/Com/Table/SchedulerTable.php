@@ -4,6 +4,7 @@ namespace Nemundo\App\Scheduler\Com\Table;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\App\Application\Com\Container\AbstractApplicationFilterContainer;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\App\Scheduler\Check\RepeatingTime;
@@ -18,13 +19,13 @@ use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 
 
-class SchedulerTable extends AbstractHtmlContainer
+class SchedulerTable extends AbstractApplicationFilterContainer
 {
 
     /**
      * @var string
      */
-    public $applicationId;
+ /*   public $applicationId;
 
 
     public function filterByApplication(AbstractApplication $application)
@@ -42,7 +43,7 @@ class SchedulerTable extends AbstractHtmlContainer
         $this->applicationId = $applicationId;
         return $this;
 
-    }
+    }*/
 
 
     public function getContent()

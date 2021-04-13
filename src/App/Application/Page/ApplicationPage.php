@@ -6,9 +6,9 @@ namespace Nemundo\App\Application\Page;
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminClickableTableRow;
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
@@ -24,8 +24,6 @@ use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
 use Nemundo\App\Script\Com\Table\ScriptTable;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
@@ -47,7 +45,7 @@ class ApplicationPage extends ApplicationTemplate
         $project->column = true;
         $project->columnSize = 3;
 
-        $btn=new AdminIconSiteButton($formRow);
+        $btn = new AdminIconSiteButton($formRow);
         $btn->site = ClearSite::$site;
 
         $table = new AdminClickableTable($layout->col1);
@@ -141,31 +139,31 @@ class ApplicationPage extends ApplicationTemplate
         }
 
 
-
-        $parameter=new ApplicationParameter();
+        $parameter = new ApplicationParameter();
         if ($parameter->hasValue()) {
 
-            $applicationId=$parameter->getValue();
+            $applicationId = $parameter->getValue();
 
-            $widget=new AdminWidget($layout->col2);
-            $widget->widgetTitle='Scheduler';
+            $applicationRow = (new ApplicationReader())->getRowById($applicationId);
 
-            $table=new SchedulerTable($widget);
-            $table->applicationId=$applicationId;
-
-            $widget=new AdminWidget($layout->col2);
-            $widget->widgetTitle='Script';
-
-            $table=new ScriptTable($widget);
-            $table->applicationId=$applicationId;
+            $title = new AdminTitle($layout->col2);
+            $title->content = $applicationRow->application;
 
 
+            $widget = new AdminWidget($layout->col2);
+            $widget->widgetTitle = 'Scheduler';
+
+            $table = new SchedulerTable($widget);
+            $table->applicationId = $applicationId;
+
+            $widget = new AdminWidget($layout->col2);
+            $widget->widgetTitle = 'Script';
+
+            $table = new ScriptTable($widget);
+            $table->applicationId = $applicationId;
 
 
         }
-
-
-
 
         return parent::getContent();
 

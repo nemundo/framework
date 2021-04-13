@@ -6,6 +6,7 @@ namespace Nemundo\Model\Delete;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Db\Delete\AbstractDataDelete;
 use Nemundo\Model\Definition\Model\AbstractModel;
+use Nemundo\Model\Reader\FieldAddTrait;
 use Nemundo\Model\Reader\ModelDataReader;
 use Nemundo\Model\Reader\Property\File\FileReaderProperty;
 use Nemundo\Model\Reader\Property\File\ImageReaderProperty;
@@ -17,6 +18,8 @@ use Nemundo\Model\Type\File\RedirectFilenameType;
 
 abstract class AbstractModelDelete extends AbstractDataDelete
 {
+
+    use FieldAddTrait;
 
     /**
      * @var AbstractModel
@@ -102,6 +105,10 @@ abstract class AbstractModelDelete extends AbstractDataDelete
         }
 
         $this->tableName = $this->model->tableName;
+
+        $this->checkExternal($this->model);
+
+
         parent::delete();
 
     }
