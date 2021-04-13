@@ -106,7 +106,7 @@ abstract class AbstractModelDelete extends AbstractDataDelete
 
         $this->tableName = $this->model->tableName;
 
-        $this->checkExternal($this->model);
+        $this->checkExternal($this->model, false);
 
 
         parent::delete();
