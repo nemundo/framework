@@ -5,14 +5,17 @@ namespace Nemundo\App\Scheduler\Page;
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
+use Nemundo\App\Application\Com\ListBox\ApplicationListBox;
 use Nemundo\App\Scheduler\Com\Form\JobForm;
 use Nemundo\App\Scheduler\Data\Job\JobPaginationReader;
 use Nemundo\App\Scheduler\Site\JobCleanSite;
 use Nemundo\App\Scheduler\Site\JobSite;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
+use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
+use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 
 class JobPage extends SchedulerTemplate
@@ -57,6 +60,18 @@ class JobPage extends SchedulerTemplate
 
         $pagination = new BootstrapPagination($layout->col1);
         $pagination->paginationReader = $jobReader;
+
+
+        /*
+        $searchForm=new SearchForm($layout->col2);
+
+        $row=new BootstrapRow($searchForm);
+
+
+
+        $app=new ApplicationListBox($row);
+        $app->submitOnChange=true;
+        $app->*/
 
         $form = new JobForm($layout->col2);
         $form->redirectSite = JobSite::$site;

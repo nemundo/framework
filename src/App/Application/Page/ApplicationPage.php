@@ -154,7 +154,7 @@ class ApplicationPage extends ApplicationTemplate
             $widget->widgetTitle = 'Scheduler';
 
             $table = new SchedulerTable($widget);
-            $table->applicationId = $applicationId;
+            $table->filterByApplicationId( $applicationId);
 
             $widget = new AdminWidget($layout->col2);
             $widget->widgetTitle = 'Script';

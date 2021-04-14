@@ -28,7 +28,7 @@ class SchedulerPage extends SchedulerTemplate
 
         $table = new SchedulerTable($this);
         if ($application->hasValue()) {
-            $table->applicationId = $application->getValue();
+            $table->filterByApplicationId($application->getValue());
         }
         return parent::getContent();
 

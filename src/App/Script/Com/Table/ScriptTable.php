@@ -4,29 +4,32 @@
 namespace Nemundo\App\Script\Com\Table;
 
 
-use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
+use Nemundo\App\Application\Com\Container\AbstractApplicationFilterContainer;
 use Nemundo\App\Script\Data\Script\ScriptReader;
 use Nemundo\App\Script\Parameter\ScriptUrlParameter;
 use Nemundo\App\Script\Site\ScriptRunSite;
 
-class ScriptTable extends AdminClickableTable
+class ScriptTable extends AbstractApplicationFilterContainer  // AdminClickableTable
 {
 
     /**
      * @var string
      */
-    public $applicationId;
+    //public $applicationId;
 
 
     public function getContent()
     {
 
+        $table = new AdminTable($this);
+
         $scriptReader = new ScriptReader();
         $scriptReader->model->loadApplication();
 
-        $header = new AdminTableHeader($this);
+        $header = new AdminTableHeader($table);
         $header->addText($scriptReader->model->application->label);
         $header->addText($scriptReader->model->scriptName->label);
         $header->addText($scriptReader->model->description->label);
@@ -40,7 +43,8 @@ class ScriptTable extends AdminClickableTable
         }
 
         foreach ($scriptReader->getData() as $scriptRow) {
-            $row = new AdminTableRow($this);
+
+            $row = new AdminTableRow($table);
             $row->addText($scriptRow->application->application);
             $row->addText($scriptRow->scriptName);
             $row->addText($scriptRow->description);
