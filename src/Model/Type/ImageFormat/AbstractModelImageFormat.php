@@ -44,10 +44,4 @@ abstract class AbstractModelImageFormat extends AbstractBaseClass
 
     }
 
-    /*
-    protected function loadImageFormat() {
-
-    }*/
-
-
 }

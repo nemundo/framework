@@ -13,11 +13,6 @@ class ImageType extends FileType
 {
 
     /**
-     * @var AbstractModelImageFormat
-     */
-    //public $defaultFormat;
-
-    /**
      * @var AbstractModelImageFormat[]
      */
     private $format = [];

@@ -27,6 +27,13 @@ class GeoCoordinateSquareFilter extends Filter
      */
     public $coordinateType;
 
+
+    public function isNotEmpty()
+    {
+        return true;
+    }
+
+
     public function getSqlStatement()
     {
 
@@ -41,6 +48,5 @@ class GeoCoordinateSquareFilter extends Filter
         return parent::getSqlStatement();
 
     }
-
 
 }

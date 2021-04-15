@@ -160,7 +160,7 @@ class ApplicationPage extends ApplicationTemplate
             $widget->widgetTitle = 'Script';
 
             $table = new ScriptTable($widget);
-            $table->applicationId = $applicationId;
+            $table->filterByApplicationId( $applicationId);
 
 
         }
