@@ -8,6 +8,7 @@ use Nemundo\App\UserAction\Site\UserRegistrationSite;
 use Nemundo\Com\FormBuilder\AbstractFormBuilder;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Core\Language\LanguageCode;
+use Nemundo\Html\Block\Div;
 use Nemundo\Html\Block\Hr;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
@@ -54,7 +55,7 @@ class LoginForm extends AbstractFormBuilder
         $this->login = new BootstrapTextBox($this);
         $this->login->label = 'Login';
         $this->login->name = 'login';
-        $this->login->autofocus =$this->autofocus; // true;
+        $this->login->autofocus =$this->autofocus;
         $this->login->errorMessage = 'Kein gültiges Login oder Passwort';
 
         $this->password = new BootstrapPasswordTextBox($this);
@@ -72,9 +73,11 @@ class LoginForm extends AbstractFormBuilder
 
         if ($this->showForgotHyperlink) {
 
-            (new Hr($this));
+            // (new Hr($this));
 
-            $link = new SiteHyperlink($this);
+            $div = new Div($this);
+
+            $link = new SiteHyperlink($div);
             $link->site = PasswordRequestSite::$site;
 
         }
@@ -82,9 +85,11 @@ class LoginForm extends AbstractFormBuilder
 
         if ($this->showRegisterHyperlink) {
 
-            (new Hr($this));
+            //(new Hr($this));
 
-            $link = new SiteHyperlink($this);
+            $div = new Div($this);
+
+            $link = new SiteHyperlink($div);
             $link->site = UserRegistrationSite::$site;
 
         }
@@ -102,7 +107,7 @@ class LoginForm extends AbstractFormBuilder
         $login = new UserLogin();
         $login->login = $this->login->getValue();
         $login->password = $this->password->getValue();
-        $login->saveCookiePassword = true;  // $this->saveLogin->getValue();
+        $login->saveCookiePassword = true;
 
         if ($login->loginUser()) {
             $returnValue = true;

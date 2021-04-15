@@ -3,7 +3,11 @@
 namespace Nemundo\Geo\Coordinate;
 
 
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
+
+
+// move to core
 
 class GeoCoordinateAddition
 {
@@ -13,7 +17,7 @@ class GeoCoordinateAddition
      */
     private $centerCoordinate;
 
-    public function __construct(GeoCoordinate $centerCoordinate)
+    public function __construct(AbstractGeoCoordinate $centerCoordinate)
     {
 
         $this->centerCoordinate = $centerCoordinate;

@@ -9,10 +9,16 @@ use Nemundo\Package\Bootstrap\FormElement\BootstrapPasswordTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Login\UserLogin;
+use Nemundo\User\Usergroup\AbstractUsergroup;
 
 
 class UserRegistrationForm extends BootstrapForm
 {
+
+    /**
+     * @var AbstractUsergroup[]
+     */
+    public $defaultUsergroupList;
 
     /**
      * @var BootstrapTextBox
@@ -24,20 +30,17 @@ class UserRegistrationForm extends BootstrapForm
      */
     private $password;
 
-
-    // default usergroup
-
-
     public function getContent()
     {
 
         $this->email = new BootstrapTextBox($this);
         $this->email->label = 'eMail';
-        $this->email->validation=true;
+        $this->email->validation = true;
         $this->email->validationType = ValidationType::IS_EMAIL;
 
         $this->password = new BootstrapPasswordTextBox($this);
         $this->password->label = 'Gewünschtes Passwort';
+        $this->password->validation = true;
 
 
         return parent::getContent();
@@ -48,12 +51,17 @@ class UserRegistrationForm extends BootstrapForm
     {
 
         $email = $this->email->getValue();
-        $password=$this->password->getValue();
+        $password = $this->password->getValue();
 
         $builder = new UserBuilder();
         $builder->login = $email;
-        $builder->email=$email;
+        $builder->email = $email;
         $builder->createUser();
+
+        foreach ($this->defaultUsergroupList as $usergroup) {
+            $builder->addUsergroup($usergroup);
+        }
+
 
         $builder->changePassword($password);
 

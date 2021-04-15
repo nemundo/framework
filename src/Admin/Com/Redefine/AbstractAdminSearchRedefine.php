@@ -23,12 +23,13 @@ use Nemundo\Web\Site\AbstractSite;
 
 
 // AdminRedefineCard
+// AbstractRedefine
 abstract class AbstractAdminSearchRedefine extends Div
 {
 
     use LibraryTrait;
 
-    public $searchTopic;
+    public $searchLabel;
 
     public $searchResult;
 
@@ -129,7 +130,7 @@ abstract class AbstractAdminSearchRedefine extends Div
         }
 
 
-        $this->h5->content = $this->searchTopic;
+        $this->h5->content = $this->searchLabel;
 
         if ($this->searchResult !== null) {
             $this->h5->content .= ': ' . $this->searchResult;

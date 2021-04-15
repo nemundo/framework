@@ -26,24 +26,6 @@ class LoginSite extends AbstractSite
 
         (new LoginPage())->render();
 
-        /*
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-
-
-        $layout = new BootstrapThreeColumnLayout($page);
-
-        $form = new LoginForm($layout->col2);
-        $form->redirectSite = new BaseUrlSite();
-        //$form->redirectUrl = WebConfig::$webUrl;
-        $form->showForgotHyperlink = true;
-
-
-
-        //$form->redirectSite = new Site();
-
-
-        $page->render();*/
-
     }
 
 }

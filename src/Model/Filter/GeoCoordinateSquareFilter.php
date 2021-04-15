@@ -3,9 +3,9 @@
 namespace Nemundo\Model\Filter;
 
 
+use Nemundo\Core\Geo\Addition\GeoCoordinateAddition;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Db\Filter\Filter;
-use Nemundo\Geo\Coordinate\GeoCoordinateAddition;
 use Nemundo\Model\Type\Geo\GeoCoordinateType;
 
 class GeoCoordinateSquareFilter extends Filter
@@ -20,7 +20,6 @@ class GeoCoordinateSquareFilter extends Filter
      * @var GeoCoordinate
      */
     public $coordinateCenter;
-
 
     /**
      * @var GeoCoordinateType
