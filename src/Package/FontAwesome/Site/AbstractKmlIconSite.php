@@ -15,8 +15,14 @@ abstract class AbstractKmlIconSite extends AbstractIconSite
         $this->title = 'Kml (Google Earth)';
         $this->url = 'kml';
         parent::__construct($site);
-        $this->icon = new FontAwesomeIcon();
-        $this->icon->icon = 'globe';
+
+        /*$this->icon = new FontAwesomeIcon();
+        $this->icon->icon = 'globe';*/
+
+        if ($this->icon->icon == null) {
+            $this->icon->icon = 'globe';
+        }
+
 
     }
 

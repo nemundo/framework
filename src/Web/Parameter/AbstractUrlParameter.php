@@ -4,7 +4,6 @@ namespace Nemundo\Web\Parameter;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\Get\GetRequest;
 
 // AbstractParameter
@@ -67,11 +66,11 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
                 if ($this->nullIfEmpty) {
 
                     if ($this->hasValue()) {
-                        $value =$this->getPlainValue();
+                        $value = $this->getPlainValue();
                     }
 
                 } else {
-                $value = $this->getPlainValue();
+                    $value = $this->getPlainValue();
                 }
 
             }
@@ -83,8 +82,9 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
     }
 
 
-    protected function getPlainValue() {
-        return  (new GetRequest($this->parameterName))->getValue();
+    protected function getPlainValue()
+    {
+        return (new GetRequest($this->parameterName))->getValue();
     }
 
 
@@ -93,12 +93,12 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
 
         $returnValue = true;
 
-        $value =$this->getPlainValue();
-        if (($value == '') || ($value == '0')) {
+        $value = $this->getPlainValue();
+        if (($value == '') || ($value == '0') || ($value == null)) {
             $returnValue = false;
 
             if ($this->defaultValue !== '') {
-                $returnValue=true;
+                $returnValue = true;
             }
 
         }
@@ -108,24 +108,14 @@ abstract class AbstractUrlParameter extends AbstractBaseClass
     }
 
 
+    // existsParameter()
     public function exists()
     {
-        //return $this->exists();
 
         $value = (new GetRequest($this->parameterName))->existsRequest();
         return $value;
 
     }
-
-
-    // parameterExists
-    /*public function existsParameter()
-    {
-
-        $value = (new GetRequest($this->parameterName))->existsRequest();
-        return $value;
-
-    }*/
 
 
     // notExistsParameter()

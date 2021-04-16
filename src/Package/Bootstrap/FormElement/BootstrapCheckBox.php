@@ -26,8 +26,8 @@ class BootstrapCheckBox extends AbstractCheckBox
 
         $label = new Label($this);
         $label->content = $this->checkbox->getContent()->bodyContent . ' ' . $this->getLabelText();
-
         $label->addCssClass('form-check-label');
+        $label->addCssClass('text-nowrap');
 
         if ($this->showErrorMessage) {
 

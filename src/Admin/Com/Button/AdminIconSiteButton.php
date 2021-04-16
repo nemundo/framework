@@ -27,6 +27,9 @@ class AdminIconSiteButton extends AbstractHyperlink
     public function getContent()
     {
 
+        $this->site->icon->iconSize = 3;
+        $this->addCssClass('pr-3');
+
         if ($this->checkUserVisibility()) {
 
             $this->addContainer($this->site->icon);
