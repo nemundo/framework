@@ -12,7 +12,7 @@ class ApplicationParameter extends AbstractUrlParameter
 
     protected function loadParameter()
     {
-        $this->parameterName = 'app';
+        $this->parameterName = 'application';
         $this->defaultValue = null;
     }
 

@@ -26,7 +26,7 @@ class ScriptPage extends ScriptTemplate
         $applicationListBox->columnSize = 2;
 
         $table = new ScriptTable($this);
-        $table->applicationId = $applicationListBox->getValue();
+        $table->filterByApplicationId($applicationListBox->getValue());
 
         return parent::getContent();
 

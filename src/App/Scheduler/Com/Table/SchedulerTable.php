@@ -22,28 +22,7 @@ use Nemundo\Html\Container\AbstractHtmlContainer;
 class SchedulerTable extends AbstractApplicationFilterContainer
 {
 
-    /**
-     * @var string
-     */
- /*   public $applicationId;
-
-
-    public function filterByApplication(AbstractApplication $application)
-    {
-
-        $this->applicationId = $application->applicationId;
-        return $this;
-
-    }
-
-
-    public function filterByApplicationId($applicationId)
-    {
-
-        $this->applicationId = $applicationId;
-        return $this;
-
-    }*/
+   public $isActive=false;
 
 
     public function getContent()
@@ -73,6 +52,10 @@ class SchedulerTable extends AbstractApplicationFilterContainer
 
         if ($this->applicationId !== null) {
             $schedulerReader->filter->andEqual($schedulerReader->model->script->applicationId, $this->applicationId);
+        }
+
+        if ($this->isActive) {
+            $schedulerReader->filter->andEqual($schedulerReader->model->active,true);
         }
 
         foreach ($schedulerReader->getData() as $schedulerRow) {
