@@ -2,23 +2,24 @@
 
 namespace Nemundo\App\SystemLog\Install;
 
-use Nemundo\App\Script\Type\AbstractScript;
+use Nemundo\App\Application\Type\Install\AbstractInstall;
+use Nemundo\App\Script\Setup\ScriptSetup;
+use Nemundo\App\SystemLog\Application\SystemLogApplication;
 use Nemundo\App\SystemLog\Data\LogType\LogType;
-use Nemundo\App\SystemLog\Data\SystemLogCollection;
 use Nemundo\App\SystemLog\Data\SystemLogModelCollection;
+use Nemundo\App\SystemLog\Script\SystemLogCleanScript;
+use Nemundo\App\SystemLog\Script\MessageScript;
 use Nemundo\App\SystemLog\Type\AbstractLogType;
 use Nemundo\App\SystemLog\Type\ErrorLogType;
 use Nemundo\App\SystemLog\Type\InformationLogType;
 use Nemundo\App\SystemLog\Type\WarningLogType;
 use Nemundo\Model\Setup\ModelCollectionSetup;
-use Nemundo\App\Application\Type\Install\AbstractInstall;
 
 class SystemLogInstall extends AbstractInstall
 {
 
     public function install()
     {
-
 
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new SystemLogModelCollection());
@@ -27,6 +28,9 @@ class SystemLogInstall extends AbstractInstall
         $this->addLogType(new WarningLogType());
         $this->addLogType(new ErrorLogType());
 
+        (new ScriptSetup(new SystemLogApplication()))
+            ->addScript(new MessageScript())
+            ->addScript(new SystemLogCleanScript());
 
     }
 

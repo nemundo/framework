@@ -11,7 +11,8 @@ use Nemundo\App\SystemLog\Type\InformationLogType;
 use Nemundo\App\SystemLog\Type\WarningLogType;
 use Nemundo\Core\Base\AbstractBaseClass;
 
-// LogMessage
+// LogMessage (gibt es schon bei LogFile)
+
 class SystemLogMessage extends AbstractBaseClass
 {
 
@@ -30,18 +31,21 @@ class SystemLogMessage extends AbstractBaseClass
     public function logInformation($message)
     {
         $this->logMessage(new InformationLogType(), $message);
+        return $this;
     }
 
 
     public function logWarning($message)
     {
         $this->logMessage(new WarningLogType(), $message);
+        return $this;
     }
 
 
     public function logError($message)
     {
         $this->logMessage(new ErrorLogType(), $message);
+        return $this;
     }
 
 
@@ -49,7 +53,6 @@ class SystemLogMessage extends AbstractBaseClass
     {
 
         $data = new Log();
-
         if ($this->application !== null) {
             $data->applicationId = $this->application->applicationId;
         }

@@ -26,6 +26,7 @@ use Nemundo\App\Script\Application\ScriptApplication;
 use Nemundo\App\Script\Data\ScriptModelCollection;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\System\Application\SystemApplication;
+use Nemundo\App\SystemLog\Application\SystemLogApplication;
 use Nemundo\Dev\Script\AdminBuilderScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Path\LogPath;
@@ -67,6 +68,7 @@ class ProjectInstall extends AbstractInstall
             ->addApplication(new LinuxApplication())
             ->addApplication(new ScriptApplication())
             ->addApplication(new SystemApplication())
+            ->addApplication(new SystemLogApplication())
             ->addApplication(new MySqlApplication())
             ->addApplication(new FileLogApplication())
             ->addApplication(new BackupApplication())

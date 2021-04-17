@@ -55,7 +55,7 @@ $this->applicationId->tableName = "systemlog_log";
 $this->applicationId->fieldName = "application";
 $this->applicationId->aliasFieldName = "systemlog_log_application";
 $this->applicationId->label = "Application";
-$this->applicationId->allowNullValue = false;
+$this->applicationId->allowNullValue = true;
 
 $this->logTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->logTypeId->tableName = "systemlog_log";
