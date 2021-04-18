@@ -76,7 +76,7 @@ class WebManifestBuilder extends AbstractBase
 
 
         $filename = (new WebPath())
-            ->addPath('js')
+           // ->addPath('js')
             ->addPath('serviceworker.js')
             ->getFullFilename();
 
