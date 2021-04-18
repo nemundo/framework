@@ -4,10 +4,12 @@
 namespace Nemundo\App\Manifest\Com\JavaScript;
 
 
+use Nemundo\Html\Script\AbstractJavaScriptCode;
 use Nemundo\Html\Script\JavaScript;
+use Nemundo\Html\Script\JavaScriptBody;
 use Nemundo\Web\WebConfig;
 
-class WebManifestJavaScript extends JavaScript
+class WebManifestJavaScript extends JavaScriptBody  // AbstractJavaScriptCode
 {
 
     public function getContent()
@@ -15,9 +17,9 @@ class WebManifestJavaScript extends JavaScript
 
         $url = WebConfig::$webUrl . 'js/serviceworker.js';
 
-        $this->addCodeLine('if ("serviceWorker" in navigator) {');
-        $this->addCodeLine('navigator.serviceWorker.register("' . $url . '");');
-        $this->addCodeLine('}');
+        $this->addContent('if ("serviceWorker" in navigator) {');
+        $this->addContent('navigator.serviceWorker.register("' . $url . '");');
+        $this->addContent('}');
 
         return parent::getContent();
 

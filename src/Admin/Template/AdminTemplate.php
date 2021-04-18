@@ -88,6 +88,9 @@ class AdminTemplate extends BootstrapDocument
         //LibraryHeader::addJsUrl(WebConfig::$webUrl.'js/serviceworker.js');
 
 
+
+
+
         LibraryHeader::addHeaderContainer(new WebManifestLink());
         LibraryHeader::addHeaderContainer(new WebManifestJavaScript());
 
