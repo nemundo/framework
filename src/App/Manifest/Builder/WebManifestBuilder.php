@@ -83,7 +83,7 @@ class WebManifestBuilder extends AbstractBase
         if ((new File($filename))->notExists()) {
 
             $file = new TextFileWriter($filename);
-            $file->createDirectory = true;
+            //$file->createDirectory = true;
             $file->addLine('self.addEventListener("fetch", function(e) {');
             $file->addLine('});');
             $file->addLine('self.addEventListener("install", function(event) {');

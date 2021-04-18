@@ -15,7 +15,7 @@ class WebManifestJavaScript extends JavaScriptBody  // AbstractJavaScriptCode
     public function getContent()
     {
 
-        $url = WebConfig::$webUrl . 'js/serviceworker.js';
+        $url = WebConfig::$webUrl . 'serviceworker.js';
 
         $this->addContent('if ("serviceWorker" in navigator) {');
         $this->addContent('navigator.serviceWorker.register("' . $url . '");');
