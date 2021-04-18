@@ -4,12 +4,17 @@
 namespace Nemundo\App\Manifest\Com\Form;
 
 
+use Nemundo\Admin\Com\Form\AbstractAdminEditForm;
+use Nemundo\Admin\Com\Form\AbstractAdminForm;
 use Nemundo\App\Manifest\Builder\WebManifestBuilder;
+use Nemundo\App\Manifest\Filename\WebmanifestFilename;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
 use Nemundo\Core\Image\ImageResize;
+use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Html\Form\Input\AcceptFileType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapColorPicker;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
@@ -19,6 +24,11 @@ use Nemundo\Project\Path\WebPath;
 
 class ManifestBuilderForm extends BootstrapForm
 {
+
+    /**
+     * @var BootstrapCheckBox
+     */
+    private $active;
 
     /**
      * @var BootstrapTextBox
@@ -63,6 +73,11 @@ class ManifestBuilderForm extends BootstrapForm
     public function getContent()
     {
 
+        //manifest active
+        $this->active=new BootstrapCheckBox($this);
+        $this->active->label='Active';
+
+
         $this->appName = new BootstrapTextBox($this);
         $this->appName->label = 'App Name';
         $this->appName->validation = true;
@@ -98,14 +113,28 @@ class ManifestBuilderForm extends BootstrapForm
 
 
 
+        $jsonReader=new JsonReader();
+        $jsonReader->fromFilename((new WebmanifestFilename())->getFullFilename());
+
+
+
+
 
         return parent::getContent();
 
     }
 
 
+    //protected function on
+
+
+
     protected function onSubmit()
     {
+
+
+
+
 
 
 

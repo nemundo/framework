@@ -15,7 +15,7 @@ use Nemundo\Project\Path\WebPath;
 class WebManifestBuilder extends AbstractBase
 {
 
-    public $jsonFilename = 'manifest.webmanifest';
+    //public $jsonFilename = 'manifest.webmanifest';
 
     public $appName;
 
@@ -38,12 +38,6 @@ class WebManifestBuilder extends AbstractBase
 
         $json = new JsonDocument();
         $json->filename = (new WebmanifestFilename())->getFullFilename();
-
-
-            /*(new WebPath())
-            ->addPath($this->jsonFilename)
-            ->getFullFilename();*/
-
 
         $data = [];
         $data['name'] = $this->appName;
@@ -76,14 +70,12 @@ class WebManifestBuilder extends AbstractBase
 
 
         $filename = (new WebPath())
-           // ->addPath('js')
             ->addPath('serviceworker.js')
             ->getFullFilename();
 
         if ((new File($filename))->notExists()) {
 
             $file = new TextFileWriter($filename);
-            //$file->createDirectory = true;
             $file->addLine('self.addEventListener("fetch", function(e) {');
             $file->addLine('});');
             $file->addLine('self.addEventListener("install", function(event) {');
