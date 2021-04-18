@@ -120,7 +120,8 @@ class ManifestBuilderForm extends BootstrapForm
         if ($this->icon->hasValue()) {
 
             $filename=(new WebPath())
-                ->addPath('img')
+                ->addPath('icon')
+                ->createPath()
                 ->addPath('icon.png')
                 ->getFullFilename();
 
@@ -136,7 +137,7 @@ class ManifestBuilderForm extends BootstrapForm
             $resize->resizeImage();
 
 
-            $builder->icon = 'img/icon.png';
+            $builder->icon = 'icon/icon.png';
 
         }
 
@@ -148,8 +149,8 @@ class ManifestBuilderForm extends BootstrapForm
         $builder->createFile();
 
 
-        (new Debug())->write($this->themeColor->getValue());
-        exit;
+       // (new Debug())->write($this->themeColor->getValue());
+       // exit;
 
 
 

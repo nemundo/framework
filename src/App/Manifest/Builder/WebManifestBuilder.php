@@ -4,6 +4,8 @@
 namespace Nemundo\App\Manifest\Builder;
 
 
+use Nemundo\App\Manifest\Filename\WebmanifestConfigFilename;
+use Nemundo\App\Manifest\Filename\WebmanifestFilename;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Json\Document\JsonDocument;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
@@ -35,9 +37,12 @@ class WebManifestBuilder extends AbstractBase
     {
 
         $json = new JsonDocument();
-        $json->filename = (new WebPath())
+        $json->filename = (new WebmanifestFilename())->getFullFilename();
+
+
+            /*(new WebPath())
             ->addPath($this->jsonFilename)
-            ->getFullFilename();
+            ->getFullFilename();*/
 
 
         $data = [];
