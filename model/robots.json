@@ -1,0 +1,6 @@
+{
+    "app": "Robots",
+    "name": "robots",
+    "namespace": "Nemundo\\App\\Robots",
+    "is_deleted": false
+}

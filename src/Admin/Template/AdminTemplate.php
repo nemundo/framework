@@ -4,8 +4,8 @@ namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Admin\Com\Navbar\AdminSiteNavbar;
-use Nemundo\App\Manifest\Com\WebManifestJavaScript;
-use Nemundo\App\Manifest\Com\WebManifestLink;
+use Nemundo\App\Manifest\Com\JavaScript\WebManifestJavaScript;
+use Nemundo\App\Manifest\Com\Link\WebManifestLink;
 use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Container\Container;
@@ -87,14 +87,22 @@ class AdminTemplate extends BootstrapDocument
 
         //LibraryHeader::addJsUrl(WebConfig::$webUrl.'js/serviceworker.js');
 
-        /*
+
         LibraryHeader::addHeaderContainer(new WebManifestLink());
-        LibraryHeader::addHeaderContainer(new WebManifestJavaScript());*/
+        LibraryHeader::addHeaderContainer(new WebManifestJavaScript());
+
+
+        /*
+
+        new WebManifestLink($this);
+        new WebManifestJavaScript($this);*/
 
 
 
 
-        $container = new HtmlContainer();
+
+
+       /* $container = new HtmlContainer();
         $container->addContent('
 <link rel="manifest" href="/manifest.webmanifest" />
 <script type="text/javascript">
@@ -103,7 +111,7 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
-');
+');*/
 
         /*
          *
@@ -113,7 +121,7 @@ if ("serviceWorker" in navigator) {
 
         /*new WebManifestLink($container);
         new WebManifestJavaScript($container);*/
-        LibraryHeader::addHeaderContainer($container);
+        //LibraryHeader::addHeaderContainer($container);
 
 
 

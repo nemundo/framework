@@ -79,7 +79,7 @@ class ManifestBuilderForm extends BootstrapForm
         $this->icon->acceptFileType=AcceptFileType::IMAGE;
 
         $this->startUrl = new BootstrapTextBox($this);
-        $this->startUrl->label = 'App Name';
+        $this->startUrl->label = 'Start Url';
         $this->startUrl->validation = true;
         $this->startUrl->value = '/';
 

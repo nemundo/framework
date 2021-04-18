@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Nemundo\App\Manifest\Com;
+namespace Nemundo\App\Manifest\Com\JavaScript;
 
 
 use Nemundo\Html\Script\JavaScript;

@@ -4,6 +4,7 @@ namespace Nemundo\Admin\Controller;
 
 
 use Nemundo\Admin\Site\AdminHomeSite;
+use Nemundo\Admin\Site\ConfigSite;
 use Nemundo\App\Application\Site\AdminSite;
 use Nemundo\App\Application\Site\AppSite;
 use Nemundo\App\ClassDesigner\Site\ClassDesignerSite;
@@ -45,6 +46,8 @@ class AdminController extends AbstractWebController
 
         new ModelDesignerSite($this);
         new ClassDesignerSite($this);
+
+        new ConfigSite($this);
 
         foreach (AdminController::$adminSiteList as $site) {
             $this->addSite($site);
