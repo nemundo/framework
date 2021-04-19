@@ -27,8 +27,19 @@ class AdminConfig
 
     public static $showPasswordChange = true;
 
+    /**
+     * @var bool
+     */
     public static $userMode = false;
 
+    /**
+     * @var bool
+     */
     public static $searchMode = false;
+
+    /**
+     * @var bool
+     */
+    public static $webManifest=false;
 
 }

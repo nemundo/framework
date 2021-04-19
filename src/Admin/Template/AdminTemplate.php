@@ -8,8 +8,6 @@ use Nemundo\App\Manifest\Com\JavaScript\WebManifestJavaScript;
 use Nemundo\App\Manifest\Com\Link\WebManifestLink;
 use Nemundo\Com\Html\Header\LibraryHeader;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Html\Container\Container;
-use Nemundo\Html\Container\HtmlContainer;
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
 use Nemundo\Package\Bootstrap\Layout\Container\BootstrapContainer;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
@@ -50,8 +48,8 @@ class AdminTemplate extends BootstrapDocument
         $this->navbar = new AdminSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
         $this->navbar->userMode = AdminConfig::$userMode;
-
         $this->navbar->showPasswordChange = AdminConfig::$showPasswordChange;
+        $this->navbar->fixed = true;
 
         if (AdminConfig::$logoUrl !== null) {
             $this->navbar->logoUrl = AdminConfig::$logoUrl;
@@ -64,8 +62,6 @@ class AdminTemplate extends BootstrapDocument
         $this->container = new BootstrapContainer();
         $this->container->fullWidth = true;
         parent::addContainer($this->container);
-
-        //parent::loadContainer();
 
     }
 
@@ -85,54 +81,10 @@ class AdminTemplate extends BootstrapDocument
         LibraryHeader::addHeaderContainer(new TwitterCard());
 
 
-        //LibraryHeader::addJsUrl(WebConfig::$webUrl.'js/serviceworker.js');
-
-
-
-
-
-        LibraryHeader::addHeaderContainer(new WebManifestLink());
-        LibraryHeader::addHeaderContainer(new WebManifestJavaScript());
-
-
-        /*
-
-        new WebManifestLink($this);
-        new WebManifestJavaScript($this);*/
-
-
-
-
-
-
-       /* $container = new HtmlContainer();
-        $container->addContent('
-<link rel="manifest" href="/manifest.webmanifest" />
-<script type="text/javascript">
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/js/serviceworker.js");
-}
-</script>
-
-');*/
-
-        /*
-         *
-         *
-         */
-
-
-        /*new WebManifestLink($container);
-        new WebManifestJavaScript($container);*/
-        //LibraryHeader::addHeaderContainer($container);
-
-
-
-
-
-        //$this->addJsUrl('js/serviceworker.js');
-
-
+        if (AdminConfig::$webManifest) {
+            LibraryHeader::addHeaderContainer(new WebManifestLink());
+            LibraryHeader::addHeaderContainer(new WebManifestJavaScript());
+        }
 
         return parent::getContent();
 
