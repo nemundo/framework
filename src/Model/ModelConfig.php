@@ -26,4 +26,9 @@ class ModelConfig
      */
     public static $defaultPaginationLimit = 30;
 
+    /**
+     * @var bool
+     */
+    public static $logSlowQuery = false;
+
 }

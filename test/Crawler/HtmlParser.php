@@ -1,9 +1,8 @@
 <?php
 
-require __DIR__.'/../config.php';
+require __DIR__ . '/../config.php';
 
-//$url = 'http://localhost/app/web/';
-$url = 'http://localhost/asfdasdfasdfas';
+$url = 'https://paranautik.com';
 
 $htmlParser = new \Nemundo\Crawler\HtmlParser\HtmlParser();
 $htmlParser->fromUrl($url);

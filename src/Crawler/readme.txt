@@ -1,3 +1,11 @@
+WebCrawler als App
+- SystemLogError
+
+Cache Url
+
+
+
+
 wohin???
 
 nur Crawler ???

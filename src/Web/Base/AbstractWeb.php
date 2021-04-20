@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Nemundo\Web\Base;
 
 
@@ -11,14 +10,12 @@ use Nemundo\Web\WebConfig;
 abstract class AbstractWeb extends AbstractBaseClass
 {
 
-
-    public function __construct() {
+    public function __construct()
+    {
 
         SessionConfig::$path = WebConfig::$webUrl;
 
-
     }
-
 
     abstract public function loadWeb();
 

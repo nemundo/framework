@@ -75,7 +75,9 @@ class WebCrawler extends AbstractDataSource
                 $this->html = (new TextFileReader($filename))->getText();
             } else {
 
-                $this->html = $http->getUrl($this->url);
+                $response = $http->getUrl($this->url);
+
+                $this->html = $response->html;
 
                 $writer = new TextFileWriter($filename);
                 $writer->addLine($this->html);

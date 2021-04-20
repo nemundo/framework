@@ -44,12 +44,11 @@ class AdminTemplate extends BootstrapDocument
 
         $this->addJavaScript('WebConfig.webUrl = "' . WebConfig::$webUrl . '";');
 
-
         $this->navbar = new AdminSiteNavbar();
         $this->navbar->site = AdminConfig::$webController;
         $this->navbar->userMode = AdminConfig::$userMode;
         $this->navbar->showPasswordChange = AdminConfig::$showPasswordChange;
-        $this->navbar->fixed = true;
+        //$this->navbar->fixed = true;
 
         if (AdminConfig::$logoUrl !== null) {
             $this->navbar->logoUrl = AdminConfig::$logoUrl;
@@ -79,7 +78,6 @@ class AdminTemplate extends BootstrapDocument
 
         LibraryHeader::addHeaderContainer(new OpenGraph());
         LibraryHeader::addHeaderContainer(new TwitterCard());
-
 
         if (AdminConfig::$webManifest) {
             LibraryHeader::addHeaderContainer(new WebManifestLink());

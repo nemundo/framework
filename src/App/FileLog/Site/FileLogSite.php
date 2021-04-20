@@ -22,6 +22,7 @@ class FileLogSite extends AbstractSite
         $this->url = 'file-log';
         FileLogSite::$site = $this;
 
+        new FileLogDownloadSite($this);
         new FileLogDeleteSite($this);
 
     }

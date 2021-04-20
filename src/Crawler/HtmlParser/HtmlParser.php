@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\RegularExpression\RegularExpressionReader;
 use Nemundo\Core\Validation\UrlValidation;
 use Nemundo\Core\WebRequest\CurlWebRequest;
+use Nemundo\Core\WebRequest\WebResponse;
 
 
 class HtmlParser extends AbstractBaseClass
@@ -14,8 +15,14 @@ class HtmlParser extends AbstractBaseClass
 
     public $baseUrl = '';
 
+    /**
+     * @var bool
+     */
     private $loaded = false;
 
+    /**
+     * @var string
+     */
     private $html;
 
 
@@ -23,7 +30,7 @@ class HtmlParser extends AbstractBaseClass
     {
 
         $httpDownload = new CurlWebRequest();
-        $this->html = $httpDownload->getUrl($url);
+        $this->html = $httpDownload->getUrl($url)->html;
 
     }
 
@@ -43,7 +50,7 @@ class HtmlParser extends AbstractBaseClass
     public function getPageTitle()
     {
 
-        $this->parse();
+        //$this->parse();
 
         $re = new RegularExpressionReader();
         $re->text = $this->html;
@@ -62,7 +69,7 @@ class HtmlParser extends AbstractBaseClass
     public function getDescription()
     {
 
-        $this->parse();
+        //$this->parse();
 
         $re = new RegularExpressionReader();
         $re->text = $this->html;
@@ -83,7 +90,7 @@ class HtmlParser extends AbstractBaseClass
     public function getRssFeed()
     {
 
-        $this->parse();
+        //$this->parse();
 
         $re = new RegularExpressionReader();
         $re->text = $this->html;
@@ -150,6 +157,7 @@ class HtmlParser extends AbstractBaseClass
     }
 
 
+    /*
     private function parse()
     {
 
@@ -159,7 +167,7 @@ class HtmlParser extends AbstractBaseClass
         }
 
 
-    }
+    }*/
 
 
 }

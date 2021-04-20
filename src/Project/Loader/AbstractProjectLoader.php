@@ -6,17 +6,14 @@ namespace Nemundo\Project\Loader;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\Log\LogConfig;
+use Nemundo\Db\DbConfig;
 use Nemundo\Model\ModelConfig;
+use Nemundo\Project\Path\LogPath;
 use Nemundo\Project\ProjectConfig;
 use Nemundo\Web\WebConfig;
 
 abstract class AbstractProjectLoader extends AbstractBase
 {
-
-    /**
-     * @var bool
-     */
-    //public $loadConfigFile = true;
 
     abstract public function loadProject();
 
@@ -33,6 +30,8 @@ abstract class AbstractProjectLoader extends AbstractBase
         ModelConfig::$dataUrl = WebConfig::$webUrl . 'data/';
 
         ModelConfig::$redirectDataPath = ProjectConfig::$projectPath . 'data_redirect' . DIRECTORY_SEPARATOR;
+
+        DbConfig::$slowQueryLogPath = (new LogPath())->getPath();
 
     }
 

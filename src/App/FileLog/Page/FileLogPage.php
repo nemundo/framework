@@ -6,11 +6,11 @@ namespace Nemundo\App\FileLog\Page;
 use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\FileLog\Form\FileLogForm;
+use Nemundo\App\FileLog\Parameter\FilenameParameter;
 use Nemundo\App\FileLog\Site\FileLogDeleteSite;
+use Nemundo\App\FileLog\Site\FileLogDownloadSite;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Core\Log\LogConfig;
-use Nemundo\Core\TextFile\Reader\TextFileReader;
 use Nemundo\Core\Type\Number\Number;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Project\Path\LogPath;
@@ -29,10 +29,16 @@ class FileLogPage extends AbstractTemplateDocument
         $filename = $form->getLogFilename();
 
 
+
+
         if ($filename !== '') {
 
+            $btn = new AdminSiteButton($this);
+            $btn->site = FileLogDownloadSite::$site;
+            $btn->site->addParameter(new FilenameParameter($filename));
 
-            $p=new Paragraph($this);
+
+            $p = new Paragraph($this);
 
             $table = new AdminTable($this);
 
@@ -60,20 +66,20 @@ class FileLogPage extends AbstractTemplateDocument
 
                 $lineCount++;
                 $showLine = false;
-                if (($lineCount >= $startLine) &&($lineCount<=$endLine)) {
+                if (($lineCount >= $startLine) && ($lineCount <= $endLine)) {
                     //echo $line;
 
                     /*$row = new TableRow($table);
                     $row->addText($line);*/
 
-                    $showLine=true;
+                    $showLine = true;
 
                 }
 
-               /* if ($lineCount == $endLine) {
-                    //break;
-                    $showLine=false;
-                }*/
+                /* if ($lineCount == $endLine) {
+                     //break;
+                     $showLine=false;
+                 }*/
 
 
                 if ($showLine) {
@@ -88,14 +94,10 @@ class FileLogPage extends AbstractTemplateDocument
             fclose($f);
 
 
-
-            $p->content=(new Number($lineCount))->formatNumber().' lines';
-
+            $p->content = (new Number($lineCount))->formatNumber() . ' lines';
 
 
         }
-
-
 
 
         return parent::getContent();
