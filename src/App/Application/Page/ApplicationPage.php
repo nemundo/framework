@@ -13,6 +13,7 @@ use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
+use Nemundo\App\Application\Parameter\ProjectParameter;
 use Nemundo\App\Application\Site\ApplicationEditSite;
 use Nemundo\App\Application\Site\ApplicationSite;
 use Nemundo\App\Application\Site\ClearSite;
@@ -127,13 +128,13 @@ class ApplicationPage extends ApplicationTemplate
                 $row->addText('No Class');
             }
 
-
             $site = clone(ApplicationEditSite::$site);
             $site->addParameter(new ApplicationParameter($applicationRow->id));
             $row->addIconSite($site);
 
             $site = clone(ApplicationSite::$site);
             $site->addParameter(new ApplicationParameter($applicationRow->id));
+            $site->addParameter(new ProjectParameter());
             $row->addClickableSite($site);
 
         }

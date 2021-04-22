@@ -12,6 +12,7 @@ use Nemundo\App\Application\Data\Project\ProjectCount;
 use Nemundo\App\Application\Data\Project\ProjectId;
 use Nemundo\App\Application\Data\Project\ProjectUpdate;
 use Nemundo\App\Application\Type\AbstractApplication;
+use Nemundo\App\Application\Type\Application\AbstractApplicationCollection;
 use Nemundo\Core\Base\AbstractBase;
 
 class ApplicationSetup extends AbstractBase
@@ -67,6 +68,17 @@ class ApplicationSetup extends AbstractBase
             $update->applicationClass = $application->getClassName();
             $update->setupStatus = true;
             $update->updateById($application->applicationId);
+        }
+
+        return $this;
+
+    }
+
+
+    public function addApplicationCollection(AbstractApplicationCollection $applicationCollection) {
+
+        foreach ($applicationCollection->getApplicationList() as $application) {
+            $this->addApplication($application);
         }
 
         return $this;

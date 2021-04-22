@@ -30,7 +30,6 @@ class WebCrawler extends AbstractDataSource
      */
     public $regularExpression;
 
-
     /**
      * @var bool
      */
@@ -91,16 +90,15 @@ class WebCrawler extends AbstractDataSource
             }
 
         } else {
-            $this->html = $http->getUrl($this->url);
+
+            $response = $http->getUrl($this->url);
+            $this->html = $response->html;
 
             if ($this->delay) {
                 (new Delay())->delay($this->delayTime);
             }
 
-
-
         }
-
 
         $regex = new RegularExpressionReader();
         $regex->regularExpression = $this->regularExpression;
@@ -128,8 +126,7 @@ class WebCrawler extends AbstractDataSource
     {
 
         $list = $this->getData();
-
-        $data = array();
+        $data = [];
 
         if (isset($list[0])) {
             $data = $list[0];

@@ -56,13 +56,10 @@ class OpenGraphParser extends AbstractBase
         $crawler = new WebCrawler();
         $crawler->url = $url;
         $crawler->regularExpression = '<meta (.*?)>';
-        //$crawler->regularExpression = '<meta(.*?)/>';
 
         foreach ($crawler->getData() as $crawlerRow) {
 
             $meta = $crawlerRow->getValue(0);
-
-            //(new Debug())->write($meta);
 
             $re = new RegularExpressionReader();
             $re->text = $meta;
@@ -99,6 +96,7 @@ class OpenGraphParser extends AbstractBase
 
     }
 
+
     public function getPropertyList()
     {
         return $this->propertyList;
@@ -117,6 +115,5 @@ class OpenGraphParser extends AbstractBase
         return $value;
 
     }
-
 
 }

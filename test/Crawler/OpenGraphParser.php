@@ -2,9 +2,7 @@
 
 require __DIR__ . '/../config.php';
 
-//$url = 'https://www.blick.ch/wirtschaft/nach-quarantaene-in-st-moritz-badrutt-s-palace-bricht-die-wintersaison-ab-id16313552.html';
 $url = 'https://evernote.com/intl/de/';
-
 
 
 $parser = new \Nemundo\Crawler\HtmlParser\OpenGraphParser($url);

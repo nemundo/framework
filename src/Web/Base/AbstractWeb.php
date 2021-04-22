@@ -10,6 +10,11 @@ use Nemundo\Web\WebConfig;
 abstract class AbstractWeb extends AbstractBaseClass
 {
 
+//    public $webPath;
+
+//    public $webUrl = '/';
+
+
     public function __construct()
     {
 
