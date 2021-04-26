@@ -5,6 +5,8 @@ namespace Nemundo\Web\Site;
 
 use Nemundo\Core\Json\Document\JsonResponse;
 
+
+// move to Json ???
 abstract class AbstractJsonSite extends AbstractSite
 {
 
@@ -40,8 +42,8 @@ abstract class AbstractJsonSite extends AbstractSite
 
 
     // protected
-    public function addJsonRow($data) {
-        $this->json->addRow($data);
+    public function addJsonRow($row) {
+        $this->json->addRow($row);
     }
 
 

@@ -10,6 +10,7 @@ use Nemundo\App\Application\Script\PackageSetupScript;
 use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Application\Usergroup\AdminUsergroup;
 use Nemundo\App\Application\Usergroup\AppUsergroup;
+use Nemundo\App\Application\Usergroup\DefaultUsergroup;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
@@ -33,6 +34,7 @@ class ApplicationInstall extends AbstractInstall
             ->addScript(new PackageSetupScript());
 
         (new UsergroupSetup())
+            ->addUsergroup(new DefaultUsergroup())
             ->addUsergroup(new AppUsergroup())
             ->addUsergroup(new AdminUsergroup());
 
