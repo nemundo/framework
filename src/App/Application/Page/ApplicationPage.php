@@ -14,6 +14,7 @@ use Nemundo\App\Application\Com\ListBox\ProjectListBox;
 use Nemundo\App\Application\Data\Application\ApplicationReader;
 use Nemundo\App\Application\Parameter\ApplicationParameter;
 use Nemundo\App\Application\Parameter\ProjectParameter;
+use Nemundo\App\Application\Site\Action\PackageInstallSite;
 use Nemundo\App\Application\Site\ApplicationEditSite;
 use Nemundo\App\Application\Site\ApplicationSite;
 use Nemundo\App\Application\Site\ClearSite;
@@ -72,7 +73,10 @@ class ApplicationPage extends ApplicationTemplate
         $header->addEmpty();
         $header->addText($applicationReader->model->project->label);
         $header->addText('Package');
-        $header->addText('Dependency');
+        $header->addEmpty();
+
+        //$header->addText('Dependency');
+
         $header->addEmpty();
 
         foreach ($applicationReader->getData() as $applicationRow) {
@@ -92,6 +96,8 @@ class ApplicationPage extends ApplicationTemplate
                     $site = clone(InstallSite::$site);
                     $site->addParameter(new ApplicationParameter($applicationRow->id));
                     $row->addSite($site);
+
+
                 } else {
                     $row->addEmpty();
                 }
@@ -115,9 +121,23 @@ class ApplicationPage extends ApplicationTemplate
 
                 $row->addText($applicationRow->project->project);
 
-                $ul = new UnorderedList($row);
-                foreach ($app->getPackageList() as $package) {
-                    $ul->addText($package->packageName);
+
+                if ($app->hasPackage()) {
+
+                    $ul = new UnorderedList($row);
+                    foreach ($app->getPackageList() as $package) {
+                        $ul->addText($package->packageName);
+                    }
+
+                    $site = clone(PackageInstallSite::$site);
+                    $site->addParameter(new ApplicationParameter($applicationRow->id));
+                    $row->addSite($site);
+
+                } else {
+
+                    $row->addEmpty();
+                    $row->addEmpty();
+
                 }
 
 
@@ -155,13 +175,13 @@ class ApplicationPage extends ApplicationTemplate
             $widget->widgetTitle = 'Scheduler';
 
             $table = new SchedulerTable($widget);
-            $table->filterByApplicationId( $applicationId);
+            $table->filterByApplicationId($applicationId);
 
             $widget = new AdminWidget($layout->col2);
             $widget->widgetTitle = 'Script';
 
             $table = new ScriptTable($widget);
-            $table->filterByApplicationId( $applicationId);
+            $table->filterByApplicationId($applicationId);
 
 
         }

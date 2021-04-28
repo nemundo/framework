@@ -4,18 +4,12 @@ namespace Nemundo\Com\TableBuilder;
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
-use Nemundo\Com\Item\YesNoItem;
 use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Formatting\Bold;
-use Nemundo\Html\Formatting\Strike;
 use Nemundo\Html\Table\Td;
 use Nemundo\Html\Table\Tr;
 use Nemundo\Package\FontAwesome\AbstractFontAwesomeIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
-use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Package\FontAwesome\Site\IconSiteTrait;
-use Nemundo\Web\Action\Site\DeleteActionSite;
 use Nemundo\Web\Site\AbstractSite;
 
 
@@ -25,7 +19,7 @@ class TableRow extends Tr
     /**
      * @var bool
      */
-    public $strikeThrough=false;
+    public $strikeThrough = false;
 
 
     public function addText($text, $nowrap = false)
@@ -121,12 +115,12 @@ class TableRow extends Tr
 
 
     //public function addIconSite(AbstractIconSite $site)
-   // public function addIconSite($site)
-     public function addIconSite(AbstractSite $site)
+    // public function addIconSite($site)
+    public function addIconSite(AbstractSite $site)
     {
 
         // wegen dem
-      //  new DeleteActionSite()
+        //  new DeleteActionSite()
 
         $hyperlink = new SiteHyperlink($this);
         $hyperlink->addContainer($site->icon);

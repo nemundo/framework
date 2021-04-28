@@ -7,6 +7,7 @@ namespace Nemundo\Project\Web;
 // AbstractWebPath
 // AbstractWebDomain
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Project\Path\ProjectPath;
 
 abstract class AbstractWebProject extends AbstractBase
 {
@@ -23,6 +24,12 @@ abstract class AbstractWebProject extends AbstractBase
     }
 
 
+    public function getWebPath() {
+
+        $path = (new ProjectPath())->addPath($this->webPath)->getPath();
+        return $path;
+
+    }
 
 
 

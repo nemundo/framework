@@ -11,6 +11,7 @@ use Nemundo\App\ClassDesigner\Site\ClassDesignerSite;
 use Nemundo\App\Git\Site\GitSite;
 use Nemundo\App\ModelDesigner\Site\ModelDesignerSite;
 use Nemundo\App\UserAction\Site\UserActionSite;
+use Nemundo\Content\App\Calendar\Site\CalendarSite;
 use Nemundo\Web\Controller\AbstractWebController;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -35,6 +36,11 @@ class AdminController extends AbstractWebController
     {
 
         new AdminHomeSite($this);
+
+
+        //new CalendarSite($this);
+
+        //(new \Nemundo\Admin\Controller\AdminController())->addSite(new \Nemundo\Content\App\Calendar\Site\CalendarSite());
 
         $site = new AppSite($this);
         $site->restricted = false;

@@ -5,10 +5,11 @@ namespace Nemundo\Model\Filter;
 
 use Nemundo\Core\Geo\Addition\GeoCoordinateAddition;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
+use Nemundo\Db\Filter\AbstractFilter;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Model\Type\Geo\GeoCoordinateType;
 
-class GeoCoordinateSquareFilter extends Filter
+class GeoCoordinateSquareFilter extends AbstractFilter
 {
 
     /**
@@ -25,6 +26,22 @@ class GeoCoordinateSquareFilter extends Filter
      * @var GeoCoordinateType
      */
     public $coordinateType;
+
+
+
+    public function __construct()
+    {
+
+        parent::__construct();
+        $this->coordinateCenter=new GeoCoordinate();
+
+    }
+
+
+    protected function loadFilter()
+    {
+        // TODO: Implement loadFilter() method.
+    }
 
 
     public function isNotEmpty()

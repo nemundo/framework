@@ -35,7 +35,7 @@ abstract class AbstractAutocompleteJsonSite extends AbstractSite
     }
 
 
-    protected function getKeyowrd()
+    protected function getKeyword()
     {
 
         $keyword = (new AutocompleteParameter())->getValue();

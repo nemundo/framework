@@ -5,6 +5,7 @@ namespace Nemundo\App\Application\Site;
 
 
 use Nemundo\App\Application\Page\ApplicationPage;
+use Nemundo\App\Application\Site\Action\PackageInstallSite;
 use Nemundo\Web\Site\AbstractSite;
 
 class ApplicationSite extends AbstractSite
@@ -25,6 +26,9 @@ class ApplicationSite extends AbstractSite
         new ApplicationEditSite($this);
 
         new InstallSite($this);
+        new PackageInstallSite($this);
+
+
         new UninstallSite($this);
         new ReinstallSite($this);
 

@@ -15,6 +15,15 @@ abstract class AbstractApplicationCollection extends AbstractBase
      */
     private $applicationList = [];
 
+
+    abstract protected function loadCollection();
+
+    public function __construct()
+    {
+        $this->loadCollection();
+    }
+
+
     protected function addApplication(AbstractApplication $application)
     {
         $this->applicationList[] = $application;

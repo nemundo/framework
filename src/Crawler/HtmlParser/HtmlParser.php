@@ -3,11 +3,12 @@
 namespace Nemundo\Crawler\HtmlParser;
 
 
+use Nemundo\App\SystemLog\Message\SystemLogMessage;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Http\Response\StatusCode;
 use Nemundo\Core\RegularExpression\RegularExpressionReader;
 use Nemundo\Core\Validation\UrlValidation;
 use Nemundo\Core\WebRequest\CurlWebRequest;
-use Nemundo\Core\WebRequest\WebResponse;
 
 
 class HtmlParser extends AbstractBaseClass
@@ -18,19 +19,26 @@ class HtmlParser extends AbstractBaseClass
     /**
      * @var bool
      */
-    private $loaded = false;
+    //private $loaded = false;
 
     /**
      * @var string
      */
-    private $html;
+    private $html = '';
 
 
     public function fromUrl($url)
     {
 
-        $httpDownload = new CurlWebRequest();
-        $this->html = $httpDownload->getUrl($url)->html;
+        $request = new CurlWebRequest();
+        $request->
+
+        $response = $request->getUrl($url);
+        if ($response->statusCode == StatusCode::OK) {
+            $this->html = $response->html;
+        } else {
+            (new SystemLogMessage())->logError('Url: ' . $url . ' Error: ' . $response->errorMessage);
+        }
 
     }
 
@@ -49,6 +57,7 @@ class HtmlParser extends AbstractBaseClass
     // getTitle
     public function getPageTitle()
     {
+
 
         //$this->parse();
 

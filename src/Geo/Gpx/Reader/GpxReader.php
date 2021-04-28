@@ -35,11 +35,6 @@ class GpxReader extends AbstractDataSource
     protected function loadData()
     {
 
-        /*
-        if (!$this->checkProperty('filename')) {
-            return;
-        }*/
-
         $xmlReader = new XmlReader();
         $xmlReader->filename = $this->filename;
 
@@ -48,21 +43,12 @@ class GpxReader extends AbstractDataSource
             $coordinate = new GeoCoordinateAltitude();
             $coordinate->latitude = $row['@attributes']['lat'];
             $coordinate->longitude = $row['@attributes']['lon'];
-            $coordinate->altitude = $row['ele'];
-
+            if (isset($row['ele'])) {
+                $coordinate->altitude = $row['ele'];
+            }
             $this->addItem($coordinate);
 
         }
-
-    }
-
-
-
-    public function getWaypointList() {
-
-
-
-
 
     }
 

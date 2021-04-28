@@ -82,8 +82,8 @@ class ProjectBuilder extends AbstractBaseClass
             ->addPath('web')
             ->getPath();
 
-        $index = new PhpFile();
-        $index->filename = $webPath . 'index.php';
+        $index = new PhpFile($webPath . 'index.php');
+        //$index->filename = $webPath . 'index.php';
         $index->add('require "../config.php";');
         $index->add('(new \\' . $this->project->namespace . '\\Web\\' . $this->project->namespace . 'Web())->loadWeb();');
         $index->saveFile();
@@ -93,8 +93,8 @@ class ProjectBuilder extends AbstractBaseClass
             ->addPath('bin')
             ->getPath();
 
-        $file = new PhpFile();
-        $file->filename = $binPath . 'setup.php';
+        $file = new PhpFile($binPath . 'setup.php');
+        //$file->filename = $binPath . 'setup.php';
         $file->add('require  "config.php";');
         $file->add('(new \\' . $this->project->namespace . '\\Setup\\' . $this->project->namespace . 'Setup())->run();');
         $file->saveFile();

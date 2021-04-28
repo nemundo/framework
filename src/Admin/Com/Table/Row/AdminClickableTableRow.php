@@ -21,4 +21,10 @@ class AdminClickableTableRow extends BootstrapClickableTableRow
 
     }
 
+
+    public function setActiveRow() {
+        $this->addCssClass('table-active');
+        return $this;
+    }
+
 }

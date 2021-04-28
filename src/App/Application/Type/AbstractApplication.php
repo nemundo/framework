@@ -4,13 +4,13 @@ namespace Nemundo\App\Application\Type;
 
 use Nemundo\App\Application\Data\Application\ApplicationUpdate;
 use Nemundo\App\Application\Setup\ApplicationSetup;
+use Nemundo\App\Application\Type\Install\AbstractInstall;
+use Nemundo\App\Application\Type\Install\AbstractUninstall;
 use Nemundo\Com\Package\AbstractPackage;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Collection\AbstractModelCollection;
 use Nemundo\Project\AbstractProject;
-use Nemundo\App\Application\Type\Install\AbstractInstall;
-use Nemundo\App\Application\Type\Install\AbstractUninstall;
 use Nemundo\Web\Site\AbstractSite;
 
 
@@ -96,7 +96,6 @@ abstract class AbstractApplication extends AbstractBaseClass
     {
         $this->loadApplication();
     }
-
 
 
     public function hasModelCollection()
@@ -192,8 +191,8 @@ abstract class AbstractApplication extends AbstractBaseClass
     }
 
 
-
-    public function setAppMenuActive() {
+    public function setAppMenuActive()
+    {
 
         $update = new ApplicationUpdate();
         $update->appMenu = true;
@@ -202,7 +201,6 @@ abstract class AbstractApplication extends AbstractBaseClass
         return $this;
 
     }
-
 
 
     public function hasUninstall()
@@ -228,8 +226,8 @@ abstract class AbstractApplication extends AbstractBaseClass
 
             $update = new ApplicationUpdate();
             $update->install = false;
-            $update->appMenu=false;
-            $update->adminMenu=false;
+            $update->appMenu = false;
+            $update->adminMenu = false;
             $update->updateById($this->applicationId);
 
 
@@ -310,6 +308,19 @@ abstract class AbstractApplication extends AbstractBaseClass
 
         $this->packageList[] = $package;
         return $this;
+
+    }
+
+
+    public function hasPackage()
+    {
+
+        $value = false;
+        if (sizeof($this->packageList) > 0) {
+            $value = true;
+        }
+
+        return $value;
 
     }
 
