@@ -59,7 +59,9 @@ class AdminTemplate extends BootstrapDocument
         parent::addContainer($this->navbar);
 
         $this->container = new BootstrapContainer();
+        $this->container->id = 'main';
         $this->container->fullWidth = true;
+
         parent::addContainer($this->container);
 
     }

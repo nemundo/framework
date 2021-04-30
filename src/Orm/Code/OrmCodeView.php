@@ -15,7 +15,6 @@ class OrmCodeView extends AbstractOrmCode
     public function createClass()
     {
 
-
         $php = new PhpClass();
         $php->project = $this->project;
         $php->namespace = $this->model->namespace;
@@ -28,7 +27,7 @@ class OrmCodeView extends AbstractOrmCode
         $var = new PhpVariable($php);
         $var->variableName = 'model';
         $var->visibility = PhpVisibility::PublicVariable;
-        $var->dataType = $this->model->className . 'Model';  //$this->model->className;
+        $var->dataType = $this->model->className . 'Model';
 
         // loadCom
         $function = new PhpFunction($php);

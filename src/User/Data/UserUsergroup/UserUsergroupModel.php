@@ -35,6 +35,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "user_user_usergroup";
+$this->id->externalTableName = "user_user_usergroup";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "user_user_usergroup_id";
 $this->id->label = "Id";

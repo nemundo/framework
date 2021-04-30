@@ -31,8 +31,6 @@ class HtmlParser extends AbstractBaseClass
     {
 
         $request = new CurlWebRequest();
-        $request->
-
         $response = $request->getUrl($url);
         if ($response->statusCode == StatusCode::OK) {
             $this->html = $response->html;
@@ -60,6 +58,7 @@ class HtmlParser extends AbstractBaseClass
 
 
         //$this->parse();
+        // <title>Ausflugsziele &raquo; Verein Urner Wanderwege</title>
 
         $re = new RegularExpressionReader();
         $re->text = $this->html;

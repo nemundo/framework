@@ -101,7 +101,6 @@ class ModelOrmCode extends AbstractOrmCode
         foreach ($this->model->getDefaultOrderList() as $order) {
 
             if ($type->getClassName() == ExternalOrmType::class) {
-
                 $function->add('$this->addDefaultOrderType($this->' . $order->type->variableName . 'Id);');
             } else {
                 $function->add('$this->addDefaultOrderType($this->' . $order->type->variableName . ');');

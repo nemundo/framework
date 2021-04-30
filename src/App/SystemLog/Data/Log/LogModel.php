@@ -45,6 +45,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "systemlog_log";
+$this->id->externalTableName = "systemlog_log";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "systemlog_log_id";
 $this->id->label = "Id";
@@ -66,6 +67,7 @@ $this->logTypeId->allowNullValue = false;
 
 $this->message = new \Nemundo\Model\Type\Text\TextType($this);
 $this->message->tableName = "systemlog_log";
+$this->message->externalTableName = "systemlog_log";
 $this->message->fieldName = "message";
 $this->message->aliasFieldName = "systemlog_log_message";
 $this->message->label = "Message";
@@ -74,6 +76,7 @@ $this->message->length = 255;
 
 $this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTime->tableName = "systemlog_log";
+$this->dateTime->externalTableName = "systemlog_log";
 $this->dateTime->fieldName = "date_time";
 $this->dateTime->aliasFieldName = "systemlog_log_date_time";
 $this->dateTime->label = "Date Time";

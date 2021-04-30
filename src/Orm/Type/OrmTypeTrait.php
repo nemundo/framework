@@ -107,31 +107,16 @@ trait OrmTypeTrait
         $aliasFieldName = $tableName . '_' . $this->fieldName;
 
         $phpFunction->add('$this->' . $this->variableName . '->tableName = "' . $tableName . '";');
+        $phpFunction->add('$this->' . $this->variableName . '->externalTableName = "' . $tableName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->fieldName = "' . $this->fieldName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->aliasFieldName = "' . $aliasFieldName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->label = "' . $this->label . '";');
-        /*if ($this->validation) {
-            $phpFunction->add('$this->' . $this->variableName . '->validation = true;');
-        }*/
 
         if ($this->defaultValue !== null) {
             $phpFunction->add('$this->' . $this->variableName . '->defaultValue = ' . $this->defaultValue . ';');
         }
 
         $phpFunction->add('$this->' . $this->variableName . '->allowNullValue = ' . (new YesNo($this->allowNullValue))->getText() . ';');
-
-        /*
-        if (!$this->visible->form) {
-            $phpFunction->add('$this->' . $this->variableName . '->visible->form = false;');
-        }
-
-        if (!$this->visible->table) {
-            $phpFunction->add('$this->' . $this->variableName . '->visible->table = false;');
-        }
-
-        if (!$this->visible->view) {
-            $phpFunction->add('$this->' . $this->variableName . '->visible->view = false;');
-        }*/
 
     }
 
@@ -148,6 +133,11 @@ trait OrmTypeTrait
         $phpFunction->add('$this->' . $this->variableName . ' = new ' . $className . '();');
         $phpFunction->add('$this->' . $this->variableName . '->fieldName = "' . $this->fieldName . '";');
         $phpFunction->add('$this->' . $this->variableName . '->tableName = $this->parentFieldName . "_" . $this->externalTableName;');
+
+        $phpFunction->add('$this->' . $this->variableName . '->externalTableName = $this->externalTableName;');
+
+        //$this->image->externalTableName=$this->externalTableName;
+
         $phpFunction->add('$this->' . $this->variableName . '->aliasFieldName = $this->' . $this->variableName . '->tableName . "_" . $this->' . $this->variableName . '->fieldName;');
         $phpFunction->add('$this->' . $this->variableName . '->label = "' . $this->label . '";');
 

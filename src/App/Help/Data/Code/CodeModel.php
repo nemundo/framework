@@ -35,6 +35,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "help_code";
+$this->id->externalTableName = "help_code";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "help_code_id";
 $this->id->label = "Id";
@@ -49,6 +50,7 @@ $this->topicId->allowNullValue = false;
 
 $this->code = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->code->tableName = "help_code";
+$this->code->externalTableName = "help_code";
 $this->code->fieldName = "code";
 $this->code->aliasFieldName = "help_code_code";
 $this->code->label = "Code";
@@ -56,6 +58,7 @@ $this->code->allowNullValue = false;
 
 $this->title = new \Nemundo\Model\Type\Text\TextType($this);
 $this->title->tableName = "help_code";
+$this->title->externalTableName = "help_code";
 $this->title->fieldName = "title";
 $this->title->aliasFieldName = "help_code_title";
 $this->title->label = "Title";

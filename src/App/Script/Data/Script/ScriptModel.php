@@ -50,6 +50,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "script_script";
+$this->id->externalTableName = "script_script";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "script_script_id";
 $this->id->label = "Id";
@@ -57,6 +58,7 @@ $this->id->allowNullValue = false;
 
 $this->scriptName = new \Nemundo\Model\Type\Text\TextType($this);
 $this->scriptName->tableName = "script_script";
+$this->scriptName->externalTableName = "script_script";
 $this->scriptName->fieldName = "script_name";
 $this->scriptName->aliasFieldName = "script_script_script_name";
 $this->scriptName->label = "Script Name";
@@ -65,6 +67,7 @@ $this->scriptName->length = 255;
 
 $this->scriptClass = new \Nemundo\Model\Type\Text\TextType($this);
 $this->scriptClass->tableName = "script_script";
+$this->scriptClass->externalTableName = "script_script";
 $this->scriptClass->fieldName = "script_class";
 $this->scriptClass->aliasFieldName = "script_script_script_class";
 $this->scriptClass->label = "Script Class";
@@ -73,6 +76,7 @@ $this->scriptClass->length = 255;
 
 $this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->description->tableName = "script_script";
+$this->description->externalTableName = "script_script";
 $this->description->fieldName = "description";
 $this->description->aliasFieldName = "script_script_description";
 $this->description->label = "Description";
@@ -87,6 +91,7 @@ $this->applicationId->allowNullValue = true;
 
 $this->consoleScript = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->consoleScript->tableName = "script_script";
+$this->consoleScript->externalTableName = "script_script";
 $this->consoleScript->fieldName = "console_script";
 $this->consoleScript->aliasFieldName = "script_script_console_script";
 $this->consoleScript->label = "Console Script";
@@ -94,6 +99,7 @@ $this->consoleScript->allowNullValue = false;
 
 $this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->setupStatus->tableName = "script_script";
+$this->setupStatus->externalTableName = "script_script";
 $this->setupStatus->fieldName = "setup_status";
 $this->setupStatus->aliasFieldName = "script_script_setup_status";
 $this->setupStatus->label = "Setup Status";

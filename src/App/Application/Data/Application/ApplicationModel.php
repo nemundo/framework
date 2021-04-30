@@ -55,6 +55,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\TextIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "application_application";
+$this->id->externalTableName = "application_application";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "application_application_id";
 $this->id->label = "Id";
@@ -62,6 +63,7 @@ $this->id->allowNullValue = false;
 
 $this->application = new \Nemundo\Model\Type\Text\TextType($this);
 $this->application->tableName = "application_application";
+$this->application->externalTableName = "application_application";
 $this->application->fieldName = "application";
 $this->application->aliasFieldName = "application_application_application";
 $this->application->label = "Application";
@@ -70,6 +72,7 @@ $this->application->length = 255;
 
 $this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->setupStatus->tableName = "application_application";
+$this->setupStatus->externalTableName = "application_application";
 $this->setupStatus->fieldName = "setup_status";
 $this->setupStatus->aliasFieldName = "application_application_setup_status";
 $this->setupStatus->label = "Setup Status";
@@ -77,6 +80,7 @@ $this->setupStatus->allowNullValue = false;
 
 $this->applicationClass = new \Nemundo\Model\Type\Text\TextType($this);
 $this->applicationClass->tableName = "application_application";
+$this->applicationClass->externalTableName = "application_application";
 $this->applicationClass->fieldName = "application_class";
 $this->applicationClass->aliasFieldName = "application_application_application_class";
 $this->applicationClass->label = "Application Class";
@@ -85,6 +89,7 @@ $this->applicationClass->length = 255;
 
 $this->install = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->install->tableName = "application_application";
+$this->install->externalTableName = "application_application";
 $this->install->fieldName = "install";
 $this->install->aliasFieldName = "application_application_install";
 $this->install->label = "Install";
@@ -99,6 +104,7 @@ $this->projectId->allowNullValue = true;
 
 $this->appMenu = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->appMenu->tableName = "application_application";
+$this->appMenu->externalTableName = "application_application";
 $this->appMenu->fieldName = "app_menu";
 $this->appMenu->aliasFieldName = "application_application_app_menu";
 $this->appMenu->label = "App Menu";
@@ -106,6 +112,7 @@ $this->appMenu->allowNullValue = false;
 
 $this->adminMenu = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->adminMenu->tableName = "application_application";
+$this->adminMenu->externalTableName = "application_application";
 $this->adminMenu->fieldName = "admin_menu";
 $this->adminMenu->aliasFieldName = "application_application_admin_menu";
 $this->adminMenu->label = "Admin Menu";

@@ -26,6 +26,7 @@ use Nemundo\App\Scheduler\Com\Table\SchedulerTable;
 use Nemundo\App\Script\Com\Table\ScriptTable;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBox;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
 
@@ -47,6 +48,11 @@ class ApplicationPage extends ApplicationTemplate
         $project->column = true;
         $project->columnSize = 3;
 
+        $install=new BootstrapCheckBox($formRow);
+        $install->label='Installed App';
+        $install->submitOnChange=true;
+        $install->searchMode=true;
+
         $btn = new AdminIconSiteButton($formRow);
         $btn->site = ClearSite::$site;
 
@@ -58,6 +64,11 @@ class ApplicationPage extends ApplicationTemplate
         if ($project->hasValue()) {
             $applicationReader->filter->andEqual($applicationReader->model->projectId, $project->getValue());
         }
+
+        if ($install->hasValue()) {
+            $applicationReader->filter->andEqual($applicationReader->model->install,true);
+        }
+
 
 
         $applicationReader->addOrder($applicationReader->model->application);
@@ -74,9 +85,7 @@ class ApplicationPage extends ApplicationTemplate
         $header->addText($applicationReader->model->project->label);
         $header->addText('Package');
         $header->addEmpty();
-
-        //$header->addText('Dependency');
-
+        $header->addEmpty();
         $header->addEmpty();
 
         foreach ($applicationReader->getData() as $applicationRow) {

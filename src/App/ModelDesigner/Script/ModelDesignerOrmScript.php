@@ -7,9 +7,10 @@ use Nemundo\App\ModelDesigner\Json\ProjectJson;
 use Nemundo\App\ModelDesigner\ModelDesignerConfig;
 use Nemundo\App\ModelDesigner\Orm\OrmBuilder;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 
-class ModelDesignerOrmScript extends AbstractConsoleScript
+class ModelDesignerOrmScript extends AbstractBase
 {
 
     /**
@@ -23,10 +24,11 @@ class ModelDesignerOrmScript extends AbstractConsoleScript
     public $createOrm = false;
 
 
+    /*
     protected function loadScript()
     {
         $this->scriptName = 'modeldesigner-orm';
-    }
+    }*/
 
 
     public function run()

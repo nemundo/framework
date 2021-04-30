@@ -30,6 +30,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "cssdesigner_style";
+$this->id->externalTableName = "cssdesigner_style";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "cssdesigner_style_id";
 $this->id->label = "Id";
@@ -44,6 +45,7 @@ $this->styleTypeId->allowNullValue = false;
 
 $this->style = new \Nemundo\Model\Type\Text\TextType($this);
 $this->style->tableName = "cssdesigner_style";
+$this->style->externalTableName = "cssdesigner_style";
 $this->style->fieldName = "style";
 $this->style->aliasFieldName = "cssdesigner_style_style";
 $this->style->label = "Style";

@@ -45,6 +45,7 @@ $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "scheduler_job";
+$this->id->externalTableName = "scheduler_job";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "scheduler_job_id";
 $this->id->label = "Id";
@@ -59,6 +60,7 @@ $this->scriptId->allowNullValue = false;
 
 $this->finished = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->finished->tableName = "scheduler_job";
+$this->finished->externalTableName = "scheduler_job";
 $this->finished->fieldName = "finished";
 $this->finished->aliasFieldName = "scheduler_job_finished";
 $this->finished->label = "Finished";
@@ -66,6 +68,7 @@ $this->finished->allowNullValue = false;
 
 $this->duration = new \Nemundo\Model\Type\Number\NumberType($this);
 $this->duration->tableName = "scheduler_job";
+$this->duration->externalTableName = "scheduler_job";
 $this->duration->fieldName = "duration";
 $this->duration->aliasFieldName = "scheduler_job_duration";
 $this->duration->label = "Duration";

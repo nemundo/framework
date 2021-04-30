@@ -59,6 +59,9 @@ class AdminSiteNavbar extends BootstrapSiteNavbar
             $logo = new BootstrapNavbarLogo();
             $logo->logoSite = new BaseUrlSite();
             $logo->logoUrl = $this->logoUrl;
+
+
+
             $this->containerDiv->addContainerAtFirst($logo);
         } else {
 

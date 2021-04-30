@@ -73,6 +73,12 @@ abstract class AbstractApplication extends AbstractBaseClass
     /**
      * @var string
      */
+    protected $publicSiteClass;
+
+
+    /**
+     * @var string
+     */
     protected $siteClass;
 // appSiteClass
 

@@ -31,6 +31,7 @@ class BootstrapNavbarLogo extends AbstractHtmlContainer
             $hyperlink->showSiteTitle = false;
             $img = new Img($hyperlink);
             $img->src = $this->logoUrl;
+            $img->width = 200;
         }
 
         return parent::getContent();
