@@ -4,6 +4,7 @@ namespace Nemundo\Project;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Path\Path;
 
 // nach Dev???
 abstract class AbstractProject extends AbstractBaseClass
@@ -34,11 +35,19 @@ abstract class AbstractProject extends AbstractBaseClass
      */
     public $modelPath;
 
+    //public $projectPath;
+
+
     abstract protected function loadProject();
 
     public function __construct()
     {
+
+
         $this->loadProject();
+
+
+
     }
 
 }

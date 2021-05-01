@@ -11,7 +11,7 @@ parent::__construct();
 $this->model = new ProjectModel();
 }
 /**
-* @return ProjectRow[]
+* @return \Nemundo\App\Application\Row\ProjectCustomRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return ProjectRow
+* @return \Nemundo\App\Application\Row\ProjectCustomRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return ProjectRow
+* @return \Nemundo\App\Application\Row\ProjectCustomRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new ProjectRow($dataRow, $this->model);
+$row = new \Nemundo\App\Application\Row\ProjectCustomRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }

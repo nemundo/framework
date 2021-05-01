@@ -93,7 +93,7 @@
             "class_name": "Project",
             "table_name": "application_project",
             "namespace": "Nemundo\\App\\Application\\Data\\Project",
-            "row_class_name": "",
+            "row_class_name": "Nemundo\\App\\Application\\Row\\ProjectCustomRow",
             "primary_index": "auto_increment",
             "is_deleted": false,
             "type": [

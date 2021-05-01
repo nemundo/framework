@@ -11,12 +11,12 @@ parent::__construct();
 $this->model = new ProjectModel();
 }
 /**
-* @return ProjectRow[]
+* @return \Nemundo\App\Application\Row\ProjectCustomRow[]
 */
 public function getData() {
 $list = [];
 foreach (parent::getData() as $dataRow) {
-$row = new ProjectRow($dataRow, $this->model);
+$row = new \Nemundo\App\Application\Row\ProjectCustomRow($dataRow, $this->model);
 $list[] = $row;
 }
 return $list;
