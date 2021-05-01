@@ -11,6 +11,7 @@ use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Backup\Application\BackupApplication;
 use Nemundo\App\ClassDesigner\Application\ClassDesignerApplication;
+use Nemundo\App\Composer\Application\ComposerApplication;
 use Nemundo\App\CssDesigner\Application\CssDesignerApplication;
 use Nemundo\App\FileLog\Application\FileLogApplication;
 use Nemundo\App\Git\Application\GitApplication;
@@ -59,6 +60,7 @@ class ProjectInstall extends AbstractInstall
         (new MailApplication())->installApp();
 
         (new ApplicationSetup())
+            ->addApplication(new ComposerApplication())
             ->addApplication(new CssDesignerApplication())
             ->addApplication(new ManifestApplication())
             ->addApplication(new ModelDesignerApplication())

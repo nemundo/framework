@@ -47,6 +47,15 @@ class ProjectPage extends ApplicationTemplate
 
 
             $cmd=new LocalCommand();
+
+
+            //$list = [];
+
+
+
+         //   cd /srv/web/nemundo_com/vendor/nemundo/srf/src/../ && git for-each-ref --sort=creatordate --format "%(refname) %(objectname)" refs/tags
+
+
             $value = $cmd->runLocalCommand('cd '.$projectPath.' && git for-each-ref --sort=creatordate --format "%(refname) %(objectname)" refs/tags');
             //$row->addText($value);
 
