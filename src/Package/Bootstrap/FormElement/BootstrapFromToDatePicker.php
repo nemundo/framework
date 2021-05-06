@@ -2,6 +2,8 @@
 
 namespace Nemundo\Package\Bootstrap\FormElement;
 
+use Nemundo\Admin\Parameter\Date\DateFromParameter;
+use Nemundo\Admin\Parameter\Date\DateToParameter;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Html\Container\AbstractContainer;
 use Nemundo\Html\Container\AbstractHtmlContainer;
@@ -40,10 +42,12 @@ class BootstrapFromToDatePicker extends AbstractHtmlContainer
         //$formRow = new BootstrapRow($this);
 
         $this->from = new BootstrapDatePicker($this);  // $formRow);
+        $this->from->name=(new DateFromParameter())->getParameterName();
         $this->from->label[LanguageCode::EN] = 'From';
         $this->from->label[LanguageCode::DE] = 'Von';
 
         $this->to = new BootstrapDatePicker($this);  //($formRow);
+        $this->to->name=(new DateToParameter())->getParameterName();
         $this->to->label[LanguageCode::EN] = 'To';
         $this->to->label[LanguageCode::DE] = 'Bis';
 

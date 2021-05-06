@@ -13,11 +13,18 @@ use Nemundo\Web\Site\AbstractSite;
 class DataSite extends AbstractSite
 {
 
+    /**
+     * @var DataSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
 
         $this->title = 'Data';
         $this->url = 'application-data';
+        DataSite::$site=$this;
+
 
         new DropTableSite($this);
         new EmptyTableSite($this);

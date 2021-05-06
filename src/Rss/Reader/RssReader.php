@@ -8,6 +8,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\DateTime\DateTime;
+use Nemundo\Core\Type\Text\Html;
 use Nemundo\Core\Type\Text\Text;
 
 
@@ -103,7 +104,7 @@ class RssReader extends AbstractDataSource
 
                 $rssItem = new RssItem();
                 $rssItem->title = $item->getTitle();
-                $rssItem->description = $text->getValue();
+                $rssItem->description = (new Text( $text->getValue()))->decodeHtmlCharacter()->getValue();
                 $rssItem->url = $item->getLink();
 
                 if (isset($item->getEnclosure()->url)) {

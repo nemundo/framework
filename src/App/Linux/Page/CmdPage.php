@@ -2,25 +2,21 @@
 
 namespace Nemundo\App\Linux\Page;
 
-use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Com\Table\Row\AdminTableRow;
-use Nemundo\App\Linux\Cmd\DiskUsageCmd;
-use Nemundo\App\Linux\Cmd\DistributionVersionCmd;
-use Nemundo\App\Linux\Cmd\RebootCmd;
-use Nemundo\App\Linux\Com\ListBox\CommandListBox;
+use Nemundo\App\Linux\Com\Form\LocalCommandForm;
 use Nemundo\App\Linux\Template\LinuxTemplate;
-use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Core\Local\LocalCommand;
-use Nemundo\Core\Type\Text\Text;
-use Nemundo\Html\Typography\Code;
-use Nemundo\Package\Bootstrap\Layout\Grid\BootstrapRow;
+
 
 class CmdPage extends LinuxTemplate
 {
+
     public function getContent()
     {
 
 
+        new LocalCommandForm($this);
+
+
+        /*
         $form = new SearchForm($this);
 
         $row = new BootstrapRow($form);
@@ -66,9 +62,9 @@ class CmdPage extends LinuxTemplate
                                 }*/
 
 
-            }
+        /*    }
 
-        }
+        }*/
 
 
         return parent::getContent();
