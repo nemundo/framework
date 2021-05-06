@@ -33,7 +33,7 @@ class BackupDumpScheduler extends AbstractScheduler
 
         (new BackupPath())->createPath();
 
-        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTimeFormat());
+        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTime());
         $dateTime->replace('-', '_');
         $dateTime->replace(':', '_');
         $dateTime->replace(' ', '__');

@@ -22,7 +22,7 @@ class SystemInformationTable extends AbstractHtmlContainer
         $title = new AdminSubtitle($this);
         $title->content = 'System';
         $table = new AdminLabelValueTable($this);
-        $table->addLabelValue('Sytem Date/Time', (new DateTime())->setNow()->getIsoDateTimeFormat());
+        $table->addLabelValue('Sytem Date/Time', (new DateTime())->setNow()->getIsoDateTime());
         $table->addLabelValue('Timezone', (new PhpEnvironment())->getTimezone());
 
 

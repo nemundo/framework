@@ -13,7 +13,7 @@ class DateTimeDataProperty extends AbstractDataProperty
 
         if ($date !== null) {
             if ($date !== null) {
-                $this->typeValueList->setModelValue($this->type, $date->getIsoDateTimeFormat());
+                $this->typeValueList->setModelValue($this->type, $date->getIsoDateTime());
             }
         }
 

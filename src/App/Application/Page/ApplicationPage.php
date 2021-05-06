@@ -84,6 +84,7 @@ class ApplicationPage extends ApplicationTemplate
         $header->addEmpty();
         $header->addText($applicationReader->model->project->label);
         $header->addText('Package');
+        $header->addText('Dependecy (application)');
         $header->addEmpty();
         $header->addEmpty();
         $header->addEmpty();

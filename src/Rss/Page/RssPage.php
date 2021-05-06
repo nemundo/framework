@@ -63,7 +63,7 @@ class RssPage extends AbstractTemplateDocument
                 $row=new TableRow($table);
                 $row->addText($rssItem->title);
                 $row->addText($rssItem->description);
-                $row->addText($rssItem->dateTime->getIsoDateTimeFormat());
+                $row->addText($rssItem->dateTime->getIsoDateTime());
                 $row->addHyperlink($rssItem->url);
                 $row->addHyperlink($rssItem->enclosureUrl);
                 $row->addText($rssItem->enclosureType);

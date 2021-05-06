@@ -44,6 +44,12 @@ class SystemLogMessage extends AbstractBaseClass
 
     public function logError($message)
     {
+
+        if (is_array($message)) {
+            $message = join('',$message );
+        }
+
+
         $this->logMessage(new ErrorLogType(), $message);
         return $this;
     }
