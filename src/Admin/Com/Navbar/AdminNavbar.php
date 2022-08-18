@@ -36,13 +36,34 @@ class AdminNavbar extends Nav
     public $fixed = false;
 
 
+    public static $assetMode = false;
+
+
     public function getContent()
     {
+
+
+        if (AdminNavbar::$assetMode) {
+
+            $this->addJsUrl('/asset/js/framework/Admin/Dropdown/dropdown.js');
+
+            $module = new ModuleJavaScript($this);
+            $module->src = '/asset/js/framework/Admin/Navbar/Navbar.js';
+
+        } else {
 
         $this->addJsUrl('/js/framework/Admin/Dropdown/dropdown.js');
 
         $module = new ModuleJavaScript($this);
         $module->src = '/js/framework/Admin/Navbar/Navbar.js';
+
+        }
+
+
+
+
+
+
 
         $this->addCssClass('admin-navbar');
 
