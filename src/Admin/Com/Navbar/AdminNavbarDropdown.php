@@ -12,9 +12,7 @@ class AdminNavbarDropdown extends Div
 
     public $dropdownLabel;
 
-
     private $dropdown;
-
 
     private $submenuContent;
 
