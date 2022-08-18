@@ -45,24 +45,19 @@ class AdminNavbar extends Nav
 
         if (AdminNavbar::$assetMode) {
 
-            $this->addJsUrl('/asset/js/framework/Admin/Dropdown/dropdown.js');
+            $this->addJsUrl('/asset/framework/js/Admin/Dropdown/dropdown.js');
 
             $module = new ModuleJavaScript($this);
-            $module->src = '/asset/js/framework/Admin/Navbar/Navbar.js';
+            $module->src = '/asset/framework/js/Admin/Navbar/Navbar.js';
 
         } else {
 
-        $this->addJsUrl('/js/framework/Admin/Dropdown/dropdown.js');
+            $this->addJsUrl('/js/framework/Admin/Dropdown/dropdown.js');
 
-        $module = new ModuleJavaScript($this);
-        $module->src = '/js/framework/Admin/Navbar/Navbar.js';
+            $module = new ModuleJavaScript($this);
+            $module->src = '/js/framework/Admin/Navbar/Navbar.js';
 
         }
-
-
-
-
-
 
 
         $this->addCssClass('admin-navbar');
@@ -93,7 +88,7 @@ class AdminNavbar extends Nav
                 $hyperlink->href = '/';
 
                 $span = new Span($hyperlink);
-                $span->content=  $this->logoText;
+                $span->content = $this->logoText;
 
             }
 
