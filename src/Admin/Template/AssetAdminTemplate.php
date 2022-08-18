@@ -8,10 +8,18 @@ use Nemundo\Package\Framework\FrameworkPackage;
 class AssetAdminTemplate extends NavbarAdminTemplate
 {
 
+
+    protected function loadContainer()
+    {
+        AdminNavbar::$assetMode = true;
+        parent::loadContainer();
+
+
+    }
+
+
     public function getContent()
     {
-
-        AdminNavbar::$assetMode=true;
 
         $this->addPackage(new FrameworkPackage());
 
