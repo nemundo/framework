@@ -40,7 +40,9 @@ class AdminNavbarDropdown extends Div
         AdminNavbarDropdown::$dropdownCount++;
 
         $dropdownId = 'dropdown-' . AdminNavbarDropdown::$dropdownCount;  // (new UniqueComName())->getUniqueName();
-        $this->dropdown->addAttribute('onclick', 'hideNavbarDropdownMenu(); document.getElementById(\'' . $dropdownId . '\').classList.toggle(\'admin-navbar-dropdown-show\');');
+
+        $this->dropdown->addAttribute('onclick', 'hideNavbarDropdownMenu(); document.getElementById(\'' . $dropdownId . '\').classList.toggle(\'admin-dropdown-show\');');
+        //$this->dropdown->addAttribute('onclick', 'hideNavbarDropdownMenu(); document.getElementById(\'' . $dropdownId . '\').classList.toggle(\'admin-navbar-dropdown-show\');');
 
         $this->submenuContent->id = $dropdownId;
         $this->submenuContent->addCssClass('admin-navbar-submenu-content');
