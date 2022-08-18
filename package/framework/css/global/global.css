@@ -1,0 +1,48 @@
+:root {
+
+    --color-light: lightgrey;
+    --color-dark: #676767;
+    --color-background: white;
+    --color-font: blue;
+    --color-error: red;
+    --border-style: solid;
+    --border-width: 1px;
+    --border-color: lightgrey;
+    --border-radius: 5px;
+    --box-shadow: 3px 6px 4px -6px #000000;
+    --button-width: 150px;
+    --navbar-heigth: 60px;
+
+    --default-font: "Times New Roman";
+    --default-font-size: 1rem;
+
+    /*--default-space: 20px;*/
+
+    --default-input-space: 7px;
+
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    :root {
+        --default-space: 10px;
+    }
+
+}
+
+
+@media screen and (min-width: 1000px) {
+
+    :root {
+        --default-space: 10px;
+    }
+
+}
+
+
+body {
+
+    font-size: var(--default-font-size);
+
+}

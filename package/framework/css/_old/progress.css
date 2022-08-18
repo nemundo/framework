@@ -1,0 +1,19 @@
+.progress {
+
+    width: 100%;
+    height:30px;
+    border-style: solid;
+    border-color: #bebebf;
+
+
+}
+
+
+.progress-bar {
+    height: 30px;
+    width: 30%;
+    background-color: #0c63e4;
+    color: gainsboro;
+    text-align: center;
+}
+

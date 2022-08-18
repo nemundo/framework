@@ -1,0 +1,21 @@
+.admin-map {
+
+    width: 100%;
+    height: 800px;
+
+
+}
+
+
+
+.admin-map-full {
+
+    /*background-color: #0a47a9;*/
+
+    position: fixed;
+    width: 100%;
+    height: calc(100% - var(--navbar-heigth));
+    left: 0;
+    top: var(--navbar-heigth);
+
+}

@@ -1,0 +1,178 @@
+
+.nav-dark {
+
+
+}
+
+.nav {
+
+    display: flex;
+    justify-content: space-between;
+
+
+    background-color: var(--color-dark);
+    /*padding: 10px;*/
+    /*text-align: right;*/
+    /*position: relative;*/
+    position: sticky;
+    top: 0;
+
+}
+
+
+.nav-item {
+
+    color: var(--color-light);
+    /*width: 100px;*/
+    text-decoration: none;
+    font-weight: bold;
+    padding: 20px;
+
+}
+
+.nav-item:hover {
+
+    background-color: var(--color-dark);
+    /*color:var(--color-light);*/
+
+}
+
+
+#logo {
+
+    height: 1.5em;
+    /*transition-duration: 0.5s;*/
+
+}
+
+/*
+#logo:hover {
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transform: scale(2.5) rotate(45deg);
+
+}*/
+
+
+
+
+
+.mobilemenu {
+
+    color: var(--color-light);
+    font-size: 1.5em;
+    transition: 0.5s;
+
+}
+
+
+.mobilemenu:hover {
+
+    cursor: pointer;
+
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    #hamburger {
+        display: none;
+
+    }
+
+
+    #menu-content {
+
+        display: flex;
+        /*gap: 20px;*/
+
+
+    }
+
+
+    #menu-close {
+
+      display: none;
+
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 1200px) {
+
+
+    #hamburger {
+        display: inline;
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-light);
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+
+
+
+    #menu-content {
+
+        /*width: 0;
+        height: 0;*/
+
+        display: flex;
+        flex-direction: column;
+
+        /*padding: 50px;*/
+        /*gap: 10px;*/
+
+        border-width: 1px;
+        border-color: var(--color-light);
+
+
+        width: 0;
+        /*height: 300px;*/
+
+        overflow: hidden;
+
+        background-color: var(--color-dark);
+        position: absolute;
+        right: 0;
+        /*opacity: 0.9;*/
+        /*display: none;*/
+
+
+        /*transition: width 2s, height 4s;*/
+        transition-property: width;
+        transition-duration: 0.1s;
+
+
+    }
+
+    .nav-item {
+
+        display: block;
+        width: 100%;
+        padding: 20px;
+
+    }
+
+
+
+    #menu-close {
+
+        display: inline;
+        cursor: pointer;
+        font-size: 3em;
+        color: var(--color-light);
+        position: absolute;
+        right: 0;
+
+    }
+
+
+
+}
+
+

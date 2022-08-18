@@ -1,0 +1,31 @@
+h1 {
+
+    color: var(--color-dark);
+    margin-bottom: 20px;
+
+}
+
+
+h2 {
+
+    color: var(--color-dark);
+
+}
+
+h5 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+hr {
+    border: 1px solid var(--color-dark);
+    margin-top: var(--default-space);
+    margin-bottom: var(--default-space);
+}
+
+
+.admin-hyperlink {
+    color: var(--color-dark);
+    text-decoration: none;
+}

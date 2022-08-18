@@ -1,0 +1,5 @@
+.admin-icon {
+    color: var(--color-font);
+    font-size: var(--default-font-size);
+    cursor: pointer;
+}

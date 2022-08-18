@@ -9,13 +9,15 @@ use Nemundo\App\Git\Command\GitPushCommand;
 use Nemundo\App\Git\Command\GitTagCommand;
 use Nemundo\App\Git\Command\LatestGitTag;
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\CoreRepository;
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\File\DirectoryCopy;
 use Nemundo\Core\File\DirectoryReader;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\Repository\AbstractRepository;
 use Nemundo\Project\Deployment\Copy\ProjectCopy;
 use Nemundo\Project\Deployment\Github\GithubBuilder;
 use Nemundo\Project\Deployment\Path\DeploymentPath;
+use Nemundo\Project\Path\ProjectPath;
 
 abstract class AbstractPublicRepositoryDeployment extends AbstractBase
 {
@@ -32,39 +34,45 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
     abstract protected function loadDeployment();
 
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->loadDeployment();
     }
 
 
-
-    public function removeAllTags() {
+    public function removeAllTags()
+    {
 
         $tag = new LatestGitTag();
-        $tag->path =$deploymentPath = (new DeploymentPath())
-            ->addPath($this->repository->projectName)
+        $tag->path = $this->getDeploymentPath()
             ->getPath();
+
+        /*$tag->path = $deploymentPath = (new DeploymentPath())
+            ->addPath($this->repository->projectName)
+            ->getPath();*/
 
         $tag->deleteAllTag();
 
     }
 
 
+    protected function getDeploymentPath()
+    {
 
-    protected function getDeploymentPath() {
+        $path = (new DeploymentPath())
+            ->addPath($this->repository->projectName);
 
-
-
-
+        return $path;
 
     }
 
 
-    public function deploy() {
+    public function deploy()
+    {
 
-        $deploymentPath = (new DeploymentPath())
-            ->addPath($this->repository->projectName);
+        $deploymentPath = $this->getDeploymentPath(); /* (new DeploymentPath())
+            ->addPath($this->repository->projectName);*/
 
         $gitUrl = (new GithubBuilder())->getGitUrl($this->githubShortUrl);
 
@@ -109,6 +117,11 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
         $copy->path = $deploymentPath;
         $copy->copyProject($this->repository);
 
+        $this
+            ->copyPackageFile('css')
+            ->copyPackageFile('js');
+
+
         $commit = new GitCommitCommand();
         $commit->path = $deploymentPath->getPath();
         $commit->runCommand();
@@ -124,12 +137,70 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
 
         $tag = new GitTagCommand();
         $tag->path = $deploymentPath->getPath();
-        $tag->tag =$version;
+        $tag->tag = $version;
         $tag->runCommand();
 
 
+    }
 
+
+    public function copyPackageFile($type)
+    {
+
+        //$type = 'css';
+        //$destinationPath = (new ProjectPath())
+
+
+        //'D:\deploy\framework\package\framework';
+        //$project=new \Nemundo\FrameworkProject();
+
+
+        $path = (new ProjectPath())
+            ->addPath($type)
+            ->addPath($this->repository->projectName);
+
+
+        $webPath = $this->getDeploymentPath()
+            ->addPath('package')
+            ->addPath($this->repository->projectName)
+            ->addPath($type);
+            //->addPath($this->repository->projectName);
+
+        $webPath->createPath();
+
+
+        /*(new Path($destinationPath))
+//    ->addPath($destinationPath)
+            ->createPath()
+            ->getPath();*/
+
+        /*$webPath = (new Path($this->deploymentPath))
+            ->addPath($destinationPath)
+            ->createPath()
+            ->getPath();*/
+
+        if ($path->existPath()) {
+
+            //(new Debug())->write('exists');
+
+            $copy = new DirectoryCopy();
+            $copy->overwriteExistingFile = true;
+            $copy->sourcePath = $path->getPath();
+            $copy->destinationPath = $webPath->getPath();
+
+
+            /*(new Path($webPath))
+            ->addPath($type)
+            ->addPath($project->projectName)
+            ->createPath()
+            ->getPath();*/
+            $copy->copyDirectory();
+
+        }
+
+        return $this;
 
     }
+
 
 }

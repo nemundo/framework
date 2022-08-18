@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+
+/*ul {
+    list-style: none;
+}*/
+
+
+
+body {
+
+    background-color: var(--color-background);
+    color: var(--color-font);
+    font-family: var(--default-font);
+
+}
+
+
+a {
+
+    color: var(--color-font);
+    text-decoration: none;
+
+}
+
+/*
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+*/
+
