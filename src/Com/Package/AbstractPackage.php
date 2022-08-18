@@ -1,68 +1,1 @@
-<?php
-
-namespace Nemundo\Com\Package;
-
-
-use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Project\AbstractProject;
-
-abstract class AbstractPackage extends AbstractBase
-{
-
-    /**
-     * @var string
-     */
-    public $packageName;
-
-    /**
-     * @var AbstractProject
-     */
-    public $project;
-
-    private $jsList = [];
-
-    private $cssList = [];
-
-    private $fontList = [];
-
-
-    abstract protected function loadPackage();
-
-    public function __construct()
-    {
-        $this->loadPackage();
-    }
-
-
-    protected function addJs($filename)
-    {
-        $this->jsList[] = $this->packageName . '/' . $filename;
-        return $this;
-    }
-
-
-    protected function addCss($filename)
-    {
-        $this->cssList[] = $this->packageName . '/' . $filename;
-        return $this;
-    }
-
-    protected function addFont($filename)
-    {
-        $this->fontList[] = $filename;
-        return $this;
-    }
-
-
-    public function getJs()
-    {
-        return $this->jsList;
-    }
-
-
-    public function getCss()
-    {
-        return $this->cssList;
-    }
-
-}
+<?phpnamespace Nemundo\Com\Package;use Nemundo\Core\Base\AbstractBaseClass;use Nemundo\Project\AbstractProject;use Nemundo\Web\WebConfig;abstract class AbstractPackage extends AbstractBaseClass{    //public static $baseUrl2;    //private static $baseUrl=[];  //='asset/';    /**     * @var string     */    public $packageName;    /**     * @var AbstractProject     */    public $project;    private $jsList = [];    private $cssList = [];    //private $fontList = [];    abstract protected function loadPackage();    public function __construct()    {        $this->loadPackage();        //$this->baseUrl = WebConfig::$webUrl . 'asset/';        //AbstractPackage::$baseUrl[$this->getClassName()]= WebConfig::$webUrl . 'asset/'.$this->packageName.'/';    }    /*    public function changeBaseUrl($baseUrl) {        //(new Debug())->write($this->getClassName());        AbstractPackage::$baseUrl[$this->getClassName()]=$baseUrl;    }*/    protected function getBaseUrl()    {        /*$baseUrl =null;        if (isset(AbstractPackage::$baseUrl[$this->getClassName()])) {            $baseUrl = AbstractPackage::$baseUrl[$this->getClassName()];        }else {            $baseUrl = WebConfig::$webUrl . 'asset/'.$this->packageName.'/';        }*/        // AbstractPackage::$baseUrl[$this->getClassName()]= WebConfig::$webUrl . 'asset/'.$this->packageName.'/';        //$baseUrl = WebConfig::$webUrl . 'asset/' . $this->packageName . '/';        $baseUrl = '/asset/' . $this->packageName . '/';        return $baseUrl;   // AbstractPackage::$baseUrl[$this->getClassName()];    }    protected function addJs($filename)    {        $this->jsList[] = $filename;        return $this;    }    protected function addCss($filename)    {        $this->cssList[] = $this->packageName . '/' . $filename;        return $this;    }    /*protected function addFont($filename)    {        $this->fontList[] = $filename;        return $this;    }*/    public function getJsList()    {        //LibraryHeader::addJsUrl(WebConfig::$webUrl . 'asset/' . $jsFilename);        $list = [];        foreach ($this->jsList as $jsUrl) {            //$list[]= WebConfig::$webUrl . 'asset/' . $jsUrl;            //if (AbstractPackage::$baseUrl[$this->getClassName()]=$baseUrl;            //$list[]=  WebConfig::$webUrl . 'asset/' . $jsUrl;            $list[] = $this->getBaseUrl() . $jsUrl;        }        return $list;        //return $this->jsList;    }    public function getCss()    {        return $this->cssList;    }}

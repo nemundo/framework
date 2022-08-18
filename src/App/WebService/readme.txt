@@ -1,0 +1,1 @@
+Move to WebMove to ContentAppWebServiceContentTypeAbstractWebServiceUrlParameterapplication --> webservice listWebServiceResponse- ok- errorSecureWebService- mit HashCode

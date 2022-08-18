@@ -1,23 +1,1 @@
-<?php
-
-namespace Nemundo\Com\Template;
-
-use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Html\Document\AbstractDocument;
-
-class AbstractTemplateDocument extends AbstractDocument
-{
-
-    //public $pageTitle;
-
-    public function render()
-    {
-
-        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-        //$page->title = $this->pageTitle;
-        $page->addContainer($this);
-        $page->render();
-
-    }
-
-}
+<?phpnamespace Nemundo\Com\Template;use Nemundo\Core\Debug\Debug;use Nemundo\Dev\App\Factory\DefaultTemplateFactory;use Nemundo\Html\Document\AbstractDocument;use Nemundo\Html\Header\Title;class AbstractTemplateDocument extends AbstractDocument{    public $pageTitle;    public function render()    {        $page = (new DefaultTemplateFactory())->getDefaultTemplate();        $page->statusCode=$this->statusCode;        //$page->page title = $this->pageTitle;        /*$title = new Title($page);        $title->content = $this->pageTitle;*/        //(new Debug())->write($this->pageTitle);        $page->addContainer($this);        $page->render();    }}

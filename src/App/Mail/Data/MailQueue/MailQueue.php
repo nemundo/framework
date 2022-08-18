@@ -38,8 +38,10 @@ $this->dateTimeSend = new \Nemundo\Core\Type\DateTime\DateTime();
 }
 public function save() {
 $this->typeValueList->setModelValue($this->model->send, $this->send);
+if ($this-> dateTimeSend->hasValue()) {
 $property = new \Nemundo\Model\Data\Property\DateTime\DateTimeDataProperty($this->model->dateTimeSend, $this->typeValueList);
 $property->setValue($this->dateTimeSend);
+}
 $this->typeValueList->setModelValue($this->model->mailTo, $this->mailTo);
 $this->typeValueList->setModelValue($this->model->subject, $this->subject);
 $this->typeValueList->setModelValue($this->model->text, $this->text);

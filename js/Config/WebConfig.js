@@ -1,5 +1,0 @@
-class WebConfig {
-
-    static webUrl = '/';
-
-}

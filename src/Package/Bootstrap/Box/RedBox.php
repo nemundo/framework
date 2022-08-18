@@ -1,9 +1,1 @@
-<?php
-
-namespace Nemundo\Bootstrap\Html;
-
-
-class RedBox
-{
-
-}
+<?phpnamespace Nemundo\Bootstrap\Html;class RedBox{}

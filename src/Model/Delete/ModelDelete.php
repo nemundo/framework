@@ -1,10 +1,1 @@
-<?php
-
-namespace Nemundo\Model\Delete;
-
-
-class ModelDelete extends AbstractModelDelete
-{
-
-
-}
+<?phpnamespace Nemundo\Model\Delete;class ModelDelete extends AbstractModelDelete{}

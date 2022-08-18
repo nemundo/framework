@@ -130,5 +130,9 @@ $this->active->aliasFieldName = "mail_mail_server_active";
 $this->active->label = "Active";
 $this->active->allowNullValue = false;
 
+$index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "mail_address";
+$index->addType($this->mailAddress);
+
 }
 }

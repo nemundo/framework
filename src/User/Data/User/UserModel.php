@@ -108,5 +108,9 @@ $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "login";
 $index->addType($this->login);
 
+$index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "secure_token";
+$index->addType($this->secureToken);
+
 }
 }

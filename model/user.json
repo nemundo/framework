@@ -76,6 +76,13 @@
                     "field_name": [
                         "login"
                     ]
+                },
+                {
+                    "index_name": "secure_token",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "secure_token"
+                    ]
                 }
             ]
         },

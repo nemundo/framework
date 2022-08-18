@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Project\Path;class BackupPath extends ProjectPath{    protected function loadPath()    {        parent::loadPath();        $this->addPath('backup');    }}

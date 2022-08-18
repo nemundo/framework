@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Svg;class Color{    const BLUE = 'blue';    const RED = 'red';    const WIDTH = 'white';    const BLACK = 'black';}

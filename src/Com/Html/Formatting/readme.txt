@@ -1,6 +1,1 @@
-
-
-class Paragraph extends P
-
-
-restricted
+class Paragraph extends Prestricted

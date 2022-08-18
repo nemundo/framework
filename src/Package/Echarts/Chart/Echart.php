@@ -1,8 +1,1 @@
-<?php
-
-namespace Nemundo\Package\Echarts\Chart;
-
-class Echart extends AbstractEchart
-{
-
-}
+<?phpnamespace Nemundo\Package\Echarts\Chart;class Echart extends AbstractEchart{}

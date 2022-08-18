@@ -1,9 +1,1 @@
-git config credential.helper store
-git pull
-sudo composer update
-
-php bin/setup.php
-
-sudo chown -R www-data:www-data admin
-sudo chown -R www-data:www-data log
-sudo chown -R www-data:www-data tmp
+git config credential.helper storegit pullphp bin/setup.php

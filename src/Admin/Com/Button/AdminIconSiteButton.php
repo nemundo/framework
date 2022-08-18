@@ -1,50 +1,1 @@
-<?php
-
-namespace Nemundo\Admin\Com\Button;
-
-
-use Nemundo\Com\Container\ContainerUserRestrictionTrait;
-use Nemundo\Core\Language\Translation;
-use Nemundo\Html\Hyperlink\AbstractHyperlink;
-use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-
-// SearchIconAdminButton
-class AdminIconSiteButton extends AbstractHyperlink
-{
-
-    use ContainerUserRestrictionTrait;
-
-    /**
-     * @var AbstractIconSite
-     */
-    public $site;
-
-    /**
-     * @var bool
-     */
-    public $showTitle = true;
-
-    public function getContent()
-    {
-
-        $this->site->icon->iconSize = 2;
-        $this->addCssClass('p-2');
-
-
-        if ($this->checkUserVisibility()) {
-
-            $this->addContainer($this->site->icon);
-
-            $this->href = $this->site->getUrl();
-
-            if ($this->showTitle) {
-                $this->title = (new Translation())->getText($this->site->title);
-            }
-
-        }
-
-        return parent::getContent();
-
-    }
-
-}
+<?phpnamespace Nemundo\Admin\Com\Button;use Nemundo\Admin\Com\Hyperlink\AdminSiteHyperlinkContainer;use Nemundo\Admin\Com\Icon\AdminIcon;use Nemundo\Admin\Site\AbstractAdminIconSite;use Nemundo\Com\Container\ContainerUserRestrictionTrait;use Nemundo\Com\Html\Hyperlink\SiteHyperlink;use Nemundo\Core\Language\Translation;use Nemundo\Html\Hyperlink\AbstractHyperlink;use Nemundo\Package\FontAwesome\Site\AbstractIconSite;// SearchIconAdminButtonclass AdminIconSiteButton extends AdminSiteHyperlinkContainer{    use ContainerUserRestrictionTrait;    /**     * @var AbstractAdminIconSite     */    public $site;    /**     * @var bool     */    public $showTitle = false;  // true;    public function getContent()    {        //$this->site->icon->iconSize = 2;        //$this->addCssClass('p-2');        if ($this->checkUserVisibility()) {            //$this->addContainer($this->site->icon);            $this->href = $this->site->getUrl();            $this->title=$this->site->title;            /*if ($this->showTitle) {                $this->title = (new Translation())->getText($this->site->title);            }*/            $icon = new AdminIcon($this);            $icon->icon = $this->site->iconName;        }        return parent::getContent();    }}

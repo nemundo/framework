@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Web\Action\Site;use Nemundo\Package\FontAwesome\Icon\ActiveIcon;use Nemundo\Package\FontAwesome\Site\IconSiteTrait;class _ActiveActionSite extends ActionSite{    use IconSiteTrait;    public function __construct(AbstractActionPanel $container)    {        parent::__construct($container);        $this->icon = new ActiveIcon();    }}

@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Linux\Cmd;class MvCmd extends AbstractCmd{    public $sourcePath;    public $destinationPath;    public function getCommandList()    {        $this->addCommandLine('mv ' . $this->sourcePath . ' ' . $this->destinationPath);        return parent::getCommandList();    }}

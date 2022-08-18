@@ -1,6 +1,1 @@
-{
-    "app": "Git",
-    "name": "git",
-    "namespace": "Nemundo\\App\\Git",
-    "is_deleted": false
-}
+{    "app": "Git",    "name": "git",    "namespace": "Nemundo\\App\\Git",    "is_deleted": false}

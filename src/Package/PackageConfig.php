@@ -1,14 +1,1 @@
-<?php
-
-namespace Nemundo\Package;
-
-
-class PackageConfig
-{
-
-    /**
-     * @var string
-     */
-    public static $packagePath;
-
-}
+<?phpnamespace Nemundo\Package;class PackageConfig{    /**     * @var string     */    public static $packagePath;}

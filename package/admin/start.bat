@@ -1,2 +1,1 @@
-start http://localhost:[port]/
-php -S localhost:[port]
+start http://localhost:[port]/php -S localhost:[port]

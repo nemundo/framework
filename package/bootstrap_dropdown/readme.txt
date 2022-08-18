@@ -1,2 +1,1 @@
-Source:
-https://github.com/vsn4ik/bootstrap-submenu
+Source:https://github.com/vsn4ik/bootstrap-submenu

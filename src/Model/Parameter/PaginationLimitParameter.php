@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Model\Parameter;use Nemundo\Web\Parameter\AbstractUrlParameter;class PaginationLimitParameter extends AbstractUrlParameter{    protected function loadParameter()    {        $this->parameterName = 'pagination-limit';    }}

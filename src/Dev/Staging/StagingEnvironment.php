@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Dev\Staging;// DeploymentEnvironmentclass StagingEnvironment{    const TEST = 'test';    const DEVELOPMENT = 'dev';  // 'development';    const PRODUCTION = 'prod';  // 'production';    const PREVIEW = 'preview';  // 'production';}

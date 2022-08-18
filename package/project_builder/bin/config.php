@@ -1,3 +1,1 @@
-<?php
-
-require __DIR__ . "/../config.php";
+<?phprequire __DIR__ . "/../config.php";

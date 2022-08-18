@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Package\BootstrapIcon\Package;use Nemundo\Com\Package\AbstractPackage;class BootstrapIconPackage extends AbstractPackage{    protected function loadPackage()    {        $this->packageName = 'bootstrap_icon';        $this->addCss('bootstrap-icons.css');    }}

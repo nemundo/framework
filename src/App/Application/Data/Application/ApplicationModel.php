@@ -27,7 +27,7 @@ public $applicationClass;
 public $install;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalIdType
+* @var \Nemundo\Model\Type\External\Id\NumberExternalIdType
 */
 public $projectId;
 
@@ -95,7 +95,7 @@ $this->install->aliasFieldName = "application_application_install";
 $this->install->label = "Install";
 $this->install->allowNullValue = false;
 
-$this->projectId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
+$this->projectId = new \Nemundo\Model\Type\External\Id\NumberExternalIdType($this);
 $this->projectId->tableName = "application_application";
 $this->projectId->fieldName = "project";
 $this->projectId->aliasFieldName = "application_application_project";

@@ -1,9 +1,1 @@
-<?php
-
-namespace Nemundo\Model\Value;
-
-
-class ModelDataValue extends AbstractModelDataValue
-{
-
-}
+<?phpnamespace Nemundo\Model\Value;class ModelDataValue extends AbstractModelDataValue{}

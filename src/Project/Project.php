@@ -1,14 +1,1 @@
-<?php
-
-namespace Nemundo\Project;
-
-
-class Project extends AbstractProject
-{
-
-    protected function loadProject()
-    {
-
-    }
-
-}
+<?phpnamespace Nemundo\Project;class Project extends AbstractProject{    protected function loadProject()    {    }}

@@ -1,0 +1,123 @@
+{
+    "app": "WebService",
+    "name": "webservice",
+    "namespace": "Nemundo\\App\\WebService",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "7b9be77f-af0b-4c22-8352-7b725808f76a",
+            "label": "Service Request",
+            "class_name": "ServiceRequest",
+            "table_name": "webservice_service_request",
+            "namespace": "Nemundo\\App\\WebService\\Data\\ServiceRequest",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Unique Name",
+                    "field_name": "unique_name",
+                    "variable_name": "uniqueName",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "50"
+                },
+                {
+                    "type": "text",
+                    "label": "Php Class",
+                    "field_name": "php_class",
+                    "variable_name": "phpClass",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Application",
+                    "field_name": "application",
+                    "variable_name": "application",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "be58745e-78c3-4c3a-aadc-d2b26d233518"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Public Service",
+                    "field_name": "public_service",
+                    "variable_name": "publicService",
+                    "allow_null": false,
+                    "is_deleted": true
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Setup Status",
+                    "field_name": "setup_status",
+                    "variable_name": "setupStatus",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "unique_name",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "unique_name"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "56bf4875-6df2-4fb5-aaea-bac4b317e2e9",
+            "label": "Web Service",
+            "class_name": "WebService",
+            "table_name": "webservice_web_service",
+            "namespace": "Nemundo\\App\\WebService\\Data\\WebService",
+            "row_class_name": "",
+            "primary_index": "text_id",
+            "is_deleted": true,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Web Service",
+                    "field_name": "web_service",
+                    "variable_name": "webService",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Php Class",
+                    "field_name": "php_class",
+                    "variable_name": "phpClass",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Application",
+                    "field_name": "application",
+                    "variable_name": "application",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "be58745e-78c3-4c3a-aadc-d2b26d233518"
+                },
+                {
+                    "type": "text",
+                    "label": "Unique Name",
+                    "field_name": "unique_name",
+                    "variable_name": "uniqueName",
+                    "allow_null": false,
+                    "is_deleted": true,
+                    "length": "50"
+                }
+            ],
+            "index": []
+        }
+    ]
+}

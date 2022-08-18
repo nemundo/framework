@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Svg\Color;use Nemundo\Core\Base\AbstractBase;class RgbColor extends AbstractBase{    public $r;    public $g;    public $b;    public $hsl;}

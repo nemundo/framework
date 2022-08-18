@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\ModelDesigner\Page\Project;use Nemundo\App\ModelDesigner\Com\Form\DefaultProjectForm;use Nemundo\Com\Template\AbstractTemplateDocument;class DefaultProjectPage extends AbstractTemplateDocument{    public function getContent()    {        new DefaultProjectForm($this);        return parent::getContent();    }}

@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Project\Deployment;// LocalPathDeploymentabstract class AbstractLocalDriveDeployment extends AbstractDeployment{    public $deploymentPath;    protected function loadDeployment()    {        $this->createConfigFile = false;        $this->deleteBeforeDeploy=false;        $this->webPath = 'html';    }}

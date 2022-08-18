@@ -1,15 +1,1 @@
-<?php
-
-namespace Nemundo\Com\Device;
-
-
-class GeoLocation
-{
-
-    // Hidden Field
-
-    // Ajax Call
-
-
-
-}
+<?phpnamespace Nemundo\Com\Device;class GeoLocation{    // Hidden Field    // Ajax Call}

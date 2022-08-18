@@ -16,6 +16,11 @@ public $project;
 */
 public $phpClass;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $setupStatus;
+
 protected function loadModel() {
 $this->tableName = "application_project";
 $this->aliasTableName = "application_project";
@@ -48,6 +53,14 @@ $this->phpClass->aliasFieldName = "application_project_php_class";
 $this->phpClass->label = "Php Class";
 $this->phpClass->allowNullValue = false;
 $this->phpClass->length = 255;
+
+$this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->setupStatus->tableName = "application_project";
+$this->setupStatus->externalTableName = "application_project";
+$this->setupStatus->fieldName = "setup_status";
+$this->setupStatus->aliasFieldName = "application_project_setup_status";
+$this->setupStatus->label = "Setup Status";
+$this->setupStatus->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "php_class";

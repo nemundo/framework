@@ -13,7 +13,7 @@
             "namespace": "Nemundo\\App\\CssDesigner\\Data\\Style",
             "row_class_name": "",
             "primary_index": "auto_increment",
-            "is_deleted": false,
+            "is_deleted": true,
             "type": [
                 {
                     "type": "external",
@@ -45,7 +45,7 @@
             "namespace": "Nemundo\\App\\CssDesigner\\Data\\StyleType",
             "row_class_name": "",
             "primary_index": "auto_increment",
-            "is_deleted": false,
+            "is_deleted": true,
             "type": [
                 {
                     "type": "text",

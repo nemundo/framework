@@ -1,69 +1,1 @@
-<?php
-
-namespace Nemundo\App\Mail\Message;
-
-use Nemundo\App\Mail\MailConfig;
-use Nemundo\Core\Log\LogMessage;
-
-
-class SmtpMailMessage extends AbstractMailMessage
-{
-
-    /**
-     * @var bool
-     */
-    public $sslEncryption = true;
-
-    public function sendMail()
-    {
-
-        $encryption = null;
-        if ($this->sslEncryption) {
-            $encryption = 'ssl';
-        }
-
-        $transport = (new \Swift_SmtpTransport(MailConfig::$mailConnection->host, MailConfig::$mailConnection->port, $encryption));
-
-        if (MailConfig::$mailConnection->authentication) {
-            $transport->setUsername(MailConfig::$mailConnection->user);
-            $transport->setPassword(MailConfig::$mailConnection->password);
-        }
-
-        $mailer = new  \Swift_Mailer($transport);
-        $message = new \Swift_Message();
-
-        foreach ($this->toList as $email) {
-            $message->addTo($email);
-        }
-
-        foreach ($this->ccList as $email) {
-            $message->addCc($email);
-        }
-
-        foreach ($this->bccList as $email) {
-            $message->addBcc($email);
-        }
-
-        $message->setFrom(array(MailConfig::$defaultMailFrom => MailConfig::$defaultMailFromText));
-        $message->setSubject($this->subject);
-
-        // Text Body
-        //$message->setBody(strip_tags($text));
-
-        // Html Body
-//        $message->setBody($this->text, 'text/html');
-        $message->setBody($this->text, $this->contentType);
-
-        foreach ($this->attachmentList as $filename) {
-            $message->attach(\Swift_Attachment::fromPath($filename));
-        }
-
-        try {
-            $mailer->send($message);
-        } catch (\Exception $error) {
-            (new LogMessage())->writeError($error);
-        }
-
-    }
-
-}
+<?phpnamespace Nemundo\App\Mail\Message;use Nemundo\App\Mail\MailConfig;use Nemundo\Core\Log\LogMessage;use Symfony\Component\Mailer\Exception\TransportException;use Symfony\Component\Mailer\Mailer;use Symfony\Component\Mailer\Transport;use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;use Symfony\Component\Mime\Address;use Symfony\Component\Mime\Email;class SmtpMailMessage extends AbstractSmtpMessage  // AbstractMailMessage{    /**     * @var bool     */    public $sslEncryption = true;    public function sendMail()    {        /*$encryption = null;        if ($this->sslEncryption) {            $encryption = 'ssl';        }*/        //$transport = (new \Swift_SmtpTransport(MailConfig::$mailConnection->host, MailConfig::$mailConnection->port, $encryption));        //$transport = new SmtpTransport();        //smtp://user:pass@smtp.example.com:25        $dsn = 'smtp://'.MailConfig::$mailConnection->user.':'.MailConfig::$mailConnection->password.'@'.MailConfig::$mailConnection->host.':'.MailConfig::$mailConnection->port;        $transport = Transport::fromDsn($dsn);        $mailer = new Mailer($transport);        //if (MailConfig::$mailConnection->authentication) {          /*  $transport->setUsername(MailConfig::$mailConnection->user);            $transport->setPassword(MailConfig::$mailConnection->password);*/        //}        /*        $transport = new SendmailTransport();        $mailer = new Mailer($transport);*/        /* $email = (new Email())             ->from('hello@example.com')             ->to('you@example.com')             //->cc('cc@example.com')             //->bcc('bcc@example.com')             //->replyTo('fabien@example.com')             //->priority(Email::PRIORITY_HIGH)             ->subject('Time for Symfony Mailer!')             ->text('Sending emails is fun again!')             ->html('<p>See Twig integration for better HTML integration!</p>');         $mailer->send($email);*/        //$mailer = new  \Swift_Mailer($transport);        //$mailer = new Mailer($transport);  // new SmtpTransport();        $email = new Email();  // new \Swift_Message();        foreach ($this->toList as $to) {            //$message->addTo($email);            $email->to($to);        }        /*foreach ($this->ccList as $email) {            $email->addCc($email);        }        foreach ($this->bccList as $email) {            $email->addBcc($email);        }*/        //$email->setFrom(array(MailConfig::$defaultMailFrom => MailConfig::$defaultMailFromText));        $email->from(new Address(MailConfig::$defaultMailFrom, MailConfig::$defaultMailFromText));        $email->subject($this->subject);        //$email->setSubject($this->subject);        // Text Body        //$message->setBody(strip_tags($text));        // Html Body//        $message->setBody($this->text, 'text/html');        //$email->setBody($this->text, $this->contentType);        $email->html($this->text);        /*foreach ($this->attachmentList as $filename) {            $email->attach(\Swift_Attachment::fromPath($filename));        }*/        try {            $mailer->send($email);            //$transport->send($email);        } catch (\Exception $error) {            (new LogMessage())->writeError($error);        }        /*catch (TransportException $e) {            // some error prevented the email sending; display an            // error message or try to resend the message        }        new TransportException()*/    }}

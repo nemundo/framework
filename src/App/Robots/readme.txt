@@ -1,3 +1,1 @@
-speichern wo
-model path
-
+speichern womodel path

@@ -1,42 +1,1 @@
-<?php
-
-
-namespace Nemundo\App\Linux\Service;
-
-
-use Nemundo\App\Linux\Ssh\AbstractSshCommand;
-
-
-abstract class AbstractService extends AbstractSshCommand
-{
-
-    protected $serviceName;
-
-    abstract protected function loadService();
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->loadService();
-    }
-
-
-    public function start()
-    {
-        $this->runCommand('sudo service ' . $this->serviceName . ' start');
-    }
-
-
-    public function stop()
-    {
-        $this->runCommand('sudo service ' . $this->serviceName . ' stop');
-    }
-
-
-    public function restart()
-    {
-        $this->runCommand('sudo service ' . $this->serviceName . ' restart');
-    }
-
-
-}
+<?phpnamespace Nemundo\App\Linux\Service;use Nemundo\App\Linux\Cmd\AbstractCmd;use Nemundo\Core\Local\AbstractLocalCommand;// AbstractLocalServiceabstract class AbstractService extends AbstractCmd  //LocalCommand{    protected $serviceName;    abstract protected function loadService();    public function __construct()    {        parent::__construct();        $this->loadService();    }    protected function loadCommand()    {        // TODO: Implement loadCommand() method.    }    public function start()    {        $this->addCommandLine('service ' . $this->serviceName . ' start');        $this->runCommand();    }    public function stop()    {        $this->addCommandLine('service ' . $this->serviceName . ' stop');        $this->runCommand();    }    public function restart()    {        $this->addCommandLine('service ' . $this->serviceName . ' restart');        $this->runCommand();    }}

@@ -1,18 +1,1 @@
-<?php
-
-namespace Nemundo\Package\FontAwesome\Icon;
-
-
-use Nemundo\Package\FontAwesome\AbstractFontAwesomeIcon;
-
-class EditIcon extends AbstractFontAwesomeIcon
-{
-
-    public function getContent()
-    {
-        $this->icon = 'edit';
-        return parent::getContent();
-    }
-
-
-}
+<?phpnamespace Nemundo\Package\FontAwesome\Icon;use Nemundo\Admin\Com\Icon\AdminIcon;use Nemundo\Package\FontAwesome\AbstractFontAwesomeIcon;class EditIcon extends AdminIcon  // AbstractFontAwesomeIcon{    public function getContent()    {        $this->icon = 'edit';        return parent::getContent();    }}

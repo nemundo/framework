@@ -1,9 +1,1 @@
-<?php
-
-namespace Nemundo\Package\Bootstrap\Card;
-
-
-class BootstrapCardDeck
-{
-
-}
+<?phpnamespace Nemundo\Package\Bootstrap\Card;class BootstrapCardDeck{}

@@ -1,6 +1,1 @@
-{
-    "app": "MySql",
-    "name": "mysql",
-    "namespace": "Nemundo\\App\\MySql",
-    "is_deleted": false
-}
+{    "app": "MySql",    "name": "mysql",    "namespace": "Nemundo\\App\\MySql",    "is_deleted": false}

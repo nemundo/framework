@@ -1,10 +1,1 @@
-<?php
-
-
-namespace Nemundo\Model\Type\ImageFormat;
-
-
-trait ModelImageFormatTrait
-{
-
-}
+<?phpnamespace Nemundo\Model\Type\ImageFormat;trait ModelImageFormatTrait{}

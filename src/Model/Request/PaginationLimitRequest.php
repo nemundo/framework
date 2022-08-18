@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Model\Request;use Nemundo\Core\Http\Request\AbstractHttpRequest;class PaginationLimitRequest extends AbstractHttpRequest{    protected function loadRequest()    {        $this->requestName = 'pagination-limit';        $this->defaultValue = '20';    }}

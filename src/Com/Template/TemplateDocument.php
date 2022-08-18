@@ -1,10 +1,1 @@
-<?php
-
-
-namespace Nemundo\Com\Template;
-
-
-class TemplateDocument extends AbstractTemplateDocument
-{
-
-}
+<?phpnamespace Nemundo\Com\Template;class TemplateDocument extends AbstractTemplateDocument{}

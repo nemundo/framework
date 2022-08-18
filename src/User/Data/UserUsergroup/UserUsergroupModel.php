@@ -7,7 +7,7 @@ class UserUsergroupModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+* @var \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType
 */
 public $userId;
 
@@ -17,7 +17,7 @@ public $userId;
 public $user;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+* @var \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType
 */
 public $usergroupId;
 
@@ -41,14 +41,14 @@ $this->id->aliasFieldName = "user_user_usergroup_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
 
-$this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->userId = new \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType($this);
 $this->userId->tableName = "user_user_usergroup";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "user_user_usergroup_user";
 $this->userId->label = "User";
 $this->userId->allowNullValue = false;
 
-$this->usergroupId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->usergroupId = new \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType($this);
 $this->usergroupId->tableName = "user_user_usergroup";
 $this->usergroupId->fieldName = "usergroup";
 $this->usergroupId->aliasFieldName = "user_user_usergroup_usergroup";

@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Git\Command;class GitPullCommand extends AbstractGitCommand{    public function getCommandList()    {        $this->clearCommand();        $this->addCommandLine('cd ' . $this->path);        $this->addCommandLine('git pull');        return parent::getCommandList();    }}

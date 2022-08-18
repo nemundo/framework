@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Project\Deployment\Path;use Nemundo\Core\Path\AbstractPath;use Nemundo\Project\Deployment\DeploymentConfig;class DeploymentPath extends AbstractPath{    protected function loadPath()    {        // TODO: Implement loadPath() method.        $this->addPath(DeploymentConfig::$deploymentPath);    }}

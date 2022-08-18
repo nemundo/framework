@@ -1,11 +1,1 @@
-<?php
-
-namespace Nemundo\Geo\Map\GoogleMaps;
-
-
-class GoogleMapsConfig
-{
-
-    public static $googleMapsKey;
-
-}
+<?phpnamespace Nemundo\Geo\Map\GoogleMaps;class GoogleMapsConfig{    public static $googleMapsKey;}

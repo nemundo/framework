@@ -1,53 +1,1 @@
-<?php
-
-namespace Nemundo\Project;
-
-
-use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Path\Path;
-
-// nach Dev???
-abstract class AbstractProject extends AbstractBaseClass
-{
-
-    /**
-     * @var string
-     */
-    public $project;
-
-    /**
-     * @var string
-     */
-    public $projectName;
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
-    /**
-     * @var string
-     */
-    public $path;
-
-    /**
-     * @var string
-     */
-    public $modelPath;
-
-    //public $projectPath;
-
-
-    abstract protected function loadProject();
-
-    public function __construct()
-    {
-
-
-        $this->loadProject();
-
-
-
-    }
-
-}
+<?phpnamespace Nemundo\Project;use Nemundo\App\Application\Type\AbstractApplication;use Nemundo\App\Application\Type\Collection\ApplicationCollection;use Nemundo\Core\Command\AbstractCommand;use Nemundo\Core\Log\LogMessage;use Nemundo\Core\Repository\AbstractRepository;use Nemundo\Project\Deployment\AbstractDeployment;use Nemundo\Project\Setup\AbstractSetup;use Nemundo\Web\Base\AbstractWeb;abstract class AbstractProject extends AbstractRepository{    /**     * @var string     */    public $modelPath;    public $setupClass;    public $setupCommand;    public $webClass;    public $deploymentClass;    protected $applicationClassList = [];    abstract protected function loadProject();    public function __construct()    {        parent::__construct();        $this->loadProject();    }    public function getApplicationList()    {        /** @var AbstractApplication[] $list */        $list = [];        foreach ($this->applicationClassList as $className) {            $list[] = new $className();        }        return $list;    }    public function runSetup()    {        if (class_exists($this->setupClass)) {            /** @var AbstractSetup $setup */            $setup = new $this->setupClass();            $setup->run();        } else {            (new LogMessage())->writeError('Setup does not exist');        }    }    public function hasSetupCommand() {        $value = false;        if ($this->setupCommand!==null) {            $value=true;        }        return $value;    }    /**     * @return AbstractCommand     */    public function getSetupCommand() {        /** @var AbstractCommand $command */        $command= new $this->setupCommand();        return $command;    }    public function loadWeb()    {        if (class_exists($this->webClass)) {            /** @var AbstractWeb $web */            $web = new $this->webClass();            $web->loadWeb();        } else {            (new LogMessage())->writeError('WebClass does not exist');        }    }    public function deployProject()    {        if (class_exists($this->deploymentClass)) {            /** @var AbstractDeployment $deployment */            $deployment = new $this->deploymentClass();            $deployment->deploy();        } else {            (new LogMessage())->writeError('DeploymentClass does not exist');        }    }}

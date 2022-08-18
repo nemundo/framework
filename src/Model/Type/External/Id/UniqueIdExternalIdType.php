@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Model\Type\External\Id;class UniqueIdExternalIdType extends AbstractExternalIdType{}

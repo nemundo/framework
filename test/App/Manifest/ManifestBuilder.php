@@ -1,23 +1,1 @@
-<?php
-
-require __DIR__.'/../../config.php';
-
-$builder=new \Nemundo\App\Manifest\Builder\WebManifestBuilder();
-$builder->appName='Nemundo';
-$builder->shortName='Nemundo';
-$builder->icon='img/logo.png';
-
-$builder->backgroundColor='#00aae7';
-$builder->themeColor='#00aae7';
-
-
-$builder->createFile();
-
-
-/*
-$builder=new \Nemundo\App\Manifest\Builder\ManifestBuilder();
-$builder->addUrl('index.html');
-$builder->addUrl('img/logo.png');
-$builder->writeFile();
-*/
-
+<?phprequire __DIR__.'/../../config.php';$builder=new \Nemundo\App\Manifest\Builder\WebManifestBuilder();$builder->appName='Nemundo';$builder->shortName='Nemundo';$builder->icon='img/logo.png';$builder->backgroundColor='#00aae7';$builder->themeColor='#00aae7';$builder->createFile();/*$builder=new \Nemundo\App\Manifest\Builder\ManifestBuilder();$builder->addUrl('index.html');$builder->addUrl('img/logo.png');$builder->writeFile();*/

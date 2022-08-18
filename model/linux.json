@@ -1,6 +1,1 @@
-{
-    "app": "Linux",
-    "name": "linux",
-    "namespace": "Nemundo\\App\\Linux",
-    "is_deleted": false
-}
+{    "app": "Linux",    "name": "linux",    "namespace": "Nemundo\\App\\Linux",    "is_deleted": false}

@@ -1,25 +1,1 @@
-<?php
-
-namespace Nemundo\App\Mail;
-
-use Nemundo\App\Mail\Connection\SmtpConnection;
-
-class MailConfig
-{
-
-    /**
-     * @var SmtpConnection
-     */
-    public static $mailConnection;
-
-    /**
-     * @var string
-     */
-    public static $defaultMailFrom;
-
-    /**
-     * @var string
-     */
-    public static $defaultMailFromText;
-
-}
+<?phpnamespace Nemundo\App\Mail;use Nemundo\App\Mail\Com\Document\AbstractActionMailHtmlDocument;use Nemundo\App\Mail\Com\Document\ActionMailHtmlDocument;use Nemundo\App\Mail\Connection\SmtpConnection;class MailConfig{    /**     * @var SmtpConnection     */    public static $mailConnection;    /**     * @var string     */    public static $defaultMailFrom;    /**     * @var string     */    public static $defaultMailFromText;    /**     * @var string     */    public static $actionMailDocumentClass;    // getActionMailDocument    public function getActionMailDocument()    {        /** @var AbstractActionMailHtmlDocument $document */        $document = null;  // new ActionMailHtmlDocument();  // new ActionMailMessage();        /*if (MailConfig::$actionMailMessageClass !== null) {            $message = new MailConfig::$actionMailMessageClass();        }*/        if (MailConfig::$actionMailDocumentClass !== null) {            /** @var AbstractActionMailHtmlDocument $document */            $document = new MailConfig::$actionMailDocumentClass();        } else {            $document = new ActionMailHtmlDocument();        }        return $document;    }    /**     * @var string     */    /*public static $actionMailMessageClass;    public function getActionMailMessage()    {        $message = new ActionMailMessage();        if (MailConfig::$actionMailMessageClass !== null) {            $message = new MailConfig::$actionMailMessageClass();        }        return $message;    }*/}

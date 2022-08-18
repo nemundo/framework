@@ -1,19 +1,1 @@
-<?php
-
-namespace Nemundo\Project;
-
-
-class ProjectConfig
-{
-
-    /**
-     * @var string
-     */
-    public static $projectPath;
-
-    /**
-     * @var string
-     */
-    public static $tmpPath;
-
-}
+<?phpnamespace Nemundo\Project;use Nemundo\Project\Deployment\AbstractDeployment;class ProjectConfig{    /**     * @var string     */    public static $projectPath;    /**     * @var string     */    public static $tmpPath;}

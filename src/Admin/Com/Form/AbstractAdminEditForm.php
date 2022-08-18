@@ -1,55 +1,1 @@
-<?php
-
-
-namespace Nemundo\Admin\Com\Form;
-
-
-// AbstractSaveEditForm
-
-// AbstractUpdateAdminForm
-// AbstractEditForm
-abstract class AbstractAdminEditForm extends AbstractAdminForm
-{
-
-
-    // editId
-    // updateId
-    public $dataId;
-
-
-    abstract protected function loadUpdateForm();
-
-
-    abstract protected function onSave();
-
-    // onUpdate
-    abstract protected function onUpdate();
-
-
-    public function getContent()
-    {
-
-        if ($this->dataId !== null) {
-            $this->loadUpdateForm();
-        }
-
-        return parent::getContent();
-
-
-
-    }
-
-
-    final protected function onSubmit()
-    {
-
-        if ($this->dataId == null) {
-            $this->onSave();
-        } else {
-            $this->onUpdate();
-        }
-
-    }
-
-
-}
+<?phpnamespace Nemundo\Admin\Com\Form;// AbstractSaveEditForm// AbstractUpdateAdminForm// AbstractEditFormabstract class AbstractAdminEditForm extends AbstractAdminForm{    // editId    // updateId    public $dataId;    abstract protected function loadUpdateForm();    abstract protected function onSave();    // onUpdate    //abstract protected function onUpdate();    public function getDataId() {        return $this->dataId;    }    public function getContent()    {        if ($this->dataId !== null) {            $this->loadUpdateForm();        }        return parent::getContent();    }    protected function onUpdate() {        $this->onSave();    }    //final protected function onSubmit()     protected function onSubmit()    {        if ($this->dataId == null) {            $this->onSave();        } else {            $this->onUpdate();        }    }}

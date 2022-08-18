@@ -1,23 +1,1 @@
-<?php
-
-namespace Nemundo\App\Script\Com\ListBox;
-
-use Nemundo\App\Script\Data\Script\ScriptReader;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
-
-class ScriptListBox extends BootstrapListBox
-{
-    public function getContent()
-    {
-
-        $this->label = 'Script';
-
-        $reader = new ScriptReader();
-        $reader->addOrder($reader->model->scriptName);
-        foreach ($reader->getData() as $scriptRow) {
-            $this->addItem($scriptRow->id, $scriptRow->scriptName);
-        }
-
-        return parent::getContent();
-    }
-}
+<?phpnamespace Nemundo\App\Script\Com\ListBox;use Nemundo\Admin\Com\ListBox\AdminListBox;use Nemundo\App\Script\Reader\ScriptDataReader;class ScriptListBox extends AdminListBox{    public $applicationId;    public function getContent()    {        $this->label = 'Script';        $reader = new ScriptDataReader();        $reader->applicationId = $this->applicationId;        //$reader->addOrder($reader->model->scriptName);        foreach ($reader->getData() as $scriptRow) {            $this->addItem($scriptRow->id, $scriptRow->scriptName);        }        return parent::getContent();    }}

@@ -1,39 +1,1 @@
-<?php
-
-namespace Nemundo\User\Login;
-
-use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Log\LogMessage;
-use Nemundo\User\Data\User\UserCount;
-use Nemundo\User\Data\User\UserValue;
-
-
-class SecureTokenLogin extends AbstractBaseClass
-{
-
-    public function checkLogin($secureToken)
-    {
-
-        $userCount = new UserCount();
-        $userCount->filter->andEqual($userCount->model->secureToken, $secureToken);
-        if ($userCount->getCount() > 0) {
-
-            $userValue = new UserValue();
-            $userValue->field = $userValue->model->login;
-            $userValue->filter->andEqual($userValue->model->secureToken, $secureToken);
-            $login = $userValue->getValue();
-
-            $userLogin = new UserLogin();
-            $userLogin->passwordVerification = false;
-            $userLogin->login = $login;
-            $userLogin->loginUser();
-
-        } else {
-            (new LogMessage())->writeError('Secure Token does not exist');
-            exit;
-        }
-
-
-    }
-
-}
+<?phpnamespace Nemundo\User\Login;use Nemundo\Core\Base\AbstractBaseClass;use Nemundo\User\Data\User\UserCount;use Nemundo\User\Data\User\UserId;use Nemundo\User\Data\User\UserValue;use Nemundo\User\Parameter\SecureTokenParameter;// SecureTokenUserclass SecureTokenLogin extends AbstractBaseClass{    public function getUserIdFromSecureTokenParameter()    {        $secureToken = (new SecureTokenParameter())->getValue();        return $this->getUserIdFromSecureToken($secureToken);    }    public function getUserIdFromSecureToken($secureToken)    {        $userId = null;        $count = new UserCount();        $count->filter->andEqual($count->model->secureToken, $secureToken);        $count->filter->andEqual($count->model->active, true);        if ($count->getCount() === 1) {            $id = new UserId();            $id->filter->andEqual($id->model->secureToken, $secureToken);            $userId = $id->getId();        }        return $userId;    }    public function checkSecureTokenParameter()    {        $secureToken = (new SecureTokenParameter())->getValue();        return $this->checkLogin($secureToken);    }    public function checkLogin($secureToken)    {        $value = false;        $userCount = new UserCount();        $userCount->filter->andEqual($userCount->model->secureToken, $secureToken);        $userCount->filter->andEqual($userCount->model->active, true);        if ($userCount->getCount() > 0) {            $value = true;            $userValue = new UserValue();            $userValue->field = $userValue->model->login;            $userValue->filter->andEqual($userValue->model->secureToken, $secureToken);            $login = $userValue->getValue();            $userLogin = new UserLogin();            $userLogin->passwordVerification = false;            $userLogin->login = $login;            $userLogin->loginUser();        }        return $value;    }}

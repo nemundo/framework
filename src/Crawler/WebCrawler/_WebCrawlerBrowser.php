@@ -1,9 +1,1 @@
-<?php
-
-namespace Nemundo\Crawler\WebCrawler;
-
-
-class WebCrawlerBrowser
-{
-
-}
+<?phpnamespace Nemundo\Crawler\WebCrawler;class WebCrawlerBrowser{}

@@ -1,6 +1,1 @@
-SystemLog
-WebLog
-
-// LogFile
-// move nach App
-
+SystemLogWebLog// LogFile// move nach App

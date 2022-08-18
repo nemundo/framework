@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Svg;class Polyline{}

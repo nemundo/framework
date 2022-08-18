@@ -1,9 +1,1 @@
-<?php
-
-namespace Nemundo\Package\Bootstrap\Button;
-
-
-class AbstractButton
-{
-
-}
+<?phpnamespace Nemundo\Package\Bootstrap\Button;class AbstractButton{}

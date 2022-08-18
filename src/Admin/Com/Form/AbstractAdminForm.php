@@ -1,41 +1,1 @@
-<?php
-
-namespace Nemundo\Admin\Com\Form;
-
-
-use Nemundo\Com\FormBuilder\AbstractFormBuilder;
-use Nemundo\Core\Language\LanguageCode;
-use Nemundo\Html\Form\Button\SubmitButton;
-
-
-abstract class AbstractAdminForm extends AbstractFormBuilder
-{
-
-    /**
-     * @var SubmitButton
-     */
-    public $submitButton;
-
-    protected function loadContainer()
-    {
-
-        parent::loadContainer();
-
-        $this->submitButton = new SubmitButton();
-        $this->submitButton->addCssClass('btn btn-primary btn-sm');
-        $this->submitButton->label = [];
-        $this->submitButton->label[LanguageCode::EN] = 'Save';
-        $this->submitButton->label[LanguageCode::DE] = 'Speichern';
-
-    }
-
-
-    public function getContent()
-    {
-
-        $this->addContainer($this->submitButton);
-        return parent::getContent();
-
-    }
-
-}
+<?phpnamespace Nemundo\Admin\Com\Form;use Nemundo\Com\FormBuilder\AbstractFormBuilder;use Nemundo\Core\Language\LanguageCode;use Nemundo\Html\Button\Button;abstract class AbstractAdminForm extends AbstractFormBuilder{    /**     * @var Button     */    public $submitButton;    /**     * @var bool     */    public $submitForm = true;    protected function loadContainer()    {        parent::loadContainer();        $this->addCssClass('admin-form');        $this->submitButton = new Button();  // new SubmitButton();        $this->submitButton->id = 'content_submit';        //$this->submitButton->type='button';        //$this->submitButton->label = 'ok';        //$this->submitButton->addCssClass('btn btn-primary btn-sm');        $this->submitButton->addCssClass('admin-button');        //$this->submitButton->label = 'Speichern';        $this->submitButton->label = [];        $this->submitButton->label[LanguageCode::EN] = 'Save';        $this->submitButton->label[LanguageCode::DE] = 'Speichern';        /*        if ($this->submitForm) {        $this->submitButton = new SubmitButton();        $this->submitButton->addCssClass('btn btn-primary btn-sm');        $this->submitButton->label = [];        $this->submitButton->label[LanguageCode::EN] = 'Save';        $this->submitButton->label[LanguageCode::DE] = 'Speichern';        } else {            $this->submitButton = new Button();  // new SubmitButton();            $this->submitButton->type='button';            $this->submitButton->label = 'ok';            //$this->submitButton->addCssClass('btn btn-primary btn-sm');            /*$this->submitButton->label = [];            $this->submitButton->label[LanguageCode::EN] = 'Save';            $this->submitButton->label[LanguageCode::DE] = 'Speichern';*/        //}        /* $this->submitButton = new Button();  // new SubmitButton();         $this->submitButton->type='button';         $this->submitButton->label = 'ok';*/    }    public function hideSubmitButton()    {        $this->submitButton->visible = false;        return $this;    }    public function getContent()    {        if ($this->submitForm) {            $this->submitButton->type = 'submit';        } else {            $this->submitButton->type = 'button';        }        $this->addContainer($this->submitButton);        return parent::getContent();    }}

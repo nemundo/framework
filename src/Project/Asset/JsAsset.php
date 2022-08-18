@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Project\Asset;use Nemundo\Core\Base\AbstractBase;class JsAsset extends AbstractBase{    public $name;}

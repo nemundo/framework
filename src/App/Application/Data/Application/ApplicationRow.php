@@ -42,7 +42,7 @@ public $install;
 public $projectId;
 
 /**
-* @var \Nemundo\App\Application\Data\Project\ProjectRow
+* @var \Nemundo\App\Application\Row\ProjectCustomRow
 */
 public $project;
 
@@ -72,6 +72,6 @@ $this->appMenu = boolval($this->getModelValue($model->appMenu));
 $this->adminMenu = boolval($this->getModelValue($model->adminMenu));
 }
 private function loadNemundoAppApplicationDataProjectProjectprojectRow($model) {
-$this->project = new \Nemundo\App\Application\Data\Project\ProjectRow($this->row, $model);
+$this->project = new \Nemundo\App\Application\Row\ProjectCustomRow($this->row, $model);
 }
 }

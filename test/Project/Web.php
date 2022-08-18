@@ -1,29 +1,1 @@
-<?php
-
-require __DIR__ . '/../config.php';
-
-$web = new \Nemundo\Project\Web\WebProject();
-$web->webPath = 'tmp/admin1';
-$web->webUrl = '/admin1/';
-(new \Nemundo\Project\Web\WebCollection())->registerWebProject($web);
-
-$setup = new \Nemundo\Project\Web\WebSetup();
-$setup->addWeb($web);
-
-
-$web = new \Nemundo\Project\Web\WebProject();
-$web->webPath = 'tmp/admin2';
-$web->webUrl = '/admin2/';
-(new \Nemundo\Project\Web\WebCollection())->registerWebProject($web);
-$setup = new \Nemundo\Project\Web\WebSetup();
-$setup->addWeb($web);
-
-
-
-
-(new \Nemundo\App\Application\Script\PackageSetupScript())->run();
-
-
-
-
-
+<?phprequire __DIR__ . '/../config.php';$web = new \Nemundo\Project\Web\WebProject();$web->webPath = 'tmp/admin1';$web->webUrl = '/admin1/';(new \Nemundo\Project\Web\WebCollection())->registerWebProject($web);$setup = new \Nemundo\Project\Web\WebSetup();$setup->addWeb($web);$web = new \Nemundo\Project\Web\WebProject();$web->webPath = 'tmp/admin2';$web->webUrl = '/admin2/';(new \Nemundo\Project\Web\WebCollection())->registerWebProject($web);$setup = new \Nemundo\Project\Web\WebSetup();$setup->addWeb($web);(new \Nemundo\App\Application\Script\PackageSetupScript())->run();

@@ -1,6 +1,1 @@
-{
-    "app": "Manifest",
-    "name": "manifest",
-    "namespace": "Nemundo\\App\\Manifest",
-    "is_deleted": false
-}
+{    "app": "Manifest",    "name": "manifest",    "namespace": "Nemundo\\App\\Manifest",    "is_deleted": false}

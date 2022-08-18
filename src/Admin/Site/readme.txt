@@ -1,5 +1,1 @@
-AbstractAdminEditIconSite
-
-AbstractAdminDeleteIconSite
-
-
+AbstractAdminEditIconSiteAbstractAdminDeleteIconSite

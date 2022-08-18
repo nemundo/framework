@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Ssh\Type;class ConnectionType{    const PASSWORD = 'password';    const PRIVATE_KEY = 'private_key';}
