@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Package\Framework;use Nemundo\Com\Package\AbstractPackage;class FrameworkPackage extends AbstractPackage{    protected function loadPackage()    {        $this->packageName = 'framework';        //$this->addJs('nemundo.js');    }}
+<?phpnamespace Nemundo\Package\Framework;use Nemundo\Com\Package\AbstractPackage;class FrameworkPackage extends AbstractPackage{    protected function loadPackage()    {        $this->packageName = 'framework';        $this->addCss('css/framework.css');    }}

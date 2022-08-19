@@ -1,8 +1,8 @@
-* {
+/** {
     margin: 0;
     padding: 0;
     text-decoration: none;
-}
+}*/
 
 
 /*ul {
@@ -12,6 +12,9 @@
 
 
 body {
+
+    margin: 0;
+    padding: 0;
 
     background-color: var(--color-background);
     color: var(--color-font);
