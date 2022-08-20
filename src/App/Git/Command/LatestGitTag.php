@@ -10,11 +10,9 @@ class LatestGitTag extends AbstractGitCommand
 
         $this->clearCommand();
         $this->addCommandLine('cd ' . $this->path);
-        $this->addCommandLine('git tag -l');
+        $this->addCommandLine('git tag --sort=committerdate');
 
         $output = $this->runCommand();
-
-        //(new Debug())->write($output);
 
         return $output;
 

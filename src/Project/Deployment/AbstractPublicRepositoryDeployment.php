@@ -73,9 +73,7 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
     public function deploy()
     {
 
-        $deploymentPath = $this->getDeploymentPath(); /* (new DeploymentPath())
-            ->addPath($this->repository->projectName);*/
-
+        $deploymentPath = $this->getDeploymentPath();
         $gitUrl = (new GithubBuilder())->getGitUrl($this->githubShortUrl);
 
         if ($deploymentPath->existPath()) {
@@ -95,7 +93,6 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
 
         }
 
-
         $reader = new DirectoryReader();
         $reader->path = $deploymentPath->getPath();
         $reader->includeDirectories = true;
@@ -114,7 +111,6 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
 
         }
 
-
         $copy = new ProjectCopy();
         $copy->path = $deploymentPath;
         $copy->copyProject($this->repository);
@@ -132,6 +128,15 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
         $push->path = $deploymentPath->getPath();
         $push->runCommand();
 
+        $this->updateTag();
+
+    }
+
+
+    public function updateTag() {
+
+        $deploymentPath = $this->getDeploymentPath();
+
         $tag = new LatestGitTag();
         $tag->path = $deploymentPath->getPath();
         $version = $tag->getLatestTag();
@@ -142,60 +147,29 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
         $tag->tag = $version;
         $tag->runCommand();
 
-
     }
 
 
     public function copyPackageFile($type)
     {
 
-        //$type = 'css';
-        //$destinationPath = (new ProjectPath())
-
-
-        //'D:\deploy\framework\package\framework';
-        //$project=new \Nemundo\FrameworkProject();
-
-
         $path = (new ProjectPath())
             ->addPath($type)
             ->addPath($this->repository->projectName);
-
 
         $webPath = $this->getDeploymentPath()
             ->addPath('package')
             ->addPath($this->repository->projectName)
             ->addPath($type);
-            //->addPath($this->repository->projectName);
 
         $webPath->createPath();
 
-
-        /*(new Path($destinationPath))
-//    ->addPath($destinationPath)
-            ->createPath()
-            ->getPath();*/
-
-        /*$webPath = (new Path($this->deploymentPath))
-            ->addPath($destinationPath)
-            ->createPath()
-            ->getPath();*/
-
         if ($path->existPath()) {
-
-            //(new Debug())->write('exists');
 
             $copy = new DirectoryCopy();
             $copy->overwriteExistingFile = true;
             $copy->sourcePath = $path->getPath();
             $copy->destinationPath = $webPath->getPath();
-
-
-            /*(new Path($webPath))
-            ->addPath($type)
-            ->addPath($project->projectName)
-            ->createPath()
-            ->getPath();*/
             $copy->copyDirectory();
 
         }
@@ -203,6 +177,5 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
         return $this;
 
     }
-
 
 }
