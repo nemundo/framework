@@ -2,22 +2,21 @@
 
 
 
-#main-content {
+/*#main-content {
 
     /*margin: var(--default-space);*/
     /*padding: var(--default-space);*/
     /*background-color: var(--color-light);*/
 
-}
+/*}*/
 
 
 .admin-main-content {
 
-    /*margin: var(--default-space);*/
-    /*padding: var(--default-space);*/
+    margin: var(--default-space);
+    padding: var(--default-space);
 
     /*background-color: var(--color-light);*/
-
 
 }
 
@@ -25,13 +24,6 @@
 .admin-width-500 {
     width: 500px;
 }
-
-
-
-
-
-
-
 
 
 .admin-search-form {

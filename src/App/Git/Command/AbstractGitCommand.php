@@ -9,15 +9,12 @@ abstract class AbstractGitCommand extends AbstractLocalCommand
 
     public $path;
 
-
     public function __construct()
     {
 
         parent::__construct();
-
-        $this->showOutput=true;
+        $this->showOutput = true;
 
     }
-
 
 }

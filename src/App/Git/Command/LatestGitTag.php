@@ -2,15 +2,11 @@
 
 namespace Nemundo\App\Git\Command;
 
-use Nemundo\Core\Debug\Debug;
-
 class LatestGitTag extends AbstractGitCommand
 {
 
-
     public function getTagList()
     {
-
 
         $this->clearCommand();
         $this->addCommandLine('cd ' . $this->path);
@@ -29,28 +25,15 @@ class LatestGitTag extends AbstractGitCommand
     public function getLatestTag()
     {
 
-
-        /*$this->clearCommand();
-        $this->addCommandLine('cd ' . $this->path);
-        $this->addCommandLine('git describe --tags --abbrev=0');
-
-        $output = $this->runCommand();*/
-
-        $this->showOutput=false;
+        $this->showOutput = false;
         $output = $this->getTagList();
 
-        $version=0;
-        if (sizeof($output)>0) {
+        $version = 0;
+        if (sizeof($output) > 0) {
             $version = end($output);
         }
 
-
         return $version;
-
-        //(new Debug())->write($output);
-
-        //return $output[0];
-
 
     }
 
@@ -61,23 +44,13 @@ class LatestGitTag extends AbstractGitCommand
         $this->clearCommand();
         $this->addCommandLine('cd ' . $this->path);
         $this->addCommandLine('git tag -d ' . $tag);
-
         $this->addCommandLine('git push --delete origin ' . $tag);
-
-//        git push --delete origin tagname
-
 
         $this->runCommand();
 
         return $this;
 
-        //$output = $this->runCommand();
-
-        //git tag -d <tag_name>
-
-
     }
-
 
 
     // removeAllTags
@@ -91,6 +64,5 @@ class LatestGitTag extends AbstractGitCommand
         return $this;
 
     }
-
 
 }

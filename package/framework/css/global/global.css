@@ -13,7 +13,7 @@
     --button-width: 150px;
     --navbar-heigth: 60px;
 
-    --default-font: "Times New Roman";
+    --default-font: Verdana,sans-serif;
     --default-font-size: 1rem;
 
     /*--default-space: 20px;*/
@@ -43,6 +43,7 @@
 
 body {
 
+    font-family: var(--default-font);
     font-size: var(--default-font-size);
 
 }
