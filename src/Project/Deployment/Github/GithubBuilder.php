@@ -11,7 +11,7 @@ class GithubBuilder extends AbstractBase
     public function getGitUrl($githubShortUrl)
     {
 
-        $url = 'https://' . DeploymentConfig::$token . '@github.com/' . $githubShortUrl;
+        $url = 'https://' . DeploymentConfig::$token . '@github.com/' . $githubShortUrl.'.git';
         return $url;
 
     }
