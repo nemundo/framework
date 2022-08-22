@@ -48,12 +48,6 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
         $tag->path = $this->getDeploymentPath()
             ->getPath();
 
-        //(new Debug())->write($tag->path);
-
-        /*$tag->path = $deploymentPath = (new DeploymentPath())
-            ->addPath($this->repository->projectName)
-            ->getPath();*/
-
         $tag->deleteAllTag();
 
     }

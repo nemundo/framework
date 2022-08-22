@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Package\Framework;use Nemundo\Com\Package\AbstractPackage;class CorePackage extends AbstractPackage{    protected function loadPackage()    {        $this->packageName = 'core';    }}

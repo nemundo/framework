@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Package\Framework;use Nemundo\Com\Package\AbstractPackage;class HtmlPackage extends AbstractPackage{    protected function loadPackage()    {        $this->packageName = 'html';    }}
