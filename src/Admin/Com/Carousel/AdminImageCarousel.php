@@ -2,11 +2,11 @@
 
 namespace Nemundo\Admin\Com\Carousel;
 
-use Nemundo\Admin\Com\Icon\AdminIcon;
 use Nemundo\Admin\Com\Image\AdminImage;
 use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Inline\Span;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\FontAwesome\FontAwesomeIcon;
 
 
@@ -45,7 +45,7 @@ class AdminImageCarousel extends Div
     }
 
 
-    public function addImage($url)
+    public function addImage($url, $description = null)
     {
 
         $item = new Div($this->carouselDiv);
@@ -53,6 +53,11 @@ class AdminImageCarousel extends Div
 
         $img = new AdminImage($item);
         $img->src = $url;
+
+        if ($description !== null) {
+            $p = new Paragraph($item);
+            $p->content = $description;
+        }
 
         $span = new Span($this->dotDiv);
         $span->addCssClass('admin-carousel-dot-item');

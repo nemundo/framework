@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Com\Package\Type;use Nemundo\Com\Package\Type\AbstractBasePackage;use Nemundo\Core\Base\AbstractBaseClass;use Nemundo\Project\AbstractProject;use Nemundo\Web\WebConfig;abstract class AbstractJsPackage extends AbstractBasePackage{    public function __construct()    {        parent::__construct();        $this->prefix = 'js';    }}

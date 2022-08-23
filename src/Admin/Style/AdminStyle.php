@@ -9,6 +9,7 @@ class AdminStyle
 
     public static $SPACE_BOTTOM = 'admin-space-bottom';
 
+    public static $BLOCK = 'admin-block';
 
 
 

@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Com\Package;use Nemundo\Com\Package\Type\AbstractBasePackage;use Nemundo\Core\Base\AbstractBaseClass;use Nemundo\Project\AbstractProject;use Nemundo\Web\WebConfig;abstract class AbstractCssPackage extends AbstractBasePackage{    public function __construct()    {        parent::__construct();        $this->prefix = 'css';    }}
