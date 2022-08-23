@@ -1,0 +1,55 @@
+.admin-input {
+
+    width: 100%;
+    padding: var(--default-input-space);
+    /*padding: 12px 20px;*/
+    /*margin: 8px 0;*/
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-dark);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: var(--default-font-size);
+
+}
+
+.admin-input:focus {
+
+    /*border: none;*/
+
+}
+
+
+.admin-checkbox {
+
+    /* padding: 30px;
+
+  /*margin:2rem;*/
+
+    height: 25px;
+    width: 25px;
+    border-radius: var(--border-radius);
+
+    /*background-color: #eee;*/
+
+}
+
+
+.admin-checkbox-label {
+
+    /*background-color: #1da1f2;
+    display: inline-block;*/
+
+}
+
+
+.admin-checkbox-group {
+
+    padding: var(--default-space);
+    border-radius: var(--border-radius);
+    border-width: 1px;
+    border-color: var(--color-dark);
+
+}
+

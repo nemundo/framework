@@ -148,6 +148,7 @@ abstract class AbstractPublicRepositoryDeployment extends AbstractBase
     {
 
         $path = (new ProjectPath())
+            ->addPath('package')
             ->addPath($type)
             ->addPath($this->repository->projectName);
 

@@ -1,0 +1,28 @@
+.admin-file-input:focus {
+
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+
+.admin-file-input::file-selector-button {
+
+    display: block;
+    width: var(--button-width);
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border-radius: var(--border-radius);
+    border: none;
+    padding: var(--default-space);
+    /*margin:var(--default-space);*/
+    text-decoration: none;
+
+}
+
+
+
+.admin-file-input::file-selector-button:hover {
+    cursor: pointer;
+}
+

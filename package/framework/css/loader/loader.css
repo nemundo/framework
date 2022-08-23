@@ -1,0 +1,18 @@
+.admin-loader {
+    border: 4px solid;
+    border-color: var(--color-light);
+    border-radius: 50%;
+
+    border-top: 4px solid;
+    border-top-color: var(--color-dark);
+    width: 2rem;
+    height: 2rem;
+    animation: spin 2s linear infinite;
+
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

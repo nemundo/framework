@@ -1,0 +1,63 @@
+.admin-card-container {
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-space);
+
+}
+
+
+.admin-card {
+
+    background-color: white;
+    overflow: hidden;
+    border-style: var(--border-style);
+    border-width: var(--border-width);
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+
+
+}
+
+
+.admin-card-title {
+
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    /*justify-content: space-between;*/
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    /*font-size: 1.1rem;*/
+    padding: var(--default-space);
+    /*text-decoration: none;
+    font-weight: bold;*/
+
+}
+
+
+.admin-card-title span {
+
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+
+.admin-card-content {
+
+    /*padding: var(--default-space);*/
+
+}
+
+
+.admin-card-content-text {
+
+    padding: var(--default-space);
+
+}
+
+
+
+
