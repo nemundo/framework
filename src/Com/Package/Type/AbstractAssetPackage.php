@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Com\Package\Type;abstract class AbstractAssetPackage extends AbstractBasePackage{    public function __construct()    {        parent::__construct();        $this->prefix = 'asset';    }}
+<?phpnamespace Nemundo\Com\Package\Type;abstract class AbstractAssetPackage extends AbstractPackage{    public function __construct()    {        parent::__construct();        $this->prefix = 'asset';    }}

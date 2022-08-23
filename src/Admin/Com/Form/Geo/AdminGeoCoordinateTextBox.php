@@ -46,7 +46,7 @@ class AdminGeoCoordinateTextBox extends AdminTextBox  // Div
         $this->addPackage(new OpenLayersPackage());
 
         $script=new ModuleJavaScript($this);
-        $script->src='/js/framework/Admin/Input/admin_geo_coordinate.js';
+        $script->src='/package/js/framework/Admin/Input/admin_geo_coordinate.js';
 
         //$this->textInput->addCssClass("geo_input");
         //$this->textInput->id = "geo_input";

@@ -4,7 +4,7 @@ namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\AdminConfig;
 use Nemundo\Com\Template\AbstractResponsiveHtmlDocument;
-use Nemundo\Package\FontAwesome\FontAwesomePackage;
+use Nemundo\Package\FontAwesome\Package\FontAwesomePackage;
 
 abstract class AbstractAdminTemplate extends AbstractResponsiveHtmlDocument
 {

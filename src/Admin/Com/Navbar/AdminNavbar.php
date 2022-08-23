@@ -42,8 +42,13 @@ class AdminNavbar extends Nav
     public function getContent()
     {
 
+        $this->addJsUrl('/package/js/framework/Admin/Dropdown/dropdown.js');
 
-        if (AdminNavbar::$assetMode) {
+        $module = new ModuleJavaScript($this);
+        $module->src = '/package/js/framework/Admin/Navbar/Navbar.js';
+
+
+        /*if (AdminNavbar::$assetMode) {
 
             $this->addJsUrl('/asset/framework/js/Admin/Dropdown/dropdown.js');
 
@@ -57,7 +62,7 @@ class AdminNavbar extends Nav
             $module = new ModuleJavaScript($this);
             $module->src = '/js/framework/Admin/Navbar/Navbar.js';
 
-        }
+        }*/
 
 
         $this->addCssClass('admin-navbar');
