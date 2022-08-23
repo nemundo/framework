@@ -3,7 +3,7 @@
 namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\Com\Navbar\AdminNavbar;
-use Nemundo\Package\Framework\FrameworkPackage;
+use Nemundo\Package\Framework\FrameworkCssPackage;
 
 class AssetAdminTemplate extends NavbarAdminTemplate
 {
@@ -12,7 +12,7 @@ class AssetAdminTemplate extends NavbarAdminTemplate
     protected function loadContainer()
     {
         AdminNavbar::$assetMode = true;
-        $this->addPackage(new FrameworkPackage());
+        $this->addPackage(new FrameworkCssPackage());
 
         parent::loadContainer();
 
