@@ -39,8 +39,18 @@
 }
 
 
+.admin-pagination-disabled {
+
+    cursor: not-allowed;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+
+}
 
 
+.admin-pagination-disabled:hover {
+
+}
 
 
 @media screen and (max-width: 1000px) {

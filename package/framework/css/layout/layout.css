@@ -8,16 +8,6 @@
 }
 
 
-
-/*#main-content {
-
-    /*margin: var(--default-space);*/
-    /*padding: var(--default-space);*/
-    /*background-color: var(--color-light);*/
-
-/*}*/
-
-
 .admin-main-content {
 
     margin: var(--default-space);
@@ -143,6 +133,23 @@ display: flex;
         grid-template-columns: 1fr 1fr;
     }
 
+
+
+    .admin-fix-center-layout {
+
+        position: fixed;
+
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+
+
 }
 
 
@@ -155,26 +162,11 @@ display: flex;
 }*/
 
 
-.admin-fix-center-layout {
-
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
-
-    position: fixed;
-
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*height: 200px;
-    border: 3px solid green;*/
-
-    /*background-color: #0a47a9;*/
 
 
-}
+
+
+
 
 
 

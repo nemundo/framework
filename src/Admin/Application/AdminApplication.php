@@ -12,6 +12,7 @@ class AdminApplication extends AbstractApplication
 {
     protected function loadApplication()
     {
+
         $this->application = 'Admin';
         $this->applicationId = 'c2d892b7-eb8d-49f5-ac7c-a3e86b5023f7';
         $this->installClass = Install::class;

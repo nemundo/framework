@@ -36,7 +36,7 @@ class AdminNavbar extends Nav
     public $fixed = false;
 
 
-    public static $assetMode = false;
+    //public static $assetMode = false;
 
 
     public function getContent()

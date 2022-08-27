@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\ListBox\AdminColorPicker;
 use Nemundo\Admin\Com\ListBox\AdminNumberBox;
 use Nemundo\App\CssDesigner\Builder\StyleBuilder;
 use Nemundo\App\ModelDesigner\Project\DefaultProject;
+use Nemundo\Com\Package\Path\CssPackagePath;
 use Nemundo\Core\File\File;
 use Nemundo\Core\Json\Document\JsonDocument;
 use Nemundo\Core\Json\Reader\JsonReader;
@@ -114,8 +115,7 @@ class StyleBuilderForm extends AbstractAdminForm
 
         $project = (new DefaultProject())->getDefaultProject();
 
-        $filename = (new ProjectPath())
-            ->addPath('css')
+        $filename = (new CssPackagePath())
             ->addPath($project->projectName)
             ->createPath()
             ->addPath('design.json')
@@ -131,8 +131,7 @@ class StyleBuilderForm extends AbstractAdminForm
 
         $project = (new DefaultProject())->getDefaultProject();
 
-        $filename = (new ProjectPath())
-            ->addPath('css')
+        $filename = (new CssPackagePath())
             ->addPath($project->projectName)
             ->addPath('design.css')
             ->getFullFilename();

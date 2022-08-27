@@ -16,8 +16,21 @@
 
 
 .admin-carousel-item {
-    display: none;
+
+    /*display: none;*/
+    color: black;
+
 }
+
+
+.admin-carousel-image {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
 
 
 .slideshow-current {
@@ -46,12 +59,10 @@
 
 .admin-carousel-icon-inactive {
 
-    color: var(--color-light); /* #EBEBE4;*/
+    color: var(--color-light);
     cursor: default;
 
 }
-
-
 
 
 .admin-carousel-icon-previous {
@@ -74,7 +85,7 @@
     height: var(--default-font-size);
     width: var(--default-font-size);
     margin: 0 2px;
-    background-color: var(--color-light);  /*#bbb;*/
+    background-color: var(--color-light);
     border-radius: 50%;
     display: inline-block;
 
@@ -86,6 +97,4 @@
     background-color: var(--color-dark);
 
 }
-
-
 

@@ -7,7 +7,7 @@
 
 body {
 
-    font-family: Verdana;
+    font-family: Arial;  /* var(--default-font);**/
 
     margin: 10mm;
     padding: 0;

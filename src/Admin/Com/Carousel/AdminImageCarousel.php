@@ -52,6 +52,7 @@ class AdminImageCarousel extends Div
         $item->addCssClass('admin-carousel-item');
 
         $img = new AdminImage($item);
+        $img->addCssClass('admin-carousel-image');
         $img->src = $url;
 
         if ($description !== null) {
@@ -72,18 +73,16 @@ class AdminImageCarousel extends Div
     {
 
         $module = new ModuleJavaScript($this);
-        $module->src = '/js/framework/Admin/Carousel/carousel.js';
+        $module->src = '/package/js/framework/Admin/Carousel/carousel.js';
 
         $previous = new FontAwesomeIcon($this);
         $previous->id = 'admin-carousel-previous-icon';
-        //$previous->addCssClass('icon-button');
         $previous->addCssClass('admin-carousel-icon');
         $previous->addCssClass('admin-carousel-icon-previous');
         $previous->icon = 'chevron-left';
 
         $next = new FontAwesomeIcon($this);
         $next->id = 'admin-carousel-next-icon';
-        //$next->addCssClass('icon-button');
         $next->addCssClass('admin-carousel-icon');
         $next->addCssClass('admin-carousel-icon-next');
         $next->icon = 'chevron-right';
