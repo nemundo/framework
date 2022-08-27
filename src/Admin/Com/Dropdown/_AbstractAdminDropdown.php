@@ -8,7 +8,7 @@ use Nemundo\Com\Utility\UniqueComName;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Container\AbstractContainer;
 
-class AbstractAdminDropdown extends AbstractContainer
+class _AbstractAdminDropdown extends AbstractContainer
 {
 
     use LibraryTrait;

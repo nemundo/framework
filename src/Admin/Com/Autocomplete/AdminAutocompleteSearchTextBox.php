@@ -13,10 +13,12 @@ class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
     public function getContent()
     {
 
-        //$this->id
+        //$this->id = 'search-one';
 
-        $module=new ModuleJavaScript($this);
-        $module->src='/js/framework/Admin/Autocomplete/autocomplete.js';
+        $this->textInput->id = 'search-one';
+
+        $module = new ModuleJavaScript($this);
+        $module->src = '/package/js/framework/Admin/Autocomplete/autocomplete.js';
 
         return parent::getContent();
     }

@@ -1,27 +1,21 @@
 import DocumentContainer from "../../../html/Document/Document.js";
-import AutocompleteTextBox from "../../Com/Autocomplete/AutocompleteTextBox.js";
-import InputContainer from "../../../html/Form/Input.js";
+import FormContainer from "../../../html/Form/Form.js";
+import AdminAutocompleteTextBox from "./AdminAutocompleteTextBox.js";
+import AdminSubmitButton from "../Button/AdminSubmitButton.js";
 
 
 let document = new DocumentContainer();
 document.onLoaded = function () {
 
+    let form = new FormContainer();
+    form.fromId("query-content-search-form");
 
-    let autocomplete = new InputContainer();  // new AutocompleteTextBox();
-    autocomplete.fromId("search-one");
+    let search = new AdminAutocompleteTextBox(form);
+    search.name="q";
+    search.serviceName = "search-word";
+    search.render();
 
-    autocomplete.onKeyUp=function () {
-      //alert(autocomplete.value);
-    };
-
-
-    //autocomplete.backgroundColor="blue";
-    //autocomplete.render();
-
-
-    /*
-    let gemeinde = new GemeindeAutocomplete(mainContent);
-    gemeinde.render();*/
-
+    let button = new AdminSubmitButton(form);
+    button.label = "Search";
 
 };

@@ -2,8 +2,6 @@
 
 namespace Nemundo\Admin\Com\Dropdown;
 
-use Nemundo\Admin\Com\Button\AdminButton;
-use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Icon\AdminIcon;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
@@ -19,7 +17,7 @@ class AdminDropdown extends Div
 
     use LibraryTrait;
 
-    public $dropdownLabel;  // = 'Click';
+    public $dropdownLabel;
 
     public $dropdownIconName = 'chevron-down';
 
@@ -39,14 +37,10 @@ class AdminDropdown extends Div
 
         parent::loadContainer();
 
-        $this->addJsUrl('/js/framework/Admin/Dropdown/dropdown.js');
-
-        //admin-dropdown-show
+        $this->addJsUrl('/package/js/framework/Admin/Dropdown/dropdown.js');
         $dropdownId = 'dropone-' . (new UniqueComName())->getUniqueName();
 
-        $this->button = new AdminIcon();  // new AdminIconSiteButton() new AdminButton();
-        //$this->button->icon =$this->dropdownIconName;
-        //$this->button->label = 'Click';
+        $this->button = new AdminIcon();
         $this->button->addCssClass('admin-dropdown-button');
         $this->button->addAttribute('onclick', 'hideDropdownMenu(); document.getElementById(\'' . $dropdownId . '\').classList.toggle(\'admin-dropdown-show\');');
         parent::addContainer($this->button);
@@ -67,7 +61,8 @@ class AdminDropdown extends Div
     }
 
 
-    public function addSite(AbstractSite $site) {
+    public function addSite(AbstractSite $site)
+    {
 
         $hyperlink = new SiteHyperlink($this->content);
         $hyperlink->addCssClass('admin-dropdown-content-item');
@@ -78,15 +73,13 @@ class AdminDropdown extends Div
     }
 
 
-
     public function getContent()
     {
 
-        $this->button->icon =$this->dropdownIconName;
-        //$this->button->label = $this->dropdownLabel;
+        $this->button->icon = $this->dropdownIconName;
 
         return parent::getContent();
-    }
 
+    }
 
 }
