@@ -26,3 +26,24 @@
 
 
 
+.admin-subtitle-bold {
+
+    font-size: 100%;
+    color: var(--color-dark);
+    width: 100%;
+    font-weight: bold;
+    /*border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-dark);*/
+    margin-bottom: var(--default-space);
+
+}
+
+
+
+
+.admin-bold {
+
+    font-weight: bold;
+
+}

@@ -7,6 +7,8 @@ class AdminStyle
 
     public static $SEARCH_FORM = 'admin-search-form';
 
+    public static $SPACE_LEFT = 'admin-space-left';
+
     public static $SPACE_BOTTOM = 'admin-space-bottom';
 
     public static $SPACE = 'admin-space';
@@ -19,5 +21,8 @@ class AdminStyle
 
 
     public static $SUBTITLE = 'admin-subtitle';
+
+
+    public static $BOLD = 'admin-bold';
 
 }

@@ -5,6 +5,12 @@
 }
 
 
+.admin-space-left {
+
+    padding-left: var(--default-space);
+
+}
+
 
 
 .admin-space-bottom {
