@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Package\Framework;use Nemundo\Com\Package\Type\AbstractJsPackage;use Nemundo\Core\CoreRepository;class CoreJsPackage extends AbstractJsPackage{    protected function loadPackage()    {        $this->project = new CoreRepository();        $this->packageName = 'core';    }}

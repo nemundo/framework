@@ -15,7 +15,7 @@ abstract class AbstractPrintAdminTemplate extends AbstractHtmlDocument
     {
 
         $style = new StylesheetLink($this);
-        $style->href = '/css/framework/print/print.css';
+        $style->href = '/package/css/framework/print/print.css';
 
         $title = new Title($this);
         $title->content = $this->printTitle;

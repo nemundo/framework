@@ -7,13 +7,48 @@
 
 body {
 
-    font-family: Arial;  /* var(--default-font);**/
+    font-family: Verdana, sans-serif;  /* var(--default-font);**/
+    font-size: 14px;
 
     margin: 10mm;
     padding: 0;
 
 
 }
+
+
+.admin-title {
+
+    font-size: 14px;
+    font-weight: bold;
+
+
+
+}
+
+
+.admin-box {
+
+    border-style: solid;
+border-width: 1px;
+    border-color: lightgrey;
+
+    padding: 5mm;
+    margin: 5mm;
+}
+
+
+
+p {
+
+    margin-top: 5mm;
+    margin-bottom: 5mm;
+
+}
+
+
+
+
 
 
 .page-break {
