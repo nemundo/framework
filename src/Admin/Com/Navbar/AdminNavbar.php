@@ -7,6 +7,9 @@ use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Language\LanguageConfig;
+use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Formatting\Bold;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -14,7 +17,9 @@ use Nemundo\Html\Image\Img;
 use Nemundo\Html\Inline\Span;
 use Nemundo\Html\Layout\Nav;
 use Nemundo\User\Session\UserSession;
+use Nemundo\Web\Controller\AbstractWebController;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Web\WebConfig;
 
 class AdminNavbar extends Nav
 {
@@ -46,24 +51,6 @@ class AdminNavbar extends Nav
 
         $module = new ModuleJavaScript($this);
         $module->src = '/package/js/framework/Admin/Navbar/Navbar.js';
-
-
-        /*if (AdminNavbar::$assetMode) {
-
-            $this->addJsUrl('/asset/framework/js/Admin/Dropdown/dropdown.js');
-
-            $module = new ModuleJavaScript($this);
-            $module->src = '/asset/framework/js/Admin/Navbar/Navbar.js';
-
-        } else {
-
-            $this->addJsUrl('/js/framework/Admin/Dropdown/dropdown.js');
-
-            $module = new ModuleJavaScript($this);
-            $module->src = '/js/framework/Admin/Navbar/Navbar.js';
-
-        }*/
-
 
         $this->addCssClass('admin-navbar');
 
@@ -147,6 +134,27 @@ class AdminNavbar extends Nav
             $userMenu->addSubsite(LogoutSite::$site);
 
         }
+
+
+        if (LanguageConfig::$multiLanguage) {
+
+            $languageMenu = new AdminNavbarDropdown($menu);
+            $languageMenu->dropdownLabel = LanguageConfig::$currentLanguageCode;  // 'Language';
+
+            foreach ((new LanguageConfig())->getLanguageList() as $language) {
+
+                $site = clone(AbstractWebController::$currentSite);
+                $site->title = $language;
+
+                //$site->parentUrl = $language;
+
+                $site->parentUrl = (new Text($site->parentUrl))->replaceLeft(WebConfig::$webUrl.LanguageConfig::$currentLanguageCode,WebConfig::$webUrl.$language)->getValue();
+                $languageMenu->addSubsite($site);
+
+            }
+
+        }
+
 
         new HamburgerMenu($this);
 
