@@ -18,11 +18,9 @@ use Nemundo\App\ModelDesigner\Site\Image\ImageFormatDeleteSite;
 use Nemundo\App\ModelDesigner\Site\Image\ImageTypeSite;
 use Nemundo\App\ModelDesigner\Template\ModelDesignerTemplate;
 use Nemundo\App\ModelDesigner\Type\ImageModelDesignerType;
-use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Model\Type\ImageFormat\AutoSizeModelImageFormat;
 use Nemundo\Model\Type\ImageFormat\FixHeightModelImageFormat;
 use Nemundo\Model\Type\ImageFormat\FixWidthModelModelImageFormat;
-use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 
 class ImageTypePage extends ModelDesignerTemplate
 {
@@ -38,15 +36,13 @@ class ImageTypePage extends ModelDesignerTemplate
         /** @var ImageModelDesignerType $type */
         $type = (new FieldNameParameter())->getType($model);
 
-        $layout= new AdminFlexboxLayout($this);
+        $layout = new AdminFlexboxLayout($this);
 
         $breadcrumb = new ModelDesignerBreadcrumb($layout);
         $breadcrumb->addProject($project);
         $breadcrumb->addApp($app);
         $breadcrumb->addModel($model);
         $breadcrumb->addActiveItem($type->label);
-
-        //$layout = new BootstrapTwoColumnLayout($layout);
 
         $form = new ImageTypeForm($layout);
         $form->app = $app;
@@ -69,7 +65,6 @@ class ImageTypePage extends ModelDesignerTemplate
 
             $row = new AdminTableRow($table);
             $row->addText($imageFormat->imageFormatLabel);
-
 
             if ($imageFormat->isObjectOfClass(AutoSizeModelImageFormat::class)) {
                 $row->addText('Auto: ' . $imageFormat->size);
@@ -97,6 +92,5 @@ class ImageTypePage extends ModelDesignerTemplate
         return parent::getContent();
 
     }
-
 
 }

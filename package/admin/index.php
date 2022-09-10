@@ -1,1 +1,1 @@
-<?phprequire 'config.php';(new \Nemundo\Admin\Loader\AdminMySqlProjectLoader())->loadProject();(new \Nemundo\Admin\Web\AdminWeb())->loadWeb();
+<?phprequire 'config.php';//(new \Nemundo\Admin\Loader\AdminMySqlProjectLoader())->loadProject();\Nemundo\Project\Loader\AbstractProjectLoader::$webPath = 'admin_web';(new \Nemundo\Project\Loader\MySqlProjectLoader())->loadProject();(new \Nemundo\Admin\Web\AdminWeb())->loadWeb();
