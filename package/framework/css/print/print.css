@@ -15,6 +15,32 @@ body {
 }
 
 
+
+.admin-fontsize-6 {
+    font-size: 6pt;
+}
+
+
+.admin-fontsize-8 {
+    font-size: 8pt;
+}
+
+.admin-fontsize-10 {
+    font-size: 10pt;
+}
+
+.admin-fontsize-12 {
+    font-size: 12pt;
+}
+
+.admin-fontsize-14 {
+    font-size: 14pt;
+}
+
+
+
+
+
 .admin-title {
 
     font-size: 14pt;
