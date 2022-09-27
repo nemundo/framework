@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Admin\Site;use Nemundo\Web\Site\AbstractSiteTree;abstract class AbstractCsvSite extends AbstractAdminIconSite{    public function __construct(AbstractSiteTree $site = null)    {        $this->title = 'Csv Export';        $this->url = 'csv-export';        parent::__construct($site);        $this->iconName = 'file-csv';    }}

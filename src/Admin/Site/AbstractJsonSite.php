@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Admin\Site;use Nemundo\Web\Site\AbstractSiteTree;abstract class AbstractJsonSite extends AbstractAdminIconSite{    public function __construct(AbstractSiteTree $site = null)    {        $this->title = 'Json Export';        $this->url = 'json-export';        parent::__construct($site);        $this->iconName = 'file-export';    }}

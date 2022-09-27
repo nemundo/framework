@@ -28,38 +28,9 @@ class AdminSiteTabs extends Div
 
         if ($this->site !== null) {
 
-            /*$baseSite = clone($this->site);
-            if ($this->parameter !== null) {
-                $baseSite->addParameter($this->parameter);
-            }*/
-            //$this->addSite($baseSite);
-
             $this->addSite($this->site);
-
             foreach ($this->site->getMenuActiveSite() as $site) {
-
                 $this->addSite($site);
-
-
-                /*
-                $siteNew = clone($site);
-
-
-                if ($this->parameter !== null) {
-                    $siteNew->addParameter($this->parameter);
-                }
-
-                if ($siteNew->hasMenuActiveItems()) {
-
-                    $li = new BootstrapSiteTabsDropdown($this);
-                    $li->site = $siteNew;
-
-                } else {
-
-                    $this->addSite($siteNew);
-
-                }*/
-
             }
 
         }
@@ -82,6 +53,7 @@ class AdminSiteTabs extends Div
             $btn->addCssClass('admin-tabs-button-inactive');
         }
 
+        return $this;
 
     }
 
