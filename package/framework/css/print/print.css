@@ -49,6 +49,24 @@ body {
 }
 
 
+.admin-subtitle {
+
+    font-size: 12pt;
+    font-weight: bold;
+
+}
+
+
+.admin-default-layout {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+
+}
+
+
+
 .admin-box {
 
     border-style: solid;
