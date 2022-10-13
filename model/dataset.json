@@ -1,0 +1,154 @@
+{
+    "app": "Dataset",
+    "name": "dataset",
+    "namespace": "Nemundo\\App\\Dataset",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "e3394826-eb5c-470d-81bc-d9e5b688a965",
+            "label": "Category",
+            "class_name": "Category",
+            "table_name": "dataset_category",
+            "namespace": "Nemundo\\App\\Dataset\\Data\\Category",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Category",
+                    "field_name": "category",
+                    "variable_name": "category",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "category",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "category"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "ff5e5540-c9b5-47a3-a1b5-cd42c811a20b",
+            "label": "Dataset",
+            "class_name": "Dataset",
+            "table_name": "dataset_dataset",
+            "namespace": "Nemundo\\App\\Dataset\\Data\\Dataset",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Dataset",
+                    "field_name": "dataset",
+                    "variable_name": "dataset",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Url",
+                    "field_name": "url",
+                    "variable_name": "url",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "large_text",
+                    "label": "Description",
+                    "field_name": "description",
+                    "variable_name": "description",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "text",
+                    "label": "Licence",
+                    "field_name": "licence",
+                    "variable_name": "licence",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Organisation",
+                    "field_name": "organisation",
+                    "variable_name": "organisation",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "90803d5f-ec6b-4c60-9757-a639f88ddac8"
+                },
+                {
+                    "type": "external",
+                    "label": "Category",
+                    "field_name": "category",
+                    "variable_name": "category",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "e3394826-eb5c-470d-81bc-d9e5b688a965"
+                },
+                {
+                    "type": "text",
+                    "label": "Php Class",
+                    "field_name": "php_class",
+                    "variable_name": "phpClass",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "php_class",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "php_class"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "90803d5f-ec6b-4c60-9757-a639f88ddac8",
+            "label": "Organisation",
+            "class_name": "Organisation",
+            "table_name": "dataset_organisation",
+            "namespace": "Nemundo\\App\\Dataset\\Data\\Organisation",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Organisation",
+                    "field_name": "organisation",
+                    "variable_name": "organisation",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "organisation",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "organisation"
+                    ]
+                }
+            ]
+        }
+    ]
+}

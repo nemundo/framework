@@ -1,0 +1,45 @@
+<?php
+
+namespace Nemundo\App\Dataset\Type;
+
+use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Web\Site\AbstractSite;
+
+abstract class AbstractDataset extends AbstractBaseClass
+{
+
+    public $dataset;
+
+    public $description;
+
+    public $url;
+
+    public $licence;
+
+    public $useCommercialPurpose = false;
+
+    public $category;
+
+    public $organisation;
+
+    /**
+     * @var AbstractSite
+     */
+    public $site;
+
+
+    abstract protected function loadDataset();
+
+    public function __construct()
+    {
+
+        $this->loadDataset();
+
+    }
+
+
+
+
+
+}
