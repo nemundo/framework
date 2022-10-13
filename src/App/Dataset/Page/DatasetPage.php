@@ -70,11 +70,17 @@ class DatasetPage extends AbstractTemplateDocument
 
             $className = $datasetRow->phpClass;
 
+            if (class_exists($className)) {
+
             /** @var AbstractDataset $dataset */
             $dataset = new $className();
             $dataset->site->title='Data';
 
             $row->addSite($dataset->site);
+
+            } else {
+                $row->addEmpty();
+            }
 
         }
 

@@ -23,6 +23,9 @@ abstract class AbstractDataset extends AbstractBaseClass
 
     public $organisation;
 
+    public $dateOfPublication;
+
+
     /**
      * @var AbstractSite
      */
