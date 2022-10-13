@@ -54,26 +54,31 @@ class DatasetContainer extends Div
             $description->content = $datasetRow->description;
 
             $table = new AdminLabelValueTable($container);
-            $table->addLabelValue('Licence',$datasetRow->licence);
-            $table->addLabelHyperlink('Url',$datasetRow->url);
-            $table->addLabelValue('Category',$datasetRow->category->category);
-            $table->addLabelValue('Organisation',$datasetRow->organisation->organisation);
+            $table->addLabelValue('Licence', $datasetRow->licence);
+            $table->addLabelHyperlink('Url', $datasetRow->url);
+            $table->addLabelValue('Category', $datasetRow->category->category);
+            $table->addLabelValue('Organisation', $datasetRow->organisation->organisation);
 
 
             $className = $datasetRow->phpClass;
 
-            if (class_exists($className)) {
+            //if (class_exists($className)) {
 
-                /** @var AbstractDataset $dataset */
-                $dataset = new $className();
+            /** @var AbstractDataset $dataset */
+            $dataset = new $className();
+
+
+            if ($dataset->site !== null) {
                 $dataset->site->title = 'Data';
 
                 $btn = new AdminSiteButton($container);
                 $btn->content = 'Data';
                 $btn->site = $dataset->site;
 
-
             }
+
+
+            //}
 
             /*$btn = new AdminSiteButton($container);
             $btn->content='Information';

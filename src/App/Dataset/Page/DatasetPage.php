@@ -57,6 +57,8 @@ class DatasetPage extends AbstractTemplateDocument
         $header->addText($reader->model->licence->label);
         $header->addText($reader->model->organisation->label);
         $header->addText($reader->model->category->label);
+        //$header->addText('Last Update');
+
         $header->addEmpty();
 
         foreach ($reader->getData() as $datasetRow) {
