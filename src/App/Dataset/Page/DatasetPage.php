@@ -25,18 +25,18 @@ class DatasetPage extends AbstractTemplateDocument
         $title->content = 'Dataset';
 
 
-        $search=new AdminSearchForm($layout);
+        $search = new AdminSearchForm($layout);
 
-        $category=new CategoryListBox($search);
-        $category->submitOnChange=true;
-        $category->searchMode=true;
+        $category = new CategoryListBox($search);
+        $category->submitOnChange = true;
+        $category->searchMode = true;
 
-        $organisation=new OrganisationListBox($search);
-        $organisation->submitOnChange=true;
-        $organisation->searchMode=true;
+        $organisation = new OrganisationListBox($search);
+        $organisation->submitOnChange = true;
+        $organisation->searchMode = true;
 
 
-        $table=new AdminTable($layout);
+        $table = new AdminTable($layout);
 
         $reader = new DatasetReader();
         $reader->model->loadCategory();
@@ -51,7 +51,7 @@ class DatasetPage extends AbstractTemplateDocument
         }
 
 
-        $header=new AdminTableHeader($table);
+        $header = new AdminTableHeader($table);
         $header->addText($reader->model->dataset->label);
         $header->addText($reader->model->description->label);
         $header->addText($reader->model->licence->label);
@@ -59,9 +59,9 @@ class DatasetPage extends AbstractTemplateDocument
         $header->addText($reader->model->category->label);
         $header->addEmpty();
 
-        foreach ($reader->getData() as $datasetRow){
+        foreach ($reader->getData() as $datasetRow) {
 
-            $row=new AdminTableRow($table);
+            $row = new AdminTableRow($table);
             $row->addText($datasetRow->dataset);
             $row->addText($datasetRow->description);
             $row->addText($datasetRow->licence);
@@ -70,13 +70,13 @@ class DatasetPage extends AbstractTemplateDocument
 
             $className = $datasetRow->phpClass;
 
-            if (class_exists($className)) {
-
             /** @var AbstractDataset $dataset */
             $dataset = new $className();
-            $dataset->site->title='Data';
 
-            $row->addSite($dataset->site);
+            if ($dataset->site !== null) {
+                $dataset->site->title = 'Data';
+
+                $row->addSite($dataset->site);
 
             } else {
                 $row->addEmpty();
