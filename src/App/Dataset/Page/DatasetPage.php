@@ -12,6 +12,7 @@ use Nemundo\App\Dataset\Com\ListBox\CategoryListBox;
 use Nemundo\App\Dataset\Com\ListBox\OrganisationListBox;
 use Nemundo\App\Dataset\Data\Dataset\DatasetReader;
 use Nemundo\App\Dataset\Type\AbstractDataset;
+use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 
 class DatasetPage extends AbstractTemplateDocument
@@ -64,7 +65,13 @@ class DatasetPage extends AbstractTemplateDocument
         foreach ($reader->getData() as $datasetRow) {
 
             $row = new AdminTableRow($table);
-            $row->addText($datasetRow->dataset);
+
+            $hyperlink=new UrlHyperlink($row);
+            $hyperlink->content=$datasetRow->dataset;
+            $hyperlink->url=$datasetRow->url;
+            $hyperlink->openNewWindow=true;
+
+            //$row->addText($datasetRow->dataset);
             $row->addText($datasetRow->description);
             $row->addText($datasetRow->licence);
             $row->addText($datasetRow->organisation->organisation);

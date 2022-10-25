@@ -17,6 +17,8 @@ abstract class AbstractDataset extends AbstractBaseClass
 
     public $licence;
 
+    public $licenceUrl;
+
     public $useCommercialPurpose = false;
 
     public $category;
