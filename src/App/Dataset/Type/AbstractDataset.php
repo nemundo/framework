@@ -15,6 +15,8 @@ abstract class AbstractDataset extends AbstractBaseClass
 
     public $url;
 
+    public $docUrl;
+
     public $licence;
 
     public $licenceUrl;
