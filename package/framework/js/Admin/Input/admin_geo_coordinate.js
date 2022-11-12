@@ -33,15 +33,15 @@ document.onLoaded = function () {
     map.addCssClass("admin-map");
     map.addMapLayer(new OsmMapLayer());
 
-    let layer = new SwisstopoMapLayer();
+    /*let layer = new SwisstopoMapLayer();
     layer.swisstopoLayerName= "ch.swisstopo.pixelkarte-farbe";  // SwisstopoLayerType.PIXELKARTE;
-    map.addMapLayer(layer);
+    map.addMapLayer(layer);*/
 
 
 
     let circle = new CircleMapLayer();
     circle.geoCoordinate = coordinate;
-    circle.radius = 10;
+    circle.radius = 50;
     map.addMapLayer(circle);
 
     map.onMapClick = function (geoCoordinate) {
@@ -63,7 +63,7 @@ document.onLoaded = function () {
 
 
 
-export default class SwisstopoMapLayer extends MapLayer {
+/*export default class SwisstopoMapLayer extends MapLayer {
 
     swisstopoLayerName;  // = SwisstopoLayerType.PIXELKARTE;
 
@@ -86,4 +86,4 @@ export default class SwisstopoMapLayer extends MapLayer {
 
     }
 
-}
+}*/
