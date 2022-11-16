@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Dataset\Com\Container\DatasetContainer;
 use Nemundo\App\Dataset\Com\ListBox\CategoryListBox;
 use Nemundo\App\Dataset\Com\ListBox\OrganisationListBox;
 use Nemundo\App\Dataset\Data\Dataset\DatasetReader;
@@ -20,7 +21,9 @@ class DatasetPage extends AbstractTemplateDocument
     public function getContent()
     {
 
-        $layout = new AdminFlexboxLayout($this);
+        new DatasetContainer($this);
+
+        /*$layout = new AdminFlexboxLayout($this);
 
         $title = new AdminTitle($layout);
         $title->content = 'Dataset';
@@ -51,7 +54,6 @@ class DatasetPage extends AbstractTemplateDocument
             $reader->filter->andEqual($reader->model->organisationId, $organisation->getValue());
         }
 
-
         $header = new AdminTableHeader($table);
         $header->addText($reader->model->dataset->label);
         $header->addText($reader->model->description->label);
@@ -80,7 +82,7 @@ class DatasetPage extends AbstractTemplateDocument
             $className = $datasetRow->phpClass;
 
             /** @var AbstractDataset $dataset */
-            $dataset = new $className();
+            /*$dataset = new $className();
 
             if ($dataset->site !== null) {
                 $dataset->site->title = 'Data';
@@ -91,7 +93,7 @@ class DatasetPage extends AbstractTemplateDocument
                 $row->addEmpty();
             }
 
-        }
+        }*/
 
         return parent::getContent();
 

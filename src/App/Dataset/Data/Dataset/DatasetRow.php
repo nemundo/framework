@@ -61,6 +61,16 @@ public $category;
 */
 public $phpClass;
 
+/**
+* @var string
+*/
+public $licenceUrl;
+
+/**
+* @var string
+*/
+public $documentationUrl;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -78,6 +88,8 @@ if ($model->category !== null) {
 $this->loadNemundoAppDatasetDataCategoryCategorycategoryRow($model->category);
 }
 $this->phpClass = $this->getModelValue($model->phpClass);
+$this->licenceUrl = $this->getModelValue($model->licenceUrl);
+$this->documentationUrl = $this->getModelValue($model->documentationUrl);
 }
 private function loadNemundoAppDatasetDataOrganisationOrganisationorganisationRow($model) {
 $this->organisation = new \Nemundo\App\Dataset\Data\Organisation\OrganisationRow($this->row, $model);

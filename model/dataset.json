@@ -107,6 +107,24 @@
                     "allow_null": false,
                     "is_deleted": false,
                     "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Licence Url",
+                    "field_name": "licence_url",
+                    "variable_name": "licenceUrl",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Documentation Url",
+                    "field_name": "documentation_url",
+                    "variable_name": "documentationUrl",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
                 }
             ],
             "index": [

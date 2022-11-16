@@ -51,6 +51,16 @@ public $category;
 */
 public $phpClass;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $licenceUrl;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $documentationUrl;
+
 protected function loadModel() {
 $this->tableName = "dataset_dataset";
 $this->aliasTableName = "dataset_dataset";
@@ -123,6 +133,24 @@ $this->phpClass->aliasFieldName = "dataset_dataset_php_class";
 $this->phpClass->label = "Php Class";
 $this->phpClass->allowNullValue = false;
 $this->phpClass->length = 255;
+
+$this->licenceUrl = new \Nemundo\Model\Type\Text\TextType($this);
+$this->licenceUrl->tableName = "dataset_dataset";
+$this->licenceUrl->externalTableName = "dataset_dataset";
+$this->licenceUrl->fieldName = "licence_url";
+$this->licenceUrl->aliasFieldName = "dataset_dataset_licence_url";
+$this->licenceUrl->label = "Licence Url";
+$this->licenceUrl->allowNullValue = false;
+$this->licenceUrl->length = 255;
+
+$this->documentationUrl = new \Nemundo\Model\Type\Text\TextType($this);
+$this->documentationUrl->tableName = "dataset_dataset";
+$this->documentationUrl->externalTableName = "dataset_dataset";
+$this->documentationUrl->fieldName = "documentation_url";
+$this->documentationUrl->aliasFieldName = "dataset_dataset_documentation_url";
+$this->documentationUrl->label = "Documentation Url";
+$this->documentationUrl->allowNullValue = false;
+$this->documentationUrl->length = 255;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "php_class";

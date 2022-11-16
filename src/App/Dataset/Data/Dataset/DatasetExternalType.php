@@ -51,6 +51,16 @@ public $category;
 */
 public $phpClass;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $licenceUrl;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $documentationUrl;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = DatasetModel::class;
@@ -117,6 +127,22 @@ $this->phpClass->externalTableName = $this->externalTableName;
 $this->phpClass->aliasFieldName = $this->phpClass->tableName . "_" . $this->phpClass->fieldName;
 $this->phpClass->label = "Php Class";
 $this->addType($this->phpClass);
+
+$this->licenceUrl = new \Nemundo\Model\Type\Text\TextType();
+$this->licenceUrl->fieldName = "licence_url";
+$this->licenceUrl->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->licenceUrl->externalTableName = $this->externalTableName;
+$this->licenceUrl->aliasFieldName = $this->licenceUrl->tableName . "_" . $this->licenceUrl->fieldName;
+$this->licenceUrl->label = "Licence Url";
+$this->addType($this->licenceUrl);
+
+$this->documentationUrl = new \Nemundo\Model\Type\Text\TextType();
+$this->documentationUrl->fieldName = "documentation_url";
+$this->documentationUrl->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->documentationUrl->externalTableName = $this->externalTableName;
+$this->documentationUrl->aliasFieldName = $this->documentationUrl->tableName . "_" . $this->documentationUrl->fieldName;
+$this->documentationUrl->label = "Documentation Url";
+$this->addType($this->documentationUrl);
 
 }
 public function loadOrganisation() {

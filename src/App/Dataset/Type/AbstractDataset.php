@@ -15,7 +15,7 @@ abstract class AbstractDataset extends AbstractBaseClass
 
     public $url;
 
-    public $docUrl;
+    public $documentationUrl;
 
     public $licence;
 
@@ -44,9 +44,5 @@ abstract class AbstractDataset extends AbstractBaseClass
         $this->loadDataset();
 
     }
-
-
-
-
 
 }

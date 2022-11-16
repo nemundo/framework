@@ -51,7 +51,9 @@ class DatasetSetup extends AbstractBase
         $data->dataset = $dataset->dataset;
         $data->description = $dataset->description;
         $data->url = $dataset->url;
+        $data->documentationUrl = $dataset->documentationUrl;
         $data->licence = $dataset->licence;
+        $data->licenceUrl = $dataset->licenceUrl;
         $data->categoryId = $categoryId;
         $data->organisationId = $organisationId;
         $data->save();
