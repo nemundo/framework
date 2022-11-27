@@ -2,7 +2,6 @@
 
 namespace Nemundo\Model\Type\File;
 
-use Nemundo\Model\ModelConfig;
 use Nemundo\Model\Type\Complex\AbstractComplexType;
 use Nemundo\Model\Type\Number\NumberType;
 
@@ -40,7 +39,6 @@ class CroppingImageType extends AbstractComplexType
     public $croppingImage;
 
 
-
     protected function loadExternalType()
     {
 
@@ -58,10 +56,10 @@ class CroppingImageType extends AbstractComplexType
         $this->heigth = new NumberType();
         $this->addType($this->heigth);
 
-        $this->orginalImage= new FileType();
+        $this->orginalImage = new FileType();
         $this->addType($this->orginalImage);
 
-        $this->croppingImage= new FileType();
+        $this->croppingImage = new FileType();
         $this->addType($this->croppingImage);
 
     }
@@ -93,11 +91,12 @@ class CroppingImageType extends AbstractComplexType
         $this->orginalImage->fieldName = $this->fieldName . '_image';
         $this->orginalImage->aliasFieldName = $this->aliasFieldName . '_image';
         $this->orginalImage->tableName = $this->tableName;
-        //$this->heigth->allowNullValue = $this->allowNullValue;
+        $this->orginalImage->externalTableName = $this->tableName;
 
         $this->croppingImage->fieldName = $this->fieldName . '_image_cropping';
         $this->croppingImage->aliasFieldName = $this->aliasFieldName . '_image_cropping';
         $this->croppingImage->tableName = $this->tableName;
+        $this->croppingImage->externalTableName = $this->tableName;
 
     }
 

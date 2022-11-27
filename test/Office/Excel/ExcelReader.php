@@ -1,1 +1,1 @@
-<?php
+<?phprequire __DIR__ . '/../../config.php';$filename = 'D:\Tmp_Git\bfs\tmp\lebendgeburten.xlsx';$reader = new \Nemundo\Office\Excel\Reader\ExcelReader();$reader->filename = $filename;(new \Nemundo\Core\Debug\Debug())->write($reader->getSheetList());$reader->setSheet('Juni 2022p');$reader->useFirstRowAsHeader=false;$reader->lineOfStart = 6;foreach ($reader->getData() as $excelRow) {    (new \Nemundo\Core\Debug\Debug())->write($excelRow);    exit;}
