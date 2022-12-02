@@ -15,6 +15,8 @@ class AdminCheckBox extends AbstractCheckBox
         $this->prepareHtml();
         $this->tagName = 'div';
 
+        $this->addCssClass('admin-checkbox-container');
+
         $this->addContainer($this->checkbox);
 
         $label = new Label($this);

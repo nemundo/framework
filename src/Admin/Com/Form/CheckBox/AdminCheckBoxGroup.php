@@ -15,8 +15,6 @@ class AdminCheckBoxGroup extends AbstractRadioGroup
 
         $this->prepareHtml();
 
-        $this->addCssClass('admin-checkbox-container');
-
         $fieldset = new Fieldset($this);
         $fieldset->addCssClass('admin-checkbox-group');
 
