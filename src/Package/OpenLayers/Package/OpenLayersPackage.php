@@ -4,7 +4,6 @@
 namespace Nemundo\Package\OpenLayers\Package;
 
 
-use Nemundo\Com\Package\AbstractPackage;
 use Nemundo\Com\Package\Type\AbstractAssetPackage;
 use Nemundo\FrameworkProject;
 
