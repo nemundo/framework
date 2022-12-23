@@ -16,7 +16,7 @@
 
 
 .admin-table thead th a {
-    color: var(--color-light);
+    color: var(--color-dark);
     text-decoration: none;
 }
 
