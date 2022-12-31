@@ -1,6 +1,6 @@
 .admin-hyperlink {
     color: var(--color-font);
-    text-decoration: none;
+    text-decoration: underline;
     display: block;
 }
 
