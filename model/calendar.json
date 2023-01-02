@@ -1,0 +1,31 @@
+{
+    "app": "Calendar",
+    "name": "calendar",
+    "namespace": "Nemundo\\App\\Calendar",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "3efb7e51-ef5f-4457-96c7-28c20dff7453",
+            "label": "Month",
+            "class_name": "Month",
+            "table_name": "calendar_month",
+            "namespace": "Nemundo\\App\\Calendar\\Data\\Month",
+            "row_class_name": "",
+            "primary_index": "number_id",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Month",
+                    "field_name": "month",
+                    "variable_name": "month",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": []
+        }
+    ]
+}
