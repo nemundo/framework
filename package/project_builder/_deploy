@@ -1,4 +1,0 @@
-git config credential.helper store
-git pull
-composer update
-php bin/setup.php

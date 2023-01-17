@@ -53,3 +53,8 @@
     text-decoration: line-through;
 
 }
+
+
+.admin-table-cell-label {
+    vertical-align: top;
+}
