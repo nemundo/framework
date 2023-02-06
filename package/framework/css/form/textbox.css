@@ -1,26 +1,12 @@
 .admin-textbox {
 
-    /*width: 200px;*/
-    /*display: flex;
-    /*flex-direction: row;*/
-    /*flex-direction: column;
-    /*gap: 5px;*/
-
 }
-
-/*
-.admin-textbox-label {
-
-display: block;
-
-}*/
-
-
 
 .admin-textbox label {
 
     display: block;
     margin-bottom: 5px;
+    white-space: nowrap;
 
 }
 

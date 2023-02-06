@@ -26,3 +26,9 @@
     cursor: pointer;
 }
 
+
+.admin-file-input label {
+
+    white-space: nowrap;
+
+}
