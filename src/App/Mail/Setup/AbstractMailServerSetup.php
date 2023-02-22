@@ -38,6 +38,7 @@ abstract class AbstractMailServerSetup extends AbstractBase
 
     // saveConfig
     // extern in setup class
+    // install()
     public function save()
     {
 
