@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Scheduler\Script;use Nemundo\App\Scheduler\Data\Job\JobDelete;use Nemundo\App\Script\Type\AbstractConsoleScript;class JobCleanScript extends AbstractConsoleScript{    protected function loadScript()    {        $this->scriptName = 'job-clean';    }    public function run()    {        (new JobDelete())->delete();    }}

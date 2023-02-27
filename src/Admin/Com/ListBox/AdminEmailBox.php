@@ -5,7 +5,7 @@ namespace Nemundo\Admin\Com\ListBox;
 use Nemundo\Core\Validation\ValidationType;
 use Nemundo\Html\Form\Input\InputType;
 
-// EmailTextBox
+
 class AdminEmailBox extends AdminTextBox
 {
 
@@ -14,7 +14,7 @@ class AdminEmailBox extends AdminTextBox
 
         parent::loadContainer();
         $this->inputType = InputType::EMAIL;
-        $this->validationType= ValidationType::IS_EMAIL;
+        $this->validationType = ValidationType::IS_EMAIL;
         $this->label = 'eMail';
 
     }

@@ -2,7 +2,6 @@
 
 namespace Nemundo\Admin\Com\ListBox;
 
-// TextBox
 class AdminTextBox extends AbstractAdminTextBox
 {
 
@@ -10,7 +9,7 @@ class AdminTextBox extends AbstractAdminTextBox
     {
 
         $this->textInput->addCssClass('admin-input');
-        $this->textInput->autocomplete=false;
+        $this->textInput->autocomplete = false;
         return parent::getContent();
 
     }

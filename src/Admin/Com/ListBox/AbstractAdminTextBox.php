@@ -5,7 +5,6 @@ namespace Nemundo\Admin\Com\ListBox;
 use Nemundo\Com\FormBuilder\Item\AbstractTextBox;
 use Nemundo\Html\Form\Formatting\Label;
 
-// AbstractTextBox
 class AbstractAdminTextBox extends AbstractTextBox
 {
 
@@ -16,7 +15,7 @@ class AbstractAdminTextBox extends AbstractTextBox
 
         $this->prepareHtml();
 
-        $this->tagName='div';
+        $this->tagName = 'div';
         $this->addCssClass('admin-textbox');
 
         $label = new Label();
