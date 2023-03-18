@@ -7,7 +7,10 @@ use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\Item\AdminItemContainer;
 use Nemundo\Admin\Com\Item\AdminItemSubtitle;
 use Nemundo\Admin\Com\Item\AdminItemText;
+use Nemundo\Admin\Com\Item\AdminItemTitle;
+use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Dataset\Com\ListBox\CategoryListBox;
 use Nemundo\App\Dataset\Com\ListBox\OrganisationListBox;
 use Nemundo\App\Dataset\Data\Dataset\DatasetModel;
@@ -22,7 +25,13 @@ class DatasetContainer extends Div
     public function getContent()
     {
 
-        $search = new AdminSearchForm($this);
+        $layout = new AdminFlexboxLayout($this);
+
+        $title = new AdminTitle($layout);
+        $title->content = 'Dataset';
+
+
+        $search = new AdminSearchForm($layout);
 
         $category = new CategoryListBox($search);
         $category->submitOnChange = true;
@@ -48,7 +57,7 @@ class DatasetContainer extends Div
 
             $container = new AdminItemContainer($this);
 
-            $title = new AdminItemSubtitle($container);
+            $title = new AdminItemTitle($container);  // new AdminItemSubtitle($container);
             $title->content = $datasetRow->dataset;
 
             $description = new AdminItemText($container);
