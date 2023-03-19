@@ -47,6 +47,7 @@ class DatasetSetup extends AbstractBase
 
         $data = new Dataset();
         $data->updateOnDuplicate = true;
+        $data->setupStatus = true;
         $data->phpClass = $dataset->getClassName();
         $data->dataset = $dataset->dataset;
         $data->description = $dataset->description;
