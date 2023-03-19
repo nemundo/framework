@@ -9,12 +9,12 @@ use Nemundo\User\Script\AdminUserScript;
 require  "config.php";
 
 $reset = new ProjectReset();
+$reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
 $reset->reset();
 (new ProjectInstall())->install();
 (new ScriptSetup())->addScript(new AdminUserScript());
 
 (new ModelDesignerApplication())->installApp();
 (new \Nemundo\App\Dataset\Application\DatasetApplication())->installApp();
-
 
 $reset->remove();
