@@ -42,7 +42,7 @@
             "class_name": "Dataset",
             "table_name": "dataset_dataset",
             "namespace": "Nemundo\\App\\Dataset\\Data\\Dataset",
-            "row_class_name": "",
+            "row_class_name": "Nemundo\\App\\Dataset\\Reader\\Dataset\\DatasetDataRow",
             "primary_index": "auto_increment",
             "is_deleted": false,
             "type": [

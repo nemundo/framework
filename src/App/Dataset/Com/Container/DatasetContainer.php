@@ -5,7 +5,6 @@ namespace Nemundo\App\Dataset\Com\Container;
 use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\Item\AdminItemContainer;
-use Nemundo\Admin\Com\Item\AdminItemSubtitle;
 use Nemundo\Admin\Com\Item\AdminItemText;
 use Nemundo\Admin\Com\Item\AdminItemTitle;
 use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
@@ -13,8 +12,7 @@ use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Dataset\Com\ListBox\CategoryListBox;
 use Nemundo\App\Dataset\Com\ListBox\OrganisationListBox;
-use Nemundo\App\Dataset\Data\Dataset\DatasetModel;
-use Nemundo\App\Dataset\Reader\DatasetDataReader;
+use Nemundo\App\Dataset\Reader\Dataset\DatasetDataReader;
 use Nemundo\App\Dataset\Type\AbstractDataset;
 use Nemundo\Html\Block\Div;
 

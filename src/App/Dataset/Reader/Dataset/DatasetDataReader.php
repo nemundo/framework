@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\App\Dataset\Reader;
+namespace Nemundo\App\Dataset\Reader\Dataset;
 
 use Nemundo\App\Dataset\Data\Dataset\DatasetReader;
 

@@ -11,12 +11,12 @@ parent::__construct();
 $this->model = new DatasetModel();
 }
 /**
-* @return DatasetRow[]
+* @return \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow[]
 */
 public function getData() {
 $list = [];
 foreach (parent::getData() as $dataRow) {
-$row = new DatasetRow($dataRow, $this->model);
+$row = new \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow($dataRow, $this->model);
 $list[] = $row;
 }
 return $list;

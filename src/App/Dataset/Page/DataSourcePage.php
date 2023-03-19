@@ -5,7 +5,7 @@ namespace Nemundo\App\Dataset\Page;
 use Nemundo\Admin\Com\Html\AdminUnorderedList;
 use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Dataset\Reader\DatasetDataReader;
+use Nemundo\App\Dataset\Reader\Dataset\DatasetDataReader;
 use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 

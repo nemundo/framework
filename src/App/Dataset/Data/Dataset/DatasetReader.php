@@ -11,7 +11,7 @@ $this->model = new DatasetModel();
 parent::__construct();
 }
 /**
-* @return DatasetRow[]
+* @return \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return DatasetRow
+* @return \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return DatasetRow
+* @return \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new DatasetRow($dataRow, $this->model);
+$row = new \Nemundo\App\Dataset\Reader\Dataset\DatasetDataRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }
