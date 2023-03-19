@@ -52,6 +52,11 @@ public $licenceUrl;
 */
 public $documentationUrl;
 
+/**
+* @var bool
+*/
+public $setupStatus;
+
 public function __construct() {
 parent::__construct();
 $this->model = new DatasetModel();
@@ -66,6 +71,7 @@ $this->typeValueList->setModelValue($this->model->categoryId, $this->categoryId)
 $this->typeValueList->setModelValue($this->model->phpClass, $this->phpClass);
 $this->typeValueList->setModelValue($this->model->licenceUrl, $this->licenceUrl);
 $this->typeValueList->setModelValue($this->model->documentationUrl, $this->documentationUrl);
+$this->typeValueList->setModelValue($this->model->setupStatus, $this->setupStatus);
 parent::update();
 }
 }

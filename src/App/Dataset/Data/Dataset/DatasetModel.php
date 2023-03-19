@@ -61,6 +61,11 @@ public $licenceUrl;
 */
 public $documentationUrl;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $setupStatus;
+
 protected function loadModel() {
 $this->tableName = "dataset_dataset";
 $this->aliasTableName = "dataset_dataset";
@@ -151,6 +156,14 @@ $this->documentationUrl->aliasFieldName = "dataset_dataset_documentation_url";
 $this->documentationUrl->label = "Documentation Url";
 $this->documentationUrl->allowNullValue = false;
 $this->documentationUrl->length = 255;
+
+$this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->setupStatus->tableName = "dataset_dataset";
+$this->setupStatus->externalTableName = "dataset_dataset";
+$this->setupStatus->fieldName = "setup_status";
+$this->setupStatus->aliasFieldName = "dataset_dataset_setup_status";
+$this->setupStatus->label = "Setup Status";
+$this->setupStatus->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "php_class";

@@ -71,6 +71,11 @@ public $licenceUrl;
 */
 public $documentationUrl;
 
+/**
+* @var bool
+*/
+public $setupStatus;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -90,6 +95,7 @@ $this->loadNemundoAppDatasetDataCategoryCategorycategoryRow($model->category);
 $this->phpClass = $this->getModelValue($model->phpClass);
 $this->licenceUrl = $this->getModelValue($model->licenceUrl);
 $this->documentationUrl = $this->getModelValue($model->documentationUrl);
+$this->setupStatus = boolval($this->getModelValue($model->setupStatus));
 }
 private function loadNemundoAppDatasetDataOrganisationOrganisationorganisationRow($model) {
 $this->organisation = new \Nemundo\App\Dataset\Data\Organisation\OrganisationRow($this->row, $model);

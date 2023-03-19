@@ -61,6 +61,11 @@ public $licenceUrl;
 */
 public $documentationUrl;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $setupStatus;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = DatasetModel::class;
@@ -143,6 +148,14 @@ $this->documentationUrl->externalTableName = $this->externalTableName;
 $this->documentationUrl->aliasFieldName = $this->documentationUrl->tableName . "_" . $this->documentationUrl->fieldName;
 $this->documentationUrl->label = "Documentation Url";
 $this->addType($this->documentationUrl);
+
+$this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType();
+$this->setupStatus->fieldName = "setup_status";
+$this->setupStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->setupStatus->externalTableName = $this->externalTableName;
+$this->setupStatus->aliasFieldName = $this->setupStatus->tableName . "_" . $this->setupStatus->fieldName;
+$this->setupStatus->label = "Setup Status";
+$this->addType($this->setupStatus);
 
 }
 public function loadOrganisation() {
