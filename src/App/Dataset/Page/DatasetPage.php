@@ -83,10 +83,11 @@ class DatasetPage extends AbstractTemplateDocument
 
 
             if ($dataset->site !== null) {
-                $dataset->site->title = 'Data';
+
+                $dataset->site->title = 'App';
 
                 $btn = new AdminSiteButton($container);
-                $btn->content = 'Data';
+                //$btn->content = 'Data';
                 $btn->site = $dataset->site;
 
             }

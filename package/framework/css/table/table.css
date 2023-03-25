@@ -23,7 +23,7 @@
 
 .admin-table td {
 
-    padding:var(--default-table-space);
+    padding: var(--default-table-space);
 
 
 }
@@ -34,8 +34,8 @@
 }
 
 
-.admin-table td {
-
+.admin-table td a {
+    text-decoration: none;
 }
 
 
@@ -45,7 +45,6 @@
     border-color: var(--color-dark);
 
 }
-
 
 
 .admin-table-row-strike-through {
