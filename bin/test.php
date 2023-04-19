@@ -1,9 +1,20 @@
 <?php
 
-use Besucherfrequenz\Import\BesucherfrequenzWeekdayImport;
+use Nemundo\Office\Excel\Reader\ExcelReader;
 
 require "config.php";
 
+$filename = 'D:\Tmp_Git\regiocockpit\tmp\bauzonenstatistik.xlsx';
 
-(new \Besucherfrequenz\Data\BesucherfrequenzWeekday\BesucherfrequenzWeekdayDelete())->delete();
-(new BesucherfrequenzWeekdayImport())->importData();
+$reader = new ExcelReader();
+//$reader->setSheet('asdf');
+$reader->filename = $filename;
+
+//(new \Nemundo\Core\Debug\Debug())->write($reader->getFileFormat());
+
+foreach ($reader->getData() as $excelRow) {
+
+    /*$excelRow->hasValueByNumber(0);
+    $excelRow->getValueByNumber(0);*/
+
+}
