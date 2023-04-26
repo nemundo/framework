@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\App\Mail\Data\MailServer;
-class MailServerReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\App\Mail\Data\InlineImage;
+class InlineImageReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var MailServerModel
+* @var InlineImageModel
 */
 public $model;
 
 public function __construct() {
-$this->model = new MailServerModel();
+$this->model = new InlineImageModel();
 parent::__construct();
 }
 /**
-* @return MailServerRow[]
+* @return InlineImageRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return MailServerRow
+* @return InlineImageRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return MailServerRow
+* @return InlineImageRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new MailServerRow($dataRow, $this->model);
+$row = new InlineImageRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }

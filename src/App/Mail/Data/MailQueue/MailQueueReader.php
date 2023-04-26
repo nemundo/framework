@@ -7,8 +7,8 @@ class MailQueueReader extends \Nemundo\Model\Reader\ModelDataReader {
 public $model;
 
 public function __construct() {
-parent::__construct();
 $this->model = new MailQueueModel();
+parent::__construct();
 }
 /**
 * @return MailQueueRow[]

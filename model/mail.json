@@ -6,6 +6,55 @@
     "model": [
         {
             "template": "default",
+            "model_id": "2d101030-2a74-4e8e-b381-f4d60897a056",
+            "label": "Inline Image",
+            "class_name": "InlineImage",
+            "table_name": "mail_inline_image",
+            "namespace": "Nemundo\\App\\Mail\\Data\\InlineImage",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Mail Queue",
+                    "field_name": "mail_queue",
+                    "variable_name": "mailQueue",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "e75e5f42-ecf6-451a-b529-6d5ebb41833a"
+                },
+                {
+                    "type": "text",
+                    "label": "Cid",
+                    "field_name": "cid",
+                    "variable_name": "cid",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "20"
+                },
+                {
+                    "type": "text",
+                    "label": "Filename",
+                    "field_name": "filename",
+                    "variable_name": "filename",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "mail_queue",
+                    "index_type": "index",
+                    "field_name": [
+                        "mail_queue"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
             "model_id": "a7ae5fa5-adff-4948-a1f0-562ce728f6d8",
             "label": "Mail Config",
             "class_name": "MailConfig",

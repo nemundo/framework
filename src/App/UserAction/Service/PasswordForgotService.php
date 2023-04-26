@@ -2,7 +2,7 @@
 
 namespace Nemundo\App\UserAction\Service;
 
-use Nemundo\App\Mail\Message\MailMessage;
+use Nemundo\App\Mail\Message\Mail\MailMessage;
 use Nemundo\App\UserAction\Mail\PasswordRequestMailContainer;
 use Nemundo\App\WebService\Service\AbstractServiceRequest;
 use Nemundo\Core\Http\Request\HttpRequest;
