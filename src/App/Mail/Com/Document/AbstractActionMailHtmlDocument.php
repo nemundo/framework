@@ -4,6 +4,7 @@ namespace Nemundo\App\Mail\Com\Document;
 
 use Nemundo\App\Mail\Com\Button\MailButton;
 use Nemundo\App\Mail\Com\Layout\MailLayout;
+use Nemundo\App\Mail\Message\Attachment\InlineImageAttachment;
 use Nemundo\Css\Builder\CssStyleBuilder;
 use Nemundo\Html\Heading\H1;
 use Nemundo\Html\Image\Img;
@@ -17,7 +18,12 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
 
     public $darkColor;
 
-    public $logoUrl;
+    //public $logoUrl;
+
+    /**
+     * @var InlineImageAttachment
+     */
+    public $logoInlineImage;
 
     public $borderRadius;
 
@@ -37,10 +43,16 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
 
         $layout = new MailLayout($this);
 
-        if ($this->logoUrl !== null) {
+        /*if ($this->logoUrl !== null) {
             $logo = new Img($layout);
             $logo->src = $this->logoUrl;
+        }*/
+
+        if ($this->logoInlineImage !== null) {
+            $logo = new Img($layout);
+            $logo->src = $this->logoInlineImage->getSrc();
         }
+
 
         if ($this->mailTitle !== null) {
 
