@@ -9,6 +9,11 @@ use Nemundo\Html\Header\Meta\Meta;
 abstract class AbstractMailHtmlDocument extends AbstractHtmlDocument
 {
 
+
+
+
+
+
     public function getContent()
     {
 

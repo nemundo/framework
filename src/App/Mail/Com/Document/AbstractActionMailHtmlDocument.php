@@ -6,6 +6,8 @@ use Nemundo\App\Mail\Com\Button\MailButton;
 use Nemundo\App\Mail\Com\Layout\MailLayout;
 use Nemundo\App\Mail\Message\Attachment\InlineImageAttachment;
 use Nemundo\Css\Builder\CssStyleBuilder;
+use Nemundo\Html\Block\ContentDiv;
+use Nemundo\Html\Block\Div;
 use Nemundo\Html\Heading\H1;
 use Nemundo\Html\Image\Img;
 use Nemundo\Html\Paragraph\Paragraph;
@@ -36,6 +38,24 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
      */
     public $actionSite;
 
+
+    /**
+     * @var Div
+     */
+    public $mailDiv;
+
+
+    abstract protected function loadActionMail();
+
+    public function __construct()
+    {
+
+        parent::__construct();
+
+        $this->mailDiv = new Div();
+        $this->loadActionMail();
+
+    }
 
 
     public function getContent()
@@ -68,7 +88,15 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
         if ($this->mailText !== null) {
             $p = new Paragraph($layout);
             $p->content = $this->mailText;
+
+            /*$div = new ContentDiv($layout);
+            $div->content = $this->mailText;*/
+
         }
+
+
+        $layout->addContainer($this->mailDiv);
+
 
         if ($this->actionSite !== null) {
             $btn = new MailButton($layout);
