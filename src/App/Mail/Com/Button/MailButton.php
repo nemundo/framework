@@ -33,14 +33,9 @@ class MailButton extends Table
         $td->addAttribute('style', $builder->getStyle());
 
         $hyperlink = new UrlHyperlink($td);
-        //$hyperlink->addAttribute('style','color:'.$this->lightColor);
         $hyperlink->content = $this->buttonLabel;
-        $hyperlink->url = $this->url;  // actionSite->getUrlWithDomain();
-
-
+        $hyperlink->url = $this->url;
         $builder = new CssStyleBuilder();
-        //$builder->addStyle('border', '1px solid #1F83FF');
-        //$builder->addStyle('border-radius', $this->borderRadius);
         $builder->borderRadius = $this->borderRadius;
         $builder->addStyle('color', $this->color);
         $builder->addStyle('font-size', '14px');
@@ -49,14 +44,11 @@ class MailButton extends Table
         $builder->addStyle('display', 'inline-block');
         $builder->addStyle('padding', '8px 12px');
 
-        //$builder->addStyle('width','200px');
-
         $hyperlink->addAttribute('style', $builder->getStyle());
 
 
         return parent::getContent();
 
     }
-
 
 }

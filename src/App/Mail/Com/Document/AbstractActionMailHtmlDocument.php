@@ -5,8 +5,8 @@ namespace Nemundo\App\Mail\Com\Document;
 use Nemundo\App\Mail\Com\Button\MailButton;
 use Nemundo\App\Mail\Com\Layout\MailLayout;
 use Nemundo\App\Mail\Message\Attachment\InlineImageAttachment;
+use Nemundo\Core\Config\ConfigFileReader;
 use Nemundo\Css\Builder\CssStyleBuilder;
-use Nemundo\Html\Block\ContentDiv;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Heading\H1;
 use Nemundo\Html\Image\Img;
@@ -38,7 +38,6 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
      */
     public $actionSite;
 
-
     /**
      * @var Div
      */
@@ -53,6 +52,8 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
         parent::__construct();
 
         $this->mailDiv = new Div();
+        $this->logoInlineImage = new InlineImageAttachment();
+        $this->logoInlineImage->cid = 'logo';
         $this->loadActionMail();
 
     }
@@ -68,7 +69,7 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
             $logo->src = $this->logoUrl;
         }*/
 
-        if ($this->logoInlineImage !== null) {
+        if ($this->logoInlineImage->hasImage()) {
             $logo = new Img($layout);
             $logo->src = $this->logoInlineImage->getSrc();
         }
@@ -97,13 +98,16 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
 
         $layout->addContainer($this->mailDiv);
 
+        //$domain = (new ConfigFileReader())->getValue('domain');
+        $domain = '';  // (new ConfigFileReader())->getValue('domain');
 
         if ($this->actionSite !== null) {
             $btn = new MailButton($layout);
             $btn->backgroundColor = $this->darkColor;
-            $btn->color=$this->lightColor;
-            $btn->borderRadius= $this->borderRadius;
-            $btn->url = $this->actionSite->getUrlWithDomain();
+            $btn->color = $this->lightColor;
+            $btn->borderRadius = $this->borderRadius;
+            //$btn->url =  $this->actionSite->getUrlWithDomain();
+            $btn->url = 'https://' . $domain . $this->actionSite->getUrl();
             $btn->buttonLabel = $this->actionSite->title;
         }
 

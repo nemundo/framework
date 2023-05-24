@@ -26,6 +26,18 @@ abstract class AbstractInlineImageAttachment extends AbstractBase
     }
 
 
+    public function hasImage() {
+
+        $value = false;
+        if ($this->filename !==null) {
+            $value=true;
+        }
+
+        return $value;
+
+    }
+
+
     public function getSrc()
     {
 

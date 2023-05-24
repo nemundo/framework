@@ -13,7 +13,6 @@ class MailLayout extends Table
 
     public $backgroundColor;
 
-
     public function getContent()
     {
 
@@ -38,9 +37,8 @@ class MailLayout extends Table
         $td = new Td($tr);
         $td->addContainer($container);
 
-        return $this;  // parent::addContainer($container);
+        return $this;
 
     }
-
 
 }
