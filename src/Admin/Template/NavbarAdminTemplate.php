@@ -3,11 +3,11 @@
 namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\AdminConfig;
+use Nemundo\Admin\Com\Layout\AdminFooter;
 use Nemundo\Admin\Com\Layout\AdminMainContent;
 use Nemundo\Admin\Com\Navbar\AdminNavbar;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Container\AbstractContainer;
-
 
 class NavbarAdminTemplate extends AbstractAdminTemplate
 {
@@ -22,6 +22,10 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
      */
     protected $navbar;
 
+    /**
+     * @var AdminFooter
+     */
+    protected $footer;
 
     protected function loadContainer()
     {
@@ -37,6 +41,9 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
 
         parent::addContainer($nav);
         parent::addContainer($this->content);
+
+        $this->footer = new AdminFooter();
+        parent::addContainer($this->footer);
 
     }
 

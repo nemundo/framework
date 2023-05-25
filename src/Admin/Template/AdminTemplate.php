@@ -3,7 +3,6 @@
 namespace Nemundo\Admin\Template;
 
 use Nemundo\Admin\Com\Layout\AdminMainContent;
-use Nemundo\Html\Block\Div;
 use Nemundo\Html\Container\AbstractContainer;
 
 class AdminTemplate extends AbstractAdminTemplate
@@ -19,6 +18,7 @@ class AdminTemplate extends AbstractAdminTemplate
     {
 
         parent::loadContainer();
+
         $this->content = new AdminMainContent();
         parent::addContainer($this->content);
 
