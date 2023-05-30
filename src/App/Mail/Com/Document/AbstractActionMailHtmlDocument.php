@@ -20,8 +20,6 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
 
     public $darkColor;
 
-    //public $logoUrl;
-
     /**
      * @var InlineImageAttachment
      */
@@ -87,11 +85,9 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
         }
 
         if ($this->mailText !== null) {
+
             $p = new Paragraph($layout);
             $p->content = $this->mailText;
-
-            /*$div = new ContentDiv($layout);
-            $div->content = $this->mailText;*/
 
         }
 
@@ -99,15 +95,15 @@ abstract class AbstractActionMailHtmlDocument extends AbstractMailHtmlDocument
         $layout->addContainer($this->mailDiv);
 
         //$domain = (new ConfigFileReader())->getValue('domain');
-        $domain = '';  // (new ConfigFileReader())->getValue('domain');
+        //$domain = '';  // (new ConfigFileReader())->getValue('domain');
 
         if ($this->actionSite !== null) {
             $btn = new MailButton($layout);
             $btn->backgroundColor = $this->darkColor;
             $btn->color = $this->lightColor;
             $btn->borderRadius = $this->borderRadius;
-            //$btn->url =  $this->actionSite->getUrlWithDomain();
-            $btn->url = 'https://' . $domain . $this->actionSite->getUrl();
+            $btn->url =  $this->actionSite->getUrlWithDomain();
+            //$btn->url = 'https://' . $domain . $this->actionSite->getUrl();
             $btn->buttonLabel = $this->actionSite->title;
         }
 
