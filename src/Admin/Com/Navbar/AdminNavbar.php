@@ -7,7 +7,6 @@ use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Block\Div;
@@ -39,10 +38,6 @@ class AdminNavbar extends Nav
      * @var bool
      */
     public $fixed = false;
-
-
-    //public static $assetMode = false;
-
 
     public function getContent()
     {
@@ -86,11 +81,9 @@ class AdminNavbar extends Nav
 
         }
 
-
         $menu = new Div($left);
         $menu->id = "admin-navbar-menu";
         $menu->addCssClass('admin-navbar-menu');
-
 
         new CloseMenu($menu);
 
@@ -135,26 +128,22 @@ class AdminNavbar extends Nav
 
         }
 
-
         if (LanguageConfig::$multiLanguage) {
 
             $languageMenu = new AdminNavbarDropdown($menu);
-            $languageMenu->dropdownLabel = LanguageConfig::$currentLanguageCode;  // 'Language';
+            $languageMenu->dropdownLabel = LanguageConfig::$currentLanguageCode;
 
             foreach ((new LanguageConfig())->getLanguageList() as $language) {
 
                 $site = clone(AbstractWebController::$currentSite);
                 $site->title = $language;
 
-                //$site->parentUrl = $language;
-
-                $site->parentUrl = (new Text($site->parentUrl))->replaceLeft(WebConfig::$webUrl.LanguageConfig::$currentLanguageCode,WebConfig::$webUrl.$language)->getValue();
+                $site->parentUrl = (new Text($site->parentUrl))->replaceLeft(WebConfig::$webUrl . LanguageConfig::$currentLanguageCode, WebConfig::$webUrl . $language)->getValue();
                 $languageMenu->addSubsite($site);
 
             }
 
         }
-
 
         new HamburgerMenu($this);
 

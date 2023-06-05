@@ -1,0 +1,56 @@
+{
+    "app": "Inbox",
+    "name": "inbox",
+    "namespace": "Nemundo\\App\\Inbox",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "e3547e0d-9459-4c04-9710-c49a89c931fd",
+            "label": "Inbox",
+            "class_name": "Inbox",
+            "table_name": "inbox_inbox",
+            "namespace": "Nemundo\\App\\Inbox\\Data\\Inbox",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Uid",
+                    "field_name": "uid",
+                    "variable_name": "uid",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Subject",
+                    "field_name": "subject",
+                    "variable_name": "subject",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "date_time",
+                    "label": "Date Time",
+                    "field_name": "date_time",
+                    "variable_name": "dateTime",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "uid",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "uid"
+                    ]
+                }
+            ]
+        }
+    ]
+}
