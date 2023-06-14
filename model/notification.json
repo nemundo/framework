@@ -1,0 +1,55 @@
+{
+    "app": "Notification",
+    "name": "notification",
+    "namespace": "Nemundo\\App\\Notification",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "ba15a1a0-0f9d-4039-b718-121412b694cc",
+            "label": "Notification",
+            "class_name": "Notification",
+            "table_name": "notification_notification",
+            "namespace": "Nemundo\\App\\Notification\\Data\\Notification",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "User",
+                    "field_name": "user",
+                    "variable_name": "user",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "23f00db8-b303-40e4-ab45-32054a954434"
+                },
+                {
+                    "type": "date_time",
+                    "label": "Date Time",
+                    "field_name": "date_time",
+                    "variable_name": "dateTime",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "large_text",
+                    "label": "Message",
+                    "field_name": "message",
+                    "variable_name": "message",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "user",
+                    "index_type": "index",
+                    "field_name": [
+                        "user"
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -76,6 +76,15 @@
 }
 
 
+.admin-grid-layout {
+
+    display: grid;
+    gap: var(--default-gap-space);
+
+}
+
+
+
 .admin-row-flexbox-layout {
     display: flex;
     flex-direction: row;
