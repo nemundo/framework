@@ -18,5 +18,7 @@ $reset->reset();
 
 (new \Nemundo\App\Dataset\Application\DatasetApplication())->installApp();
 (new \Nemundo\App\Git\Application\GitApplication())->installApp();
+(new \Nemundo\App\SystemLog\Application\SystemLogApplication())->installApp();
+(new \Nemundo\App\Notification\Application\NotificationApplication())->installApp();
 
 $reset->remove();
