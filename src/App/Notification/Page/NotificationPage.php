@@ -3,6 +3,7 @@
 namespace Nemundo\App\Notification\Page;
 
 use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
+use Nemundo\Admin\Com\Pagination\AdminPagination;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
@@ -28,8 +29,6 @@ class NotificationPage extends AbstractTemplateDocument
         $header->addText($reader->model->dateTime->label);
         $header->addText($reader->model->message->label);
 
-
-
         foreach ($reader->getData() as $notificationRow) {
 
             $row = new AdminTableRow($table);
@@ -37,11 +36,12 @@ class NotificationPage extends AbstractTemplateDocument
             $row->addText($notificationRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($notificationRow->message);
 
-
         }
 
-
+        $pagination = new AdminPagination($layout);
+        $pagination->paginationReader= $reader;
 
         return parent::getContent();
+
     }
 }
