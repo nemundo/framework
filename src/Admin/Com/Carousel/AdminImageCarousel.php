@@ -3,7 +3,7 @@
 namespace Nemundo\Admin\Com\Carousel;
 
 use Nemundo\Admin\Com\Image\AdminImage;
-use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
+use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Inline\Span;
 use Nemundo\Html\Paragraph\Paragraph;

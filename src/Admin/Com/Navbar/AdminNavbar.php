@@ -6,7 +6,7 @@ use Nemundo\App\UserAction\Site\LogoutSite;
 use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
+use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Block\Div;

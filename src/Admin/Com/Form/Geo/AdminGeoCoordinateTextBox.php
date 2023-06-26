@@ -4,7 +4,7 @@ namespace Nemundo\Admin\Com\Form\Geo;
 
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
 use Nemundo\Admin\Parameter\GeoCoordinateParameter;
-use Nemundo\Com\JavaScript\Module\ModuleJavaScript;
+use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinate;

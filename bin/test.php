@@ -1,9 +1,3 @@
 <?php
 
 require "config.php";
-
-
-
-
-
-
