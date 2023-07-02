@@ -20,5 +20,6 @@ $reset->reset();
 (new \Nemundo\App\Git\Application\GitApplication())->installApp();
 (new \Nemundo\App\SystemLog\Application\SystemLogApplication())->installApp();
 (new \Nemundo\App\Notification\Application\NotificationApplication())->installApp();
+(new \Nemundo\App\Tmp\Application\TmpApplication())->installApp();
 
 $reset->remove();

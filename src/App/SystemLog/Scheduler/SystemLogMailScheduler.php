@@ -6,6 +6,7 @@ use Nemundo\App\Mail\Com\Table\MailTable;
 use Nemundo\App\Mail\Com\Table\MailTableHeader;
 use Nemundo\App\Mail\Message\Mail\ActionMailMessage;
 use Nemundo\App\Scheduler\Job\AbstractScheduler;
+use Nemundo\App\SystemLog\Data\Log\LogCount;
 use Nemundo\App\SystemLog\Data\Log\LogUpdate;
 use Nemundo\App\SystemLog\Reader\LogDataReader;
 use Nemundo\App\SystemLog\Usergroup\SystemLogUsergroup;
@@ -27,42 +28,46 @@ class SystemLogMailScheduler extends AbstractScheduler
     public function run()
     {
 
-        $logTable = new MailTable();
+        $count = new LogCount();
+        $count->filter->andEqual($count->model->sendMail, false);
+        if ($count->getCount() > 0) {
+
+            $logTable = new MailTable();
+
+            $reader = new LogDataReader();
+            $reader->filter->andEqual($reader->model->sendMail, false);
+
+            $header = new MailTableHeader($logTable);
+            $header->addText($reader->model->application->label);
+            $header->addText($reader->model->logType->label);
+            $header->addText($reader->model->message->label);
+            $header->addText($reader->model->dateTime->label);
+
+            foreach ($reader->getData() as $logRow) {
+
+                $row = new TableRow($logTable);
+                $row->addText($logRow->application->application);
+                $row->addText($logRow->logType->logType);
+                $row->addText($logRow->message);
+                $row->addText($logRow->dateTime->getShortDateTimeLeadingZeroFormat());
+
+            }
 
 
-        $reader = new LogDataReader();
-        $reader->filter->andEqual($reader->model->sendMail, false);
+            foreach ((new SystemLogUsergroup())->getUserList() as $userRow) {
 
-        $header = new MailTableHeader($logTable);
-        $header->addText($reader->model->application->label);
-        $header->addText($reader->model->logType->label);
-        $header->addText($reader->model->message->label);
-        $header->addText($reader->model->dateTime->label);
+                $mail = new ActionMailMessage();
+                $mail->mailTo = $userRow->email;
+                $mail->subject = 'System Log';
+                $mail->mailContainer->mailTitle = 'System Log';
+                $mail->mailContainer->mailDiv->addContainer($logTable);
+                $mail->sendMail();
 
-        foreach ($reader->getData() as $logRow) {
+            }
 
-            $row = new TableRow($logTable);
-            $row->addText($logRow->application->application);
-            $row->addText($logRow->logType->logType);
-            $row->addText($logRow->message);
-            $row->addText($logRow->dateTime->getShortDateTimeLeadingZeroFormat());
-
-        }
-
-
-        $update = new LogUpdate();
-        $update->sendMail = true;
-        $update->update();
-
-
-        foreach ((new SystemLogUsergroup())->getUserList() as $userRow) {
-
-            $mail = new ActionMailMessage();
-            $mail->mailTo = $userRow->email;
-            $mail->subject = 'System Log';
-            $mail->mailContainer->mailTitle = 'System Log';
-            $mail->mailContainer->mailDiv->addContainer($logTable);
-            $mail->sendMail();
+            $update = new LogUpdate();
+            $update->sendMail = true;
+            $update->update();
 
         }
 

@@ -3,7 +3,7 @@
 namespace Nemundo\App\WebService\Service;
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Json\Document\JsonResponse;
+use Nemundo\Core\Json\Response\JsonResponse;
 
 
 abstract class AbstractServiceRequest extends AbstractBaseClass
