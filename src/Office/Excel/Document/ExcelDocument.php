@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Office\Excel\Document;class ExcelDocument extends AbstractExcelDocument{    /**     * @var string     */    public $filename = 'document.xlsx';    protected function loadExcel()    {    }}
+<?phpnamespace Nemundo\Office\Excel\Document;class ExcelDocument extends AbstractExcelDocument{    /**     * @var string     */    public $filename = 'document.xlsx';    /*protected function loadExcel()    {    }*/}
