@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Nemundo\Admin\Com\ListBox;
 
 
@@ -25,11 +24,8 @@ class AdminListBox extends AbstractListBox
         $this->tagName = 'div';
         $this->addCssClass('admin-textbox');
 
-        /*if ($this->inputId !== null) {
-            $this->select->id = $this->inputId;
-        }*/
-
         $label = new Label();
+        $label->for = $this->name;
         $label->content = $this->getLabelErrorMessage();
 
         $this->select->addCssClass('admin-select');

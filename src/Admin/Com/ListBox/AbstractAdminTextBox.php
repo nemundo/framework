@@ -19,6 +19,7 @@ class AbstractAdminTextBox extends AbstractTextBox
         $this->addCssClass('admin-textbox');
 
         $label = new Label();
+        $label->for = $this->name;
         $label->content = $this->getLabelErrorMessage();
 
         $this->addContainer($label);
