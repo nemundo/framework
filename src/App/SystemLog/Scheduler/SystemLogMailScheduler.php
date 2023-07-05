@@ -4,6 +4,7 @@ namespace Nemundo\App\SystemLog\Scheduler;
 
 use Nemundo\App\Mail\Com\Table\MailTable;
 use Nemundo\App\Mail\Com\Table\MailTableHeader;
+use Nemundo\App\Mail\MailConfig;
 use Nemundo\App\Mail\Message\Mail\ActionMailMessage;
 use Nemundo\App\Scheduler\Job\AbstractScheduler;
 use Nemundo\App\SystemLog\Data\Log\LogCount;
@@ -56,11 +57,18 @@ class SystemLogMailScheduler extends AbstractScheduler
 
             foreach ((new SystemLogUsergroup())->getUserList() as $userRow) {
 
-                $mail = new ActionMailMessage();
+                $subject = 'System Log';
+
+                $mailContainer = (new MailConfig())->getActionMailDocument();
+                $mailContainer->mailTitle = $subject;
+                $mailContainer->mailDiv->addContainer($logTable);
+
+                $mail =  new ActionMailMessage();
                 $mail->mailTo = $userRow->email;
-                $mail->subject = 'System Log';
-                $mail->mailContainer->mailTitle = 'System Log';
-                $mail->mailContainer->mailDiv->addContainer($logTable);
+                $mail->subject = $subject;
+                $mail->mailContainer = $mailContainer;
+                /*$mail->mailContainer->mailTitle = 'System Log';
+                $mail->mailContainer->mailDiv->addContainer($logTable);*/
                 $mail->sendMail();
 
             }
@@ -70,7 +78,6 @@ class SystemLogMailScheduler extends AbstractScheduler
             $update->update();
 
         }
-
 
     }
 }
