@@ -1,11 +1,16 @@
 <?php
 
-namespace Nemundo\User\Reader;
+namespace Nemundo\User\Reader\User;
 
 use Nemundo\User\Data\User\UserReader;
 
 class UserDataReader extends UserReader
 {
+
+    // onlyActive
+
+
+    // getUsergroup
 
     public function getData()
     {

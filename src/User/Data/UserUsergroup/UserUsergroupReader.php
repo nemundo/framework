@@ -7,8 +7,8 @@ class UserUsergroupReader extends \Nemundo\Model\Reader\ModelDataReader {
 public $model;
 
 public function __construct() {
-parent::__construct();
 $this->model = new UserUsergroupModel();
+parent::__construct();
 }
 /**
 * @return UserUsergroupRow[]

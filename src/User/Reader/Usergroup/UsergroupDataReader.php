@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\User\Reader;
+namespace Nemundo\User\Reader\Usergroup;
 
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 

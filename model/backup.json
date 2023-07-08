@@ -1,0 +1,65 @@
+{
+    "app": "Backup",
+    "name": "backup",
+    "namespace": "Nemundo\\App\\Backup",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "b17efc36-7573-4e76-a316-c2938be2e92e",
+            "label": "Backup",
+            "class_name": "Backup",
+            "table_name": "backup_backup",
+            "namespace": "Nemundo\\App\\Backup\\Data\\Backup",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Application",
+                    "field_name": "application",
+                    "variable_name": "application",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "be58745e-78c3-4c3a-aadc-d2b26d233518"
+                },
+                {
+                    "type": "text",
+                    "label": "Php Class",
+                    "field_name": "php_class",
+                    "variable_name": "phpClass",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Filename",
+                    "field_name": "filename",
+                    "variable_name": "filename",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Setup Status",
+                    "field_name": "setup_status",
+                    "variable_name": "setupStatus",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "php_class",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "php_class"
+                    ]
+                }
+            ]
+        }
+    ]
+}

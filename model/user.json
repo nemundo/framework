@@ -11,7 +11,7 @@
             "class_name": "User",
             "table_name": "user_user",
             "namespace": "Nemundo\\User\\Data\\User",
-            "row_class_name": "",
+            "row_class_name": "Nemundo\\User\\Reader\\User\\UserDataRow",
             "primary_index": "unique_id",
             "is_deleted": false,
             "type": [

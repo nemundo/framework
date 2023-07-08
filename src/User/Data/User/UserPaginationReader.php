@@ -11,12 +11,12 @@ parent::__construct();
 $this->model = new UserModel();
 }
 /**
-* @return UserRow[]
+* @return \Nemundo\User\Reader\User\UserDataRow[]
 */
 public function getData() {
 $list = [];
 foreach (parent::getData() as $dataRow) {
-$row = new UserRow($dataRow, $this->model);
+$row = new \Nemundo\User\Reader\User\UserDataRow($dataRow, $this->model);
 $list[] = $row;
 }
 return $list;

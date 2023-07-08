@@ -21,5 +21,6 @@ $reset->reset();
 (new \Nemundo\App\SystemLog\Application\SystemLogApplication())->installApp();
 (new \Nemundo\App\Notification\Application\NotificationApplication())->installApp();
 (new \Nemundo\App\Tmp\Application\TmpApplication())->installApp();
+(new \Nemundo\App\Backup\Application\BackupApplication())->installApp();
 
 $reset->remove();

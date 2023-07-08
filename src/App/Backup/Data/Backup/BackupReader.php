@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\User\Data\Usergroup;
-class UsergroupReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\App\Backup\Data\Backup;
+class BackupReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var UsergroupModel
+* @var BackupModel
 */
 public $model;
 
 public function __construct() {
-$this->model = new UsergroupModel();
+$this->model = new BackupModel();
 parent::__construct();
 }
 /**
-* @return UsergroupRow[]
+* @return BackupRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return UsergroupRow
+* @return BackupRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return UsergroupRow
+* @return BackupRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new UsergroupRow($dataRow, $this->model);
+$row = new BackupRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }
