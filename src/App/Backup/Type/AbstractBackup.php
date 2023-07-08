@@ -34,6 +34,7 @@ abstract class AbstractBackup extends AbstractBaseClass
 
         $json = new JsonDocument();
         $json->filename = $this->filename;
+        $json->overwriteExistingFile = true;
 
         $this->loadExport();
 
