@@ -17,17 +17,13 @@ class UserBackup extends AbstractBackup
     protected function loadBackup()
     {
 
-        $this->filename = 'user.json';
+        $this->filename = 'user_user.json';
 
     }
 
 
     protected function loadExport()
     {
-
-        /*$json = new JsonDocument();
-        $json->filename = $this->filename;
-        $json->overwriteExistingFile = true;*/
 
         $reader = new UserDataReader();
         foreach ($reader->getData() as $userRow) {
@@ -37,7 +33,7 @@ class UserBackup extends AbstractBackup
             $row['active'] = $userRow->active;
             $row['login'] = $userRow->login;
             $row['display_name'] = $userRow->displayName;
-            $row['password'] = $userRow->password;
+            $row['password_hash'] = $userRow->password;
 
             $usergroupList = [];
             foreach ($userRow->getUsergroupList() as $usergroupRow) {
@@ -56,19 +52,11 @@ class UserBackup extends AbstractBackup
 
         }
 
-        //$json->writeFile((new BackupPath())->getPath());
-
     }
 
 
-    public function import()
+    protected function onImport($jsonRow)
     {
-
-        $reader = new JsonReader();
-        $reader->fromFilename($this->getFullFilename());
-        foreach ($reader->getData() as $jsonRow) {
-
-            //(new \Nemundo\Core\Debug\Debug())->write($jsonRow['login']);
 
             $builder = new UserBuilder();
             $builder->login = $jsonRow['login'];
@@ -76,17 +64,10 @@ class UserBackup extends AbstractBackup
             $userId = $builder->createUser();
 
             foreach ($jsonRow['usergroup'] as $usergroup) {
-
-                (new Debug())->write($usergroup['id']);
                 $builder->addUsergroupId($usergroup['id']);
-
             }
 
-            (new PasswordChange($userId))->changePasswordByHash($jsonRow['password']);
-
-
-        }
-
+            (new PasswordChange($userId))->changePasswordByHash($jsonRow['password_hash']);
 
     }
 

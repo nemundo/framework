@@ -4,7 +4,11 @@ namespace Nemundo\App\Backup\Type;
 
 use Nemundo\App\Backup\Path\BackupPath;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Json\Document\JsonDocument;
+use Nemundo\Core\Json\Reader\JsonReader;
+use Nemundo\User\Builder\UserBuilder;
+use Nemundo\User\Password\PasswordChange;
 
 abstract class AbstractBackup extends AbstractBaseClass
 {
@@ -26,7 +30,7 @@ abstract class AbstractBackup extends AbstractBaseClass
     abstract protected function loadExport();
 
 
-    abstract public function import();
+    abstract protected function onImport($jsonRow);
 
 
     public function export()
@@ -40,6 +44,18 @@ abstract class AbstractBackup extends AbstractBaseClass
 
         $json->setData($this->exportList);
         $json->writeFile((new BackupPath())->getPath());
+
+    }
+
+
+
+    public function import() {
+
+        $reader = new JsonReader();
+        $reader->fromFilename($this->getFullFilename());
+        foreach ($reader->getData() as $jsonRow) {
+            $this->onImport($jsonRow);
+        }
 
     }
 

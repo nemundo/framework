@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Backup\Script;use Nemundo\App\Backup\Path\BackupPath;use Nemundo\App\Script\Type\AbstractConsoleScript;class BackupImportScript extends AbstractConsoleScript{    protected function loadScript()    {        $this->scriptName = 'backup-import';    }    public function run()    {    }}

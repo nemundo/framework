@@ -17,6 +17,6 @@ class BackupApplication extends AbstractApplication
         $this->modelCollectionClass = BackupModelCollection::class;
         $this->installClass = BackupInstall::class;
         $this->uninstallClass = BackupUninstall::class;
-        $this->appSiteClass = BackupSite::class;
+        $this->adminSiteClass = BackupSite::class;
     }
 }
