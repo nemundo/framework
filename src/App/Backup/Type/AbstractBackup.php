@@ -3,13 +3,15 @@
 namespace Nemundo\App\Backup\Type;
 
 use Nemundo\App\Backup\Path\BackupPath;
-use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Json\Document\JsonDocument;
 
 abstract class AbstractBackup extends AbstractBaseClass
 {
 
     public $filename;
+
+    private $exportList = [];
 
 
     public function __construct()
@@ -21,12 +23,33 @@ abstract class AbstractBackup extends AbstractBaseClass
     abstract protected function loadBackup();
 
 
-    //abstract public function loadBackup();
-
-    abstract public function export();
+    abstract protected function loadExport();
 
 
     abstract public function import();
+
+
+    public function export()
+    {
+
+        $json = new JsonDocument();
+        $json->filename = $this->filename;
+
+        $this->loadExport();
+
+        $json->setData($this->exportList);
+        $json->writeFile((new BackupPath())->getPath());
+
+    }
+
+
+    protected function addExportRow($row)
+    {
+
+        $this->exportList[] = $row;
+        return $this;
+
+    }
 
 
     protected function getFullFilename()
@@ -41,6 +64,5 @@ abstract class AbstractBackup extends AbstractBaseClass
         return $fullFilename;
 
     }
-
 
 }

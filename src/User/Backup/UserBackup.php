@@ -22,12 +22,12 @@ class UserBackup extends AbstractBackup
     }
 
 
-    public function export()
+    protected function loadExport()
     {
 
-        $json = new JsonDocument();
+        /*$json = new JsonDocument();
         $json->filename = $this->filename;
-        $json->overwriteExistingFile = true;
+        $json->overwriteExistingFile = true;*/
 
         $reader = new UserDataReader();
         foreach ($reader->getData() as $userRow) {
@@ -52,11 +52,11 @@ class UserBackup extends AbstractBackup
 
             $row['usergroup'] = $usergroupList;
 
-            $json->addRow($row);
+            $this->addExportRow($row);
 
         }
 
-        $json->writeFile((new BackupPath())->getPath());
+        //$json->writeFile((new BackupPath())->getPath());
 
     }
 

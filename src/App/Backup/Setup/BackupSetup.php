@@ -10,19 +10,20 @@ class BackupSetup extends AbstractSetup
 {
 
 
-    public function addBackup(AbstractBackup $backup) {
+    public function addBackup(AbstractBackup $backup)
+    {
 
         $data = new Backup();
-        $data->updateOnDuplicate=true;
-        $data->applicationId=$this->application->applicationId;
+        $data->updateOnDuplicate = true;
+        if ($this->application !== null) {
+            $data->applicationId = $this->application->applicationId;
+        }
         $data->phpClass = $backup->getClassName();
         $data->filename = $backup->filename;
-        $data->setupStatus=true;
+        $data->setupStatus = true;
         $data->save();
 
         return $this;
-
-
 
     }
 

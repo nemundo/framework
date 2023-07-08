@@ -5,6 +5,7 @@ namespace Nemundo\App\Backup\Install;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\App\Backup\Application\BackupApplication;
 use Nemundo\App\Backup\Data\BackupModelCollection;
+use Nemundo\App\Backup\Path\BackupPath;
 use Nemundo\App\Backup\Scheduler\BackupDumpScheduler;
 use Nemundo\App\Backup\Scheduler\SqlDumpScheduler;
 use Nemundo\App\Backup\Script\BackupCleanScript;
@@ -26,6 +27,8 @@ class BackupInstall extends AbstractInstall
 
         (new ScriptSetup(new BackupApplication()))
             ->addScript(new BackupCleanScript());
+
+        (new BackupPath())->createPath();
 
 
     }
