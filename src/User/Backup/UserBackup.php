@@ -8,6 +8,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Json\Document\JsonDocument;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\User\Builder\UserBuilder;
+use Nemundo\User\Data\User\UserModel;
 use Nemundo\User\Password\PasswordChange;
 use Nemundo\User\Reader\User\UserDataReader;
 
@@ -29,11 +30,12 @@ class UserBackup extends AbstractBackup
         foreach ($reader->getData() as $userRow) {
 
             $row = [];
-            $row['id'] = $userRow->id;
-            $row['active'] = $userRow->active;
-            $row['login'] = $userRow->login;
-            $row['display_name'] = $userRow->displayName;
-            $row['password_hash'] = $userRow->password;
+            $row[$reader->model->id->fieldName] = $userRow->id;
+            $row[$reader->model->active->fieldName] = $userRow->active;
+            $row[$reader->model->login->fieldName] = $userRow->login;
+            $row[$reader->model->email->fieldName] = $userRow->email;
+            $row[$reader->model->displayName->fieldName] = $userRow->displayName;
+            $row[$reader->model->password->fieldName] = $userRow->password;
 
             $usergroupList = [];
             foreach ($userRow->getUsergroupList() as $usergroupRow) {
@@ -58,16 +60,19 @@ class UserBackup extends AbstractBackup
     protected function onImport($jsonRow)
     {
 
+        $model = new UserModel();
+
             $builder = new UserBuilder();
-            $builder->login = $jsonRow['login'];
-            $builder->email = $jsonRow['login'];
+            $builder->login = $jsonRow[$model->login->fieldName];
+            $builder->email = $jsonRow[$model->email->fieldName];
+            $builder->displayName = $jsonRow[$model->displayName->fieldName];
             $userId = $builder->createUser();
 
             foreach ($jsonRow['usergroup'] as $usergroup) {
                 $builder->addUsergroupId($usergroup['id']);
             }
 
-            (new PasswordChange($userId))->changePasswordByHash($jsonRow['password_hash']);
+            (new PasswordChange($userId))->changePasswordByHash($jsonRow[$model->password->fieldName]);
 
     }
 

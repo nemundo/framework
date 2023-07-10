@@ -11,7 +11,7 @@
             "class_name": "Backup",
             "table_name": "backup_backup",
             "namespace": "Nemundo\\App\\Backup\\Data\\Backup",
-            "row_class_name": "",
+            "row_class_name": "Nemundo\\App\\Backup\\Reader\\BackupDataRow",
             "primary_index": "auto_increment",
             "is_deleted": false,
             "type": [

@@ -11,12 +11,12 @@ parent::__construct();
 $this->model = new BackupModel();
 }
 /**
-* @return BackupRow[]
+* @return \Nemundo\App\Backup\Reader\BackupDataRow[]
 */
 public function getData() {
 $list = [];
 foreach (parent::getData() as $dataRow) {
-$row = new BackupRow($dataRow, $this->model);
+$row = new \Nemundo\App\Backup\Reader\BackupDataRow($dataRow, $this->model);
 $list[] = $row;
 }
 return $list;
