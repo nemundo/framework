@@ -32,6 +32,8 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
 
         parent::loadContainer();
 
+        $this->body->addCssClass('admin-body');
+
         $nav = new AdminNavbar();
         $nav->logoText = AdminConfig::$logoText;
         $nav->logoImage = AdminConfig::$logoUrl;
