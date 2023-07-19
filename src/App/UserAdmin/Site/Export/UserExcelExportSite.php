@@ -3,6 +3,7 @@
 namespace Nemundo\App\UserAdmin\Site\Export;
 
 use Nemundo\Admin\Site\AbstractExcelSite;
+use Nemundo\App\UserAdmin\Export\UserExcelDocument;
 use Nemundo\Office\Excel\Document\ExcelDocument;
 use Nemundo\Office\Excel\Reader\ExcelRow;
 use Nemundo\User\Reader\User\UserDataReader;
@@ -30,7 +31,9 @@ class UserExcelExportSite extends AbstractExcelSite
     public function loadContent()
     {
 
-        $excel = new ExcelDocument();
+        (new UserExcelDocument())->render();
+
+/*        $excel = new ExcelDocument();
         $excel->filename='user.xlsx';
 
         $reader = new UserDataReader();
@@ -54,7 +57,7 @@ class UserExcelExportSite extends AbstractExcelSite
 
         }
 
-        $excel->render();
+        $excel->render();*/
 
 
     }
