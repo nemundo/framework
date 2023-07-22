@@ -57,3 +57,8 @@
 .admin-table-cell-label {
     vertical-align: top;
 }
+
+
+.admin-text-right {
+    text-align: right;
+}
