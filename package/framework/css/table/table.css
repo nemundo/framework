@@ -11,7 +11,7 @@
     color: var(--color-dark);
     background-color: var(--color-light);
     padding: var(--default-table-space);
-    text-align: left;
+    /*text-align: left;*/
 }
 
 
@@ -58,6 +58,10 @@
     vertical-align: top;
 }
 
+
+.admin-text-left {
+    text-align: left;
+}
 
 .admin-text-right {
     text-align: right;
