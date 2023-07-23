@@ -6,7 +6,9 @@ use Nemundo\Project\Install\ProjectInstall;
 use Nemundo\Project\Reset\ProjectReset;
 use Nemundo\User\Script\AdminUserScript;
 
-require  "config.php";
+require 'config.php';
+
+(new \Nemundo\Db\Provider\MySql\Database\MySqlDatabase())->createDatabase();
 
 $reset = new ProjectReset();
 $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
