@@ -1,1 +1,0 @@
-SystemLogWebLog// LogFile// move nach App// send mail (daily)

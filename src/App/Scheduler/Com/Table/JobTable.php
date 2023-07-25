@@ -4,8 +4,7 @@ namespace Nemundo\App\Scheduler\Com\Table;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
-use Nemundo\App\Scheduler\Data\Job\JobPaginationReader;
-use Nemundo\App\Scheduler\Reader\JobDataReader;
+use Nemundo\App\Scheduler\Reader\Job\JobDataReader;
 use Nemundo\App\Scheduler\Status\FinishedSchedulerStatus;
 use Nemundo\Com\TableBuilder\TableRow;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\App\Scheduler\Reader;
+namespace Nemundo\App\Scheduler\Reader\Scheduler;
 
 use Nemundo\App\Scheduler\Data\Scheduler\SchedulerReader;
 

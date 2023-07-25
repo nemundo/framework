@@ -18,6 +18,7 @@ $reset->reset();
 
 (new ModelDesignerApplication())->installApp();
 
+
 (new \Nemundo\App\Dataset\Application\DatasetApplication())->installApp();
 (new \Nemundo\App\Git\Application\GitApplication())->installApp();
 (new \Nemundo\App\SystemLog\Application\SystemLogApplication())->installApp();

@@ -10,7 +10,7 @@ class JobSite extends AbstractSite
     protected function loadSite()
     {
         $this->title = 'Job';
-        $this->url = 'Job';
+        $this->url = 'job';
 
         new JobRunSite($this);
 
