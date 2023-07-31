@@ -7,5 +7,4 @@ use Nemundo\Html\Table\Table;
 class MailTable extends Table
 {
 
-
 }

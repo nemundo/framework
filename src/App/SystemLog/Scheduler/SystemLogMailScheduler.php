@@ -2,6 +2,7 @@
 
 namespace Nemundo\App\SystemLog\Scheduler;
 
+use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Mail\Com\Table\MailTable;
 use Nemundo\App\Mail\Com\Table\MailTableHeader;
 use Nemundo\App\Mail\MailConfig;
@@ -67,8 +68,6 @@ class SystemLogMailScheduler extends AbstractScheduler
                 $mail->mailTo = $userRow->email;
                 $mail->subject = $subject;
                 $mail->mailContainer = $mailContainer;
-                /*$mail->mailContainer->mailTitle = 'System Log';
-                $mail->mailContainer->mailDiv->addContainer($logTable);*/
                 $mail->sendMail();
 
             }
