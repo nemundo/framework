@@ -4,10 +4,10 @@ namespace Nemundo\Admin\Com\Form\Geo;
 
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
 use Nemundo\Admin\Parameter\GeoCoordinateParameter;
-use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Com\Package\PackageTrait;
 use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
+use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Package\OpenLayers\Package\OpenLayersPackage;
 
@@ -32,6 +32,7 @@ class AdminGeoCoordinateTextBox extends AdminTextBox
 
         parent::loadContainer();
         $this->name = (new GeoCoordinateParameter())->getParameterName();
+        $this->label = 'Geo Coordinate';
 
     }
 
