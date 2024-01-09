@@ -12,8 +12,6 @@
     margin: var(--default-space);
     padding: var(--default-space);
 
-    /*background-color: var(--color-light);*/
-
 }
 
 
@@ -60,13 +58,9 @@
 
 .admin-footer {
 
-    /*position: sticky;
-    bottom: 0;*/
-
     background-color: var(--color-light);
     color: var(--color-dark);
     margin-top: auto;
-    /*padding: var(--default-space);*/
 
 }
 
@@ -107,7 +101,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--default-gap-space);
-    /*padding: var(--default-space);*/
 
 }
 
@@ -116,7 +109,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--default-gap-space);
-    /*padding: var(--default-space);*/
 
 }
 
@@ -126,7 +118,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--default-gap-space);
-    /*padding: var(--default-space);*/
 
 }
 
@@ -135,8 +126,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--default-gap-space);
-    /*padding: var(--default-space);*/
-
 }
 
 
@@ -157,7 +146,8 @@
 
         position: fixed;
 
-        height: 100%;
+        /**height: 100%; --> Problem mit Footer*/
+
         width: 100%;
         display: flex;
         justify-content: center;
@@ -169,63 +159,9 @@
 }
 
 
-/*.admin-flexbox-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--default-space);
-    padding: var(--default-space);
-
-}*/
-
-
-/*.admin-login-layout {
-
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
-
-/* position: fixed;
-
- height: 100%;
- width: 100%;
-
-
- display: flex;
- justify-content: center;
- align-items: center;
- /*height: 200px;
- border: 3px solid green;*/
-
-/* background-color: #0a47a9;
-
-
-}*/
-
-
-/*
-.admin-login-form {
-
-    width: 400px;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    /*display: flex;
-    align-items: center;
-    justify-content: center;*/
-
-/*   background-color: var(--color-light);
-   border-radius: var(--border-radius);
-   padding: var(--default-space);
-
-}*/
-
-
 .admin-hr {
     border: none;
     width: 100%;
     height: 1px;
-    /*background-color: var(--color-dark);*/
     background-color: var(--color-light);
-
 }
