@@ -8,7 +8,7 @@ export default class ServiceRequest extends JsonRequest {
 
     constructor(service = null) {
 
-        super(WebConfig.webUrl + "service-request");
+        super(WebConfig.webUrl + "public/service-request");
 
         if (service !== null) {
             this._service = service;

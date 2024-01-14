@@ -49,6 +49,14 @@ export default class AutocompleteTextBox extends TextBox {
         let requestNumber = 0;
         let searchWord = true;
 
+        this._input.onKeyPress = function (event) {
+
+            if (event.keyCode === 13) {
+                event.preventDefault();
+            }
+
+        }
+
         this._input.onKeyUp = function (event) {
 
             if (local.onValueChange !== null) {

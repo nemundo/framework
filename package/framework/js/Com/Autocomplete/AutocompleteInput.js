@@ -3,9 +3,7 @@ import HiddenInputContainer from "../../../html/Form/HiddenInput.js";
 import ServiceRequest from "../../Service/ServiceRequest.js";
 import WordDelay from "./WordDelay.js";
 import WordService from "./WordService.js";
-import TextBox from "../../Form/TextBox.js";
 import ColorStyle from "../../../html/Style/Color.js";
-import Debug from "../../../core/Debug/Debug.js";
 import PositionStyle from "../../../html/Style/Position.js";
 import WordDiv from "./WordDiv.js";
 import InputContainer from "../../../html/Form/Input.js";
@@ -44,13 +42,21 @@ export default class AutocompleteInput extends InputContainer {
 
         this.position = PositionStyle.RELATIVE;
 
-        this._input.addAttribute("autocomplete", "off");
-        this._input.placeholder = "Search";
+        this.addAttribute("autocomplete", "off");
+        this.placeholder = "Search";
 
         let requestNumber = 0;
         let searchWord = true;
 
-        this._input.onKeyUp = function (event) {
+        this.onKeyPress = function (event) {
+
+            if (event.keyCode === 13) {
+                event.preventDefault();
+            }
+
+        }
+
+        this.onKeyUp = function (event) {
 
             if (local.onValueChange !== null) {
                 local.onValueChange();
@@ -103,7 +109,7 @@ export default class AutocompleteInput extends InputContainer {
 
             if (searchWord) {
 
-                if (local._input.value !== "") {
+                if (local.value !== "") {
 
                     requestNumber++;
 
@@ -116,10 +122,10 @@ export default class AutocompleteInput extends InputContainer {
 
                             if (delay.requestNumber === requestNumber) {
 
-                                if (local._input.value !== "") {
+                                if (local.value !== "") {
 
                                     let service = new WordService(local.serviceName);
-                                    service.word = local._input.value;
+                                    service.word = local.value;
                                     service.requestNumber = requestNumber;
                                     service.onLoaded = function () {
 
@@ -168,7 +174,7 @@ export default class AutocompleteInput extends InputContainer {
 
                                                 local._wordDivList[local._maxWord - 1].onClick = function () {
 
-                                                    local._input.value = item.word;
+                                                    local.value = item.word;
                                                     wordList.emptyContainer();
                                                     wordList.visible = false;
 
@@ -208,6 +214,7 @@ export default class AutocompleteInput extends InputContainer {
         };
 
         let wordList = new DivContainer(this);
+        wordList.fromId(this.serviceName + "_word_list");
         wordList.addCssClass("autocomplete-word-list");
         //wordList.position = PositionStyle.ABSOLUTE;
         wordList.visible = false;
@@ -227,7 +234,7 @@ export default class AutocompleteInput extends InputContainer {
 
     }
 
-    
+
     callWordChange() {
 
         if (this._currentWord !== -1) {
@@ -237,8 +244,8 @@ export default class AutocompleteInput extends InputContainer {
         if (this.onWordChange !== null) {
             this.onWordChange(this._wordIdList[this._currentWord]);
         }
-        
+
     }
-    
-    
+
+
 }

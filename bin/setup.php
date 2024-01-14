@@ -12,12 +12,9 @@ require 'config.php';
 
 $reset = new ProjectReset();
 $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
-$reset->reset();
+
 (new ProjectInstall())->install();
 (new ScriptSetup())->addScript(new AdminUserScript());
-
-(new ModelDesignerApplication())->installApp();
-
 
 (new \Nemundo\App\Dataset\Application\DatasetApplication())->installApp();
 (new \Nemundo\App\Git\Application\GitApplication())->installApp();
@@ -25,5 +22,6 @@ $reset->reset();
 (new \Nemundo\App\Notification\Application\NotificationApplication())->installApp();
 (new \Nemundo\App\Tmp\Application\TmpApplication())->installApp();
 (new \Nemundo\App\Backup\Application\BackupApplication())->installApp();
+(new \Nemundo\App\WebService\Application\WebServiceApplication())->installApp();
 
 $reset->remove();
