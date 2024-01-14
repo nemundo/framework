@@ -27,15 +27,19 @@ class TestSite extends AbstractSite
 
         //$page->addPackage(new FrameworkJsPackage());
 
-        $div = new Div($page);
+
+
+        /*$div = new Div($page);
         $div->id = 'div1';
 
 
         $module = new ModuleJavaScript($page);
-        $module->src = '/app/app.js';
+        $module->src = '/app/app.js';*/
 
-        /*$list = new AdminTextBox($page);  // new AdminSearchTextBox($page);  // new AdminAutocompleteSearchTextBox($page);
-        $list->name = 'input1';
+        $list = new AdminTextBox($page);  // new AdminSearchTextBox($page);  // new AdminAutocompleteSearchTextBox($page);
+        $list->label = 'Input 1';
+
+        /*$list->name = 'input1';
         $list->id = 'input1';*/
 
 
