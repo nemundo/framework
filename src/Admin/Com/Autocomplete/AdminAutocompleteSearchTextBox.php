@@ -40,10 +40,9 @@ class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
             ->addContent('')
             ->addContent('(new Debug()).write("hello world");')
             ->addContent('let autocomplete = new AutocompleteInput();')
-            ->addContent('autocomplete.fromId("'.$this->name.'");')
             ->addContent('autocomplete.serviceName = "'.$this->webService->serviceName.'";')
+            ->addContent('autocomplete.fromId("'.$this->name.'");')
             ->addContent('autocomplete.loadAutocomplete();')
-            //->addContent('autocomplete.render();')
             ->addContent('')
             ->addContent('')
             ->addContent('};');

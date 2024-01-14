@@ -32,9 +32,12 @@ export default class AutocompleteInput extends InputContainer {
     _currentWord = -1;
 
 
-    constructor(parentContainer) {
+   /* constructor(parentContainer) {
 
-        super(parentContainer);
+        super(parentContainer);*/
+
+
+        loadAutocomplete() {
 
         this._service = new ServiceRequest();
 
@@ -213,7 +216,7 @@ export default class AutocompleteInput extends InputContainer {
 
         };
 
-        let wordList = new DivContainer(this);
+        let wordList = new DivContainer();
         wordList.fromId(this.serviceName + "_word_list");
         wordList.addCssClass("autocomplete-word-list");
         //wordList.position = PositionStyle.ABSOLUTE;
@@ -231,6 +234,8 @@ export default class AutocompleteInput extends InputContainer {
                 // Clicked outside the box
             }
         });
+
+        return this;
 
     }
 
