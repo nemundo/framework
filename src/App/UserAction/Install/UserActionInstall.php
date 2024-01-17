@@ -12,7 +12,7 @@ use Nemundo\App\UserAction\Service\UserBuilderWebService;
 use Nemundo\App\UserAction\Service\UserCheckWebService;
 use Nemundo\App\UserAction\Service\UsergroupListWebService;
 use Nemundo\App\UserAction\Service\UserListWebService;
-use Nemundo\App\WebService\Setup\ServiceRequestSetup;
+use Nemundo\App\WebService\Setup\WebServiceSetup;
 
 class UserActionInstall extends AbstractInstall
 {
@@ -20,7 +20,7 @@ class UserActionInstall extends AbstractInstall
     public function install()
     {
 
-        (new ServiceRequestSetup())
+        (new WebServiceSetup())
             ->addService(new UserBuilderWebService())
             ->addService(new UserListWebService())
             ->addService(new UsergroupListWebService())

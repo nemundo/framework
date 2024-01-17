@@ -9,7 +9,7 @@ use Nemundo\App\WebService\Data\ServiceRequest\ServiceRequestUpdate;
 use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Base\AbstractBase;
 
-class ServiceRequestSetup extends AbstractBase
+class WebServiceSetup extends AbstractBase
 {
 
     /**
