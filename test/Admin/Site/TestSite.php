@@ -2,7 +2,7 @@
 
 namespace NemundoTest\Admin\Site;
 
-use Nemundo\Admin\Com\Autocomplete\AdminAutocompleteSearchTextBox;
+use Nemundo\Admin\Com\Autocomplete\AdminAutocompleteTextBox;
 use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
 use Nemundo\Admin\Template\AdminTemplate;
@@ -32,7 +32,7 @@ class TestSite extends AbstractSite
 
         $search = new AdminSearchForm($page);
 
-        $autocomplete = new AdminAutocompleteSearchTextBox($search);
+        $autocomplete = new AdminAutocompleteTextBox($search);
         $autocomplete->name = 'irgendwas';
 
 

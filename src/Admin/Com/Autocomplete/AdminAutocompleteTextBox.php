@@ -9,7 +9,7 @@ use Nemundo\Html\Block\Div;
 use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Html\Script\ModuleJavaScript;
 
-class AdminAutocompleteSearchTextBox extends AdminIconTextBox  // AdminSearchTextBox
+class AdminAutocompleteTextBox extends AdminIconTextBox
 {
 
     /**
