@@ -2,6 +2,8 @@
 
 namespace NemundoTest\Admin\Site;
 
+use Nemundo\Admin\Com\Autocomplete\AdminAutocompleteSearchTextBox;
+use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
 use Nemundo\Admin\Template\AdminTemplate;
 use Nemundo\Html\Block\Div;
@@ -28,6 +30,12 @@ class TestSite extends AbstractSite
         //$page->addPackage(new FrameworkJsPackage());
 
 
+        $search = new AdminSearchForm($page);
+
+        $autocomplete = new AdminAutocompleteSearchTextBox($search);
+        $autocomplete->name = 'irgendwas';
+
+
 
         /*$div = new Div($page);
         $div->id = 'div1';
@@ -36,8 +44,8 @@ class TestSite extends AbstractSite
         $module = new ModuleJavaScript($page);
         $module->src = '/app/app.js';*/
 
-        $list = new AdminTextBox($page);  // new AdminSearchTextBox($page);  // new AdminAutocompleteSearchTextBox($page);
-        $list->label = 'Input 1';
+        //$list = new AdminTextBox($page);  // new AdminSearchTextBox($page);  // new AdminAutocompleteSearchTextBox($page);
+        //$list->label = 'Input 1';
 
         /*$list->name = 'input1';
         $list->id = 'input1';*/

@@ -30,35 +30,31 @@ class WebServiceSetup extends AbstractBase
         $count = new ServiceRequestCount();
         $count->filter->andEqual($count->model->uniqueName, $serviceRequest->serviceName);
 
-        if ($count->getCount()===0) {
+        if ($count->getCount() === 0) {
 
-        $data = new ServiceRequest();
-        //$data->updateOnDuplicate = true;
-        $data->setupStatus=true;
-        $data->uniqueName = $serviceRequest->serviceName;
-        $data->phpClass = $serviceRequest->getClassName();
+            $data = new ServiceRequest();
+            $data->setupStatus = true;
+            $data->uniqueName = $serviceRequest->serviceName;
+            $data->phpClass = $serviceRequest->getClassName();
 
-        if ($this->application !== null) {
-            $data->applicationId = $this->application->applicationId;
-        }
+            if ($this->application !== null) {
+                $data->applicationId = $this->application->applicationId;
+            }
 
-        $data->save();
+            $data->save();
 
         } else {
 
             $update = new ServiceRequestUpdate();
-            //$data->updateOnDuplicate = true;
-            $update->setupStatus=true;
-            //$update->uniqueName = $serviceRequest->serviceName;
+            $update->setupStatus = true;
             $update->phpClass = $serviceRequest->getClassName();
 
             if ($this->application !== null) {
                 $update->applicationId = $this->application->applicationId;
             }
 
-            //$update->uniqueName = $serviceRequest->serviceName;
-            $update->filter->andEqual($update->model->uniqueName,$serviceRequest->serviceName);
-            $update->update();  // updateById()save();
+            $update->filter->andEqual($update->model->uniqueName, $serviceRequest->serviceName);
+            $update->update();
 
         }
 

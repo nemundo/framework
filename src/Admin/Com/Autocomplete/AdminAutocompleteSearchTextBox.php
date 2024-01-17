@@ -2,12 +2,13 @@
 
 namespace Nemundo\Admin\Com\Autocomplete;
 
-use Nemundo\Admin\Com\ListBox\AdminSearchTextBox;
+use Nemundo\Admin\Com\ListBox\AdminIconTextBox;
 use Nemundo\App\WebService\Service\AbstractWordWebService;
 use Nemundo\Html\Block\Div;
+use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Html\Script\ModuleJavaScript;
 
-class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
+class AdminAutocompleteSearchTextBox extends AdminIconTextBox  // AdminSearchTextBox
 {
 
     /**
@@ -15,8 +16,17 @@ class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
      */
     public $webService;
 
+    /**
+     * @var HiddenInput
+     */
+    private $hidden;
+
     public function getContent()
     {
+
+        $hiddenName = $this->name . '_id';
+
+        $this->icon = 'search';
 
         $module = new ModuleJavaScript($this);
         $module
@@ -29,13 +39,32 @@ class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
             ->addContent('autocomplete.serviceName = "' . $this->webService->serviceName . '";')
             ->addContent('autocomplete.fromId("' . $this->name . '");')
             ->addContent('autocomplete.loadAutocomplete();')
+            ->addContent('autocomplete.onWordChange() {')
+            ->addContent('let hidden = new HiddenInputContainer();')
+            ->addContent('hidden.fromId("' . $hiddenName . '");')
+            ->addContent('hidden.value = search.value;')
+            ->addContent('}')
             ->addContent('};');
+
 
         $wordList = new Div($this);
         $wordList->id = $this->webService->serviceName . '_word_list';
 
+        $this->hidden = new HiddenInput($this);
+        $this->hidden->name = $hiddenName;
+        $this->hidden->id = $hiddenName;
+
         return parent::getContent();
 
     }
+
+
+    public function getId()
+    {
+
+        return $this->hidden->value;
+
+    }
+
 
 }
