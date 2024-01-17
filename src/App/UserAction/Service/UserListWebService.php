@@ -4,13 +4,13 @@
 namespace Nemundo\App\UserAction\Service;
 
 
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Data\UserUsergroup\UserUsergroupReader;
 
 // UserSearchService
-class UserListServiceRequest extends AbstractServiceRequest
+class UserListWebService extends AbstractWebService
 {
 
     protected function loadService()

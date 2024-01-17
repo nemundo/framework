@@ -2,12 +2,12 @@
 
 namespace Nemundo\App\UserAction\Service;
 
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Http\Request\HttpRequest;
 use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Session\UserSession;
 
-class PasswordChangeService extends AbstractServiceRequest
+class PasswordChangeWebService extends AbstractWebService
 {
 
     protected function loadService()

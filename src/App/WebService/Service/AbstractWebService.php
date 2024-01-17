@@ -6,7 +6,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Json\Response\JsonResponse;
 
 
-abstract class AbstractServiceRequest extends AbstractBaseClass
+abstract class AbstractWebService extends AbstractBaseClass
 {
 
     public $serviceName;

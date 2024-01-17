@@ -3,7 +3,7 @@
 namespace Nemundo\Admin\Com\Autocomplete;
 
 use Nemundo\Admin\Com\ListBox\AdminSearchTextBox;
-use Nemundo\App\WebService\Service\AbstractWordServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWordWebService;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Script\ModuleJavaScript;
 
@@ -11,7 +11,7 @@ class AdminAutocompleteSearchTextBox extends AdminSearchTextBox
 {
 
     /**
-     * @var AbstractWordServiceRequest
+     * @var AbstractWordWebService
      */
     public $webService;
 

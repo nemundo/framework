@@ -6,7 +6,7 @@ use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\App\WebService\Data\ServiceRequest\ServiceRequest;
 use Nemundo\App\WebService\Data\ServiceRequest\ServiceRequestCount;
 use Nemundo\App\WebService\Data\ServiceRequest\ServiceRequestUpdate;
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Base\AbstractBase;
 
 class ServiceRequestSetup extends AbstractBase
@@ -24,7 +24,7 @@ class ServiceRequestSetup extends AbstractBase
     }
 
 
-    public function addService(AbstractServiceRequest $serviceRequest)
+    public function addService(AbstractWebService $serviceRequest)
     {
 
         $count = new ServiceRequestCount();

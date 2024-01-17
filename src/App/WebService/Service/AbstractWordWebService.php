@@ -7,7 +7,7 @@ namespace Nemundo\App\WebService\Service;
 use Nemundo\Core\Http\Request\HttpRequest;
 
 // AbstractAutocompleteService
-abstract class AbstractWordServiceRequest extends AbstractServiceRequest
+abstract class AbstractWordWebService extends AbstractWebService
 {
 
     //public $query;

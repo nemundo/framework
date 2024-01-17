@@ -6,14 +6,14 @@ namespace Nemundo\App\UserAction\Service;
 
 use Nemundo\App\Application\Usergroup\AdminUsergroup;
 use Nemundo\App\Application\Usergroup\AppUsergroup;
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\HttpRequest;
 use Nemundo\Core\Json\JsonText;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\User\Builder\UserBuilder;
 
-class UserBuilderServiceRequest extends AbstractServiceRequest
+class UserBuilderWebService extends AbstractWebService
 {
 
     protected function loadService()

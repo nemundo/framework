@@ -3,15 +3,15 @@
 namespace Nemundo\App\UserAction\Install;
 
 use Nemundo\App\Application\Type\Install\AbstractInstall;
-use Nemundo\App\UserAction\Service\LoginServiceRequest;
-use Nemundo\App\UserAction\Service\LogoutServiceRequest;
-use Nemundo\App\UserAction\Service\PasswordChangeService;
-use Nemundo\App\UserAction\Service\PasswordForgotService;
-use Nemundo\App\UserAction\Service\UserActivationService;
-use Nemundo\App\UserAction\Service\UserBuilderServiceRequest;
-use Nemundo\App\UserAction\Service\UserCheckServiceRequest;
-use Nemundo\App\UserAction\Service\UsergroupListServiceRequest;
-use Nemundo\App\UserAction\Service\UserListServiceRequest;
+use Nemundo\App\UserAction\Service\LoginWebService;
+use Nemundo\App\UserAction\Service\LogoutWebService;
+use Nemundo\App\UserAction\Service\PasswordChangeWebService;
+use Nemundo\App\UserAction\Service\PasswordForgotWebService;
+use Nemundo\App\UserAction\Service\UserActivationWebService;
+use Nemundo\App\UserAction\Service\UserBuilderWebService;
+use Nemundo\App\UserAction\Service\UserCheckWebService;
+use Nemundo\App\UserAction\Service\UsergroupListWebService;
+use Nemundo\App\UserAction\Service\UserListWebService;
 use Nemundo\App\WebService\Setup\ServiceRequestSetup;
 
 class UserActionInstall extends AbstractInstall
@@ -21,15 +21,15 @@ class UserActionInstall extends AbstractInstall
     {
 
         (new ServiceRequestSetup())
-            ->addService(new UserBuilderServiceRequest())
-            ->addService(new UserListServiceRequest())
-            ->addService(new UsergroupListServiceRequest())
-            ->addService(new LogoutServiceRequest())
-            ->addService(new LoginServiceRequest())
-            ->addService(new UserCheckServiceRequest())
-            ->addService(new PasswordForgotService())
-            ->addService(new PasswordChangeService())
-            ->addService(new UserActivationService());
+            ->addService(new UserBuilderWebService())
+            ->addService(new UserListWebService())
+            ->addService(new UsergroupListWebService())
+            ->addService(new LogoutWebService())
+            ->addService(new LoginWebService())
+            ->addService(new UserCheckWebService())
+            ->addService(new PasswordForgotWebService())
+            ->addService(new PasswordChangeWebService())
+            ->addService(new UserActivationWebService());
 
     }
 

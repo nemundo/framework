@@ -2,11 +2,11 @@
 
 namespace Nemundo\App\UserAction\Service;
 
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 
 
-class UsergroupListServiceRequest extends AbstractServiceRequest
+class UsergroupListWebService extends AbstractWebService
 {
 
     protected function loadService()

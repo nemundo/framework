@@ -4,11 +4,11 @@ namespace Nemundo\App\UserAction\Service;
 
 use Nemundo\App\Mail\Message\Mail\MailMessage;
 use Nemundo\App\UserAction\Mail\PasswordRequestMailContainer;
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Http\Request\HttpRequest;
 use Nemundo\User\Type\UserType;
 
-class PasswordForgotService extends AbstractServiceRequest
+class PasswordForgotWebService extends AbstractWebService
 {
 
     protected function loadService()

@@ -2,10 +2,10 @@
 
 namespace Nemundo\App\UserAction\Service;
 
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\User\Session\UserSession;
 
-class UserCheckServiceRequest extends AbstractServiceRequest
+class UserCheckWebService extends AbstractWebService
 {
 
     protected function loadService()

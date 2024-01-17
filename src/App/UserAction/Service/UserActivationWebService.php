@@ -4,11 +4,11 @@
 namespace Nemundo\App\UserAction\Service;
 
 
-use Nemundo\App\WebService\Service\AbstractServiceRequest;
+use Nemundo\App\WebService\Service\AbstractWebService;
 use Nemundo\Core\Http\Request\HttpRequest;
 use Nemundo\User\Builder\UserBuilder;
 
-class UserActivationService extends AbstractServiceRequest
+class UserActivationWebService extends AbstractWebService
 {
 
     protected function loadService()

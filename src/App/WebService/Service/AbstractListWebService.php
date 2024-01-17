@@ -11,7 +11,7 @@ use Nemundo\Model\Request\PaginationLimitRequest;
 // AbstractSearchServiceRequest
 // AbstractSearchService
 // AbstractPaginationService
-abstract class AbstractListServiceRequest extends AbstractServiceRequest
+abstract class AbstractListWebService extends AbstractWebService
 {
 
     protected function getCurrentPage()

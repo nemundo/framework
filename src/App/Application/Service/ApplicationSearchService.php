@@ -3,9 +3,9 @@
 namespace Nemundo\App\Application\Service;
 
 use Nemundo\App\Application\Data\Application\ApplicationReader;
-use Nemundo\App\WebService\Service\AbstractListServiceRequest;
+use Nemundo\App\WebService\Service\AbstractListWebService;
 
-class ApplicationSearchService extends AbstractListServiceRequest
+class ApplicationSearchService extends AbstractListWebService
 {
 
     protected function loadService()
