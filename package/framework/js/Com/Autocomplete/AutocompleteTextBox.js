@@ -20,6 +20,8 @@ export default class AutocompleteTextBox extends TextBox {
 
     serviceName = null;
 
+    valueId;
+
     _service;
 
     _wordDivList = [];
@@ -239,6 +241,7 @@ export default class AutocompleteTextBox extends TextBox {
 
         if (this._currentWord !== -1) {
             this.value = this._wordList[this._currentWord];
+            this.valueId = this._wordIdList[this._currentWord];
         }
 
         if (this.onWordChange !== null) {
