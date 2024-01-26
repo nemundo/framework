@@ -1,4 +1,4 @@
-import SelectContainer from "../Html/Form/Select.js";
+import SelectContainer from "../html/Form/Select.js";
 import LabelContainer from "../html/Form/Label.js";
 import DivContainer from "../html/Content/Div.js";
 import DisplayStyle from "../html/Style/Display.js";

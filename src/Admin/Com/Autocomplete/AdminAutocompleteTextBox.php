@@ -47,7 +47,7 @@ class AdminAutocompleteTextBox extends AdminIconTextBox
             ->addContent('};');
 
         $wordList = new Div($this);
-        $wordList->id = $this->webService->serviceName . '_word_list';
+        $wordList->id = $this->name . '_' . $this->webService->serviceName . '_word_list';
 
         $this->hidden = new HiddenInput($this);
         $this->hidden->name = $this->getHiddenName();
