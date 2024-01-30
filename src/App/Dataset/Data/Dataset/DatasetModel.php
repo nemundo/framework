@@ -128,7 +128,7 @@ $this->categoryId->tableName = "dataset_dataset";
 $this->categoryId->fieldName = "category";
 $this->categoryId->aliasFieldName = "dataset_dataset_category";
 $this->categoryId->label = "Category";
-$this->categoryId->allowNullValue = false;
+$this->categoryId->allowNullValue = true;
 
 $this->phpClass = new \Nemundo\Model\Type\Text\TextType($this);
 $this->phpClass->tableName = "dataset_dataset";

@@ -95,7 +95,7 @@
                     "label": "Category",
                     "field_name": "category",
                     "variable_name": "category",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false,
                     "external_model_id": "e3394826-eb5c-470d-81bc-d9e5b688a965"
                 },
