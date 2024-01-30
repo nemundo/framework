@@ -145,7 +145,7 @@ $this->licenceUrl->externalTableName = "dataset_dataset";
 $this->licenceUrl->fieldName = "licence_url";
 $this->licenceUrl->aliasFieldName = "dataset_dataset_licence_url";
 $this->licenceUrl->label = "Licence Url";
-$this->licenceUrl->allowNullValue = false;
+$this->licenceUrl->allowNullValue = true;
 $this->licenceUrl->length = 255;
 
 $this->documentationUrl = new \Nemundo\Model\Type\Text\TextType($this);
@@ -154,7 +154,7 @@ $this->documentationUrl->externalTableName = "dataset_dataset";
 $this->documentationUrl->fieldName = "documentation_url";
 $this->documentationUrl->aliasFieldName = "dataset_dataset_documentation_url";
 $this->documentationUrl->label = "Documentation Url";
-$this->documentationUrl->allowNullValue = false;
+$this->documentationUrl->allowNullValue = true;
 $this->documentationUrl->length = 255;
 
 $this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
