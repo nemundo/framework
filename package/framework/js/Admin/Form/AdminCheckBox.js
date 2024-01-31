@@ -1,7 +1,7 @@
 import TextBox from "../../Form/TextBox.js";
-import Checkbox from "../../Form/Checkbox";
+import Checkbox from "../../Form/Checkbox.js";
 
-export default class AdminCheckBox extends Checkbox {
+export default class adminCheckBox extends Checkbox {
 
     constructor(parentContainer) {
 
@@ -11,20 +11,6 @@ export default class AdminCheckBox extends Checkbox {
 
         this._label.addCssClass("admin-checkbox-label");
         this._input.addCssClass("admin-checkbox");
-
-
-
-/*
-        <div class="admin-checkbox-container">
-            <input type="checkbox" value="1" name="auto_com_2" id="auto_com_2" class="admin-checkbox" />
-
-            <label for="auto_com_2" class="admin-checkbox-label">Bitte haltet</label></div>
-
-    </div>
-  */
-
-
-
 
     }
 
