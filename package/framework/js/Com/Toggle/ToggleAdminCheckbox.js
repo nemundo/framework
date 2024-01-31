@@ -1,7 +1,7 @@
 import SpanContainer from "../../../html/Content/Span.js";
-import AdminCheckbox from "../../Form/AdminCheckbox.js";
+import Checkbox from "../../Form/Checkbox.js";
 
-export default class ToggleAdminCheckbox extends AdminCheckbox {
+export default class ToggleAdminCheckbox extends Checkbox {
 
     constructor(parentContainer) {
 

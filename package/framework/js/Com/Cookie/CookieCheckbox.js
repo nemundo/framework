@@ -1,7 +1,7 @@
-import AdminCheckbox from "../../Form/AdminCheckbox.js";
+import Checkbox from "../../Form/Checkbox.js";
 import CookieReader from "../../../core/Cookie/CookieReader.js";
 
-export default class CookieCheckbox extends AdminCheckbox {
+export default class CookieCheckbox extends Checkbox {
 
     set cookieName(cookieName) {
 

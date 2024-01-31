@@ -1,7 +1,7 @@
 import TextBox from "../../../Form/TextBox.js";
 import DataForm from "../../../Data/DataForm.js";
 import ServiceRequest from "../../../Service/ServiceRequest.js";
-import AdminCheckbox from "../../../Form/AdminCheckbox.js";
+import Checkbox from "../../../Form/Checkbox.js";
 import AdminButton from "../../../AdminButton.js";
 import DivContainer from "../../../../html/Content/Div.js";
 
@@ -37,7 +37,7 @@ export default class UserForm extends DataForm {
         let service = new ServiceRequest("usergroup-list");
         service.onDataRow=function (dataRow) {
 
-            let checkbox = new AdminCheckbox(usergroupContainer);
+            let checkbox = new Checkbox(usergroupContainer);
             checkbox.name = "usergroup";
             checkbox.value = dataRow.id;
             checkbox.chec

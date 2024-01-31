@@ -1,7 +1,7 @@
-import AdminCheckbox from "../../Form/AdminCheckbox.js";
+import Checkbox from "../../Form/Checkbox.js";
 import RandomNumber from "../../../core/Random/RandomNumber.js";
 
-export default class BootstrapCheckBox extends AdminCheckbox {
+export default class BootstrapCheckBox extends Checkbox {
 
     constructor(parentContainer) {
 

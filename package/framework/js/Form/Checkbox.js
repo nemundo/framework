@@ -3,7 +3,7 @@ import AdminInput from "./AdminInput.js";
 import CheckboxContainer from "../../html/Form/Checkbox.js";
 
 
-export default class AdminCheckbox extends AdminInput {
+export default class Checkbox extends AdminInput {
 
     constructor(parentContainer) {
 
@@ -11,7 +11,11 @@ export default class AdminCheckbox extends AdminInput {
 
         this._label = new LabelContainer(this);
         this._input = new CheckboxContainer(this);
-        //this._input = new CheckboxContainer(this._label);
+
+        let inputId = "checkbox_1";
+
+        this._input.id = inputId;
+        this._label.for = inputId;
 
     }
 
@@ -26,17 +30,6 @@ export default class AdminCheckbox extends AdminInput {
     }
 
 
-/*    render() {
-
-    }*/
-
-
-    /*set name2(value) {
-
-        this.name = value;
-        this._label.addAttribute("htmlFor", value);
-
-    }*/
 
 
 }
