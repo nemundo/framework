@@ -3,11 +3,7 @@
 namespace Nemundo\Admin\Com\Form\Text;
 
 use Nemundo\Admin\Com\ListBox\AdminLargeTextBox;
-use Nemundo\Admin\Com\ListBox\AdminTextBox;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Language\LanguageConfig;
-use Nemundo\Html\Block\Div;
-use Nemundo\Html\Paragraph\Paragraph;
 
 class TranslationLargeTextBox extends AbstractTranslationBox
 {
@@ -27,18 +23,19 @@ class TranslationLargeTextBox extends AbstractTranslationBox
 
             $this->languageTextBoxList[$language] = new AdminLargeTextBox($this);
             $this->languageTextBoxList[$language]->label = $language;
+            $this->languageTextBoxList[$language]->validation = $this->validation;
 
         }
-
 
     }
 
 
-    public function setValue($data) {
+    public function setValue($data)
+    {
 
         foreach ((new LanguageConfig())->getLanguageList() as $language) {
             if (isset($data[$language])) {
-            $this->languageTextBoxList[$language]->value= $data[$language];
+                $this->languageTextBoxList[$language]->value = $data[$language];
             }
         }
 

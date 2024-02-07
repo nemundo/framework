@@ -40,7 +40,6 @@ class MailQueueWorker extends AbstractBase
 
             }
 
-
             $mail->sendMail();
 
             $update = new MailQueueUpdate();

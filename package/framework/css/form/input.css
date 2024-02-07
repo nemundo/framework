@@ -43,7 +43,7 @@
 
     display: inline-block;
     align-self: flex-end;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 
 }
 

@@ -2,19 +2,16 @@
 
 namespace Nemundo\Admin\Com\Form\Text;
 
-use Nemundo\Admin\Com\ListBox\AdminTextBox;
-use Nemundo\Core\Debug\Debug;
+use Nemundo\Admin\Com\ListBox\AdminHtmlEditor;
 use Nemundo\Core\Language\LanguageConfig;
-use Nemundo\Html\Block\Div;
-use Nemundo\Html\Paragraph\Paragraph;
 
-class TranslationTextBox extends AbstractTranslationBox
+class TranslationHtmlEditor extends AbstractTranslationBox
 {
 
     /**
-     * @var AdminTextBox[]
+     * @var AdminHtmlEditor[]
      */
-    private $languageTextBoxList = [];
+    private $languageHtmlEditorList = [];
 
 
     protected function loadContainer()
@@ -24,12 +21,11 @@ class TranslationTextBox extends AbstractTranslationBox
 
         foreach ((new LanguageConfig())->getLanguageList() as $language) {
 
-            $this->languageTextBoxList[$language] = new AdminTextBox($this);
-            $this->languageTextBoxList[$language]->label = $language;
-            $this->languageTextBoxList[$language]->validation = $this->validation;
+            $this->languageHtmlEditorList[$language] = new AdminHtmlEditor($this);
+            $this->languageHtmlEditorList[$language]->label = $language;
+            $this->languageHtmlEditorList[$language]->validation = $this->validation;
 
         }
-
 
     }
 
@@ -39,7 +35,7 @@ class TranslationTextBox extends AbstractTranslationBox
 
         foreach ((new LanguageConfig())->getLanguageList() as $language) {
             if (isset($data[$language])) {
-                $this->languageTextBoxList[$language]->value = $data[$language];
+                $this->languageHtmlEditorList[$language]->value = $data[$language];
             }
         }
 
@@ -51,7 +47,7 @@ class TranslationTextBox extends AbstractTranslationBox
 
         $data = [];
         foreach ((new LanguageConfig())->getLanguageList() as $language) {
-            $data[$language] = $this->languageTextBoxList[$language]->getValue();
+            $data[$language] = $this->languageHtmlEditorList[$language]->getValue();
         }
 
         return $data;
