@@ -7,7 +7,6 @@ use Nemundo\Dev\Code\PhpClass;
 use Nemundo\Dev\Code\PhpFunction;
 use Nemundo\Dev\Code\PhpVariable;
 use Nemundo\Dev\Code\PhpVisibility;
-use Nemundo\Model\Type\Text\TextType;
 
 trait TranslationOrmTrait
 {
@@ -17,7 +16,10 @@ trait TranslationOrmTrait
 
         $phpClass->addUseClass(LanguageConfig::class);
 
-        $this->addRowPrimitiveVarialbe($phpClass, 'string|string[]');
+        $var = new PhpVariable($phpClass);
+        $var->variableName = $this->variableName;
+        $var->visibility = PhpVisibility::PublicVariable;
+        $var->dataType = 'string|string[]';
 
         $phpClass->addConstructor('if ($multiLanguage) {');
         $phpClass->addConstructor('$data = [];');
@@ -32,7 +34,8 @@ trait TranslationOrmTrait
     }
 
 
-    private function getTranslationDataCode(PhpClass $phpClass, PhpFunction $phpFunction, $typeClass, $typeText) {
+    private function getTranslationDataCode(PhpClass $phpClass, PhpFunction $phpFunction, $typeClass, $typeText)
+    {
 
         $var = new PhpVariable($phpClass);
         $var->variableName = $this->variableName;
@@ -40,20 +43,16 @@ trait TranslationOrmTrait
         $var->dataType = 'string[]';
 
         $phpClass->addUseClass(LanguageConfig::class);
-        $phpClass->addUseClass($typeClass);  // TextType::class);
+        $phpClass->addUseClass($typeClass);
 
         $phpFunction->add('foreach (LanguageConfig::$languageList as $language) {');
         $phpFunction->add('if (isset($this->' . $var->variableName . '[$language])) {');
-        $phpFunction->add('$type = new '.$typeText.'Type();');
-        //$phpFunction->add('$type = new '.$typeText.'TextType();');
+        $phpFunction->add('$type = new ' . $typeText . 'Type();');
         $phpFunction->add('$type->fieldName = $this->model->' . $this->variableName . '->fieldName."_" . $language;');
         $phpFunction->add('$this->typeValueList->setModelValue($type, $this->' . $this->variableName . '[$language]);');
         $phpFunction->add('}');
         $phpFunction->add('}');
 
-
     }
-
-
 
 }
