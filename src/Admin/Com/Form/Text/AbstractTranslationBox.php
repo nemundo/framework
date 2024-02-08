@@ -54,6 +54,8 @@ abstract class AbstractTranslationBox extends Div
     {
 
         $this->p->content = $this->label;
+
+
         return parent::getContent();
 
     }

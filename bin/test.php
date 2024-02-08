@@ -3,5 +3,4 @@
 require 'config.php';
 
 
-\Nemundo\Model\Reader\FieldAddTrait::
-
+new \Nemundo\Admin\Com\Navbar\AdminNavbar()

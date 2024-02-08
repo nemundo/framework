@@ -6,6 +6,7 @@ use Nemundo\App\UserAction\Site\LogoutSite;
 use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
+use Nemundo\Core\Http\Url\UrlInformation;
 use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Type\Text\Text;
@@ -18,6 +19,7 @@ use Nemundo\Html\Layout\Nav;
 use Nemundo\User\Session\UserSession;
 use Nemundo\Web\Controller\AbstractWebController;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Web\Site\UrlSite;
 use Nemundo\Web\WebConfig;
 
 class AdminNavbar extends Nav
@@ -135,10 +137,16 @@ class AdminNavbar extends Nav
 
             foreach ((new LanguageConfig())->getLanguageList() as $language) {
 
-                $site = clone(AbstractWebController::$currentSite);
+                /*$site = clone(AbstractWebController::$currentSite);
                 $site->title = $language;
 
                 $site->parentUrl = (new Text($site->parentUrl))->replaceLeft(WebConfig::$webUrl . LanguageConfig::$currentLanguageCode, WebConfig::$webUrl . $language)->getValue();
+*/
+
+                $site = new UrlSite();
+                $site->url =(new Text((new UrlInformation())->getUrl()))->replaceLeft(WebConfig::$webUrl . LanguageConfig::$currentLanguageCode, WebConfig::$webUrl . $language)->getValue();
+                $site->title = $language;
+
                 $languageMenu->addSubsite($site);
 
             }

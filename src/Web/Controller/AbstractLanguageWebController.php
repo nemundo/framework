@@ -3,8 +3,10 @@
 namespace Nemundo\Web\Controller;
 
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Http\Url\UrlRedirect;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Web\Url\UrlParameterBuilder;
+use Nemundo\Web\WebConfig;
 
 // AbstractTranslationWebController
 abstract class AbstractLanguageWebController extends AbstractWebController
@@ -20,7 +22,16 @@ abstract class AbstractLanguageWebController extends AbstractWebController
 
         //(new Debug())->write($this->urlList[0]);
 
-        (new LanguageConfig())->setCurrentLanguage($this->urlList[0]);
+        $languageCode = $this->urlList[0];
+        if (!in_array($languageCode, LanguageConfig::$languageList)) {
+            $url = WebConfig::$webUrl . LanguageConfig::$defaultLanguageCode;
+            (new UrlRedirect())->redirect($url);
+        }
+        (new LanguageConfig())->setCurrentLanguage($languageCode);
+
+
+
+        //(new LanguageConfig())->setCurrentLanguage($this->urlList[0]);
 
 
         parent::__construct();
