@@ -16,7 +16,7 @@ class MailButton extends Table
 
     public $backgroundColor;
 
-    public $borderRadius;
+    public $borderRadius = '2px';
 
     public $url;
 
@@ -44,8 +44,8 @@ class MailButton extends Table
         $builder->addStyle('text-decoration', 'none');
         $builder->addStyle('font-weight', 'bold');
         $builder->addStyle('display', 'inline-block');
-        $builder->addStyle('padding', '8px 12px');
-        $builder->addStyle('margin', '8px 12px');
+        //$builder->addStyle('padding', '8px 12px');
+        //$builder->addStyle('margin', '8px 12px');
 
         $hyperlink->addAttribute('style', $builder->getStyle());
 
