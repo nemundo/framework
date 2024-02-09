@@ -46,6 +46,8 @@ class MailButton extends Table
         $builder->addStyle('display', 'inline-block');
         //$builder->addStyle('padding', '8px 12px');
         //$builder->addStyle('margin', '8px 12px');
+        $builder->addStyle('padding', '5px');
+        //$builder->addStyle('margin', '8px 12px');
 
         $hyperlink->addAttribute('style', $builder->getStyle());
 
