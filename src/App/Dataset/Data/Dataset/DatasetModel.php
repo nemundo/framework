@@ -96,7 +96,7 @@ $this->url->externalTableName = "dataset_dataset";
 $this->url->fieldName = "url";
 $this->url->aliasFieldName = "dataset_dataset_url";
 $this->url->label = "Url";
-$this->url->allowNullValue = false;
+$this->url->allowNullValue = true;
 $this->url->length = 255;
 
 $this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
@@ -105,7 +105,7 @@ $this->description->externalTableName = "dataset_dataset";
 $this->description->fieldName = "description";
 $this->description->aliasFieldName = "dataset_dataset_description";
 $this->description->label = "Description";
-$this->description->allowNullValue = false;
+$this->description->allowNullValue = true;
 
 $this->licence = new \Nemundo\Model\Type\Text\TextType($this);
 $this->licence->tableName = "dataset_dataset";
@@ -113,7 +113,7 @@ $this->licence->externalTableName = "dataset_dataset";
 $this->licence->fieldName = "licence";
 $this->licence->aliasFieldName = "dataset_dataset_licence";
 $this->licence->label = "Licence";
-$this->licence->allowNullValue = false;
+$this->licence->allowNullValue = true;
 $this->licence->length = 255;
 
 $this->organisationId = new \Nemundo\Model\Type\External\Id\NumberExternalIdType($this);
@@ -121,7 +121,7 @@ $this->organisationId->tableName = "dataset_dataset";
 $this->organisationId->fieldName = "organisation";
 $this->organisationId->aliasFieldName = "dataset_dataset_organisation";
 $this->organisationId->label = "Organisation";
-$this->organisationId->allowNullValue = false;
+$this->organisationId->allowNullValue = true;
 
 $this->categoryId = new \Nemundo\Model\Type\External\Id\NumberExternalIdType($this);
 $this->categoryId->tableName = "dataset_dataset";

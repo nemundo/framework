@@ -60,7 +60,7 @@
                     "label": "Url",
                     "field_name": "url",
                     "variable_name": "url",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false,
                     "length": "255"
                 },
@@ -69,7 +69,7 @@
                     "label": "Description",
                     "field_name": "description",
                     "variable_name": "description",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false
                 },
                 {
@@ -77,7 +77,7 @@
                     "label": "Licence",
                     "field_name": "licence",
                     "variable_name": "licence",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false,
                     "length": "255"
                 },
@@ -86,7 +86,7 @@
                     "label": "Organisation",
                     "field_name": "organisation",
                     "variable_name": "organisation",
-                    "allow_null": false,
+                    "allow_null": true,
                     "is_deleted": false,
                     "external_model_id": "90803d5f-ec6b-4c60-9757-a639f88ddac8"
                 },
