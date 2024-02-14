@@ -57,6 +57,15 @@ class AdminAutocompleteTextBox extends AdminIconTextBox
 
     }
 
+
+    public function setId($id)
+    {
+
+        $this->hidden->value = $id;
+        return $this;
+
+    }
+
     public function getId()
     {
 
