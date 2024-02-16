@@ -5,7 +5,10 @@ namespace NemundoTest\Admin\Site;
 use Nemundo\Admin\Com\Autocomplete\AdminAutocompleteTextBox;
 use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
+use Nemundo\Admin\Com\Navbar\AdminLanguageSwitcher;
+use Nemundo\Admin\Com\Navbar\AdminNavbar;
 use Nemundo\Admin\Template\AdminTemplate;
+use Nemundo\Admin\Template\NavbarAdminTemplate;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Package\Dropzone\DropzoneUpload;
@@ -25,30 +28,15 @@ class TestSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = new AdminTemplate();
-
-        //$page->addPackage(new FrameworkJsPackage());
+        $page = new AdminTemplate();  // new NavbarAdminTemplate();  // new AdminTemplate();
 
 
-        $search = new AdminSearchForm($page);
+        //new AdminNavbar($page);
 
-        $autocomplete = new AdminAutocompleteTextBox($search);
-        $autocomplete->name = 'irgendwas';
+        new AdminLanguageSwitcher($page);
 
 
 
-        /*$div = new Div($page);
-        $div->id = 'div1';
-
-
-        $module = new ModuleJavaScript($page);
-        $module->src = '/app/app.js';*/
-
-        //$list = new AdminTextBox($page);  // new AdminSearchTextBox($page);  // new AdminAutocompleteSearchTextBox($page);
-        //$list->label = 'Input 1';
-
-        /*$list->name = 'input1';
-        $list->id = 'input1';*/
 
 
         $page->render();
