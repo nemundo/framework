@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Office\Word;
+namespace Nemundo\Office\Word\Reader;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
@@ -13,14 +13,7 @@ use PhpOffice\PhpWord\IOFactory;
 class WordReader extends AbstractBase
 {
 
-    private $filename;
-
-    public function __construct($filename)
-    {
-
-        $this->filename = $filename;
-
-    }
+    public $filename;
 
 
     public function getText()
