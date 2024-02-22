@@ -15,12 +15,13 @@ class WordConverter extends AbstractBase
         //'ODText', 'RTF', 'Word2007', 'HTML', 'PDF'
 
         $objReader = IOFactory::createReader('Word2007');
+
         $phpWord = $objReader->load($sourceFilename);
-        $objWriter = IOFactory::createWriter($phpWord, 'HTML');
+        //$objWriter = IOFactory::createWriter($phpWord, 'HTML');
         //$objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         try {
 
-            $objWriter->save($destinationFilename);
+            //$objWriter->save($destinationFilename);
 
         } catch (\Exception $e) {
             (new Debug())->write($e->getMessage());
