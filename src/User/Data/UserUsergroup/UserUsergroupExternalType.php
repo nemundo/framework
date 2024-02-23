@@ -26,6 +26,11 @@ public $usergroupId;
 */
 public $usergroup;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $importStatus;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = UserUsergroupModel::class;
@@ -52,6 +57,14 @@ $this->usergroupId->tableName = $this->parentFieldName . "_" . $this->externalTa
 $this->usergroupId->aliasFieldName = $this->usergroupId->tableName ."_".$this->usergroupId->fieldName;
 $this->usergroupId->label = "Usergroup";
 $this->addType($this->usergroupId);
+
+$this->importStatus = new \Nemundo\Model\Type\Number\YesNoType();
+$this->importStatus->fieldName = "import_status";
+$this->importStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->importStatus->externalTableName = $this->externalTableName;
+$this->importStatus->aliasFieldName = $this->importStatus->tableName . "_" . $this->importStatus->fieldName;
+$this->importStatus->label = "Import Status";
+$this->addType($this->importStatus);
 
 }
 public function loadUser() {

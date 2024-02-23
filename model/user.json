@@ -114,6 +114,14 @@
                     "allow_null": false,
                     "is_deleted": false,
                     "external_model_id": "ce60fb43-4204-4759-9a60-fd9fa58b33c8"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Import Status",
+                    "field_name": "import_status",
+                    "variable_name": "importStatus",
+                    "allow_null": false,
+                    "is_deleted": false
                 }
             ],
             "index": [

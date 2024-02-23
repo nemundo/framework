@@ -26,6 +26,11 @@ public $usergroupId;
 */
 public $usergroup;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $importStatus;
+
 protected function loadModel() {
 $this->tableName = "user_user_usergroup";
 $this->aliasTableName = "user_user_usergroup";
@@ -54,6 +59,14 @@ $this->usergroupId->fieldName = "usergroup";
 $this->usergroupId->aliasFieldName = "user_user_usergroup_usergroup";
 $this->usergroupId->label = "Usergroup";
 $this->usergroupId->allowNullValue = false;
+
+$this->importStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->importStatus->tableName = "user_user_usergroup";
+$this->importStatus->externalTableName = "user_user_usergroup";
+$this->importStatus->fieldName = "import_status";
+$this->importStatus->aliasFieldName = "user_user_usergroup_import_status";
+$this->importStatus->label = "Import Status";
+$this->importStatus->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "user_usergroup";

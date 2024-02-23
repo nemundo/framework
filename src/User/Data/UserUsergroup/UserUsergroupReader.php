@@ -36,7 +36,7 @@ public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new UserUsergroupRow($dataRow, $this->model);
+$row = new UserUsergroupRow($dataRow, $this->model, $this->multiLanguage);
 $row->model = $this->model;
 return $row;
 }

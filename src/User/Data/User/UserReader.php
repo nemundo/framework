@@ -36,7 +36,7 @@ public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new \Nemundo\User\Reader\User\UserDataRow($dataRow, $this->model);
+$row = new \Nemundo\User\Reader\User\UserDataRow($dataRow, $this->model, $this->multiLanguage);
 $row->model = $this->model;
 return $row;
 }

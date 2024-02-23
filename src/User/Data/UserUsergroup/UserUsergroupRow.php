@@ -22,7 +22,7 @@ public $id;
 public $userId;
 
 /**
-* @var \Nemundo\User\Data\User\UserRow
+* @var \Nemundo\User\Reader\User\UserDataRow
 */
 public $user;
 
@@ -36,7 +36,12 @@ public $usergroupId;
 */
 public $usergroup;
 
-public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
+/**
+* @var bool
+*/
+public $importStatus;
+
+public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model, $multiLanguage = false) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
@@ -48,9 +53,10 @@ $this->usergroupId = $this->getModelValue($model->usergroupId);
 if ($model->usergroup !== null) {
 $this->loadNemundoUserDataUsergroupUsergroupusergroupRow($model->usergroup);
 }
+$this->importStatus = boolval($this->getModelValue($model->importStatus));
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
-$this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);
+$this->user = new \Nemundo\User\Reader\User\UserDataRow($this->row, $model);
 }
 private function loadNemundoUserDataUsergroupUsergroupusergroupRow($model) {
 $this->usergroup = new \Nemundo\User\Data\Usergroup\UsergroupRow($this->row, $model);
