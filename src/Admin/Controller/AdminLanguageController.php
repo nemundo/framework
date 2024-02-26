@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Admin\Controller;use Nemundo\Web\Controller\AbstractLanguageWebController;class AdminLanguageController extends AbstractLanguageWebController{    use AdminControllerTrait;}
+<?phpnamespace Nemundo\Admin\Controller;use Nemundo\Web\Controller\AbstractLanguageWebController;class AdminLanguageController extends AbstractLanguageWebController{    use AdminControllerTrait;}

@@ -16,11 +16,16 @@ trait AdminControllerTrait
     /**
      * @var AbstractSite[]
      */
-    private static $adminSiteList = [];
+    //protected static $adminSiteList = [];
 
     public static function addAdminSite(AbstractSite $site)
     {
-        AdminController::$adminSiteList[] = $site;
+        //AdminLanguageController::$adminSiteList[] = $site;
+        //AdminController::$adminSiteList[] = $site;
+
+        AdminControllerConfig::$adminSiteList[] = $site;
+        //AdminControllerTrait::$adminSiteList[] = $site;
+
     }
 
 
@@ -39,7 +44,8 @@ trait AdminControllerTrait
         new PublicSite($this);
         new UserActionSite($this);
 
-        foreach (AdminController::$adminSiteList as $site) {
+        //foreach (AdminController::$adminSiteList as $site) {
+        foreach (AdminControllerConfig::$adminSiteList as $site) {
             $this->addSite($site);
         }
 
