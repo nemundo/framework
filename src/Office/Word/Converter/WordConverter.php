@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Office\Word\Reader;
+namespace Nemundo\Office\Word\Converter;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
