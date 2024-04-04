@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Admin\Com\Widget;class AdminWidget extends AbstractAdminWidget{    protected function loadWidget()    {    }}
+<?phpnamespace Nemundo\Admin\Com\Widget;class AdminWidget extends AbstractAdminWidget{    /**     * @var string     */    public $widgetTitle;    protected function loadWidget()    {    }}
