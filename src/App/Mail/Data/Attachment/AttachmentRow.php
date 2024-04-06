@@ -1,13 +1,13 @@
 <?php
-namespace Nemundo\App\Mail\Data\InlineImage;
-class InlineImageRow extends \Nemundo\Model\Row\AbstractModelDataRow {
+namespace Nemundo\App\Mail\Data\Attachment;
+class AttachmentRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 /**
 * @var \Nemundo\Model\Row\AbstractModelDataRow
 */
 private $row;
 
 /**
-* @var InlineImageModel
+* @var AttachmentModel
 */
 public $model;
 
@@ -29,11 +29,6 @@ public $mailQueue;
 /**
 * @var string
 */
-public $cid;
-
-/**
-* @var string
-*/
 public $filename;
 
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model, $multiLanguage = false) {
@@ -44,7 +39,6 @@ $this->mailQueueId = intval($this->getModelValue($model->mailQueueId));
 if ($model->mailQueue !== null) {
 $this->loadNemundoAppMailDataMailQueueMailQueuemailQueueRow($model->mailQueue);
 }
-$this->cid = $this->getModelValue($model->cid);
 $this->filename = $this->getModelValue($model->filename);
 }
 private function loadNemundoAppMailDataMailQueueMailQueuemailQueueRow($model) {

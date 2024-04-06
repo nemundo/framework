@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\App\Mail\Data\InlineImage;
-class InlineImageReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\App\Mail\Data\Attachment;
+class AttachmentReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var InlineImageModel
+* @var AttachmentModel
 */
 public $model;
 
 public function __construct() {
-$this->model = new InlineImageModel();
+$this->model = new AttachmentModel();
 parent::__construct();
 }
 /**
-* @return InlineImageRow[]
+* @return AttachmentRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return InlineImageRow
+* @return AttachmentRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return InlineImageRow
+* @return AttachmentRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new InlineImageRow($dataRow, $this->model, $this->multiLanguage);
+$row = new AttachmentRow($dataRow, $this->model, $this->multiLanguage);
 $row->model = $this->model;
 return $row;
 }

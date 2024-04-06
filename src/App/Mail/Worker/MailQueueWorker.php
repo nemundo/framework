@@ -3,6 +3,7 @@
 namespace Nemundo\App\Mail\Worker;
 
 use Nemundo\App\Mail\Config\MailConfigLoader;
+use Nemundo\App\Mail\Data\Attachment\AttachmentReader;
 use Nemundo\App\Mail\Data\InlineImage\InlineImageReader;
 use Nemundo\App\Mail\Data\MailQueue\MailQueueReader;
 use Nemundo\App\Mail\Data\MailQueue\MailQueueUpdate;
@@ -37,6 +38,14 @@ class MailQueueWorker extends AbstractBase
                 $inlineImage->filename = $inlineImageRow->filename;
 
                 $mail->addInlineImage($inlineImage);
+
+            }
+
+            $attachmentReader = new AttachmentReader();
+            $attachmentReader->filter->andEqual($attachmentReader->model->mailQueueId, $queueRow->id);
+            foreach ($attachmentReader->getData() as $attachmentRow) {
+
+                $mail->addAttachment($attachmentRow->filename);
 
             }
 

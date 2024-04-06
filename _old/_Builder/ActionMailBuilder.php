@@ -1,12 +1,10 @@
 <?php
 
-namespace Nemundo\App\Mail\_Builder;
+namespace _old\_Builder;
 
 use Nemundo\App\Mail\MailConfig;
 use Nemundo\App\Mail\Message\Mail\MailMessage;
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Html\Container\AbstractContainer;
-use Nemundo\Html\Container\Container;
 use Nemundo\Html\Container\HtmlContainer;
 
 class ActionMailBuilder extends AbstractBase

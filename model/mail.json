@@ -6,6 +6,46 @@
     "model": [
         {
             "template": "default",
+            "model_id": "d73acc27-4665-42b1-9723-77a4ac342d57",
+            "label": "Attachment",
+            "class_name": "Attachment",
+            "table_name": "mail_attachment",
+            "namespace": "Nemundo\\App\\Mail\\Data\\Attachment",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Mail Queue",
+                    "field_name": "mail_queue",
+                    "variable_name": "mailQueue",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "e75e5f42-ecf6-451a-b529-6d5ebb41833a"
+                },
+                {
+                    "type": "text",
+                    "label": "Filename",
+                    "field_name": "filename",
+                    "variable_name": "filename",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "mail_queue",
+                    "index_type": "index",
+                    "field_name": [
+                        "mail_queue"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
             "model_id": "2d101030-2a74-4e8e-b381-f4d60897a056",
             "label": "Inline Image",
             "class_name": "InlineImage",
