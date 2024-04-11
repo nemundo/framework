@@ -2,10 +2,10 @@
 
 namespace Nemundo\App\UserAdmin\Com\Tab;
 
-use Nemundo\Admin\Com\Tabs\AdminSiteTabs;
+use Nemundo\Admin\Com\Tab\AdminTab;
 use Nemundo\App\UserAdmin\Site\UserAdminSite;
 
-class UserAdminTab extends AdminSiteTabs
+class UserAdminTab extends AdminTab
 {
 
     public function getContent()

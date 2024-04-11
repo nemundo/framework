@@ -1,13 +1,13 @@
 <?php
 
-namespace Nemundo\Admin\Com\Tabs;
+namespace Nemundo\Admin\Com\Tab;
 
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Html\Block\Div;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 
-class AdminSiteTabs extends Div
+class AdminTab extends Div
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Admin\Com\Tabs;
+namespace _old;
 
 use Nemundo\Html\Block\Div;
 
