@@ -22,6 +22,18 @@ class AdminAutocompleteTextBox extends AdminIconTextBox
      */
     private $hidden;
 
+
+    protected function loadContainer()
+    {
+
+        parent::loadContainer();
+        $this->hidden = new HiddenInput($this);
+
+
+    }
+
+
+
     public function getContent()
     {
 
@@ -49,7 +61,7 @@ class AdminAutocompleteTextBox extends AdminIconTextBox
         $wordList = new Div($this);
         $wordList->id = $this->name . '_' . $this->webService->serviceName . '_word_list';
 
-        $this->hidden = new HiddenInput($this);
+        //$this->hidden = new HiddenInput($this);
         $this->hidden->name = $this->getHiddenName();
         $this->hidden->id = $this->getHiddenName();
 
