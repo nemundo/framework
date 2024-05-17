@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\App\WebService\Data\ServiceRequest;
-class ServiceRequestReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\App\WebService\Data\Key;
+class KeyReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var ServiceRequestModel
+* @var KeyModel
 */
 public $model;
 
 public function __construct() {
-$this->model = new ServiceRequestModel();
+$this->model = new KeyModel();
 parent::__construct();
 }
 /**
-* @return ServiceRequestRow[]
+* @return KeyRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return ServiceRequestRow
+* @return KeyRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return ServiceRequestRow
+* @return KeyRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new ServiceRequestRow($dataRow, $this->model, $this->multiLanguage);
+$row = new KeyRow($dataRow, $this->model, $this->multiLanguage);
 $row->model = $this->model;
 return $row;
 }

@@ -1,4 +1,4 @@
-import ListBox from "../../ListBox.js";
+import ListBox from "../../Form/ListBox.js";
 
 export default class AdminListBox extends ListBox {
 

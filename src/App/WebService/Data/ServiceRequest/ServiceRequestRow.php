@@ -41,7 +41,7 @@ public $application;
 */
 public $setupStatus;
 
-public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
+public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model, $multiLanguage = false) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);

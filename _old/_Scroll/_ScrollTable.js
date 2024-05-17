@@ -6,7 +6,7 @@ import ColorStyle from "../../html/Style/Color.js";
 import DisplayStyle from "../../html/Style/Display.js";
 import TableContainer from "../../html/Table/Table.js";
 import Debug from "../../core/Debug/Debug.js";
-import LoaderContainer from "../Com/Loader/Loader.js";
+import LoaderContainer from "../../package/framework/js/Com/Loader/Loader.js";
 
 
 export default class _ScrollTable extends DivContainer {

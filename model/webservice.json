@@ -6,6 +6,37 @@
     "model": [
         {
             "template": "default",
+            "model_id": "99c503e3-e942-4461-b13c-69289c595955",
+            "label": "Key",
+            "class_name": "Key",
+            "table_name": "webservice_key",
+            "namespace": "Nemundo\\App\\WebService\\Data\\Key",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Key",
+                    "field_name": "key",
+                    "variable_name": "key",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "key",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "key"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
             "model_id": "7b9be77f-af0b-4c22-8352-7b725808f76a",
             "label": "Service Request",
             "class_name": "ServiceRequest",

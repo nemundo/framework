@@ -7,7 +7,7 @@ import _UserAction from "../User/UserAction.js";
 import AdminModal from "../AdminModal.js";
 import PasswordChangeForm from "../User/Com/PasswordChangeForm.js";
 import BodyContainer from "../../html/Document/Body.js";
-import LoginPage from "../User/Page/LoginPage.js";
+import LoginPage from "../package/framework/js/User/Page/LoginPage.js";
 
 
 export default class _AdminMenu extends DivContainer {

@@ -1,5 +1,5 @@
 import DivContainer from "../../html/Content/Div.js";
-import AdminDropdown from "../Dropdown/AdminDropdown.js";
+import AdminDropdown from "../../package/framework/js/Dropdown/AdminDropdown.js";
 import BodyContainer from "../../html/Document/Body.js";
 import PositionStyle from "../../html/Style/Position.js";
 import ColorStyle from "../../html/Style/Color.js";

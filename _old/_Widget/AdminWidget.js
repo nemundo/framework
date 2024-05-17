@@ -1,17 +1,17 @@
 import DivContainer from "../../html/Content/Div.js";
-import AdminDropdown from "../Dropdown/AdminDropdown.js";
+import AdminDropdown from "../../package/framework/js/Dropdown/AdminDropdown.js";
 import OverflowStyle from "../../html/Style/Overflow.js";
 import ColorStyle from "../../html/Style/Color.js";
 import SpanContainer from "../../html/Content/Span.js";
 import DisplayStyle from "../../html/Style/Display.js";
 import BorderStyle from "../../html/Style/Border/BorderStyle.js";
-import MenuIcon from "../Menu/MenuIcon.js";
-import FullscreenMenuIcon from "../Com/Menu/Icon/FullscreenMenuIcon.js";
-import BootstrapIcon from "../Package/BootstrapIcon/BootstrapIcon.js";
-import ColumnFlexLayout from "../Com/Layout/ColumnFlexLayout.js";
-import RowFlexLayout from "../Com/Layout/RowFlexLayout.js";
-import CloseMenuIcon from "../Com/Menu/Icon/CloseMenuIcon.js";
-import MenuConfig from "../Com/Menu/MenuConfig.js";
+import MenuIcon from "../../package/framework/js/Menu/MenuIcon.js";
+import FullscreenMenuIcon from "../../package/framework/js/Com/Menu/Icon/FullscreenMenuIcon.js";
+import BootstrapIcon from "../../package/framework/js/Package/BootstrapIcon/BootstrapIcon.js";
+import ColumnFlexLayout from "../../package/framework/js/Com/Layout/ColumnFlexLayout.js";
+import RowFlexLayout from "../../package/framework/js/Com/Layout/RowFlexLayout.js";
+import CloseMenuIcon from "../../package/framework/js/Com/Menu/Icon/CloseMenuIcon.js";
+import MenuConfig from "../../package/framework/js/Com/Menu/MenuConfig.js";
 import PositionStyle from "../../html/Style/Position.js";
 
 

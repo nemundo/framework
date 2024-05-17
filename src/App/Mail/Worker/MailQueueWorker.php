@@ -44,9 +44,7 @@ class MailQueueWorker extends AbstractBase
             $attachmentReader = new AttachmentReader();
             $attachmentReader->filter->andEqual($attachmentReader->model->mailQueueId, $queueRow->id);
             foreach ($attachmentReader->getData() as $attachmentRow) {
-
                 $mail->addAttachment($attachmentRow->filename);
-
             }
 
             $mail->sendMail();
