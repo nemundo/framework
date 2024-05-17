@@ -21,6 +21,16 @@ public $mailQueue;
 */
 public $filename;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $hasCustomFilename;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $customFilename;
+
 protected function loadModel() {
 $this->tableName = "mail_attachment";
 $this->aliasTableName = "mail_attachment";
@@ -51,6 +61,23 @@ $this->filename->aliasFieldName = "mail_attachment_filename";
 $this->filename->label = "Filename";
 $this->filename->allowNullValue = false;
 $this->filename->length = 255;
+
+$this->hasCustomFilename = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->hasCustomFilename->tableName = "mail_attachment";
+$this->hasCustomFilename->externalTableName = "mail_attachment";
+$this->hasCustomFilename->fieldName = "has_custom_filename";
+$this->hasCustomFilename->aliasFieldName = "mail_attachment_has_custom_filename";
+$this->hasCustomFilename->label = "Has Custom Filename";
+$this->hasCustomFilename->allowNullValue = false;
+
+$this->customFilename = new \Nemundo\Model\Type\Text\TextType($this);
+$this->customFilename->tableName = "mail_attachment";
+$this->customFilename->externalTableName = "mail_attachment";
+$this->customFilename->fieldName = "custom_filename";
+$this->customFilename->aliasFieldName = "mail_attachment_custom_filename";
+$this->customFilename->label = "Custom Filename";
+$this->customFilename->allowNullValue = true;
+$this->customFilename->length = 255;
 
 $index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
 $index->indexName = "mail_queue";

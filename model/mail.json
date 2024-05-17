@@ -32,6 +32,23 @@
                     "allow_null": false,
                     "is_deleted": false,
                     "length": "255"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Has Custom Filename",
+                    "field_name": "has_custom_filename",
+                    "variable_name": "hasCustomFilename",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "text",
+                    "label": "Custom Filename",
+                    "field_name": "custom_filename",
+                    "variable_name": "customFilename",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "length": "255"
                 }
             ],
             "index": [

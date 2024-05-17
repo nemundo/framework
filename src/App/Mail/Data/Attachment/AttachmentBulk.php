@@ -16,6 +16,16 @@ public $mailQueueId;
 */
 public $filename;
 
+/**
+* @var bool
+*/
+public $hasCustomFilename;
+
+/**
+* @var string
+*/
+public $customFilename;
+
 public function __construct() {
 parent::__construct();
 $this->model = new AttachmentModel();
@@ -23,6 +33,8 @@ $this->model = new AttachmentModel();
 public function save() {
 $this->typeValueList->setModelValue($this->model->mailQueueId, $this->mailQueueId);
 $this->typeValueList->setModelValue($this->model->filename, $this->filename);
+$this->typeValueList->setModelValue($this->model->hasCustomFilename, $this->hasCustomFilename);
+$this->typeValueList->setModelValue($this->model->customFilename, $this->customFilename);
 $id = parent::save();
 return $id;
 }

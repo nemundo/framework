@@ -21,6 +21,16 @@ public $mailQueue;
 */
 public $filename;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $hasCustomFilename;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $customFilename;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = AttachmentModel::class;
@@ -48,6 +58,22 @@ $this->filename->externalTableName = $this->externalTableName;
 $this->filename->aliasFieldName = $this->filename->tableName . "_" . $this->filename->fieldName;
 $this->filename->label = "Filename";
 $this->addType($this->filename);
+
+$this->hasCustomFilename = new \Nemundo\Model\Type\Number\YesNoType();
+$this->hasCustomFilename->fieldName = "has_custom_filename";
+$this->hasCustomFilename->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->hasCustomFilename->externalTableName = $this->externalTableName;
+$this->hasCustomFilename->aliasFieldName = $this->hasCustomFilename->tableName . "_" . $this->hasCustomFilename->fieldName;
+$this->hasCustomFilename->label = "Has Custom Filename";
+$this->addType($this->hasCustomFilename);
+
+$this->customFilename = new \Nemundo\Model\Type\Text\TextType();
+$this->customFilename->fieldName = "custom_filename";
+$this->customFilename->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->customFilename->externalTableName = $this->externalTableName;
+$this->customFilename->aliasFieldName = $this->customFilename->tableName . "_" . $this->customFilename->fieldName;
+$this->customFilename->label = "Custom Filename";
+$this->addType($this->customFilename);
 
 }
 public function loadMailQueue() {

@@ -31,6 +31,16 @@ public $mailQueue;
 */
 public $filename;
 
+/**
+* @var bool
+*/
+public $hasCustomFilename;
+
+/**
+* @var string
+*/
+public $customFilename;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model, $multiLanguage = false) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -40,6 +50,8 @@ if ($model->mailQueue !== null) {
 $this->loadNemundoAppMailDataMailQueueMailQueuemailQueueRow($model->mailQueue);
 }
 $this->filename = $this->getModelValue($model->filename);
+$this->hasCustomFilename = boolval($this->getModelValue($model->hasCustomFilename));
+$this->customFilename = $this->getModelValue($model->customFilename);
 }
 private function loadNemundoAppMailDataMailQueueMailQueuemailQueueRow($model) {
 $this->mailQueue = new \Nemundo\App\Mail\Data\MailQueue\MailQueueRow($this->row, $model);

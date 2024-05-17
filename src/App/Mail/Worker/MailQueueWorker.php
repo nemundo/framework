@@ -15,7 +15,8 @@ use Nemundo\Core\Type\DateTime\DateTime;
 class MailQueueWorker extends AbstractBase
 {
 
-    public function sendQueue() {
+    public function sendQueue()
+    {
 
         (new MailConfigLoader())->loadConfig();
 
@@ -44,7 +45,14 @@ class MailQueueWorker extends AbstractBase
             $attachmentReader = new AttachmentReader();
             $attachmentReader->filter->andEqual($attachmentReader->model->mailQueueId, $queueRow->id);
             foreach ($attachmentReader->getData() as $attachmentRow) {
-                $mail->addAttachment($attachmentRow->filename);
+
+                $customFilename = null;
+                if ($attachmentRow->hasCustomFilename) {
+                    $customFilename = $attachmentRow->customFilename;
+                }
+
+                $mail->addAttachment($attachmentRow->filename, $customFilename);
+
             }
 
             $mail->sendMail();
@@ -55,7 +63,6 @@ class MailQueueWorker extends AbstractBase
             $update->updateById($queueRow->id);
 
         }
-
 
     }
 
