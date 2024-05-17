@@ -1,8 +1,6 @@
-import SelectContainer from "../html/Form/Select.js";
-import LabelContainer from "../html/Form/Label.js";
-import DivContainer from "../html/Content/Div.js";
-import DisplayStyle from "../html/Style/Display.js";
-import FontSize from "../html/Style/Font/FontSize.js";
+import SelectContainer from "../../html/Form/Select.js";
+import LabelContainer from "../../html/Form/Label.js";
+import DivContainer from "../../html/Content/Div.js";
 
 
 export default class ListBox extends DivContainer {
@@ -22,17 +20,7 @@ export default class ListBox extends DivContainer {
         let local = this;
 
         this._label = new LabelContainer(this);
-
         this._select = new SelectContainer(this);
-        /*this._select.widthPercent = 100;
-        this._select.display = DisplayStyle.INLINE_BLOCK;
-        this._select.border = "1px solid #ccc";
-        this._select.boxSizing = "border-box";
-        this._select.fontSize = FontSize.LARGE;
-
-        this._select.paddingPixel = 10;
-        this._select.borderRadiusPixel = 10;*/
-
         this._select.onChange = function () {
 
             if (local._onChangeEvent !== null) {
@@ -125,6 +113,5 @@ export default class ListBox extends DivContainer {
         this._select.multiple = value;
 
     }
-
 
 }
