@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\App\Mail\Message\Mail;class MailMessage extends AbstractMailMessage{    /**     * @var string     */    public $mailTo;    /**     * @var string     */    public $subject;    /**     * @var string     */    public $text;}
+<?phpnamespace Nemundo\App\Mail\Message\Mail;class MailMessage extends AbstractMailMessage{    /**     * @var string     */    public $mailTo;    /**     * @var string     */    public $subject;    /**     * @var string     */    public $text;    public $mailServerId;}
