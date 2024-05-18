@@ -23,6 +23,8 @@ class ActionMailMessage extends AbstractMailMessage
      */
     public $mailContainer;
 
+    public $mailServerId;
+
     public function __construct()
     {
 
