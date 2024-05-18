@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Mail\Script;use Nemundo\App\Mail\Application\MailApplication;use Nemundo\App\Script\Type\AbstractConsoleScript;class CleanScript extends AbstractConsoleScript{    protected function loadScript()    {        $this->scriptName = 'mail-clean';    }    public function run()    {        (new MailApplication())->reinstallApp();    }}

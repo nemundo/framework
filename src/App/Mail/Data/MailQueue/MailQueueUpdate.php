@@ -32,6 +32,11 @@ public $subject;
 */
 public $text;
 
+/**
+* @var string
+*/
+public $mailServerId;
+
 public function __construct() {
 parent::__construct();
 $this->model = new MailQueueModel();
@@ -46,6 +51,7 @@ $property->setValue($this->dateTimeSend);
 $this->typeValueList->setModelValue($this->model->mailTo, $this->mailTo);
 $this->typeValueList->setModelValue($this->model->subject, $this->subject);
 $this->typeValueList->setModelValue($this->model->text, $this->text);
+$this->typeValueList->setModelValue($this->model->mailServerId, $this->mailServerId);
 parent::update();
 }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Nemundo\App\Mail\Application\MailApplication;
 use Nemundo\App\ModelDesigner\Application\ModelDesignerApplication;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Project\Install\ProjectInstall;
@@ -23,5 +24,6 @@ $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
 (new \Nemundo\App\Tmp\Application\TmpApplication())->installApp();
 (new \Nemundo\App\Backup\Application\BackupApplication())->installApp();
 (new \Nemundo\App\WebService\Application\WebServiceApplication())->installApp();
+(new MailApplication())->installApp();
 
 $reset->remove();

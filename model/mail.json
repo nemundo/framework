@@ -182,6 +182,15 @@
                     "variable_name": "dateTimeCreated",
                     "allow_null": false,
                     "is_deleted": false
+                },
+                {
+                    "type": "external",
+                    "label": "Mail Server",
+                    "field_name": "mail_server",
+                    "variable_name": "mailServer",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "e4d76de0-03f5-4e8a-accd-d8693f788e2e"
                 }
             ],
             "index": [

@@ -2,10 +2,9 @@
 
 namespace Nemundo\App\SystemLog\Scheduler;
 
-use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Mail\Com\Table\MailTable;
 use Nemundo\App\Mail\Com\Table\MailTableHeader;
-use Nemundo\App\Mail\MailConfig;
+use Nemundo\App\Mail\Config\MailConfig;
 use Nemundo\App\Mail\Message\Mail\ActionMailMessage;
 use Nemundo\App\Scheduler\Job\AbstractScheduler;
 use Nemundo\App\SystemLog\Data\Log\LogCount;

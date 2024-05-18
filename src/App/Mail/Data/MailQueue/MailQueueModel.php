@@ -36,6 +36,16 @@ public $text;
 */
 public $dateTimeCreated;
 
+/**
+* @var \Nemundo\Model\Type\External\Id\NumberExternalIdType
+*/
+public $mailServerId;
+
+/**
+* @var \Nemundo\App\Mail\Data\MailServer\MailServerExternalType
+*/
+public $mailServer;
+
 protected function loadModel() {
 $this->tableName = "mail_queue";
 $this->aliasTableName = "mail_queue";
@@ -101,9 +111,26 @@ $this->dateTimeCreated->aliasFieldName = "mail_queue_date_time_created";
 $this->dateTimeCreated->label = "Date Time Created";
 $this->dateTimeCreated->allowNullValue = false;
 
+$this->mailServerId = new \Nemundo\Model\Type\External\Id\NumberExternalIdType($this);
+$this->mailServerId->tableName = "mail_queue";
+$this->mailServerId->fieldName = "mail_server";
+$this->mailServerId->aliasFieldName = "mail_queue_mail_server";
+$this->mailServerId->label = "Mail Server";
+$this->mailServerId->allowNullValue = false;
+
 $index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
 $index->indexName = "send";
 $index->addType($this->send);
 
+}
+public function loadMailServer() {
+if ($this->mailServer == null) {
+$this->mailServer = new \Nemundo\App\Mail\Data\MailServer\MailServerExternalType($this, "mail_queue_mail_server");
+$this->mailServer->tableName = "mail_queue";
+$this->mailServer->fieldName = "mail_server";
+$this->mailServer->aliasFieldName = "mail_queue_mail_server";
+$this->mailServer->label = "Mail Server";
+}
+return $this;
 }
 }

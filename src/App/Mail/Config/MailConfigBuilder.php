@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Nemundo\App\Mail\Config;
-
 
 use Nemundo\App\Mail\Data\MailServer\MailServer;
 use Nemundo\App\Mail\Data\MailServer\MailServerCount;

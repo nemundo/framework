@@ -3,7 +3,7 @@
 namespace Nemundo\App\Mail\Message\Mail;
 
 use Nemundo\App\Mail\Com\Document\ActionMailHtmlDocument;
-use Nemundo\App\Mail\MailConfig;
+use Nemundo\App\Mail\Config\MailConfig;
 
 class ActionMailMessage extends AbstractMailMessage
 {
