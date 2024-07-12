@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Backup\Path;class ZipBackupPath extends BackupPath{    protected function loadPath()    {        parent::loadPath();        $this->addPath('zip');    }}

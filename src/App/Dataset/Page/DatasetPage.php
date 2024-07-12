@@ -55,6 +55,7 @@ class DatasetPage extends AbstractTemplateDocument
             $datasetReader->filter->andEqual($datasetReader->model->organisationId, $organisation->getValue());
         }
 
+        $datasetReader->addOrder($datasetReader->model->dataset);
 
         foreach ($datasetReader->getData() as $datasetRow) {
 

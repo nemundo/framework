@@ -7,6 +7,7 @@ use Nemundo\App\Backup\Type\AbstractBackup;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Json\Document\JsonDocument;
 use Nemundo\Core\Json\Reader\JsonReader;
+use Nemundo\User\Application\UserApplication;
 use Nemundo\User\Builder\UserBuilder;
 use Nemundo\User\Data\User\UserModel;
 use Nemundo\User\Password\PasswordChange;
@@ -18,7 +19,8 @@ class UserBackup extends AbstractBackup
     protected function loadBackup()
     {
 
-        $this->filename = 'user_user.json';
+        $this->application = new UserApplication();
+        $this->filename = 'user.json';
 
     }
 

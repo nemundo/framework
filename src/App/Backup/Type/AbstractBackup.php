@@ -2,6 +2,7 @@
 
 namespace Nemundo\App\Backup\Type;
 
+use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\App\Backup\Path\BackupPath;
 use Nemundo\App\Backup\Path\ExportBackupPath;
 use Nemundo\App\Backup\Path\ImportBackupPath;
@@ -14,6 +15,11 @@ use Nemundo\User\Password\PasswordChange;
 
 abstract class AbstractBackup extends AbstractBaseClass
 {
+
+    /**
+     * @var AbstractApplication
+     */
+    protected $application;
 
     public $filename;
 
@@ -45,7 +51,16 @@ abstract class AbstractBackup extends AbstractBaseClass
         $this->loadExport();
 
         $json->setData($this->exportList);
-        $fullFilename = $json->writeFile((new ExportBackupPath())->getPath());
+
+        $path = new ExportBackupPath();
+
+        if ($this->application!==null) {
+            $path->addPath($this->application->applicationName);
+        }
+
+        $path->createPath();
+
+        $fullFilename = $json->writeFile($path->getPath());
 
         return $fullFilename;
 
@@ -76,19 +91,5 @@ abstract class AbstractBackup extends AbstractBaseClass
         return $this;
 
     }
-
-
-    /*protected function getFullFilename()
-    {
-
-        (new BackupPath())->createPath();
-
-        $fullFilename = (new BackupPath())
-            ->addPath($this->filename)
-            ->getFullFilename();
-
-        return $fullFilename;
-
-    }*/
 
 }
