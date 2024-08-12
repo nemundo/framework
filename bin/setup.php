@@ -25,5 +25,6 @@ $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
 (new \Nemundo\App\Backup\Application\BackupApplication())->installApp();
 (new \Nemundo\App\WebService\Application\WebServiceApplication())->installApp();
 (new MailApplication())->installApp();
+(new \Nemundo\App\System\Application\SystemApplication())->installApp();
 
 $reset->remove();
