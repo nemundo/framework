@@ -1,0 +1,1 @@
+<?phprequire __DIR__ . '/../../config.php';(new \NemundoTest\Office\Excel\TestLargeExcelReader())->readData();
