@@ -9,17 +9,17 @@ export default class Checkbox extends AdminInput {
 
         super(parentContainer);
 
-
         this._input = new CheckboxContainer(this);
         this._label = new LabelContainer(this);
 
-        let inputId = "checkbox_1";
-
-        this._input.id = inputId;
-        this._label.htmlFor = inputId;
-
     }
 
+    set inputId(value) {
+
+        this._input.id = value;
+        this._label.htmlFor = value;
+
+    }
 
     set checked(value) {
         this._input.checked = value;
@@ -29,8 +29,6 @@ export default class Checkbox extends AdminInput {
     get checked() {
         return this._input.checked;
     }
-
-
 
 
 }

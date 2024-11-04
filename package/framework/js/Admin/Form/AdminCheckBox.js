@@ -1,7 +1,7 @@
 import TextBox from "../../Form/TextBox.js";
 import Checkbox from "../../Form/Checkbox.js";
 
-export default class adminCheckBox extends Checkbox {
+export default class AdminCheckBox extends Checkbox {
 
     constructor(parentContainer) {
 
