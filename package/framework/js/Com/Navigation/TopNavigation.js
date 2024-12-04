@@ -5,7 +5,7 @@ import TextDecoration from "../../../html/Style/Text/TextDecoration.js";
 
 import ColorStyle from "../../../html/Style/Color.js";
 import UnorderedList from "../../../html/Listing/UnorderedList.js";
-import AdminIcon from "../../Admin/Icon/AdminIcon";
+import AdminIcon from "../../Admin/Icon/AdminIcon.js";
 
 /*import styles from "../../css/framework/navigation.css";*/
 
