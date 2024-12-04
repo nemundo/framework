@@ -11,6 +11,7 @@ import AppConfig from "../../App/AppConfig.js";
 import H4Container from "../../../html/Title/H4.js";
 import DisplayStyle from "../../../html/Style/Display.js";
 import MenuContainer from "./MenuContainer.js";
+import AdminIcon from "../../Admin/Icon/AdminIcon.js";
 
 export default class HamburgerMenuContainer extends MenuContainer {
 
@@ -172,7 +173,7 @@ export default class HamburgerMenuContainer extends MenuContainer {
         let hyperlink = new HyperlinkContainer(this);
         hyperlink.cursor = CursorStyle.POINTER;
 
-        let icon = new BootstrapIcon(hyperlink);
+        let icon = new AdminIcon(hyperlink);  // new BootstrapIcon(hyperlink);
         icon.icon = "list";
         icon.color = ColorStyle.WHITE;
         icon.fontSizePixel = 20;
