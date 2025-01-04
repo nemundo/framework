@@ -10,7 +10,7 @@
 .admin-card {
 
     background-color: white;
-    overflow: hidden;
+    /*overflow: hidden; --> problem mit autocomplete  */
     border-style: var(--border-style);
     border-width: var(--border-width);
     border-color: var(--border-color);
