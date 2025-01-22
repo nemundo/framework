@@ -92,11 +92,13 @@ class CroppingImageType extends AbstractComplexType
         $this->orginalImage->aliasFieldName = $this->aliasFieldName . '_image';
         $this->orginalImage->tableName = $this->tableName;
         $this->orginalImage->externalTableName = $this->tableName;
+        $this->orginalImage->allowNullValue = $this->allowNullValue;
 
         $this->croppingImage->fieldName = $this->fieldName . '_image_cropping';
         $this->croppingImage->aliasFieldName = $this->aliasFieldName . '_image_cropping';
         $this->croppingImage->tableName = $this->tableName;
         $this->croppingImage->externalTableName = $this->tableName;
+        $this->croppingImage->allowNullValue = $this->allowNullValue;
 
     }
 
