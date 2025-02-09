@@ -10,8 +10,6 @@ import PositionStyle from "../../../html/Style/Position.js";
 import WordDiv from "./WordDiv.js";
 
 
-// Autocomplete
-// AutocompleteTextBox
 export default class AutocompleteTextBox extends TextBox {
 
     onValueChange = null;
@@ -216,14 +214,23 @@ export default class AutocompleteTextBox extends TextBox {
 
         };
 
+        this._input.onFocusOut = function (event) {
+
+            for (let i = 0; i < local._wordList.length; i++) {
+
+                if (local._input.value.toLowerCase() ===local._wordList[i].toLowerCase()) {
+                    local._currentWord = i;
+                    local.callWordChange();
+                }
+
+            }
+
+        };
+
+
         let wordList = new DivContainer(this);
         wordList.addCssClass("autocomplete-word-list");
-        //wordList.position = PositionStyle.ABSOLUTE;
         wordList.visible = false;
-        /*wordList.widthPercent = 100;
-        wordList.border = "1px solid #d4d4d4";
-        wordList.backgroundColor = ColorStyle.WHITE;
-        wordList.zIndex=999;*/
 
         window.addEventListener('click', function (e) {
             if (wordList._htmlElement.contains(e.target)) {
@@ -249,6 +256,5 @@ export default class AutocompleteTextBox extends TextBox {
         }
         
     }
-    
     
 }
