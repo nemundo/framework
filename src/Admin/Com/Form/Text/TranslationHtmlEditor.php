@@ -2,7 +2,7 @@
 
 namespace Nemundo\Admin\Com\Form\Text;
 
-use Nemundo\Admin\Com\ListBox\AdminHtmlEditor;
+use Nemundo\Admin\Com\HtmlEditor\AdminHtmlEditor;
 use Nemundo\Core\Language\LanguageConfig;
 
 class TranslationHtmlEditor extends AbstractTranslationBox
