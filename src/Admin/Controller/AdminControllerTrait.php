@@ -4,7 +4,7 @@ namespace Nemundo\Admin\Controller;
 
 use Nemundo\Admin\Site\AdminHomeSite;
 use Nemundo\Admin\Site\DevSite;
-use Nemundo\App\Application\Site\AdminSite;
+use Nemundo\App\Application\Site\AdminAppSite;
 use Nemundo\App\Application\Site\AppSite;
 use Nemundo\App\Application\Site\PublicSite;
 use Nemundo\App\UserAction\Site\UserActionSite;
@@ -37,7 +37,7 @@ trait AdminControllerTrait
         $site = new AppSite($this);
         $site->restricted = false;
 
-        $site = new AdminSite($this);
+        $site = new AdminAppSite($this);
         $site->restricted = false;
 
         new DevSite($this);
