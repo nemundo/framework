@@ -11,6 +11,10 @@ class AdminHtmlEditor extends AdminLargeTextBox
 
     //use CkEditor5Trait;
 
+
+    public $height = 200;
+
+
     public function getContent()
     {
 
@@ -32,14 +36,14 @@ class AdminHtmlEditor extends AdminLargeTextBox
     $('#" . $this->name . "').summernote({
         placeholder: '',
         tabsize: 2,
-        height: 120,
+        height: '.$this->height.',
         toolbar: [
         ['font', ['bold', 'underline', 'clear']],
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
         ['table', ['table']],
         ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
+        
     ]
     });
     });
