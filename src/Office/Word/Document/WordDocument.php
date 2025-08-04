@@ -143,7 +143,20 @@ class WordDocument extends AbstractBase
     }
 
 
-    public function forceToDownload() {
+
+    public function renderOdt()
+    {
+
+        $this->forceToDownload('ODText');
+        return $this;
+
+    }
+
+
+//$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($this->phpWord, 'ODText');
+
+
+    public function forceToDownload($renderMode='Word2007') {
 
 
         /*$phpWord = new \PhpOffice\PhpWord\PhpWord();
@@ -157,7 +170,7 @@ class WordDocument extends AbstractBase
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Expires: 0');
         //$xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter = IOFactory::createWriter($this->phpWord, 'Word2007');
+        $objWriter = IOFactory::createWriter($this->phpWord, $renderMode);
         $objWriter->save("php://output");
 
         exit;
