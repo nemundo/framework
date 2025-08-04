@@ -18,7 +18,7 @@ class WebServiceSetup extends AbstractBase
     private $application;
 
 
-    public function __construct(AbstractApplication $application = null)
+    public function __construct(?AbstractApplication $application = null)
     {
         $this->application = $application;
     }
