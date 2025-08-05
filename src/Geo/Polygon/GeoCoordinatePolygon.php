@@ -27,8 +27,8 @@ class GeoCoordinatePolygon extends AbstractBase
     public function inPolygon(AbstractGeoCoordinate $geoCoordinate)
     {
 
-        $latitudeY = $geoCoordinate->latitude;
         $longitudeX = $geoCoordinate->longitude;
+        $latitudeY = $geoCoordinate->latitude;
 
         $pointsPolygon = count($this->verticesX);
 
@@ -45,6 +45,5 @@ class GeoCoordinatePolygon extends AbstractBase
         return $c;
 
     }
-
 
 }
