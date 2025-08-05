@@ -8,16 +8,15 @@ use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 class GeoCoordinatePolygon extends AbstractBase
 {
 
-    private $verticesX = [];
+    private $x = [];
 
-    private $verticesY = [];
-
+    private $y = [];
 
     public function addPoint(AbstractGeoCoordinate $geoCoordinate)
     {
 
-        $this->verticesX[] = $geoCoordinate->longitude;
-        $this->verticesY[] = $geoCoordinate->latitude;
+        $this->x[] = $geoCoordinate->longitude;
+        $this->y[] = $geoCoordinate->latitude;
 
         return $this;
 
@@ -30,19 +29,19 @@ class GeoCoordinatePolygon extends AbstractBase
         $longitudeX = $geoCoordinate->longitude;
         $latitudeY = $geoCoordinate->latitude;
 
-        $pointsPolygon = count($this->verticesX);
+        $count = count($this->x);
 
-        $c = false;
+        $intersection = false;
 
-        for ($i = 0, $j = $pointsPolygon - 1; $i < $pointsPolygon; $j = $i++) {
-            if ((($this->verticesY[$i] > $latitudeY) !== ($this->verticesY[$j] > $latitudeY)) &&
-                ($longitudeX < ($this->verticesX[$j] - $this->verticesX[$i]) * ($latitudeY - $this->verticesY[$i]) /
-                    (($this->verticesY[$j] - $this->verticesY[$i]) ?: 1e-10) + $this->verticesX[$i])) {
-                $c = !$c;
+        for ($i = 0, $j = $count - 1; $i < $count; $j = $i++) {
+            if ((($this->y[$i] > $latitudeY) !== ($this->y[$j] > $latitudeY)) &&
+                ($longitudeX < ($this->x[$j] - $this->x[$i]) * ($latitudeY - $this->y[$i]) /
+                    (($this->y[$j] - $this->y[$i]) ?: 1e-10) + $this->x[$i])) {
+                $intersection = !$intersection;
             }
         }
 
-        return $c;
+        return $intersection;
 
     }
 
