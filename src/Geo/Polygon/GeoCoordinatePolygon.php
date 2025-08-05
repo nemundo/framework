@@ -16,8 +16,8 @@ class GeoCoordinatePolygon extends AbstractBase
     public function addPoint(AbstractGeoCoordinate $geoCoordinate)
     {
 
-        $this->verticesX[] = $geoCoordinate->longitude;
-        $this->verticesY[] = $geoCoordinate->latitude;
+        $this->verticesX[] = $geoCoordinate->latitude;
+        $this->verticesY[] = $geoCoordinate->longitude;
 
         return $this;
 
@@ -27,22 +27,25 @@ class GeoCoordinatePolygon extends AbstractBase
     public function inPolygon(AbstractGeoCoordinate $geoCoordinate)
     {
 
-        $latitudeY = $geoCoordinate->latitude;
-        $longitudeX = $geoCoordinate->longitude;
+        $latitudeX = $geoCoordinate->latitude;
+        $longitudeY = $geoCoordinate->longitude;
 
         $pointsPolygon = count($this->verticesX);
 
-        $c = false;
+        $found = false;
 
         for ($i = 0, $j = $pointsPolygon - 1; $i < $pointsPolygon; $j = $i++) {
-            if ((($this->verticesY[$i] > $latitudeY != ($this->verticesY[$j] > $latitudeY)) &&
-                ($longitudeX < ($this->verticesX[$j] - $this->verticesX[$i]) * ($latitudeY - $this->verticesY[$i]) / ($this->verticesY[$j] - $this->verticesY[$i]) + $this->verticesX[$i])))
-                $c = !$c;
+
+            if (!$found) {
+                if ((($this->verticesY[$i] > $latitudeX != ($this->verticesY[$j] > $latitudeX)) &&
+                    ($longitudeY < ($this->verticesX[$j] - $this->verticesX[$i]) * ($latitudeX - $this->verticesY[$i]) / ($this->verticesY[$j] - $this->verticesY[$i]) + $this->verticesX[$i]))) {
+                    $found = !$found;
+                }
+            }
         }
 
-        return $c;
+        return $found;
 
     }
-
 
 }
