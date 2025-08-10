@@ -14,7 +14,7 @@ abstract class AbstractInlineImageAttachment extends AbstractBase
 
     abstract protected function loadInlineImage();
 
-    public function __construct(AbstractMessage $message = null)
+    public function __construct(?AbstractMessage $message = null)
     {
 
         if ($message !== null) {
