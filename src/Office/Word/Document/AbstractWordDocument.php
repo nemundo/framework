@@ -8,7 +8,7 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 
-class WordDocument extends AbstractWordDocument  // AbstractBase
+class AbstractWordDocument extends AbstractBase
 {
 
     /**
@@ -19,12 +19,12 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
     /**
      * @var PhpWord
      */
-    private $phpWord;
+    protected $phpWord;
 
     /**
      * @var Section
      */
-    private $section;
+    protected $section;
 
     private $font;
 
@@ -45,14 +45,10 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
      */
     private $italic = false;
 
-
-    protected function loadDocument()
-    {
-
-    }
+    abstract protected function loadDocument();
 
 
-   /* public function __construct()
+    public function __construct()
     {
 
         $this->phpWord = new PhpWord();
@@ -139,7 +135,7 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
     }*/
 
 
-   /* public function writeFile()
+    public function writeFile()
     {
 
         $objWriter = IOFactory::createWriter($this->phpWord, 'Word2007');
@@ -169,7 +165,7 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
         $section = $phpWord->addSection();
         $section->addText('Hello World!');
         $file = 'HelloWorld.docx';*/
-  /*      header("Content-Description: File Transfer");
+        header("Content-Description: File Transfer");
         header('Content-Disposition: attachment; filename="' . $this->filename . '"');
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header('Content-Transfer-Encoding: binary');
@@ -182,7 +178,7 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
         exit;
 
 
-    }*/
+    }
 
 
 
