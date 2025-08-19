@@ -19,12 +19,12 @@ class WordDocument extends AbstractWordDocument  // AbstractBase
     /**
      * @var PhpWord
      */
-    private $phpWord;
+    //private $phpWord;
 
     /**
      * @var Section
      */
-    private $section;
+    //private $section;
 
     private $font;
 

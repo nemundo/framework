@@ -8,7 +8,7 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 
-class AbstractWordDocument extends AbstractBase
+abstract class AbstractWordDocument extends AbstractBase
 {
 
     /**

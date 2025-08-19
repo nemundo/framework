@@ -12,9 +12,11 @@ class TestLargeExcelReader extends AbstractLargeExcelReader
     protected function loadReader()
     {
 
-        $this->filename = 'C:\git\swisstainable\tmp\swisstainable\09_2024\241001_Swisstainable_Reporting.xlsx';
-        $this->sheetName = 'Übersicht Partnerbetriebe';
-        $this->lineOfStart = 3;
+        //$this->filename = 'C:\test\alturos\revenue_luzern_2018-01-01-2025-08-11.xlsx';
+        $this->filename='C:\test\alturos\test1.xlsx';
+        //$this->sheetName = 'Übersicht Partnerbetriebe';
+        $this->sheetName = 'Items in detail';
+        //$this->lineOfStart = 3;
 
     }
 
@@ -22,9 +24,11 @@ class TestLargeExcelReader extends AbstractLargeExcelReader
     protected function onRow(ExcelRow $excelRow)
     {
 
-        (new Debug())->write($excelRow->getValue('organisation'));
+        //(new Debug())->write($excelRow);
+        (new Debug())->write($excelRow->getValue('order id'));
 
-        $this->stopReading();
+        /*(new Debug())->write($excelRow->getValue('organisation'));
+        $this->stopReading();*/
 
 
     }
