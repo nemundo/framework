@@ -1,1 +1,1 @@
-<?phprequire __DIR__ . '/../../config.php';(new \NemundoTest\Office\Excel\TestLargeExcelReader())->readData();
+<?phprequire __DIR__ . '/../../config.php';(new \NemundoTest\Office\Excel\TestLargeExcelReader())->readData();(new \Nemundo\Core\Debug\Debug())->write('finished');

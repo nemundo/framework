@@ -1,2 +1,3 @@
 {  "name": "nemundo/framework",  "description": "Nemundo Framework",  "license": "MIT",  "authors": [    {      "name": "Urs Lang",      "email": "urs.lang@nemundo.org"    }  ],  "minimum-stability": "dev",  "require": {    "nemundo/core": "*",    "nemundo/html": "*",    "nemundo/db": "*",    "symfony/mailer": "*",
-        "phpoffice/phpspreadsheet": "dev-master"  },  "autoload": {    "psr-4": {      "Nemundo\\": "src/",      "NemundoTest\\": "test/"    }  }}
+        "phpoffice/phpspreadsheet": "dev-master",
+                "phpoffice/phpword": "dev-master"  },  "autoload": {    "psr-4": {      "Nemundo\\": "src/",      "NemundoTest\\": "test/"    }  }}
