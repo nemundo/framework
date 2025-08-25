@@ -229,13 +229,27 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addTable()
+    public function addTable($showBorder = false)
     {
 
         $config = [];
         //$config['unit'] = \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT;
-        $config['cellSpacing'] = 50;
+        //$config['cellSpacing'] = 0;
+        $config['cellMargin'] = 100;
         $config['width'] = 100 * 50;
+
+        //$config['unit'] = \PhpOffice\PhpWord\Style\Table::WWIDTH_PERCENT,
+
+
+        if ($showBorder) {
+            $config['borderSize'] = 1;
+            $config['borderColor'] = '000000';
+            //$config['cellMargin'] = 5;
+            //$config['cellSpacing'] = 50;
+
+            //$config[fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'cellSpacing' => 50];
+        }
+
 
         //$fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'cellSpacing' => 50];
 

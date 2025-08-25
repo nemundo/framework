@@ -13,7 +13,7 @@ $wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
 
 
 $wordDocument
-    ->addTable()
+    ->addTable(true)
     ->addTableRow()
     ->setBold(true)
     ->addTableCell('Col 1',true,14)
