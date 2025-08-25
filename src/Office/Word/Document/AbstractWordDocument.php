@@ -7,6 +7,7 @@ use Nemundo\Core\Debug\Debug;
 use PhpOffice\PhpWord\Element\Section;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\Style\Font;
 
@@ -60,6 +61,8 @@ abstract class AbstractWordDocument extends AbstractBase
     {
 
         $this->phpWord = new PhpWord();
+        Settings::setOutputEscapingEnabled(true);
+
         $this->addPage();
 
     }
