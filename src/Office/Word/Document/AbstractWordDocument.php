@@ -116,20 +116,22 @@ abstract class AbstractWordDocument extends AbstractBase
     public function addText($text)
     {
 
-        $fontStyle = new Font();
-        $fontStyle->setBold($this->bold);
-        $fontStyle->setItalic($this->italic);
-        $fontStyle->setUnderline($this->underline);
+        if ($text !== null) {
+            $fontStyle = new Font();
+            $fontStyle->setBold($this->bold);
+            $fontStyle->setItalic($this->italic);
+            $fontStyle->setUnderline($this->underline);
 
-        if ($this->font !== null) {
-            $fontStyle->setName($this->font);
+            if ($this->font !== null) {
+                $fontStyle->setName($this->font);
+            }
+
+            if ($this->fontSize !== null) {
+                $fontStyle->setSize($this->fontSize);
+            }
+
+            $this->section->addText($text, $fontStyle);
         }
-
-        if ($this->fontSize !== null) {
-            $fontStyle->setSize($this->fontSize);
-        }
-
-        $this->section->addText($text, $fontStyle);
 
         return $this;
 
@@ -139,25 +141,18 @@ abstract class AbstractWordDocument extends AbstractBase
     public function addTextBlock($text)
     {
 
-        if ($this->textrun == null) {
-            $this->textrun = $this->section->addTextRun();
+        if ($text !== null) {
+            if ($this->textrun == null) {
+                $this->textrun = $this->section->addTextRun();
+            }
+
+            $this->textrun->addText($text);
+            $this->textrun->addTextBreak();
         }
-
-        $this->textrun->addText($text);
-        $this->textrun->addTextBreak();
-
         return $this;
 
 
     }
-
-
-    /* public function newLine() {
-
-         $this->section->addText('</w:t><w:br/><w:t>');
-         return $this;
-
-     }*/
 
 
     public function addEmptyLine($numberOfLines = 1)
@@ -236,9 +231,15 @@ abstract class AbstractWordDocument extends AbstractBase
 
         $config = [];
         //$config['unit'] = \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT;
-        $config['width']= 100 * 50;
+        $config['cellSpacing'] = 50;
+        $config['width'] = 100 * 50;
 
-        $this->table = $this->section->addTable();
+        //$fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'cellSpacing' => 50];
+
+        //$configtableStyle = ['cellSpacing' => 50, 'width' => 100 * 50];
+
+
+        $this->table = $this->section->addTable($config);
         return $this;
 
     }
@@ -253,93 +254,29 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addTableCell($text, $bold = false,$size=null)
+    public function addTableCell($text, $bold = false, $size = null)
     {
+
+        if ($text == null) {
+            $text = '';
+        }
 
         $style = [];
         $style['bold'] = $bold;
 
         if ($size !== null) {
-        $style['size'] = $size;
+            $style['size'] = $size;
         }
-        //$style['bold'] = false;
-
 
         try {
             $cell = $this->table->addCell();
-            $cell->addText($text,$style);
+            $cell->addText($text, $style);
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());
         }
         return $this;
 
     }
-
-
-    /*
-
-    $table = $this->section->addTable($tableStyle);
-    $table->addRow();  //[$height], [$rowStyle]);
-
-    $cell = $table->addCell();  //$width, [$cellStyle]);
-    $run = $cell->addTextRun();
-    $run->addText($orderProductReader->model->order->orderNumber->label, $style);
-
-    $cell = $table->addCell();
-    $run = $cell->addTextRun();
-    $run->addText($orderProductReader->model->orderDate->label, $style);
-
-        //$cell = $table->addCell();
-        //$cell->addText($orderProductReader->model->orderTime->label);
-
-    $cell = $table->addCell();
-    $cell->addText($orderProductReader->model->product->label, $style);
-
-        /*$cell = $table->addCell();
-        $cell->addText($orderProductReader->model->product->serviceprovider->label);*
-
-    $cell = $table->addCell();
-    $cell->addText($orderProductReader->model->orderType->label, $style);
-
-    $cell = $table->addCell();
-    $cell->addText($orderProductReader->model->quantity->label, $style);
-
-    $cell = $table->addCell();
-    $cell->addText($orderProductReader->model->price->label, $style)//->addText($orderProductReader->model->store->label)
-    ;
-
-
-    $style = [];
-    $style['size'] = 8;
-    $style['bold'] = false;
-        //$style['preserveWhiteSpace'] =  true;
-
-
-    foreach ($orderProductReader->getData() as $orderRow) {
-
-    $table->addRow();  //[$height], [$rowStyle]);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->orderDate->getShortDateLeadingZeroFormat(), $style2);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->order->orderNumber, $style2);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->orderType->orderType, $style);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->product->product, $style);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->quantity, $style);
-
-    $cell = $table->addCell();
-    $cell->addText($orderRow->getPrice(), $style);
-
-
-    }
-        */
 
 
     public function writeFile()
@@ -375,18 +312,10 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-//$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($this->phpWord, 'ODText');
-
-
     public function forceToDownload($renderMode = 'Word2007')
     {
 
-
-        /*$phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $section = $phpWord->addSection();
-        $section->addText('Hello World!');
-        $file = 'HelloWorld.docx';*/
-        header("Content-Description: File Transfer");
+        header('Content-Description: File Transfer');
         header('Content-Disposition: attachment; filename="' . $this->filename . '"');
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header('Content-Transfer-Encoding: binary');
@@ -398,8 +327,6 @@ abstract class AbstractWordDocument extends AbstractBase
 
         exit;
 
-
     }
-
 
 }
