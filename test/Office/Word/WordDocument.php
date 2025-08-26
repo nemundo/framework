@@ -26,6 +26,13 @@ $wordDocument
     ->addTableCell('Col 2');
 
 
+
+$wordDocument
+    ->setUnderline(true)
+    ->addText('Blablabla');
+
+
+
 $wordDocument->addImageLeft('C:\test\guidle\98.jpg', 30);
 //$wordDocument->addImageRight('C:\test\guidle\98.jpg');
 
@@ -37,8 +44,7 @@ $loop = new \Nemundo\Core\Structure\ForLoop();
 $loop->minNumber = 1;
 $loop->maxNumber = 10;
 foreach ($loop->getData() as $number) {
-    $wordDocument->addText($number);  //->add newLine();
-    //$wordDocument->addText($number)->newLine();
+    $wordDocument->addText($number);
 }
 
 

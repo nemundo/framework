@@ -123,7 +123,9 @@ abstract class AbstractWordDocument extends AbstractBase
             $fontStyle = new Font();
             $fontStyle->setBold($this->bold);
             $fontStyle->setItalic($this->italic);
-            $fontStyle->setUnderline($this->underline);
+            if ($this->underline) {
+                $fontStyle->setUnderline('single');
+            }
 
             if ($this->font !== null) {
                 $fontStyle->setName($this->font);
@@ -329,8 +331,6 @@ abstract class AbstractWordDocument extends AbstractBase
         return $this;
 
     }
-
-
 
 
     public function renderOdt()
