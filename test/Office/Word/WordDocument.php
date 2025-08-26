@@ -16,9 +16,9 @@ $wordDocument
     ->addTable(true)
     ->addTableRow()
     ->setBold(true)
-    ->addTableCell('Col 1',true,14)
-    ->addTableCell('Col 1',true,14)
-    ->addTableCell('Col 1',true,14)
+    ->addTableCell('Col 1', true, 14)
+    ->addTableCell('Col 1', true, 14)
+    ->addTableCell('Col 1', true, 14)
     ->addTableRow()
     ->setBold(false)
     ->addTableCell('Col 2')
@@ -50,6 +50,16 @@ $loop->minNumber = 1;
 $loop->maxNumber = 10;
 foreach ($loop->getData() as $number) {
     $wordDocument->addTextBlock($number);
+}
+
+
+$loop = new \Nemundo\Core\Structure\ForLoop();
+$loop->minNumber = 1;
+$loop->maxNumber = 10;
+foreach ($loop->getData() as $number) {
+    $wordDocument
+        ->addText($number)
+        ->addLine();
 }
 
 

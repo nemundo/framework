@@ -320,6 +320,19 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
+    public function addLine()
+    {
+
+        $lineStyle = array('weight' => 1, 'width' => 450, 'height' => 0, 'color' => '000000');
+        $this->section->addLine($lineStyle);
+
+        return $this;
+
+    }
+
+
+
+
     public function renderOdt()
     {
 
