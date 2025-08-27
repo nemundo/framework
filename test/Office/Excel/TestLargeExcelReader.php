@@ -14,7 +14,8 @@ class TestLargeExcelReader extends AbstractLargeExcelReader
     protected function loadReader()
     {
 
-        $this->filename = 'C:\test\alturos\revenue_luzern_2018-01-01-2025-08-11.xlsx';
+        //$this->filename = 'C:\test\alturos\revenue_luzern_2018-01-01-2025-08-11.xlsx';
+        $this->filename='C:\test\alturos\revenue_tuz_2025-08-01-2025-08-02.xlsx';
         //$this->filename='C:\test\alturos\test1.xlsx';
         //$this->sheetName = 'Übersicht Partnerbetriebe';
         $this->sheetName = 'Items in detail';
