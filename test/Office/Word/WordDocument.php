@@ -9,24 +9,21 @@ $wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
     //->addPath('test.odt')
     ->getFullFilename();
 
-//$wordDocument->addText("Hello World</w:t><w:br/><w:t>Hello World\nHello World\nHello World\n");
-
 
 $wordDocument
-    ->addTable(true)
+    //->addTable(true)
+    ->addTable(true,true)
     ->addTableRow()
-    ->setBold(true)
     ->addTableCell('Col 1', true, 14)
     ->addTableCell('Col 1', true, 14)
     ->addTableCell('Col 1', true, 14)
     ->addTableRow()
-    ->setBold(false)
     ->addTableCell('Col 2')
     ->addTableCell('Col 2')
     ->addTableCell('Col 2');
 
 
-
+/*
 $wordDocument
     ->setUnderline(true)
     ->addText('Blablabla');
@@ -40,7 +37,7 @@ $wordDocument->addImageLeft('C:\test\guidle\98.jpg', 30);
 $wordDocument->setFont('Times New Romand');
 //$wordDocument->addText('Hello Word');*/
 
-$loop = new \Nemundo\Core\Structure\ForLoop();
+/*$loop = new \Nemundo\Core\Structure\ForLoop();
 $loop->minNumber = 1;
 $loop->maxNumber = 10;
 foreach ($loop->getData() as $number) {

@@ -9,7 +9,9 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
+use PhpOffice\PhpWord\SimpleType\TblWidth;
 use PhpOffice\PhpWord\Style\Font;
+use PhpOffice\PhpWord\Style\Table;
 
 abstract class AbstractWordDocument extends AbstractBase
 {
@@ -231,12 +233,19 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addTable($showBorder = false)
+    public function addTable($showBorder = false, $fullWidth=false)
     {
 
         $config = [];
-        $config['cellMargin'] = 100;
-        $config['width'] = 100 * 50;
+        $config['cellMargin'] = 50;
+
+
+        //$config['width'] = 100 * 50;
+
+        if ($fullWidth) {
+            $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
+            $config['width'] = 100 * 50;
+        }
 
         if ($showBorder) {
             $config['borderSize'] = 1;
@@ -248,6 +257,38 @@ abstract class AbstractWordDocument extends AbstractBase
         return $this;
 
     }
+
+
+    /*public function addFullWidthTable()
+    {
+
+        /*$this->phpWord->addTableStyle(
+            'FullWidthTable',
+            [
+                'borderSize' => 60,
+                'borderColor' => '999999',
+                'layout' => \PhpOffice\PhpWord\Style\Table::LAYOUT_FIXED, // feste Breiten
+                'width' => 100 * 50, // 100% (Word rechnet intern in 1/50 Prozent)
+                'unit'   => 'pct',      //Tab \PhpOffice\PhpWord\Style\Table::::WIDTH_PERCENT,
+            ]
+        );*/
+
+        //$table = $section->addTable(array('unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT, 'width' => 100 * 50));
+
+       /* $config = [];
+        $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
+        $config['width'] = 100*50;
+
+        /*'unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT,
+      'width' => 100 * 50,*/
+
+
+      /*  $this->table = $this->section->addTable($config);
+
+        return $this;
+
+
+    }*/
 
 
     public function addTableRow()
