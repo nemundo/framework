@@ -10,7 +10,6 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-use PhpOffice\PhpWord\Style\Cell;
 use PhpOffice\PhpWord\Style\Font;
 
 abstract class AbstractWordDocument extends AbstractBase
@@ -256,8 +255,8 @@ abstract class AbstractWordDocument extends AbstractBase
         $config['cellMarginBottom'] = 10;
         $config['cellMarginLeft'] = 10;
         $config['cellMarginRight'] = 10;
-        
-        
+
+
         $this->table = $this->section->addTable($config);
 
         return $this;
@@ -329,8 +328,6 @@ abstract class AbstractWordDocument extends AbstractBase
         }
 
 
-
-
         //$style['valign']= Cell::::VALIGN_TOP;
         /*$style['spaceAfter'] = 0;
         $style['spaceBefore'] = 0;
@@ -351,8 +348,7 @@ abstract class AbstractWordDocument extends AbstractBase
     'marginRight' => 0,*/
 
 
-
-        $style2=[];
+        $style2 = [];
         $style2['alignment'] = $cell->alignment;  // Jc::END;
         $style2['spaceAfter'] = 0;
         $style2['spaceBefore'] = 0;
@@ -364,14 +360,11 @@ abstract class AbstractWordDocument extends AbstractBase
         //$style2['lineHeight']=0.5;
 
 
-
-
         /*[
             'lineHeight' => 1.5,   // Faktor für Zeilenhöhe
             'spaceBefore' => 0,    // Abstand vor Absatz
             'spaceAfter' => 0      // Abstand nach Absatz
         ]*/
-
 
 
         //array('alignment' => Jc::END)
@@ -385,7 +378,6 @@ abstract class AbstractWordDocument extends AbstractBase
 
         //$style['alignment'] = Jc::CENTER;  // Jc::END;
         //$style['valign'] = Jc::RIGHT;  // Jc::END;
-
 
 
         // ['valign' => 'center']
@@ -402,7 +394,6 @@ Jc::CENTER → Center
 Jc::BOTH → Justify*/
 
 
-
         //1 cm ≈ 567 Twips
         $width = null;
         if ($cell->widthInMillimeter !== null) {
@@ -416,7 +407,7 @@ Jc::BOTH → Justify*/
 
             //$cell = $this->table->addCell();
             $cellTmp = $this->table->addCell($width);
-            $cellTmp->addText($text, $style,$style2);
+            $cellTmp->addText($text, $style, $style2);
             //$cellTmp->setVAlign($cell->alignment);
             //$cellTmp->setVAlign(Jc::RIGHT);
 
@@ -454,7 +445,24 @@ Jc::BOTH → Justify*/
         try {
             $cell = $this->table->addCell();
             //$cell = $this->table->addCell(5000);
-            $cell->addText($text, $style);
+
+            if (is_array($text)) {
+
+                $textRun = $cell->addTextRun();
+
+                foreach ($text as $textRow) {
+
+                    $textRun->addText($textRow);
+                    $textRun->addTextBreak();
+
+                }
+
+            } else {
+
+                $cell->addText($text, $style);
+
+            }
+
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());
         }
