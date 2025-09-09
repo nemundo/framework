@@ -11,7 +11,6 @@ use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
 use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Style\Table;
 
 abstract class AbstractWordDocument extends AbstractBase
 {
@@ -233,7 +232,7 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addTable($showBorder = false, $fullWidth=false)
+    public function addTable($showBorder = false, $fullWidth = false)
     {
 
         $config = [];
@@ -273,22 +272,22 @@ abstract class AbstractWordDocument extends AbstractBase
             ]
         );*/
 
-        //$table = $section->addTable(array('unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT, 'width' => 100 * 50));
+    //$table = $section->addTable(array('unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT, 'width' => 100 * 50));
 
-       /* $config = [];
-        $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
-        $config['width'] = 100*50;
+    /* $config = [];
+     $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
+     $config['width'] = 100*50;
 
-        /*'unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT,
-      'width' => 100 * 50,*/
-
-
-      /*  $this->table = $this->section->addTable($config);
-
-        return $this;
+     /*'unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT,
+   'width' => 100 * 50,*/
 
 
-    }*/
+    /*  $this->table = $this->section->addTable($config);
+
+      return $this;
+
+
+  }*/
 
 
     public function addTableRow()
@@ -296,6 +295,61 @@ abstract class AbstractWordDocument extends AbstractBase
 
         $this->table->addRow();
         return $this;
+
+    }
+
+
+    public function addWordTableCell(WordTableCell $cell)
+    {
+
+        $text = $cell->text;
+        if ($cell->text == null) {
+            $text = '';
+        }
+
+        $style = [];
+
+        if ($cell->bold) {
+            $style['bold'] = $cell->bold;
+        }
+
+        if ($cell->noWarp) {
+            $style['noWrap'] = true;
+        }
+
+        if ($cell->fontSize !== null) {
+            $style['size'] = $cell->fontSize;
+        }
+
+        $style['spaceAfter']= 0;
+        $style['spaceBefore']= 0;
+        $style['lineSpacing']= 1;
+
+        $style['marginTop']= 0;
+    $style['marginBottom']= 0;
+    $style['marginLeft']= 0;
+    $style['marginRight']= 0;
+        $style['valign']= 'center';
+
+
+
+        //1 cm ≈ 567 Twips
+        $width = null;
+        if ($cell->widthInMillimeter !== null) {
+            $width = (int)round($cell->widthInMillimeter * 1440 / 25.4); // ≈ mm * 56.6929
+        }
+
+
+        try {
+
+            //$cell = $this->table->addCell();
+            $cell = $this->table->addCell($width);
+            $cell->addText($text, $style);
+        } catch (\Exception $exception) {
+            (new Debug())->write($exception->getMessage());
+        }
+        return $this;
+
 
     }
 
@@ -323,6 +377,7 @@ abstract class AbstractWordDocument extends AbstractBase
 
         try {
             $cell = $this->table->addCell();
+            //$cell = $this->table->addCell(5000);
             $cell->addText($text, $style);
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());

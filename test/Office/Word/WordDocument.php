@@ -10,17 +10,28 @@ $wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
     ->getFullFilename();
 
 
+
+$cell = new \Nemundo\Office\Word\Document\WordTableCell();
+$cell->text= 'Hello1';
+$cell->widthInMillimeter = 60;
+
+
+
+
 $wordDocument
     //->addTable(true)
-    ->addTable(true,true)
+    ->addTable(true)
     ->addTableRow()
-    ->addTableCell('Col 1', true, 14)
+    ->addWordTableCell($cell)
+    ->addWordTableCell($cell);
+
+/*    ->addTableCell('Col 1', true, 14)
     ->addTableCell('Col 1', true, 14)
     ->addTableCell('Col 1', true, 14)
     ->addTableRow()
     ->addTableCell('Col 2')
     ->addTableCell('Col 2')
-    ->addTableCell('Col 2');
+    ->addTableCell('Col 2');*/
 
 
 /*
