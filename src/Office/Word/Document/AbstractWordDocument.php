@@ -452,6 +452,10 @@ Jc::BOTH → Justify*/
 
                 foreach ($text as $textRow) {
 
+                    if ($textRow == null) {
+                        $textRow = '';
+                    }
+
                     $textRun->addText($textRow);
                     $textRun->addTextBreak();
 
