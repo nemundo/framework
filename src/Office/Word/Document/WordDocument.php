@@ -23,24 +23,24 @@ class WordDocument extends AbstractWordDocument
      */
     //private $section;
 
-    private $font;
+    //private $font;
 
-    private $fontSize;
-
-    /**
-     * @var bool
-     */
-    private $underline = false;
+    //private $fontSize;
 
     /**
      * @var bool
      */
-    private $bold = false;
+    //private $underline = false;
 
     /**
      * @var bool
      */
-    private $italic = false;
+    //private $bold = false;
+
+    /**
+     * @var bool
+     */
+    //private $italic = false;
 
 
     protected function loadDocument()

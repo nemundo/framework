@@ -172,7 +172,7 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addImage($filename)
+    /*public function addImage($filename, $width = null, $height = null)
     {
 
         $this->section->addImage(
@@ -184,13 +184,16 @@ abstract class AbstractWordDocument extends AbstractBase
             ]
         );
 
-    }
+    }*/
 
 
     public function addImageLeft($filename, $width = null, $height = null)
     {
 
-        $data = [];
+        $this->addImage($filename, $width, $height,Jc::RIGHT);
+        return $this;
+
+        /*$data = [];
 
         if ($width !== null) {
             $data['width'] = $width;
@@ -202,7 +205,7 @@ abstract class AbstractWordDocument extends AbstractBase
 
         $data['alignment'] = Jc::LEFT;
 
-        $this->section->addImage($filename, $data);
+        $this->section->addImage($filename, $data);*/
 
 
         /*$this->section->addImage(
@@ -217,19 +220,51 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addImageRight($filename)
+
+
+
+
+
+    public function addImageRight($filename, $width = null, $height = null)
     {
 
-        $this->section->addImage(
+        $this->addImage($filename, $width, $height,Jc::LEFT);
+        return $this;
+
+
+/*        $this->section->addImage(
             $filename,
             [
                 //'width' => 150,             // Breite in pt (ca. Pixel)
                 //'height' => 150,            // Höhe
                 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::RIGHT, // Ausrichtung
             ]
-        );
+        );*/
 
     }
+
+
+    private function addImage($filename, $width = null, $height = null, $alignment=null)
+    {
+
+        $data = [];
+
+        if ($width !== null) {
+            $data['width'] = $width;
+        }
+
+        if ($height !== null) {
+            $data['height'] = $height;
+        }
+
+        $data['alignment'] = $alignment;  // Jc::LEFT;
+
+        $this->section->addImage($filename, $data);
+
+
+
+    }
+
 
 
     public function addTable($showBorder = false, $fullWidth = false)
