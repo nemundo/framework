@@ -1,5 +1,8 @@
 <?php
 
+use Nemundo\Core\Structure\ForLoop;
+use Nemundo\Office\Word\Document\WordAlignment;
+
 require __DIR__ . '/../../config.php';
 
 
@@ -10,20 +13,34 @@ $wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
     ->getFullFilename();
 
 
-
 $cell = new \Nemundo\Office\Word\Document\WordTableCell();
-$cell->text= 'Hello1';
+$cell->text = 'Hello1';
+//$cell->fontSize = 20;
 $cell->widthInMillimeter = 60;
 
-
+$cell2 = new \Nemundo\Office\Word\Document\WordTableCell();
+$cell2->text = 'Hello2';
+$cell2->widthInMillimeter = 60;
+$cell2->alignment = WordAlignment::RIGHT;
 
 
 $wordDocument
     //->addTable(true)
-    ->addTable(true)
-    ->addTableRow()
-    ->addWordTableCell($cell)
-    ->addWordTableCell($cell);
+    ->addTable(true, true);
+
+
+$loop = new ForLoop();
+$loop->minNumber = 1;
+$loop->maxNumber = 10;
+
+foreach ($loop->getData() as $number) {
+
+    $wordDocument
+        ->addTableRow()
+        ->addWordTableCell($cell)
+        ->addWordTableCell($cell2);
+
+}
 
 /*    ->addTableCell('Col 1', true, 14)
     ->addTableCell('Col 1', true, 14)

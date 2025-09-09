@@ -10,6 +10,7 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
+use PhpOffice\PhpWord\Style\Cell;
 use PhpOffice\PhpWord\Style\Font;
 
 abstract class AbstractWordDocument extends AbstractBase
@@ -251,6 +252,12 @@ abstract class AbstractWordDocument extends AbstractBase
             $config['borderColor'] = '000000';
         }
 
+        $config['cellMarginTop'] = 10;
+        $config['cellMarginBottom'] = 10;
+        $config['cellMarginLeft'] = 10;
+        $config['cellMarginRight'] = 10;
+        
+        
         $this->table = $this->section->addTable($config);
 
         return $this;
@@ -321,15 +328,78 @@ abstract class AbstractWordDocument extends AbstractBase
             $style['size'] = $cell->fontSize;
         }
 
-        $style['spaceAfter']= 0;
-        $style['spaceBefore']= 0;
-        $style['lineSpacing']= 1;
 
-        $style['marginTop']= 0;
-    $style['marginBottom']= 0;
-    $style['marginLeft']= 0;
-    $style['marginRight']= 0;
-        $style['valign']= 'center';
+
+
+        //$style['valign']= Cell::::VALIGN_TOP;
+        /*$style['spaceAfter'] = 0;
+        $style['spaceBefore'] = 0;
+        $style['lineSpacing'] = 0;*/
+
+        $style['marginTop'] = 10;
+        $style['marginBottom'] = 10;
+        $style['marginLeft'] = 10;
+        $style['marginRight'] = 10;
+
+        //$style['valign'] = 'top';
+
+        /*
+        'valign' => Cell::VALIGN_TOP,
+    'marginTop' => 0,
+    'marginBottom' => 0,
+    'marginLeft' => 0,
+    'marginRight' => 0,*/
+
+
+
+        $style2=[];
+        $style2['alignment'] = $cell->alignment;  // Jc::END;
+        $style2['spaceAfter'] = 0;
+        $style2['spaceBefore'] = 0;
+        $style2['lineSpacing'] = 0;
+        /*$style2['marginTop'] = 0;
+        $style2['marginBottom'] = 0;
+        $style2['marginLeft'] = 0;
+        $style2['marginRight'] = 0;*/
+        //$style2['lineHeight']=0.5;
+
+
+
+
+        /*[
+            'lineHeight' => 1.5,   // Faktor für Zeilenhöhe
+            'spaceBefore' => 0,    // Abstand vor Absatz
+            'spaceAfter' => 0      // Abstand nach Absatz
+        ]*/
+
+
+
+        //array('alignment' => Jc::END)
+
+
+        //$style['valign'] = 'center';
+
+        //array('alignment' => Jc::END) // Right alignment
+
+        //$style['alignment'] = $cell->alignment;  // Jc::END; // Right alignment
+
+        //$style['alignment'] = Jc::CENTER;  // Jc::END;
+        //$style['valign'] = Jc::RIGHT;  // Jc::END;
+
+
+
+        // ['valign' => 'center']
+
+        /*if ($cell->alignment == WordAlignment::RIGHT) {
+            $style['alignment'] = Jc::END; // Right alignment
+        }*/
+
+
+        /*Jc::START → Left
+
+Jc::CENTER → Center
+
+Jc::BOTH → Justify*/
 
 
 
@@ -342,9 +412,15 @@ abstract class AbstractWordDocument extends AbstractBase
 
         try {
 
+            //(new Debug())->write($style);
+
             //$cell = $this->table->addCell();
-            $cell = $this->table->addCell($width);
-            $cell->addText($text, $style);
+            $cellTmp = $this->table->addCell($width);
+            $cellTmp->addText($text, $style,$style2);
+            //$cellTmp->setVAlign($cell->alignment);
+            //$cellTmp->setVAlign(Jc::RIGHT);
+
+
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());
         }

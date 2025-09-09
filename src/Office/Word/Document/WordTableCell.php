@@ -7,7 +7,6 @@ use Nemundo\Core\Base\AbstractBase;
 class WordTableCell extends AbstractBase
 {
 
-
     public $text;
 
     public $bold = false;
@@ -19,6 +18,7 @@ class WordTableCell extends AbstractBase
      */
     public $noWarp = false;
 
+    public $alignment = WordAlignment::LEFT;
 
     public $widthInMillimeter;
 
