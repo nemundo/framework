@@ -19,10 +19,10 @@ $cell->text = 'Hello1';
 //$cell->fontSize = 20;
 $cell->widthInMillimeter = 60;
 
-$cell2 = new \Nemundo\Office\Word\Document\WordTableCell();
+/*$cell2 = new \Nemundo\Office\Word\Document\WordTableCell();
 $cell2->text = 'Hello2';
 $cell2->widthInMillimeter = 60;
-$cell2->alignment = WordAlignment::RIGHT;
+$cell2->alignment = WordAlignment::RIGHT;*/
 
 
 $wordDocument
@@ -40,8 +40,10 @@ foreach ($loop->getData() as $number) {
 
     $wordDocument
         ->addTableRow()
-        ->addWordTableCell($cell)
-        ->addWordTableCell($cell2);
+        ->addTableCell('Test 1')
+        ->addTableCell('Test 2')
+        ->addWordTableCell($cell);
+        //->addWordTableCell($cell2);*/
 
 }
 

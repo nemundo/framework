@@ -169,7 +169,7 @@ abstract class AbstractWordDocument extends AbstractBase
     public function addImageLeft($filename, $width = null, $height = null)
     {
 
-        $this->addImage($filename, $width, $height,Jc::LEFT);
+        $this->addImage($filename, $width, $height, Jc::LEFT);
         return $this;
 
     }
@@ -178,13 +178,13 @@ abstract class AbstractWordDocument extends AbstractBase
     public function addImageRight($filename, $width = null, $height = null)
     {
 
-        $this->addImage($filename, $width, $height,Jc::RIGHT);
+        $this->addImage($filename, $width, $height, Jc::RIGHT);
         return $this;
 
     }
 
 
-    private function addImage($filename, $width = null, $height = null, $alignment=null)
+    private function addImage($filename, $width = null, $height = null, $alignment = null)
     {
 
         $data = [];
@@ -313,7 +313,15 @@ abstract class AbstractWordDocument extends AbstractBase
             $style['size'] = $size;
         }
 
+        $style2 = [];
+        //$style2['alignment'] = $cell->alignment;
+        $style2['spaceAfter'] = 0;
+        $style2['spaceBefore'] = 0;
+        $style2['lineSpacing'] = 0;
+
+
         try {
+
             $cell = $this->table->addCell();
 
             if (is_array($text)) {
@@ -326,14 +334,14 @@ abstract class AbstractWordDocument extends AbstractBase
                         $textRow = '';
                     }
 
-                    $textRun->addText($textRow);
+                    $textRun->addText($textRow, $style, $style2);
                     $textRun->addTextBreak();
 
                 }
 
             } else {
 
-                $cell->addText($text, $style);
+                $cell->addText($text, $style, $style2);
 
             }
 
