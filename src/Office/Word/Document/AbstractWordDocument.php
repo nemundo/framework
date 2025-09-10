@@ -253,6 +253,12 @@ abstract class AbstractWordDocument extends AbstractBase
 
         if ($cell->bold) {
             $style1['bold'] = $cell->bold;
+        } else {
+
+            if ($this->bold) {
+                $style1['bold'] = $this->bold;
+            }
+
         }
 
         if ($cell->noWarp) {
@@ -261,6 +267,8 @@ abstract class AbstractWordDocument extends AbstractBase
 
         if ($cell->fontSize !== null) {
             $style1['size'] = $cell->fontSize;
+        } else {
+            $style1['size'] = $this->fontSize;
         }
 
         $style1['marginTop'] = 10;
@@ -292,7 +300,8 @@ abstract class AbstractWordDocument extends AbstractBase
     }
 
 
-    public function addTableCell($text, $bold = false, $size = null, $noWarp = false)
+    //public function addTableCell($text, $bold = false, $size = null, $noWarp = false)
+    public function addTableCell($text, $noWarp = false)
     {
 
         if ($text == null) {
@@ -301,17 +310,17 @@ abstract class AbstractWordDocument extends AbstractBase
 
         $style = [];
 
-        if ($bold) {
-            $style['bold'] = $bold;
+        if ($this->bold) {
+            $style['bold'] =$this->bold;
         }
 
         if ($noWarp) {
             $style['noWrap'] = true;
         }
 
-        if ($size !== null) {
-            $style['size'] = $size;
-        }
+        //if ($size !== null) {
+            $style['size'] = $this->fontSize;
+        //}
 
         $style2 = [];
         //$style2['alignment'] = $cell->alignment;

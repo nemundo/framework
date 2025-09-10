@@ -9,7 +9,7 @@ require __DIR__ . '/../../config.php';
 $wordDocument = new \Nemundo\Office\Word\Document\WordDocument();
 
 
-$wordDocument->setFontSize(20)->addText('Title');
+$wordDocument->setFontSize(14)->addText('Title');
 $wordDocument->addText('Hello World');
 
 
@@ -29,7 +29,7 @@ $wordDocument
     //->addTable(true)
     ->addTable(true, true);
 
-
+$wordDocument->setFontSize(4);
 
 
 $loop = new ForLoop();
