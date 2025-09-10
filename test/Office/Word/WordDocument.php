@@ -1,7 +1,6 @@
 <?php
 
 use Nemundo\Core\Structure\ForLoop;
-use Nemundo\Office\Word\Document\WordAlignment;
 
 require __DIR__ . '/../../config.php';
 
@@ -9,8 +8,17 @@ require __DIR__ . '/../../config.php';
 $wordDocument = new \Nemundo\Office\Word\Document\WordDocument();
 
 
-$wordDocument->setFontSize(14)->addText('Title');
+$wordDocument
+    ->setFontSize(14)
+    ->addText('Title');
 $wordDocument->addText('Hello World');
+
+
+$wordDocument
+    ->addTextBlock('Test1')
+    ->addTextBlock('Test2')
+    ->addTextBlock('Test3');
+
 
 
 
@@ -43,7 +51,7 @@ foreach ($loop->getData() as $number) {
         ->addTableCell('Test 1')
         ->addTableCell('Test 2')
         ->addWordTableCell($cell);
-        //->addWordTableCell($cell2);*/
+    //->addWordTableCell($cell2);*/
 
 }
 
@@ -119,7 +127,7 @@ $wordDocument->writeFile();
 $wordDocument->format = \Nemundo\Office\Word\Document\WordFormat::WORD;
 
 $wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
-->addPath('test.docx')
+    ->addPath('test.docx')
     ->getFullFilename();
 
 $wordDocument->writeFile();

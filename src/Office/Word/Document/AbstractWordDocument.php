@@ -118,7 +118,7 @@ abstract class AbstractWordDocument extends AbstractBase
     {
 
         if ($text !== null) {
-            $fontStyle = new Font();
+            /*$fontStyle = new Font();
             $fontStyle->setBold($this->bold);
             $fontStyle->setItalic($this->italic);
             if ($this->underline) {
@@ -131,9 +131,9 @@ abstract class AbstractWordDocument extends AbstractBase
 
             if ($this->fontSize !== null) {
                 $fontStyle->setSize($this->fontSize);
-            }
+            }*/
 
-            $this->section->addText($text, $fontStyle);
+            $this->section->addText($text, $this->getFontStyle());  // $fontStyle);
         }
 
         return $this;
@@ -144,17 +144,62 @@ abstract class AbstractWordDocument extends AbstractBase
     public function addTextBlock($text)
     {
 
+
+        /*$fontStyle = new Font();
+        $fontStyle->setBold($this->bold);
+        $fontStyle->setItalic($this->italic);
+        if ($this->underline) {
+            $fontStyle->setUnderline('single');
+        }
+
+        if ($this->font !== null) {
+            $fontStyle->setName($this->font);
+        }
+
+        if ($this->fontSize !== null) {
+            $fontStyle->setSize($this->fontSize);
+        }*/
+
+
+
         if ($text !== null) {
             if ($this->textrun == null) {
                 $this->textrun = $this->section->addTextRun();
             }
 
-            $this->textrun->addText($text);
+            $this->textrun->addText($text,$this->getFontStyle());
             $this->textrun->addTextBreak();
         }
         return $this;
 
     }
+
+
+
+    private function getFontStyle()
+    {
+
+        $fontStyle = new Font();
+        $fontStyle->setBold($this->bold);
+        $fontStyle->setItalic($this->italic);
+        if ($this->underline) {
+            $fontStyle->setUnderline('single');
+        }
+
+        if ($this->font !== null) {
+            $fontStyle->setName($this->font);
+        }
+
+        if ($this->fontSize !== null) {
+            $fontStyle->setSize($this->fontSize);
+        }
+
+return $fontStyle;
+
+    }
+
+
+
 
 
     public function addEmptyLine($numberOfLines = 1)
