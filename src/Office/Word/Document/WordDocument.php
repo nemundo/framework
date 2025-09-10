@@ -2,9 +2,6 @@
 
 namespace Nemundo\Office\Word\Document;
 
-use PhpOffice\PhpWord\Element\Section;
-use PhpOffice\PhpWord\PhpWord;
-
 class WordDocument extends AbstractWordDocument
 {
 
@@ -14,33 +11,9 @@ class WordDocument extends AbstractWordDocument
     public $filename;
 
     /**
-     * @var PhpWord
+     * @var string
      */
-    //private $phpWord;
-
-    /**
-     * @var Section
-     */
-    //private $section;
-
-    //private $font;
-
-    //private $fontSize;
-
-    /**
-     * @var bool
-     */
-    //private $underline = false;
-
-    /**
-     * @var bool
-     */
-    //private $bold = false;
-
-    /**
-     * @var bool
-     */
-    //private $italic = false;
+    public $format;
 
 
     protected function loadDocument()

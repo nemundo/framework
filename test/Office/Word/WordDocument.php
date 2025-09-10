@@ -7,10 +7,11 @@ require __DIR__ . '/../../config.php';
 
 
 $wordDocument = new \Nemundo\Office\Word\Document\WordDocument();
-$wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
-    ->addPath('test.docx')
-    //->addPath('test.odt')
-    ->getFullFilename();
+
+
+$wordDocument->setFontSize(20)->addText('Title');
+$wordDocument->addText('Hello World');
+
 
 
 $cell = new \Nemundo\Office\Word\Document\WordTableCell();
@@ -27,6 +28,8 @@ $cell2->alignment = WordAlignment::RIGHT;
 $wordDocument
     //->addTable(true)
     ->addTable(true, true);
+
+
 
 
 $loop = new ForLoop();
@@ -101,4 +104,21 @@ $wordDocument->setFontSize(40);
 $wordDocument->setFont('Tahoma');
 $wordDocument->addText('Hello World');*/
 
+
+$wordDocument->format = \Nemundo\Office\Word\Document\WordFormat::OPEN_DOCUMENT_FORMAT;
+
+$wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
+    ->addPath('test.odt')
+    ->getFullFilename();
+
 $wordDocument->writeFile();
+
+
+$wordDocument->format = \Nemundo\Office\Word\Document\WordFormat::WORD;
+
+$wordDocument->filename = (new \Nemundo\Project\Path\TmpPath())
+->addPath('test.docx')
+    ->getFullFilename();
+
+$wordDocument->writeFile();
+

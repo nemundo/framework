@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../../config.php';
 
-$filename = 'C:\test\2-Tagesordnung 2024-02-26  N DFI.docx';
+$filename = '';
 
 $reader = new \Nemundo\Office\Word\Reader\WordReader();
 $reader->filename = $filename;

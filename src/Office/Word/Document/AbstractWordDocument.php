@@ -21,6 +21,11 @@ abstract class AbstractWordDocument extends AbstractBase
     public $filename;
 
     /**
+     * @var string
+     */
+    protected $format = WordFormat::WORD;
+
+    /**
      * @var PhpWord
      */
     protected $phpWord;
@@ -30,11 +35,9 @@ abstract class AbstractWordDocument extends AbstractBase
      */
     protected $section;
 
-
     private $textrun;
 
     private $table;
-
 
     private $font;
 
@@ -71,28 +74,22 @@ abstract class AbstractWordDocument extends AbstractBase
 
     public function addPage()
     {
-
         $this->section = $this->phpWord->addSection();
         return $this;
-
     }
 
 
     public function setFont($font)
     {
-
         $this->font = $font;
         return $this;
-
     }
 
 
     public function setFontSize($fontSize)
     {
-
         $this->fontSize = $fontSize;
         return $this;
-
     }
 
 
@@ -157,7 +154,6 @@ abstract class AbstractWordDocument extends AbstractBase
         }
         return $this;
 
-
     }
 
 
@@ -165,81 +161,25 @@ abstract class AbstractWordDocument extends AbstractBase
     {
 
         $this->section->addTextBreak($numberOfLines);
-        //[$breakCount], [$fontStyle], [$paragraphStyle]
-
         return $this;
 
     }
-
-
-    /*public function addImage($filename, $width = null, $height = null)
-    {
-
-        $this->section->addImage(
-            $filename,
-            [
-                //'width' => 150,             // Breite in pt (ca. Pixel)
-                //'height' => 150,            // Höhe
-                'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::RIGHT, // Ausrichtung
-            ]
-        );
-
-    }*/
 
 
     public function addImageLeft($filename, $width = null, $height = null)
     {
 
-        $this->addImage($filename, $width, $height,Jc::RIGHT);
+        $this->addImage($filename, $width, $height,Jc::LEFT);
         return $this;
 
-        /*$data = [];
-
-        if ($width !== null) {
-            $data['width'] = $width;
-        }
-
-        if ($height !== null) {
-            $data['height'] = $height;
-        }
-
-        $data['alignment'] = Jc::LEFT;
-
-        $this->section->addImage($filename, $data);*/
-
-
-        /*$this->section->addImage(
-            $filename,
-            [
-                //'width' => 150,             // Breite in pt (ca. Pixel)
-                //'height' => 150,            // Höhe
-                'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, // Ausrichtung
-            ]
-        );*/
-
     }
-
-
-
-
-
 
 
     public function addImageRight($filename, $width = null, $height = null)
     {
 
-        $this->addImage($filename, $width, $height,Jc::LEFT);
+        $this->addImage($filename, $width, $height,Jc::RIGHT);
         return $this;
-
-
-/*        $this->section->addImage(
-            $filename,
-            [
-                //'width' => 150,             // Breite in pt (ca. Pixel)
-                //'height' => 150,            // Höhe
-                'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::RIGHT, // Ausrichtung
-            ]
-        );*/
 
     }
 
@@ -257,14 +197,11 @@ abstract class AbstractWordDocument extends AbstractBase
             $data['height'] = $height;
         }
 
-        $data['alignment'] = $alignment;  // Jc::LEFT;
+        $data['alignment'] = $alignment;
 
         $this->section->addImage($filename, $data);
 
-
-
     }
-
 
 
     public function addTable($showBorder = false, $fullWidth = false)
@@ -273,11 +210,8 @@ abstract class AbstractWordDocument extends AbstractBase
         $config = [];
         $config['cellMargin'] = 50;
 
-
-        //$config['width'] = 100 * 50;
-
         if ($fullWidth) {
-            $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
+            $config['unit'] = TblWidth::PERCENT;
             $config['width'] = 100 * 50;
         }
 
@@ -291,44 +225,11 @@ abstract class AbstractWordDocument extends AbstractBase
         $config['cellMarginLeft'] = 10;
         $config['cellMarginRight'] = 10;
 
-
         $this->table = $this->section->addTable($config);
 
         return $this;
 
     }
-
-
-    /*public function addFullWidthTable()
-    {
-
-        /*$this->phpWord->addTableStyle(
-            'FullWidthTable',
-            [
-                'borderSize' => 60,
-                'borderColor' => '999999',
-                'layout' => \PhpOffice\PhpWord\Style\Table::LAYOUT_FIXED, // feste Breiten
-                'width' => 100 * 50, // 100% (Word rechnet intern in 1/50 Prozent)
-                'unit'   => 'pct',      //Tab \PhpOffice\PhpWord\Style\Table::::WIDTH_PERCENT,
-            ]
-        );*/
-
-    //$table = $section->addTable(array('unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT, 'width' => 100 * 50));
-
-    /* $config = [];
-     $config['unit'] = TblWidth::PERCENT;     // Table:: 100;
-     $config['width'] = 100*50;
-
-     /*'unit' => \PhpOffice\PhpWord\Style\Table::WIDTH_PERCENT,
-   'width' => 100 * 50,*/
-
-
-    /*  $this->table = $this->section->addTable($config);
-
-      return $this;
-
-
-  }*/
 
 
     public function addTableRow()
@@ -348,110 +249,45 @@ abstract class AbstractWordDocument extends AbstractBase
             $text = '';
         }
 
-        $style = [];
+        $style1 = [];
 
         if ($cell->bold) {
-            $style['bold'] = $cell->bold;
+            $style1['bold'] = $cell->bold;
         }
 
         if ($cell->noWarp) {
-            $style['noWrap'] = true;
+            $style1['noWrap'] = true;
         }
 
         if ($cell->fontSize !== null) {
-            $style['size'] = $cell->fontSize;
+            $style1['size'] = $cell->fontSize;
         }
 
-
-        //$style['valign']= Cell::::VALIGN_TOP;
-        /*$style['spaceAfter'] = 0;
-        $style['spaceBefore'] = 0;
-        $style['lineSpacing'] = 0;*/
-
-        $style['marginTop'] = 10;
-        $style['marginBottom'] = 10;
-        $style['marginLeft'] = 10;
-        $style['marginRight'] = 10;
-
-        //$style['valign'] = 'top';
-
-        /*
-        'valign' => Cell::VALIGN_TOP,
-    'marginTop' => 0,
-    'marginBottom' => 0,
-    'marginLeft' => 0,
-    'marginRight' => 0,*/
-
+        $style1['marginTop'] = 10;
+        $style1['marginBottom'] = 10;
+        $style1['marginLeft'] = 10;
+        $style1['marginRight'] = 10;
 
         $style2 = [];
-        $style2['alignment'] = $cell->alignment;  // Jc::END;
+        $style2['alignment'] = $cell->alignment;
         $style2['spaceAfter'] = 0;
         $style2['spaceBefore'] = 0;
         $style2['lineSpacing'] = 0;
-        /*$style2['marginTop'] = 0;
-        $style2['marginBottom'] = 0;
-        $style2['marginLeft'] = 0;
-        $style2['marginRight'] = 0;*/
-        //$style2['lineHeight']=0.5;
 
-
-        /*[
-            'lineHeight' => 1.5,   // Faktor für Zeilenhöhe
-            'spaceBefore' => 0,    // Abstand vor Absatz
-            'spaceAfter' => 0      // Abstand nach Absatz
-        ]*/
-
-
-        //array('alignment' => Jc::END)
-
-
-        //$style['valign'] = 'center';
-
-        //array('alignment' => Jc::END) // Right alignment
-
-        //$style['alignment'] = $cell->alignment;  // Jc::END; // Right alignment
-
-        //$style['alignment'] = Jc::CENTER;  // Jc::END;
-        //$style['valign'] = Jc::RIGHT;  // Jc::END;
-
-
-        // ['valign' => 'center']
-
-        /*if ($cell->alignment == WordAlignment::RIGHT) {
-            $style['alignment'] = Jc::END; // Right alignment
-        }*/
-
-
-        /*Jc::START → Left
-
-Jc::CENTER → Center
-
-Jc::BOTH → Justify*/
-
-
-        //1 cm ≈ 567 Twips
         $width = null;
         if ($cell->widthInMillimeter !== null) {
-            $width = (int)round($cell->widthInMillimeter * 1440 / 25.4); // ≈ mm * 56.6929
+            $width = (int)round($cell->widthInMillimeter * 1440 / 25.4);
         }
-
 
         try {
 
-            //(new Debug())->write($style);
-
-            //$cell = $this->table->addCell();
             $cellTmp = $this->table->addCell($width);
-            $cellTmp->addText($text, $style, $style2);
-            //$cellTmp->setVAlign($cell->alignment);
-            //$cellTmp->setVAlign(Jc::RIGHT);
-
+            $cellTmp->addText($text, $style1, $style2);
 
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());
         }
         return $this;
-
 
     }
 
@@ -479,7 +315,6 @@ Jc::BOTH → Justify*/
 
         try {
             $cell = $this->table->addCell();
-            //$cell = $this->table->addCell(5000);
 
             if (is_array($text)) {
 
@@ -514,22 +349,11 @@ Jc::BOTH → Justify*/
     {
 
         try {
-            $objWriter = IOFactory::createWriter($this->phpWord, 'Word2007');
-            //$objWriter = IOFactory::createWriter($this->phpWord, 'ODText');  // 'Word2007');
+            $objWriter = IOFactory::createWriter($this->phpWord, $this->format);
             $objWriter->save($this->filename);
         } catch (\Exception $exception) {
             (new Debug())->write($exception->getMessage());
         }
-
-    }
-
-
-    public function writeFileOpenDocumentText()
-    {
-
-        //$objWriter = IOFactory::createWriter($this->phpWord, 'Word2007');
-        $objWriter = IOFactory::createWriter($this->phpWord, 'ODText');  // 'Word2007');
-        $objWriter->save($this->filename);
 
     }
 
@@ -545,16 +369,7 @@ Jc::BOTH → Justify*/
     }
 
 
-    public function renderOdt()
-    {
-
-        $this->forceToDownload('ODText');
-        return $this;
-
-    }
-
-
-    public function forceToDownload($renderMode = 'Word2007')
+    public function forceToDownload()
     {
 
         header('Content-Description: File Transfer');
@@ -563,8 +378,8 @@ Jc::BOTH → Justify*/
         header('Content-Transfer-Encoding: binary');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Expires: 0');
-        //$xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter = IOFactory::createWriter($this->phpWord, $renderMode);
+
+        $objWriter = IOFactory::createWriter($this->phpWord, $this->format);
         $objWriter->save("php://output");
 
         exit;
