@@ -311,7 +311,7 @@ abstract class AbstractWordDocument extends AbstractBase
         $style = [];
 
         if ($this->bold) {
-            $style['bold'] =$this->bold;
+            $style['bold'] = $this->bold;
         }
 
         if ($noWarp) {
@@ -319,7 +319,7 @@ abstract class AbstractWordDocument extends AbstractBase
         }
 
         //if ($size !== null) {
-            $style['size'] = $this->fontSize;
+        $style['size'] = $this->fontSize;
         //}
 
         $style2 = [];
