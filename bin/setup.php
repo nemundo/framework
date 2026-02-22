@@ -17,6 +17,7 @@ $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
 (new ProjectInstall())->install();
 (new ScriptSetup())->addScript(new AdminUserScript());
 
+/*
 (new \Nemundo\App\Dataset\Application\DatasetApplication())->installApp();
 (new \Nemundo\App\Git\Application\GitApplication())->installApp();
 (new \Nemundo\App\SystemLog\Application\SystemLogApplication())->installApp();
@@ -25,6 +26,9 @@ $reset->addReset(new \Nemundo\App\Dataset\Reset\DatasetReset());
 (new \Nemundo\App\Backup\Application\BackupApplication())->installApp();
 (new \Nemundo\App\WebService\Application\WebServiceApplication())->installApp();
 (new MailApplication())->installApp();
-(new \Nemundo\App\System\Application\SystemApplication())->installApp();
+(new \Nemundo\App\System\Application\SystemApplication())->installApp();*/
 
 $reset->remove();
+
+(new \Nemundo\Core\Debug\Debug())->write('Setup finished');
+
