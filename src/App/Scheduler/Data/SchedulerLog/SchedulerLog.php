@@ -40,12 +40,12 @@ $this->runningDateTime = new \Nemundo\Core\Type\DateTime\DateTime();
 public function save() {
 $this->typeValueList->setModelValue($this->model->schedulerId, $this->schedulerId);
 $this->typeValueList->setModelValue($this->model->schedulerStatusId, $this->schedulerStatusId);
-if ($this-> plannedDateTime->hasValue()) {
+if ($this->plannedDateTime->hasValue()) {
 $property = new \Nemundo\Model\Data\Property\DateTime\DateTimeDataProperty($this->model->plannedDateTime, $this->typeValueList);
 $property->setValue($this->plannedDateTime);
 }
 $this->typeValueList->setModelValue($this->model->duration, $this->duration);
-if ($this-> runningDateTime->hasValue()) {
+if ($this->runningDateTime->hasValue()) {
 $property = new \Nemundo\Model\Data\Property\DateTime\DateTimeDataProperty($this->model->runningDateTime, $this->typeValueList);
 $property->setValue($this->runningDateTime);
 }

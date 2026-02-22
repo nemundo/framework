@@ -12,6 +12,7 @@ use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogCount;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogModel;
 use Nemundo\App\Scheduler\Data\SchedulerLog\SchedulerLogPaginationReader;
 use Nemundo\App\Scheduler\Parameter\SchedulerParameter;
+use Nemundo\App\Scheduler\Reader\Scheduler\SchedulerDataReader;
 use Nemundo\App\Scheduler\Status\ChanceledSchedulerStatus;
 use Nemundo\App\Scheduler\Status\PlannedSchedulerStatus;
 use Nemundo\App\Scheduler\Template\SchedulerTemplate;
@@ -27,12 +28,12 @@ class SchedulerItemLogPage extends SchedulerTemplate
 
         $schedulerId = (new SchedulerParameter())->getValue();
 
-        $schedulerReader = new SchedulerReader();
-        $schedulerReader->model->loadScript();
+        $schedulerReader = new SchedulerDataReader();
+        //$schedulerReader->model->loadScript();
         $schedulerRow = $schedulerReader->getRowById($schedulerId);
 
         $subtitle = new AdminSubtitle($this);
-        $subtitle->content = $schedulerRow->script->scriptClass;
+        $subtitle->content = $schedulerRow->phpClass;
 
 
         $model = new SchedulerLogModel();

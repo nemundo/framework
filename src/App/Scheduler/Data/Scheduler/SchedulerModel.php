@@ -7,24 +7,9 @@ class SchedulerModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\NumberExternalIdType
-*/
-public $scriptId;
-
-/**
-* @var \Nemundo\App\Script\Data\Script\ScriptExternalType
-*/
-public $script;
-
-/**
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
 public $active;
-
-/**
-* @var \Nemundo\Model\Type\Number\YesNoType
-*/
-public $overrideSetting;
 
 /**
 * @var \Nemundo\Model\Type\Number\YesNoType
@@ -61,6 +46,21 @@ public $startTime;
 */
 public $setupStatus;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $phpClass;
+
+/**
+* @var \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType
+*/
+public $applicationId;
+
+/**
+* @var \Nemundo\App\Application\Data\Application\ApplicationExternalType
+*/
+public $application;
+
 protected function loadModel() {
 $this->tableName = "scheduler_scheduler";
 $this->aliasTableName = "scheduler_scheduler";
@@ -76,13 +76,6 @@ $this->id->aliasFieldName = "scheduler_scheduler_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
 
-$this->scriptId = new \Nemundo\Model\Type\External\Id\NumberExternalIdType($this);
-$this->scriptId->tableName = "scheduler_scheduler";
-$this->scriptId->fieldName = "script";
-$this->scriptId->aliasFieldName = "scheduler_scheduler_script";
-$this->scriptId->label = "Script";
-$this->scriptId->allowNullValue = false;
-
 $this->active = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->active->tableName = "scheduler_scheduler";
 $this->active->externalTableName = "scheduler_scheduler";
@@ -90,14 +83,6 @@ $this->active->fieldName = "active";
 $this->active->aliasFieldName = "scheduler_scheduler_active";
 $this->active->label = "Active";
 $this->active->allowNullValue = true;
-
-$this->overrideSetting = new \Nemundo\Model\Type\Number\YesNoType($this);
-$this->overrideSetting->tableName = "scheduler_scheduler";
-$this->overrideSetting->externalTableName = "scheduler_scheduler";
-$this->overrideSetting->fieldName = "override_setting";
-$this->overrideSetting->aliasFieldName = "scheduler_scheduler_override_setting";
-$this->overrideSetting->label = "Override Setting";
-$this->overrideSetting->allowNullValue = false;
 
 $this->running = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->running->tableName = "scheduler_scheduler";
@@ -155,18 +140,34 @@ $this->setupStatus->aliasFieldName = "scheduler_scheduler_setup_status";
 $this->setupStatus->label = "Setup Status";
 $this->setupStatus->allowNullValue = false;
 
+$this->phpClass = new \Nemundo\Model\Type\Text\TextType($this);
+$this->phpClass->tableName = "scheduler_scheduler";
+$this->phpClass->externalTableName = "scheduler_scheduler";
+$this->phpClass->fieldName = "php_class";
+$this->phpClass->aliasFieldName = "scheduler_scheduler_php_class";
+$this->phpClass->label = "Php Class";
+$this->phpClass->allowNullValue = false;
+$this->phpClass->length = 255;
+
+$this->applicationId = new \Nemundo\Model\Type\External\Id\UniqueIdExternalIdType($this);
+$this->applicationId->tableName = "scheduler_scheduler";
+$this->applicationId->fieldName = "application";
+$this->applicationId->aliasFieldName = "scheduler_scheduler_application";
+$this->applicationId->label = "Application";
+$this->applicationId->allowNullValue = true;
+
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
-$index->indexName = "script";
-$index->addType($this->scriptId);
+$index->indexName = "php_class";
+$index->addType($this->phpClass);
 
 }
-public function loadScript() {
-if ($this->script == null) {
-$this->script = new \Nemundo\App\Script\Data\Script\ScriptExternalType($this, "scheduler_scheduler_script");
-$this->script->tableName = "scheduler_scheduler";
-$this->script->fieldName = "script";
-$this->script->aliasFieldName = "scheduler_scheduler_script";
-$this->script->label = "Script";
+public function loadApplication() {
+if ($this->application == null) {
+$this->application = new \Nemundo\App\Application\Data\Application\ApplicationExternalType($this, "scheduler_scheduler_application");
+$this->application->tableName = "scheduler_scheduler";
+$this->application->fieldName = "application";
+$this->application->aliasFieldName = "scheduler_scheduler_application";
+$this->application->label = "Application";
 }
 return $this;
 }

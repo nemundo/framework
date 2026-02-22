@@ -1,0 +1,1 @@
+<?phprequire __DIR__.'/../../config.php';(new \Nemundo\App\Scheduler\Application\SchedulerApplication())->reinstallApp();

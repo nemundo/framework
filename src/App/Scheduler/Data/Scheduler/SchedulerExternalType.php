@@ -7,24 +7,9 @@ class SchedulerExternalType extends \Nemundo\Model\Type\External\ExternalType {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $scriptId;
-
-/**
-* @var \Nemundo\App\Script\Data\Script\ScriptExternalType
-*/
-public $script;
-
-/**
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
 public $active;
-
-/**
-* @var \Nemundo\Model\Type\Number\YesNoType
-*/
-public $overrideSetting;
 
 /**
 * @var \Nemundo\Model\Type\Number\YesNoType
@@ -61,6 +46,21 @@ public $startTime;
 */
 public $setupStatus;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $phpClass;
+
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $applicationId;
+
+/**
+* @var \Nemundo\App\Application\Data\Application\ApplicationExternalType
+*/
+public $application;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = SchedulerModel::class;
@@ -74,13 +74,6 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
-$this->scriptId = new \Nemundo\Model\Type\Id\IdType();
-$this->scriptId->fieldName = "script";
-$this->scriptId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->scriptId->aliasFieldName = $this->scriptId->tableName ."_".$this->scriptId->fieldName;
-$this->scriptId->label = "Script";
-$this->addType($this->scriptId);
-
 $this->active = new \Nemundo\Model\Type\Number\YesNoType();
 $this->active->fieldName = "active";
 $this->active->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -88,14 +81,6 @@ $this->active->externalTableName = $this->externalTableName;
 $this->active->aliasFieldName = $this->active->tableName . "_" . $this->active->fieldName;
 $this->active->label = "Active";
 $this->addType($this->active);
-
-$this->overrideSetting = new \Nemundo\Model\Type\Number\YesNoType();
-$this->overrideSetting->fieldName = "override_setting";
-$this->overrideSetting->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->overrideSetting->externalTableName = $this->externalTableName;
-$this->overrideSetting->aliasFieldName = $this->overrideSetting->tableName . "_" . $this->overrideSetting->fieldName;
-$this->overrideSetting->label = "Override Setting";
-$this->addType($this->overrideSetting);
 
 $this->running = new \Nemundo\Model\Type\Number\YesNoType();
 $this->running->fieldName = "running";
@@ -153,15 +138,30 @@ $this->setupStatus->aliasFieldName = $this->setupStatus->tableName . "_" . $this
 $this->setupStatus->label = "Setup Status";
 $this->addType($this->setupStatus);
 
+$this->phpClass = new \Nemundo\Model\Type\Text\TextType();
+$this->phpClass->fieldName = "php_class";
+$this->phpClass->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->phpClass->externalTableName = $this->externalTableName;
+$this->phpClass->aliasFieldName = $this->phpClass->tableName . "_" . $this->phpClass->fieldName;
+$this->phpClass->label = "Php Class";
+$this->addType($this->phpClass);
+
+$this->applicationId = new \Nemundo\Model\Type\Id\IdType();
+$this->applicationId->fieldName = "application";
+$this->applicationId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->applicationId->aliasFieldName = $this->applicationId->tableName ."_".$this->applicationId->fieldName;
+$this->applicationId->label = "Application";
+$this->addType($this->applicationId);
+
 }
-public function loadScript() {
-if ($this->script == null) {
-$this->script = new \Nemundo\App\Script\Data\Script\ScriptExternalType(null, $this->parentFieldName . "_script");
-$this->script->fieldName = "script";
-$this->script->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->script->aliasFieldName = $this->script->tableName ."_".$this->script->fieldName;
-$this->script->label = "Script";
-$this->addType($this->script);
+public function loadApplication() {
+if ($this->application == null) {
+$this->application = new \Nemundo\App\Application\Data\Application\ApplicationExternalType(null, $this->parentFieldName . "_application");
+$this->application->fieldName = "application";
+$this->application->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->application->aliasFieldName = $this->application->tableName ."_".$this->application->fieldName;
+$this->application->label = "Application";
+$this->addType($this->application);
 }
 return $this;
 }

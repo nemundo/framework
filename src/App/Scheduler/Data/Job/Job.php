@@ -41,7 +41,7 @@ $this->typeValueList->setModelValue($this->model->scriptId, $this->scriptId);
 $this->typeValueList->setModelValue($this->model->finished, $this->finished);
 $this->typeValueList->setModelValue($this->model->duration, $this->duration);
 $this->typeValueList->setModelValue($this->model->statusId, $this->statusId);
-if ($this-> finishedDateTime->hasValue()) {
+if ($this->finishedDateTime->hasValue()) {
 $property = new \Nemundo\Model\Data\Property\DateTime\DateTimeDataProperty($this->model->finishedDateTime, $this->typeValueList);
 $property->setValue($this->finishedDateTime);
 }

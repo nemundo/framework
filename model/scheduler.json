@@ -85,7 +85,7 @@
                     "field_name": "script",
                     "variable_name": "script",
                     "allow_null": false,
-                    "is_deleted": false,
+                    "is_deleted": true,
                     "external_model_id": "03222a83-fda9-442c-b530-00cc87588637"
                 },
                 {
@@ -102,7 +102,7 @@
                     "field_name": "override_setting",
                     "variable_name": "overrideSetting",
                     "allow_null": false,
-                    "is_deleted": false
+                    "is_deleted": true
                 },
                 {
                     "type": "yes_no",
@@ -159,14 +159,32 @@
                     "variable_name": "setupStatus",
                     "allow_null": false,
                     "is_deleted": false
+                },
+                {
+                    "type": "text",
+                    "label": "Php Class",
+                    "field_name": "php_class",
+                    "variable_name": "phpClass",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Application",
+                    "field_name": "application",
+                    "variable_name": "application",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "be58745e-78c3-4c3a-aadc-d2b26d233518"
                 }
             ],
             "index": [
                 {
-                    "index_name": "script",
+                    "index_name": "php_class",
                     "index_type": "unique_index",
                     "field_name": [
-                        "script"
+                        "php_class"
                     ]
                 }
             ]
