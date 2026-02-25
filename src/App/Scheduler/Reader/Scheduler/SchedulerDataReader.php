@@ -21,12 +21,9 @@ class SchedulerDataReader extends SchedulerReader
     public function getData()
     {
 
-        //$this->model->loadScript();
-        //$this->model->script->loadApplication();
-
-        /*if ($this->applicationId !== null) {
+        if ($this->applicationId !== null) {
             $this->filter->andEqual($this->model->applicationId, $this->applicationId);
-        }*/
+        }
 
         return parent::getData();
 
