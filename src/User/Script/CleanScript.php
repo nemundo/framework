@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\User\Script;use Nemundo\App\Script\Type\AbstractConsoleScript;use Nemundo\User\Application\UserApplication;class CleanScript extends AbstractConsoleScript{    protected function loadScript()    {        $this->scriptName = 'user-clean';    }    public function run()    {        (new UserApplication())->reinstallApp();    }}
