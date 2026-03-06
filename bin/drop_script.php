@@ -1,0 +1,1 @@
+<?phpuse Nemundo\App\Script\Data\Script\ScriptModel;use Nemundo\Model\Setup\ModelSetup;require_once 'config.php';$setup = new ModelSetup();$setup->model = new ScriptModel();$setup->dropTable();
