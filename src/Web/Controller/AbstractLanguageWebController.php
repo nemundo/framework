@@ -11,7 +11,7 @@ use Nemundo\Web\WebConfig;
 abstract class AbstractLanguageWebController extends AbstractWebController
 {
 
-    public function __construct()
+    /*public function __construct()
     {
 
         LanguageConfig::$multiLanguage = true;
@@ -27,6 +27,27 @@ abstract class AbstractLanguageWebController extends AbstractWebController
         (new LanguageConfig())->setCurrentLanguage($languageCode);
 
         parent::__construct();
+
+    }*/
+
+
+
+    public function render()
+    {
+
+        LanguageConfig::$multiLanguage = true;
+
+        $url = new UrlParameterBuilder();
+        $this->urlList = $url->getUrlList();
+
+        $languageCode = $this->urlList[0];
+        if (!in_array($languageCode, LanguageConfig::$languageList)) {
+            $url = WebConfig::$webUrl . LanguageConfig::$defaultLanguageCode;
+            (new UrlRedirect())->redirect($url);
+        }
+        (new LanguageConfig())->setCurrentLanguage($languageCode);
+
+        parent::render();
 
     }
 
