@@ -11,6 +11,7 @@ use Nemundo\App\Backup\Path\ImportBackupPath;
 use Nemundo\App\Backup\Scheduler\BackupExportScheduler;
 use Nemundo\App\Backup\Scheduler\SqlDumpScheduler;
 use Nemundo\App\Backup\Script\BackupCleanScript;
+use Nemundo\App\Backup\Script\BackupExportScript;
 use Nemundo\App\Backup\Script\BackupImportScript;
 use Nemundo\App\Scheduler\Setup\SchedulerSetup;
 use Nemundo\App\Script\Setup\ScriptSetup;
@@ -29,6 +30,7 @@ class BackupInstall extends AbstractInstall
             ->addScheduler(new SqlDumpScheduler());
 
         (new ScriptSetup(new BackupApplication()))
+            ->addScript(new BackupExportScript())
             ->addScript(new BackupImportScript())
             ->addScript(new BackupCleanScript());
 
