@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\App\Mail\Script;use Nemundo\App\Mail\Worker\MailQueueWorker;use Nemundo\App\Script\Type\AbstractConsoleScript;class MailQueueScript extends AbstractConsoleScript{    protected function loadScript()    {        $this->scriptName = 'mail-queue';    }    public function run()    {        (new MailQueueWorker())->sendQueue();    }}
