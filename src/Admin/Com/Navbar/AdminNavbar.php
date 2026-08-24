@@ -7,7 +7,6 @@ use Nemundo\App\UserAction\Site\PasswordChangeSite;
 use Nemundo\Com\Container\LibraryTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Core\Http\Url\UrlInformation;
-use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\Core\Language\LanguageConfig;
 use Nemundo\Core\Type\Text\Text;
 use Nemundo\Html\Block\Div;
@@ -16,8 +15,8 @@ use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Html\Image\Img;
 use Nemundo\Html\Inline\Span;
 use Nemundo\Html\Layout\Nav;
+use Nemundo\Html\Script\ModuleJavaScript;
 use Nemundo\User\Session\UserSession;
-use Nemundo\Web\Controller\AbstractWebController;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Site\UrlSite;
 use Nemundo\Web\WebConfig;
@@ -40,6 +39,11 @@ class AdminNavbar extends Nav
      * @var bool
      */
     public $fixed = false;
+
+    /**
+     * @var bool
+     */
+    public $showUserActionMenu = true;
 
     public function getContent()
     {
@@ -123,10 +127,12 @@ class AdminNavbar extends Nav
             $bold->addCssClass('admin-navbar-user');
             $bold->content = ' ' . (new UserSession())->displayName;
 
-            $userMenu = new AdminNavbarDropdown($menu);
-            $userMenu->dropdownLabel = $bold->getBodyContent();
-            $userMenu->addSubsite(PasswordChangeSite::$site);
-            $userMenu->addSubsite(LogoutSite::$site);
+            if ($this->showUserActionMenu) {
+                $userMenu = new AdminNavbarDropdown($menu);
+                $userMenu->dropdownLabel = $bold->getBodyContent();
+                $userMenu->addSubsite(PasswordChangeSite::$site);
+                $userMenu->addSubsite(LogoutSite::$site);
+            }
 
         }
 
@@ -144,7 +150,7 @@ class AdminNavbar extends Nav
 */
 
                 $site = new UrlSite();
-                $site->url =(new Text((new UrlInformation())->getUrl()))->replaceLeft(WebConfig::$webUrl . LanguageConfig::$currentLanguageCode, WebConfig::$webUrl . $language)->getValue();
+                $site->url = (new Text((new UrlInformation())->getUrl()))->replaceLeft(WebConfig::$webUrl . LanguageConfig::$currentLanguageCode, WebConfig::$webUrl . $language)->getValue();
                 $site->title = $language;
 
                 $languageMenu->addSubsite($site);

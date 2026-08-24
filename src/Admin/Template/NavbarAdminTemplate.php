@@ -13,6 +13,11 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
 {
 
     /**
+     * @var bool
+     */
+    public $showUserActionMenu = true;
+
+    /**
      * @var Div
      */
     private $content;
@@ -60,6 +65,8 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
     {
 
         $this->body->addCssClass('admin-body');
+        $this->navbar->showUserActionMenu = $this->showUserActionMenu;
+
         return parent::getContent();
 
     }
