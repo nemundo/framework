@@ -128,10 +128,18 @@ class AdminNavbar extends Nav
             $bold->content = ' ' . (new UserSession())->displayName;
 
             if ($this->showUserActionMenu) {
+
                 $userMenu = new AdminNavbarDropdown($menu);
                 $userMenu->dropdownLabel = $bold->getBodyContent();
                 $userMenu->addSubsite(PasswordChangeSite::$site);
                 $userMenu->addSubsite(LogoutSite::$site);
+
+            } else {
+
+                $bold =  new Bold($menu);
+                $bold->content = (new UserSession())->displayName;
+                $bold->addCssClass('admin-navbar-link');
+
             }
 
         }
