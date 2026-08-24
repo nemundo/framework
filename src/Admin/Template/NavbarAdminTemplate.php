@@ -37,14 +37,14 @@ class NavbarAdminTemplate extends AbstractAdminTemplate
 
         parent::loadContainer();
 
-        $nav = new AdminNavbar();
-        $nav->logoText = AdminConfig::$logoText;
-        $nav->logoImage = AdminConfig::$logoUrl;
-        $nav->site = AdminConfig::$webController;
+        $this->navbar = new AdminNavbar();
+        $this->navbar->logoText = AdminConfig::$logoText;
+        $this->navbar->logoImage = AdminConfig::$logoUrl;
+        $this->navbar->site = AdminConfig::$webController;
 
         $this->content = new AdminMainContent();
 
-        parent::addContainer($nav);
+        parent::addContainer($this->navbar);
         parent::addContainer($this->content);
 
         $this->footer = new AdminFooter();
