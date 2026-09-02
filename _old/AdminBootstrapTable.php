@@ -1,0 +1,1 @@
+<?phpnamespace NemundoTest\Office\Word;use Nemundo\Package\Bootstrap\Table\BootstrapTable;class AdminBootstrapTable extends BootstrapTable{    protected function loadContainer()    {        parent::loadContainer();        $this->smallTable = true;        $this->hover = true;    }}
