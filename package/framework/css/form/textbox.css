@@ -23,12 +23,12 @@
 }
 
 .admin-icon-textbox input {
-    padding-left: 22px;
+    padding-left: 30px;
 }
 
 .admin-icon-textbox i {
     position: absolute;
     color: lightgrey;
-    left: 7px;
-    top: 19px;
+    left: 10px;
+    top: 35px;
 }
