@@ -34,7 +34,8 @@ class MailButton extends Table
         $td->addAttribute('style', $builder->getStyle());
 
         $hyperlink = new UrlHyperlink($td);
-        //$hyperlink->content = $this->buttonLabel;
+        $hyperlink->openNewWindow = true;
+        $hyperlink->addAttribute('rel', 'noopener noreferrer');
         $hyperlink->url = $this->url;
 
         $builder = new CssStyleBuilder();
@@ -44,17 +45,13 @@ class MailButton extends Table
         $builder->addStyle('text-decoration', 'none');
         $builder->addStyle('font-weight', 'bold');
         $builder->addStyle('display', 'inline-block');
-        //$builder->addStyle('padding', '8px 12px');
-        //$builder->addStyle('margin', '8px 12px');
         $builder->addStyle('padding', '5px');
-        //$builder->addStyle('margin', '8px 12px');
 
         $hyperlink->addAttribute('style', $builder->getStyle());
 
         $bold = new Bold($hyperlink);
         $bold->content = $this->buttonLabel;
         $bold->addAttribute('style', $builder->getStyle());
-
 
         return parent::getContent();
 
